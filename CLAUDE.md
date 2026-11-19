@@ -2,6 +2,20 @@
 
 C++20 game engine that simulates 1v1 Riftbound TCG matches. This file is the standards and conventions reference for engine development. For project status, completed work, and active backlog, see git log + the sibling riftbound-trainer repo's `docs/`.
 
+## Code Exploration: codebase-memory-mcp first (MANDATORY)
+
+This repo is indexed in the **codebase-memory-mcp** knowledge graph (project `C-Users-sutanto4-Desktop-RiftboundAI-alpharune`). **Every code exploration task MUST start with the graph tools** — do not open with Grep, Glob, `find`, `rg`, or reading files blind, and do not spawn an Explore agent before querying the graph.
+
+- **Orientation:** `get_architecture` (add `aspects: ["clusters"]` or a `path` such as `src/engine` to scope).
+- **Find a symbol / where something is implemented:** `search_graph` (`query` for natural language, `name_pattern` for regex, `label` / `file_pattern` to narrow; page with `offset` while `has_more`).
+- **Callers, callees, impact:** `trace_path`; for a diff's blast radius, `detect_changes`.
+- **Read code:** `get_code_snippet` with the qualified name from `search_graph`, before falling back to `Read`.
+- **Multi-hop / aggregate questions:** `query_graph` (Cypher).
+
+Fall back to Grep/Read only for (a) literal or non-code text (card data under `cards/`, `rules/`, `docs/`, `decks/`, CMake), (b) the exact lines you are about to edit, or (c) files the graph reports as `parse_partial`/skipped — check with `check_index_coverage` before making any "X is never used" / exhaustive claim, since 42 files (e.g. `src/cards/card.h`) have unparsed ranges.
+
+**Freshness:** a git `post-commit` hook (`.git/hooks/post-commit`, local, not tracked) re-indexes in the background after each commit; log at `.git/codebase-graph-reindex.log`. Uncommitted edits may not be in the graph yet — if results look stale, call `index_repository` on this repo before trusting them.
+
 ## Build
 
 ```bash
