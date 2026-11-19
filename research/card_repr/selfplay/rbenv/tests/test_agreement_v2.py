@@ -7,9 +7,13 @@ from common import *
 from rbenv import load_vocab
 # v2 data: research/card_repr/audit_gate1/agree/v2.* (decision_export play, schema v2; the
 # smoke/data/out files are schema v1 and no longer comparable).
-DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..', 'audit_gate1', 'agree')
+# Schema v4 (gate 3 completion): the same 18 games re-exported by the rebuilt decision_export into
+# research/card_repr/gate3/agree/v4.* (act 49..55 "oc", 56..60 "mg", TriggerOrder src/ci, MoveJoin dst/dec).
+# The v2 files no longer match (they lack those fields); pass 'v2' and the audit_gate1 dir to compare them anyway.
 NG = int(sys.argv[1]) if len(sys.argv) > 1 else 100
-GROUP = sys.argv[2] if len(sys.argv) > 2 else 'v2'
+GROUP = sys.argv[2] if len(sys.argv) > 2 else 'v4'
+DATA = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..',
+                    *(('audit_gate1', 'agree') if GROUP == 'v2' else ('gate3', 'agree')))
 vocab = load_vocab(); V = {k: i for i, k in enumerate(vocab)}
 vk = lambda k: V.get(k, V['other'])
 
@@ -34,6 +38,7 @@ def dec_tok(r):
 def norm_act(a):
     a = dict(a)
     if 'nc' in a: a['nc'] = vk(a['nc'])
+    if 'mg' in a: a['mg'] = a['mg'][:4]   # rbenv keeps the first 4 (kMaxList)
     return a
 
 def dec_act(r):
@@ -54,6 +59,8 @@ def dec_act(r):
     if r[38]: a['plc'] = 1
     if r[39]: a['dec'] = 1
     if r[0] == 16: a['first'] = r[40]
+    if len(r) > 49 and r[49] >= 0: a['oc'] = r[49:56]          # v3 optional-cost consequences
+    if len(r) > 60 and r[60] > 0: a['mg'] = r[56:56 + min(4, r[60])]   # v4 units already moving (MoveJoin)
     return a
 
 tot = bad = 0

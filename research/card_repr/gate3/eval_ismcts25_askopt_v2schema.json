@@ -1,0 +1,17 @@
+{
+ "ckpt": "runs/gate3_B2_askopt_v2schema/latest.pt",
+ "repr": "B2",
+ "deck": "rengar",
+ "opp": "ismcts:sims=25",
+ "games": 200,
+ "errors": 0,
+ "wins": 180,
+ "win_rate": 0.9,
+ "wilson95": [
+  0.851,
+  0.934
+ ],
+ "mean_turns": 13.3,
+ "procs": 6,
+ "secs": 36.1
+}

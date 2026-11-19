@@ -154,6 +154,8 @@ def main():
     ap.add_argument('--variants', default='', help='comma-separated variant names registered in the env (mixed-variant decks)')
     ap.add_argument('--init', default='', help='start from the weights of this checkpoint (fine-tuning; fresh optimizer)')
     ap.add_argument('--ask-head', action='store_true', help='direct asking-card -> option-score path (model.py)')
+    ap.add_argument('--ask-opt', action='store_true', help='gate 3: ask head also multiplies the option own features (model.py; needs --ask-head)')
+    ap.add_argument('--no-opt-cost', action='store_true', help='schema v3: ignore the optional-cost action fields 49..55')
     ap.add_argument('--no-card-norm', action='store_true', help='pre-gate-2 net: no card LayerNorm / gain (model.py)')
     ap.add_argument('--n-envs', type=int, default=256)
     ap.add_argument('--updates', type=int, default=100)
@@ -173,7 +175,10 @@ def main():
     ap.add_argument('--eval-games', type=int, default=200)
     ap.add_argument('--eval-envs', type=int, default=64)
     ap.add_argument('--eval-ismcts-games', type=int, default=0, help='games vs ismcts:sims=25 per eval (0 = off)')
-    ap.add_argument('--eval-greedy', action='store_true')
+    # In-training evaluation plays greedy (argmax) by default (user decision, 2026-11-19); --eval-sample draws
+    # from the policy as before. Actors always sample. --eval-greedy is kept as a no-op alias.
+    ap.add_argument('--eval-greedy', action='store_true', help='(default; kept for old command lines)')
+    ap.add_argument('--eval-sample', action='store_true', help='in-training eval samples from the policy')
     ap.add_argument('--ckpt-every', type=int, default=10)
     ap.add_argument('--seed', type=int, default=0)
     ap.add_argument('--threads', type=int, default=2)
@@ -194,8 +199,8 @@ def main():
     dims = env.dims
     vocab, vocab_src = load_vocab()
     assert len(vocab) == int(dims['V']), f'vocab {len(vocab)} != dims V {dims["V"]} ({vocab_src})'
-    net = Net(dims, vocab, args.repr, ask_head=args.ask_head, card_norm=not args.no_card_norm).to(dev)
-    pool_net = Net(dims, vocab, args.repr, ask_head=args.ask_head, card_norm=not args.no_card_norm).to(dev)
+    net = Net(dims, vocab, args.repr, ask_head=args.ask_head, card_norm=not args.no_card_norm, ask_opt=args.ask_opt, opt_cost=not args.no_opt_cost).to(dev)
+    pool_net = Net(dims, vocab, args.repr, ask_head=args.ask_head, card_norm=not args.no_card_norm, ask_opt=args.ask_opt, opt_cost=not args.no_opt_cost).to(dev)
     opt = torch.optim.Adam(net.parameters(), lr=args.lr, eps=1e-5)
     nparam = sum(p.numel() for p in net.parameters())
     cfg = dict(vars(args), dims={k: int(v) for k, v in dims.items()}, vocab_src=vocab_src, device=str(dev),
@@ -370,12 +375,13 @@ def main():
                 # a fresh env per eval (fixed seeds), so no game started by an older policy is counted
                 eenv = make_env(args.env, min(args.eval_envs, ng), 10**6 + args.seed, args.deck, opponent=spec, variant=VARIANTS)
                 te = time.time()
-                wr, ng_, dr, er = play_eval(net, eenv, ng, dev, args.eval_greedy)
+                wr, ng_, dr, er = play_eval(net, eenv, ng, dev, not args.eval_sample)
                 if hasattr(eenv, 'close'):
                     eenv.close()
                 del eenv
                 row[f'eval_{name}_wr'] = round(wr, 3)
-                extra[f'eval_{name}'] = dict(wr=wr, games=ng_, draws=dr, errors=er, secs=round(time.time() - te, 1))
+                extra[f'eval_{name}'] = dict(wr=wr, games=ng_, draws=dr, errors=er, secs=round(time.time() - te, 1),
+                                             mode='sample' if args.eval_sample else 'greedy')
             extra['probes'] = probes.run_probes(net, dev)
         w.writerow(row); logf.flush()
         mj.write(json.dumps({**row, **extra, 't_collect': round(t_collect, 1),

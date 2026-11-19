@@ -21,7 +21,10 @@ def run_probes(net, dev, names=None):
     for path in sorted(glob.glob(os.path.join(PROBE_DIR, '*.npz'))):
         if names and os.path.splitext(os.path.basename(path))[0] not in names:
             continue
-        d = np.load(path)
+        d = dict(np.load(path))
+        if d['tok'].shape[-1] == net.F and 49 <= d['act'].shape[-1] < net.K:   # v2/v3 probe, v3/v4 net: the
+            a = d['act']                                                         # later columns are -1 (n/a)
+            d['act'] = np.concatenate([a, np.full(a.shape[:-1] + (net.K - a.shape[-1],), -1, a.dtype)], -1)
         if d['tok'].shape[-1] != net.F or d['act'].shape[-1] != net.K:   # recorded under another schema
             out[os.path.splitext(os.path.basename(path))[0]] = dict(
                 skipped='probe recorded with F=%d K=%d, net has F=%d K=%d (schema v1 probe: re-collect with '

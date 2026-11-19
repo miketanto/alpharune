@@ -1,0 +1,30 @@
+{
+ "states": 432,
+ "per_base": {
+  "discipline": 72,
+  "lonely_poro": 72,
+  "pit_rookie": 72,
+  "punch_first": 144,
+  "sabotage": 72
+ },
+ "available_candidates": {
+  "sabotage": 310,
+  "pit_rookie": 343,
+  "lonely_poro": 222,
+  "punch_first": 305,
+  "discipline": 163
+ },
+ "jobs_per_variant": {
+  "synthetic:discipline__draw2": 72,
+  "synthetic:discipline__enemy": 72,
+  "synthetic:lonely_poro__draw2": 72,
+  "synthetic:pit_rookie__might3": 72,
+  "primal_strength": 144,
+  "synthetic:punch_first__amount4": 144,
+  "synthetic:punch_first__energy3": 144,
+  "synthetic:punch_first__power0": 144,
+  "synthetic:punch_first__reaction": 144,
+  "synthetic:sabotage__unit": 72
+ },
+ "sel_seed": 20261119
+}

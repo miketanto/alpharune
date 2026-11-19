@@ -1,0 +1,18 @@
+{
+ "ckpt": "runs/gate3_B2_v4/latest.pt",
+ "mode": "greedy",
+ "repr": "B2",
+ "deck": "rengar",
+ "opp": "ismcts:sims=25",
+ "games": 200,
+ "errors": 0,
+ "wins": 173,
+ "win_rate": 0.865,
+ "wilson95": [
+  0.811,
+  0.906
+ ],
+ "mean_turns": 14.3,
+ "procs": 6,
+ "secs": 41.7
+}

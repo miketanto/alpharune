@@ -1,0 +1,421 @@
+Gate 3 (wiring tests, TESTPLAN D1-D3), Rengar mirror: report, 2026-11-19
+=========================================================================
+Verdict: the asking-card bug class was present at 5 more prompt kinds, and it is now fixed and
+verified for them. Two kinds still FAIL because of observation gaps that need exporter work (TriggerOrder,
+MoveJoin). Accelerate / AdditionalCost now carry their cost consequences (schema v3, coordinator request),
+and the network learns from them.
+
+The bug, found again. The --ask-head term is W_ask(h_ask) * (h_ref + W_ask_src(h_src)). For an option that
+references no token, this is exactly 0. That covers the yes/no of May / Accelerate / AdditionalCost, Location's
+destinations and TriggerOrder's values. For those options the asking card reached the scores only through the
+global token, which is added equally to every option. Only the pol MLP's nonlinearity keeps the effect from
+cancelling. Measured effect on the option distribution when the asking card's key is swapped (TV):
+- these 4 kinds: 1e-4 untrained, 4e-4 to 2.5e-3 after 5 min of training;
+- Target: 0.015 untrained, 0.23 trained, i.e. 100-500x more;
+- the asking unit's own live fields at those prompts (Might, exhausted, cost, ...): about 2e-4.
+
+A synthetic supervised test is the decisive check. Labels depended only on the asking card, and fitting
+reached only 0.54-0.63 after 300 steps for May, Accelerate and AdditionalCost. That means the path was
+effectively missing. Resources (pool Energy) feeding the yes/no failed the same way, through the global token.
+
+Files (all in research/card_repr/gate3/ unless noted)
+- inventory.py: step 1. Writes inventory.json and inventory_samples.npz (schema v2), inventory_v3*.json / .npz.
+- pathtest.py: step 2 (a)(b)(c). Writes path_untrained.json and path_trained.json (old head);
+  path_untrained_v3.json and path_trained_v3.json (final fix); path_*_askopt_v0.json (intermediate fix).
+- summ.py: dead and weak fields. make_tables.py: tables.txt and results.json (everything combined).
+- learn.py, run_learn.sh, run_learn_v3.sh: step 3. Writes learn_results.jsonl (old head vs the first fix),
+  learn_v3.jsonl (Accelerate / AdditionalCost, final) and learn_v3b.jsonl.
+- exposure.py: step 5. Writes exposure.json.
+- verify_optcost.py: checks the new schema-v3 cost fields against the engine. Writes verify_optcost.json.
+- eval_ismcts25_v3.json, eval_ismcts25_askopt_v2schema.json: step 6.
+- Backups: model.pre_gate3.py.bak, rbenv.v2.cpp.bak.
+- The trained net "old head" is selfplay/runs/gate2v2_sanity_B2_ask/latest.pt: B2 --ask-head, 5 min, 70 updates.
+
+1. Inventory (301 random games, autopay on, 38,464 external decisions; 0 truncation, 0 unknown keys)
+-------------------------------------------------------------------------------------------------
+Columns: pk, decisions per game, the asking object (psrc), then what the options reference.
+- MainPhase, 44.3/game, psrc none. Options: PlayCard (src, dst, dst-consequence fields 46-48), StandardMove (mv, dst, 46-48),
+  HideCard (src, bf), EndTurn, PlayActionCard.
+- Target, 29.4, psrc card 98% / bf 2%. Options: ch = 1 token each.
+- TriggerOrder, 11.7, psrc NONE. Options: v (0..n-1) only. The pending items are chain tokens, but no option says
+  which item it is.
+- MoveJoin, 11.3, psrc NONE. Options: ch = a unit to add, plus v ("no more"). There is no destination and no leading unit.
+- ChainPriority, 7.5, psrc none. Options: PlayReaction (src, dst, 46-48), Pass.
+- May, 6.3, psrc card 45% / bf 55% (Star Spring, Emperor's Dais, Grim Apothecary, Faefolk). Options: v + dec. No token refs.
+- CombatDamage, 4.6, psrc none. Options: dm (token, damage) pairs.
+- ShowdownFocus, 4.5, psrc none. Options: PlayActionCard (src, dst, 46-48), PassFocus.
+- Mulligan, 2.4, psrc none. Options: mu (hand cards set aside).
+- Accelerate, 1.6, psrc card (Kai'Sa and other units). Options: v + dec. In v3 also act 49-55.
+- AdditionalCost, 1.4, psrc card (Rampage [O], Pyke). Options: v + dec. In v3 also act 49-55.
+- Location, 1.2, psrc card (Thrill of the Hunt). Options: v + dst + 46-48. No token refs.
+- TargetSecond, 0.66, and TargetFirst, 0.60, psrc card (Rampage). Options: ch.
+- ChooseObject, 0.33, psrc card (Sabotage: a card from the revealed hand). Options: ch.
+- CombatDamageNext, 0.06, psrc none. Options: ch.
+- NextStaged, 0.01, psrc none. Options: ch + v.
+
+Not reached in the mirror: Mode, XAmount, Repeat, DiscardCost, SplitTargets/SplitAmount, ChainItem, Discard,
+LookTop, DeckOrder, Value, NameACard, BattlefieldSetup (a Duel), PlayFirstDecision.
+Answered in C++ with autopay: RuneForEnergy / RuneForPower.
+
+2-3. Per-pk table
+-----------------
+Column definitions:
+- askTV is the mean total-variation change of the option distribution when the asking card's key is swapped for
+  another in-scope key (6 swaps x 64 real states).
+- "old" is the net with --ask-head. "fix" is the final net: --ask-head --ask-opt, schema v3.
+- u is untrained, t is 5-min trained.
+- learn is the synthetic test. Labels depend only on the asking card's key; the key is re-drawn per row and
+  states are held out. Accuracy after 300 steps, old -> fix.
+- Relevant fields: TV when one field of one option's referenced token, or of the option itself, is edited
+  (trained, old head). Every field listed is non-zero, and so is every other token field (pathtest.py (b)).
+
+pk               /game  psrc   | askTV u  askTV t  fix u   fix t  | learn       | relevant fields (TV, trained)              | verdict
+MainPhase        44.31  none   |   -        -        -       -    |   -         | eff_energy .017 eff_power .012 affordable   | PASS
+                                                                                  .035 card .107 dst .225 dst_ctrl .048
+                                                                                  starts_combat .032 contest .043
+Target           29.39  card   | .0154    .2279    .0134   .1190  | 0.97->0.95  | side .023 Might .020 damage .026 combat .007 | PASS
+TriggerOrder     11.65  none   |   -        -        -       -    | 0.53->1.00* | v index .024 only; no link from v to item   | FAIL (obs.)
+MoveJoin         11.30  none   |   -        -        -       -    |   -         | Might .018 exhausted .031 loc .027;         | FAIL (obs.)
+                                                                                  no destination / leading unit
+ChainPriority     7.45  none   |   -        -        -       -    |   -         | eff_energy .015 affordable .028 card .279   | PASS
+May               6.34  card   | .0001    .0006    .0013   .0124  | 0.63->1.00  | dec .033; asking unit fields 2e-4 ->        | FAIL -> PASS
+                                                                                  3e-3 (fix)
+CombatDamage      4.62  none   |   -        -        -       -    |   -         | Might .005 damage .004 dmg amount .001      | PASS (weak)
+ShowdownFocus     4.52  none   |   -        -        -       -    |   -         | eff_energy .013 affordable .014 card .205   | PASS
+Mulligan          2.41  none   |   -        -        -       -    |   -         | card .078 eff_energy .019                   | PASS
+Accelerate        1.58  card   | .0001    .0004    .0041   .0250  | 0.54->1.00  | dec .035; v3 fields .005-.13 (below)        | FAIL -> PASS
+AdditionalCost    1.36  card   | .0001    .0006    .0027   .0248  | 0.54->1.00  | dec .034; v3 fields .003-.13                | FAIL -> PASS
+Location          1.20  card   | .0002    .0025    .0182   .0372  | 1.00->1.00  | dst .444 dst_ctrl .093 starts_combat .062   | weak -> PASS
+                                                                                  contest .099
+TargetSecond      0.66  card   | .0173    .1495    .0120   .0440  | 0.97->0.97  | side .066 Might .029 damage .034            | PASS
+TargetFirst       0.60  card   | .0160    .1472    .0101   .0521  | 0.98->0.98  | side .016 Might .026 damage .033            | PASS
+ChooseObject      0.33  card   | .0071    .0290    .0062   .0394  | 1.00->1.00  | card .263 side .021                         | PASS
+CombatDamageNext  0.06  none   |   -        -        -       -    |   -         | Might .015 damage .012                      | PASS
+NextStaged        0.01  none   |   -        -        -       -    |   -         | bf key .156                                 | PASS
+
+* TriggerOrder's 1.00 only shows that the network can now condition on WHICH cards' triggers are pending
+  (global x option term). It still cannot know which v orders which item.
+
+Gradient check
+- d(logit_i - logit_j)/d(asking-card embedding) is non-zero and differs between options for every pk with a
+  psrc. In the old trained net, ||grad diff|| / ||grad logit|| was:
+  - Target 1.01, TargetFirst 0.84, TargetSecond 0.91, ChooseObject 0.76, Location 0.41;
+  - May 0.12, Accelerate 0.10, AdditionalCost 0.10.
+- So no pk was an exact constant shift. Before the fix, though, the gradient through the yes/no paths was about
+  100x smaller in absolute size (grad norm about 4e-4 vs 2e-2 at Target, untrained).
+- Final net: the ratio is 0.24-0.60 everywhere.
+
+Field-only learnability (300 steps; the field is re-drawn per row and is the only thing that predicts the label)
+- Old head:
+  - Accelerate or AdditionalCost yes/no from pool Energy (g19): 0.62.
+  - May yes/no from the asking unit's Might: 0.61.
+  - Location from the asking unit's Might: 0.99.
+  - Target choice from the asking unit's Might: 0.96.
+- Final fix (v3 samples):
+  - Accelerate from ready Body runes (g42) 1.00; from pool Energy (g19) 1.00.
+  - Accelerate from the yes-option's runes-ready-after (act 53) 1.00; total-after (54) 1.00; runes recycled (51) 1.00.
+  - AdditionalCost: the same five tests, all 1.00.
+  - Control: the same act-53 label with opt_cost off stays at 0.61 for both kinds, so the new fields are what
+    make it learnable.
+
+Dead inputs (zero effect on value and policy, any pk, untrained and trained)
+- act 41-45: the per-list counts. The model never reads them; they duplicate the lists, which are untruncated in
+  the mirror. Harmless.
+- act 40 "first": -1 and 0 are clamped together. PlayFirstDecision does not occur in a Duel.
+- act 50-55: zero by design except at Accelerate / AdditionalCost, where they are live (table above).
+- glob: no dead field for any pk.
+- Token fields: no dead field. Every card / bf / chain / pile field moves the value and at least one decision.
+
+(c) Schema-v2 fields
+Each field was edited on all tokens of its kind, on real states. Mean |delta value| and mean TV are given for
+MainPhase, final trained net:
+- play ordinal: 0.19 / 0.020
+- hidden-this-turn: 0.055 / 0.019
+- effective Energy cost: 0.032 / 0.018
+- effective Power cost: 0.022 / 0.033
+- affordable: 0.079 / 0.010
+- effective Assault: 0.098 / 0.015
+- effective Shield: 0.13 / 0.017
+- Star Spring stamps: 0.010 / 0.0015
+- pile owner, zone, count: 0.11 / 0.021 / 0.027 (value)
+- removing all pile tokens: 0.38 / 0.058
+- known opponent hand, removed: 0.070 / 0.006
+- known opponent hand, key swapped: 0.048 / 0.004
+- chain additional-cost-paid / source play ordinal / triggering subject, at Target: 0.005-0.008 / 0.0005-0.0007
+
+All are non-zero for the value head and for at least one decision. The chain memory flags and Star Spring stamps
+are the weakest, roughly 10x below the rest. The other pks are in results.json, path_trained_v3._schema_v2.
+
+Learnability, overall
+Every pk with an asking card now reaches 0.95-1.00. Target, TargetFirst and TargetSecond plateau at 0.95-0.98
+under the old head and the fix alike: the path exists, and the remainder is fit, not wiring.
+
+4. Fixes
+--------
+A. learner/model.py, Net(..., ask_opt=False). Needs --ask-head; selfplay.py --ask-opt.
+   - h_opt is the option's own features: intent kind, value v and the scalar flags (W_v), destination,
+     named card, and the v3 cost fields.
+   - The ask term becomes W_ask(h_ask) * (h_ref + W_ask_src(h_src) + W_ask_opt(h_opt)). Options with no token
+     refs now get an asking-card-dependent, option-specific term.
+   - A global-token x option term is added: W_ctx(hg) * W_ctx_opt(h_opt). Before it, resources, pk and turn
+     reached a yes/no only through the pol MLP's nonlinearity.
+B. Schema v3 (coordinator request). Accelerate and AdditionalCost answers carry their cost consequences:
+   - Encoder::optCost in smoke/data/src/decision_export.cpp, shared by rbenv; JSON key "oc", rbenv act[49..55].
+   - K goes from 49 to 56, and rbenv_schema_version() is 3. Nothing under src/ was edited.
+   - Fields, per option: extra Energy; extra Power; runes the play recycles; their Domain; own runes ready after
+     paying; own runes in total after paying; unit enters ready (Accelerate).
+   - Cost source: the base cost is GameEngine::netCardCost (the same as card fields 19-20). Accelerate adds
+     [1] + one Power of the unit's Domains (CR 805.1.b.1). AdditionalCost reads Card::optionalAdditionalCost
+     (Rampage's [O]: Power 1 Body).
+   - model.py opt_cost (default on when K >= 56; selfplay.py --no-opt-cost turns it off): W_oc encodes the
+     fields into h_opt, so they reach the score directly and through both bilinear terms.
+   - Checked against the engine in random play (verify_optcost.py; the deciding seat's runes on the board at
+     its next decision in the same turn):
+     - runes in total after paying and runes recycled: 100% match (Accelerate yes 258, no 303; AdditionalCost
+       yes 248, no 250).
+     - runes ready after paying is an estimate: Accelerate yes 0.91, no 0.94; AdditionalCost yes 0.62, no 0.86.
+       Which rune autopay exhausts for Energy is not modelled exactly. The "no" rows bound the measurement's own
+       noise, since other things can happen before the next decision.
+   - Docs: smoke/data/SCHEMA.txt "SCHEMA VERSION 3", selfplay/rbenv/README.txt.
+   - rbenv rebuilt (build.sh). test_determinism: ok, 410 steps.
+C. Checkpoints. All the new parameters are created only when their flags are on, and the loaders detect them
+   from the state dict ('W_ask_opt.weight', 'W_oc.weight'): verify_eval.py, cardexp/check_probes.py, emb_diag.py,
+   real_stats.py, gate3/common.py. Columns 0-48 are unchanged, so:
+   - Schema-v2 checkpoints still load and stay valid on the v3 env; they ignore columns 49-55.
+     gate3_B2_askopt_v2schema was evaluated on the v3 build: 0.90.
+   - Old --ask-head checkpoints load as ask_opt=False.
+   - The parameter creation order changed: W_oc is created before E_akind. A fresh untrained net with a given
+     seed is therefore not bit-identical to before.
+   - probe_eval.py builds Net from command-line flags. It has no --ask-opt, so it cannot load ask_opt checkpoints yet.
+
+Re-run of tests 2-3 on the fix: see the "fix" columns and "Field-only learnability" above.
+Untrained fix net:
+- yes/no and Location askTV went from 1-2e-4 to 1.3e-3 - 1.8e-2, comparable to Target.
+Trained fix net:
+- May 0.012 (was 0.0006), Accelerate 0.025 (0.0004), AdditionalCost 0.025 (0.0006), Location 0.037 (0.0025).
+- The asking unit's live fields at yes/no prompts went from about 2e-4 to 2e-3 - 3e-2.
+
+5. D3 exposure
+--------------
+Source: the final 5-minute policy (gate3_B2_v3) playing itself, 1,000 games (exposure.json; counts per 10k games).
+The training ring is not saved, so this replays the trained policy. The 5-min run itself saw about 53 updates x
+roughly 95 games, about 5k games.
+
+Asked: the card is the prompt's asking object. Counts per 10k games:
+- Rengar Pridestalker | Target 224k.
+- Star Spring | May 29.8k.
+- Grim Apothecary | May 18.5k.
+- Kai'Sa | Accelerate 16.6k.
+- Punch First | Target 16.3k.
+- Pit Rookie | Target 11.8k.
+- First Mate | Target 11.4k.
+- Thrill | Location 10.9k.
+- Emperor's Dais | May 9.5k.
+- Thrill | Target 9.4k.
+- Rampage: AdditionalCost 6.9k, TargetSecond 6.4k, TargetFirst 5.8k.
+- Faefolk | May 5.2k.
+- Pyke | AdditionalCost 5.2k.
+- Sabotage | ChooseObject 3.9k.
+- Faefolk | Target 549; Emperor's Dais | Target 809.
+
+Chosen: the card is referenced by the chosen option. Every deck card has MainPhase 7k-33k and Target 3k-69k
+per 10k games. No in-scope card is never chosen.
+
+Too rare: under 500 decisions per 10k games, by acted-on count (chosen while in that context).
+- Defending: almost every unit is acted on while defending only 30-470 times per 10k games, though it sits in
+  the defending context 2-9k times. This is the D3 risk for Shield-while-defending tests (gate 4).
+  - Noxus Hopeful 230, Pit Rookie 200, Inferna 180, Grim Apothecary 170, Kinkou 340, Faefolk 80, First Mate 180,
+    Pakaa Cub 470, Ferrous Forerunner 100, Kai'Sa 450, Nidalee 220, Darius 80, Pyke 160, Mech 30, Sand Soldier 80.
+- Attacking (acted on): Faefolk 230, Pakaa Cub 360, Darius 240, Pyke 170, Mech 180.
+- Token units: Mech is defending only 310 times per 10k games (present); Sand Soldier is in base 2.3k
+  (acted on 300) and is a MainPhase choice 430.
+- CombatDamageNext: every card, 20-310. The pk itself is 0.06 per game.
+- TargetFirst / TargetSecond as the chosen target: most units, 30-500.
+- Rare as the asking object or prompt kind: Thrill | ChooseObject 400; Rengar Trophy Hunter | ChainPriority 240;
+  Pyke | MoveJoin 270.
+
+Common enough (2k-30k): Legion / "second card" condition true vs false for Noxus Hopeful and Darius in hand;
+Inferna assault active vs inactive; Star Spring stamp used vs unused. See exposure.json "context".
+
+6. Sanity
+---------
+- Final net (B2 --ask-head --ask-opt, schema v3), run selfplay/runs/gate3_B2_v3, 5 min, 0 errors.
+  - It got only 53 updates instead of the usual about 70, because it shared the CPU with the learnability jobs.
+  - verify_eval vs ismcts:sims=25, 200 games, --procs 6: 173/200 = 0.865, Wilson [0.811, 0.906].
+  - The previous B2 run reached 0.86, so there is no loss.
+- Also: ask_opt plus the global term on schema v2, a clean 5 min run (72 updates; gate3_B2_askopt_v2schema),
+  evaluated on the v3 build: 180/200 = 0.90 [0.851, 0.934].
+- An interim net with only W_ask_opt (no W_ctx; gate3_B2_askopt_v0, contended, 43 updates) gave the
+  path_*_askopt_v0.json numbers. That checkpoint is superseded; it lacks W_ctx, so its loads are partial.
+
+What is left
+------------
+1. TriggerOrder: FAIL, observation gap. Options carry only v = k, an index into the engine's "distinct pending
+   items" list (GameEngine::orderPendingTriggers). The pending items are chain tokens, but nothing links v to its
+   item, so the network cannot know which ability it is ordering. This is 11.7 decisions per game.
+   Fix: the exporter writes ci = the chain-item token of distinct[k]. That needs the engine's distinct list, or a
+   reconstruction of it from trigger_batch and the label, in decision_export.cpp. Model.py already reads ci.
+2. MoveJoin: FAIL, observation gap. Options name only the unit to add. The move's destination and the unit
+   already moving are not in the observation, so "join this move" cannot depend on where it goes. This is 11.3
+   decisions per game.
+   Fix: write dst (with fields 46-48) and the leading unit (as src) on every MoveJoin option.
+3. Runes ready after paying (act 53) is an estimate (see 4B). Making it exact means running the payment on a copy
+   of the engine (the engine's park / probe is private) or mirroring the cost-payment rune order.
+   The optional-cost discount (optionalCostDiscount) is not applied; no Rengar card has one.
+4. Schema v3 is in rbenv only.
+   - The decision_export binary was not rebuilt. Its JSON now has "oc", but test_agreement_v2.py and
+     test_fields.py do not know columns 49-55 yet.
+   - Only test_determinism was re-run after the change.
+5. probe_eval.py needs --ask-opt / opt_cost detection, as verify_eval.py now has.
+6. Weak but non-zero paths after training:
+   - CombatDamage reading the units' Might and damage (TV 0.001-0.005).
+   - The chain memory flags and Star Spring stamps (about 10x weaker than other v2 fields).
+   They are not dead; gate 4's counterfactual tests should check that these are used.
+7. D3: defending contexts and attack contexts for several units are under 500 acted-on decisions per 10k games.
+   Gate 4's Shield / Deathknell / Ganking tests need a forced-context curriculum or more games.
+
+
+Gate 3 completion (2026-11-19)
+==============================
+Verdict: TriggerOrder and MoveJoin now PASS. Both kinds' options say what they mean (schema v4).
+The synthetic learnability tests go from chance to 1.00. All rbenv tests pass on the final build.
+Nothing under src/ was edited.
+
+1. TriggerOrder: each option names its chain item (schema v4)
+-----------------------------------------------------------
+- Each option now carries act[33] / JSON "ci", the chain-item token of the item it puts on the chain next.
+  It also carries act[1] / "src", that item's source card.
+- No engine change was needed. Encoder::prepare (smoke/data/src/decision_export.cpp) rebuilds
+  GameEngine::orderPendingTriggers' "distinct" list from the state:
+  - before the prompt, the batch is already rewritten into canonical order on the chain (canonicalBatchOrder);
+  - the options keep that order, and option k = distinct[k];
+  - so the encoder takes the decider's pending items of the oldest pending batch, in chain order, and matches
+    them to the option labels in order ("Order - " + the label, Encoder::trigLabel, a mirror of the private
+    triggerOrderLabel), skipping items that are the same ability as one already matched.
+- Exact except one case: two different items share a label and the earlier one was already ordered in an
+  earlier prompt. rbenv counts such options (counters() trig_amb): 16 of 7,359 options in 300 random games (0.2%).
+  Every option was mapped (trig_mapped == trig_opts; test_fields: 0 unmapped, 0 duplicate items, and the
+  ci token's source == act[1] on all 7,351 options).
+
+2. MoveJoin: destination, consequences, moving units, decline (schema v4)
+-------------------------------------------------------------------------
+Every MoveJoin option now carries:
+- act[30] / "dst": the move's destination;
+- act[46..48] / "dc", "atk", "con": the consequences for the mover, computed as for a StandardMove;
+- act[56..59]: the units already moving, leading unit first (first 4), with act[60] = their count
+  (-1 for other prompts). The JSON "mg" has the whole list.
+- "Move no more units" is marked as the decline (act[39] / "dec" = 1).
+The engine keeps the destination and the moving group in locals of executeStandardMove. The caller therefore
+follows the decider's own choices (MoveTrack / noteChoice: the StandardMove chosen, then each unit joined):
+- in decision_export's Seat, replay included;
+- at every applyChoice in rbenv (applyTracked, per seat; opponent and auto choices included).
+test_fields over 300 games / 9,675 MoveJoin options:
+- 0 without a destination or a group;
+- exactly one dec option per prompt;
+- consequences identical across a prompt's options;
+- the group is the mover's own units and never includes the offered unit.
+Truncation: groups larger than 4 are cut to their first 4 units. This affects 1.3% of MoveJoin options in random
+play and is all of rbenv's trunc_list (78 in 200 games). act[60] still holds the full count.
+
+Layout: rbenv K 56 -> 61, rbenv_schema_version() == 4. Docs: smoke/data/SCHEMA.txt "SCHEMA VERSION 4",
+selfplay/rbenv/README.txt. Backups: decision_export.v3.cpp.bak, rbenv.v3.cpp.bak, model.v3.py.bak (this dir).
+
+3. Model: learner/model.py opt_refs (default on when K >= 61)
+------------------------------------------------------------
+The new fields now go into h_opt, the option's own features, so they reach the score directly and through
+W_ask_opt and W_ctx_opt, as W_oc does:
+- W_ci: the referenced chain item (act 33).
+- W_mg: the mean of the moving-group tokens plus log of the count (act 56..60).
+- Destination and consequences already entered h_opt (E_dst, W_v). Before, ci and src reached the score only
+  through h_ref / h_src.
+New parameters are created last, so other inits are unchanged. Loaders detect them from 'W_mg.weight':
+verify_eval, probe_eval, gate3/common.py, cardexp/check_probes, emb_diag, real_stats.
+
+Learnability (learn_v4.py, run_learn_v4.sh, learn_v4.jsonl). Setup: inventory_v4_samples.npz (300 random games,
+1,200 states per pk), fresh --ask-head --ask-opt net, 300 steps, held-out states. "v3 obs" blanks the v4 fields
+as the v3 observation had them.
+  test                                                            v3 obs   v4 obs   (v4 obs, opt_refs off)
+  TriggerOrder: label = option whose ordered item's key ranks top  0.46     1.00     1.00 (0.98 at step 50)
+  MoveJoin: no more if the move starts a combat, else strongest    0.51     1.00     1.00 (0.84 at step 50,
+            joiner (consequence + Might)                                              0.57 with opt_refs)
+  MoveJoin: strongest joiner if Might >= 4, else no more           1.00     1.00     -
+Readings:
+- The two observation-gap tests go from chance to 1.00.
+- "Might" was already learnable in v3, because the offered unit was a token reference.
+- With opt_refs off the fields are still learnable: ci / src through h_ref / h_src, dst / consequences through
+  W_v. So the observation was the fix, and opt_refs adds the routing the task asked for. At step 50 opt_refs
+  is a little faster for TriggerOrder (0.996 vs 0.981) and slower for MoveJoin (0.57 vs 0.84). Both reach 1.00
+  by step 150.
+- A first mj_cons label ("the first unit offered") reached only 0.90. That label is not a property of the
+  options' content (the net is permutation-invariant), so it was replaced.
+
+4. Test gaps closed
+-------------------
+- test_fields.py is now schema v4, with a v4 block: oc only at Accelerate / AdditionalCost, the TriggerOrder
+  checks and the MoveJoin checks above. Result: OK, all v2 checks still 0 mismatches.
+- test_agreement_v2.py now decodes act 49..55 ("oc") and 56..60 ("mg"). It defaults to new data,
+  gate3/agree/v4.*: the same 18 games, re-exported by the rebuilt decision_export binary. That data includes
+  177 TriggerOrder and 149 MoveJoin decisions. Result: 3,263 decisions, 0 mismatches.
+- The decision_export binary was rebuilt (smoke/data/src/build.sh).
+- On the final build:
+  - test_determinism: ok, 410 steps, 24 games identical;
+  - test_multivariant: ok, 315 steps;
+  - test_random: 200 games, 0 errors;
+  - test_opponent random-player 100: 0 errors.
+- probe_eval.py now builds the net from the checkpoint's keys (ask_head, ask_opt, opt_cost, opt_refs; K
+  49 / 56 / 61), so it loads --ask-opt checkpoints. The --ask-opt flag is for an untrained net only.
+  - probes.py pads v2/v3 probe actions to the net's K with -1.
+  - Checked on gate3_B2_v3/latest.pt: loads. The probe files in learner/probes are still schema v1 (F 17,
+    K 46), so every probe reports "skipped". They need re-collecting (cardexp/collect_probes.py): open.
+
+5. Runes ready after paying (act 53): now replays the engine's rune order
+--------------------------------------------------------------------------
+Encoder::optCost now pays rune by rune in the engine's own order, which autopay (option 0) takes:
+1. The [O] cost first: resource::payIn. Energy from ready runes that cannot pay its Power, lowest id first;
+   Power from paying runes, exhausted first, lowest id first.
+2. Then the card's cost through the cost cursor. Energy from ready runes in base in object-table order
+   (readyRunesInBase); Power from the first rune of the card's Domains in that order, ready or exhausted
+   (matchingRunesInBase). Accelerate's [1][C] is in this payment.
+Before, the [O] Domain also replaced the card's Domains for the base Power. That bug is fixed too.
+verify_optcost.py, ready-after match (old: verify_optcost_v3.json; new: verify_optcost.json):
+- Accelerate yes 0.915 -> 0.946;
+- AdditionalCost yes 0.617 -> 0.899;
+- total after: 1.000 everywhere.
+The "no" rows (0.944 / 0.864) are the measurement's noise floor: things happen between the prompt and the next
+decision. Both "yes" rows are now at or above it. The check cannot prove 100%; a check that reads the state
+right after payment would.
+
+6. Evaluation mode (coordinator request: evaluations GREEDY, training SAMPLES)
+-------------------------------------------------------------------------------
+- verify_eval.py plays greedy (argmax) by default. --sample gives the old behaviour. The output JSON has
+  "mode".
+- probe_eval.py: each probe's headline "score" is argmax_right by default, or mass_right with --sample.
+  Both metrics are always written, and the JSON has "mode".
+- selfplay.py: in-training eval is greedy by default. --eval-sample gives the old behaviour; --eval-greedy is
+  kept as a no-op alias. The eval record has "mode". Actors still sample.
+
+7. Sanity
+---------
+Run: selfplay/runs/gate3_B2_v4, B2 --ask-head --ask-opt, schema v4, 5 min.
+- 0 errors. Only 35 updates (gate3_B2_v3 had 53, earlier runs about 70): the GPU was at 97% with about 6.4 GB
+  used by processes outside this run.
+- In-training greedy eval vs random-player: 0.875 / 0.954 / 0.970 at updates 10 / 20 / 30.
+- verify_eval vs ismcts:sims=25, 200 games, --procs 6, same seeds:
+  - greedy: 173/200 = 0.865, Wilson [0.811, 0.906] (eval_ismcts25_v4_greedy.json);
+  - sampled: 172/200 = 0.860 [0.805, 0.901] (eval_ismcts25_v4_sample.json).
+  - The previous run (v3, sampled) was 0.865. No loss, despite about half the updates.
+  - Greedy and sampled are within one game of each other here.
+- Note: the net was trained on the build before item 5 (act 53 estimate). The evals ran on the final build,
+  which differs only in act 53 at Accelerate / AdditionalCost.
+
+Still open
+----------
+- TriggerOrder: the label match is ambiguous for about 0.2% of options, when two different abilities share a
+  label and the earlier one was already ordered. An exact answer needs the engine to expose its distinct list,
+  e.g. GameEngine::pendingPrompt() carrying the ordered ChainItemIds, or Prompt.chain_item set per option.
+  Alternatively, the encoder could keep history across prompts.
+- MoveJoin groups larger than 4 units are truncated in act 56..59 (1.3% of options). The count in act 60 is
+  exact.
+- Probe files are schema v1. Re-collect them to make probe_eval meaningful.
+- Items 6-7 of the earlier "What is left" list are unchanged: weak CombatDamage paths, and D3 exposure of
+  defending / attacking contexts.

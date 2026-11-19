@@ -1,0 +1,19 @@
+pk                /game       psrc |  askTV u askTV t   fix u   fix t |       learn | relevant fields TV (trained, old head) 
+-----------------------------------------------------------------------------------------------------------------------------
+MainPhase         44.31       none |    -      -      -      -    |     -       | eff_energy=0.017, eff_power=0.012, affordable=0.035, card=0.107, dst=0.225, dst_ctrl=0.048, starts_combat=0.032, contest=0.043
+Target            29.39    card/bf |   0.0154  0.2279  0.0134  0.1190 |  0.97->0.95 | side=0.023, Might=0.020, damage=0.026, combat=0.007
+TriggerOrder      11.65       none |    -      -      -      -    |  0.53->1.00 | v (index)=0.024
+MoveJoin          11.30       none |    -      -      -      -    |     -       | Might=0.018, exhausted=0.031, loc=0.027, has_v(stop)=0.042
+ChainPriority      7.45       none |    -      -      -      -    |     -       | eff_energy=0.015, affordable=0.028, card=0.279, dst_ctrl=0.036
+May                6.34    card/bf |   0.0001  0.0006  0.0013  0.0124 |  0.63->1.00 | decline=0.033, ask.Might=0.000, ask.exhausted=0.000
+CombatDamage       4.62       none |    -      -      -      -    |     -       | Might=0.005, damage=0.004, dmg_amount=0.001
+ShowdownFocus      4.52       none |    -      -      -      -    |     -       | eff_energy=0.013, affordable=0.014, card=0.205, dst_ctrl=0.023
+Mulligan           2.41       none |    -      -      -      -    |     -       | card=0.078, eff_energy=0.019
+Accelerate         1.58       card |   0.0001  0.0004  0.0041  0.0250 |  0.54->1.00 | decline=0.035, ask.eff_energy=0.000, ask.affordable=0.000
+AdditionalCost     1.36       card |   0.0001  0.0006  0.0027  0.0248 |  0.54->1.00 | decline=0.034, ask.eff_energy=0.000, ask.affordable=0.000
+Location           1.20       card |   0.0002  0.0025  0.0182  0.0372 |  1.00->1.00 | dst=0.444, dst_ctrl=0.093, starts_combat=0.062, contest=0.099
+TargetSecond       0.66       card |   0.0173  0.1495  0.0120  0.0440 |  0.97->0.97 | side=0.066, Might=0.029, damage=0.034, combat=0.011
+TargetFirst        0.60       card |   0.0160  0.1472  0.0101  0.0521 |  0.98->0.98 | side=0.016, Might=0.026, damage=0.033, combat=0.009
+ChooseObject       0.33       card |   0.0071  0.0290  0.0062  0.0394 |  1.00->1.00 | card=0.263, zone=0.010, side=0.021
+CombatDamageNext   0.06       none |    -      -      -      -    |     -       | Might=0.015, damage=0.012
+NextStaged         0.01       none |    -      -      -      -    |     -       | bf=0.156

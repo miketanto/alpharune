@@ -1,0 +1,328 @@
+Decision dataset for the minimal network (research/card_repr/NETWORK.md)
+========================================================================
+
+SCHEMA VERSION 2 (gate 1, 2026-11-19; research/card_repr/audit_gate1/REPORT.txt)
+-------------------------------------------------------------------------------
+The exporter now writes schema v2. Everything already under out/ (and every
+swap/verify file) was written with schema v1 (the layout below WITHOUT the v2
+additions): it is still readable with the v1 description, but it is NOT what
+the current exporter or rbenv produce, and `decision_export verify` against
+those files will report hash mismatches. Everything checkpointed on v1 input
+is invalid. v2 adds (all appended; v1 fields keep their positions):
+
+  "c" card token: after attached_to, 7 fields
+      play_ordinal      which play of its controller's turn this card was
+                        (playOrdinalThisTurn: 1 first, 2 second; 0 not played
+                        this turn) -- Darius, Legion, Star Spring
+      hidden_this_turn  1 if facedown and hidden this turn (hidden_on_turn >=
+                        turn): it cannot be played from facedown yet
+      eff_energy, eff_power   own hand / champion-zone cards: what the card
+                        costs to play now, by the engine's own computation
+                        (GameEngine::netCardCost: printed cost after every cost
+                        modifier, e.g. Noxus Hopeful's Legion -2; without
+                        Accelerate or optional additional costs); -1 elsewhere
+                        or when no engine was given (swap mode)
+      affordable        own hand / champion-zone cards: GameEngine::canAfford
+                        (the engine's own payability gate, additional costs
+                        included); -1 elsewhere
+      assault, shield   effective values now (ObserverView::permanent), 0 off
+                        the board
+  "b" battlefield: after is_token, 2 fields
+      stamp_self, stamp_opp   the "first time a player plays a non-token unit
+                        here each turn" was used this turn by self / opp (Star
+                        Spring's __starspring_turn_p<i> == turn + 1)
+  "k" chain item: after [chosen], 3 fields
+      paid              the source's optional / additional cost was paid
+                        (Rampage __rampage_paid, Card::kAdditionalCostPaid)
+      play_ordinal      the source's play ordinal this turn (Darius)
+      subject           token index of the triggering subject (the unit whose
+                        play / move triggered it), -1 none
+  "p" pile token (new kind), aggregated: one per (pile, owner, card)
+      ["p", key, owner, zone, count]   zone 4 Trash (both players), 5
+                        Banishment (both), 0 MainDeck (own remaining deck
+                        composition only); count = copies in that pile
+  Known opponent hand cards: card tokens (zone 2 Hand, owner 2) for every card
+      of the opponent's hand the decider knows (ObserverView::knownInHand: the
+      knowledge tracker's known + zone-confirmed hand cards), keyed by the known
+      card. Includes every card revealed by Sabotage, during its prompt and
+      afterwards while the tracker still places it in the hand.
+  act:
+      dst               now also set for Location prompts answered by a value
+                        (Thrill of the Hunt): the REAL slot (1+i), mapped from
+                        the index into the battlefields its owner may play a
+                        unit to (battlefieldTakesUnitsFrom), not the index
+      dc, atk, con      when dst is a battlefield: its controller (0 none,
+                        1 self, 2 opp), 1 if enemy units are there (moving /
+                        playing there starts a combat as attacker), 1 if it is
+                        not controlled by the decider (the unit would contest)
+
+
+Built by src/decision_export.cpp (research C++ tool, WSL build target
+`decision_export`, EXCLUDE_FROM_ALL; src/decision_export.cmake, src/build.sh)
+and src/pipeline.py. Everything is plain JSON / JSON-lines (gzip for the large
+decision files): read with `gzip.open(path, 'rt')` + `json.loads` per line, no
+numpy needed.
+
+Files
+-----
+decks/<deck>__<variant>.txt   variant deck lists: every main-deck copy of the
+                              base card replaced (src/make_decks.py)
+lists/<group>.txt             game lists: gid deckA deckB agentA agentB seed swapcand
+out/<group>__s<k>.decisions.jsonl.gz   one line per recorded decision (below)
+out/<group>__s<k>.games.jsonl          one line per game (below)
+manifest.json                 all games: split, group, set (teacher|random),
+                              variant, decks, agents, seeds, result, which
+                              decisions file holds its decisions, deck card
+                              counts and per-card token counts
+card_games.json               card key -> sorted list of gids in which the card
+                              is in either deck list or appears in any observation
+counts.json                   games / decisions per set|variant|split, token
+                              occurrences per card
+decision_stats.json           decisions per card (appears / is an action source /
+                              is the chosen action's source) per set and split,
+                              prompt-kind counts, teacher visit-distribution
+                              statistics (src/summarize.py)
+swap/swap_tests.jsonl         swap-test records (below)
+swap/swap_summary.json        per-variant summary of the swap tests
+swap_selection.json           how the swap states were picked
+verify_results.txt            replay verification (below)
+jobs/, logs/                  the exact jobs run and their stderr
+
+Groups and sets
+---------------
+base_teacher                  decks/rengar.txt and decks/yi_rebuild.txt, matchups
+                              cycled (R,R) (Y,Y) (R,Y) (Y,R): mirrors and cross,
+                              both seats. Teacher both seats.
+base_random                   the same, both seats random-player (pass=0.2).
+                              NOT teacher data: labelled set=random, teacher field
+                              "random-player", no visits.
+var_teacher__<variant>        the variant deck (base card replaced) against each
+                              base deck, both seats; cycled (V,R) (R,V) (V,Y) (Y,V)
+                              for every deck that holds the base card.
+var_random__<variant>         the same with random-player.
+Variants: primal_strength (real partner of punch_first) and the 10 synthetic
+variants of cards.json. In a variant game the OPPONENT keeps the base deck, so
+the base card can appear on the other side.
+
+Teacher: ismcts:sims=100 (IsMctsAgent, honest sampled worlds, uct_c 2.0,
+score-difference heuristic leaf evaluation), both seats.
+Agent seeds: engine seed = seed & 0x7fffffff; agent seed = engine_seed*2+seat
+(seat 0 = deck A), exactly as situations/sampler.cpp.
+
+Split
+-----
+By game seed: seed % 10 in 0..6 -> train, 7 -> val, 8..9 -> test. Every game has
+its own seed (base teacher 1..N, base random 50001.., variant v teacher
+100000*(v+1).., variant random 100000*(v+1)+50001..). To hold a card out, drop
+every game that card_games.json lists for it (or filter decisions by token key).
+
+Decision line (out/*.decisions.jsonl.gz)
+----------------------------------------
+Recorded: every decision of BOTH seats with >= 2 legal options (single-option
+decisions are skipped; they are still in the game's `choices`).
+  gid       game id
+  seq       index of this decision among all decisions of the game (0-based;
+            indexes the game's `choices`)
+  d         engine decision_index
+  seat      deciding seat, 1 = player of deck A, 2 = deck B (metadata only; the
+            observation is written from the decider's view, never by seat)
+  teacher   agent spec of the decider ("ismcts:sims=100" or "random-player")
+  pk        prompt kind (engine PromptKind name, e.g. "main phase action",
+            "priority", "focus", "target", "rune for energy", "may", ...)
+  psrc      token index of the object asking the prompt (the card being played,
+            the chain item's source), -1 none
+  g         global features, 72 ints:
+            0 turn number, 1 phase (TurnPhase: 0 Setup 1 Mulligan 2 Awaken
+            3 BeginningStep 4 ScoringStep 5 Channel 6 Draw 7 Main 8 EndingStep
+            9 Expiration 10 GameOver), 2 decider is turn player, 3 decider
+            started the game, 4 score self, 5 score opp, 6 xp self, 7 xp opp,
+            8 victory score, 9 hand size self, 10 hand size opp, 11 main deck
+            self, 12 main deck opp, 13 trash self, 14 trash opp, 15 rune deck
+            self, 16 rune deck opp, 17 banishment self, 18 banishment opp,
+            19-28 rune pool self: 19 energy, 20-25 power by domain (Fury, Calm,
+            Mind, Body, Chaos, Order), 26 power of any domain, 27 restricted
+            energy, 28 restricted power; 29-38 the same for the opponent,
+            39-62 runes on the board: 39-44 self ready by domain, 45-50 self
+            exhausted, 51-56 opp ready, 57-62 opp exhausted,
+            63 chain size, 64 showdown state (0 neutral 1 showdown), 65 open(0)/
+            closed(1), 66 priority holder (0 none 1 self 2 opp), 67 focus holder,
+            68 prompt kind (PromptKind int: 0 Unspecified 1 BattlefieldSetup
+            2 Mulligan 3 MainPhase 4 ChainPriority 5 ShowdownFocus 6 NextStaged
+            7 CombatDamage 8 CombatDamageNext 9 RuneForEnergy 10 RuneForPower
+            11 AddForPayment 12 CostSplit 13 Accelerate 14 Repeat
+            15 AdditionalCost 16 DiscardCost 17 TriggerOrder 18 ReplacementOrder
+            19 NewChoices 20 MoveJoin 21 May 22 Mode 23 XAmount 24 Target
+            25 TargetFirst 26 TargetSecond 27 ChooseObject 28 SplitTargets
+            29 SplitAmount 30 ChainItem 31 Location 32 Discard 33 LookTop
+            34 DeckOrder 35 Value 36 NameACard), 69 cards played this turn self,
+            70 opp, 71 prompt asked at finalization.
+  tok       the token SET (order carries no meaning; canonical order: battlefield
+            tokens, then card tokens sorted by content, then chain items, then
+            objects added because an action references them). Each token is an
+            array whose first two entries are [kind, card_key]:
+            card_key = cards.json key, "synthetic:<id>" for a synthetic variant,
+            "token:<name>" for a token unit with no cards.json entry, "hidden"
+            for a card the decider cannot identify (opponent facedown card),
+            "other:<name>" anything else. NO printed stats are written (cost,
+            printed Might, keywords, domains, type): those come from R(card).
+            "c" card object (own hand, everything in play incl. legends, chosen
+              champion in the champion zone, facedown cards, spells on the
+              chain, and any other object an action references: runes chosen
+              to pay, a card chosen from a revealed hand ...):
+              ["c", key, controller, owner, zone, loc, exhausted, stunned,
+               damage, might, buffs, temp_might, is_token, facedown, combat,
+               n_attachments, attached_to]
+              controller/owner: 1 self, 2 opp, 0 none.
+              zone: 0 MainDeck 1 RuneDeck 2 Hand 3 Base 4 Trash 5 Banishment
+                    6 ChampionZone 7 LegendZone 8 BattlefieldZone 9 Chain 10 Facedown
+              loc: -1 off the board, 0 a base, 1+i battlefield slot i
+              exhausted/stunned/damage/might (current Might after all effects)/
+              buffs (buff count)/temp_might ("this turn" Might): 0 off the board
+              combat: 0 none 1 attacker 2 defender
+              attached_to: token index of the unit this gear is attached to, -1
+            "b" battlefield:
+              ["b", key, slot, controller, contested, contested_by, showdown,
+               combat, attacker, staged, facedown_self, facedown_opp,
+               scored_this_turn_self, scored_this_turn_opp, is_token]
+            "k" chain item:
+              ["k", key, controller, pos_from_top (0 = top, -1 = the item now
+               resolving), resolving, is_spell, is_ability, is_activated,
+               finalized, is_equip, source_token, [chosen object tokens]]
+              key: the item's card (a spell, the card whose ability it is), or
+              "keyword_ability".
+            Runes on the board are NOT tokens unless an action names them (they
+            are counted in g 39-62). Trash, deck and banishment contents are not
+            tokens (sizes only) unless an action names them.
+  act       the legal actions, in the engine's order (order carries no meaning):
+            {"t": IntentType int (0 PlayCard 1 StandardMove 2 ActivateAbility
+                  3 HideCard 4 EndTurn 5 PlayReaction 6 ActivateReactionAbility
+                  7 PassPriority 8 PlayActionCard 9 ActivateActionAbility
+                  10 PassFocus 11 AssignCombatDamage 12 MulliganDecision
+                  13 ChooseBattlefield 14 MakeChoice (a prompt answer; its meaning
+                  comes from pk) 15 SideboardSwap 16 PlayFirstDecision
+                  17 PlaceOptionalTrigger 18 DeclineOptionalTrigger
+                  19 PayTriggeredCost 20 DeclineTriggeredCost 21 Concede),
+             optional: "src" token of the card played / hidden,
+                       "abs" token of an ability's source, "ai" ability index,
+                       "tg" target tokens, "ch" chosen object tokens (prompt
+                       answers), "mv" units moved, "mu" cards set aside in a
+                       mulligan, "dm" [[token, damage], ...] combat damage,
+                       "dst" destination (0 base, 1+i battlefield i),
+                       "v" chosen value (a mode, X, yes/no, a location code),
+                       "ci" chain-item token chosen (pk "chain item"),
+                       "nc" card key named, "bf" battlefield slot chosen,
+                       "ps" play source if not the hand (1 Trash 2 Banishment
+                       3 ChampionZone 4 Hidden 5 ChainZone), "alt" alternative
+                       play cost, "plc" pays a location cost, "dec" the decline
+                       option of a yes/no, "first" play-first choice}
+  pi        index into act of the option the agent played
+  searched  (teacher only) 1 if the decision was searched, 0 if answered without
+            a search (one option / setup); then no vis/q/rv
+  vis       (teacher) root visits per legal option (parallel to act)
+  q         (teacher) mean return of the decider per option over its visits
+            (0 where unvisited), heuristic leaf values in [-1, 1]
+  rv        (teacher) visit-weighted root value, decider's view
+  z         game result from the decider's view: +1 win, -1 loss, 0 no winner
+
+IMPORTANT about the teacher target: with 100 simulations and uct_c 2.0 the root
+visit counts are close to uniform over the legal options at most decisions (see
+decision_stats.json "teacher_visits"); the ranking information is mostly in q.
+The played option is the most visited one (ties by the agent's RNG).
+
+Game line (out/*.games.jsonl)
+-----------------------------
+gid, deck_a, deck_b, agent_a, agent_b, seed, engine_seed, variant ("" for base),
+winner (1 deck A, 2 deck B, 0 none), term (engine termination reason or
+"error: ..."), turns, scores, n_seq (all decisions), n_multi / n_rec (recorded
+decisions), secs, valid_a / valid_b (DeckValidator verdict: "ok" or the errors;
+the games are played whatever it says), deck_cards_a / deck_cards_b (card key ->
+copies), obs_keys (card key -> number of tokens with that key over the recorded
+observations), choices (the chosen index for EVERY decision, the replay record),
+checks ([seq, state fingerprint, FNV-1a hash of the exported pk..act text] per
+recorded decision), swap_cands (base-teacher test-split games only: main-phase
+decisions where a base card of a test pair is in the decider's hand and its play
+is offered; one per base card, turn and seat).
+
+Replay
+------
+A game is a function of (deck A, deck B, seed) and its `choices`: the engine is
+started with runGame(deckA, deckB, engine_seed) and every decision is answered
+with legal[choices[seq]]. `decision_export verify` does exactly that (no agent)
+and checks the fingerprint and the exported observation hash at every recorded
+decision, the number of decisions and the winner (verify_results.txt).
+
+Swap-test line (swap/swap_tests.jsonl)
+--------------------------------------
+States: main-phase decisions from TEST-split base_teacher games where a base card
+(punch_first, discipline, lonely_poro, sabotage, pit_rookie) is in the decider's
+hand and its play is offered (swap_selection.json: at most 2 per game and base
+card, balanced over base cards, selection seed recorded there). Each state is
+paired with every variant of its base card. defy / defy__cost2 is not in the swap
+set: Defy is a [Reaction] counter, playable only at chain priority, and the
+teacher can only be restarted from a snapshot at a main-phase decision.
+  jid, gid, seq (decision of that game), base, variant, sims, d, seat, turn,
+  fp_ok (replayed state matched the recorded fingerprint), n_swapped (hand copies
+  replaced: EVERY copy of the base card in the decider's hand; deck / trash /
+  board copies are unchanged), versions: {"orig": V, "swap": V} where V =
+    legal_same_as_game (orig only: regenerated legal list equals the game's),
+    pk, psrc, g, tok, act (exactly as in a decision line, decider's view; in
+      "swap" the card key of the replaced copies is the variant's),
+    card_acts: indices into act of the actions whose src is a replaced copy,
+    searches: K runs of the teacher (IsMctsSearch, the same code and settings as
+      the in-game agent, restarted from a snapshot of the position with
+      sampled worlds) with seeds listed; the SAME K seeds for orig and swap:
+      {seed, pi, rv, vis, q}.
+Searches from a snapshot do not share the in-game agent's mirror (future
+shuffles are drawn), so orig is re-searched rather than copied from the game.
+Each variant's swaps ran in a process that registered only that variant; orig is
+therefore searched once per variant (under the same card table as its swap).
+
+SCHEMA VERSION 3 (gate 3, 2026-11-19; additive: v2 plus one action field)
+-------------------------------------------------------------------------
+Action key "oc" (JSON) / rbenv act[49..55] (K 49 -> 56): the consequences of an
+optional-cost answer, written only for Accelerate and AdditionalCost prompts
+(-1 / absent elsewhere). Encoder::optCost in src/decision_export.cpp:
+  [0] extra Energy the answer adds (0 for the decline)
+  [1] extra Power it adds
+  [2] runes the whole play recycles for Power with this answer
+  [3] Domain of those runes (0 Fury .. 5 Order, -1 none)
+  [4] own runes on the board READY after the payment (estimate)
+  [5] own runes on the board in total after the payment
+  [6] unit enters ready 1 / exhausted 0 (Accelerate), -1 otherwise
+Cost from GameEngine::netCardCost (as card [19..20]); Accelerate adds [1] + one
+Power of the unit's Domains; AdditionalCost reads Card::optionalAdditionalCost.
+Checked against the engine (research/card_repr/gate3/verify_optcost.py, random
+play): [5] total and [2] match 100%; [4] ready matches 91-94% for Accelerate,
+62-86% for AdditionalCost (which rune autopay exhausts is not modelled exactly).
+Columns 0..48 are unchanged, so schema-v2 checkpoints stay valid (they ignore 49..55).
+
+SCHEMA VERSION 4 (gate 3 completion, 2026-11-19; additive: v3 plus one action list)
+-------------------------------------------------------------------------------------
+Two prompt kinds now say what their options mean.
+TriggerOrder (option v = k, an index into GameEngine::orderPendingTriggers' list of
+the decider's distinct, still-unordered items of the oldest pending trigger batch):
+  "ci" / act[33]  the chain-item token of the item the option puts on the chain next
+  "src" / act[1]  that item's source card token
+  Reconstructed in Encoder::prepare (nothing under src/ changed): the batch already
+  stands in canonical order on the chain (canonicalBatchOrder) and the options keep
+  that order, so the decider's pending batch items are matched to the option labels
+  ("Order - " + triggerOrderLabel, mirrored as Encoder::trigLabel) in order, skipping
+  items that are the same ability as one already matched. Exact unless two different
+  items share a label and the earlier one was already ordered; rbenv counts those
+  (counters() trig_amb: 4-16 of 5-7k options in random play, about 0.2%).
+MoveJoin ("which other unit joins this Standard Move"; options: "Move no more units",
+then one per unit, "ch"):
+  "dst" / act[30] and "dc","atk","con" / act[46..48]  the move's destination and its
+      consequences for the mover, as for a StandardMove action, on every option
+  "mg" (JSON, the whole list) / act[56..59] (first 4) + act[60] (count; -1 for other
+      prompts)  the units already moving, leading unit first, then those joined
+  "dec":1 / act[39]=1  on "Move no more units" (the decline)
+  The engine keeps the destination and the moving units in locals of
+  executeStandardMove, so the caller follows the decider's own choices (MoveTrack,
+  noteChoice: the StandardMove chosen, then each unit added at MoveJoin): the Seat in
+  decision_export (also in replay) and every applyChoice in rbenv (applyTracked).
+rbenv: K 56 -> 61, rbenv_schema_version() == 4. Columns 0..55 keep their meaning
+except the additions above at TriggerOrder / MoveJoin, so v3 checkpoints still load
+(model.py opt_refs=False ignores 56..60); they see the new 1/33/30/46-48/39 values.
+Checks: selfplay/rbenv/tests/test_fields.py (v4 block), test_agreement_v2.py against
+research/card_repr/gate3/agree/v4.* (18 games incl. 177 TriggerOrder, 149 MoveJoin).

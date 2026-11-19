@@ -132,3 +132,24 @@ Results (schema v1, 2026-11-19, WSL, cores 8-15)
     40 random games each, 0 errors, 0 unknown keys, each deck's three variant keys
     seen; same seed + choices -> identical (315 steps, 24 games). test_determinism
     re-run after the change: ok (410 steps, 24 games).
+
+SCHEMA v3 (gate 3, 2026-11-19). rbenv_schema_version() == 3. K 49 -> 56: act[49..55]
+  optional-cost consequences of Accelerate / AdditionalCost answers (extra Energy,
+  extra Power, runes recycled, their Domain, own runes ready / total after paying,
+  unit enters ready); -1 for other prompts. Definition: smoke/data/SCHEMA.txt
+  "SCHEMA VERSION 3". Columns 0..48 unchanged: schema-v2 checkpoints still load
+  and are still valid (model.py opt_cost=False ignores 49..55). Check:
+  research/card_repr/gate3/verify_optcost.py.
+
+SCHEMA v4 (gate 3 completion, 2026-11-19). rbenv_schema_version() == 4. K 56 -> 61.
+  TriggerOrder options: act[33] = the chain item the option orders, act[1] = its
+  source card (Encoder::prepare maps the engine's option index to the item).
+  MoveJoin options: act[30] + [46..48] = the move's destination and consequences,
+  act[56..59] = the units already moving (leading unit first), act[60] = their count
+  (-1 for other prompts), act[39] = 1 on "Move no more units". rbenv follows each
+  env's applied choices per seat (applyTracked) to know the move. counters() adds
+  trig_opts / trig_mapped / trig_amb. Definition: smoke/data/SCHEMA.txt "SCHEMA
+  VERSION 4". model.py opt_refs (W_ci, W_mg; default on when K >= 61) routes them
+  into the option's own features; v3 checkpoints load with opt_refs=False.
+  Checks: tests/test_fields.py (v4 block), tests/test_agreement_v2.py (now against
+  gate3/agree/v4.*; pass 'v2' as 2nd argument for the old files).

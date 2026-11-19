@@ -22,8 +22,13 @@ using namespace riftbound::probe::dx;
 
 // Schema v2 (gate 1, 2026-11-19): T 64 -> 96 (pile tokens, known opponent hand),
 // F 17 -> 24 (memory flags, effective cost, affordable), K 46 -> 49 (move consequences).
-constexpr int kSchemaVersion = 2;
-constexpr int G = 72, T = 96, F = 24, A = 96, K = 49;
+// Schema v3 (gate 3): K 49 -> 56 (optional-cost consequences, act 49..55).
+// Schema v4 (gate 3 completion): K 56 -> 61. TriggerOrder options carry the
+// chain item they order (33 ci) and its source (1 src); MoveJoin options carry
+// the move's destination (30, 46..48), the units already moving (56..59,
+// leading unit first; 60 their count) and "move no more units" as dec (39).
+constexpr int kSchemaVersion = 4;
+constexpr int G = 72, T = 96, F = 24, A = 96, K = 61;
 constexpr int kMaxList = 4, kMaxMu = 2, kMaxDm = 6, kMaxChosen = 4;
 constexpr int kDecisionCap = 20000;
 
@@ -32,7 +37,8 @@ int g_vocab_other = 0;
 std::string g_variant;
 bool g_inited = false;
 
-struct Counters { long trunc_tok = 0, trunc_act = 0, trunc_list = 0, unk_key = 0, ext = 0, auto_ = 0; };
+struct Counters { long trunc_tok = 0, trunc_act = 0, trunc_list = 0, unk_key = 0, ext = 0, auto_ = 0;
+                  long trig_opts = 0, trig_mapped = 0, trig_amb = 0; };   // v4: TriggerOrder mapping
 
 int vocabOf(const std::string& k, Counters& c) {
     auto it = g_vocab.find(k);
@@ -54,7 +60,16 @@ struct Env {
     int seat = 0, pk = 0, psrc = -1, n_legal = 0;
     std::vector<int32_t> glob, tok, act;
     std::vector<uint8_t> tmask, amask;
+    MoveTrack mtrack[3];      // v4: per decider (PlayerId), the Standard Move being built
+    PlayerId dec = PlayerId::None;
 };
+
+// v4: every applied choice goes through here so MoveJoin knows its move.
+void applyTracked(Env& e, const StepResult& sr, PlayerId dec, int k) {
+    if (k >= 0 && k < static_cast<int>(sr.legal.size()))
+        noteChoice(e.mtrack[static_cast<int>(dec) % 3], sr.prompt, sr.legal[k]);
+    e.engine->applyChoice(k);
+}
 
 struct Handle {
     int n = 0;
@@ -71,6 +86,7 @@ struct Handle {
 void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
     const GameState& s = e.engine->state();
     Encoder enc(s, dec, e.engine.get());
+    enc.setMove(&e.mtrack[static_cast<int>(dec) % 3]);
     enc.build();
     std::fill(e.glob.begin(), e.glob.end(), 0);
     std::fill(e.tok.begin(), e.tok.end(), 0);
@@ -79,6 +95,10 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
     std::fill(e.amask.begin(), e.amask.end(), 0);
     const auto& legal = sr.legal;
     const Prompt& p = sr.prompt;
+    enc.prepare(legal, p);   // v4: TriggerOrder option -> chain item
+    h.c.trig_opts += p.kind == PromptKind::TriggerOrder ? static_cast<long>(legal.size()) : 0;
+    h.c.trig_mapped += enc.trigMapped();
+    h.c.trig_amb += enc.trigAmbiguous();
     // Actions first (same ref() order as Encoder::encode/action, so appended
     // tokens get the same indices as in the exporter's JSON).
     const int na = static_cast<int>(legal.size());
@@ -89,6 +109,8 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
         for (int k = 0; k < K; ++k) buf[k] = -1;
         buf[0] = static_cast<int>(i.type);
         buf[1] = i.card.valid() ? enc.ref(i.card) : -1;
+        const uint64_t trig = enc.trigItem(i, p);   // v4
+        if (buf[1] < 0 && trig) { const auto sc = enc.trigSource(trig); if (sc.valid()) buf[1] = enc.ref(sc); }
         if (i.ability_source.valid()) { buf[2] = enc.ref(i.ability_source); buf[3] = i.ability_index; }
         auto list = [&](int off, int cap, int cnt_slot, const std::vector<GameObjectId>& v) {
             int j = 0;
@@ -119,13 +141,26 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
         buf[32] = i.chosen_value.has_value() ? static_cast<int32_t>(*i.chosen_value) : 0;
         if (i.chosen_value.has_value() && p.kind == PromptKind::ChainItem)
             buf[33] = enc.itemRef(static_cast<uint64_t>(*i.chosen_value));
+        else if (trig)
+            buf[33] = enc.itemRef(trig);
         buf[34] = i.chosen_card_def.valid() ? vocabOf(cardKey(i.chosen_card_def, nullptr), h.c) : 0;
         buf[35] = i.chosen_battlefield.valid() ? static_cast<int32_t>(i.chosen_battlefield.raw()) : -1;
         buf[36] = static_cast<int>(i.play_source);
         buf[37] = i.use_alt_play_cost ? 1 : 0;
         buf[38] = i.pay_location_cost ? 1 : 0;
-        buf[39] = i.declines ? 1 : 0;
+        buf[39] = (i.declines || Encoder::moveJoinStop(i, p)) ? 1 : 0;
         buf[40] = i.type == IntentType::PlayFirstDecision ? (i.choose_first ? 1 : 0) : -1;
+        {   // schema v3 (gate 3): optional-cost consequences, Encoder::optCost
+            const auto q = enc.optCost(i, p);
+            for (int j = 0; j < 7; ++j) buf[49 + j] = q[j];
+        }
+        {   // schema v4: MoveJoin, the units already moving (leading unit first) and their count
+            const auto mg = enc.moveGroup(p);
+            int j = 0;
+            for (auto id : mg) { const int r = enc.ref(id); if (j < kMaxList) buf[56 + j] = r; ++j; }
+            if (j > kMaxList) h.c.trunc_list++;
+            buf[60] = p.kind == PromptKind::MoveJoin ? j : -1;
+        }
         if (a < A) { std::memcpy(&e.act[a * K], buf, sizeof buf); e.amask[a] = 1; }
     }
     e.psrc = p.source.valid() ? enc.ref(p.source) : -1;
@@ -176,11 +211,12 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
         }
         for (int a = 0; a < na && a < A; ++a) {
             int32_t* r = &e.act[a * K];
-            for (int j : {1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 33}) fix(r[j]);
+            for (int j : {1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 33, 56, 57, 58, 59}) fix(r[j]);
         }
         if (e.psrc >= T) e.psrc = -1;
     }
     e.seat = dec == PlayerId::Player1 ? 1 : 2;
+    e.dec = dec;
     e.pk = static_cast<int>(p.kind);
     e.n_legal = na;
 }
@@ -193,6 +229,7 @@ void startGame(Handle& h, Env& e) {
     e.bus = std::make_unique<EventBus>();
     e.engine = std::make_unique<GameEngine>(*g_db, *e.bus, *g_reg);
     e.length = 0; e.n_ext = 0; e.need = false;
+    for (auto& t : e.mtrack) t = MoveTrack{};
     if (!h.opponent.empty()) {
         GameSpec g; g.deck_a = h.deck_a; g.deck_b = h.deck_b; g.seed = e.game_seed;
         IsMctsAgent* m = nullptr;
@@ -228,7 +265,7 @@ void advance(Handle& h, Env& e) {
                 const PlayerId dec = deciderOf(e.engine->state(), sr.legal, sr.prompt);
                 if (n <= 1 || (h.autopay && rune)) {
                     ++e.length; ++h.c.auto_;
-                    e.engine->applyChoice(0);
+                    applyTracked(e, sr, dec, 0);
                     continue;
                 }
                 if (e.opp && dec == PlayerId::Player2) {
@@ -236,7 +273,7 @@ void advance(Handle& h, Env& e) {
                     const int k = indexOf(sr.legal, pick);
                     if (k < 0) throw std::runtime_error("opponent answered an option not in the legal list");
                     ++e.length;
-                    e.engine->applyChoice(k);
+                    applyTracked(e, sr, dec, k);
                     continue;
                 }
                 encode(h, e, sr, dec);
@@ -388,7 +425,7 @@ int rbenv_step(void* p, const int32_t* choices, char* err, int errlen) {
                 e.engine.reset(); e.opp.reset(); e.bus.reset();
             } else {
                 ++e.length; ++e.n_ext; ++h.c.ext;
-                try { e.engine->applyChoice(c); }
+                try { applyTracked(e, e.engine->currentStep(), e.dec, c); }
                 catch (const std::exception& ex) {
                     finish(h, e, std::string("error: ") + ex.what());
                     e.engine.reset(); e.opp.reset(); e.bus.reset();
@@ -596,6 +633,7 @@ void rbenv_results_clear(void* p) { static_cast<rbe::Handle*>(p)->results.clear(
 void rbenv_counters(void* p, int64_t* out) {
     const auto& c = static_cast<rbe::Handle*>(p)->c;
     out[0] = c.trunc_tok; out[1] = c.trunc_act; out[2] = c.trunc_list; out[3] = c.unk_key; out[4] = c.ext; out[5] = c.auto_;
+    out[6] = c.trig_opts; out[7] = c.trig_mapped; out[8] = c.trig_amb;   // v4
 }
 
 }  // extern "C"

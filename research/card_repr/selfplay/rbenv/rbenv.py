@@ -129,10 +129,11 @@ class RBEnv:
         return out
 
     def counters(self):
-        c = np.zeros(6, np.int64)
+        c = np.zeros(9, np.int64)
         self._L.rbenv_counters(self._h, c)
         return dict(trunc_tok=int(c[0]), trunc_act=int(c[1]), trunc_list=int(c[2]), unk_key=int(c[3]),
-                    ext_decisions=int(c[4]), auto_decisions=int(c[5]))
+                    ext_decisions=int(c[4]), auto_decisions=int(c[5]),
+                    trig_opts=int(c[6]), trig_mapped=int(c[7]), trig_amb=int(c[8]))  # v4 TriggerOrder mapping
 
     def verify(self, acc=None):
         """Schema v2 field check of the pending decisions (rbenv.cpp verifyEnv); adds into acc (23 int64)."""

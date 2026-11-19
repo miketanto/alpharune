@@ -1,0 +1,417 @@
+{
+ "games": 300,
+ "total": 38720,
+ "pk": {
+  "MainPhase": {
+   "pk": 3,
+   "n": 13396,
+   "per_game": 44.65,
+   "frac": 0.346,
+   "nlegal_mean": 7.59,
+   "nlegal_max": 29,
+   "psrc_kind": {
+    "none": 13396
+   },
+   "psrc_key": {},
+   "intents": {
+    "EndTurn": 13396,
+    "PlayCard": 51943,
+    "StandardMove": 35205,
+    "HideCard": 1038,
+    "PlayActionCard": 45
+   },
+   "fields_per_option": {
+    "src": 53026,
+    "dst": 78950,
+    "mv": 35205,
+    "dst_ctrl": 40117,
+    "contest": 18966,
+    "starts_combat": 10437,
+    "bf": 1038
+   },
+   "v_values": {}
+  },
+  "Target": {
+   "pk": 24,
+   "n": 8822,
+   "per_game": 29.41,
+   "frac": 0.2278,
+   "nlegal_mean": 5.93,
+   "nlegal_max": 18,
+   "psrc_kind": {
+    "card": 8621,
+    "bf": 201
+   },
+   "psrc_key": {
+    "rengar_pridestalker": 6742,
+    "punch_first": 532,
+    "pit_rookie": 367,
+    "first_mate": 365,
+    "thrill_of_the_hunt": 274,
+    "grim_apothecary": 225,
+    "star_spring": 133,
+    "irresistible_faefolk": 116,
+    "emperor_s_dais": 68
+   },
+   "intents": {
+    "MakeChoice": 52343
+   },
+   "fields_per_option": {
+    "ch": 52343
+   },
+   "v_values": {}
+  },
+  "MoveJoin": {
+   "pk": 20,
+   "n": 3548,
+   "per_game": 11.83,
+   "frac": 0.0916,
+   "nlegal_mean": 2.73,
+   "nlegal_max": 8,
+   "psrc_kind": {
+    "none": 3548
+   },
+   "psrc_key": {},
+   "intents": {
+    "MakeChoice": 9678
+   },
+   "fields_per_option": {
+    "dst": 9678,
+    "v": 3548,
+    "dec": 3548,
+    "dst_ctrl": 5905,
+    "contest": 4409,
+    "ch": 6130,
+    "starts_combat": 2656
+   },
+   "v_values": {
+    "0": 3548
+   }
+  },
+  "TriggerOrder": {
+   "pk": 17,
+   "n": 3516,
+   "per_game": 11.72,
+   "frac": 0.0908,
+   "nlegal_mean": 2.09,
+   "nlegal_max": 4,
+   "psrc_kind": {
+    "none": 3516
+   },
+   "psrc_key": {},
+   "intents": {
+    "MakeChoice": 7366
+   },
+   "fields_per_option": {
+    "src": 7366,
+    "ci": 7366,
+    "v": 7366
+   },
+   "v_values": {
+    "0": 3516,
+    "1": 3516,
+    "2": 320,
+    "3": 14
+   }
+  },
+  "ChainPriority": {
+   "pk": 4,
+   "n": 2349,
+   "per_game": 7.83,
+   "frac": 0.0607,
+   "nlegal_mean": 2.35,
+   "nlegal_max": 7,
+   "psrc_kind": {
+    "none": 2349
+   },
+   "psrc_key": {},
+   "intents": {
+    "PassPriority": 2349,
+    "PlayReaction": 3163
+   },
+   "fields_per_option": {
+    "src": 3163,
+    "dst": 2321,
+    "dst_ctrl": 2321,
+    "contest": 857,
+    "starts_combat": 741
+   },
+   "v_values": {}
+  },
+  "May": {
+   "pk": 21,
+   "n": 1849,
+   "per_game": 6.16,
+   "frac": 0.0478,
+   "nlegal_mean": 2.0,
+   "nlegal_max": 2,
+   "psrc_kind": {
+    "card": 858,
+    "bf": 991
+   },
+   "psrc_key": {
+    "star_spring": 592,
+    "grim_apothecary": 505,
+    "emperor_s_dais": 399,
+    "irresistible_faefolk": 353
+   },
+   "intents": {
+    "MakeChoice": 3698
+   },
+   "fields_per_option": {
+    "v": 3698,
+    "dec": 1849
+   },
+   "v_values": {
+    "0": 1849,
+    "1": 1849
+   }
+  },
+  "CombatDamage": {
+   "pk": 7,
+   "n": 1413,
+   "per_game": 4.71,
+   "frac": 0.0365,
+   "nlegal_mean": 4.42,
+   "nlegal_max": 55,
+   "psrc_kind": {
+    "none": 1413
+   },
+   "psrc_key": {},
+   "intents": {
+    "AssignCombatDamage": 6248
+   },
+   "fields_per_option": {
+    "dm": 6248
+   },
+   "v_values": {}
+  },
+  "ShowdownFocus": {
+   "pk": 5,
+   "n": 1356,
+   "per_game": 4.52,
+   "frac": 0.035,
+   "nlegal_mean": 2.63,
+   "nlegal_max": 10,
+   "psrc_kind": {
+    "none": 1356
+   },
+   "psrc_key": {},
+   "intents": {
+    "PassFocus": 1356,
+    "PlayActionCard": 2215
+   },
+   "fields_per_option": {
+    "src": 2215,
+    "dst": 1413,
+    "dst_ctrl": 1413,
+    "contest": 1214,
+    "starts_combat": 704
+   },
+   "v_values": {}
+  },
+  "Mulligan": {
+   "pk": 2,
+   "n": 726,
+   "per_game": 2.42,
+   "frac": 0.0187,
+   "nlegal_mean": 11.0,
+   "nlegal_max": 11,
+   "psrc_kind": {
+    "none": 726
+   },
+   "psrc_key": {},
+   "intents": {
+    "MulliganDecision": 7986
+   },
+   "fields_per_option": {
+    "mu": 7260
+   },
+   "v_values": {}
+  },
+  "Accelerate": {
+   "pk": 13,
+   "n": 456,
+   "per_game": 1.52,
+   "frac": 0.0118,
+   "nlegal_mean": 2.0,
+   "nlegal_max": 2,
+   "psrc_kind": {
+    "card": 456
+   },
+   "psrc_key": {
+    "kai_sa_survivor": 456
+   },
+   "intents": {
+    "MakeChoice": 912
+   },
+   "fields_per_option": {
+    "v": 912,
+    "dec": 456
+   },
+   "v_values": {
+    "0": 456,
+    "1": 456
+   }
+  },
+  "AdditionalCost": {
+   "pk": 15,
+   "n": 413,
+   "per_game": 1.38,
+   "frac": 0.0107,
+   "nlegal_mean": 2.0,
+   "nlegal_max": 2,
+   "psrc_kind": {
+    "card": 413
+   },
+   "psrc_key": {
+    "rampage": 238,
+    "pyke_dockside_butcher": 175
+   },
+   "intents": {
+    "MakeChoice": 826
+   },
+   "fields_per_option": {
+    "v": 826,
+    "dec": 413
+   },
+   "v_values": {
+    "0": 413,
+    "1": 413
+   }
+  },
+  "Location": {
+   "pk": 31,
+   "n": 380,
+   "per_game": 1.27,
+   "frac": 0.0098,
+   "nlegal_mean": 2.0,
+   "nlegal_max": 2,
+   "psrc_kind": {
+    "card": 380
+   },
+   "psrc_key": {
+    "thrill_of_the_hunt": 380
+   },
+   "intents": {
+    "MakeChoice": 760
+   },
+   "fields_per_option": {
+    "dst": 760,
+    "v": 760,
+    "dst_ctrl": 760,
+    "contest": 597,
+    "starts_combat": 252
+   },
+   "v_values": {
+    "0": 380,
+    "1": 380
+   }
+  },
+  "TargetSecond": {
+   "pk": 26,
+   "n": 194,
+   "per_game": 0.65,
+   "frac": 0.005,
+   "nlegal_mean": 3.83,
+   "nlegal_max": 9,
+   "psrc_kind": {
+    "card": 194
+   },
+   "psrc_key": {
+    "rampage": 194
+   },
+   "intents": {
+    "MakeChoice": 743
+   },
+   "fields_per_option": {
+    "ch": 743
+   },
+   "v_values": {}
+  },
+  "TargetFirst": {
+   "pk": 25,
+   "n": 187,
+   "per_game": 0.62,
+   "frac": 0.0048,
+   "nlegal_mean": 3.76,
+   "nlegal_max": 11,
+   "psrc_kind": {
+    "card": 187
+   },
+   "psrc_key": {
+    "rampage": 187
+   },
+   "intents": {
+    "MakeChoice": 703
+   },
+   "fields_per_option": {
+    "ch": 703
+   },
+   "v_values": {}
+  },
+  "ChooseObject": {
+   "pk": 27,
+   "n": 92,
+   "per_game": 0.31,
+   "frac": 0.0024,
+   "nlegal_mean": 2.17,
+   "nlegal_max": 4,
+   "psrc_kind": {
+    "card": 92
+   },
+   "psrc_key": {
+    "sabotage": 92
+   },
+   "intents": {
+    "MakeChoice": 200
+   },
+   "fields_per_option": {
+    "ch": 200
+   },
+   "v_values": {}
+  },
+  "CombatDamageNext": {
+   "pk": 8,
+   "n": 18,
+   "per_game": 0.06,
+   "frac": 0.0005,
+   "nlegal_mean": 5.89,
+   "nlegal_max": 8,
+   "psrc_kind": {
+    "none": 18
+   },
+   "psrc_key": {},
+   "intents": {
+    "MakeChoice": 106
+   },
+   "fields_per_option": {
+    "ch": 106
+   },
+   "v_values": {}
+  },
+  "NextStaged": {
+   "pk": 6,
+   "n": 5,
+   "per_game": 0.02,
+   "frac": 0.0001,
+   "nlegal_mean": 2.0,
+   "nlegal_max": 2,
+   "psrc_kind": {
+    "none": 5
+   },
+   "psrc_key": {},
+   "intents": {
+    "MakeChoice": 10
+   },
+   "fields_per_option": {
+    "ch": 10,
+    "v": 10
+   },
+   "v_values": {
+    "0": 5,
+    "1": 5
+   }
+  }
+ }
+}

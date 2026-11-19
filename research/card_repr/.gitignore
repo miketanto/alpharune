@@ -23,3 +23,5 @@ __pycache__/
 selfplay/learner/probes/*.npz
 selfplay/runs/*/latest.pt
 **/out/pre_struct/*vectors*.json
+selfplay/viz/replays/*.html
+gate3/*.npz
