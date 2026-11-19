@@ -16,6 +16,15 @@ Fall back to Grep/Read only for (a) literal or non-code text (card data under `c
 
 **Freshness:** a git `post-commit` hook (`.git/hooks/post-commit`, local, not tracked) re-indexes in the background after each commit; log at `.git/codebase-graph-reindex.log`. Uncommitted edits may not be in the graph yet — if results look stale, call `index_repository` on this repo before trusting them.
 
+## Git Workflow: branch → PR → merge → delete (MANDATORY)
+
+Every merge must be trackable through a pull request.
+
+1. **Never commit directly to `master`.** Do the work on a branch of its own.
+2. **Open a PR before merging.** Push the branch and open a PR against `master` (`gh pr create`) with a summary of the change. Do not merge locally with `git merge` and push the result: the PR is the record of the merge.
+3. **Merge through the PR** (`gh pr merge`), never by pushing to `master`.
+4. **Delete the branch after the merge**, both remote and local: `gh pr merge --delete-branch`, or `git push origin --delete <branch>` and `git branch -d <branch>` once the PR shows as merged. Use `git branch -d` (not `-D`) so an unmerged branch is never lost.
+
 ## Build
 
 ```bash
