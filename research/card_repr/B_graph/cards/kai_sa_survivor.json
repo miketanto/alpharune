@@ -1,0 +1,61 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "fury"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4
+ },
+ "keywords": [
+  {
+   "kw": "accelerate"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "energy": 1,
+    "power": 1,
+    "power_domain": "card",
+    "optional": true,
+    "additional": true
+   },
+   "effects": [
+    {
+     "verb": "EnterReady",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     }
+    }
+   ]
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     }
+    }
+   ]
+  }
+ ]
+}

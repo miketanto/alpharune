@@ -1,0 +1,81 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "body",
+   "fury"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1,
+   "fury": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0745_thrill_of_the_hunt.cpp:99",
+   "supertype": "src/cards/spells/0745_thrill_of_the_hunt.cpp:100",
+   "domains": "src/cards/spells/0745_thrill_of_the_hunt.cpp:101",
+   "energy": "src/cards/spells/0745_thrill_of_the_hunt.cpp:103",
+   "power": "src/cards/spells/0745_thrill_of_the_hunt.cpp:104",
+   "power_by_domain": "src/cards/spells/0745_thrill_of_the_hunt.cpp:104 x src/cards/spells/0745_thrill_of_the_hunt.cpp:101; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:106"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:19-20"
+     },
+     "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:40-82"
+    },
+    {
+     "verb": "PlayIgnoringCost",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:84"
+     },
+     "condition": [
+      {
+       "c": "is_token",
+       "v": "A",
+       "neg": true,
+       "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:42-46"
+      }
+     ],
+     "chooser": "owner",
+     "dest": "any_battlefield",
+     "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:84; chooser src/cards/spells/0745_thrill_of_the_hunt.cpp:77-78; dest src/cards/spells/0745_thrill_of_the_hunt.cpp:54-56"
+    }
+   ],
+   "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-184-219",
+  "class_file": "src/cards/spells/0745_thrill_of_the_hunt.cpp",
+  "source": "engine_code",
+  "flags": [
+   "a token is banished and not played back (code-explicit, CR 183.1)"
+  ],
+  "confidence": "medium",
+  "confidence_why": "owner chooses location; token branch"
+ }
+}

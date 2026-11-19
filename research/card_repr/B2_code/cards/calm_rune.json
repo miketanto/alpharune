@@ -1,0 +1,77 @@
+{
+ "stats": {
+  "type": "rune",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/runes/0042_calm_rune.cpp:28",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/runes/0042_calm_rune.cpp:29"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "reaction",
+   "cost": {
+    "exhaust": true,
+    "_src": "src/engine/game_engine.cpp:9525-9530"
+   },
+   "effects": [
+    {
+     "verb": "AddEnergy",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     },
+     "_src": "src/engine/game_engine.cpp:9525-9530"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:9109 (recycle a rune of matching domain for 1 Power); src/engine/game_engine.cpp:9525-9530 (exhaust a ready rune for 1 Energy)"
+  },
+  {
+   "kind": "activated",
+   "timing": "reaction",
+   "cost": {
+    "recycle_self": true,
+    "_src": "src/engine/game_engine.cpp:9109"
+   },
+   "effects": [
+    {
+     "verb": "AddPower",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     },
+     "domain": "card",
+     "_src": "src/engine/game_engine.cpp:9109"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:9109 (recycle a rune of matching domain for 1 Power); src/engine/game_engine.cpp:9525-9530 (exhaust a ready rune for 1 Energy)"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-042-298",
+  "class_file": "src/cards/runes/0042_calm_rune.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

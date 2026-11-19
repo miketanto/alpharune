@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "flow"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1
+     },
+     "amount": {
+      "n": 6
+     },
+     "duration": "turn"
+    }
+   ]
+  },
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 4
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "after": "resolve"
+    }
+   ]
+  }
+ ]
+}

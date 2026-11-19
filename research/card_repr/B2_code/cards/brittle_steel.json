@@ -1,0 +1,83 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "fury": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0790_brittle_steel.cpp:42",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0790_brittle_steel.cpp:43",
+   "energy": "src/cards/spells/0790_brittle_steel.cpp:44",
+   "power": "src/cards/spells/0790_brittle_steel.cpp:45",
+   "power_by_domain": "src/cards/spells/0790_brittle_steel.cpp:45 x src/cards/spells/0790_brittle_steel.cpp:43; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "flow",
+   "_src": "src/cards/spells/0790_brittle_steel.cpp:47"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 4,
+    "_src": "src/cards/spells/0790_brittle_steel.cpp:30",
+    "power": 1,
+    "power_domain": "card"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:8388"
+     },
+     "after": "resolve",
+     "_src": "src/engine/game_engine.cpp:8388"
+    }
+   ],
+   "_src": "src/cards/spells/0790_brittle_steel.cpp:30; src/engine/game_engine.cpp:8382-8392 (trash replay grant, banish_after)"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "gear",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0790_brittle_steel.cpp:19-20"
+     },
+     "_src": "src/cards/spells/0790_brittle_steel.cpp:27-28"
+    }
+   ],
+   "_src": "src/cards/spells/0790_brittle_steel.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-003-166",
+  "class_file": "src/cards/spells/0790_brittle_steel.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

@@ -1,0 +1,36 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 6,
+  "power": 0,
+  "might": 5
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "CantBeChosen",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "by": {
+      "side": "enemy",
+      "type": [
+       "spell",
+       "ability"
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,8 @@
+AP1a decks/yi_rebuild.txt decks/yi_rebuild.txt autopay:sims=100 ismcts:sims=100 9000001 0
+AP1b decks/yi_rebuild.txt decks/yi_rebuild.txt ismcts:sims=100 autopay:sims=100 9000001 0
+AP2a decks/rengar.txt decks/yi_rebuild.txt autopay:sims=100 ismcts:sims=100 9000002 0
+AP2b decks/rengar.txt decks/yi_rebuild.txt ismcts:sims=100 autopay:sims=100 9000002 0
+AP3a decks/yi_rebuild.txt decks/rengar.txt autopay:sims=100 ismcts:sims=100 9000003 0
+AP3b decks/yi_rebuild.txt decks/rengar.txt ismcts:sims=100 autopay:sims=100 9000003 0
+AP4a decks/rengar.txt decks/rengar.txt autopay:sims=100 ismcts:sims=100 9000004 0
+AP4b decks/rengar.txt decks/rengar.txt ismcts:sims=100 autopay:sims=100 9000004 0

@@ -1,0 +1,60 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.2 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\smoke\train\keyswap.py", line 9, in <module>
+    torch.set_num_threads(int(os.environ.get('THREADS', '2')))
+[W C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\utils\tensor_numpy.cpp:84] Warning: Failed to initialize NumPy: _ARRAY_API not found (function operator ())
+C:\Users\sutanto4\Anaconda3\lib\site-packages\torch\nn\modules\transformer.py:544: UserWarning: Converting mask without torch.bool dtype to bool; this will negatively affect performance. Prefer to use a boolean mask directly. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\aten\src\ATen\native\transformers\attention.cpp:152.)
+  return torch._transformer_encoder_layer_fwd(
+A__all__s0 done
+A__all__s1 done
+A__all__s2 done
+A__base__s0 done
+A__base__s1 done
+A__base__s2 done
+B2A__all__s0 done
+B2A__all__s1 done
+B2A__all__s2 done
+B2A__base__s0 done
+B2A__base__s1 done
+B2A__base__s2 done
+B2__all__s0 done
+B2__all__s1 done
+B2__all__s2 done
+B2__base__s0 done
+B2__base__s1 done
+B2__base__s2 done
+B__all__s0 done
+B__all__s1 done
+B__all__s2 done
+B__base__s0 done
+B__base__s1 done
+B__base__s2 done
+Bshuf__base__s0 done
+Bshuf__base__s1 done
+Bshuf__base__s2 done
+id__all__s0 done
+id__all__s1 done
+id__all__s2 done
+id__base__s0 done
+id__base__s1 done
+id__base__s2 done
+random__all__s0 done
+random__all__s1 done
+random__all__s2 done
+random__base__s0 done
+random__base__s1 done
+random__base__s2 done
+stats__all__s0 done
+stats__all__s1 done
+stats__all__s2 done
+stats__base__s0 done
+stats__base__s1 done
+stats__base__s2 done

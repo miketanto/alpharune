@@ -1,0 +1,91 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "fury"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 2
+ },
+ "keywords": [
+  {
+   "kw": "hidden"
+  },
+  {
+   "kw": "ganking"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ]
+   }
+  },
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "power": 1,
+    "power_domain": "fury",
+    "optional": true,
+    "additional": true
+   },
+   "effects": []
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "condition": [
+     {
+      "c": "paid_additional_cost",
+      "v": true
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     }
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "amount": {
+      "n": 2
+     },
+     "duration": "turn"
+    }
+   ]
+  }
+ ]
+}

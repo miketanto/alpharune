@@ -1,0 +1,415 @@
+{
+ "alpha_strike": {
+  "classes": [
+   751
+  ],
+  "printings": {
+   "unl-192-219": 751
+  }
+ },
+ "back_off": {
+  "classes": [
+   604
+  ],
+  "printings": {
+   "unl-042-219": 604
+  }
+ },
+ "body_rune": {
+  "classes": [
+   126
+  ],
+  "printings": {
+   "ogn-126-298": 126,
+   "rad-r04": null,
+   "ven-r04": null
+  }
+ },
+ "brittle_steel": {
+  "classes": [
+   790
+  ],
+  "printings": {
+   "ven-003-166": 790
+  }
+ },
+ "calm_rune": {
+  "classes": [
+   42
+  ],
+  "printings": {
+   "ogn-042-298": 42,
+   "rad-r02": null,
+   "ven-r02": null
+  }
+ },
+ "charm": {
+  "classes": [
+   43
+  ],
+  "printings": {
+   "ogn-043-298": 43
+  }
+ },
+ "darius_trifarian": {
+  "classes": [
+   27
+  ],
+  "printings": {
+   "ogn-027-298": 27
+  }
+ },
+ "decisive_strike": {
+  "classes": [
+   322
+  ],
+  "printings": {
+   "ogs-024-024": 322
+  }
+ },
+ "decree_of_focus": {
+  "classes": [
+   827
+  ],
+  "printings": {
+   "ven-040-166": 827
+  }
+ },
+ "decree_of_strength": {
+  "classes": [
+   872
+  ],
+  "printings": {
+   "ven-085-166": 872
+  }
+ },
+ "defy": {
+  "classes": [
+   45
+  ],
+  "printings": {
+   "ogn-045-298": 45
+  }
+ },
+ "disarming_rake": {
+  "classes": [
+   355
+  ],
+  "printings": {
+   "sfd-032-221": 355
+  }
+ },
+ "discipline": {
+  "classes": [
+   58
+  ],
+  "printings": {
+   "ogn-058-298": 58
+  }
+ },
+ "emperor_s_dais": {
+  "classes": [
+   521
+  ],
+  "printings": {
+   "sfd-207-221": 521
+  }
+ },
+ "en_garde": {
+  "classes": [
+   46
+  ],
+  "printings": {
+   "ogn-046-298": 46
+  }
+ },
+ "ferrous_forerunner": {
+  "classes": [
+   344
+  ],
+  "printings": {
+   "sfd-021-221": 344
+  }
+ },
+ "fiora_peerless": {
+  "classes": [
+   432
+  ],
+  "printings": {
+   "sfd-110-221": 432
+  }
+ },
+ "first_mate": {
+  "classes": [
+   132
+  ],
+  "printings": {
+   "ogn-132-298": 132
+  }
+ },
+ "fury_rune": {
+  "classes": [
+   7
+  ],
+  "printings": {
+   "ogn-007-298": 7,
+   "rad-r01": null,
+   "ven-r01": null
+  }
+ },
+ "grim_apothecary": {
+  "classes": [
+   583
+  ],
+  "printings": {
+   "unl-021-219": 583
+  }
+ },
+ "hush": {
+  "classes": [
+   1650
+  ],
+  "printings": {
+   "rad-041-167": null
+  }
+ },
+ "inferna": {
+  "classes": [
+   560
+  ],
+  "printings": {
+   "unl-002-219": 560
+  }
+ },
+ "irresistible_faefolk": {
+  "classes": [
+   674
+  ],
+  "printings": {
+   "unl-112-219": 674
+  }
+ },
+ "kai_sa_survivor": {
+  "classes": [
+   39
+  ],
+  "printings": {
+   "ogn-039-298": 39
+  }
+ },
+ "kinkou_initiate": {
+  "classes": [
+   659
+  ],
+  "printings": {
+   "unl-097-219": 659
+  }
+ },
+ "lonely_poro": {
+  "classes": [
+   359,
+   777
+  ],
+  "printings": {
+   "sfd-036-221": 359,
+   "unl-221-219": 777
+  }
+ },
+ "loyal_poro": {
+  "classes": [
+   718
+  ],
+  "printings": {
+   "unl-156-219": 718
+  }
+ },
+ "machine_evangel": {
+  "classes": [
+   239
+  ],
+  "printings": {
+   "ogn-239-298": 239
+  }
+ },
+ "master_yi_tempered": {
+  "classes": [
+   675
+  ],
+  "printings": {
+   "unl-113-219": 675
+  }
+ },
+ "master_yi_wuju_bladesman": {
+  "classes": [
+   317
+  ],
+  "printings": {}
+ },
+ "moonlight_affliction": {
+  "classes": [
+   628
+  ],
+  "printings": {
+   "unl-066-219": 628
+  }
+ },
+ "nidalee_cat_form": {
+  "classes": [
+   676
+  ],
+  "printings": {
+   "unl-114-219": 676
+  }
+ },
+ "not_so_fast": {
+  "classes": [
+   368
+  ],
+  "printings": {
+   "sfd-045-221": 368
+  }
+ },
+ "noxian_demolitionist": {
+  "classes": [
+   867
+  ],
+  "printings": {
+   "ven-080-166": 867
+  }
+ },
+ "noxus_hopeful": {
+  "classes": [
+   12
+  ],
+  "printings": {
+   "ogn-012-298": 12
+  }
+ },
+ "onslaught": {
+  "classes": [
+   868
+  ],
+  "printings": {
+   "ven-081-166": 868
+  }
+ },
+ "pakaa_cub": {
+  "classes": [
+   135
+  ],
+  "printings": {
+   "ogn-135-298": 135
+  }
+ },
+ "pit_rookie": {
+  "classes": [
+   136
+  ],
+  "printings": {
+   "ogn-136-298": 136
+  }
+ },
+ "primal_strength": {
+  "classes": [
+   154
+  ],
+  "printings": {
+   "ogn-154-298": 154
+  }
+ },
+ "punch_first": {
+  "classes": [
+   419
+  ],
+  "printings": {
+   "sfd-097-221": 419
+  }
+ },
+ "pyke_dockside_butcher": {
+  "classes": [
+   590
+  ],
+  "printings": {
+   "unl-028-219": 590
+  }
+ },
+ "rampage": {
+  "classes": [
+   870
+  ],
+  "printings": {
+   "ven-083-166": 870
+  }
+ },
+ "rengar_pridestalker": {
+  "classes": [
+   744
+  ],
+  "printings": {}
+ },
+ "rengar_trophy_hunter": {
+  "classes": [
+   682
+  ],
+  "printings": {
+   "unl-120-219": 682,
+   "ven-179-166": null
+  }
+ },
+ "ruin_runner": {
+  "classes": [
+   427
+  ],
+  "printings": {
+   "sfd-105-221": 427
+  }
+ },
+ "sabotage": {
+  "classes": [
+   156
+  ],
+  "printings": {
+   "ogn-156-298": 156
+  }
+ },
+ "scuttle_crab": {
+  "classes": [
+   615
+  ],
+  "printings": {
+   "unl-053-219": 615
+  }
+ },
+ "seat_of_power": {
+  "classes": [
+   531
+  ],
+  "printings": {
+   "sfd-217-221": 531
+  }
+ },
+ "star_spring": {
+  "classes": [
+   771
+  ],
+  "printings": {
+   "unl-215-219": 771
+  }
+ },
+ "thrill_of_the_hunt": {
+  "classes": [
+   745
+  ],
+  "printings": {
+   "unl-184-219": 745
+  }
+ },
+ "zhonya_s_hourglass": {
+  "classes": [
+   77
+  ],
+  "printings": {
+   "ogn-077-298": 77
+  }
+ }
+}

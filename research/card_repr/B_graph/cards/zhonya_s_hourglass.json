@@ -1,0 +1,74 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "hidden"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ]
+   }
+  },
+  {
+   "kind": "replacement",
+   "trigger": {
+    "event": "would_die",
+    "subject": "friendly_unit"
+   },
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     }
+    },
+    {
+     "verb": "Heal",
+     "target": {
+      "type": "ref",
+      "ref": "subject"
+     }
+    },
+    {
+     "verb": "Recall",
+     "target": {
+      "type": "ref",
+      "ref": "subject"
+     },
+     "exhausted": true
+    }
+   ]
+  }
+ ]
+}

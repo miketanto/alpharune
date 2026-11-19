@@ -1,0 +1,1592 @@
+{
+ "cards": [
+  {
+   "key": "alpha_strike",
+   "name": "Alpha Strike",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "unl-192-219",
+     "card_type": "spell",
+     "super_type": "signature",
+     "domains": [
+      "calm",
+      "body"
+     ],
+     "tags": [
+      "Master Yi"
+     ],
+     "energy_cost": 3,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields. Then for each unit this kills, do this: Gain 1 XP.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "back_off",
+   "name": "Back Off",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "unl-042-219",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Action] (Play on your turn or in showdowns.)\n[Stun] a unit. (It doesn't deal combat damage this turn.)\nIf you played this from your hand, draw 1.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "body_rune",
+   "name": "Body Rune",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-126-298",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    },
+    {
+     "id": "rad-r04",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    },
+    {
+     "id": "ven-r04",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "brittle_steel",
+   "name": "Brittle Steel",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ven-003-166",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [],
+     "energy_cost": 2,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "Kill a gear.\n[Flow] [4][R] (You may play this from your trash for its Flow cost. Then banish it.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "calm_rune",
+   "name": "Calm Rune",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-042-298",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    },
+    {
+     "id": "rad-r02",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    },
+    {
+     "id": "ven-r02",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "charm",
+   "name": "Charm",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-043-298",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "Move an enemy unit.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "darius_trifarian",
+   "name": "Darius, Trifarian",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ogn-027-298",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Trifarian",
+      "Darius",
+      "Noxus"
+     ],
+     "energy_cost": 5,
+     "power_cost": 1,
+     "might": 5,
+     "might_bonus": null,
+     "ability_text": "When you play your second card in a turn, give me +2 [M] this turn and ready me.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "decisive_strike",
+   "name": "Decisive Strike",
+   "role": "partner",
+   "decks": [],
+   "printings": [
+    {
+     "id": "ogs-024-024",
+     "card_type": "spell",
+     "super_type": "signature",
+     "domains": [
+      "body",
+      "order"
+     ],
+     "tags": [
+      "Garen"
+     ],
+     "energy_cost": 5,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Action] (Play on your turn or in showdowns.)\nGive friendly units +2 [M] this turn.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "decree_of_focus",
+   "name": "Decree of Focus",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ven-040-166",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a friendly unit that's in combat with an enemy Fury ([R]) unit or that's being chosen by an enemy Fury spell. Give it +4 [M] this turn.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "decree_of_strength",
+   "name": "Decree of Strength",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ven-085-166",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "Choose an opponent. They reveal their hand and you choose a Mind ([B]) card from it. They recycle that card.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "defy",
+   "name": "Defy",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-045-298",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nCounter a spell that costs no more than [4] and no more than [A].",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "disarming_rake",
+   "name": "Disarming Rake",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-032-221",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [
+      "Demacia"
+     ],
+     "energy_cost": 3,
+     "power_cost": 1,
+     "might": 2,
+     "might_bonus": null,
+     "ability_text": "When you play me, you may kill a gear.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "discipline",
+   "name": "Discipline",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-058-298",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a unit +2 [M] this turn. Draw 1.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "emperor_s_dais",
+   "name": "Emperor's Dais",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-207-221",
+     "card_type": "battlefield",
+     "super_type": null,
+     "domains": [],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "When you conquer here, you may pay [1] and return a unit you control here to its owner's hand. If you do, play a 2 [M] Sand Soldier unit token here.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "en_garde",
+   "name": "En Garde",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-046-298",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a friendly unit +1 [M] this turn, then an additional +1 [M] this turn if it is the only unit you control there.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "ferrous_forerunner",
+   "name": "Ferrous Forerunner",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "sfd-021-221",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Mech",
+      "Yordle",
+      "Bandle City"
+     ],
+     "energy_cost": 6,
+     "power_cost": 1,
+     "might": 6,
+     "might_bonus": null,
+     "ability_text": "[Deathknell] — Play two 3 [M] Mech unit tokens to your base. (When I die, get the effect.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "fiora_peerless",
+   "name": "Fiora, Peerless",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-110-221",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Fiora",
+      "Demacia"
+     ],
+     "energy_cost": 3,
+     "power_cost": 1,
+     "might": 3,
+     "might_bonus": null,
+     "ability_text": "When I attack or defend one on one, double my Might this combat.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "first_mate",
+   "name": "First Mate",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-132-298",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Pirate",
+      "Bilgewater"
+     ],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": 3,
+     "might_bonus": null,
+     "ability_text": "When you play me, ready another unit.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "fury_rune",
+   "name": "Fury Rune",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ogn-007-298",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    },
+    {
+     "id": "rad-r01",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    },
+    {
+     "id": "ven-r01",
+     "card_type": "rune",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": null,
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "grim_apothecary",
+   "name": "Grim Apothecary",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-021-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Noxus"
+     ],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": 3,
+     "might_bonus": null,
+     "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nWhen you play me, you may return a friendly unit at a battlefield to its owner's hand.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "hush",
+   "name": "Hush",
+   "role": "partner",
+   "decks": [],
+   "printings": [
+    {
+     "id": "rad-041-167",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": 2,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nCounter a spell with Power cost [A][A] or more.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "inferna",
+   "name": "Inferna",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-002-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Bilgewater"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 1,
+     "might_bonus": null,
+     "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\n[Assault 2] (+2 [M] while I'm an attacker.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "irresistible_faefolk",
+   "name": "Irresistible Faefolk",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-112-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Fae",
+      "Ionia"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 1,
+     "might_bonus": null,
+     "ability_text": "When I move to a battlefield, you may move an enemy unit to that battlefield.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "kai_sa_survivor",
+   "name": "Kai'Sa, Survivor",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ogn-039-298",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Kai'Sa",
+      "The Void"
+     ],
+     "energy_cost": 4,
+     "power_cost": null,
+     "might": 4,
+     "might_bonus": null,
+     "ability_text": "[Accelerate] (You may pay [1][R] as an additional cost to have me enter ready.)\nWhen I conquer, draw 1.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "kinkou_initiate",
+   "name": "Kinkou Initiate",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-097-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Ionia"
+     ],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": 3,
+     "might_bonus": null,
+     "ability_text": "When you play me, draw 1 if your other units have total Might 5 or more.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "lonely_poro",
+   "name": "Lonely Poro",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-036-221",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [
+      "Poro",
+      "Freljord"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 2,
+     "might_bonus": null,
+     "ability_text": "[Deathknell] — If I died alone, draw 1. (When I die, get the effect. I'm alone if there are no other friendly units here.)",
+     "effect_text": null
+    },
+    {
+     "id": "unl-221-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [
+      "Poro",
+      "Freljord"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 2,
+     "might_bonus": null,
+     "ability_text": "[Deathknell][>] If I died alone, draw 1.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "loyal_poro",
+   "name": "Loyal Poro",
+   "role": "partner",
+   "decks": [],
+   "printings": [
+    {
+     "id": "unl-156-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "order"
+     ],
+     "tags": [
+      "Poro",
+      "Freljord"
+     ],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": 3,
+     "might_bonus": null,
+     "ability_text": "[Deathknell][>] If I didn't die alone, draw 1. (When I die, get the effect. I wasn't alone if there were other friendly units here.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "machine_evangel",
+   "name": "Machine Evangel",
+   "role": "partner",
+   "decks": [],
+   "printings": [
+    {
+     "id": "ogn-239-298",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "order"
+     ],
+     "tags": [
+      "Piltover"
+     ],
+     "energy_cost": 5,
+     "power_cost": 1,
+     "might": 4,
+     "might_bonus": null,
+     "ability_text": "[Deathknell] — Play three 1 [M] Recruit unit tokens into your base. (When I die, get the effect.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "master_yi_tempered",
+   "name": "Master Yi, Tempered",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "unl-113-219",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Master Yi",
+      "Ionia"
+     ],
+     "energy_cost": 4,
+     "power_cost": null,
+     "might": 4,
+     "might_bonus": null,
+     "ability_text": "[Hunt 2] (When I conquer or hold, gain 2 XP.)\n[Level 6][>] I have [Deflect] and [Ganking]. (While you have 6+ XP, opponents must pay [A] to choose me with a spell or ability and I can move from battlefield to battlefield.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "master_yi_wuju_bladesman",
+   "name": "Master Yi, Wuju Bladesman",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [],
+   "note": "not in cards/card_index.json; take text/stats from the engine card class (src/cards/legends/)"
+  },
+  {
+   "key": "moonlight_affliction",
+   "name": "Moonlight Affliction",
+   "role": "partner",
+   "decks": [],
+   "printings": [
+    {
+     "id": "unl-066-219",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "mind"
+     ],
+     "tags": [],
+     "energy_cost": 7,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a unit -10 [M] this turn.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "nidalee_cat_form",
+   "name": "Nidalee, Cat Form",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-114-219",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Cat",
+      "Ixtal",
+      "Nidalee"
+     ],
+     "energy_cost": 3,
+     "power_cost": 1,
+     "might": 4,
+     "might_bonus": null,
+     "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nWhen I win a combat, draw 1. (I win if I remain after combat.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "not_so_fast",
+   "name": "Not So Fast",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-045-221",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 2,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nCounter an enemy spell or ability that chooses a friendly unit or gear.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "noxian_demolitionist",
+   "name": "Noxian Demolitionist",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ven-080-166",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Noxus"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 1,
+     "might_bonus": null,
+     "ability_text": "When I conquer, you may kill a gear with Energy cost no more than my Might.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "noxus_hopeful",
+   "name": "Noxus Hopeful",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ogn-012-298",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Trifarian",
+      "Noxus"
+     ],
+     "energy_cost": 4,
+     "power_cost": null,
+     "might": 4,
+     "might_bonus": null,
+     "ability_text": "[Legion] — I cost [2] less. (Get the effect if you've played another card this turn.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "onslaught",
+   "name": "Onslaught",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ven-081-166",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": 4,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "Give a unit +6 [M] this turn.\n[Flow] [4] (You may play this from your trash for its Flow cost. Then banish it.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "pakaa_cub",
+   "name": "Pakaa Cub",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "ogn-135-298",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Cat",
+      "Ixtal"
+     ],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": 3,
+     "might_bonus": null,
+     "ability_text": "[Hidden] (Hide now for [A] to react with later for [0].)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "pit_rookie",
+   "name": "Pit Rookie",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-136-298",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Bilgewater"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 2,
+     "might_bonus": null,
+     "ability_text": "When you play me, buff another friendly unit. (If it doesn't have a buff, it gets a +1 [M] buff.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "primal_strength",
+   "name": "Primal Strength",
+   "role": "partner",
+   "decks": [],
+   "printings": [
+    {
+     "id": "ogn-154-298",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": 4,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Action] (Play on your turn or in showdowns.)\nGive a unit +7 [M] this turn.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "punch_first",
+   "name": "Punch First",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-097-221",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": 2,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Action] (Play on your turn or in showdowns.)\nGive a unit +5 [M] this turn.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "pyke_dockside_butcher",
+   "name": "Pyke, Dockside Butcher",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-028-219",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "fury"
+     ],
+     "tags": [
+      "Pyke",
+      "Bilgewater"
+     ],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": 2,
+     "might_bonus": null,
+     "ability_text": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Ganking] (I can move from battlefield to battlefield.)\nYou may pay [R] as an additional cost to play me.\nWhen you play me, if you paid the additional cost, ready me and give me +2 [M] this turn.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "rampage",
+   "name": "Rampage",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ven-083-166",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": 3,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "As you play this, you may pay [O] as an additional cost.\nChoose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 [M] this turn. They deal damage equal to their Mights to each other.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "rengar_pridestalker",
+   "name": "Rengar, Pridestalker",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [],
+   "note": "not in cards/card_index.json; take text/stats from the engine card class (src/cards/legends/)"
+  },
+  {
+   "key": "rengar_trophy_hunter",
+   "name": "Rengar, Trophy Hunter",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "unl-120-219",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Cat",
+      "Rengar",
+      "Ixtal"
+     ],
+     "energy_cost": 5,
+     "power_cost": 1,
+     "might": 6,
+     "might_bonus": null,
+     "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nI can be played to a battlefield where there are enemy units (even if you don't have units there).",
+     "effect_text": null
+    },
+    {
+     "id": "ven-179-166",
+     "card_type": "unit",
+     "super_type": "champion",
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Cat",
+      "Rengar",
+      "Ixtal"
+     ],
+     "energy_cost": 5,
+     "power_cost": 1,
+     "might": 6,
+     "might_bonus": null,
+     "ability_text": "[Ambush]\nI can be played to a battlefield where there are enemy units.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "ruin_runner",
+   "name": "Ruin Runner",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-105-221",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [
+      "Shurima"
+     ],
+     "energy_cost": 6,
+     "power_cost": null,
+     "might": 5,
+     "might_bonus": null,
+     "ability_text": "I can't be chosen by enemy spells and abilities.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "sabotage",
+   "name": "Sabotage",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-156-298",
+     "card_type": "spell",
+     "super_type": null,
+     "domains": [
+      "body"
+     ],
+     "tags": [],
+     "energy_cost": 1,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "scuttle_crab",
+   "name": "Scuttle Crab",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "unl-053-219",
+     "card_type": "unit",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [
+      "Bilgewater"
+     ],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": 0,
+     "might_bonus": null,
+     "ability_text": "(Units with 0 [M] can conquer and hold.)\nWhen you play me, draw 1.\n[Deathknell][>] Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP. (When I die, get the effects.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "seat_of_power",
+   "name": "Seat of Power",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "sfd-217-221",
+     "card_type": "battlefield",
+     "super_type": null,
+     "domains": [],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "When you conquer here, draw 1 for each other battlefield you or allies control..",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "star_spring",
+   "name": "Star Spring",
+   "role": "deck",
+   "decks": [
+    "rengar",
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "unl-215-219",
+     "card_type": "battlefield",
+     "super_type": null,
+     "domains": [],
+     "tags": [],
+     "energy_cost": null,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "thrill_of_the_hunt",
+   "name": "Thrill of the Hunt",
+   "role": "deck",
+   "decks": [
+    "rengar"
+   ],
+   "printings": [
+    {
+     "id": "unl-184-219",
+     "card_type": "spell",
+     "super_type": "signature",
+     "domains": [
+      "fury",
+      "body"
+     ],
+     "tags": [
+      "Rengar"
+     ],
+     "energy_cost": 2,
+     "power_cost": 1,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nBanish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  },
+  {
+   "key": "zhonya_s_hourglass",
+   "name": "Zhonya's Hourglass",
+   "role": "deck",
+   "decks": [
+    "yi"
+   ],
+   "printings": [
+    {
+     "id": "ogn-077-298",
+     "card_type": "gear",
+     "super_type": null,
+     "domains": [
+      "calm"
+     ],
+     "tags": [],
+     "energy_cost": 2,
+     "power_cost": null,
+     "might": null,
+     "might_bonus": null,
+     "ability_text": "[Hidden] (Hide now for [A] to react with later for [0].)\nThe next time a friendly unit would die, kill this instead. Recall that unit exhausted. (Send it to base. This isn't a move.)",
+     "effect_text": null
+    }
+   ],
+   "note": null
+  }
+ ],
+ "t1_same_mechanics": {
+  "printings": "every card with >1 printing: all printings must map to the same vector (printing never matters)",
+  "rename": "every card: replace its name with a random name; vector must not change"
+ },
+ "t2_minimal_pairs_real": [
+  [
+   "punch_first",
+   "primal_strength",
+   "amount +5 vs +7 and cost"
+  ],
+  [
+   "punch_first",
+   "decisive_strike",
+   "one unit vs all friendly units"
+  ],
+  [
+   "discipline",
+   "moonlight_affliction",
+   "+2 Might and draw 1 vs -10 Might"
+  ],
+  [
+   "lonely_poro",
+   "loyal_poro",
+   "died alone vs did not die alone"
+  ],
+  [
+   "ferrous_forerunner",
+   "machine_evangel",
+   "two 3-Might Mech tokens vs three 1-Might Recruit tokens"
+  ],
+  [
+   "sabotage",
+   "decree_of_strength",
+   "pick a non-unit card vs pick a Mind card"
+  ],
+  [
+   "defy",
+   "hush",
+   "counter condition"
+  ]
+ ],
+ "t2_minimal_pairs_synthetic": [
+  {
+   "id": "punch_first__amount4",
+   "base": "punch_first",
+   "change": "Give a unit +4 [M] this turn (was +5)",
+   "field": "amount"
+  },
+  {
+   "id": "punch_first__energy3",
+   "base": "punch_first",
+   "change": "energy cost 3 (was 1)",
+   "field": "energy_cost"
+  },
+  {
+   "id": "punch_first__power0",
+   "base": "punch_first",
+   "change": "power cost 0 (was 2)",
+   "field": "power_cost"
+  },
+  {
+   "id": "discipline__draw2",
+   "base": "discipline",
+   "change": "Draw 2 (was Draw 1)",
+   "field": "amount"
+  },
+  {
+   "id": "discipline__enemy",
+   "base": "discipline",
+   "change": "Give an enemy unit +2 [M] (was a unit)",
+   "field": "target_side"
+  },
+  {
+   "id": "lonely_poro__draw2",
+   "base": "lonely_poro",
+   "change": "If I died alone, draw 2 (was 1)",
+   "field": "amount"
+  },
+  {
+   "id": "defy__cost2",
+   "base": "defy",
+   "change": "Counter a spell that costs no more than [2] (was [4])",
+   "field": "condition_threshold"
+  },
+  {
+   "id": "sabotage__unit",
+   "base": "sabotage",
+   "change": "Choose a unit card (was non-unit)",
+   "field": "selector"
+  },
+  {
+   "id": "pit_rookie__might3",
+   "base": "pit_rookie",
+   "change": "Might 3 (was its printed Might)",
+   "field": "might"
+  },
+  {
+   "id": "punch_first__reaction",
+   "base": "punch_first",
+   "change": "[Reaction] instead of [Action]",
+   "field": "timing"
+  }
+ ]
+}

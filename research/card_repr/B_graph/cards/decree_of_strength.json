@@ -1,0 +1,45 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Reveal",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": "all"
+     }
+    },
+    {
+     "verb": "Recycle",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": 1,
+      "filters": [
+       {
+        "f": "domain",
+        "v": "mind"
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

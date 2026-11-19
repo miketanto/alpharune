@@ -1,0 +1,8 @@
+Adversarial audit of the smoke experiment (2026-11-19). Scripts in this directory; run with Anaconda python.
+  audit_data.py    -> audit_data.json    split/seed checks, z vs winner, token shapes, action fields, teacher label stats,
+                                          intent type / prompt kind per card, variant keys in base-train tokens (full scan, no RNG)
+  audit_metrics.py -> audit_metrics.json independent re-derivation of E0 top1 (B, random; all regime), E1 majority baseline,
+                                          game-clustered bootstrap (seed 12345, 1000 resamples) of E1 card-source top1 differences
+  audit_swap.py    -> audit_swap.json    swap-test teacher stability across the 8 search seeds; orig re-search across variant processes
+  audit_effect.json                      effect held-out error split into cost/timing pairs vs the other 7 pairs (from effect/results.json)
+Narrative is in the audit agent's returned summary.

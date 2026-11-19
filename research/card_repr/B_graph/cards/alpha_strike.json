@@ -1,0 +1,71 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "body",
+   "calm"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1,
+   "calm": 1
+  },
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "action"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A"
+     }
+    },
+    {
+     "verb": "DealDamage",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "battlefield",
+      "count": "split",
+      "bind": "B"
+     },
+     "amount": {
+      "ref": "might_of:A"
+     },
+     "source": {
+      "type": "ref",
+      "ref": "A"
+     },
+     "split": true
+    },
+    {
+     "verb": "GainXP",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1,
+      "per": "unit_killed_by_prev"
+     }
+    }
+   ]
+  }
+ ]
+}

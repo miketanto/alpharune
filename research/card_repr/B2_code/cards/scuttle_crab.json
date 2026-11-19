@@ -1,0 +1,111 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 0,
+  "_src": {
+   "type": "src/cards/units/0615_scuttle_crab.cpp:68",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0615_scuttle_crab.cpp:69",
+   "energy": "src/cards/units/0615_scuttle_crab.cpp:71",
+   "power": "default 0",
+   "might": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "deathknell",
+   "_src": "src/cards/units/0615_scuttle_crab.cpp:73"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0615_scuttle_crab.cpp:18-22"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0615_scuttle_crab.cpp:23"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0615_scuttle_crab.cpp:23"
+     },
+     "_src": "src/cards/units/0615_scuttle_crab.cpp:22-23"
+    }
+   ],
+   "_src": "src/cards/units/0615_scuttle_crab.cpp:18-22"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self",
+    "_src": "src/cards/units/0615_scuttle_crab.cpp:18-27"
+   },
+   "effects": [
+    {
+     "verb": "Reveal",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": "all",
+      "_src": "src/cards/units/0615_scuttle_crab.cpp:30-41"
+     },
+     "_src": "src/cards/units/0615_scuttle_crab.cpp:41-42"
+    },
+    {
+     "verb": "LookAt",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "facedown",
+      "count": "all",
+      "_src": "src/cards/units/0615_scuttle_crab.cpp:48-52"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0615_scuttle_crab.cpp:46-52"
+    },
+    {
+     "verb": "GainXP",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0615_scuttle_crab.cpp:53"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0615_scuttle_crab.cpp:53"
+     },
+     "_src": "src/cards/units/0615_scuttle_crab.cpp:53"
+    }
+   ],
+   "_src": "src/cards/units/0615_scuttle_crab.cpp:18-27"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-053-219",
+  "class_file": "src/cards/units/0615_scuttle_crab.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "medium",
+  "confidence_why": "reveal/look via events, not executor calls"
+ }
+}

@@ -1,0 +1,1022 @@
+{
+ "headline_RR": {
+  "source": "RR games: raw/main*.games.jsonl (matchup RR) + raw/rr*.games.jsonl",
+  "n_games": 2340,
+  "n_errors": 0,
+  "errors": [],
+  "overall": {
+   "games": 2340,
+   "autopay_wins": 1230,
+   "autopay_losses": 1110,
+   "no_winner": 0,
+   "win_rate": 0.5256,
+   "wilson95": [
+    0.5054,
+    0.5458
+   ],
+   "score_rate_draw_half": 0.5256
+  },
+  "by_matchup": {
+   "RR": {
+    "games": 2340,
+    "autopay_wins": 1230,
+    "autopay_losses": 1110,
+    "no_winner": 0,
+    "win_rate": 0.5256,
+    "wilson95": [
+     0.5054,
+     0.5458
+    ],
+    "score_rate_draw_half": 0.5256
+   },
+   "YY": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   }
+  },
+  "by_autopay_seat": {
+   "seat1": {
+    "games": 1180,
+    "autopay_wins": 615,
+    "autopay_losses": 565,
+    "no_winner": 0,
+    "win_rate": 0.5212,
+    "wilson95": [
+     0.4927,
+     0.5496
+    ],
+    "score_rate_draw_half": 0.5212
+   },
+   "seat2": {
+    "games": 1160,
+    "autopay_wins": 615,
+    "autopay_losses": 545,
+    "no_winner": 0,
+    "win_rate": 0.5302,
+    "wilson95": [
+     0.5014,
+     0.5587
+    ],
+    "score_rate_draw_half": 0.5302
+   }
+  },
+  "by_matchup_and_seat": {
+   "RR_seat1": {
+    "games": 1180,
+    "autopay_wins": 615,
+    "autopay_losses": 565,
+    "no_winner": 0,
+    "win_rate": 0.5212,
+    "wilson95": [
+     0.4927,
+     0.5496
+    ],
+    "score_rate_draw_half": 0.5212
+   },
+   "RR_seat2": {
+    "games": 1160,
+    "autopay_wins": 615,
+    "autopay_losses": 545,
+    "no_winner": 0,
+    "win_rate": 0.5302,
+    "wilson95": [
+     0.5014,
+     0.5587
+    ],
+    "score_rate_draw_half": 0.5302
+   },
+   "YY_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YY_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   }
+  },
+  "deck_a_win_rate": 0.4957,
+  "no_winner_terms": {},
+  "paired": {
+   "pairs": 1155,
+   "pair_outcomes(autopay wins in the pair: 0/1/2)": {
+    "0": 189,
+    "1": 720,
+    "2": 246
+   },
+   "mean_score": 0.5247,
+   "normal95": [
+    0.507,
+    0.5423
+   ],
+   "per_game_sd_equiv": 0.4327,
+   "note": "pair score = mean of the two games of one seed; same deal, seats swapped",
+   "mde_80pct_power": 0.0252
+  },
+  "detectable": {
+   "half_width_95_at_p0.5_unpaired": 0.0203,
+   "mde_unpaired_alpha05_power80": 0.029,
+   "explanation": "smallest true drop of the autopay win rate below 0.5 that a two-sided 5% test detects with 80% power at this n (binomial, p~0.5); the paired number uses the observed pair variance"
+  },
+  "per_side": {
+   "autopay": {
+    "mean_secs": 2.094,
+    "mean_searches": 53.044,
+    "mean_dec": 146.661,
+    "mean_multi": 87.038,
+    "mean_rune": 37.518,
+    "mean_rune_multi": 33.993,
+    "mean_autopaid": 37.518,
+    "mean_autopaid_multi": 33.993,
+    "mean_rune_searched": 0,
+    "mean_rune_nonfront": 0,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0395,
+    "total_unsearched_multi": 0
+   },
+   "teacher": {
+    "mean_secs": 3.535,
+    "mean_searches": 86.341,
+    "mean_dec": 146.094,
+    "mean_multi": 86.341,
+    "mean_rune": 37.349,
+    "mean_rune_multi": 33.828,
+    "mean_autopaid": 0,
+    "mean_autopaid_multi": 0,
+    "mean_rune_searched": 33.828,
+    "mean_rune_nonfront": 24.522,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0409,
+    "total_unsearched_multi": 0
+   },
+   "search_reduction": 0.3856,
+   "agent_time_reduction": 0.4076,
+   "teacher_rune_nonfront_share": 0.7249
+  },
+  "game_secs": {
+   "mean": 5.65,
+   "median": 5.382
+  },
+  "mean_turns": 13.16
+ },
+ "RR_only_batches": {
+  "source": "raw/rr*.games.jsonl",
+  "n_games": 1561,
+  "n_errors": 0,
+  "errors": [],
+  "overall": {
+   "games": 1561,
+   "autopay_wins": 824,
+   "autopay_losses": 737,
+   "no_winner": 0,
+   "win_rate": 0.5279,
+   "wilson95": [
+    0.5031,
+    0.5525
+   ],
+   "score_rate_draw_half": 0.5279
+  },
+  "by_matchup": {
+   "RR": {
+    "games": 1561,
+    "autopay_wins": 824,
+    "autopay_losses": 737,
+    "no_winner": 0,
+    "win_rate": 0.5279,
+    "wilson95": [
+     0.5031,
+     0.5525
+    ],
+    "score_rate_draw_half": 0.5279
+   },
+   "YY": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   }
+  },
+  "by_autopay_seat": {
+   "seat1": {
+    "games": 780,
+    "autopay_wins": 413,
+    "autopay_losses": 367,
+    "no_winner": 0,
+    "win_rate": 0.5295,
+    "wilson95": [
+     0.4944,
+     0.5643
+    ],
+    "score_rate_draw_half": 0.5295
+   },
+   "seat2": {
+    "games": 781,
+    "autopay_wins": 411,
+    "autopay_losses": 370,
+    "no_winner": 0,
+    "win_rate": 0.5262,
+    "wilson95": [
+     0.4912,
+     0.5611
+    ],
+    "score_rate_draw_half": 0.5262
+   }
+  },
+  "by_matchup_and_seat": {
+   "RR_seat1": {
+    "games": 780,
+    "autopay_wins": 413,
+    "autopay_losses": 367,
+    "no_winner": 0,
+    "win_rate": 0.5295,
+    "wilson95": [
+     0.4944,
+     0.5643
+    ],
+    "score_rate_draw_half": 0.5295
+   },
+   "RR_seat2": {
+    "games": 781,
+    "autopay_wins": 411,
+    "autopay_losses": 370,
+    "no_winner": 0,
+    "win_rate": 0.5262,
+    "wilson95": [
+     0.4912,
+     0.5611
+    ],
+    "score_rate_draw_half": 0.5262
+   },
+   "YY_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YY_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   }
+  },
+  "deck_a_win_rate": 0.5016,
+  "no_winner_terms": {},
+  "paired": {
+   "pairs": 776,
+   "pair_outcomes(autopay wins in the pair: 0/1/2)": {
+    "0": 120,
+    "1": 492,
+    "2": 164
+   },
+   "mean_score": 0.5284,
+   "normal95": [
+    0.5071,
+    0.5496
+   ],
+   "per_game_sd_equiv": 0.4262,
+   "note": "pair score = mean of the two games of one seed; same deal, seats swapped",
+   "mde_80pct_power": 0.0303
+  },
+  "detectable": {
+   "half_width_95_at_p0.5_unpaired": 0.0248,
+   "mde_unpaired_alpha05_power80": 0.0355,
+   "explanation": "smallest true drop of the autopay win rate below 0.5 that a two-sided 5% test detects with 80% power at this n (binomial, p~0.5); the paired number uses the observed pair variance"
+  },
+  "per_side": {
+   "autopay": {
+    "mean_secs": 1.971,
+    "mean_searches": 53.22,
+    "mean_dec": 146.981,
+    "mean_multi": 87.28,
+    "mean_rune": 37.559,
+    "mean_rune_multi": 34.06,
+    "mean_autopaid": 37.559,
+    "mean_autopaid_multi": 34.06,
+    "mean_rune_searched": 0,
+    "mean_rune_nonfront": 0,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.037,
+    "total_unsearched_multi": 0
+   },
+   "teacher": {
+    "mean_secs": 3.312,
+    "mean_searches": 86.328,
+    "mean_dec": 146.163,
+    "mean_multi": 86.328,
+    "mean_rune": 37.307,
+    "mean_rune_multi": 33.791,
+    "mean_autopaid": 0,
+    "mean_autopaid_multi": 0,
+    "mean_rune_searched": 33.791,
+    "mean_rune_nonfront": 24.507,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0384,
+    "total_unsearched_multi": 0
+   },
+   "search_reduction": 0.3835,
+   "agent_time_reduction": 0.4049,
+   "teacher_rune_nonfront_share": 0.7252
+  },
+  "game_secs": {
+   "mean": 5.303,
+   "median": 5.093
+  },
+  "mean_turns": 13.16
+ },
+ "RR_from_mixed_batches": {
+  "source": "raw/main*.games.jsonl, RR only",
+  "n_games": 779,
+  "n_errors": 0,
+  "errors": [],
+  "overall": {
+   "games": 779,
+   "autopay_wins": 406,
+   "autopay_losses": 373,
+   "no_winner": 0,
+   "win_rate": 0.5212,
+   "wilson95": [
+    0.4861,
+    0.5561
+   ],
+   "score_rate_draw_half": 0.5212
+  },
+  "by_matchup": {
+   "RR": {
+    "games": 779,
+    "autopay_wins": 406,
+    "autopay_losses": 373,
+    "no_winner": 0,
+    "win_rate": 0.5212,
+    "wilson95": [
+     0.4861,
+     0.5561
+    ],
+    "score_rate_draw_half": 0.5212
+   },
+   "YY": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   }
+  },
+  "by_autopay_seat": {
+   "seat1": {
+    "games": 400,
+    "autopay_wins": 202,
+    "autopay_losses": 198,
+    "no_winner": 0,
+    "win_rate": 0.505,
+    "wilson95": [
+     0.4562,
+     0.5537
+    ],
+    "score_rate_draw_half": 0.505
+   },
+   "seat2": {
+    "games": 379,
+    "autopay_wins": 204,
+    "autopay_losses": 175,
+    "no_winner": 0,
+    "win_rate": 0.5383,
+    "wilson95": [
+     0.4879,
+     0.5878
+    ],
+    "score_rate_draw_half": 0.5383
+   }
+  },
+  "by_matchup_and_seat": {
+   "RR_seat1": {
+    "games": 400,
+    "autopay_wins": 202,
+    "autopay_losses": 198,
+    "no_winner": 0,
+    "win_rate": 0.505,
+    "wilson95": [
+     0.4562,
+     0.5537
+    ],
+    "score_rate_draw_half": 0.505
+   },
+   "RR_seat2": {
+    "games": 379,
+    "autopay_wins": 204,
+    "autopay_losses": 175,
+    "no_winner": 0,
+    "win_rate": 0.5383,
+    "wilson95": [
+     0.4879,
+     0.5878
+    ],
+    "score_rate_draw_half": 0.5383
+   },
+   "YY_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YY_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "RY_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR_seat1": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   },
+   "YR_seat2": {
+    "games": 0,
+    "autopay_wins": 0,
+    "autopay_losses": 0,
+    "no_winner": 0,
+    "win_rate": null,
+    "wilson95": [
+     null,
+     null
+    ],
+    "score_rate_draw_half": null
+   }
+  },
+  "deck_a_win_rate": 0.484,
+  "no_winner_terms": {},
+  "paired": {
+   "pairs": 379,
+   "pair_outcomes(autopay wins in the pair: 0/1/2)": {
+    "0": 69,
+    "1": 228,
+    "2": 82
+   },
+   "mean_score": 0.5172,
+   "normal95": [
+    0.4854,
+    0.5489
+   ],
+   "per_game_sd_equiv": 0.4463,
+   "note": "pair score = mean of the two games of one seed; same deal, seats swapped",
+   "mde_80pct_power": 0.0454
+  },
+  "detectable": {
+   "half_width_95_at_p0.5_unpaired": 0.0351,
+   "mde_unpaired_alpha05_power80": 0.0502,
+   "explanation": "smallest true drop of the autopay win rate below 0.5 that a two-sided 5% test detects with 80% power at this n (binomial, p~0.5); the paired number uses the observed pair variance"
+  },
+  "per_side": {
+   "autopay": {
+    "mean_secs": 2.34,
+    "mean_searches": 52.692,
+    "mean_dec": 146.018,
+    "mean_multi": 86.552,
+    "mean_rune": 37.435,
+    "mean_rune_multi": 33.86,
+    "mean_autopaid": 37.435,
+    "mean_autopaid_multi": 33.86,
+    "mean_rune_searched": 0,
+    "mean_rune_nonfront": 0,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0444,
+    "total_unsearched_multi": 0
+   },
+   "teacher": {
+    "mean_secs": 3.981,
+    "mean_searches": 86.366,
+    "mean_dec": 145.955,
+    "mean_multi": 86.366,
+    "mean_rune": 37.431,
+    "mean_rune_multi": 33.902,
+    "mean_autopaid": 0,
+    "mean_autopaid_multi": 0,
+    "mean_rune_searched": 33.902,
+    "mean_rune_nonfront": 24.553,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0461,
+    "total_unsearched_multi": 0
+   },
+   "search_reduction": 0.3899,
+   "agent_time_reduction": 0.4122,
+   "teacher_rune_nonfront_share": 0.7242
+  },
+  "game_secs": {
+   "mean": 6.345,
+   "median": 6.118
+  },
+  "mean_turns": 13.15
+ },
+ "secondary_mixed_batches_all_matchups": {
+  "source": "raw/main*.games.jsonl (RR, YY, RY, YR cycled)",
+  "n_games": 3622,
+  "n_errors": 0,
+  "errors": [],
+  "overall": {
+   "games": 3622,
+   "autopay_wins": 1877,
+   "autopay_losses": 1745,
+   "no_winner": 0,
+   "win_rate": 0.5182,
+   "wilson95": [
+    0.5019,
+    0.5345
+   ],
+   "score_rate_draw_half": 0.5182
+  },
+  "by_matchup": {
+   "RR": {
+    "games": 779,
+    "autopay_wins": 406,
+    "autopay_losses": 373,
+    "no_winner": 0,
+    "win_rate": 0.5212,
+    "wilson95": [
+     0.4861,
+     0.5561
+    ],
+    "score_rate_draw_half": 0.5212
+   },
+   "YY": {
+    "games": 992,
+    "autopay_wins": 509,
+    "autopay_losses": 483,
+    "no_winner": 0,
+    "win_rate": 0.5131,
+    "wilson95": [
+     0.482,
+     0.5441
+    ],
+    "score_rate_draw_half": 0.5131
+   },
+   "RY": {
+    "games": 919,
+    "autopay_wins": 479,
+    "autopay_losses": 440,
+    "no_winner": 0,
+    "win_rate": 0.5212,
+    "wilson95": [
+     0.4889,
+     0.5534
+    ],
+    "score_rate_draw_half": 0.5212
+   },
+   "YR": {
+    "games": 932,
+    "autopay_wins": 483,
+    "autopay_losses": 449,
+    "no_winner": 0,
+    "win_rate": 0.5182,
+    "wilson95": [
+     0.4862,
+     0.5502
+    ],
+    "score_rate_draw_half": 0.5182
+   }
+  },
+  "by_autopay_seat": {
+   "seat1": {
+    "games": 1822,
+    "autopay_wins": 935,
+    "autopay_losses": 887,
+    "no_winner": 0,
+    "win_rate": 0.5132,
+    "wilson95": [
+     0.4902,
+     0.5361
+    ],
+    "score_rate_draw_half": 0.5132
+   },
+   "seat2": {
+    "games": 1800,
+    "autopay_wins": 942,
+    "autopay_losses": 858,
+    "no_winner": 0,
+    "win_rate": 0.5233,
+    "wilson95": [
+     0.5002,
+     0.5463
+    ],
+    "score_rate_draw_half": 0.5233
+   }
+  },
+  "by_matchup_and_seat": {
+   "RR_seat1": {
+    "games": 400,
+    "autopay_wins": 202,
+    "autopay_losses": 198,
+    "no_winner": 0,
+    "win_rate": 0.505,
+    "wilson95": [
+     0.4562,
+     0.5537
+    ],
+    "score_rate_draw_half": 0.505
+   },
+   "RR_seat2": {
+    "games": 379,
+    "autopay_wins": 204,
+    "autopay_losses": 175,
+    "no_winner": 0,
+    "win_rate": 0.5383,
+    "wilson95": [
+     0.4879,
+     0.5878
+    ],
+    "score_rate_draw_half": 0.5383
+   },
+   "YY_seat1": {
+    "games": 494,
+    "autopay_wins": 246,
+    "autopay_losses": 248,
+    "no_winner": 0,
+    "win_rate": 0.498,
+    "wilson95": [
+     0.4541,
+     0.5419
+    ],
+    "score_rate_draw_half": 0.498
+   },
+   "YY_seat2": {
+    "games": 498,
+    "autopay_wins": 263,
+    "autopay_losses": 235,
+    "no_winner": 0,
+    "win_rate": 0.5281,
+    "wilson95": [
+     0.4842,
+     0.5716
+    ],
+    "score_rate_draw_half": 0.5281
+   },
+   "RY_seat1": {
+    "games": 465,
+    "autopay_wins": 305,
+    "autopay_losses": 160,
+    "no_winner": 0,
+    "win_rate": 0.6559,
+    "wilson95": [
+     0.6116,
+     0.6977
+    ],
+    "score_rate_draw_half": 0.6559
+   },
+   "RY_seat2": {
+    "games": 454,
+    "autopay_wins": 174,
+    "autopay_losses": 280,
+    "no_winner": 0,
+    "win_rate": 0.3833,
+    "wilson95": [
+     0.3397,
+     0.4288
+    ],
+    "score_rate_draw_half": 0.3833
+   },
+   "YR_seat1": {
+    "games": 463,
+    "autopay_wins": 182,
+    "autopay_losses": 281,
+    "no_winner": 0,
+    "win_rate": 0.3931,
+    "wilson95": [
+     0.3497,
+     0.4383
+    ],
+    "score_rate_draw_half": 0.3931
+   },
+   "YR_seat2": {
+    "games": 469,
+    "autopay_wins": 301,
+    "autopay_losses": 168,
+    "no_winner": 0,
+    "win_rate": 0.6418,
+    "wilson95": [
+     0.5974,
+     0.6839
+    ],
+    "score_rate_draw_half": 0.6418
+   }
+  },
+  "deck_a_win_rate": 0.495,
+  "no_winner_terms": {},
+  "paired": {
+   "pairs": 1790,
+   "pair_outcomes(autopay wins in the pair: 0/1/2)": {
+    "0": 270,
+    "1": 1189,
+    "2": 331
+   },
+   "mean_score": 0.517,
+   "normal95": [
+    0.5036,
+    0.5304
+   ],
+   "per_game_sd_equiv": 0.4091,
+   "note": "pair score = mean of the two games of one seed; same deal, seats swapped",
+   "mde_80pct_power": 0.0192
+  },
+  "detectable": {
+   "half_width_95_at_p0.5_unpaired": 0.0163,
+   "mde_unpaired_alpha05_power80": 0.0233,
+   "explanation": "smallest true drop of the autopay win rate below 0.5 that a two-sided 5% test detects with 80% power at this n (binomial, p~0.5); the paired number uses the observed pair variance"
+  },
+  "per_side": {
+   "autopay": {
+    "mean_secs": 1.884,
+    "mean_searches": 43.716,
+    "mean_dec": 128.081,
+    "mean_multi": 76.583,
+    "mean_rune": 36.32,
+    "mean_rune_multi": 32.866,
+    "mean_autopaid": 36.32,
+    "mean_autopaid_multi": 32.866,
+    "mean_rune_searched": 0,
+    "mean_rune_nonfront": 0,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0431,
+    "total_unsearched_multi": 0
+   },
+   "teacher": {
+    "mean_secs": 3.437,
+    "mean_searches": 76.182,
+    "mean_dec": 127.94,
+    "mean_multi": 76.182,
+    "mean_rune": 36.261,
+    "mean_rune_multi": 32.788,
+    "mean_autopaid": 0,
+    "mean_autopaid_multi": 0,
+    "mean_rune_searched": 32.788,
+    "mean_rune_nonfront": 23.791,
+    "mean_unsearched_multi": 0,
+    "secs_per_search": 0.0451,
+    "total_unsearched_multi": 0
+   },
+   "search_reduction": 0.4262,
+   "agent_time_reduction": 0.4518,
+   "teacher_rune_nonfront_share": 0.7256
+  },
+  "game_secs": {
+   "mean": 5.344,
+   "median": 5.101
+  },
+  "mean_turns": 13.28
+ }
+}

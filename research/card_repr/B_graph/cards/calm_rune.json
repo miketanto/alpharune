@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "rune",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": null,
+  "power": null,
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "reaction",
+   "cost": {
+    "exhaust": true
+   },
+   "effects": [
+    {
+     "verb": "AddEnergy",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     }
+    }
+   ]
+  },
+  {
+   "kind": "activated",
+   "timing": "reaction",
+   "cost": {
+    "recycle_self": true
+   },
+   "effects": [
+    {
+     "verb": "AddPower",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     },
+     "domain": "card"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+== A_text  dim=768  vectors=171  base cards=51  missing=0  invalid=0
+   median pairwise base distance: cos 0.233  l2s 40.309 ; identical base pairs (cos): 0
+T1 printing n=13   cos max 0.000 (rel 0.000)  rank1 1.000  near0 1.000 | l2s max 0.000  rank1 1.000
+T1 rename   n=51   cos max 0.000 (rel 0.000)  rank1 1.000  near0 1.000 | l2s max 0.000  rank1 1.000
+   noise floor (max T1): cos 0.000  l2s 0.000 ; printings only: cos 0.000
+T2 real      n=7   distinct 1.000  >floor cos 1.000 l2s 1.000  >printing-floor cos 1.000  rel-dist median 0.142  median partner rank 1.000
+T2 synthetic n=10  distinct 1.000  >floor cos 1.000 l2s 1.000  >printing-floor cos 1.000  rel-dist median 0.014  median partner rank 1.000
+T2 direction (raw): within-field cos 0.307  shuffled 0.027  p=0.017  random-diff |cos| 0.148  amount-group 0.307
+T2 direction (std): within-field cos 0.294  shuffled 0.024  p=0.018  random-diff |cos| 0.145  amount-group 0.294
+T3 non_provisional labels=16 beat baseline=15  R2 0.302 (base -0.057)  bacc logit 0.944 centroid 0.894 (majority 0.438)
+T3 provisional     labels=17 beat baseline=9  R2 -0.003 (base -0.040)  bacc logit 0.764 centroid 0.707 (majority 0.481)
+-> wrote C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\eval\results_A_text.json

@@ -1,0 +1,165 @@
+{
+ "synthetic:punch_first__ctrl_scores": {
+  "sims": 200,
+  "seeds": 8,
+  "n_states": 48,
+  "counts": {
+   "n": 48,
+   "orig_play": 1,
+   "swap_play": 7,
+   "orig_qties_all": 7,
+   "both_legal": 48,
+   "play_flip": 6,
+   "flip_to_play": 6,
+   "flip_to_noplay": 0,
+   "noise_n": 48,
+   "noise_play_flip": 0,
+   "both_play": 1,
+   "dst_flip": 0,
+   "noise_both_play": 1,
+   "noise_dst_flip": 0
+  },
+  "play_flip_rate": 0.125,
+  "flip_to_play_rate": 0.125,
+  "flip_to_noplay_rate": 0.0,
+  "orig_play_rate": 0.020833333333333332,
+  "swap_play_rate": 0.14583333333333334,
+  "dst_flip_rate_given_both_play": 0.0,
+  "noise_play_flip_rate_seed_halves": 0.0,
+  "noise_dst_flip_rate_seed_halves": 0.0,
+  "swap_no_legal_play_rate": 0.0,
+  "swap_play_rate_cond_true": null,
+  "swap_play_rate_cond_false": null,
+  "mean_delta_play_margin": 0.003133630208333334
+ },
+ "synthetic:punch_first__kill": {
+  "sims": 200,
+  "seeds": 8,
+  "n_states": 48,
+  "counts": {
+   "n": 48,
+   "orig_play": 1,
+   "swap_play": 1,
+   "orig_qties_all": 7,
+   "both_legal": 48,
+   "play_flip": 0,
+   "flip_to_play": 0,
+   "flip_to_noplay": 0,
+   "noise_n": 48,
+   "noise_play_flip": 0,
+   "both_play": 1,
+   "dst_flip": 0,
+   "noise_both_play": 1,
+   "noise_dst_flip": 0
+  },
+  "play_flip_rate": 0.0,
+  "flip_to_play_rate": 0.0,
+  "flip_to_noplay_rate": 0.0,
+  "orig_play_rate": 0.020833333333333332,
+  "swap_play_rate": 0.020833333333333332,
+  "dst_flip_rate_given_both_play": 0.0,
+  "noise_play_flip_rate_seed_halves": 0.0,
+  "noise_dst_flip_rate_seed_halves": 0.0,
+  "swap_no_legal_play_rate": 0.0,
+  "swap_play_rate_cond_true": null,
+  "swap_play_rate_cond_false": null,
+  "mean_delta_play_margin": 0.0007694166666666676
+ },
+ "synthetic:punch_first__minus5": {
+  "sims": 200,
+  "seeds": 8,
+  "n_states": 48,
+  "counts": {
+   "n": 48,
+   "orig_play": 1,
+   "swap_play": 1,
+   "orig_qties_all": 7,
+   "both_legal": 48,
+   "play_flip": 0,
+   "flip_to_play": 0,
+   "flip_to_noplay": 0,
+   "noise_n": 48,
+   "noise_play_flip": 0,
+   "both_play": 1,
+   "dst_flip": 0,
+   "noise_both_play": 1,
+   "noise_dst_flip": 0
+  },
+  "play_flip_rate": 0.0,
+  "flip_to_play_rate": 0.0,
+  "flip_to_noplay_rate": 0.0,
+  "orig_play_rate": 0.020833333333333332,
+  "swap_play_rate": 0.020833333333333332,
+  "dst_flip_rate_given_both_play": 0.0,
+  "noise_play_flip_rate_seed_halves": 0.0,
+  "noise_dst_flip_rate_seed_halves": 0.0,
+  "swap_no_legal_play_rate": 0.0,
+  "swap_play_rate_cond_true": null,
+  "swap_play_rate_cond_false": null,
+  "mean_delta_play_margin": -1.025260416666634e-05
+ },
+ "synthetic:punch_first__opp_of_ctrl_scores": {
+  "sims": 200,
+  "seeds": 8,
+  "n_states": 48,
+  "counts": {
+   "n": 48,
+   "orig_play": 1,
+   "swap_play": 15,
+   "orig_qties_all": 7,
+   "both_legal": 48,
+   "play_flip": 14,
+   "flip_to_play": 14,
+   "flip_to_noplay": 0,
+   "noise_n": 48,
+   "noise_play_flip": 0,
+   "both_play": 1,
+   "dst_flip": 0,
+   "noise_both_play": 1,
+   "noise_dst_flip": 0
+  },
+  "play_flip_rate": 0.2916666666666667,
+  "flip_to_play_rate": 0.2916666666666667,
+  "flip_to_noplay_rate": 0.0,
+  "orig_play_rate": 0.020833333333333332,
+  "swap_play_rate": 0.3125,
+  "dst_flip_rate_given_both_play": 0.0,
+  "noise_play_flip_rate_seed_halves": 0.0,
+  "noise_dst_flip_rate_seed_halves": 0.0,
+  "swap_no_legal_play_rate": 0.0,
+  "swap_play_rate_cond_true": null,
+  "swap_play_rate_cond_false": null,
+  "mean_delta_play_margin": 0.025294598958333334
+ },
+ "_orig_disagreement_across_processes": {
+  "states": 48,
+  "disagree": 0,
+  "rate": 0.0
+ },
+ "_variant_vs_variant": {
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__kill": {
+   "n": 48,
+   "play_flip_rate": 0.125
+  },
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__minus5": {
+   "n": 48,
+   "play_flip_rate": 0.125
+  },
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n": 48,
+   "play_flip_rate": 0.375
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__minus5": {
+   "n": 48,
+   "play_flip_rate": 0.0
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n": 48,
+   "play_flip_rate": 0.2916666666666667
+  },
+  "synthetic:punch_first__minus5 | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n": 48,
+   "play_flip_rate": 0.2916666666666667
+  }
+ }
+}

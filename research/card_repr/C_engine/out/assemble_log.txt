@@ -1,0 +1,24 @@
+dim 40635 entries 169
+aliased printings: ['rad-r04', 'ven-r04', 'rad-r02', 'ven-r02', 'rad-r01', 'ven-r01', 'rad-041-167', 'ven-179-166']
+two-class printing distances: {'lonely_poro': 0.0}
+max rename distance: 0.0
+selfcheck distances: {'punch_first': 0.0, 'discipline': 0.0, 'lonely_poro': 0.0, 'defy': 0.0, 'sabotage': 0.0, 'pit_rookie': 0.0}
+dims nonzero for some entry: 2082
+blocks never nonzero for a real card: ['exec/empty_main/play_bf0/first', 'exec/empty_main/play_bf0/last', 'exec/empty_main/play_bf1/first', 'exec/empty_main/play_bf1/last', 'exec/empty_main/hide/first', 'exec/empty_main/hide/last', 'exec/empty_main/activate/first', 'exec/empty_main/activate/last', 'exec/board_main/activate/first', 'exec/board_main/activate/last', 'exec/board_main_after_a_card/activate/first', 'exec/board_main_after_a_card/activate/last', 'exec/showdown_my_focus/play_base/first', 'exec/showdown_my_focus/play_base/last', 'exec/showdown_my_focus/hide/first', 'exec/showdown_my_focus/hide/last', 'exec/showdown_my_focus/activate/first', 'exec/showdown_my_focus/activate/last', 'exec/opp_fury_spell_on_chain/play_base/first', 'exec/opp_fury_spell_on_chain/play_base/last', 'exec/opp_fury_spell_on_chain/hide/first', 'exec/opp_fury_spell_on_chain/hide/last', 'exec/opp_fury_spell_on_chain/activate/first', 'exec/opp_fury_spell_on_chain/activate/last', 'exec/opp_power2_spell_on_chain/play_base/first', 'exec/opp_power2_spell_on_chain/play_base/last', 'exec/opp_power2_spell_on_chain/hide/first', 'exec/opp_power2_spell_on_chain/hide/last', 'exec/opp_power2_spell_on_chain/activate/first', 'exec/opp_power2_spell_on_chain/activate/last', 'exec/from_my_trash/play_base/first', 'exec/from_my_trash/play_base/last', 'exec/from_my_trash/play_bf0/first', 'exec/from_my_trash/play_bf0/last', 'exec/from_my_trash/play_bf1/first', 'exec/from_my_trash/play_bf1/last', 'exec/from_my_trash/hide/first', 'exec/from_my_trash/hide/last', 'exec/from_my_trash/activate/first', 'exec/from_my_trash/activate/last', 'exec/facedown_opp_spell_on_chain/play_base/first', 'exec/facedown_opp_spell_on_chain/play_base/last', 'exec/facedown_opp_spell_on_chain/play_bf0/first', 'exec/facedown_opp_spell_on_chain/play_bf0/last', 'exec/facedown_opp_spell_on_chain/play_bf1/first', 'exec/facedown_opp_spell_on_chain/play_bf1/last', 'exec/facedown_opp_spell_on_chain/hide/first', 'exec/facedown_opp_spell_on_chain/hide/last', 'exec/facedown_opp_spell_on_chain/activate/first', 'exec/facedown_opp_spell_on_chain/activate/last', 'exec/board_weak_enemies/activate/first', 'exec/board_weak_enemies/activate/last', 'exec/board_friends_together/activate/first', 'exec/board_friends_together/activate/last', 'trigger/move_to_enemy_bf1/first', 'trigger/move_to_enemy_bf1/last', 'trigger/activate_first_ability/first', 'trigger/activate_first_ability/last']
+pair punch_first / primal_strength: 17.29
+pair punch_first / decisive_strike: 31.18
+pair discipline / moonlight_affliction: 55.71
+pair lonely_poro / loyal_poro: 13.86
+pair ferrous_forerunner / machine_evangel: 20.95
+pair sabotage / decree_of_strength: 5.57
+pair defy / hush: 11.87
+synthetic punch_first__amount4: 5.48
+synthetic punch_first__energy3: 6.63
+synthetic punch_first__power0: 6.63
+synthetic discipline__draw2: 6.48
+synthetic discipline__enemy: 12.96
+synthetic lonely_poro__draw2: 4.24
+synthetic defy__cost2: 9.22
+synthetic sabotage__unit: 6.32
+synthetic pit_rookie__might3: 12.12
+synthetic punch_first__reaction: 18.81

@@ -1,0 +1,1 @@
+{"ckpt": "ckpt_00072.pt", "opp": "ismcts:sims=100", "games": 200, "errors": 0, "win_rate": 0.68, "wilson95": [0.612, 0.741], "mean_turns": 14.1, "secs": 744.4}

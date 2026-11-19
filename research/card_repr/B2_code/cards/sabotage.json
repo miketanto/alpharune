@@ -1,0 +1,71 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 1,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0156_sabotage.cpp:104",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0156_sabotage.cpp:105",
+   "energy": "src/cards/spells/0156_sabotage.cpp:106",
+   "power": "src/cards/spells/0156_sabotage.cpp:107",
+   "power_by_domain": "src/cards/spells/0156_sabotage.cpp:107 x src/cards/spells/0156_sabotage.cpp:105; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Reveal",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": "all",
+      "_src": "src/cards/spells/0156_sabotage.cpp:20-21"
+     },
+     "_src": "src/cards/spells/0156_sabotage.cpp:31-41"
+    },
+    {
+     "verb": "Recycle",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": 1,
+      "filters": [
+       {
+        "f": "type",
+        "v": "unit",
+        "neg": true,
+        "_src": "src/cards/spells/0156_sabotage.cpp:51"
+       }
+      ],
+      "_src": "src/cards/spells/0156_sabotage.cpp:47-65"
+     },
+     "_src": "src/cards/spells/0156_sabotage.cpp:78-88"
+    }
+   ],
+   "_src": "src/cards/spells/0156_sabotage.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-156-298",
+  "class_file": "src/cards/spells/0156_sabotage.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "medium",
+  "confidence_why": "reveal/choice via events and requestChoice"
+ }
+}

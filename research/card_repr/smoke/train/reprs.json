@@ -1,0 +1,1138 @@
+{
+ "seeds": {
+  "projection": 1234,
+  "random": 777,
+  "shuffle": 4242
+ },
+ "stats_facts": {
+  "alpha_strike": {
+   "type": "spell",
+   "sup": "signature",
+   "dom": [
+    "calm",
+    "body"
+   ],
+   "e": 3,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "back_off": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Hidden": 1,
+    "Action": 1
+   }
+  },
+  "body_rune": {
+   "type": "rune",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "brittle_steel": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "fury"
+   ],
+   "e": 2,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Flow": 1
+   }
+  },
+  "calm_rune": {
+   "type": "rune",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "charm": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 1,
+   "p": 1,
+   "m": null,
+   "kw": {}
+  },
+  "darius_trifarian": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "fury"
+   ],
+   "e": 5,
+   "p": 1,
+   "m": 5,
+   "kw": {}
+  },
+  "decisive_strike": {
+   "type": "spell",
+   "sup": "signature",
+   "dom": [
+    "body",
+    "order"
+   ],
+   "e": 5,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "decree_of_focus": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 1,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "decree_of_strength": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "defy": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 1,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "disarming_rake": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 3,
+   "p": 1,
+   "m": 2,
+   "kw": {}
+  },
+  "discipline": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "emperor_s_dais": {
+   "type": "battlefield",
+   "sup": null,
+   "dom": [],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "en_garde": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 1,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "ferrous_forerunner": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "fury"
+   ],
+   "e": 6,
+   "p": 1,
+   "m": 6,
+   "kw": {
+    "Deathknell": 1
+   }
+  },
+  "fiora_peerless": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 1,
+   "m": 3,
+   "kw": {}
+  },
+  "first_mate": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": 3,
+   "kw": {}
+  },
+  "fury_rune": {
+   "type": "rune",
+   "sup": null,
+   "dom": [
+    "fury"
+   ],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "grim_apothecary": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "fury"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": 3,
+   "kw": {
+    "Ambush": 1
+   }
+  },
+  "hush": {
+   "type": "spell",
+   "sup": null,
+   "dom": [],
+   "e": 1,
+   "p": 2,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "inferna": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "fury"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 1,
+   "kw": {
+    "Ambush": 1,
+    "Assault": 2
+   }
+  },
+  "irresistible_faefolk": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 1,
+   "kw": {}
+  },
+  "kai_sa_survivor": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "fury"
+   ],
+   "e": 4,
+   "p": 0,
+   "m": 4,
+   "kw": {
+    "Accelerate": 1
+   }
+  },
+  "kinkou_initiate": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": 3,
+   "kw": {}
+  },
+  "lonely_poro": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 2,
+   "kw": {
+    "Deathknell": 1
+   }
+  },
+  "loyal_poro": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "order"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": 3,
+   "kw": {
+    "Deathknell": 1
+   }
+  },
+  "machine_evangel": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "order"
+   ],
+   "e": 5,
+   "p": 1,
+   "m": 4,
+   "kw": {
+    "Deathknell": 1
+   }
+  },
+  "master_yi_tempered": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "body"
+   ],
+   "e": 4,
+   "p": 0,
+   "m": 4,
+   "kw": {
+    "Hunt": 2,
+    "Level": 6
+   }
+  },
+  "master_yi_wuju_bladesman": {
+   "type": "legend",
+   "sup": null,
+   "dom": [],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "moonlight_affliction": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "mind"
+   ],
+   "e": 7,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "nidalee_cat_form": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 1,
+   "m": 4,
+   "kw": {
+    "Ambush": 1
+   }
+  },
+  "not_so_fast": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "noxian_demolitionist": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 1,
+   "kw": {}
+  },
+  "noxus_hopeful": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "fury"
+   ],
+   "e": 4,
+   "p": 0,
+   "m": 4,
+   "kw": {
+    "Legion": 1
+   }
+  },
+  "onslaught": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 4,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Flow": 1
+   }
+  },
+  "pakaa_cub": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": 3,
+   "kw": {
+    "Hidden": 1
+   }
+  },
+  "pit_rookie": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 2,
+   "kw": {}
+  },
+  "primal_strength": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 4,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "punch_first": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 2,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "pyke_dockside_butcher": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "fury"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": 2,
+   "kw": {
+    "Hidden": 1,
+    "Ganking": 1
+   }
+  },
+  "rampage": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "rengar_pridestalker": {
+   "type": "legend",
+   "sup": null,
+   "dom": [],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "rengar_trophy_hunter": {
+   "type": "unit",
+   "sup": "champion",
+   "dom": [
+    "body"
+   ],
+   "e": 5,
+   "p": 1,
+   "m": 6,
+   "kw": {
+    "Ambush": 1
+   }
+  },
+  "ruin_runner": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 6,
+   "p": 0,
+   "m": 5,
+   "kw": {}
+  },
+  "sabotage": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 1,
+   "m": null,
+   "kw": {}
+  },
+  "scuttle_crab": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 0,
+   "kw": {
+    "Deathknell": 1
+   }
+  },
+  "seat_of_power": {
+   "type": "battlefield",
+   "sup": null,
+   "dom": [],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "star_spring": {
+   "type": "battlefield",
+   "sup": null,
+   "dom": [],
+   "e": 0,
+   "p": 0,
+   "m": null,
+   "kw": {}
+  },
+  "thrill_of_the_hunt": {
+   "type": "spell",
+   "sup": "signature",
+   "dom": [
+    "fury",
+    "body"
+   ],
+   "e": 2,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "zhonya_s_hourglass": {
+   "type": "gear",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Hidden": 1
+   }
+  },
+  "synthetic:punch_first__amount4": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 2,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "synthetic:punch_first__energy3": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 3,
+   "p": 2,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "synthetic:punch_first__power0": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Action": 1
+   }
+  },
+  "synthetic:discipline__draw2": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "synthetic:discipline__enemy": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "synthetic:lonely_poro__draw2": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 2,
+   "kw": {
+    "Deathknell": 1
+   }
+  },
+  "synthetic:defy__cost2": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "calm"
+   ],
+   "e": 1,
+   "p": 1,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  },
+  "synthetic:sabotage__unit": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 1,
+   "m": null,
+   "kw": {}
+  },
+  "synthetic:pit_rookie__might3": {
+   "type": "unit",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 2,
+   "p": 0,
+   "m": 3,
+   "kw": {}
+  },
+  "synthetic:punch_first__reaction": {
+   "type": "spell",
+   "sup": null,
+   "dom": [
+    "body"
+   ],
+   "e": 1,
+   "p": 2,
+   "m": null,
+   "kw": {
+    "Reaction": 1
+   }
+  }
+ },
+ "variant_vs_base": {
+  "A": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 0.24849741279623905,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 0.15405574583752585,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 0.1362682183258272,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.12128518828163534,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 0.22850081756242943,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.19721736470821266,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 0.13341283003187135,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 0.24809444083479376,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 0.06441178032381582,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 0.9082084469297244,
+    "rank_of_base_among_51": 9
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 0.2928236528331207,
+    "rank_of_base_among_51": 2
+   }
+  },
+  "B": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 0.32691563357306347,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 0.38542052811700644,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 0.5515988906434178,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.32647488358060994,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 0.29113717217254126,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.31012202051868587,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 0.41748990958331167,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 0.2666969848296972,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 0.2791622719633928,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 0.6291010650082418,
+    "rank_of_base_among_51": 1
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 0.7096607165369325,
+    "rank_of_base_among_51": 2
+   }
+  },
+  "B2": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 0.32460548848315535,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 0.38269695894765277,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 0.5477010242278799,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.32416785304481394,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 0.28907985511665985,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.30793054727788854,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 0.41453972254524024,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 0.26481237404108543,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 0.277189575384721,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 0.6246555304814869,
+    "rank_of_base_among_51": 1
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 0.7046459082761884,
+    "rank_of_base_among_51": 2
+   }
+  },
+  "stats": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 0.0,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 0.6758007619357325,
+    "rank_of_base_among_51": 3
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 0.6971516040702586,
+    "rank_of_base_among_51": 5
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.0,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 0.0,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.0,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 0.0,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 0.0,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 0.33612289834270465,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 0.5186738962000313,
+    "rank_of_base_among_51": 3
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 1.0870302241091438,
+    "rank_of_base_among_51": 17
+   }
+  },
+  "random": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 1.5341997696355332,
+    "rank_of_base_among_51": 42
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 1.3591179136450753,
+    "rank_of_base_among_51": 19
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 1.3993582060650838,
+    "rank_of_base_among_51": 32
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 1.314514289337842,
+    "rank_of_base_among_51": 32
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 1.3777046948924545,
+    "rank_of_base_among_51": 25
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 1.3377990338516317,
+    "rank_of_base_among_51": 6
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 1.3731712912265437,
+    "rank_of_base_among_51": 12
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 1.4581615019710643,
+    "rank_of_base_among_51": 36
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 1.3796563732126979,
+    "rank_of_base_among_51": 21
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 1.5353536963460268,
+    "rank_of_base_among_51": 42
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 1.5238421564693068,
+    "rank_of_base_among_51": 43
+   }
+  },
+  "B2A": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 0.2994766508284458,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 0.2840835477368459,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 0.3949798191705571,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.24105312535575874,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 0.27460032958799374,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 0.24596985624446635,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 0.31276686237293266,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 0.24431893642613334,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 0.20061273767063598,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 0.7105230535962119,
+    "rank_of_base_among_51": 1
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 0.5401668748693759,
+    "rank_of_base_among_51": 2
+   }
+  },
+  "Bshuf": {
+   "synthetic:punch_first__amount4": {
+    "dist_to_base_over_mean_card_norm": 1.5648722497493626,
+    "rank_of_base_among_51": 37
+   },
+   "synthetic:punch_first__energy3": {
+    "dist_to_base_over_mean_card_norm": 0.6362671909188423,
+    "rank_of_base_among_51": 1
+   },
+   "synthetic:punch_first__power0": {
+    "dist_to_base_over_mean_card_norm": 1.7651357534795185,
+    "rank_of_base_among_51": 44
+   },
+   "synthetic:discipline__draw2": {
+    "dist_to_base_over_mean_card_norm": 1.112164041122642,
+    "rank_of_base_among_51": 8
+   },
+   "synthetic:discipline__enemy": {
+    "dist_to_base_over_mean_card_norm": 1.1780090937869807,
+    "rank_of_base_among_51": 11
+   },
+   "synthetic:lonely_poro__draw2": {
+    "dist_to_base_over_mean_card_norm": 1.2041411986207873,
+    "rank_of_base_among_51": 14
+   },
+   "synthetic:defy__cost2": {
+    "dist_to_base_over_mean_card_norm": 1.9430465052795718,
+    "rank_of_base_among_51": 47
+   },
+   "synthetic:sabotage__unit": {
+    "dist_to_base_over_mean_card_norm": 1.3541703851606046,
+    "rank_of_base_among_51": 39
+   },
+   "synthetic:pit_rookie__might3": {
+    "dist_to_base_over_mean_card_norm": 1.509051534714399,
+    "rank_of_base_among_51": 25
+   },
+   "synthetic:punch_first__reaction": {
+    "dist_to_base_over_mean_card_norm": 1.275548640379617,
+    "rank_of_base_among_51": 31
+   },
+   "primal_strength": {
+    "dist_to_base_over_mean_card_norm": 2.040210424168447,
+    "rank_of_base_among_51": 49
+   }
+  }
+ },
+ "bshuf_perm": {
+  "alpha_strike": "discipline",
+  "back_off": "rengar_trophy_hunter",
+  "body_rune": "pyke_dockside_butcher",
+  "brittle_steel": "sabotage",
+  "calm_rune": "lonely_poro",
+  "charm": "defy",
+  "darius_trifarian": "synthetic:discipline__draw2",
+  "decisive_strike": "pit_rookie",
+  "decree_of_focus": "nidalee_cat_form",
+  "decree_of_strength": "primal_strength",
+  "defy": "moonlight_affliction",
+  "disarming_rake": "seat_of_power",
+  "discipline": "synthetic:lonely_poro__draw2",
+  "emperor_s_dais": "fiora_peerless",
+  "en_garde": "alpha_strike",
+  "ferrous_forerunner": "master_yi_tempered",
+  "fiora_peerless": "onslaught",
+  "first_mate": "grim_apothecary",
+  "fury_rune": "punch_first",
+  "grim_apothecary": "body_rune",
+  "hush": "rampage",
+  "inferna": "calm_rune",
+  "irresistible_faefolk": "noxian_demolitionist",
+  "kai_sa_survivor": "kinkou_initiate",
+  "kinkou_initiate": "machine_evangel",
+  "lonely_poro": "charm",
+  "loyal_poro": "inferna",
+  "machine_evangel": "loyal_poro",
+  "master_yi_tempered": "star_spring",
+  "master_yi_wuju_bladesman": "thrill_of_the_hunt",
+  "moonlight_affliction": "irresistible_faefolk",
+  "nidalee_cat_form": "ferrous_forerunner",
+  "not_so_fast": "first_mate",
+  "noxian_demolitionist": "synthetic:defy__cost2",
+  "noxus_hopeful": "zhonya_s_hourglass",
+  "onslaught": "pakaa_cub",
+  "pakaa_cub": "scuttle_crab",
+  "pit_rookie": "synthetic:punch_first__power0",
+  "primal_strength": "darius_trifarian",
+  "punch_first": "synthetic:sabotage__unit",
+  "pyke_dockside_butcher": "synthetic:punch_first__energy3",
+  "rampage": "synthetic:pit_rookie__might3",
+  "rengar_pridestalker": "hush",
+  "rengar_trophy_hunter": "en_garde",
+  "ruin_runner": "emperor_s_dais",
+  "sabotage": "decree_of_focus",
+  "scuttle_crab": "synthetic:punch_first__reaction",
+  "seat_of_power": "not_so_fast",
+  "star_spring": "brittle_steel",
+  "thrill_of_the_hunt": "disarming_rake",
+  "zhonya_s_hourglass": "synthetic:punch_first__amount4",
+  "synthetic:punch_first__amount4": "back_off",
+  "synthetic:punch_first__energy3": "decree_of_strength",
+  "synthetic:punch_first__power0": "ruin_runner",
+  "synthetic:discipline__draw2": "synthetic:discipline__enemy",
+  "synthetic:discipline__enemy": "noxus_hopeful",
+  "synthetic:lonely_poro__draw2": "decisive_strike",
+  "synthetic:defy__cost2": "fury_rune",
+  "synthetic:sabotage__unit": "rengar_pridestalker",
+  "synthetic:pit_rookie__might3": "kai_sa_survivor",
+  "synthetic:punch_first__reaction": "master_yi_wuju_bladesman"
+ }
+}

@@ -1,0 +1,105 @@
+00:36:16 start id__base__s0 w0
+00:36:16 start random__base__s0 w1
+00:36:16 start stats__base__s0 w2
+restart with 3000 steps (4000 projected ~5h); partial 4000-step logs overwritten
+00:41:15 start id__base__s0 w0
+00:41:15 start random__base__s0 w1
+00:41:15 start stats__base__s0 w2
+00:56:29 end random__base__s0 rc=0 913s
+00:56:29 start A__base__s0 w1
+00:56:29 end stats__base__s0 rc=0 913s
+00:56:29 start B__base__s0 w2
+00:56:29 end id__base__s0 rc=0 914s
+00:56:29 start B2__base__s0 w0
+00:58:59 restart: per-head val checkpoint selection (value overfit: val mse 0.58@500 -> 0.83@3000), regime-own val set; old runs in runs_superseded/
+00:59:02 start id__base__s0 w0
+00:59:02 start random__base__s0 w1
+00:59:02 start stats__base__s0 w2
+01:15:09 end random__base__s0 rc=0 967s
+01:15:09 start A__base__s0 w1
+01:15:12 end stats__base__s0 rc=0 969s
+01:15:12 start B__base__s0 w2
+01:15:13 end id__base__s0 rc=0 970s
+01:15:13 start B2__base__s0 w0
+01:31:33 end A__base__s0 rc=0 984s
+01:31:33 start B2A__base__s0 w1
+01:31:34 end B__base__s0 rc=0 983s
+01:31:34 start Bshuf__base__s0 w2
+01:31:35 end B2__base__s0 rc=0 982s
+01:31:35 start id__all__s0 w0
+01:47:18 end id__all__s0 rc=0 943s
+01:47:18 start random__all__s0 w0
+01:47:19 end Bshuf__base__s0 rc=0 944s
+01:47:19 start stats__all__s0 w2
+01:47:19 end B2A__base__s0 rc=0 946s
+01:47:19 start A__all__s0 w1
+02:03:32 end stats__all__s0 rc=0 973s
+02:03:32 start B__all__s0 w2
+02:03:32 end random__all__s0 rc=0 974s
+02:03:32 start B2__all__s0 w0
+02:03:32 end A__all__s0 rc=0 973s
+02:03:32 start B2A__all__s0 w1
+02:19:47 end B2A__all__s0 rc=0 975s
+02:19:47 start id__base__s1 w1
+02:19:47 end B__all__s0 rc=0 976s
+02:19:47 start random__base__s1 w2
+02:19:48 end B2__all__s0 rc=0 976s
+02:19:48 start stats__base__s1 w0
+02:35:51 end stats__base__s1 rc=0 963s
+02:35:51 start A__base__s1 w0
+02:35:53 end id__base__s1 rc=0 966s
+02:35:53 start B__base__s1 w1
+02:35:53 end random__base__s1 rc=0 966s
+02:35:53 start B2__base__s1 w2
+02:51:50 end A__base__s1 rc=0 959s
+02:51:50 start B2A__base__s1 w0
+02:51:55 end B2__base__s1 rc=0 962s
+02:51:55 start Bshuf__base__s1 w2
+02:51:56 end B__base__s1 rc=0 963s
+02:51:56 start id__all__s1 w1
+03:07:51 end B2A__base__s1 rc=0 961s
+03:07:51 start random__all__s1 w0
+03:07:58 end Bshuf__base__s1 rc=0 963s
+03:07:58 start stats__all__s1 w2
+03:08:01 end id__all__s1 rc=0 965s
+03:08:01 start A__all__s1 w1
+03:23:29 end random__all__s1 rc=0 938s
+03:23:29 start B__all__s1 w0
+03:23:41 end stats__all__s1 rc=0 944s
+03:23:41 start B2__all__s1 w2
+03:23:41 end A__all__s1 rc=0 940s
+03:23:41 start B2A__all__s1 w1
+03:39:31 end B__all__s1 rc=0 961s
+03:39:31 start id__base__s2 w0
+03:39:41 end B2A__all__s1 rc=0 960s
+03:39:41 start random__base__s2 w1
+03:39:42 end B2__all__s1 rc=0 961s
+03:39:42 start stats__base__s2 w2
+03:55:33 end id__base__s2 rc=0 962s
+03:55:33 start A__base__s2 w0
+03:55:46 end stats__base__s2 rc=0 964s
+03:55:46 start B__base__s2 w2
+03:55:47 end random__base__s2 rc=0 965s
+03:55:47 start B2__base__s2 w1
+04:11:32 end A__base__s2 rc=0 960s
+04:11:32 start B2A__base__s2 w0
+04:11:47 end B__base__s2 rc=0 961s
+04:11:47 start Bshuf__base__s2 w2
+04:11:47 end B2__base__s2 rc=0 961s
+04:11:47 start id__all__s2 w1
+04:27:42 end B2A__base__s2 rc=0 969s
+04:27:42 start random__all__s2 w0
+04:27:55 end id__all__s2 rc=0 968s
+04:27:55 start stats__all__s2 w1
+04:28:00 end Bshuf__base__s2 rc=0 973s
+04:28:00 start A__all__s2 w2
+04:43:43 end random__all__s2 rc=0 962s
+04:43:43 start B__all__s2 w0
+04:43:54 end stats__all__s2 rc=0 958s
+04:43:54 start B2__all__s2 w1
+04:44:01 end A__all__s2 rc=0 962s
+04:44:01 start B2A__all__s2 w2
+04:59:33 end B__all__s2 rc=0 950s
+04:59:42 end B2__all__s2 rc=0 949s
+04:59:48 end B2A__all__s2 rc=0 946s
+ALL DONE

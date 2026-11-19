@@ -1,0 +1,2319 @@
+{
+ "alpha_strike@unl-192-219": [
+  {
+   "call": "mayChooseAtFinalization",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:29",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "friendlyUnitChoice",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:31",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "chooseableUnits",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:37",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "chosenTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:52",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "splitDamageAmong",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:60",
+   "role": "verb",
+   "verb": "DealDamage"
+  },
+  {
+   "call": "chooseableUnits",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:72",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "splitDamageAmong",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:76",
+   "role": "verb",
+   "verb": "DealDamage"
+  },
+  {
+   "call": "killLethallyDamagedTogether",
+   "kind": "executor",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:82",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "queueReflexiveTrigger",
+   "kind": "executor",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:88",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "onReflexiveTrigger",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:93",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:95",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "gainXp",
+   "kind": "free",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:96",
+   "role": "verb",
+   "verb": "GainXP"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:27",
+   "role": "hook"
+  },
+  {
+   "call": "hasLegalTargets",
+   "kind": "override",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:35",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:41",
+   "role": "hook"
+  },
+  {
+   "call": "hasReflexiveTrigger",
+   "kind": "override",
+   "line": "src/cards/spells/0751_alpha_strike.cpp:92",
+   "role": "hook"
+  }
+ ],
+ "back_off@unl-042-219": [
+  {
+   "call": "lockedPlayTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0604_back_off.cpp:27",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0604_back_off.cpp:29",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0604_back_off.cpp:29",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "stunUnitBy",
+   "kind": "executor",
+   "line": "src/cards/spells/0604_back_off.cpp:39",
+   "role": "verb",
+   "verb": "Stun"
+  },
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/spells/0604_back_off.cpp:49",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0604_back_off.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0604_back_off.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0604_back_off.cpp:23",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0604_back_off.cpp:24",
+   "role": "hook"
+  }
+ ],
+ "body_rune@ogn-126-298": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/runes/0126_body_rune.cpp:16",
+   "role": "hook"
+  }
+ ],
+ "brittle_steel@ven-003-166": [
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:24",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:25",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "unattachGear",
+   "kind": "executor",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:27",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "killObject",
+   "kind": "executor",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:28",
+   "role": "verb",
+   "verb": "Kill"
+  },
+  {
+   "call": "flow",
+   "kind": "free",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:30",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:22",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:23",
+   "role": "hook"
+  },
+  {
+   "call": "flowCost",
+   "kind": "override",
+   "line": "src/cards/spells/0790_brittle_steel.cpp:30",
+   "role": "hook"
+  }
+ ],
+ "calm_rune@ogn-042-298": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/runes/0042_calm_rune.cpp:16",
+   "role": "hook"
+  }
+ ],
+ "charm@ogn-043-298": [
+  {
+   "call": "mayChooseAtFinalization",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:21",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:32",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "moveDests",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:33",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:34",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "pickMoveDest",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:42",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:45",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "moveTo",
+   "kind": "free",
+   "line": "src/cards/spells/0043_charm.cpp:49",
+   "role": "verb",
+   "verb": "Move"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0043_charm.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/spells/0043_charm.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0043_charm.cpp:25",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0043_charm.cpp:29",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0043_charm.cpp:30",
+   "role": "hook"
+  }
+ ],
+ "darius_trifarian@ogn-027-298": [
+  {
+   "call": "triggerCondition",
+   "kind": "free",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:30",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "playOrdinalThisTurn",
+   "kind": "free",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:36",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:40",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "readyObject",
+   "kind": "executor",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:41",
+   "role": "verb",
+   "verb": "Ready"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerTypes",
+   "kind": "override",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0027_darius_trifarian.cpp:38",
+   "role": "hook"
+  }
+ ],
+ "decisive_strike@ogs-024-024": [
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0322_decisive_strike.cpp:24",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0322_decisive_strike.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0322_decisive_strike.cpp:19",
+   "role": "hook"
+  }
+ ],
+ "decree_of_focus@ven-040-166": [
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:54",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:65",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:66",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:68",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:50",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:63",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0827_decree_of_focus.cpp:64",
+   "role": "hook"
+  }
+ ],
+ "decree_of_strength@ven-085-166": [
+  {
+   "call": "opponent",
+   "kind": "free",
+   "line": "src/cards/spells/0872_decree_of_strength.cpp:21",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickUnseenCard",
+   "kind": "free",
+   "line": "src/cards/spells/0872_decree_of_strength.cpp:41",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "recycleCards",
+   "kind": "executor",
+   "line": "src/cards/spells/0872_decree_of_strength.cpp:47",
+   "role": "verb",
+   "verb": "Recycle"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0872_decree_of_strength.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0872_decree_of_strength.cpp:20",
+   "role": "hook"
+  }
+ ],
+ "defy@ogn-045-298": [
+  {
+   "call": "mayChooseAtFinalization",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:23",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "anyChainItem",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:34",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "anyChainItem",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:38",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "cardDB",
+   "kind": "executor",
+   "line": "src/cards/spells/0045_defy.cpp:41",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickChainItem",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:42",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "chainItemChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:44",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:46",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "counterChosenItem",
+   "kind": "free",
+   "line": "src/cards/spells/0045_defy.cpp:47",
+   "role": "verb",
+   "verb": "Counter"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0045_defy.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/spells/0045_defy.cpp:22",
+   "role": "hook"
+  },
+  {
+   "call": "hasLegalTargets",
+   "kind": "override",
+   "line": "src/cards/spells/0045_defy.cpp:37",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0045_defy.cpp:40",
+   "role": "hook"
+  }
+ ],
+ "disarming_rake@sfd-032-221": [
+  {
+   "call": "confirmOptional",
+   "kind": "free",
+   "line": "src/cards/units/0355_disarming_rake.cpp:31",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/units/0355_disarming_rake.cpp:36",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/units/0355_disarming_rake.cpp:37",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "killObject",
+   "kind": "executor",
+   "line": "src/cards/units/0355_disarming_rake.cpp:39",
+   "role": "verb",
+   "verb": "Kill"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0355_disarming_rake.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/units/0355_disarming_rake.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0355_disarming_rake.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0355_disarming_rake.cpp:19",
+   "role": "hook"
+  }
+ ],
+ "discipline@ogn-058-298": [
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0058_discipline.cpp:28",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0058_discipline.cpp:29",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0058_discipline.cpp:40",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/spells/0058_discipline.cpp:43",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0058_discipline.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0058_discipline.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0058_discipline.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0058_discipline.cpp:22",
+   "role": "hook"
+  }
+ ],
+ "emperor_s_dais@sfd-207-221": [
+  {
+   "call": "battlefieldOfCard",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:23",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "confirmOptional",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:37",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "canPayEnergy",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:38",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "costDueNow",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:42",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:43",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "payEnergy",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:45",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "bounceToHand",
+   "kind": "executor",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:46",
+   "role": "verb",
+   "verb": "Bounce"
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:48",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "createToken",
+   "kind": "executor",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:53",
+   "role": "verb",
+   "verb": "CreateToken"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/battlefields/0521_emperor_s_dais.cpp:20",
+   "role": "hook"
+  }
+ ],
+ "en_garde@ogn-046-298": [
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0046_en_garde.cpp:27",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0046_en_garde.cpp:42",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0046_en_garde.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0046_en_garde.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0046_en_garde.cpp:21",
+   "role": "hook"
+  }
+ ],
+ "ferrous_forerunner@sfd-021-221": [
+  {
+   "call": "createToken",
+   "kind": "executor",
+   "line": "src/cards/units/0344_ferrous_forerunner.cpp:22",
+   "role": "verb",
+   "verb": "CreateToken"
+  },
+  {
+   "call": "createToken",
+   "kind": "executor",
+   "line": "src/cards/units/0344_ferrous_forerunner.cpp:24",
+   "role": "verb",
+   "verb": "CreateToken"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0344_ferrous_forerunner.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0344_ferrous_forerunner.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0344_ferrous_forerunner.cpp:19",
+   "role": "hook"
+  }
+ ],
+ "fiora_peerless@sfd-110-221": [
+  {
+   "call": "triggerCondition",
+   "kind": "free",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:25",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "recalculateContinuousEffects",
+   "kind": "executor",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:47",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "cardDefId",
+   "kind": "free",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:53",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "auraMight",
+   "kind": "free",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:61",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:38",
+   "role": "hook"
+  },
+  {
+   "call": "applyPassiveAura",
+   "kind": "override",
+   "line": "src/cards/units/0432_fiora_peerless.cpp:50",
+   "role": "hook"
+  }
+ ],
+ "first_mate@ogn-132-298": [
+  {
+   "call": "chooseableUnits",
+   "kind": "free",
+   "line": "src/cards/units/0132_first_mate.cpp:23",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/units/0132_first_mate.cpp:27",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/units/0132_first_mate.cpp:28",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "readyObject",
+   "kind": "executor",
+   "line": "src/cards/units/0132_first_mate.cpp:30",
+   "role": "verb",
+   "verb": "Ready"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0132_first_mate.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/units/0132_first_mate.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0132_first_mate.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0132_first_mate.cpp:22",
+   "role": "hook"
+  }
+ ],
+ "fury_rune@ogn-007-298": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/runes/0007_fury_rune.cpp:16",
+   "role": "hook"
+  }
+ ],
+ "grim_apothecary@unl-021-219": [
+  {
+   "call": "confirmOptional",
+   "kind": "free",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:27",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:32",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:33",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "bounceToHand",
+   "kind": "executor",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:36",
+   "role": "verb",
+   "verb": "Bounce"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0583_grim_apothecary.cpp:20",
+   "role": "hook"
+  }
+ ],
+ "inferna@unl-002-219": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0560_inferna.cpp:17",
+   "role": "hook"
+  }
+ ],
+ "irresistible_faefolk@unl-112-219": [
+  {
+   "call": "chooseableUnits",
+   "kind": "free",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:31",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "confirmOptional",
+   "kind": "free",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:36",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:41",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:42",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "moveToBattlefield",
+   "kind": "executor",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:45",
+   "role": "verb",
+   "verb": "Move"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0674_irresistible_faefolk.cpp:20",
+   "role": "hook"
+  }
+ ],
+ "kai_sa_survivor@ogn-039-298": [
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0039_kai_sa_survivor.cpp:19",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0039_kai_sa_survivor.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0039_kai_sa_survivor.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0039_kai_sa_survivor.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "kinkou_initiate@unl-097-219": [
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0659_kinkou_initiate.cpp:27",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0659_kinkou_initiate.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0659_kinkou_initiate.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0659_kinkou_initiate.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "lonely_poro@sfd-036-221": [
+  {
+   "call": "asItLeft",
+   "kind": "free",
+   "line": "src/cards/units/0359_lonely_poro.cpp:31",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0359_lonely_poro.cpp:37",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0359_lonely_poro.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0359_lonely_poro.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0359_lonely_poro.cpp:29",
+   "role": "hook"
+  }
+ ],
+ "lonely_poro@unl-221-219": [
+  {
+   "call": "asItLeft",
+   "kind": "free",
+   "line": "src/cards/units/0777_lonely_poro.cpp:27",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0777_lonely_poro.cpp:33",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0777_lonely_poro.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0777_lonely_poro.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0777_lonely_poro.cpp:25",
+   "role": "hook"
+  }
+ ],
+ "loyal_poro@unl-156-219": [
+  {
+   "call": "asItLeft",
+   "kind": "free",
+   "line": "src/cards/units/0718_loyal_poro.cpp:25",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0718_loyal_poro.cpp:28",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0718_loyal_poro.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0718_loyal_poro.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0718_loyal_poro.cpp:23",
+   "role": "hook"
+  }
+ ],
+ "machine_evangel@ogn-239-298": [
+  {
+   "call": "createToken",
+   "kind": "executor",
+   "line": "src/cards/units/0239_machine_evangel.cpp:22",
+   "role": "verb",
+   "verb": "CreateToken"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0239_machine_evangel.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0239_machine_evangel.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0239_machine_evangel.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "master_yi_tempered@unl-113-219": [
+  {
+   "call": "gainXp",
+   "kind": "free",
+   "line": "src/cards/units/0675_master_yi_tempered.cpp:22",
+   "role": "verb",
+   "verb": "GainXP"
+  },
+  {
+   "call": "cardDefId",
+   "kind": "free",
+   "line": "src/cards/units/0675_master_yi_tempered.cpp:29",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0675_master_yi_tempered.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0675_master_yi_tempered.cpp:20",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0675_master_yi_tempered.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "applyPassiveAura",
+   "kind": "override",
+   "line": "src/cards/units/0675_master_yi_tempered.cpp:26",
+   "role": "hook"
+  }
+ ],
+ "master_yi_wuju_bladesman@ogs-019-024": [
+  {
+   "call": "cardDefId",
+   "kind": "free",
+   "line": "src/cards/legends/0317_wuju_bladesman_starter.cpp:21",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/legends/0317_wuju_bladesman_starter.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "applyPassiveAura",
+   "kind": "override",
+   "line": "src/cards/legends/0317_wuju_bladesman_starter.cpp:17",
+   "role": "hook"
+  }
+ ],
+ "moonlight_affliction@unl-066-219": [
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0628_moonlight_affliction.cpp:19",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0628_moonlight_affliction.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0628_moonlight_affliction.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0628_moonlight_affliction.cpp:21",
+   "role": "hook"
+  }
+ ],
+ "nidalee_cat_form@unl-114-219": [
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0676_nidalee_cat_form.cpp:19",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0676_nidalee_cat_form.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0676_nidalee_cat_form.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0676_nidalee_cat_form.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "not_so_fast@sfd-045-221": [
+  {
+   "call": "mayChooseAtFinalization",
+   "kind": "free",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:26",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "anyChainItem",
+   "kind": "free",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:46",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickChainItem",
+   "kind": "free",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:51",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "chainItemChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:53",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:57",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "counterChosenItem",
+   "kind": "free",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:58",
+   "role": "verb",
+   "verb": "Counter"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:25",
+   "role": "hook"
+  },
+  {
+   "call": "hasLegalTargets",
+   "kind": "override",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:45",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0368_not_so_fast.cpp:50",
+   "role": "hook"
+  }
+ ],
+ "noxian_demolitionist@ven-080-166": [
+  {
+   "call": "cardDB",
+   "kind": "executor",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:35",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "confirmOptional",
+   "kind": "free",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:41",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:44",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:45",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "killObject",
+   "kind": "executor",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:47",
+   "role": "verb",
+   "verb": "Kill"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0867_noxian_demolitionist.cpp:22",
+   "role": "hook"
+  }
+ ],
+ "noxus_hopeful@ogn-012-298": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0012_noxus_hopeful.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "selfCostReduction",
+   "kind": "override",
+   "line": "src/cards/units/0012_noxus_hopeful.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "onslaught@ven-081-166": [
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0868_onslaught.cpp:24",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0868_onslaught.cpp:25",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0868_onslaught.cpp:27",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "flow",
+   "kind": "free",
+   "line": "src/cards/spells/0868_onslaught.cpp:29",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0868_onslaught.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0868_onslaught.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0868_onslaught.cpp:22",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0868_onslaught.cpp:23",
+   "role": "hook"
+  },
+  {
+   "call": "flowCost",
+   "kind": "override",
+   "line": "src/cards/spells/0868_onslaught.cpp:29",
+   "role": "hook"
+  }
+ ],
+ "pakaa_cub@ogn-135-298": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0135_pakaa_cub.cpp:16",
+   "role": "hook"
+  }
+ ],
+ "pit_rookie@ogn-136-298": [
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/units/0136_pit_rookie.cpp:32",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/units/0136_pit_rookie.cpp:33",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "buffUnit",
+   "kind": "executor",
+   "line": "src/cards/units/0136_pit_rookie.cpp:35",
+   "role": "verb",
+   "verb": "Buff"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0136_pit_rookie.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/units/0136_pit_rookie.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0136_pit_rookie.cpp:22",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0136_pit_rookie.cpp:23",
+   "role": "hook"
+  }
+ ],
+ "primal_strength@ogn-154-298": [
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0154_primal_strength.cpp:19",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0154_primal_strength.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0154_primal_strength.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0154_primal_strength.cpp:21",
+   "role": "hook"
+  }
+ ],
+ "punch_first@sfd-097-221": [
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0419_punch_first.cpp:23",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0419_punch_first.cpp:24",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0419_punch_first.cpp:26",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0419_punch_first.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0419_punch_first.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0419_punch_first.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0419_punch_first.cpp:22",
+   "role": "hook"
+  }
+ ],
+ "pyke_dockside_butcher@unl-028-219": [
+  {
+   "call": "triggerCondition",
+   "kind": "free",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:26",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "readyObject",
+   "kind": "executor",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:39",
+   "role": "verb",
+   "verb": "Ready"
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:40",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "optionalAdditionalCost",
+   "kind": "override",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0590_pyke_dockside_butcher.cpp:33",
+   "role": "hook"
+  }
+ ],
+ "rampage@ven-083-166": [
+  {
+   "call": "mayChooseAtFinalization",
+   "kind": "free",
+   "line": "src/cards/spells/0870_rampage.cpp:20",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "friendlyUnitChoice",
+   "kind": "free",
+   "line": "src/cards/spells/0870_rampage.cpp:22",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "chooseableUnits",
+   "kind": "free",
+   "line": "src/cards/spells/0870_rampage.cpp:42",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTargetPair",
+   "kind": "free",
+   "line": "src/cards/spells/0870_rampage.cpp:52",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/spells/0870_rampage.cpp:55",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/spells/0870_rampage.cpp:70",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "dealDamage",
+   "kind": "executor",
+   "line": "src/cards/spells/0870_rampage.cpp:76",
+   "role": "verb",
+   "verb": "DealDamage"
+  },
+  {
+   "call": "dealDamage",
+   "kind": "executor",
+   "line": "src/cards/spells/0870_rampage.cpp:77",
+   "role": "verb",
+   "verb": "DealDamage"
+  },
+  {
+   "call": "killLethallyDamagedTogether",
+   "kind": "executor",
+   "line": "src/cards/spells/0870_rampage.cpp:79",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "optionalAdditionalCost",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:29",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:37",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTargetPair",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:40",
+   "role": "hook"
+  },
+  {
+   "call": "hasLegalTargets",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:46",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0870_rampage.cpp:50",
+   "role": "hook"
+  }
+ ],
+ "rengar_pridestalker@unl-183-219": [
+  {
+   "call": "chooseableUnits",
+   "kind": "free",
+   "line": "src/cards/legends/0744_pridestalker.cpp:24",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/legends/0744_pridestalker.cpp:27",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/legends/0744_pridestalker.cpp:28",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "giveTemporaryMight",
+   "kind": "executor",
+   "line": "src/cards/legends/0744_pridestalker.cpp:30",
+   "role": "verb",
+   "verb": "GiveMight"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/legends/0744_pridestalker.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/legends/0744_pridestalker.cpp:21",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/legends/0744_pridestalker.cpp:22",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/legends/0744_pridestalker.cpp:23",
+   "role": "hook"
+  }
+ ],
+ "rengar_trophy_hunter@unl-120-219": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0682_rengar_trophy_hunter.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "ambushToEnemyBattlefields",
+   "kind": "override",
+   "line": "src/cards/units/0682_rengar_trophy_hunter.cpp:23",
+   "role": "hook"
+  }
+ ],
+ "ruin_runner@sfd-105-221": [
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0427_ruin_runner.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "canBeChosenByEnemy",
+   "kind": "override",
+   "line": "src/cards/units/0427_ruin_runner.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "sabotage@ogn-156-298": [
+  {
+   "call": "opponent",
+   "kind": "free",
+   "line": "src/cards/spells/0156_sabotage.cpp:20",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "requestChoice",
+   "kind": "executor",
+   "line": "src/cards/spells/0156_sabotage.cpp:64",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "takeChoice",
+   "kind": "executor",
+   "line": "src/cards/spells/0156_sabotage.cpp:70",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "recycleCards",
+   "kind": "executor",
+   "line": "src/cards/spells/0156_sabotage.cpp:88",
+   "role": "verb",
+   "verb": "Recycle"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0156_sabotage.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0156_sabotage.cpp:18",
+   "role": "hook"
+  }
+ ],
+ "scuttle_crab@unl-053-219": [
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/units/0615_scuttle_crab.cpp:23",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "opponent",
+   "kind": "free",
+   "line": "src/cards/units/0615_scuttle_crab.cpp:30",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "gainXp",
+   "kind": "free",
+   "line": "src/cards/units/0615_scuttle_crab.cpp:53",
+   "role": "verb",
+   "verb": "GainXP"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/units/0615_scuttle_crab.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerTypes",
+   "kind": "override",
+   "line": "src/cards/units/0615_scuttle_crab.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/units/0615_scuttle_crab.cpp:21",
+   "role": "hook"
+  }
+ ],
+ "seat_of_power@sfd-217-221": [
+  {
+   "call": "battlefieldOfCard",
+   "kind": "free",
+   "line": "src/cards/battlefields/0531_seat_of_power.cpp:21",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "drawCards",
+   "kind": "executor",
+   "line": "src/cards/battlefields/0531_seat_of_power.cpp:29",
+   "role": "verb",
+   "verb": "Draw"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/battlefields/0531_seat_of_power.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/battlefields/0531_seat_of_power.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/battlefields/0531_seat_of_power.cpp:19",
+   "role": "hook"
+  }
+ ],
+ "star_spring@unl-215-219": [
+  {
+   "call": "playerIndex",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:28",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "playerIndex",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:29",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "playerIndex",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:30",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "playOrdinalThisTurn",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:44",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "triggerCondition",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:54",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "battlefieldOfCard",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:75",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "playOrdinalThisTurn",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:90",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "moveToBaseBlocked",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:98",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "confirmOptional",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:103",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:106",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "finalizingChoices",
+   "kind": "free",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:107",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "moveToBase",
+   "kind": "executor",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:109",
+   "role": "verb",
+   "verb": "Move"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "choicesAtFinalization",
+   "kind": "override",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:26",
+   "role": "hook"
+  },
+  {
+   "call": "triggerType",
+   "kind": "override",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:27",
+   "role": "hook"
+  },
+  {
+   "call": "onTrigger",
+   "kind": "override",
+   "line": "src/cards/battlefields/0771_star_spring.cpp:74",
+   "role": "hook"
+  }
+ ],
+ "thrill_of_the_hunt@unl-184-219": [
+  {
+   "call": "enumerateLegalTargets",
+   "kind": "free",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:23",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickTarget",
+   "kind": "free",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:24",
+   "role": "plumbing",
+   "verb": null
+  },
+  {
+   "call": "banishObject",
+   "kind": "executor",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:40",
+   "role": "verb",
+   "verb": "Banish"
+  },
+  {
+   "call": "battlefieldTakesUnitsFrom",
+   "kind": "free",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:55",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "pickValueAs",
+   "kind": "free",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:77",
+   "role": "structure",
+   "verb": null
+  },
+  {
+   "call": "playIgnoringCost",
+   "kind": "executor",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:84",
+   "role": "verb",
+   "verb": "PlayIgnoringCost"
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "needsPlayTimeTarget",
+   "kind": "override",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:18",
+   "role": "hook"
+  },
+  {
+   "call": "getTargetRequirements",
+   "kind": "override",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:19",
+   "role": "hook"
+  },
+  {
+   "call": "onResolve",
+   "kind": "override",
+   "line": "src/cards/spells/0745_thrill_of_the_hunt.cpp:22",
+   "role": "hook"
+  }
+ ],
+ "zhonya_s_hourglass@ogn-077-298": [
+  {
+   "call": "replacementAppliesTo",
+   "kind": "free",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:18",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "conditionsHold",
+   "kind": "free",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:20",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "conditionsHold",
+   "kind": "free",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:23",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "replacementApplies",
+   "kind": "free",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:31",
+   "role": "hook",
+   "verb": null
+  },
+  {
+   "call": "killObject",
+   "kind": "executor",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:36",
+   "role": "verb",
+   "verb": "Kill"
+  },
+  {
+   "call": "healExhaustRecall",
+   "kind": "executor",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:39",
+   "role": "verb",
+   "verb": [
+    "Heal",
+    "Recall{exhausted:true}"
+   ]
+  },
+  {
+   "call": "def",
+   "kind": "override",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:16",
+   "role": "hook"
+  },
+  {
+   "call": "hasReplacementEffect",
+   "kind": "override",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:17",
+   "role": "hook"
+  },
+  {
+   "call": "applyReplacement",
+   "kind": "override",
+   "line": "src/cards/gear/0077_zhonya_s_hourglass.cpp:29",
+   "role": "hook"
+  }
+ ]
+}

@@ -1,0 +1,16 @@
+run A__base__s2 train decisions 105625 unseen card keys in training: ['alpha_strike', 'brittle_steel', 'decisive_strike', 'decree_of_focus', 'decree_of_strength', 'disarming_rake', 'fiora_peerless', 'hush', 'loyal_poro', 'machine_evangel', 'moonlight_affliction', 'not_so_fast', 'noxian_demolitionist', 'primal_strength', 'synthetic:punch_first__amount4', 'synthetic:punch_first__energy3', 'synthetic:punch_first__power0', 'synthetic:discipline__draw2', 'synthetic:discipline__enemy', 'synthetic:lonely_poro__draw2', 'synthetic:defy__cost2', 'synthetic:sabotage__unit', 'synthetic:pit_rookie__might3', 'synthetic:punch_first__reaction']
+params (excluding the card table) 148675 cond A trainable table False
+step 250 train(ce_vis,ce_q,mse_v) [1.3562, 1.3496, 0.7257] val [1.3236, 1.3148, 0.6028] 72s
+step 500 train(ce_vis,ce_q,mse_v) [1.3597, 1.3479, 0.5892] val [1.3234, 1.313, 0.6145] 144s
+step 750 train(ce_vis,ce_q,mse_v) [1.3617, 1.348, 0.5499] val [1.3233, 1.3118, 0.5857] 216s
+step 1000 train(ce_vis,ce_q,mse_v) [1.3543, 1.3397, 0.501] val [1.3232, 1.3111, 0.5945] 288s
+step 1250 train(ce_vis,ce_q,mse_v) [1.357, 1.3414, 0.4307] val [1.3232, 1.3098, 0.6692] 360s
+step 1500 train(ce_vis,ce_q,mse_v) [1.355, 1.3384, 0.38] val [1.3232, 1.3094, 0.6877] 433s
+step 1750 train(ce_vis,ce_q,mse_v) [1.3544, 1.3379, 0.308] val [1.3232, 1.309, 0.696] 506s
+step 2000 train(ce_vis,ce_q,mse_v) [1.3596, 1.3429, 0.2563] val [1.3232, 1.3091, 0.7131] 579s
+step 2250 train(ce_vis,ce_q,mse_v) [1.3533, 1.3357, 0.2149] val [1.3232, 1.309, 0.7573] 652s
+step 2500 train(ce_vis,ce_q,mse_v) [1.3567, 1.3393, 0.1924] val [1.3232, 1.3087, 0.7577] 725s
+step 2750 train(ce_vis,ce_q,mse_v) [1.355, 1.3377, 0.1781] val [1.3232, 1.3088, 0.7597] 797s
+step 3000 train(ce_vis,ce_q,mse_v) [1.3586, 1.3412, 0.1669] val [1.3232, 1.3088, 0.7625] 870s
+best policy step 2500 best value step 750
+done A__base__s2 train 870s total 957s

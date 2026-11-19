@@ -1,0 +1,1216 @@
+{
+ "exercised_kinds_S": [
+  "act",
+  "play",
+  "trigger"
+ ],
+ "probe_errors": {
+  "train": 0,
+  "test": 0
+ },
+ "cards": {
+  "alpha_strike": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 866,
+    "play_sub": 118
+   },
+   "S_train_exercised": 118,
+   "S_test_by_kind": {
+    "held_sub": 281,
+    "play_sub": 53
+   },
+   "S_test_exercised": 53,
+   "flag_lt10": []
+  },
+  "back_off": {
+   "H_exercised": 6,
+   "H_by_kind": {
+    "play": 6
+   },
+   "S_train_by_kind": {
+    "play": 94,
+    "held": 95
+   },
+   "S_train_exercised": 94,
+   "S_test_by_kind": {
+    "held": 29,
+    "play": 38
+   },
+   "S_test_exercised": 38,
+   "flag_lt10": []
+  },
+  "body_rune": {
+   "H_exercised": 0,
+   "H_by_kind": {},
+   "S_train_by_kind": {},
+   "S_train_exercised": 0,
+   "S_test_by_kind": {},
+   "S_test_exercised": 0,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "brittle_steel": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 923,
+    "play_sub": 4
+   },
+   "S_train_exercised": 4,
+   "S_test_by_kind": {
+    "held_sub": 392,
+    "play_sub": 5
+   },
+   "S_test_exercised": 5,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "calm_rune": {
+   "H_exercised": 0,
+   "H_by_kind": {},
+   "S_train_by_kind": {},
+   "S_train_exercised": 0,
+   "S_test_by_kind": {},
+   "S_test_exercised": 0,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "charm": {
+   "H_exercised": 4,
+   "H_by_kind": {
+    "play": 4
+   },
+   "S_train_by_kind": {
+    "held": 278,
+    "play": 180
+   },
+   "S_train_exercised": 180,
+   "S_test_by_kind": {
+    "held": 92,
+    "play": 55
+   },
+   "S_test_exercised": 55,
+   "flag_lt10": []
+  },
+  "darius_trifarian": {
+   "H_exercised": 19,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 7,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 270,
+    "play": 134,
+    "inplay": 57,
+    "trigger": 34
+   },
+   "S_train_exercised": 168,
+   "S_test_by_kind": {
+    "held": 59,
+    "inplay": 8,
+    "play": 22,
+    "trigger": 6
+   },
+   "S_test_exercised": 28,
+   "flag_lt10": []
+  },
+  "decisive_strike": {
+   "H_exercised": 6,
+   "H_by_kind": {
+    "play": 6
+   },
+   "S_train_by_kind": {
+    "held_sub": 782,
+    "play_sub": 234
+   },
+   "S_train_exercised": 234,
+   "S_test_by_kind": {
+    "held_sub": 274,
+    "play_sub": 76
+   },
+   "S_test_exercised": 76,
+   "flag_lt10": []
+  },
+  "decree_of_focus": {
+   "H_exercised": 2,
+   "H_by_kind": {
+    "play": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 1039,
+    "play_sub": 13
+   },
+   "S_train_exercised": 13,
+   "S_test_by_kind": {
+    "held_sub": 421,
+    "play_sub": 8
+   },
+   "S_test_exercised": 8,
+   "flag_lt10": [
+    "test"
+   ]
+  },
+  "decree_of_strength": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 705,
+    "play_sub": 274
+   },
+   "S_train_exercised": 274,
+   "S_test_by_kind": {
+    "held_sub": 231,
+    "play_sub": 85
+   },
+   "S_test_exercised": 85,
+   "flag_lt10": []
+  },
+  "defy": {
+   "H_exercised": 1,
+   "H_by_kind": {
+    "play": 1
+   },
+   "S_train_by_kind": {
+    "held": 399,
+    "play": 106
+   },
+   "S_train_exercised": 106,
+   "S_test_by_kind": {
+    "held": 145,
+    "play": 36
+   },
+   "S_test_exercised": 36,
+   "flag_lt10": []
+  },
+  "disarming_rake": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 840,
+    "play_sub": 135
+   },
+   "S_train_exercised": 135,
+   "S_test_by_kind": {
+    "held_sub": 305,
+    "play_sub": 36
+   },
+   "S_test_exercised": 36,
+   "flag_lt10": []
+  },
+  "discipline": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "held": 128,
+    "play": 165
+   },
+   "S_train_exercised": 165,
+   "S_test_by_kind": {
+    "play": 70,
+    "held": 52
+   },
+   "S_test_exercised": 70,
+   "flag_lt10": []
+  },
+  "emperor_s_dais": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "trigger": 3,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 1174,
+    "trigger": 90
+   },
+   "S_train_exercised": 90,
+   "S_test_by_kind": {
+    "inplay": 423,
+    "trigger": 35
+   },
+   "S_test_exercised": 35,
+   "flag_lt10": []
+  },
+  "en_garde": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "held": 75,
+    "play": 73
+   },
+   "S_train_exercised": 73,
+   "S_test_by_kind": {
+    "play": 35,
+    "held": 35
+   },
+   "S_test_exercised": 35,
+   "flag_lt10": []
+  },
+  "ferrous_forerunner": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 146,
+    "play": 74,
+    "inplay": 32,
+    "trigger": 4
+   },
+   "S_train_exercised": 78,
+   "S_test_by_kind": {
+    "held": 174,
+    "play": 63,
+    "inplay": 18,
+    "trigger": 2
+   },
+   "S_test_exercised": 65,
+   "flag_lt10": []
+  },
+  "fiora_peerless": {
+   "H_exercised": 14,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 2,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 653,
+    "play_sub": 210
+   },
+   "S_train_exercised": 210,
+   "S_test_by_kind": {
+    "held_sub": 261,
+    "play_sub": 76
+   },
+   "S_test_exercised": 76,
+   "flag_lt10": []
+  },
+  "first_mate": {
+   "H_exercised": 12,
+   "H_by_kind": {
+    "play": 5,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 616,
+    "play": 435,
+    "inplay": 361,
+    "trigger": 143
+   },
+   "S_train_exercised": 578,
+   "S_test_by_kind": {
+    "held": 172,
+    "play": 119,
+    "inplay": 99,
+    "trigger": 31
+   },
+   "S_test_exercised": 150,
+   "flag_lt10": []
+  },
+  "fury_rune": {
+   "H_exercised": 0,
+   "H_by_kind": {},
+   "S_train_by_kind": {},
+   "S_train_exercised": 0,
+   "S_test_by_kind": {},
+   "S_test_exercised": 0,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "grim_apothecary": {
+   "H_exercised": 15,
+   "H_by_kind": {
+    "play": 8,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 211,
+    "play": 228,
+    "held": 260,
+    "trigger": 44
+   },
+   "S_train_exercised": 272,
+   "S_test_by_kind": {
+    "held": 101,
+    "inplay": 72,
+    "play": 92,
+    "trigger": 27
+   },
+   "S_test_exercised": 119,
+   "flag_lt10": []
+  },
+  "inferna": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 8,
+    "trigger": 3,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 270,
+    "play": 254,
+    "inplay": 193
+   },
+   "S_train_exercised": 254,
+   "S_test_by_kind": {
+    "inplay": 94,
+    "play": 100,
+    "held": 95
+   },
+   "S_test_exercised": 100,
+   "flag_lt10": []
+  },
+  "irresistible_faefolk": {
+   "H_exercised": 19,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 7,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 303,
+    "inplay": 228,
+    "play": 248,
+    "trigger": 31
+   },
+   "S_train_exercised": 279,
+   "S_test_by_kind": {
+    "held": 93,
+    "inplay": 84,
+    "play": 84,
+    "trigger": 11
+   },
+   "S_test_exercised": 95,
+   "flag_lt10": []
+  },
+  "kai_sa_survivor": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 511,
+    "play": 292,
+    "inplay": 146,
+    "trigger": 36
+   },
+   "S_train_exercised": 328,
+   "S_test_by_kind": {
+    "held": 309,
+    "play": 163,
+    "inplay": 101,
+    "trigger": 28
+   },
+   "S_test_exercised": 191,
+   "flag_lt10": []
+  },
+  "kinkou_initiate": {
+   "H_exercised": 12,
+   "H_by_kind": {
+    "play": 5,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 452,
+    "inplay": 156,
+    "play": 277,
+    "trigger": 82
+   },
+   "S_train_exercised": 359,
+   "S_test_by_kind": {
+    "inplay": 71,
+    "play": 120,
+    "trigger": 39,
+    "held": 154
+   },
+   "S_test_exercised": 159,
+   "flag_lt10": []
+  },
+  "lonely_poro": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 774,
+    "play_sub": 300,
+    "play": 266,
+    "held": 344,
+    "inplay": 230,
+    "trigger": 66
+   },
+   "S_train_exercised": 632,
+   "S_test_by_kind": {
+    "held_sub": 301,
+    "play_sub": 121,
+    "held": 93,
+    "play": 80,
+    "inplay": 78,
+    "trigger": 21
+   },
+   "S_test_exercised": 222,
+   "flag_lt10": []
+  },
+  "loyal_poro": {
+   "H_exercised": 13,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 1,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 662,
+    "play_sub": 191
+   },
+   "S_train_exercised": 191,
+   "S_test_by_kind": {
+    "held_sub": 323,
+    "play_sub": 73
+   },
+   "S_test_exercised": 73,
+   "flag_lt10": []
+  },
+  "machine_evangel": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 752
+   },
+   "S_train_exercised": 0,
+   "S_test_by_kind": {
+    "held_sub": 304
+   },
+   "S_test_exercised": 0,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "master_yi_tempered": {
+   "H_exercised": 20,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 8,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "play": 477,
+    "inplay": 223,
+    "trigger": 81,
+    "held": 36
+   },
+   "S_train_exercised": 558,
+   "S_test_by_kind": {
+    "inplay": 127,
+    "play": 140,
+    "trigger": 52,
+    "held": 2
+   },
+   "S_test_exercised": 192,
+   "flag_lt10": []
+  },
+  "master_yi_wuju_bladesman": {
+   "H_exercised": 6,
+   "H_by_kind": {
+    "trigger": 1,
+    "static": 3,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 812
+   },
+   "S_train_exercised": 0,
+   "S_test_by_kind": {
+    "inplay": 315
+   },
+   "S_test_exercised": 0,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "moonlight_affliction": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "held_sub": 773,
+    "play_sub": 148
+   },
+   "S_train_exercised": 148,
+   "S_test_by_kind": {
+    "held_sub": 296,
+    "play_sub": 40
+   },
+   "S_test_exercised": 40,
+   "flag_lt10": []
+  },
+  "nidalee_cat_form": {
+   "H_exercised": 21,
+   "H_by_kind": {
+    "play": 8,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 285,
+    "play": 233,
+    "inplay": 221,
+    "trigger": 48
+   },
+   "S_train_exercised": 281,
+   "S_test_by_kind": {
+    "held": 112,
+    "play": 87,
+    "inplay": 65,
+    "trigger": 22
+   },
+   "S_test_exercised": 109,
+   "flag_lt10": []
+  },
+  "not_so_fast": {
+   "H_exercised": 2,
+   "H_by_kind": {
+    "play": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 1024,
+    "play_sub": 17
+   },
+   "S_train_exercised": 17,
+   "S_test_by_kind": {
+    "held_sub": 387,
+    "play_sub": 4
+   },
+   "S_test_exercised": 4,
+   "flag_lt10": [
+    "test"
+   ]
+  },
+  "noxian_demolitionist": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 846,
+    "play_sub": 283
+   },
+   "S_train_exercised": 283,
+   "S_test_by_kind": {
+    "held_sub": 272,
+    "play_sub": 94
+   },
+   "S_test_exercised": 94,
+   "flag_lt10": []
+  },
+  "noxus_hopeful": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 451,
+    "play": 265,
+    "inplay": 202
+   },
+   "S_train_exercised": 265,
+   "S_test_by_kind": {
+    "held": 135,
+    "play": 72,
+    "inplay": 55
+   },
+   "S_test_exercised": 72,
+   "flag_lt10": []
+  },
+  "onslaught": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "play": 203,
+    "held": 237
+   },
+   "S_train_exercised": 203,
+   "S_test_by_kind": {
+    "held": 108,
+    "play": 78
+   },
+   "S_test_exercised": 78,
+   "flag_lt10": []
+  },
+  "pakaa_cub": {
+   "H_exercised": 13,
+   "H_by_kind": {
+    "play": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 183,
+    "play": 146,
+    "inplay": 67
+   },
+   "S_train_exercised": 146,
+   "S_test_by_kind": {
+    "held": 127,
+    "play": 110,
+    "inplay": 46
+   },
+   "S_test_exercised": 110,
+   "flag_lt10": []
+  },
+  "pit_rookie": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 663,
+    "play": 526,
+    "inplay": 473,
+    "trigger": 150
+   },
+   "S_train_exercised": 676,
+   "S_test_by_kind": {
+    "play": 193,
+    "held": 248,
+    "inplay": 172,
+    "trigger": 53
+   },
+   "S_test_exercised": 246,
+   "flag_lt10": []
+  },
+  "primal_strength": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 886,
+    "play_sub": 206
+   },
+   "S_train_exercised": 206,
+   "S_test_by_kind": {
+    "held_sub": 322,
+    "play_sub": 102
+   },
+   "S_test_exercised": 102,
+   "flag_lt10": []
+  },
+  "punch_first": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held": 567,
+    "play": 394
+   },
+   "S_train_exercised": 394,
+   "S_test_by_kind": {
+    "held": 105,
+    "play": 118
+   },
+   "S_test_exercised": 118,
+   "flag_lt10": []
+  },
+  "pyke_dockside_butcher": {
+   "H_exercised": 21,
+   "H_by_kind": {
+    "play": 6,
+    "trigger": 8,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 51,
+    "play": 63,
+    "inplay": 28,
+    "trigger": 15
+   },
+   "S_train_exercised": 78,
+   "S_test_by_kind": {
+    "held": 60,
+    "inplay": 40,
+    "play": 52,
+    "trigger": 7
+   },
+   "S_test_exercised": 59,
+   "flag_lt10": []
+  },
+  "rampage": {
+   "H_exercised": 4,
+   "H_by_kind": {
+    "play": 4
+   },
+   "S_train_by_kind": {
+    "held": 849,
+    "play": 305
+   },
+   "S_train_exercised": 305,
+   "S_test_by_kind": {
+    "held": 444,
+    "play": 132
+   },
+   "S_test_exercised": 132,
+   "flag_lt10": []
+  },
+  "rengar_pridestalker": {
+   "H_exercised": 6,
+   "H_by_kind": {
+    "trigger": 1,
+    "static": 3,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 807,
+    "trigger": 690
+   },
+   "S_train_exercised": 690,
+   "S_test_by_kind": {
+    "inplay": 329,
+    "trigger": 301
+   },
+   "S_test_exercised": 301,
+   "flag_lt10": []
+  },
+  "rengar_trophy_hunter": {
+   "H_exercised": 21,
+   "H_by_kind": {
+    "play": 8,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 439,
+    "play": 483,
+    "held": 358
+   },
+   "S_train_exercised": 483,
+   "S_test_by_kind": {
+    "held": 161,
+    "play": 227,
+    "inplay": 160
+   },
+   "S_test_exercised": 227,
+   "flag_lt10": []
+  },
+  "ruin_runner": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 416,
+    "play": 173,
+    "inplay": 94
+   },
+   "S_train_exercised": 173,
+   "S_test_by_kind": {
+    "held": 328,
+    "play": 118,
+    "inplay": 76
+   },
+   "S_test_exercised": 118,
+   "flag_lt10": []
+  },
+  "sabotage": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "play": 341,
+    "held": 383
+   },
+   "S_train_exercised": 341,
+   "S_test_by_kind": {
+    "play": 172,
+    "held": 204
+   },
+   "S_test_exercised": 172,
+   "flag_lt10": []
+  },
+  "scuttle_crab": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 304,
+    "play": 253,
+    "inplay": 275,
+    "trigger": 180
+   },
+   "S_train_exercised": 433,
+   "S_test_by_kind": {
+    "held": 64,
+    "play": 64,
+    "inplay": 78,
+    "trigger": 46
+   },
+   "S_test_exercised": 110,
+   "flag_lt10": []
+  },
+  "seat_of_power": {
+   "H_exercised": 4,
+   "H_by_kind": {
+    "trigger": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 1605,
+    "trigger": 268
+   },
+   "S_train_exercised": 268,
+   "S_test_by_kind": {
+    "inplay": 643,
+    "trigger": 97
+   },
+   "S_test_exercised": 97,
+   "flag_lt10": []
+  },
+  "star_spring": {
+   "H_exercised": 3,
+   "H_by_kind": {
+    "trigger": 1,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "inplay": 459,
+    "trigger": 51
+   },
+   "S_train_exercised": 51,
+   "S_test_by_kind": {
+    "inplay": 222,
+    "trigger": 26
+   },
+   "S_test_exercised": 26,
+   "flag_lt10": []
+  },
+  "thrill_of_the_hunt": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "held": 92,
+    "play": 76
+   },
+   "S_train_exercised": 76,
+   "S_test_by_kind": {
+    "play": 50,
+    "held": 51
+   },
+   "S_test_exercised": 50,
+   "flag_lt10": []
+  },
+  "zhonya_s_hourglass": {
+   "H_exercised": 13,
+   "H_by_kind": {
+    "play": 6,
+    "trigger": 2,
+    "static": 3,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held": 118,
+    "play": 123,
+    "inplay": 66
+   },
+   "S_train_exercised": 123,
+   "S_test_by_kind": {
+    "held": 75,
+    "play": 82,
+    "inplay": 48
+   },
+   "S_test_exercised": 82,
+   "flag_lt10": []
+  },
+  "hush": {
+   "H_exercised": 1,
+   "H_by_kind": {
+    "play": 1
+   },
+   "S_train_by_kind": {
+    "held_sub": 997
+   },
+   "S_train_exercised": 0,
+   "S_test_by_kind": {
+    "held_sub": 342
+   },
+   "S_test_exercised": 0,
+   "flag_lt10": [
+    "train",
+    "test"
+   ]
+  },
+  "synthetic:punch_first__amount4": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 663,
+    "play_sub": 363
+   },
+   "S_train_exercised": 363,
+   "S_test_by_kind": {
+    "held_sub": 284,
+    "play_sub": 125
+   },
+   "S_test_exercised": 125,
+   "flag_lt10": []
+  },
+  "synthetic:punch_first__energy3": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 802,
+    "play_sub": 237
+   },
+   "S_train_exercised": 237,
+   "S_test_by_kind": {
+    "held_sub": 324,
+    "play_sub": 79
+   },
+   "S_test_exercised": 79,
+   "flag_lt10": []
+  },
+  "synthetic:punch_first__power0": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "play_sub": 340,
+    "held_sub": 677
+   },
+   "S_train_exercised": 340,
+   "S_test_by_kind": {
+    "held_sub": 243,
+    "play_sub": 121
+   },
+   "S_test_exercised": 121,
+   "flag_lt10": []
+  },
+  "synthetic:punch_first__reaction": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "play_sub": 664,
+    "held_sub": 483
+   },
+   "S_train_exercised": 664,
+   "S_test_by_kind": {
+    "held_sub": 215,
+    "play_sub": 223
+   },
+   "S_test_exercised": 223,
+   "flag_lt10": []
+  },
+  "synthetic:discipline__draw2": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "held_sub": 473,
+    "play_sub": 492
+   },
+   "S_train_exercised": 492,
+   "S_test_by_kind": {
+    "held_sub": 183,
+    "play_sub": 159
+   },
+   "S_test_exercised": 159,
+   "flag_lt10": []
+  },
+  "synthetic:discipline__enemy": {
+   "H_exercised": 7,
+   "H_by_kind": {
+    "play": 7
+   },
+   "S_train_by_kind": {
+    "held_sub": 503,
+    "play_sub": 400
+   },
+   "S_train_exercised": 400,
+   "S_test_by_kind": {
+    "play_sub": 166,
+    "held_sub": 189
+   },
+   "S_test_exercised": 166,
+   "flag_lt10": []
+  },
+  "synthetic:lonely_poro__draw2": {
+   "H_exercised": 18,
+   "H_by_kind": {
+    "play": 5,
+    "trigger": 6,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 643,
+    "play_sub": 200
+   },
+   "S_train_exercised": 200,
+   "S_test_by_kind": {
+    "held_sub": 299,
+    "play_sub": 114
+   },
+   "S_test_exercised": 114,
+   "flag_lt10": []
+  },
+  "synthetic:defy__cost2": {
+   "H_exercised": 0,
+   "H_by_kind": {},
+   "S_train_by_kind": {
+    "held_sub": 821,
+    "play_sub": 26
+   },
+   "S_train_exercised": 26,
+   "S_test_by_kind": {
+    "held_sub": 417,
+    "play_sub": 10
+   },
+   "S_test_exercised": 10,
+   "flag_lt10": []
+  },
+  "synthetic:sabotage__unit": {
+   "H_exercised": 5,
+   "H_by_kind": {
+    "play": 5
+   },
+   "S_train_by_kind": {
+    "held_sub": 699,
+    "play_sub": 248
+   },
+   "S_train_exercised": 248,
+   "S_test_by_kind": {
+    "held_sub": 270,
+    "play_sub": 108
+   },
+   "S_test_exercised": 108,
+   "flag_lt10": []
+  },
+  "synthetic:pit_rookie__might3": {
+   "H_exercised": 12,
+   "H_by_kind": {
+    "play": 5,
+    "static": 3,
+    "targeted": 2,
+    "inplay": 2
+   },
+   "S_train_by_kind": {
+    "held_sub": 607,
+    "play_sub": 282
+   },
+   "S_train_exercised": 282,
+   "S_test_by_kind": {
+    "held_sub": 281,
+    "play_sub": 83
+   },
+   "S_test_exercised": 83,
+   "flag_lt10": []
+  }
+ }
+}

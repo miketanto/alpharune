@@ -1,0 +1,197 @@
+{
+ "split": {
+  "n_games": 3940,
+  "split_mismatch": 0,
+  "dup_gid": 0,
+  "dup_seed": 0,
+  "dup_engine_seed": 0
+ },
+ "swap_gids": {
+  "n": 175,
+  "splits": {
+   "test": 175
+  },
+  "groups": {
+   "base_teacher": 175
+  }
+ },
+ "z_vs_winner": {
+  "ok": 481493
+ },
+ "token_shapes": {
+  "b:15": 962986,
+  "c:17": 6417563,
+  "k:12": 281103
+ },
+ "action_fields": {
+  "t": 2240261,
+  "mu": 64000,
+  "src": 515136,
+  "dst": 558166,
+  "ch": 1199427,
+  "v": 95632,
+  "mv": 183231,
+  "dec": 18607,
+  "bf": 12196,
+  "dm": 27533,
+  "ps": 2086,
+  "tg": 15925,
+  "ci": 850
+ },
+ "nc_values_top": [],
+ "teacher": {
+  "searched": 481493,
+  "pi_not_argmax_vis": 0,
+  "unvisited_option_frac": 0.0,
+  "q_informative": 356293,
+  "qbest_is_unvisited_option": 0,
+  "entropy_mean": 0.9975402900838556,
+  "entropy_p10": 0.9972208096740016,
+  "entropy_median": 0.9997752218856173
+ },
+ "intent_type_by_card": {
+  "punch_first": {
+   "0": 15166,
+   "8": 5893
+  },
+  "primal_strength": {
+   "0": 1835,
+   "8": 396
+  },
+  "synthetic:punch_first__amount4": {
+   "0": 604,
+   "8": 211
+  },
+  "synthetic:punch_first__energy3": {
+   "0": 593,
+   "8": 198
+  },
+  "synthetic:punch_first__power0": {
+   "0": 462,
+   "8": 187
+  },
+  "discipline": {
+   "5": 3425,
+   "0": 5551,
+   "8": 2167
+  },
+  "synthetic:discipline__draw2": {
+   "0": 422,
+   "5": 253,
+   "8": 146
+  },
+  "synthetic:discipline__enemy": {
+   "0": 250,
+   "8": 100,
+   "5": 186
+  },
+  "lonely_poro": {
+   "0": 27704
+  },
+  "synthetic:lonely_poro__draw2": {
+   "0": 1749
+  },
+  "defy": {
+   "5": 6050
+  },
+  "synthetic:defy__cost2": {
+   "5": 277
+  },
+  "sabotage": {
+   "0": 18297
+  },
+  "synthetic:sabotage__unit": {
+   "0": 631
+  },
+  "pit_rookie": {
+   "0": 42066
+  },
+  "synthetic:pit_rookie__might3": {
+   "0": 1398
+  },
+  "synthetic:punch_first__reaction": {
+   "0": 318,
+   "8": 118,
+   "5": 242
+  }
+ },
+ "prompt_kind_by_card": {
+  "punch_first": {
+   "main phase action": 15166,
+   "focus": 5893
+  },
+  "primal_strength": {
+   "main phase action": 1835,
+   "focus": 396
+  },
+  "synthetic:punch_first__amount4": {
+   "main phase action": 604,
+   "focus": 211
+  },
+  "synthetic:punch_first__energy3": {
+   "main phase action": 593,
+   "focus": 198
+  },
+  "synthetic:punch_first__power0": {
+   "main phase action": 462,
+   "focus": 187
+  },
+  "discipline": {
+   "priority": 3425,
+   "main phase action": 5551,
+   "focus": 2167
+  },
+  "synthetic:discipline__draw2": {
+   "main phase action": 422,
+   "priority": 253,
+   "focus": 146
+  },
+  "synthetic:discipline__enemy": {
+   "main phase action": 250,
+   "focus": 100,
+   "priority": 186
+  },
+  "lonely_poro": {
+   "main phase action": 27704
+  },
+  "synthetic:lonely_poro__draw2": {
+   "main phase action": 1749
+  },
+  "defy": {
+   "priority": 6050
+  },
+  "synthetic:defy__cost2": {
+   "priority": 277
+  },
+  "sabotage": {
+   "main phase action": 18297
+  },
+  "synthetic:sabotage__unit": {
+   "main phase action": 631
+  },
+  "pit_rookie": {
+   "main phase action": 42066
+  },
+  "synthetic:pit_rookie__might3": {
+   "main phase action": 1398
+  },
+  "synthetic:punch_first__reaction": {
+   "main phase action": 318,
+   "focus": 118,
+   "priority": 242
+  }
+ },
+ "variant_keys_in_base_train_tokens": {
+  "primal_strength": 0,
+  "synthetic:punch_first__amount4": 0,
+  "synthetic:punch_first__energy3": 0,
+  "synthetic:punch_first__power0": 0,
+  "synthetic:discipline__draw2": 0,
+  "synthetic:discipline__enemy": 0,
+  "synthetic:lonely_poro__draw2": 0,
+  "synthetic:defy__cost2": 0,
+  "synthetic:sabotage__unit": 0,
+  "synthetic:pit_rookie__might3": 0,
+  "synthetic:punch_first__reaction": 0
+ }
+}

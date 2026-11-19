@@ -1,0 +1,61 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "reaction"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "any_of",
+        "v": [
+         {
+          "f": "in_combat_with",
+          "v": {
+           "side": "enemy",
+           "type": "unit",
+           "domain": "fury"
+          }
+         },
+         {
+          "f": "chosen_by",
+          "v": {
+           "side": "enemy",
+           "type": "spell",
+           "domain": "fury"
+          }
+         }
+        ]
+       }
+      ]
+     },
+     "amount": {
+      "n": 4
+     },
+     "duration": "turn"
+    }
+   ]
+  }
+ ]
+}

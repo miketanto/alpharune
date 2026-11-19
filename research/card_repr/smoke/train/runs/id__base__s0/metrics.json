@@ -1,0 +1,125 @@
+{
+ "name": "id__base__s0",
+ "cond": "id",
+ "regime": "base",
+ "seed": 0,
+ "steps": 3000,
+ "bs": 256,
+ "lr": 0.001,
+ "tau_q": 0.05,
+ "params_excl_table": 148675,
+ "train_decisions": 105625,
+ "unseen_card_keys": [
+  "alpha_strike",
+  "brittle_steel",
+  "decisive_strike",
+  "decree_of_focus",
+  "decree_of_strength",
+  "disarming_rake",
+  "fiora_peerless",
+  "hush",
+  "loyal_poro",
+  "machine_evangel",
+  "moonlight_affliction",
+  "not_so_fast",
+  "noxian_demolitionist",
+  "primal_strength",
+  "synthetic:punch_first__amount4",
+  "synthetic:punch_first__energy3",
+  "synthetic:punch_first__power0",
+  "synthetic:discipline__draw2",
+  "synthetic:discipline__enemy",
+  "synthetic:lonely_poro__draw2",
+  "synthetic:defy__cost2",
+  "synthetic:sabotage__unit",
+  "synthetic:pit_rookie__might3",
+  "synthetic:punch_first__reaction"
+ ],
+ "final_val": [
+  1.323259711265564,
+  1.3082196712493896,
+  0.7273465991020203
+ ],
+ "val_curve": [
+  [
+   250,
+   1.3237214088439941,
+   1.3160004615783691,
+   0.7046743035316467
+  ],
+  [
+   500,
+   1.3234827518463135,
+   1.3136669397354126,
+   0.6358503699302673
+  ],
+  [
+   750,
+   1.3234405517578125,
+   1.3123160600662231,
+   0.6048088669776917
+  ],
+  [
+   1000,
+   1.3233859539031982,
+   1.310333490371704,
+   0.6346606612205505
+  ],
+  [
+   1250,
+   1.3232656717300415,
+   1.3090519905090332,
+   0.6275454759597778
+  ],
+  [
+   1500,
+   1.323278546333313,
+   1.309016227722168,
+   0.6682661175727844
+  ],
+  [
+   1750,
+   1.3232412338256836,
+   1.3084412813186646,
+   0.7010198831558228
+  ],
+  [
+   2000,
+   1.3232810497283936,
+   1.308499813079834,
+   0.7593105435371399
+  ],
+  [
+   2250,
+   1.3232603073120117,
+   1.3083585500717163,
+   0.7253870964050293
+  ],
+  [
+   2500,
+   1.3232579231262207,
+   1.3082720041275024,
+   0.735241711139679
+  ],
+  [
+   2750,
+   1.3232600688934326,
+   1.3082281351089478,
+   0.7242923378944397
+  ],
+  [
+   3000,
+   1.323259711265564,
+   1.3082196712493896,
+   0.7273465991020203
+  ]
+ ],
+ "best_policy_step": 3000,
+ "best_policy_val": 2.6314793825149536,
+ "best_value_step": 750,
+ "best_value_val": 0.6048088669776917,
+ "n_val": 3000,
+ "train_secs": 880.0625755786896,
+ "total_secs": 968.2211964130402,
+ "threads": 2
+}

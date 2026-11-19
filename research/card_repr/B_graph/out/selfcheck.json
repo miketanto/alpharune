@@ -1,0 +1,92 @@
+{
+ "max_t1_distance": 0.0,
+ "real_pairs": {
+  "punch_first|primal_strength": {
+   "dist": 6.759365565308331,
+   "rank_of_partner": 1,
+   "nearest": [
+    "primal_strength",
+    "rengar_pridestalker",
+    "decisive_strike"
+   ]
+  },
+  "punch_first|decisive_strike": {
+   "dist": 9.539392014169456,
+   "rank_of_partner": 3,
+   "nearest": [
+    "primal_strength",
+    "rengar_pridestalker",
+    "decisive_strike"
+   ]
+  },
+  "discipline|moonlight_affliction": {
+   "dist": 14.763511224099096,
+   "rank_of_partner": 46,
+   "nearest": [
+    "en_garde",
+    "rengar_pridestalker",
+    "seat_of_power"
+   ]
+  },
+  "lonely_poro|loyal_poro": {
+   "dist": 4.58257569495584,
+   "rank_of_partner": 1,
+   "nearest": [
+    "loyal_poro",
+    "seat_of_power",
+    "nidalee_cat_form"
+   ]
+  },
+  "ferrous_forerunner|machine_evangel": {
+   "dist": 8.042948641230778,
+   "rank_of_partner": 1,
+   "nearest": [
+    "machine_evangel",
+    "ruin_runner",
+    "rengar_trophy_hunter"
+   ]
+  },
+  "sabotage|decree_of_strength": {
+   "dist": 6.324555320336759,
+   "rank_of_partner": 1,
+   "nearest": [
+    "decree_of_strength",
+    "charm",
+    "irresistible_faefolk"
+   ]
+  },
+  "defy|hush": {
+   "dist": 10.465865188984138,
+   "rank_of_partner": 3,
+   "nearest": [
+    "charm",
+    "not_so_fast",
+    "hush"
+   ]
+  }
+ },
+ "synthetic_dist": {
+  "punch_first__amount4": 2.8769340703081814,
+  "punch_first__energy3": 3.4641016151377544,
+  "punch_first__power0": 5.196152422706632,
+  "discipline__draw2": 3.0608372229875274,
+  "discipline__enemy": 2.8284271247461903,
+  "lonely_poro__draw2": 3.0608376052113577,
+  "defy__cost2": 3.906239171805792,
+  "sabotage__unit": 2.449489742783178,
+  "pit_rookie__might3": 2.449489742783178,
+  "punch_first__reaction": 5.9467694946700265
+ },
+ "pairwise_card_distance_min_median_max": [
+  2.0,
+  12.84019778081693,
+  20.977078859384903
+ ],
+ "identical_card_vectors": [],
+ "distinct_paths": 1317,
+ "hash_slots_used": 1214,
+ "nonzeros_total": 3570,
+ "problems": [],
+ "n_vectors": 169,
+ "build_seconds": 0.86
+}

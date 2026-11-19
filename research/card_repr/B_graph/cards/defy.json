@@ -1,0 +1,47 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1
+  },
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "reaction"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Counter",
+     "target": {
+      "type": "spell",
+      "side": "any",
+      "zone": "chain",
+      "count": 1,
+      "filters": [
+       {
+        "f": "energy_cost_le",
+        "v": 4
+       },
+       {
+        "f": "power_cost_le",
+        "v": 1
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

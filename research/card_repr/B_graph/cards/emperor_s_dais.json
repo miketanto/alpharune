@@ -1,0 +1,54 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "here"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "here",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     },
+     "token": {
+      "type": "unit",
+      "might": 2,
+      "tag": "sand_soldier"
+     }
+    }
+   ],
+   "cost": {
+    "energy": 1,
+    "optional": true,
+    "other": [
+     {
+      "verb": "Bounce",
+      "target": {
+       "type": "unit",
+       "side": "friendly",
+       "zone": "here",
+       "count": 1
+      }
+     }
+    ]
+   }
+  }
+ ]
+}

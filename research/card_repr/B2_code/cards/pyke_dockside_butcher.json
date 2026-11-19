@@ -1,0 +1,123 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "fury"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0590_pyke_dockside_butcher.cpp:54",
+   "supertype": "src/cards/units/0590_pyke_dockside_butcher.cpp:55",
+   "domains": "src/cards/units/0590_pyke_dockside_butcher.cpp:56",
+   "energy": "src/cards/units/0590_pyke_dockside_butcher.cpp:58",
+   "power": "default 0",
+   "might": "src/cards/units/0590_pyke_dockside_butcher.cpp:59"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "ganking",
+   "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:61"
+  },
+  {
+   "kw": "hidden",
+   "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:62"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "power": 1,
+    "power_domain": "fury",
+    "optional": true,
+    "additional": true,
+    "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:17-20"
+   },
+   "effects": [],
+   "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:17-20"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:21",
+    "condition": [
+     {
+      "c": "paid_additional_cost",
+      "v": true,
+      "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:26-32"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:39"
+     },
+     "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:39"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:40"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:40"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:40"
+    }
+   ],
+   "_src": "src/cards/units/0590_pyke_dockside_butcher.cpp:21"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-028-219",
+  "class_file": "src/cards/units/0590_pyke_dockside_butcher.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

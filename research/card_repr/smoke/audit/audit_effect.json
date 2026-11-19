@@ -1,0 +1,37 @@
+{
+ "cost_or_timing_pairs": {
+  "B": 0.03751149070468015,
+  "B2": 0.04429286744319548,
+  "A": 0.07215626193187866,
+  "stats": 0.702178044061504,
+  "random": 0.4313070510330169,
+  "id": 0.5384490661433425,
+  "shuffled-B": 0.7912339369839251,
+  "copy_base(B model)": 0.0060721701301505475,
+  "pairs": [
+   "primal_strength",
+   "synthetic:punch_first__energy3",
+   "synthetic:punch_first__power0",
+   "synthetic:punch_first__reaction"
+  ]
+ },
+ "other_7_pairs": {
+  "B": 0.10736932229390812,
+  "B2": 0.11224486242514212,
+  "A": 0.10613048687020045,
+  "stats": 0.0912323426491545,
+  "random": 0.8840250412743643,
+  "id": 0.9532735315994592,
+  "shuffled-B": 1.5594353292089569,
+  "copy_base(B model)": 0.07486689801871291,
+  "pairs": [
+   "synthetic:punch_first__amount4",
+   "synthetic:discipline__draw2",
+   "synthetic:discipline__enemy",
+   "synthetic:lonely_poro__draw2",
+   "synthetic:defy__cost2",
+   "synthetic:sabotage__unit",
+   "synthetic:pit_rookie__might3"
+  ]
+ }
+}

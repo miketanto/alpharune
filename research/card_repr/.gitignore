@@ -1,0 +1,21 @@
+# Generated data: regenerate from the scripts (seeds and job lists are committed)
+**/raw/
+**/raw_*/
+**/packed/
+**/out/*.decisions.jsonl.gz
+**/out/*.games.jsonl
+**/jobs/verify*.txt
+**/logs/
+smoke/data/swap/swap_tests.jsonl
+smoke/pairs/raw_*/
+C_engine/out/raw*.json
+C_engine/out/vectors.json
+selfplay/runs/*/ckpt_*.pt
+selfplay/runs/fake_*/
+selfplay/runs/real_rss_256/
+selfplay/runs/*.out
+smoke/train/runs_superseded/
+smoke/train/runs/*/*.pt
+before_errata/**/vectors*.json
+__pycache__/
+*.pyc

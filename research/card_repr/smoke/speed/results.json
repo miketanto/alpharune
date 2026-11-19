@@ -1,0 +1,803 @@
+{
+ "machine": {
+  "cpu": "AMD Ryzen 7 5800X, 8 cores / 16 threads; WSL cpus 2k,2k+1 are SMT siblings, so cpus 8-15 = physical cores 4-7",
+  "ram_gb": 16,
+  "gpu": "RTX 3060 12 GB"
+ },
+ "contention": {
+  "other_job": "8 game processes pinned to WSL cpus 0-7 at ~100% for the whole session (autopay_match)",
+  "load_by_phase": {
+   "sims_sweep+autopay+random": {
+    "samples": 80,
+    "loadavg1_mean": 10.19,
+    "cpu0_7_busy_pct_mean": 100.0,
+    "cpu8_15_busy_pct_mean": 42.1
+   },
+   "scaling_P1": {
+    "samples": 27,
+    "loadavg1_mean": 9.47,
+    "cpu0_7_busy_pct_mean": 100.0,
+    "cpu8_15_busy_pct_mean": 12.6
+   },
+   "scaling_P2": {
+    "samples": 29,
+    "loadavg1_mean": 9.81,
+    "cpu0_7_busy_pct_mean": 100.0,
+    "cpu8_15_busy_pct_mean": 25.5
+   },
+   "scaling_P4": {
+    "samples": 31,
+    "loadavg1_mean": 11.24,
+    "cpu0_7_busy_pct_mean": 100.0,
+    "cpu8_15_busy_pct_mean": 46.3
+   },
+   "scaling_P8": {
+    "samples": 41,
+    "loadavg1_mean": 14.47,
+    "cpu0_7_busy_pct_mean": 99.6,
+    "cpu8_15_busy_pct_mean": 86.9
+   }
+  },
+  "note": "WSL vCPUs are not pinned to host CPUs; Hyper-V schedules them. With the other job, all 16 hardware threads were busy during P=8 and partly during the sweep. Windows available RAM was 0.8-1.8 GB throughout."
+ },
+ "generation": {
+  "random_player": {
+   "games_per_s_per_process": {
+    "median": 80.737,
+    "min": 73.761,
+    "max": 81.581,
+    "n": 3
+   },
+   "games_per_hour_per_process": {
+    "median": 290652.24,
+    "min": 265538.12,
+    "max": 293690.02,
+    "n": 3
+   },
+   "decisions_per_game": 259.9,
+   "multi_option_per_game": 158.9,
+   "export_share_of_game_time": 0.7444,
+   "note": "includes writing the decision export (observation encoding = ~3/4 of the time)"
+  },
+  "teacher_by_sims_one_process_per_physical_core": {
+   "25": {
+    "games_per_hour_per_process": {
+     "median": 1980.54,
+     "min": 1896.7,
+     "max": 2063.48,
+     "n": 3
+    },
+    "secs_per_game_median": 1.8158,
+    "ms_per_search_median": 11.2,
+    "ms_per_simulation": 0.448,
+    "decisions_per_game": 265.0,
+    "multi_option_decisions_per_game": 160.0,
+    "searches_per_game": 160.0,
+    "games_per_repeat": 16
+   },
+   "50": {
+    "games_per_hour_per_process": {
+     "median": 975.23,
+     "min": 971.92,
+     "max": 1028.41,
+     "n": 3
+    },
+    "secs_per_game_median": 3.6896,
+    "ms_per_search_median": 24.5,
+    "ms_per_simulation": 0.49,
+    "decisions_per_game": 249.6,
+    "multi_option_decisions_per_game": 149.2,
+    "searches_per_game": 149.2,
+    "games_per_repeat": 16
+   },
+   "100": {
+    "games_per_hour_per_process": {
+     "median": 412.54,
+     "min": 380.72,
+     "max": 539.68,
+     "n": 3
+    },
+    "secs_per_game_median": 8.7227,
+    "ms_per_search_median": 52.6,
+    "ms_per_simulation": 0.526,
+    "decisions_per_game": 283.9,
+    "multi_option_decisions_per_game": 168.5,
+    "searches_per_game": 168.5,
+    "games_per_repeat": 8
+   },
+   "200": {
+    "games_per_hour_per_process": {
+     "median": 209.69,
+     "min": 206.31,
+     "max": 228.45,
+     "n": 3
+    },
+    "secs_per_game_median": 17.1648,
+    "ms_per_search_median": 118.8,
+    "ms_per_simulation": 0.594,
+    "decisions_per_game": 239.5,
+    "multi_option_decisions_per_game": 141.0,
+    "searches_per_game": 141.0,
+    "games_per_repeat": 6
+   },
+   "400": {
+    "games_per_hour_per_process": {
+     "median": 92.18,
+     "min": 85.24,
+     "max": 101.9,
+     "n": 3
+    },
+    "secs_per_game_median": 39.05,
+    "ms_per_search_median": 270.1,
+    "ms_per_simulation": 0.675,
+    "decisions_per_game": 253.2,
+    "multi_option_decisions_per_game": 144.5,
+    "searches_per_game": 144.5,
+    "games_per_repeat": 4
+   }
+  },
+  "scaling_sims100": {
+   "1": {
+    "aggregate_games_per_hour_sum_of_process_rates": {
+     "median": 486.3,
+     "min": 446.0,
+     "max": 516.0,
+     "n": 3
+    },
+    "aggregate_games_per_hour_block_span": {
+     "median": 486.3,
+     "min": 446.0,
+     "max": 516.0,
+     "n": 3
+    },
+    "ms_per_search": {
+     "median": 49.0,
+     "min": 48.4,
+     "max": 50.0,
+     "n": 3
+    }
+   },
+   "2": {
+    "aggregate_games_per_hour_sum_of_process_rates": {
+     "median": 950.8,
+     "min": 929.6,
+     "max": 966.7,
+     "n": 3
+    },
+    "aggregate_games_per_hour_block_span": {
+     "median": 905.2,
+     "min": 891.8,
+     "max": 912.8,
+     "n": 3
+    },
+    "ms_per_search": {
+     "median": 50.0,
+     "min": 49.1,
+     "max": 51.1,
+     "n": 3
+    }
+   },
+   "4": {
+    "aggregate_games_per_hour_sum_of_process_rates": {
+     "median": 1816.9,
+     "min": 1734.8,
+     "max": 1953.9,
+     "n": 3
+    },
+    "aggregate_games_per_hour_block_span": {
+     "median": 1642.0,
+     "min": 1483.1,
+     "max": 1825.9,
+     "n": 3
+    },
+    "ms_per_search": {
+     "median": 52.8,
+     "min": 52.5,
+     "max": 52.9,
+     "n": 3
+    }
+   },
+   "8": {
+    "aggregate_games_per_hour_sum_of_process_rates": {
+     "median": 2911.7,
+     "min": 2779.7,
+     "max": 3101.2,
+     "n": 3
+    },
+    "aggregate_games_per_hour_block_span": {
+     "median": 2493.2,
+     "min": 2413.1,
+     "max": 2627.1,
+     "n": 3
+    },
+    "ms_per_search": {
+     "median": 65.5,
+     "min": 61.9,
+     "max": 66.7,
+     "n": 3
+    }
+   }
+  },
+  "scaling_note": "P=1,2,4: one process per physical core (WSL cpus 8 / 8,10 / 8,10,12,14). P=8: cpus 8-15 = the same 4 physical cores with both SMT threads busy. ms_per_search is the cleanest per-process speed (games differ in length).",
+  "smt_gain_P8_vs_P4": 1.612,
+  "export_overhead_teacher_sims100": 0.0013,
+  "decision_export_bytes_per_game_sims100_uncompressed": 221822,
+  "autopay_sims100": {
+   "measured": {
+    "games_per_hour_per_process_search_all": {
+     "median": 412.54,
+     "min": 380.72,
+     "max": 539.68,
+     "n": 3
+    },
+    "games_per_hour_per_process_autopay": {
+     "median": 947.73,
+     "min": 715.83,
+     "max": 1011.55,
+     "n": 3
+    },
+    "speedup_games_per_hour": 2.3,
+    "secs_per_game": [
+     8.7227,
+     3.7962
+    ],
+    "searches_per_game": [
+     168.5,
+     77.5
+    ],
+    "turns_per_game": [
+     13.5,
+     12.2
+    ],
+    "ms_per_search": [
+     52.6,
+     48.2
+    ],
+    "note": "same 24 seeds (3 x 8), one process on cpu 14; auto-pay answers rune prompts with legal[0] (the engine order, act0 of autopay_check.py) without calling the agent; games then diverge, and these were ~10% shorter."
+   },
+   "derived_from_per_decision_timings": {
+    "rune_share_of_multi_option_decisions": 0.4218,
+    "rune_share_of_search_time": 0.446,
+    "rune_share_of_game_time": 0.4445,
+    "speedup_if_game_unchanged": 1.8
+   }
+  },
+  "crosscheck_existing_smoke_data": {
+   "teacher_sims100_games": 3200,
+   "secs_per_game_median": 7.063,
+   "secs_per_game_mean": 7.1862,
+   "multi_option_per_game_mean": 150.4666,
+   "ms_per_search_implied": 47.8,
+   "total_cpu_seconds": 22995.8,
+   "random_secs_per_game_median": 0.0105,
+   "this_run_ms_per_search_P1_P4_P8": [
+    49.0,
+    52.8,
+    65.5
+   ],
+   "note": "existing data was played with run_play.sh (default P=10 processes, no pinning); its per-search time sits between this run's single-process and fully loaded numbers."
+  }
+ },
+ "training": {
+  "data_subset": {
+   "decisions": 49146,
+   "source": "16 base_teacher shard files (smoke/data/out), packed by prep.parse_file",
+   "tokens_per_decision_mean": 15.98,
+   "actions_per_decision_mean": 4.64
+  },
+  "prep_decisions_per_s": {
+   "one_process": 5508.2,
+   "pool_4": 16852.9
+  },
+  "cpu": {
+   "torch_2.7.1_linux_wsl": {
+    "d64_t1_bs64": {
+     "steps_per_s_median": 24.637,
+     "steps_per_s_min": 24.621,
+     "steps_per_s_max": 24.687,
+     "samples_per_s_median": 1576.8,
+     "data_frac_median": 0.023,
+     "data_s_per_step_median": 0.0009,
+     "compute_s_per_step_median": 0.0397
+    },
+    "d64_t1_bs256": {
+     "steps_per_s_median": 6.578,
+     "steps_per_s_min": 6.415,
+     "steps_per_s_max": 6.598,
+     "samples_per_s_median": 1684.0,
+     "data_frac_median": 0.014,
+     "data_s_per_step_median": 0.0021,
+     "compute_s_per_step_median": 0.1499
+    },
+    "d64_t1_bs1024": {
+     "steps_per_s_median": 1.318,
+     "steps_per_s_min": 1.26,
+     "steps_per_s_max": 1.326,
+     "samples_per_s_median": 1349.1,
+     "data_frac_median": 0.009,
+     "data_s_per_step_median": 0.007,
+     "compute_s_per_step_median": 0.7523
+    },
+    "d64_t2_bs64": {
+     "steps_per_s_median": 29.277,
+     "steps_per_s_min": 28.628,
+     "steps_per_s_max": 29.36,
+     "samples_per_s_median": 1873.7,
+     "data_frac_median": 0.026,
+     "data_s_per_step_median": 0.0009,
+     "compute_s_per_step_median": 0.0333
+    },
+    "d64_t2_bs256": {
+     "steps_per_s_median": 8.649,
+     "steps_per_s_min": 8.592,
+     "steps_per_s_max": 8.71,
+     "samples_per_s_median": 2214.1,
+     "data_frac_median": 0.014,
+     "data_s_per_step_median": 0.0016,
+     "compute_s_per_step_median": 0.114
+    },
+    "d64_t2_bs1024": {
+     "steps_per_s_median": 1.749,
+     "steps_per_s_min": 1.738,
+     "steps_per_s_max": 1.766,
+     "samples_per_s_median": 1791.1,
+     "data_frac_median": 0.009,
+     "data_s_per_step_median": 0.0049,
+     "compute_s_per_step_median": 0.5666
+    },
+    "d64_t4_bs64": {
+     "steps_per_s_median": 38.605,
+     "steps_per_s_min": 37.995,
+     "steps_per_s_max": 38.671,
+     "samples_per_s_median": 2470.7,
+     "data_frac_median": 0.027,
+     "data_s_per_step_median": 0.0007,
+     "compute_s_per_step_median": 0.0252
+    },
+    "d64_t4_bs256": {
+     "steps_per_s_median": 11.448,
+     "steps_per_s_min": 11.342,
+     "steps_per_s_max": 11.526,
+     "samples_per_s_median": 2930.6,
+     "data_frac_median": 0.014,
+     "data_s_per_step_median": 0.0012,
+     "compute_s_per_step_median": 0.0861
+    },
+    "d64_t4_bs1024": {
+     "steps_per_s_median": 2.267,
+     "steps_per_s_min": 2.192,
+     "steps_per_s_max": 2.327,
+     "samples_per_s_median": 2321.0,
+     "data_frac_median": 0.008,
+     "data_s_per_step_median": 0.0036,
+     "compute_s_per_step_median": 0.4376
+    },
+    "d64_t8_bs64": {
+     "steps_per_s_median": 41.937,
+     "steps_per_s_min": 41.91,
+     "steps_per_s_max": 42.124,
+     "samples_per_s_median": 2683.9,
+     "data_frac_median": 0.031,
+     "data_s_per_step_median": 0.0007,
+     "compute_s_per_step_median": 0.0231
+    },
+    "d64_t8_bs256": {
+     "steps_per_s_median": 14.066,
+     "steps_per_s_min": 13.953,
+     "steps_per_s_max": 14.085,
+     "samples_per_s_median": 3601.0,
+     "data_frac_median": 0.018,
+     "data_s_per_step_median": 0.0013,
+     "compute_s_per_step_median": 0.0699
+    },
+    "d64_t8_bs1024": {
+     "steps_per_s_median": 2.783,
+     "steps_per_s_min": 2.731,
+     "steps_per_s_max": 2.896,
+     "samples_per_s_median": 2849.4,
+     "data_frac_median": 0.009,
+     "data_s_per_step_median": 0.0033,
+     "compute_s_per_step_median": 0.3557
+    },
+    "d128_t1_bs64": {
+     "steps_per_s_median": 14.618,
+     "steps_per_s_min": 14.43,
+     "steps_per_s_max": 14.782,
+     "samples_per_s_median": 935.6,
+     "data_frac_median": 0.012,
+     "data_s_per_step_median": 0.0008,
+     "compute_s_per_step_median": 0.0676
+    },
+    "d128_t1_bs256": {
+     "steps_per_s_median": 3.075,
+     "steps_per_s_min": 2.866,
+     "steps_per_s_max": 3.126,
+     "samples_per_s_median": 787.2,
+     "data_frac_median": 0.006,
+     "data_s_per_step_median": 0.0018,
+     "compute_s_per_step_median": 0.3235
+    },
+    "d128_t2_bs64": {
+     "steps_per_s_median": 19.399,
+     "steps_per_s_min": 19.213,
+     "steps_per_s_max": 19.795,
+     "samples_per_s_median": 1241.5,
+     "data_frac_median": 0.015,
+     "data_s_per_step_median": 0.0008,
+     "compute_s_per_step_median": 0.0508
+    },
+    "d128_t2_bs256": {
+     "steps_per_s_median": 4.5,
+     "steps_per_s_min": 4.474,
+     "steps_per_s_max": 4.651,
+     "samples_per_s_median": 1151.9,
+     "data_frac_median": 0.007,
+     "data_s_per_step_median": 0.0015,
+     "compute_s_per_step_median": 0.2208
+    },
+    "d128_t4_bs64": {
+     "steps_per_s_median": 21.681,
+     "steps_per_s_min": 21.495,
+     "steps_per_s_max": 21.751,
+     "samples_per_s_median": 1387.6,
+     "data_frac_median": 0.017,
+     "data_s_per_step_median": 0.0008,
+     "compute_s_per_step_median": 0.0454
+    },
+    "d128_t4_bs256": {
+     "steps_per_s_median": 5.252,
+     "steps_per_s_min": 5.168,
+     "steps_per_s_max": 5.379,
+     "samples_per_s_median": 1344.4,
+     "data_frac_median": 0.007,
+     "data_s_per_step_median": 0.0014,
+     "compute_s_per_step_median": 0.189
+    },
+    "d128_t8_bs64": {
+     "steps_per_s_median": 25.124,
+     "steps_per_s_min": 24.439,
+     "steps_per_s_max": 25.639,
+     "samples_per_s_median": 1607.9,
+     "data_frac_median": 0.02,
+     "data_s_per_step_median": 0.0008,
+     "compute_s_per_step_median": 0.039
+    },
+    "d128_t8_bs256": {
+     "steps_per_s_median": 5.978,
+     "steps_per_s_min": 4.999,
+     "steps_per_s_max": 6.336,
+     "samples_per_s_median": 1530.4,
+     "data_frac_median": 0.009,
+     "data_s_per_step_median": 0.0015,
+     "compute_s_per_step_median": 0.1659
+    }
+   },
+   "torch_2.0.0_windows": {
+    "d64_t2_bs256": {
+     "steps_per_s_median": 4.466,
+     "steps_per_s_min": 4.433,
+     "steps_per_s_max": 4.497,
+     "samples_per_s_median": 1143.2,
+     "data_frac_median": 0.009
+    },
+    "d64_t8_bs256": {
+     "steps_per_s_median": 6.435,
+     "steps_per_s_min": 6.337,
+     "steps_per_s_max": 6.741,
+     "samples_per_s_median": 1647.4,
+     "data_frac_median": 0.013
+    }
+   },
+   "infer_d64": {
+    "t1_b1": {
+     "positions_per_s": 521.7,
+     "ms_per_call": 1.917
+    },
+    "t1_b32": {
+     "positions_per_s": 4847.1,
+     "ms_per_call": 6.602
+    },
+    "t1_b256": {
+     "positions_per_s": 4857.6,
+     "ms_per_call": 52.701
+    },
+    "t2_b1": {
+     "positions_per_s": 517.4,
+     "ms_per_call": 1.933
+    },
+    "t2_b32": {
+     "positions_per_s": 6164.4,
+     "ms_per_call": 5.191
+    },
+    "t2_b256": {
+     "positions_per_s": 9012.5,
+     "ms_per_call": 28.405
+    },
+    "t4_b1": {
+     "positions_per_s": 645.1,
+     "ms_per_call": 1.55
+    },
+    "t4_b32": {
+     "positions_per_s": 8764.8,
+     "ms_per_call": 3.651
+    },
+    "t4_b256": {
+     "positions_per_s": 10860.5,
+     "ms_per_call": 23.572
+    },
+    "t8_b1": {
+     "positions_per_s": 581.8,
+     "ms_per_call": 1.719
+    },
+    "t8_b32": {
+     "positions_per_s": 9150.6,
+     "ms_per_call": 3.497
+    },
+    "t8_b256": {
+     "positions_per_s": 13172.0,
+     "ms_per_call": 19.435
+    }
+   },
+   "not_measured": "d=128 at bs 1024 (killed twice by the memory guard when Windows available RAM fell below 900 MB)"
+  },
+  "gpu": {
+   "device": "NVIDIA GeForce RTX 3060",
+   "torch": "2.7.1+cu126 (WSL python3, already installed)",
+   "train": {
+    "d64_bs64": {
+     "steps_per_s_median": 63.168,
+     "steps_per_s_min": 62.176,
+     "steps_per_s_max": 63.865,
+     "samples_per_s_median": 4042.8,
+     "data_s_per_step_median": 0.0008,
+     "h2d_s_per_step_median": 0.0011,
+     "compute_s_per_step_median": 0.0139,
+     "data_frac_median": 0.052,
+     "resident_samples_per_s_median": 4960.6
+    },
+    "d64_bs256": {
+     "steps_per_s_median": 52.512,
+     "steps_per_s_min": 51.088,
+     "steps_per_s_max": 52.65,
+     "samples_per_s_median": 13443.1,
+     "data_s_per_step_median": 0.0013,
+     "h2d_s_per_step_median": 0.0013,
+     "compute_s_per_step_median": 0.0165,
+     "data_frac_median": 0.068,
+     "resident_samples_per_s_median": 16773.8
+    },
+    "d64_bs1024": {
+     "steps_per_s_median": 23.671,
+     "steps_per_s_min": 23.611,
+     "steps_per_s_max": 23.675,
+     "samples_per_s_median": 24239.5,
+     "data_s_per_step_median": 0.0033,
+     "h2d_s_per_step_median": 0.0024,
+     "compute_s_per_step_median": 0.0366,
+     "data_frac_median": 0.078,
+     "resident_samples_per_s_median": 29114.9
+    },
+    "d64_bs4096": {
+     "steps_per_s_median": 5.961,
+     "steps_per_s_min": 5.947,
+     "steps_per_s_max": 5.992,
+     "samples_per_s_median": 24417.8,
+     "data_s_per_step_median": 0.0154,
+     "h2d_s_per_step_median": 0.0076,
+     "compute_s_per_step_median": 0.1447,
+     "data_frac_median": 0.092,
+     "resident_samples_per_s_median": 28835.0
+    },
+    "d128_bs64": {
+     "steps_per_s_median": 61.129,
+     "steps_per_s_min": 60.608,
+     "steps_per_s_max": 61.171,
+     "samples_per_s_median": 3912.3,
+     "data_s_per_step_median": 0.0009,
+     "h2d_s_per_step_median": 0.0011,
+     "compute_s_per_step_median": 0.0144,
+     "data_frac_median": 0.055,
+     "resident_samples_per_s_median": 4706.4
+    },
+    "d128_bs256": {
+     "steps_per_s_median": 45.637,
+     "steps_per_s_min": 44.658,
+     "steps_per_s_max": 45.769,
+     "samples_per_s_median": 11683.1,
+     "data_s_per_step_median": 0.0018,
+     "h2d_s_per_step_median": 0.0012,
+     "compute_s_per_step_median": 0.0189,
+     "data_frac_median": 0.081,
+     "resident_samples_per_s_median": 14290.2
+    },
+    "d128_bs1024": {
+     "steps_per_s_median": 17.77,
+     "steps_per_s_min": 17.611,
+     "steps_per_s_max": 17.843,
+     "samples_per_s_median": 18196.1,
+     "data_s_per_step_median": 0.0032,
+     "h2d_s_per_step_median": 0.0024,
+     "compute_s_per_step_median": 0.0505,
+     "data_frac_median": 0.056,
+     "resident_samples_per_s_median": 20397.9
+    },
+    "d128_bs4096": {
+     "steps_per_s_median": 4.339,
+     "steps_per_s_min": 4.322,
+     "steps_per_s_max": 4.355,
+     "samples_per_s_median": 17773.6,
+     "data_s_per_step_median": 0.0153,
+     "h2d_s_per_step_median": 0.0076,
+     "compute_s_per_step_median": 0.2072,
+     "data_frac_median": 0.066,
+     "resident_samples_per_s_median": 20067.4
+    }
+   },
+   "infer": {
+    "d64_b1": {
+     "positions_per_s": 162.5,
+     "ms_per_call": 6.152
+    },
+    "d64_b32": {
+     "positions_per_s": 4874.1,
+     "ms_per_call": 6.565
+    },
+    "d64_b256": {
+     "positions_per_s": 37207.8,
+     "ms_per_call": 6.88
+    },
+    "d128_b1": {
+     "positions_per_s": 158.6,
+     "ms_per_call": 6.303
+    },
+    "d128_b32": {
+     "positions_per_s": 4944.9,
+     "ms_per_call": 6.471
+    },
+    "d128_b256": {
+     "positions_per_s": 35612.9,
+     "ms_per_call": 7.188
+    }
+   },
+   "feeding": "CPU-side Data.batch + host->device copy are 5-9% of a step at every batch size; with batches already on the GPU (resident) samples/s rises 15-25%. Feeding is not the bottleneck; at bs<=256 the step is kernel-launch bound.",
+   "train_py_change_needed": "train.py does not run on cuda unchanged: Net.forward builds torch.zeros(len(g), 1) on the CPU. The benchmark runs the model under torch.device(\"cuda\") as the default device; a real run needs device=g.device on that line plus .to(device) for model and batches."
+  },
+  "existing_runs": {
+   "n_runs": 45,
+   "train_secs": {
+    "n": 45,
+    "median": 872.6,
+    "mean": 872.2578,
+    "p10": 853.5,
+    "p90": 885.1
+   },
+   "secs_per_step_incl_eval": {
+    "n": 45,
+    "median": 0.2909,
+    "mean": 0.2908,
+    "p10": 0.2845,
+    "p90": 0.295
+   },
+   "best_policy_step": {
+    "n": 45,
+    "median": 2750,
+    "mean": 2544.4444,
+    "p10": 1750,
+    "p90": 3000
+   },
+   "best_value_step": {
+    "n": 45,
+    "median": 750,
+    "mean": 911.1111,
+    "p10": 250,
+    "p90": 1500
+   },
+   "wall_to_best_policy_s": {
+    "n": 45,
+    "median": 783.0,
+    "mean": 739.9044,
+    "p10": 512.5,
+    "p90": 872.6
+   },
+   "wall_to_best_value_s": {
+    "n": 45,
+    "median": 220.0,
+    "mean": 264.3467,
+    "p10": 72.9,
+    "p90": 436.4
+   },
+   "policy_val_drop_last1000": {
+    "n": 45,
+    "median": 0.0003,
+    "mean": 0.0004,
+    "p10": 0.0001,
+    "p90": 0.0009
+   },
+   "policy_val_drop_last500": {
+    "n": 45,
+    "median": 0.0001,
+    "mean": 0.0,
+    "p10": -0.0001,
+    "p90": 0.0002
+   },
+   "frac_policy_best_in_last_500_steps": 0.578,
+   "value_overfit_final_minus_best": {
+    "n": 45,
+    "median": 0.1225,
+    "mean": 0.1026,
+    "p10": 0.0095,
+    "p90": 0.2245
+   },
+   "note": "runs used 3 concurrent workers x 2 torch threads on Windows CPU (launch.py), bs 256, 3000 steps, eval every 250 steps on 3000 val decisions"
+  }
+ },
+ "projections_hours": {
+  "teacher_10k_games_sims100": {
+   "8_procs_on_4_physical_cores_SMT (as measured, P=8)": 3.432,
+   "8_procs_on_8_physical_cores (no SMT sharing; ms/search of P=4)": 2.767,
+   "14_procs (7 physical cores x 2 SMT; P=8 per-process rate)": 1.961,
+   "8_procs_SMT_with_autopay_measured": 1.492,
+   "14_procs_with_autopay_measured": 0.853,
+   "14_procs_with_autopay_derived": 1.09
+  },
+  "imitation_training_1M_decisions (2.3 epochs, bs256, +5% validation)": {
+   "prep_pool4": 0.016,
+   "cpu_wsl_torch2.7_8threads_d64": 0.186,
+   "cpu_windows_torch2.0_8threads_d64": 0.407,
+   "cpu_existing_launch_setup (2 threads, 3 runs in parallel; 0.291 s/step incl eval)": 0.726,
+   "gpu_rtx3060_d64_bs256": 0.05,
+   "gpu_rtx3060_d64_bs1024": 0.028,
+   "cpu_wsl_8threads_d128": 0.438,
+   "gpu_d128_bs256": 0.057
+  },
+  "self_play_iteration_1k_games_heuristic_leaf_ismcts_sims100": {
+   "8_procs_SMT_search_all": {
+    "generate_1k_games_h": 0.343,
+    "train_cpu_h (1 epoch over the newest 1M-decision window)": 0.081,
+    "train_gpu_h (same, bs256)": 0.022,
+    "total_with_gpu_training_h": 0.365,
+    "total_with_cpu_training_h": 0.424
+   },
+   "8_procs_SMT_autopay": {
+    "generate_1k_games_h": 0.149,
+    "train_cpu_h (1 epoch over the newest 1M-decision window)": 0.081,
+    "train_gpu_h (same, bs256)": 0.022,
+    "total_with_gpu_training_h": 0.171,
+    "total_with_cpu_training_h": 0.23
+   },
+   "14_procs_search_all": {
+    "generate_1k_games_h": 0.196,
+    "train_cpu_h (1 epoch over the newest 1M-decision window)": 0.081,
+    "train_gpu_h (same, bs256)": 0.022,
+    "total_with_gpu_training_h": 0.218,
+    "total_with_cpu_training_h": 0.277
+   },
+   "14_procs_autopay": {
+    "generate_1k_games_h": 0.085,
+    "train_cpu_h (1 epoch over the newest 1M-decision window)": 0.081,
+    "train_gpu_h (same, bs256)": 0.022,
+    "total_with_gpu_training_h": 0.107,
+    "total_with_cpu_training_h": 0.166
+   }
+  },
+  "self_play_iteration_note": "1k games = 150467 searched decisions. Search as today (heuristic leaf, no network in the loop). Training: one pass over a 1M-decision replay window at bs 256 (CPU training runs on the cores that would otherwise play games).",
+  "network_guided_search_cost_per_game_sims100": {
+   "nn_evals_per_game": 15047,
+   "cpu_1thread_batch1_secs": 28.8,
+   "gpu_batch1_secs": 92.6,
+   "gpu_batched256_secs_of_gpu_time": 0.4,
+   "engine_search_secs_today_P8": 9.9,
+   "note": "one evaluation per simulation. Unbatched, the network adds 2-6 ms per simulation on top of ~0.5-0.65 ms of engine work, i.e. 4-12x slower games; GPU only helps if leaves from ~256 concurrent searches are batched. IsMctsSearch has no network evaluator or batching today, and the engine repo has no torch dependency."
+  }
+ },
+ "assumptions": [
+  "Searches per teacher game = 150.5 (mean n_multi of the 3,200 existing sims=100 games; every multi-option decision is searched).",
+  "Generation time = searches x ms/search / 0.997 (search is 99.7% of a teacher game) / processes; linear in games.",
+  "\"8 cores\" = 8 processes on 4 physical cores with SMT (measured P=8: 65.5 ms/search). The \"8 physical cores\" row uses the P=4 rate (52.8 ms/search), which needs the other 8 hardware threads idle.",
+  "\"14 cores\" = 14 processes at the P=8 per-process rate (all hardware threads busy, as during these measurements, when the other job filled cpus 0-7); assumes no memory-bandwidth limit beyond what P=8 already saw (each process is ~20 MB RSS).",
+  "Auto-pay speed-up: measured 2.3x on 24 games (includes shorter games); derived 1.8x from rune share of time if games kept their length.",
+  "Training: 2.3 epochs (as the existing runs) at the measured samples/s of the 49146-decision base_teacher subset (mean 15.98 tokens); +5% for validation. Variant games may have longer decisions.",
+  "Training memory: a 1M-decision packed set is ~1.1 GB in RAM (packed/teacher.pt is 0.52 GB for ~0.48M decisions); with ~1.5 GB available during these runs that does not fit next to the current jobs.",
+  "GPU numbers from WSL python3 torch 2.7.1+cu126 (installed); train.py needs a small device fix to run there."
+ ]
+}

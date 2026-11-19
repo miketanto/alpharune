@@ -1,0 +1,733 @@
+{
+ "disagreements": [
+  {
+   "key": "zhonya_s_hourglass",
+   "kind": "mechanics",
+   "severity": "major",
+   "text": "The next time a friendly unit would die, kill this instead. Recall that unit exhausted.",
+   "engine": "applyReplacement: killObject(self) then healExhaustRecall(unit) -> heals, exhausts and recalls; replacementAppliesTo has no 'next time' clause (once only because the gear dies)",
+   "engine_cite": [
+    "src/cards/gear/0077_zhonya_s_hourglass.cpp:17-41",
+    "src/engine/effect_executor.cpp:1467-1472"
+   ],
+   "path_B": "follows the text: no Heal, trigger.once=next_time",
+   "B2": "Kill self, Heal subject, Recall subject exhausted; no once"
+  },
+  {
+   "key": "rengar_trophy_hunter",
+   "kind": "mechanics",
+   "severity": "major",
+   "text": "I can be played to a battlefield where there are enemy units (even if you don't have units there).",
+   "engine": "only ambushToEnemyBattlefields(): widens the [Ambush] location; the default (non-Ambush) play locations are unchanged (extraPlayLocations not overridden)",
+   "engine_cite": [
+    "src/cards/units/0682_rengar_trophy_hunter.cpp:18-23",
+    "src/engine/play_permissions.cpp:17-38"
+   ],
+   "path_B": "static AllowPlayTo self where has_enemy_units (any play)",
+   "B2": "Ambush play_mode where any_of[has_friendly_units, has_enemy_units]; no AllowPlayTo"
+  },
+  {
+   "key": "rampage",
+   "kind": "mechanics",
+   "severity": "minor",
+   "text": "They deal damage equal to their Mights to each other.",
+   "engine": "dealDamage(enemy, friendly_might, ctx.source) and dealDamage(friendly, enemy_might, ctx.source): the SPELL is the damage source, not the units",
+   "engine_cite": [
+    "src/cards/spells/0870_rampage.cpp:74-80"
+   ],
+   "path_B": "source = ref A / ref B (the units)",
+   "B2": "source = self (the spell)"
+  },
+  {
+   "key": "darius_trifarian",
+   "kind": "mechanics",
+   "severity": "minor",
+   "text": "When you play your second card in a turn, ...",
+   "engine": "triggerCondition: a token is not a card (returns false); ordinal of the played card == 2",
+   "engine_cite": [
+    "src/cards/units/0027_darius_trifarian.cpp:30-37"
+   ],
+   "path_B": "condition nth_card_this_turn=2 only",
+   "B2": "nth_card_this_turn=2 and is_token(subject) neg"
+  },
+  {
+   "key": "alpha_strike",
+   "kind": "legality",
+   "severity": "minor",
+   "text": "Choose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields.",
+   "engine": "hasLegalTargets also requires a choosable enemy unit at a battlefield (play gate)",
+   "engine_cite": [
+    "src/cards/spells/0751_alpha_strike.cpp:33-40"
+   ],
+   "path_B": "not represented",
+   "B2": "spell.play_requires = [enemy unit at battlefield] (schema extension)"
+  },
+  {
+   "key": "seat_of_power",
+   "kind": "mechanics",
+   "severity": "none in 1v1",
+   "text": "draw 1 for each other battlefield you or allies control",
+   "engine": "counts battlefields whose controller is the ability's controller (no allies in 1v1)",
+   "engine_cite": [
+    "src/cards/battlefields/0531_seat_of_power.cpp:21-30"
+   ],
+   "path_B": "per other_battlefield_controlled (same)",
+   "B2": "same as B"
+  },
+  {
+   "key": "emperor_s_dais",
+   "kind": "wording / token identity",
+   "severity": "minor",
+   "text": "... you may pay [1] and return a unit you control here to its owner's hand. If you do, play a 2 [M] Sand Soldier unit token here.",
+   "engine": "pay [1] + return a unit is the COST (costDueNow) 'to play' the token; token created with tag 'Shurima' (name 'Sand Soldier')",
+   "engine_cite": [
+    "src/cards/battlefields/0521_emperor_s_dais.cpp:36-54",
+    "src/cards/battlefields/0521_emperor_s_dais.cpp:70"
+   ],
+   "path_B": "optional cost (same structure); token.tag = sand_soldier (the name)",
+   "B2": "same structure; token.tag = shurima (code tag; the token name is dropped)"
+  },
+  {
+   "key": "fiora_peerless",
+   "kind": "interpretation",
+   "severity": "minor",
+   "text": "double my Might this combat",
+   "engine": "adds current_might at resolution as a combat-long bonus (snapshot; a later Might change is not doubled); one on one = exactly 1 attacker and 1 defender at my battlefield",
+   "engine_cite": [
+    "src/cards/units/0432_fiora_peerless.cpp:25-62"
+   ],
+   "path_B": "GiveMight self amount might_of:self mult 1, combat (same)",
+   "B2": "same as B (snapshot not expressible)"
+  },
+  {
+   "key": "thrill_of_the_hunt",
+   "kind": "edge case",
+   "severity": "minor",
+   "text": "Banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.",
+   "engine": "a token is banished and not played back (CR 183.1); 'any battlefield' = those its owner may play units to; with none it stays banished",
+   "engine_cite": [
+    "src/cards/spells/0745_thrill_of_the_hunt.cpp:41-72"
+   ],
+   "path_B": "no token condition",
+   "B2": "PlayIgnoringCost condition is_token(A) neg"
+  },
+  {
+   "key": "defy",
+   "kind": "interpretation",
+   "severity": "minor",
+   "text": "Counter a spell that costs no more than [4] and no more than [A].",
+   "engine": "compares the spell's PRINTED energy_cost/power_cost from the card table (cost modifiers ignored)",
+   "engine_cite": [
+    "src/cards/spells/0045_defy.cpp:27-31"
+   ],
+   "path_B": "energy_cost_le 4, power_cost_le 1 (same)",
+   "B2": "same as B"
+  },
+  {
+   "key": "master_yi_wuju_bladesman",
+   "kind": "interpretation",
+   "severity": "minor",
+   "text": "While a friendly unit defends alone, it gets +2 [M].",
+   "engine": "exactly one friendly unit with the Defender designation anywhere on the board",
+   "engine_cite": [
+    "src/cards/legends/0317_wuju_bladesman_starter.cpp:27-39"
+   ],
+   "path_B": "defends_alone (same)",
+   "B2": "same as B"
+  },
+  {
+   "key": "hush",
+   "kind": "no engine class",
+   "severity": "n/a",
+   "text": "Counter a spell with Power cost [A][A] or more.",
+   "engine": "no class (Radiance set not implemented)",
+   "engine_cite": [],
+   "path_B": "text graph",
+   "B2": "copied from path B, flagged TEXT-DERIVED"
+  },
+  {
+   "key": "back_off",
+   "kind": "cosmetic",
+   "severity": "none",
+   "text": "[Hidden] (Hide now for [A] to react with later for [0].)",
+   "engine": "engine def text drops '[0]' in the reminder (also pakaa_cub, pyke_dockside_butcher); the engine plays from facedown ignoring base cost (GE:5429-5436)",
+   "engine_cite": [
+    "src/cards/spells/0604_back_off.cpp:68"
+   ],
+   "path_B": "n/a",
+   "B2": "n/a"
+  }
+ ],
+ "per_card_auto": {
+  "alpha_strike": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:181",
+   "B2_cite": "research/card_repr/B2_code/cards/alpha_strike.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:spell@action/play_requires/count",
+    "card/kind:spell@action/play_requires/count=1",
+    "card/kind:spell@action/play_requires/side=enemy",
+    "card/kind:spell@action/play_requires/type=unit",
+    "card/kind:spell@action/play_requires/zone=battlefield"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "unl-192-219": true
+   }
+  },
+  "back_off": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:188",
+   "B2_cite": "research/card_repr/B2_code/cards/back_off.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-042-219": true
+   }
+  },
+  "body_rune": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:195",
+   "B2_cite": "research/card_repr/B2_code/cards/body_rune.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-126-298": true
+   }
+  },
+  "brittle_steel": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:198",
+   "B2_cite": "research/card_repr/B2_code/cards/brittle_steel.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ven-003-166": true
+   }
+  },
+  "calm_rune": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:195",
+   "B2_cite": "research/card_repr/B2_code/cards/calm_rune.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-042-298": true
+   }
+  },
+  "charm": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:203",
+   "B2_cite": "research/card_repr/B2_code/cards/charm.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-043-298": true
+   }
+  },
+  "darius_trifarian": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:207",
+   "B2_cite": "research/card_repr/B2_code/cards/darius_trifarian.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/trigger/condition/c:is_token",
+    "card/kind:triggered/trigger/condition/c:is_token/neg",
+    "card/kind:triggered/trigger/condition/c:is_token/v=subject"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "ogn-027-298": true
+   }
+  },
+  "decisive_strike": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:214",
+   "B2_cite": "research/card_repr/B2_code/cards/decisive_strike.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogs-024-024": true
+   }
+  },
+  "decree_of_focus": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:218",
+   "B2_cite": "research/card_repr/B2_code/cards/decree_of_focus.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ven-040-166": true
+   }
+  },
+  "decree_of_strength": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:225",
+   "B2_cite": "research/card_repr/B2_code/cards/decree_of_strength.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ven-085-166": true
+   }
+  },
+  "defy": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:230",
+   "B2_cite": "research/card_repr/B2_code/cards/defy.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-045-298": true
+   }
+  },
+  "disarming_rake": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:235",
+   "B2_cite": "research/card_repr/B2_code/cards/disarming_rake.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-032-221": true
+   }
+  },
+  "discipline": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:239",
+   "B2_cite": "research/card_repr/B2_code/cards/discipline.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-058-298": true
+   }
+  },
+  "emperor_s_dais": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:244",
+   "B2_cite": "research/card_repr/B2_code/cards/emperor_s_dais.json",
+   "paths_only_in_B_text_graph": [
+    "card/kind:triggered/verb:CreateToken/token/tag=sand_soldier"
+   ],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/verb:CreateToken/token/tag=shurima"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "sfd-207-221": false
+   }
+  },
+  "en_garde": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:253",
+   "B2_cite": "research/card_repr/B2_code/cards/en_garde.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-046-298": true
+   }
+  },
+  "ferrous_forerunner": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:259",
+   "B2_cite": "research/card_repr/B2_code/cards/ferrous_forerunner.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-021-221": true
+   }
+  },
+  "fiora_peerless": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:264",
+   "B2_cite": "research/card_repr/B2_code/cards/fiora_peerless.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-110-221": true
+   }
+  },
+  "first_mate": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:270",
+   "B2_cite": "research/card_repr/B2_code/cards/first_mate.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-132-298": true
+   }
+  },
+  "fury_rune": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:195",
+   "B2_cite": "research/card_repr/B2_code/cards/fury_rune.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-007-298": true
+   }
+  },
+  "grim_apothecary": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:274",
+   "B2_cite": "research/card_repr/B2_code/cards/grim_apothecary.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-021-219": true
+   }
+  },
+  "hush": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:280",
+   "B2_cite": "research/card_repr/B2_code/cards/hush.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {}
+  },
+  "inferna": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:284",
+   "B2_cite": "research/card_repr/B2_code/cards/inferna.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-002-219": true
+   }
+  },
+  "irresistible_faefolk": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:289",
+   "B2_cite": "research/card_repr/B2_code/cards/irresistible_faefolk.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-112-219": true
+   }
+  },
+  "kai_sa_survivor": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:295",
+   "B2_cite": "research/card_repr/B2_code/cards/kai_sa_survivor.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-039-298": true
+   }
+  },
+  "kinkou_initiate": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:301",
+   "B2_cite": "research/card_repr/B2_code/cards/kinkou_initiate.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-097-219": true
+   }
+  },
+  "lonely_poro": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:307",
+   "B2_cite": "research/card_repr/B2_code/cards/lonely_poro.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-036-221": true,
+    "unl-221-219": true
+   }
+  },
+  "loyal_poro": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:311",
+   "B2_cite": "research/card_repr/B2_code/cards/loyal_poro.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-156-219": true
+   }
+  },
+  "machine_evangel": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:315",
+   "B2_cite": "research/card_repr/B2_code/cards/machine_evangel.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-239-298": true
+   }
+  },
+  "master_yi_tempered": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:320",
+   "B2_cite": "research/card_repr/B2_code/cards/master_yi_tempered.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-113-219": true
+   }
+  },
+  "master_yi_wuju_bladesman": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:327",
+   "B2_cite": "research/card_repr/B2_code/cards/master_yi_wuju_bladesman.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogs-019-024": null
+   }
+  },
+  "moonlight_affliction": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:332",
+   "B2_cite": "research/card_repr/B2_code/cards/moonlight_affliction.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-066-219": true
+   }
+  },
+  "nidalee_cat_form": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:336",
+   "B2_cite": "research/card_repr/B2_code/cards/nidalee_cat_form.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-114-219": true
+   }
+  },
+  "not_so_fast": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:341",
+   "B2_cite": "research/card_repr/B2_code/cards/not_so_fast.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-045-221": true
+   }
+  },
+  "noxian_demolitionist": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:346",
+   "B2_cite": "research/card_repr/B2_code/cards/noxian_demolitionist.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ven-080-166": true
+   }
+  },
+  "noxus_hopeful": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:351",
+   "B2_cite": "research/card_repr/B2_code/cards/noxus_hopeful.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-012-298": true
+   }
+  },
+  "onslaught": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:356",
+   "B2_cite": "research/card_repr/B2_code/cards/onslaught.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ven-081-166": true
+   }
+  },
+  "pakaa_cub": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:361",
+   "B2_cite": "research/card_repr/B2_code/cards/pakaa_cub.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-135-298": true
+   }
+  },
+  "pit_rookie": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:363",
+   "B2_cite": "research/card_repr/B2_code/cards/pit_rookie.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-136-298": true
+   }
+  },
+  "primal_strength": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:368",
+   "B2_cite": "research/card_repr/B2_code/cards/primal_strength.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-154-298": true
+   }
+  },
+  "punch_first": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:372",
+   "B2_cite": "research/card_repr/B2_code/cards/punch_first.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-097-221": true
+   }
+  },
+  "pyke_dockside_butcher": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:376",
+   "B2_cite": "research/card_repr/B2_code/cards/pyke_dockside_butcher.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-028-219": true
+   }
+  },
+  "rampage": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:384",
+   "B2_cite": "research/card_repr/B2_code/cards/rampage.json",
+   "paths_only_in_B_text_graph": [
+    "card/kind:spell@main/verb:DealDamage/source/ref=A",
+    "card/kind:spell@main/verb:DealDamage/source/ref=B",
+    "card/kind:spell@main/verb:DealDamage/source/type=ref"
+   ],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:spell@main/verb:DealDamage/source/count",
+    "card/kind:spell@main/verb:DealDamage/source/count=1",
+    "card/kind:spell@main/verb:DealDamage/source/side=friendly",
+    "card/kind:spell@main/verb:DealDamage/source/type=self",
+    "card/kind:spell@main/verb:DealDamage/source/zone=board"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "ven-083-166": true
+   }
+  },
+  "rengar_pridestalker": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:396",
+   "B2_cite": "research/card_repr/B2_code/cards/rengar_pridestalker.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-183-219": null
+   }
+  },
+  "rengar_trophy_hunter": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:400",
+   "B2_cite": "research/card_repr/B2_code/cards/rengar_trophy_hunter.json",
+   "paths_only_in_B_text_graph": [
+    "card/kind:play_mode@reaction/where/filters/f:has_friendly_units",
+    "card/kind:play_mode@reaction/where/filters/f:has_friendly_units/v",
+    "card/kind:static",
+    "card/kind:static/verb:AllowPlayTo",
+    "card/kind:static/verb:AllowPlayTo/target/count",
+    "card/kind:static/verb:AllowPlayTo/target/count=1",
+    "card/kind:static/verb:AllowPlayTo/target/side=friendly",
+    "card/kind:static/verb:AllowPlayTo/target/type=self",
+    "card/kind:static/verb:AllowPlayTo/target/zone=board",
+    "card/kind:static/verb:AllowPlayTo/where/filters/f:has_enemy_units",
+    "card/kind:static/verb:AllowPlayTo/where/filters/f:has_enemy_units/v",
+    "card/kind:static/verb:AllowPlayTo/where/zone=battlefield"
+   ],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:play_mode@reaction/where/filters/f:any_of",
+    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_enemy_units",
+    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_enemy_units/v",
+    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_friendly_units",
+    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_friendly_units/v"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "unl-120-219": false
+   }
+  },
+  "ruin_runner": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:406",
+   "B2_cite": "research/card_repr/B2_code/cards/ruin_runner.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-105-221": true
+   }
+  },
+  "sabotage": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:410",
+   "B2_cite": "research/card_repr/B2_code/cards/sabotage.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "ogn-156-298": true
+   }
+  },
+  "scuttle_crab": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:415",
+   "B2_cite": "research/card_repr/B2_code/cards/scuttle_crab.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "unl-053-219": true
+   }
+  },
+  "seat_of_power": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:424",
+   "B2_cite": "research/card_repr/B2_code/cards/seat_of_power.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
+   "engine_def_text_equals_card_text": {
+    "sfd-217-221": false
+   }
+  },
+  "star_spring": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:429",
+   "B2_cite": "research/card_repr/B2_code/cards/star_spring.json",
+   "paths_only_in_B_text_graph": [
+    "card/kind:triggered/trigger/condition/c:unit_is_token",
+    "card/kind:triggered/trigger/condition/c:unit_is_token/neg",
+    "card/kind:triggered/trigger/condition/c:unit_is_token/v"
+   ],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/trigger/condition/c:is_token",
+    "card/kind:triggered/trigger/condition/c:is_token/neg",
+    "card/kind:triggered/trigger/condition/c:is_token/v=subject"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "unl-215-219": true
+   }
+  },
+  "thrill_of_the_hunt": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:437",
+   "B2_cite": "research/card_repr/B2_code/cards/thrill_of_the_hunt.json",
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token/neg",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token/v=A"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "unl-184-219": true
+   }
+  },
+  "zhonya_s_hourglass": {
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:442",
+   "B2_cite": "research/card_repr/B2_code/cards/zhonya_s_hourglass.json",
+   "paths_only_in_B_text_graph": [
+    "card/kind:replacement/trigger/once=next_time"
+   ],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:replacement/verb:Heal",
+    "card/kind:replacement/verb:Heal/target/ref=subject",
+    "card/kind:replacement/verb:Heal/target/type=ref"
+   ],
+   "graphs_identical": false,
+   "engine_def_text_equals_card_text": {
+    "ogn-077-298": false
+   }
+  }
+ }
+}

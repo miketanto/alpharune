@@ -1,0 +1,281 @@
+{
+ "timing": {
+  "bge-small-en-v1.5:load_s": 0.81,
+  "bge-small-en-v1.5:strip:segmented:embed_s": 3.82,
+  "bge-small-en-v1.5:strip:single:embed_s": 4.96,
+  "bge-small-en-v1.5:keep:segmented:embed_s": 3.44,
+  "bge-small-en-v1.5:keep:single:embed_s": 4.65,
+  "paraphrase-mpnet-base-v2:load_s": 1.82,
+  "paraphrase-mpnet-base-v2:strip:segmented:embed_s": 10.69,
+  "paraphrase-mpnet-base-v2:strip:single:embed_s": 12.43,
+  "paraphrase-mpnet-base-v2:keep:segmented:embed_s": 9.9,
+  "paraphrase-mpnet-base-v2:keep:single:embed_s": 12.2,
+  "total_s": 65.38
+ },
+ "diagnostics": {
+  "bge-small-en-v1.5:strip:segmented": {
+   "nn_dist_median": 0.07438206026058458,
+   "nn_dist_min": 0.0076361251418536336,
+   "printing_max_dist": {
+    "body_rune": 0.0,
+    "calm_rune": -2.220446049250313e-16,
+    "fury_rune": -2.220446049250313e-16,
+    "lonely_poro": 0.0,
+    "rengar_trophy_hunter": -2.220446049250313e-16
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.006717643105877746,
+    "punch_first__energy3": 0.0025612677031197073,
+    "punch_first__power0": 0.0020214116921385417,
+    "discipline__draw2": 0.0014506542565431157,
+    "discipline__enemy": 0.005789126541595246,
+    "lonely_poro__draw2": 0.003733853243546692,
+    "defy__cost2": 0.0018818918154452913,
+    "sabotage__unit": 0.00681267262321239,
+    "pit_rookie__might3": 0.0004903514121620267,
+    "punch_first__reaction": 0.08065785245992974
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.010086135631740212,
+    "punch_first|decisive_strike": 0.033179387332317845,
+    "discipline|moonlight_affliction": 0.025515450474175472,
+    "lonely_poro|loyal_poro": 0.014619441609666883,
+    "ferrous_forerunner|machine_evangel": 0.05008005651790226,
+    "sabotage|decree_of_strength": 0.0371995982774912,
+    "defy|hush": 0.032983241702261634
+   }
+  },
+  "bge-small-en-v1.5:strip:single": {
+   "nn_dist_median": 0.03315111180204644,
+   "nn_dist_min": 0.005174400328727957,
+   "printing_max_dist": {
+    "body_rune": 0.0,
+    "calm_rune": 0.0,
+    "fury_rune": -2.220446049250313e-16,
+    "lonely_poro": 1.1102230246251565e-16,
+    "rengar_trophy_hunter": 0.0
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.0002598603767320906,
+    "punch_first__energy3": 0.0062505904262769585,
+    "punch_first__power0": 0.0029685411678097573,
+    "discipline__draw2": 0.00030354377222197026,
+    "discipline__enemy": 0.004278399648494413,
+    "lonely_poro__draw2": 0.0003083995111214932,
+    "defy__cost2": 0.00025297597364926094,
+    "sabotage__unit": 0.0014171698256455478,
+    "pit_rookie__might3": 0.0004018589528128613,
+    "punch_first__reaction": 0.056293418344532276
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.005174400328728512,
+    "punch_first|decisive_strike": 0.022713654963549046,
+    "discipline|moonlight_affliction": 0.012606672158204102,
+    "lonely_poro|loyal_poro": 0.009546956315892308,
+    "ferrous_forerunner|machine_evangel": 0.048728434096782514,
+    "sabotage|decree_of_strength": 0.030371830571095382,
+    "defy|hush": 0.020318767683883965
+   }
+  },
+  "bge-small-en-v1.5:keep:segmented": {
+   "nn_dist_median": 0.0966234391848304,
+   "nn_dist_min": 0.0076361251418536336,
+   "printing_max_dist": {
+    "body_rune": 0.0,
+    "calm_rune": -2.220446049250313e-16,
+    "fury_rune": -2.220446049250313e-16,
+    "lonely_poro": 0.03683436261672424,
+    "rengar_trophy_hunter": -2.220446049250313e-16
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.014378693094687978,
+    "punch_first__energy3": 0.002561267586269733,
+    "punch_first__power0": 0.002021411599917755,
+    "discipline__draw2": 0.0029657106012930257,
+    "discipline__enemy": 0.0072398635149747426,
+    "lonely_poro__draw2": 0.006918251012303367,
+    "defy__cost2": 0.004891613750689139,
+    "sabotage__unit": 0.00681267262321239,
+    "pit_rookie__might3": 0.0004903514167540202,
+    "punch_first__reaction": 0.06596536495792904
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.01969238554008501,
+    "punch_first|decisive_strike": 0.04399353698960895,
+    "discipline|moonlight_affliction": 0.04364576271738896,
+    "lonely_poro|loyal_poro": 0.018518733490211825,
+    "ferrous_forerunner|machine_evangel": 0.047329645967888245,
+    "sabotage|decree_of_strength": 0.0371995982774912,
+    "defy|hush": 0.036848619987005615
+   }
+  },
+  "bge-small-en-v1.5:keep:single": {
+   "nn_dist_median": 0.0329589350543682,
+   "nn_dist_min": 0.003484984723209017,
+   "printing_max_dist": {
+    "body_rune": 0.0,
+    "calm_rune": 0.0,
+    "fury_rune": -2.220446049250313e-16,
+    "lonely_poro": 0.00956567653452478,
+    "rengar_trophy_hunter": 1.1102230246251565e-16
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.00021832522957021538,
+    "punch_first__energy3": 0.004420363156053764,
+    "punch_first__power0": 0.0028082246127386634,
+    "discipline__draw2": 0.0003390171420782906,
+    "discipline__enemy": 0.005217422862064169,
+    "lonely_poro__draw2": 0.0003276641402446545,
+    "defy__cost2": 0.00017928828066271496,
+    "sabotage__unit": 0.0014171698256455478,
+    "pit_rookie__might3": 0.00029869884807842695,
+    "punch_first__reaction": 0.04206672104669584
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.003484984723209461,
+    "punch_first|decisive_strike": 0.024179669763842337,
+    "discipline|moonlight_affliction": 0.016434340564582817,
+    "lonely_poro|loyal_poro": 0.014608727463627513,
+    "ferrous_forerunner|machine_evangel": 0.05421520363335164,
+    "sabotage|decree_of_strength": 0.030371830571095382,
+    "defy|hush": 0.023210417355644886
+   }
+  },
+  "paraphrase-mpnet-base-v2:strip:segmented": {
+   "nn_dist_median": 0.15774094378007464,
+   "nn_dist_min": 0.014645888699297172,
+   "printing_max_dist": {
+    "body_rune": -2.220446049250313e-16,
+    "calm_rune": 2.220446049250313e-16,
+    "fury_rune": 0.0,
+    "lonely_poro": 2.220446049250313e-16,
+    "rengar_trophy_hunter": 0.0
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.012327964127074043,
+    "punch_first__energy3": 0.0014950226709616876,
+    "punch_first__power0": 0.00313197311732194,
+    "discipline__draw2": 0.0028777442695443467,
+    "discipline__enemy": 0.022973189583614162,
+    "lonely_poro__draw2": 0.004865037285307183,
+    "defy__cost2": 0.0024629410296267418,
+    "sabotage__unit": 0.003597695893852948,
+    "pit_rookie__might3": 0.00072430074473262,
+    "punch_first__reaction": 0.1645880121731088
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.01869305292670498,
+    "punch_first|decisive_strike": 0.07859863804161771,
+    "discipline|moonlight_affliction": 0.04246783376221652,
+    "lonely_poro|loyal_poro": 0.014645888699297394,
+    "ferrous_forerunner|machine_evangel": 0.0803966592287576,
+    "sabotage|decree_of_strength": 0.05917439908912514,
+    "defy|hush": 0.05099175950020485
+   }
+  },
+  "paraphrase-mpnet-base-v2:strip:single": {
+   "nn_dist_median": 0.07791762803321611,
+   "nn_dist_min": 0.0036622656177355273,
+   "printing_max_dist": {
+    "body_rune": 1.1102230246251565e-16,
+    "calm_rune": 0.0,
+    "fury_rune": 0.0,
+    "lonely_poro": 0.0,
+    "rengar_trophy_hunter": 0.0
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.0008080698422144872,
+    "punch_first__energy3": 0.0013744022486422702,
+    "punch_first__power0": 0.002813693564936437,
+    "discipline__draw2": 0.0006387039938148265,
+    "discipline__enemy": 0.01605027486722077,
+    "lonely_poro__draw2": 0.000607573291618535,
+    "defy__cost2": 0.0004855810222591517,
+    "sabotage__unit": 0.0013505518607122013,
+    "pit_rookie__might3": 0.000400272372825361,
+    "punch_first__reaction": 0.09898714183386914
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.003662265617735083,
+    "punch_first|decisive_strike": 0.03988464314934492,
+    "discipline|moonlight_affliction": 0.025999510929095138,
+    "lonely_poro|loyal_poro": 0.014044471827945881,
+    "ferrous_forerunner|machine_evangel": 0.06383674285674124,
+    "sabotage|decree_of_strength": 0.028052753806923958,
+    "defy|hush": 0.039376562217187994
+   }
+  },
+  "paraphrase-mpnet-base-v2:keep:segmented": {
+   "nn_dist_median": 0.15036039077979169,
+   "nn_dist_min": 0.016536033972643804,
+   "printing_max_dist": {
+    "body_rune": -2.220446049250313e-16,
+    "calm_rune": 2.220446049250313e-16,
+    "fury_rune": 0.0,
+    "lonely_poro": 0.09421473451190665,
+    "rengar_trophy_hunter": 0.0
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.015091146115225884,
+    "punch_first__energy3": 0.0014950226748901008,
+    "punch_first__power0": 0.0031319731255514682,
+    "discipline__draw2": 0.003188553867043864,
+    "discipline__enemy": 0.01735003417634018,
+    "lonely_poro__draw2": 0.009196429322504973,
+    "defy__cost2": 0.0032892555981323124,
+    "sabotage__unit": 0.003597695893852948,
+    "pit_rookie__might3": 0.0007243007226732656,
+    "punch_first__reaction": 0.15481995009188532
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.02175701449928713,
+    "punch_first|decisive_strike": 0.09036540361106127,
+    "discipline|moonlight_affliction": 0.04597021789663236,
+    "lonely_poro|loyal_poro": 0.02627109618162049,
+    "ferrous_forerunner|machine_evangel": 0.09291721726903734,
+    "sabotage|decree_of_strength": 0.05917439908912514,
+    "defy|hush": 0.061929096369240044
+   }
+  },
+  "paraphrase-mpnet-base-v2:keep:single": {
+   "nn_dist_median": 0.07547872081883145,
+   "nn_dist_min": 0.004120815498512065,
+   "printing_max_dist": {
+    "body_rune": 1.1102230246251565e-16,
+    "calm_rune": 0.0,
+    "fury_rune": 0.0,
+    "lonely_poro": 0.03736493548932429,
+    "rengar_trophy_hunter": -2.220446049250313e-16
+   },
+   "rename_max_dist": 2.220446049250313e-16,
+   "synthetic_dist_to_base": {
+    "punch_first__amount4": 0.0008428169307582722,
+    "punch_first__energy3": 0.0014466491588966957,
+    "punch_first__power0": 0.0034038749136088287,
+    "discipline__draw2": 0.0007916990324131623,
+    "discipline__enemy": 0.016282172798823713,
+    "lonely_poro__draw2": 0.0013629198709275148,
+    "defy__cost2": 0.000680822477841847,
+    "sabotage__unit": 0.0013505518607122013,
+    "pit_rookie__might3": 0.0004680348831477277,
+    "punch_first__reaction": 0.09116955418640038
+   },
+   "real_pair_dist": {
+    "punch_first|primal_strength": 0.004120815498512176,
+    "punch_first|decisive_strike": 0.03902670898409477,
+    "discipline|moonlight_affliction": 0.03312990648762204,
+    "lonely_poro|loyal_poro": 0.016955124799736376,
+    "ferrous_forerunner|machine_evangel": 0.07018680143064249,
+    "sabotage|decree_of_strength": 0.028052753806923958,
+    "defy|hush": 0.04174670859026852
+   }
+  }
+ }
+}

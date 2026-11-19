@@ -1,0 +1,460 @@
+{
+ "setup": {
+  "decks": "rengar.txt vs rengar.txt (mirror) only",
+  "states_per_base": 48,
+  "main_budget": "sims 200, 12 seeds (root); sims 200, 8 seeds (target stage)",
+  "robustness": "sims 100 x 4 seeds and sims 400 x 4 seeds (root)"
+ },
+ "pairs": [
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__score1",
+   "change": "effect kind: \"+5 Might this turn to a unit\" -> \"Score 1 point\" (no target)",
+   "intended_reason": "the buff rarely moves points within the search horizon so the teacher rarely plays it; a point now is always worth playing",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.854,
+   "a_flip_to_play": 0.854,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.875,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "a_play_flip_rate_sims100": 0.417,
+   "a_play_flip_rate_sims400": 0.896,
+   "keep": "keep",
+   "verdict": "play flip 0.85 (0.90 at sims 400) vs noise 0.00; at sims 100 only 0.42 (budget-sensitive)."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__score_nounits",
+   "change": "condition: \"Score 1 point if you control no units\"",
+   "intended_reason": "play only when the board has no friendly unit; hold otherwise; the network must read the board to know",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.229,
+   "a_flip_to_play": 0.208,
+   "a_flip_to_noplay": 0.021,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.208,
+   "b_dst_flip_rate_given_both_play": null,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": 1.0,
+   "variant_play_rate_when_condition_false": 0.0,
+   "condition_counts_true_false": [
+    10,
+    38
+   ],
+   "a_play_flip_rate_sims100": 0.188,
+   "a_play_flip_rate_sims400": 0.229,
+   "keep": "keep",
+   "verdict": "flip 0.23 overall, which is capped by the condition (true in 10 of 48 states): plays in 10/10 states where it holds and 0/38 where it does not. Noise 0.00. Stable at sims 100 and 400."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__score_bfunit",
+   "change": "condition: \"Score 1 point if you control a unit at a battlefield\" (the complement-ish of score_nounits)",
+   "intended_reason": "play only with a unit at a battlefield; opposite states from score_nounits",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.312,
+   "a_flip_to_play": 0.312,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.333,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": 0.7619047619047619,
+   "variant_play_rate_when_condition_false": 0.0,
+   "condition_counts_true_false": [
+    21,
+    27
+   ],
+   "a_play_flip_rate_sims100": 0.062,
+   "a_play_flip_rate_sims400": 0.354,
+   "keep": "keep",
+   "verdict": "flip 0.31: plays in 16/21 states where the condition holds and 0/27 where it does not. Fragile at sims 100 (0.06)."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__score_behind",
+   "change": "condition: \"Score 1 point if an opponent has more points than you\"",
+   "intended_reason": "play only when behind on score",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.292,
+   "a_flip_to_play": 0.271,
+   "a_flip_to_noplay": 0.021,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.271,
+   "b_dst_flip_rate_given_both_play": null,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": 0.9285714285714286,
+   "variant_play_rate_when_condition_false": 0.0,
+   "condition_counts_true_false": [
+    14,
+    34
+   ],
+   "a_play_flip_rate_sims100": 0.146,
+   "a_play_flip_rate_sims400": 0.271,
+   "keep": "keep",
+   "verdict": "flip 0.29: plays in 13/14 states where it is behind and 0/34 otherwise. Weaker at sims 100 (0.15)."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__kill",
+   "change": "effect kind + target side: \"+5 Might\" -> \"Kill a unit\" (same targeting)",
+   "intended_reason": "buff targets a friendly unit, kill an enemy unit; play when an enemy unit blocks a score",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.0,
+   "a_flip_to_play": 0.0,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.021,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "a_play_flip_rate_sims100": 0.0,
+   "a_play_flip_rate_sims400": 0.042,
+   "target_stage": {
+    "n_states": 48,
+    "n_multi_target_states": 36,
+    "b_target_flip_rate": 0.722,
+    "b_target_side_flip_rate": 0.389,
+    "c_noise_target_flip_seed_halves": 0.472,
+    "c_noise_side_flip_seed_halves": 0.25,
+    "n_states_both_sides_available": 32,
+    "side_flip_rate_both_sides_available": 0.438,
+    "orig_best_target_enemy_rate": 0.562,
+    "variant_best_target_enemy_rate": 0.812,
+    "best_target_side_counts": {
+     "orig_best_side_2": 21,
+     "swap_best_side_1": 7,
+     "swap_best_side_2": 29,
+     "orig_best_side_1": 15
+    }
+   },
+   "keep": "drop",
+   "verdict": "root play flip 0.00. Target stage: picks an enemy in 0.81 of two-sided states vs 0.56 for the base, but the side flip (0.44) is near the seed-half noise of the base target (0.25 on all, the base target choice is a near-tie)."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__minus5",
+   "change": "effect sign: \"+5 Might\" -> \"-5 Might\" this turn",
+   "intended_reason": "buff a friendly unit vs shrink an enemy unit: target side should flip",
+   "root_source": "root stage of the --tgt run (sims 200, 8 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.0,
+   "a_flip_to_play": 0.0,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.021,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "target_stage": {
+    "n_states": 48,
+    "n_multi_target_states": 36,
+    "b_target_flip_rate": 0.167,
+    "b_target_side_flip_rate": 0.111,
+    "c_noise_target_flip_seed_halves": 0.472,
+    "c_noise_side_flip_seed_halves": 0.25,
+    "n_states_both_sides_available": 32,
+    "side_flip_rate_both_sides_available": 0.125,
+    "orig_best_target_enemy_rate": 0.562,
+    "variant_best_target_enemy_rate": 0.688,
+    "best_target_side_counts": {
+     "orig_best_side_2": 21,
+     "swap_best_side_2": 25,
+     "orig_best_side_1": 15,
+     "swap_best_side_1": 11
+    }
+   },
+   "keep": "drop",
+   "verdict": "no play flip; target side flip 0.12, below noise. The teacher does not value a temporary Might loss (score-only leaf)."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__ctrl_scores",
+   "change": "effect + target: \"Choose a unit. Its controller scores 1 point.\"",
+   "intended_reason": "only a FRIENDLY target is right",
+   "root_source": "root stage of the --tgt run (sims 200, 8 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.125,
+   "a_flip_to_play": 0.125,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.146,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "target_stage": {
+    "n_states": 48,
+    "n_multi_target_states": 36,
+    "b_target_flip_rate": 0.667,
+    "b_target_side_flip_rate": 0.5,
+    "c_noise_target_flip_seed_halves": 0.472,
+    "c_noise_side_flip_seed_halves": 0.25,
+    "n_states_both_sides_available": 32,
+    "side_flip_rate_both_sides_available": 0.562,
+    "orig_best_target_enemy_rate": 0.562,
+    "variant_best_target_enemy_rate": 0.0,
+    "best_target_side_counts": {
+     "orig_best_side_2": 21,
+     "swap_best_side_1": 33,
+     "swap_best_side_2": 3,
+     "orig_best_side_1": 15
+    }
+   },
+   "keep": "keep (target pair)",
+   "verdict": "best target is FRIENDLY in 32/32 two-sided states (0% enemy) vs 56% enemy for the base, whose target choice is noise. Root play flip only 0.12 (the root q averages over exploring both target sides)."
+  },
+  {
+   "base": "punch_first",
+   "variant": "synthetic:punch_first__opp_of_ctrl_scores",
+   "change": "effect + target: \"Choose a unit. Its controller's opponent scores 1 point.\"",
+   "intended_reason": "only an ENEMY target is right (mirror of ctrl_scores)",
+   "root_source": "root stage of the --tgt run (sims 200, 8 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.292,
+   "a_flip_to_play": 0.292,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.021,
+   "variant_play_rate": 0.312,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "target_stage": {
+    "n_states": 48,
+    "n_multi_target_states": 36,
+    "b_target_flip_rate": 0.694,
+    "b_target_side_flip_rate": 0.389,
+    "c_noise_target_flip_seed_halves": 0.472,
+    "c_noise_side_flip_seed_halves": 0.25,
+    "n_states_both_sides_available": 32,
+    "side_flip_rate_both_sides_available": 0.438,
+    "orig_best_target_enemy_rate": 0.562,
+    "variant_best_target_enemy_rate": 1.0,
+    "best_target_side_counts": {
+     "orig_best_side_2": 21,
+     "swap_best_side_2": 35,
+     "orig_best_side_1": 15,
+     "swap_best_side_1": 1
+    }
+   },
+   "keep": "keep (target pair)",
+   "verdict": "best target is ENEMY in 32/32 two-sided states. Against ctrl_scores, the best target side flips in 32/32 states: the cleanest \"same card shape, opposite use\" pair found."
+  },
+  {
+   "base": "pit_rookie",
+   "variant": "synthetic:pit_rookie__score1",
+   "change": "trigger kind: \"When you play me, buff another friendly unit\" -> \"When you play me, score 1 point\"",
+   "intended_reason": "the base play is rarely best for the teacher; a play that scores is",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.354,
+   "a_flip_to_play": 0.354,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.0,
+   "variant_play_rate": 0.354,
+   "b_dst_flip_rate_given_both_play": null,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": null,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "a_play_flip_rate_sims100": 0.25,
+   "a_play_flip_rate_sims400": 0.583,
+   "keep": "keep",
+   "verdict": "flip 0.35 (0.58 at sims 400, 0.25 at sims 100) vs noise 0.00; budget-sensitive."
+  },
+  {
+   "base": "pit_rookie",
+   "variant": "synthetic:pit_rookie__score_alone",
+   "change": "condition: \"When you play me, score 1 point if you control no other units\"",
+   "intended_reason": "play it into an empty board only",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.208,
+   "a_flip_to_play": 0.208,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.0,
+   "variant_play_rate": 0.208,
+   "b_dst_flip_rate_given_both_play": null,
+   "c_noise_play_flip_seed_halves": 0.0,
+   "c_noise_dst_flip_seed_halves": null,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": 0.9090909090909091,
+   "variant_play_rate_when_condition_false": 0.0,
+   "condition_counts_true_false": [
+    11,
+    37
+   ],
+   "a_play_flip_rate_sims100": 0.229,
+   "a_play_flip_rate_sims400": 0.229,
+   "keep": "keep",
+   "verdict": "flip 0.21: plays in 10/11 states with no other friendly unit and 0/37 otherwise. Stable across budgets."
+  },
+  {
+   "base": "sabotage",
+   "variant": "synthetic:sabotage__score1",
+   "change": "effect kind: \"look at opponent hand, recycle a non-unit card\" -> \"Score 1 point\"",
+   "intended_reason": "disruption does not show in points within the horizon; a point does",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.833,
+   "a_flip_to_play": 0.833,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.062,
+   "variant_play_rate": 0.896,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.042,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": null,
+   "variant_play_rate_when_condition_false": null,
+   "condition_counts_true_false": null,
+   "a_play_flip_rate_sims100": 0.625,
+   "a_play_flip_rate_sims400": 0.812,
+   "keep": "keep",
+   "verdict": "flip 0.83 vs noise 0.04; 0.62 at sims 100, 0.81 at sims 400."
+  },
+  {
+   "base": "sabotage",
+   "variant": "synthetic:sabotage__score_opphand4",
+   "change": "condition: \"Score 1 point if the opponent has 4 or more cards in hand\"",
+   "intended_reason": "play only against a full opponent hand",
+   "root_source": "root run (sims 200, 12 seeds)",
+   "n_states": 48,
+   "a_play_flip_rate": 0.583,
+   "a_flip_to_play": 0.583,
+   "a_flip_to_noplay": 0.0,
+   "orig_play_rate": 0.062,
+   "variant_play_rate": 0.646,
+   "b_dst_flip_rate_given_both_play": 0.0,
+   "c_noise_play_flip_seed_halves": 0.042,
+   "c_noise_dst_flip_seed_halves": 0.0,
+   "d_variant_no_legal_play_rate": 0.0,
+   "variant_play_rate_when_condition_true": 0.9090909090909091,
+   "variant_play_rate_when_condition_false": 0.06666666666666667,
+   "condition_counts_true_false": [
+    33,
+    15
+   ],
+   "a_play_flip_rate_sims100": 0.5,
+   "a_play_flip_rate_sims400": 0.667,
+   "keep": "keep",
+   "verdict": "flip 0.58: plays in 30/33 states where the opponent has 4+ cards and 1/15 otherwise. Noise 0.04."
+  }
+ ],
+ "target_stage_variant_vs_variant": {
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__kill": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.8125
+  },
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__minus5": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.6875
+  },
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 1.0
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__minus5": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.3125
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.1875
+  },
+  "synthetic:punch_first__minus5 | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.3125
+  }
+ },
+ "orig_disagreement_across_processes_sims200": {
+  "states": 139,
+  "disagree": 1,
+  "rate": 0.007194244604316547
+ },
+ "variant_vs_variant_play_flip_sims200": {
+  "synthetic:pit_rookie__score1 | synthetic:pit_rookie__score_alone": {
+   "n": 48,
+   "play_flip_rate": 0.14583333333333334
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__score1": {
+   "n": 48,
+   "play_flip_rate": 0.8541666666666666
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__score_behind": {
+   "n": 48,
+   "play_flip_rate": 0.2916666666666667
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__score_bfunit": {
+   "n": 48,
+   "play_flip_rate": 0.3125
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__score_nounits": {
+   "n": 48,
+   "play_flip_rate": 0.22916666666666666
+  },
+  "synthetic:punch_first__score1 | synthetic:punch_first__score_behind": {
+   "n": 48,
+   "play_flip_rate": 0.6041666666666666
+  },
+  "synthetic:punch_first__score1 | synthetic:punch_first__score_bfunit": {
+   "n": 48,
+   "play_flip_rate": 0.5416666666666666
+  },
+  "synthetic:punch_first__score1 | synthetic:punch_first__score_nounits": {
+   "n": 48,
+   "play_flip_rate": 0.6666666666666666
+  },
+  "synthetic:punch_first__score_behind | synthetic:punch_first__score_bfunit": {
+   "n": 48,
+   "play_flip_rate": 0.5208333333333334
+  },
+  "synthetic:punch_first__score_behind | synthetic:punch_first__score_nounits": {
+   "n": 48,
+   "play_flip_rate": 0.3541666666666667
+  },
+  "synthetic:punch_first__score_bfunit | synthetic:punch_first__score_nounits": {
+   "n": 48,
+   "play_flip_rate": 0.5416666666666666
+  },
+  "synthetic:sabotage__score1 | synthetic:sabotage__score_opphand4": {
+   "n": 48,
+   "play_flip_rate": 0.25
+  }
+ }
+}

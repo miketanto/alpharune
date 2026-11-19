@@ -1,0 +1,170 @@
+{
+"situations": [
+{
+"sid": "card",
+"kind": "card",
+"probe": "printed facts (CardDef)"
+},
+{
+"sid": "play:empty_main",
+"kind": "play",
+"probe": "empty_main"
+},
+{
+"sid": "play:board_main",
+"kind": "play",
+"probe": "board_main"
+},
+{
+"sid": "play:board_main_after_a_card",
+"kind": "play",
+"probe": "board_main_after_a_card"
+},
+{
+"sid": "play:showdown_my_focus",
+"kind": "play",
+"probe": "showdown_my_focus"
+},
+{
+"sid": "play:opp_fury_spell_on_chain",
+"kind": "play",
+"probe": "opp_fury_spell_on_chain"
+},
+{
+"sid": "play:opp_power2_spell_on_chain",
+"kind": "play",
+"probe": "opp_power2_spell_on_chain"
+},
+{
+"sid": "play:from_my_trash",
+"kind": "play",
+"probe": "from_my_trash"
+},
+{
+"sid": "play:facedown_opp_spell_on_chain",
+"kind": "play",
+"probe": "facedown_opp_spell_on_chain"
+},
+{
+"sid": "play:board_weak_enemies",
+"kind": "play",
+"probe": "board_weak_enemies"
+},
+{
+"sid": "play:board_friends_together",
+"kind": "play",
+"probe": "board_friends_together"
+},
+{
+"sid": "trigger:die_alone",
+"kind": "trigger",
+"probe": "die_alone"
+},
+{
+"sid": "trigger:die_with_friend",
+"kind": "trigger",
+"probe": "die_with_friend"
+},
+{
+"sid": "trigger:friendly_unit_dies",
+"kind": "trigger",
+"probe": "friendly_unit_dies"
+},
+{
+"sid": "trigger:attack_alone",
+"kind": "trigger",
+"probe": "attack_alone"
+},
+{
+"sid": "trigger:attack_with_friend",
+"kind": "trigger",
+"probe": "attack_with_friend"
+},
+{
+"sid": "trigger:defend_alone",
+"kind": "trigger",
+"probe": "defend_alone"
+},
+{
+"sid": "trigger:hold_bf0",
+"kind": "trigger",
+"probe": "hold_bf0"
+},
+{
+"sid": "trigger:i_play_two_units",
+"kind": "trigger",
+"probe": "i_play_two_units"
+},
+{
+"sid": "trigger:move_to_my_bf0",
+"kind": "trigger",
+"probe": "move_to_my_bf0"
+},
+{
+"sid": "trigger:move_to_enemy_bf1",
+"kind": "trigger",
+"probe": "move_to_enemy_bf1"
+},
+{
+"sid": "trigger:attack_conquer",
+"kind": "trigger",
+"probe": "attack_conquer"
+},
+{
+"sid": "trigger:move_bf0_to_bf1",
+"kind": "trigger",
+"probe": "move_bf0_to_bf1"
+},
+{
+"sid": "trigger:move_bf0_to_bf1_xp6",
+"kind": "trigger",
+"probe": "move_bf0_to_bf1_xp6"
+},
+{
+"sid": "trigger:activate_first_ability",
+"kind": "trigger",
+"probe": "activate_first_ability"
+},
+{
+"sid": "static:board",
+"kind": "static",
+"probe": "board"
+},
+{
+"sid": "static:friend_defends_alone",
+"kind": "static",
+"probe": "friend_defends_alone"
+},
+{
+"sid": "static:xp6",
+"kind": "static",
+"probe": "xp6"
+},
+{
+"sid": "rune",
+"kind": "rune",
+"probe": "what one rune pays"
+},
+{
+"sid": "targeted:opp_spell",
+"kind": "targeted",
+"probe": "opp_spell"
+},
+{
+"sid": "targeted:opp_spell_xp6",
+"kind": "targeted",
+"probe": "opp_spell_xp6"
+},
+{
+"sid": "inplay_legal:board",
+"kind": "inplay",
+"probe": "board"
+},
+{
+"sid": "inplay_legal:board_xp6",
+"kind": "inplay",
+"probe": "board_xp6"
+}
+],
+"note": "Every card is run in every H situation; behaviours in out/H.json."
+}

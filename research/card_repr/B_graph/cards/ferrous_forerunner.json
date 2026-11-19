@@ -1,0 +1,48 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 6,
+  "power": 1,
+  "power_by_domain": {
+   "fury": 1
+  },
+  "might": 6
+ },
+ "keywords": [
+  {
+   "kw": "deathknell"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1
+     },
+     "amount": {
+      "n": 2
+     },
+     "token": {
+      "type": "unit",
+      "might": 3,
+      "tag": "mech"
+     }
+    }
+   ]
+  }
+ ]
+}

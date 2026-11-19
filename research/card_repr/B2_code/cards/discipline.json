@@ -1,0 +1,73 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0058_discipline.cpp:57",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0058_discipline.cpp:58",
+   "energy": "src/cards/spells/0058_discipline.cpp:59",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0058_discipline.cpp:61"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0058_discipline.cpp:18-19"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/spells/0058_discipline.cpp:40"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0058_discipline.cpp:40"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/spells/0058_discipline.cpp:43"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0058_discipline.cpp:43"
+     },
+     "_src": "src/cards/spells/0058_discipline.cpp:42-43"
+    }
+   ],
+   "_src": "src/cards/spells/0058_discipline.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-058-298",
+  "class_file": "src/cards/spells/0058_discipline.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

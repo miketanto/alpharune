@@ -1,0 +1,66 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/battlefields/0771_star_spring.cpp:123",
+   "supertype": "default SuperType::None",
+   "domains": "default {}"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_unit",
+    "subject": "any_player_here",
+    "_src": "src/cards/battlefields/0771_star_spring.cpp:27; src/engine/trigger_manager.cpp:574-580, 282",
+    "condition": [
+     {
+      "c": "is_token",
+      "v": "subject",
+      "neg": true,
+      "_src": "src/cards/battlefields/0771_star_spring.cpp:57"
+     }
+    ],
+    "once": "per_player_per_turn"
+   },
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "here",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/battlefields/0771_star_spring.cpp:97"
+       }
+      ],
+      "_src": "src/cards/battlefields/0771_star_spring.cpp:93-102"
+     },
+     "optional": true,
+     "dest": "base",
+     "_src": "src/cards/battlefields/0771_star_spring.cpp:109; may src/cards/battlefields/0771_star_spring.cpp:103-104"
+    }
+   ],
+   "_src": "src/cards/battlefields/0771_star_spring.cpp:27; src/engine/trigger_manager.cpp:574-580, 282"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-215-219",
+  "class_file": "src/cards/battlefields/0771_star_spring.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "medium",
+  "confidence_why": "first-time-per-player bookkeeping read as once=per_player_per_turn"
+ }
+}

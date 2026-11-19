@@ -1,0 +1,737 @@
+{
+ "printing:unl-192-219": {
+  "stats": "Type: spell. Supertype: signature. Domains: calm, body. Energy cost: 3. Power cost: 1 (calm or body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Choose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields. Then for each unit this kills, do this: Gain 1 XP. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "alpha_strike": {
+  "stats": "Type: spell. Supertype: signature. Domains: calm, body. Energy cost: 3. Power cost: 1 (calm or body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Choose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields. Then for each unit this kills, do this: Gain 1 XP. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "rename:alpha_strike": {
+  "stats": "Type: spell. Supertype: signature. Domains: calm, body. Energy cost: 3. Power cost: 1 (calm or body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Choose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields. Then for each unit this kills, do this: Gain 1 XP. Keyword meanings: Action: play on your turn or in showdowns.",
+  "fake_name": "Thaoltha"
+ },
+ "printing:unl-042-219": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 3. Power cost: none. Might: none. Timing: Action (your turn or showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Action, Hidden, Stun. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. Action. Stun a unit. If you played this from your hand, draw 1. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Action: play on your turn or in showdowns. Stun: it doesn't deal combat damage this turn."
+ },
+ "back_off": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 3. Power cost: none. Might: none. Timing: Action (your turn or showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Action, Hidden, Stun. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. Action. Stun a unit. If you played this from your hand, draw 1. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Action: play on your turn or in showdowns. Stun: it doesn't deal combat damage this turn."
+ },
+ "rename:back_off": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 3. Power cost: none. Might: none. Timing: Action (your turn or showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Action, Hidden, Stun. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. Action. Stun a unit. If you played this from your hand, draw 1. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Action: play on your turn or in showdowns. Stun: it doesn't deal combat damage this turn.",
+  "fake_name": "Monixdar"
+ },
+ "printing:ogn-126-298": {
+  "stats": "Type: rune. Supertype: none. Domains: body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "printing:rad-r04": {
+  "stats": "Type: rune. Supertype: none. Domains: body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "printing:ven-r04": {
+  "stats": "Type: rune. Supertype: none. Domains: body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "body_rune": {
+  "stats": "Type: rune. Supertype: none. Domains: body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "rename:body_rune": {
+  "stats": "Type: rune. Supertype: none. Domains: body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities.",
+  "fake_name": "Bakrimon"
+ },
+ "printing:ven-003-166": {
+  "stats": "Type: spell. Supertype: none. Domains: fury. Energy cost: 2. Power cost: 1 (fury). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: Flow. Additional costs: alternative cost from trash 4 energy and 1 fury power, then banish (Flow).",
+  "rules": "Kill a gear. Flow 4 energy and 1 fury power. Keyword meanings: Flow: you may play this from your trash for its Flow cost. Then banish it."
+ },
+ "brittle_steel": {
+  "stats": "Type: spell. Supertype: none. Domains: fury. Energy cost: 2. Power cost: 1 (fury). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: Flow. Additional costs: alternative cost from trash 4 energy and 1 fury power, then banish (Flow).",
+  "rules": "Kill a gear. Flow 4 energy and 1 fury power. Keyword meanings: Flow: you may play this from your trash for its Flow cost. Then banish it."
+ },
+ "rename:brittle_steel": {
+  "stats": "Type: spell. Supertype: none. Domains: fury. Energy cost: 2. Power cost: 1 (fury). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: Flow. Additional costs: alternative cost from trash 4 energy and 1 fury power, then banish (Flow).",
+  "rules": "Kill a gear. Flow 4 energy and 1 fury power. Keyword meanings: Flow: you may play this from your trash for its Flow cost. Then banish it.",
+  "fake_name": "Olzormon"
+ },
+ "printing:ogn-042-298": {
+  "stats": "Type: rune. Supertype: none. Domains: calm. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "printing:rad-r02": {
+  "stats": "Type: rune. Supertype: none. Domains: calm. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "printing:ven-r02": {
+  "stats": "Type: rune. Supertype: none. Domains: calm. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "calm_rune": {
+  "stats": "Type: rune. Supertype: none. Domains: calm. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "rename:calm_rune": {
+  "stats": "Type: rune. Supertype: none. Domains: calm. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities.",
+  "fake_name": "Thaquesba"
+ },
+ "printing:ogn-043-298": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Move an enemy unit."
+ },
+ "charm": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Move an enemy unit."
+ },
+ "rename:charm": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Move an enemy unit.",
+  "fake_name": "Olixdar"
+ },
+ "printing:ogn-027-298": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 5. Power cost: 1 (fury). Might: 5. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play your second card in a turn, give me +2 Might this turn and ready me."
+ },
+ "darius_trifarian": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 5. Power cost: 1 (fury). Might: 5. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play your second card in a turn, give me +2 Might this turn and ready me."
+ },
+ "rename:darius_trifarian": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 5. Power cost: 1 (fury). Might: 5. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play your second card in a turn, give me +2 Might this turn and ready me.",
+  "fake_name": "Baixfen, Fenba"
+ },
+ "printing:ogs-024-024": {
+  "stats": "Type: spell. Supertype: signature. Domains: body, order. Energy cost: 5. Power cost: 1 (body or order). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give friendly units +2 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "decisive_strike": {
+  "stats": "Type: spell. Supertype: signature. Domains: body, order. Energy cost: 5. Power cost: 1 (body or order). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give friendly units +2 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "rename:decisive_strike": {
+  "stats": "Type: spell. Supertype: signature. Domains: body, order. Energy cost: 5. Power cost: 1 (body or order). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give friendly units +2 Might this turn. Keyword meanings: Action: play on your turn or in showdowns.",
+  "fake_name": "Ixthamon"
+ },
+ "printing:ven-040-166": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell. Give it +4 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "decree_of_focus": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell. Give it +4 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:decree_of_focus": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell. Give it +4 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Daroltha"
+ },
+ "printing:ven-085-166": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand and you choose a Mind card from it. They recycle that card."
+ },
+ "decree_of_strength": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand and you choose a Mind card from it. They recycle that card."
+ },
+ "rename:decree_of_strength": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand and you choose a Mind card from it. They recycle that card.",
+  "fake_name": "Bakrifen"
+ },
+ "printing:ogn-045-298": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell that costs no more than 4 energy and no more than 1 any-domain power. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "defy": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell that costs no more than 4 energy and no more than 1 any-domain power. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:defy": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell that costs no more than 4 energy and no more than 1 any-domain power. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Ololkri"
+ },
+ "printing:sfd-032-221": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 3. Power cost: 1 (calm). Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, you may kill a gear."
+ },
+ "disarming_rake": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 3. Power cost: 1 (calm). Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, you may kill a gear."
+ },
+ "rename:disarming_rake": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 3. Power cost: 1 (calm). Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, you may kill a gear.",
+  "fake_name": "Lukridar"
+ },
+ "printing:ogn-058-298": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit +2 Might this turn. Draw 1. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "discipline": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit +2 Might this turn. Draw 1. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:discipline": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit +2 Might this turn. Draw 1. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Ixveldar"
+ },
+ "printing:sfd-207-221": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you conquer here, you may pay 1 energy and return a unit you control here to its owner's hand to play a 2 Might Sand Soldier unit token here."
+ },
+ "emperor_s_dais": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you conquer here, you may pay 1 energy and return a unit you control here to its owner's hand to play a 2 Might Sand Soldier unit token here."
+ },
+ "rename:emperor_s_dais": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you conquer here, you may pay 1 energy and return a unit you control here to its owner's hand to play a 2 Might Sand Soldier unit token here.",
+  "fake_name": "Thabavel"
+ },
+ "printing:ogn-046-298": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a friendly unit +1 Might this turn, then an additional +1 Might this turn if it is the only unit you control there. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "en_garde": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a friendly unit +1 Might this turn, then an additional +1 Might this turn if it is the only unit you control there. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:en_garde": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a friendly unit +1 Might this turn, then an additional +1 Might this turn if it is the only unit you control there. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Lubavel"
+ },
+ "printing:sfd-021-221": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 6. Power cost: 1 (fury). Might: 6. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: Play two 3 Might Mech unit tokens to your base. Keyword meanings: Deathknell: when I die, get the effect."
+ },
+ "ferrous_forerunner": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 6. Power cost: 1 (fury). Might: 6. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: Play two 3 Might Mech unit tokens to your base. Keyword meanings: Deathknell: when I die, get the effect."
+ },
+ "rename:ferrous_forerunner": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 6. Power cost: 1 (fury). Might: 6. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: Play two 3 Might Mech unit tokens to your base. Keyword meanings: Deathknell: when I die, get the effect.",
+  "fake_name": "Darvelvel"
+ },
+ "printing:sfd-110-221": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 3. Power cost: 1 (body). Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I attack or defend one on one, double my Might this combat."
+ },
+ "fiora_peerless": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 3. Power cost: 1 (body). Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I attack or defend one on one, double my Might this combat."
+ },
+ "rename:fiora_peerless": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 3. Power cost: 1 (body). Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I attack or defend one on one, double my Might this combat.",
+  "fake_name": "Krikriix, Fenvel"
+ },
+ "printing:ogn-132-298": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, ready another unit."
+ },
+ "first_mate": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, ready another unit."
+ },
+ "rename:first_mate": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, ready another unit.",
+  "fake_name": "Monbazor"
+ },
+ "printing:ogn-007-298": {
+  "stats": "Type: rune. Supertype: none. Domains: fury. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "printing:rad-r01": {
+  "stats": "Type: rune. Supertype: none. Domains: fury. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "printing:ven-r01": {
+  "stats": "Type: rune. Supertype: none. Domains: fury. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "fury_rune": {
+  "stats": "Type: rune. Supertype: none. Domains: fury. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities."
+ },
+ "rename:fury_rune": {
+  "stats": "Type: rune. Supertype: none. Domains: fury. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "No abilities.",
+  "fake_name": "Fenvelfen"
+ },
+ "printing:unl-021-219": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. When you play me, you may return a friendly unit at a battlefield to its owner's hand. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units."
+ },
+ "grim_apothecary": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. When you play me, you may return a friendly unit at a battlefield to its owner's hand. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units."
+ },
+ "rename:grim_apothecary": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. When you play me, you may return a friendly unit at a battlefield to its owner's hand. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units.",
+  "fake_name": "Olqueslu"
+ },
+ "printing:rad-041-167": {
+  "stats": "Type: spell. Supertype: none. Domains: none. Energy cost: 1. Power cost: 2 (any-domain). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell with Power cost 2 any-domain power or more. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "hush": {
+  "stats": "Type: spell. Supertype: none. Domains: none. Energy cost: 1. Power cost: 2 (any-domain). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell with Power cost 2 any-domain power or more. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:hush": {
+  "stats": "Type: spell. Supertype: none. Domains: none. Energy cost: 1. Power cost: 2 (any-domain). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell with Power cost 2 any-domain power or more. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Ixluques"
+ },
+ "printing:unl-002-219": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush, Assault 2. Additional costs: none.",
+  "rules": "Ambush. Assault 2. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units. Assault 2: +2 Might while I'm an attacker."
+ },
+ "inferna": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush, Assault 2. Additional costs: none.",
+  "rules": "Ambush. Assault 2. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units. Assault 2: +2 Might while I'm an attacker."
+ },
+ "rename:inferna": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush, Assault 2. Additional costs: none.",
+  "rules": "Ambush. Assault 2. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units. Assault 2: +2 Might while I'm an attacker.",
+  "fake_name": "Zorzorix"
+ },
+ "printing:unl-112-219": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I move to a battlefield, you may move an enemy unit to that battlefield."
+ },
+ "irresistible_faefolk": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I move to a battlefield, you may move an enemy unit to that battlefield."
+ },
+ "rename:irresistible_faefolk": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I move to a battlefield, you may move an enemy unit to that battlefield.",
+  "fake_name": "Ixolfen"
+ },
+ "printing:ogn-039-298": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Accelerate. Additional costs: optional 1 energy and 1 fury power to enter ready (Accelerate).",
+  "rules": "Accelerate. When I conquer, draw 1. Keyword meanings: Accelerate: you may pay 1 energy and 1 fury power as an additional cost to have me enter ready."
+ },
+ "kai_sa_survivor": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Accelerate. Additional costs: optional 1 energy and 1 fury power to enter ready (Accelerate).",
+  "rules": "Accelerate. When I conquer, draw 1. Keyword meanings: Accelerate: you may pay 1 energy and 1 fury power as an additional cost to have me enter ready."
+ },
+ "rename:kai_sa_survivor": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Accelerate. Additional costs: optional 1 energy and 1 fury power to enter ready (Accelerate).",
+  "rules": "Accelerate. When I conquer, draw 1. Keyword meanings: Accelerate: you may pay 1 energy and 1 fury power as an additional cost to have me enter ready.",
+  "fake_name": "Zorquesvel, Badar"
+ },
+ "printing:unl-097-219": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, draw 1 if your other units have total Might 5 or more."
+ },
+ "kinkou_initiate": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, draw 1 if your other units have total Might 5 or more."
+ },
+ "rename:kinkou_initiate": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, draw 1 if your other units have total Might 5 or more.",
+  "fake_name": "Monixba"
+ },
+ "printing:sfd-036-221": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I died alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here."
+ },
+ "printing:unl-221-219": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I died alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here."
+ },
+ "lonely_poro": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I died alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here."
+ },
+ "rename:lonely_poro": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I died alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here.",
+  "fake_name": "Quesolques"
+ },
+ "printing:unl-156-219": {
+  "stats": "Type: unit. Supertype: none. Domains: order. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I didn't die alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here."
+ },
+ "loyal_poro": {
+  "stats": "Type: unit. Supertype: none. Domains: order. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I didn't die alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here."
+ },
+ "rename:loyal_poro": {
+  "stats": "Type: unit. Supertype: none. Domains: order. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I didn't die alone, draw 1. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here.",
+  "fake_name": "Quesixol"
+ },
+ "printing:ogn-239-298": {
+  "stats": "Type: unit. Supertype: none. Domains: order. Energy cost: 5. Power cost: 1 (order). Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: Play three 1 Might Recruit unit tokens into your base. Keyword meanings: Deathknell: when I die, get the effect."
+ },
+ "machine_evangel": {
+  "stats": "Type: unit. Supertype: none. Domains: order. Energy cost: 5. Power cost: 1 (order). Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: Play three 1 Might Recruit unit tokens into your base. Keyword meanings: Deathknell: when I die, get the effect."
+ },
+ "rename:machine_evangel": {
+  "stats": "Type: unit. Supertype: none. Domains: order. Energy cost: 5. Power cost: 1 (order). Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: Play three 1 Might Recruit unit tokens into your base. Keyword meanings: Deathknell: when I die, get the effect.",
+  "fake_name": "Olvelkri"
+ },
+ "printing:unl-113-219": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Deflect, Ganking, Hunt 2, Level 6. Additional costs: none.",
+  "rules": "Hunt 2. Level 6: I have Deflect and Ganking. Keyword meanings: Hunt 2: when I conquer or hold, gain 2 XP. Level 6: while you have 6 or more XP, get the effect. Deflect: opponents must pay 1 any-domain power to choose me with a spell or ability. Ganking: I can move from battlefield to battlefield."
+ },
+ "master_yi_tempered": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Deflect, Ganking, Hunt 2, Level 6. Additional costs: none.",
+  "rules": "Hunt 2. Level 6: I have Deflect and Ganking. Keyword meanings: Hunt 2: when I conquer or hold, gain 2 XP. Level 6: while you have 6 or more XP, get the effect. Deflect: opponents must pay 1 any-domain power to choose me with a spell or ability. Ganking: I can move from battlefield to battlefield."
+ },
+ "rename:master_yi_tempered": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Deflect, Ganking, Hunt 2, Level 6. Additional costs: none.",
+  "rules": "Hunt 2. Level 6: I have Deflect and Ganking. Keyword meanings: Hunt 2: when I conquer or hold, gain 2 XP. Level 6: while you have 6 or more XP, get the effect. Deflect: opponents must pay 1 any-domain power to choose me with a spell or ability. Ganking: I can move from battlefield to battlefield.",
+  "fake_name": "Queszormon, Krikri"
+ },
+ "printing:ogs-019-024": {
+  "stats": "Type: legend. Supertype: none. Domains: calm, body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "While a friendly unit defends alone, it gets +2 Might. Keyword meanings: Alone: there are no other friendly units here."
+ },
+ "master_yi_wuju_bladesman": {
+  "stats": "Type: legend. Supertype: none. Domains: calm, body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "While a friendly unit defends alone, it gets +2 Might. Keyword meanings: Alone: there are no other friendly units here."
+ },
+ "rename:master_yi_wuju_bladesman": {
+  "stats": "Type: legend. Supertype: none. Domains: calm, body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "While a friendly unit defends alone, it gets +2 Might. Keyword meanings: Alone: there are no other friendly units here.",
+  "fake_name": "Quesquestha, Thavel"
+ },
+ "printing:unl-066-219": {
+  "stats": "Type: spell. Supertype: none. Domains: mind. Energy cost: 7. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit -10 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "moonlight_affliction": {
+  "stats": "Type: spell. Supertype: none. Domains: mind. Energy cost: 7. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit -10 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:moonlight_affliction": {
+  "stats": "Type: spell. Supertype: none. Domains: mind. Energy cost: 7. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit -10 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Krithaques"
+ },
+ "printing:unl-114-219": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 3. Power cost: 1 (body). Might: 4. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. When I win a combat, draw 1. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units. Win a combat: I win if I remain after combat."
+ },
+ "nidalee_cat_form": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 3. Power cost: 1 (body). Might: 4. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. When I win a combat, draw 1. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units. Win a combat: I win if I remain after combat."
+ },
+ "rename:nidalee_cat_form": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 3. Power cost: 1 (body). Might: 4. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. When I win a combat, draw 1. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units. Win a combat: I win if I remain after combat.",
+  "fake_name": "Velolba, Fentha"
+ },
+ "printing:sfd-045-221": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter an enemy spell or ability that chooses a friendly unit or gear. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "not_so_fast": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter an enemy spell or ability that chooses a friendly unit or gear. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:not_so_fast": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter an enemy spell or ability that chooses a friendly unit or gear. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Ixolba"
+ },
+ "printing:ven-080-166": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I conquer, you may kill a gear with Energy cost no more than my Might."
+ },
+ "noxian_demolitionist": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I conquer, you may kill a gear with Energy cost no more than my Might."
+ },
+ "rename:noxian_demolitionist": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 1. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When I conquer, you may kill a gear with Energy cost no more than my Might.",
+  "fake_name": "Kriolzor"
+ },
+ "printing:ogn-012-298": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Legion. Additional costs: conditional cost reduction 2 energy.",
+  "rules": "Legion: I cost 2 energy less. Keyword meanings: Legion: get the effect if you've played another card this turn."
+ },
+ "noxus_hopeful": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Legion. Additional costs: conditional cost reduction 2 energy.",
+  "rules": "Legion: I cost 2 energy less. Keyword meanings: Legion: get the effect if you've played another card this turn."
+ },
+ "rename:noxus_hopeful": {
+  "stats": "Type: unit. Supertype: none. Domains: fury. Energy cost: 4. Power cost: none. Might: 4. Timing: main phase only (your turn, outside showdowns). Keywords: Legion. Additional costs: conditional cost reduction 2 energy.",
+  "rules": "Legion: I cost 2 energy less. Keyword meanings: Legion: get the effect if you've played another card this turn.",
+  "fake_name": "Darolkri"
+ },
+ "printing:ven-081-166": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 4. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: Flow. Additional costs: alternative cost from trash 4 energy, then banish (Flow).",
+  "rules": "Give a unit +6 Might this turn. Flow 4 energy. Keyword meanings: Flow: you may play this from your trash for its Flow cost. Then banish it."
+ },
+ "onslaught": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 4. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: Flow. Additional costs: alternative cost from trash 4 energy, then banish (Flow).",
+  "rules": "Give a unit +6 Might this turn. Flow 4 energy. Keyword meanings: Flow: you may play this from your trash for its Flow cost. Then banish it."
+ },
+ "rename:onslaught": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 4. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: Flow. Additional costs: alternative cost from trash 4 energy, then banish (Flow).",
+  "rules": "Give a unit +6 Might this turn. Flow 4 energy. Keyword meanings: Flow: you may play this from your trash for its Flow cost. Then banish it.",
+  "fake_name": "Thaixdar"
+ },
+ "printing:ogn-135-298": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy."
+ },
+ "pakaa_cub": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy."
+ },
+ "rename:pakaa_cub": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy.",
+  "fake_name": "Velkrivel"
+ },
+ "printing:ogn-136-298": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, buff another friendly unit. Keyword meanings: Buff: if it doesn't have a buff, it gets a +1 Might buff."
+ },
+ "pit_rookie": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, buff another friendly unit. Keyword meanings: Buff: if it doesn't have a buff, it gets a +1 Might buff."
+ },
+ "rename:pit_rookie": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, buff another friendly unit. Keyword meanings: Buff: if it doesn't have a buff, it gets a +1 Might buff.",
+  "fake_name": "Monkriques"
+ },
+ "printing:ogn-154-298": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 4. Power cost: 1 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +7 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "primal_strength": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 4. Power cost: 1 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +7 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "rename:primal_strength": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 4. Power cost: 1 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +7 Might this turn. Keyword meanings: Action: play on your turn or in showdowns.",
+  "fake_name": "Fenixmon"
+ },
+ "printing:sfd-097-221": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 2 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +5 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "punch_first": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 2 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +5 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "rename:punch_first": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 2 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +5 Might this turn. Keyword meanings: Action: play on your turn or in showdowns.",
+  "fake_name": "Darmonlu"
+ },
+ "printing:unl-028-219": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 3. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Ganking, Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden); optional additional cost 1 fury power.",
+  "rules": "Hidden. Ganking. You may pay 1 fury power as an additional cost to play me. When you play me, if you paid the additional cost, ready me and give me +2 Might this turn. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Ganking: I can move from battlefield to battlefield."
+ },
+ "pyke_dockside_butcher": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 3. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Ganking, Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden); optional additional cost 1 fury power.",
+  "rules": "Hidden. Ganking. You may pay 1 fury power as an additional cost to play me. When you play me, if you paid the additional cost, ready me and give me +2 Might this turn. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Ganking: I can move from battlefield to battlefield."
+ },
+ "rename:pyke_dockside_butcher": {
+  "stats": "Type: unit. Supertype: champion. Domains: fury. Energy cost: 3. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Ganking, Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden); optional additional cost 1 fury power.",
+  "rules": "Hidden. Ganking. You may pay 1 fury power as an additional cost to play me. When you play me, if you paid the additional cost, ready me and give me +2 Might this turn. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Ganking: I can move from battlefield to battlefield.",
+  "fake_name": "Krivelques, Lufen"
+ },
+ "printing:ven-083-166": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: optional additional cost 1 body power.",
+  "rules": "As you play this, you may pay 1 body power as an additional cost. Choose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 Might this turn. They deal damage equal to their Mights to each other."
+ },
+ "rampage": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: optional additional cost 1 body power.",
+  "rules": "As you play this, you may pay 1 body power as an additional cost. Choose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 Might this turn. They deal damage equal to their Mights to each other."
+ },
+ "rename:rampage": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 3. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: optional additional cost 1 body power.",
+  "rules": "As you play this, you may pay 1 body power as an additional cost. Choose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 Might this turn. They deal damage equal to their Mights to each other.",
+  "fake_name": "Quesfenvel"
+ },
+ "printing:unl-183-219": {
+  "stats": "Type: legend. Supertype: none. Domains: fury, body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you play a unit, give a unit +1 Might this turn."
+ },
+ "rengar_pridestalker": {
+  "stats": "Type: legend. Supertype: none. Domains: fury, body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you play a unit, give a unit +1 Might this turn."
+ },
+ "rename:rengar_pridestalker": {
+  "stats": "Type: legend. Supertype: none. Domains: fury, body. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you play a unit, give a unit +1 Might this turn.",
+  "fake_name": "Ixmonix, Kriix"
+ },
+ "printing:unl-120-219": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 5. Power cost: 1 (body). Might: 6. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. I can Ambush to a battlefield where there are enemy units, even if you don't have units there. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units."
+ },
+ "printing:ven-179-166": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 5. Power cost: 1 (body). Might: 6. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. I can Ambush to a battlefield where there are enemy units, even if you don't have units there. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units."
+ },
+ "rengar_trophy_hunter": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 5. Power cost: 1 (body). Might: 6. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. I can Ambush to a battlefield where there are enemy units, even if you don't have units there. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units."
+ },
+ "rename:rengar_trophy_hunter": {
+  "stats": "Type: unit. Supertype: champion. Domains: body. Energy cost: 5. Power cost: 1 (body). Might: 6. Timing: main phase only (your turn, outside showdowns); or as a Reaction to a battlefield where you have units (Ambush). Keywords: Ambush. Additional costs: none.",
+  "rules": "Ambush. I can Ambush to a battlefield where there are enemy units, even if you don't have units there. Keyword meanings: Ambush: you may play me as a \u0001 to a battlefield where you have units.",
+  "fake_name": "Velfenol, Luix"
+ },
+ "printing:sfd-105-221": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 6. Power cost: none. Might: 5. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "I can't be chosen by enemy spells and abilities."
+ },
+ "ruin_runner": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 6. Power cost: none. Might: 5. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "I can't be chosen by enemy spells and abilities."
+ },
+ "rename:ruin_runner": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 6. Power cost: none. Might: 5. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "I can't be chosen by enemy spells and abilities.",
+  "fake_name": "Monixkri"
+ },
+ "printing:ogn-156-298": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 1 (body). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card."
+ },
+ "sabotage": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 1 (body). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card."
+ },
+ "rename:sabotage": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 1 (body). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card.",
+  "fake_name": "Fenfentha"
+ },
+ "printing:unl-053-219": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 0. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "When you play me, draw 1. Deathknell: Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP. Keyword meanings: Deathknell: when I die, get the effect."
+ },
+ "scuttle_crab": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 0. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "When you play me, draw 1. Deathknell: Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP. Keyword meanings: Deathknell: when I die, get the effect."
+ },
+ "rename:scuttle_crab": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 0. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "When you play me, draw 1. Deathknell: Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP. Keyword meanings: Deathknell: when I die, get the effect.",
+  "fake_name": "Zorvelkri"
+ },
+ "printing:sfd-217-221": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you conquer here, draw 1 for each other battlefield you or allies control."
+ },
+ "seat_of_power": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you conquer here, draw 1 for each other battlefield you or allies control."
+ },
+ "rename:seat_of_power": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "When you conquer here, draw 1 for each other battlefield you or allies control.",
+  "fake_name": "Velzordar"
+ },
+ "printing:unl-215-219": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base."
+ },
+ "star_spring": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base."
+ },
+ "rename:star_spring": {
+  "stats": "Type: battlefield. Supertype: none. Domains: none. Energy cost: none. Power cost: none. Might: none. Timing: not played from hand. Keywords: none. Additional costs: none.",
+  "rules": "The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base.",
+  "fake_name": "Thaluques"
+ },
+ "printing:unl-184-219": {
+  "stats": "Type: spell. Supertype: signature. Domains: fury, body. Energy cost: 2. Power cost: 1 (fury or body). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "thrill_of_the_hunt": {
+  "stats": "Type: spell. Supertype: signature. Domains: fury, body. Energy cost: 2. Power cost: 1 (fury or body). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "rename:thrill_of_the_hunt": {
+  "stats": "Type: spell. Supertype: signature. Domains: fury, body. Energy cost: 2. Power cost: 1 (fury or body). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost. Keyword meanings: Reaction: play any time, even before spells and abilities resolve.",
+  "fake_name": "Thamontha"
+ },
+ "printing:ogn-077-298": {
+  "stats": "Type: gear. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. If a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Recall: send it to base. This isn't a move."
+ },
+ "zhonya_s_hourglass": {
+  "stats": "Type: gear. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. If a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Recall: send it to base. This isn't a move."
+ },
+ "rename:zhonya_s_hourglass": {
+  "stats": "Type: gear. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: main phase only (your turn, outside showdowns); or hidden and played later as a Reaction (Hidden). Keywords: Hidden. Additional costs: hide for 1 any-domain power, later play for 0 energy (Hidden).",
+  "rules": "Hidden. If a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. Keyword meanings: Hidden: hide now for 1 any-domain power to react with later for 0 energy. Recall: send it to base. This isn't a move.",
+  "fake_name": "Lufenzor"
+ },
+ "synthetic:punch_first__amount4": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 2 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +4 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "synthetic:punch_first__energy3": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 3. Power cost: 2 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +5 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "synthetic:punch_first__power0": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 0 (body). Might: none. Timing: Action (your turn or showdowns). Keywords: Action. Additional costs: none.",
+  "rules": "Action. Give a unit +5 Might this turn. Keyword meanings: Action: play on your turn or in showdowns."
+ },
+ "synthetic:discipline__draw2": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit +2 Might this turn. Draw 2. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "synthetic:discipline__enemy": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give an enemy unit +2 Might this turn. Draw 1. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "synthetic:lonely_poro__draw2": {
+  "stats": "Type: unit. Supertype: none. Domains: calm. Energy cost: 2. Power cost: none. Might: 2. Timing: main phase only (your turn, outside showdowns). Keywords: Deathknell. Additional costs: none.",
+  "rules": "Deathknell: If I died alone, draw 2. Keyword meanings: Deathknell: when I die, get the effect. Alone: there are no other friendly units here."
+ },
+ "synthetic:defy__cost2": {
+  "stats": "Type: spell. Supertype: none. Domains: calm. Energy cost: 1. Power cost: 1 (calm). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Counter a spell that costs no more than 2 energy and no more than 1 any-domain power. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ },
+ "synthetic:sabotage__unit": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 1 (body). Might: none. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "Choose an opponent. They reveal their hand. Choose a unit card from it, and recycle that card."
+ },
+ "synthetic:pit_rookie__might3": {
+  "stats": "Type: unit. Supertype: none. Domains: body. Energy cost: 2. Power cost: none. Might: 3. Timing: main phase only (your turn, outside showdowns). Keywords: none. Additional costs: none.",
+  "rules": "When you play me, buff another friendly unit. Keyword meanings: Buff: if it doesn't have a buff, it gets a +1 Might buff."
+ },
+ "synthetic:punch_first__reaction": {
+  "stats": "Type: spell. Supertype: none. Domains: body. Energy cost: 1. Power cost: 2 (body). Might: none. Timing: Reaction (any time, even before spells and abilities resolve). Keywords: Reaction. Additional costs: none.",
+  "rules": "Reaction. Give a unit +5 Might this turn. Keyword meanings: Reaction: play any time, even before spells and abilities resolve."
+ }
+}

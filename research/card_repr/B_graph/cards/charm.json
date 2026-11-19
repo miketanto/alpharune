@@ -1,0 +1,34 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1
+  },
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1
+     },
+     "dest": "base_or_other_battlefield"
+    }
+   ]
+  }
+ ]
+}

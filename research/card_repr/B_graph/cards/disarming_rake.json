@@ -1,0 +1,37 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1
+  },
+  "might": 2
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "gear",
+      "side": "any",
+      "zone": "board",
+      "count": 1
+     },
+     "optional": true
+    }
+   ]
+  }
+ ]
+}

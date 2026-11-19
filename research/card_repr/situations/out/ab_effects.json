@@ -1,0 +1,1881 @@
+{
+ "alpha_strike": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Calm-"
+  ],
+  "only_S": [
+   "bf0.ctrl_opp-",
+   "ev_banished+",
+   "ev_drawn_opp+",
+   "ev_revealed+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.buffs-",
+   "opp.deck-",
+   "opp.exhausted_units+",
+   "opp.exhausted_units-",
+   "opp.facedown-",
+   "opp.gear-",
+   "opp.hand+",
+   "opp.sum_might+",
+   "opp.tokens-",
+   "opp.xp+"
+  ],
+  "only_S_train": [
+   "opp.facedown-"
+  ],
+  "only_S_test": [],
+  "n_H": 16,
+  "n_S": 30,
+  "n_both": 14
+ },
+ "back_off": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.facedown-",
+   "ev_revealed+",
+   "me.facedown-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-"
+  ],
+  "only_S_train": [
+   "ev_revealed+"
+  ],
+  "only_S_test": [],
+  "n_H": 17,
+  "n_S": 21,
+  "n_both": 15
+ },
+ "body_rune": {
+  "only_H": [],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 0,
+  "n_S": 0,
+  "n_both": 0
+ },
+ "brittle_steel": {
+  "only_H": [
+   "SELF.in_banish+",
+   "SELF.in_trash-",
+   "ev_banished+",
+   "me.banish+",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.sum_might+"
+  ],
+  "only_S_test": [],
+  "n_H": 15,
+  "n_S": 13,
+  "n_both": 8
+ },
+ "calm_rune": {
+  "only_H": [],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 0,
+  "n_S": 0,
+  "n_both": 0
+ },
+ "charm": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Calm-"
+  ],
+  "only_S": [
+   "bf0.ctrl_opp-",
+   "bf0.showdown+",
+   "bf1.combat+",
+   "bf1.contested+",
+   "bf1.ctrl_opp-",
+   "bf1.showdown+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.facedown-",
+   "opp.trash+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 11,
+  "n_S": 19,
+  "n_both": 9
+ },
+ "darius_trifarian": {
+  "only_H": [
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "me.sum_might-",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.damage+",
+   "SELF.exhausted-",
+   "ev_moved_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_damage+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "SELF.damage+",
+   "ev_moved_me+",
+   "me.sum_damage+"
+  ],
+  "only_S_test": [],
+  "n_H": 22,
+  "n_S": 26,
+  "n_both": 17
+ },
+ "decisive_strike": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 9,
+  "n_S": 9,
+  "n_both": 7
+ },
+ "decree_of_focus": {
+  "only_H": [
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "me.sum_damage+",
+   "me.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 12,
+  "n_S": 8,
+  "n_both": 7
+ },
+ "decree_of_strength": {
+  "only_H": [
+   "opp.deck+",
+   "opp.hand-",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 10,
+  "n_S": 8,
+  "n_both": 7
+ },
+ "defy": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Calm-"
+  ],
+  "only_S": [
+   "SELF.in_deck-",
+   "bf0.combat-",
+   "bf0.contested-",
+   "bf0.ctrl_me-",
+   "bf0.ctrl_opp+",
+   "bf0.showdown-",
+   "bf1.combat+",
+   "bf1.combat-",
+   "bf1.contested+",
+   "bf1.contested-",
+   "bf1.ctrl_opp+",
+   "bf1.showdown-",
+   "ev_banished+",
+   "ev_banished-",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "ev_drawn_me+",
+   "ev_drawn_me-",
+   "ev_drawn_opp+",
+   "ev_moved_me+",
+   "ev_moved_me-",
+   "ev_moved_opp-",
+   "ev_revealed+",
+   "ev_revealed-",
+   "ev_spells_resolved_opp+",
+   "ev_stun_my_units+",
+   "ev_stun_my_units-",
+   "ev_stun_opp_units-",
+   "me.deck+",
+   "me.deck-",
+   "me.exhausted_units+",
+   "me.gear+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.stunned+",
+   "me.stunned-",
+   "me.sum_damage-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.xp-",
+   "opp.deck-",
+   "opp.exhausted_units+",
+   "opp.exhausted_units-",
+   "opp.facedown+",
+   "opp.hand+",
+   "opp.stunned-",
+   "opp.sum_damage-",
+   "opp.sum_might+",
+   "opp.sum_might-",
+   "opp.tokens+",
+   "opp.trash-",
+   "opp.units+",
+   "opp.xp-"
+  ],
+  "only_S_train": [
+   "bf0.ctrl_me-",
+   "bf0.ctrl_opp+",
+   "bf1.combat+",
+   "bf1.contested+",
+   "bf1.showdown-",
+   "ev_banished+",
+   "ev_drawn_me+",
+   "ev_drawn_opp+",
+   "ev_moved_me+",
+   "ev_spells_resolved_opp+",
+   "ev_stun_my_units+",
+   "ev_stun_my_units-",
+   "ev_stun_opp_units-",
+   "me.gear+",
+   "me.stunned+",
+   "me.stunned-",
+   "me.xp-",
+   "opp.stunned-",
+   "opp.tokens+",
+   "opp.xp-"
+  ],
+  "only_S_test": [
+   "bf0.combat-",
+   "bf1.ctrl_opp+",
+   "ev_revealed+",
+   "opp.facedown+"
+  ],
+  "n_H": 16,
+  "n_S": 67,
+  "n_both": 14
+ },
+ "disarming_rake": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.ctrl_me-",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might-",
+   "me.units-",
+   "opp.score+",
+   "opp.sum_might+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-",
+   "pool.power_Calm-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "ev_moved_me+",
+   "me.gear-",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 32,
+  "n_S": 19,
+  "n_both": 14
+ },
+ "discipline": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "ev_drawn_opp+",
+   "me.runes_exhausted+",
+   "me.sum_damage+",
+   "opp.deck-",
+   "opp.hand+"
+  ],
+  "only_S_train": [
+   "ev_drawn_opp+",
+   "opp.deck-",
+   "opp.hand+"
+  ],
+  "only_S_test": [
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "me.sum_damage+"
+  ],
+  "n_H": 10,
+  "n_S": 16,
+  "n_both": 9
+ },
+ "emperor_s_dais": {
+  "only_H": [
+   "ev_returned_to_hand+",
+   "me.hand+",
+   "me.sum_might-",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "bf0.ctrl_me+",
+   "bf1.ctrl_me+",
+   "me.runes-",
+   "me.runes_exhausted-",
+   "me.sum_might+",
+   "me.units+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "bf0.ctrl_me+",
+   "bf1.ctrl_me+"
+  ],
+  "only_S_test": [
+   "me.runes-",
+   "me.runes_exhausted-"
+  ],
+  "n_H": 8,
+  "n_S": 11,
+  "n_both": 4
+ },
+ "en_garde": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "ev_dmg_to_opp_units+",
+   "ev_revealed-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_dmg_to_opp_units+"
+  ],
+  "only_S_test": [
+   "ev_revealed-"
+  ],
+  "n_H": 8,
+  "n_S": 10,
+  "n_both": 7
+ },
+ "ferrous_forerunner": {
+  "only_H": [
+   "SELF.in_trash-",
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 22,
+  "n_S": 20,
+  "n_both": 14
+ },
+ "fiora_peerless": {
+  "only_H": [
+   "SELF.in_trash-",
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [],
+  "n_H": 18,
+  "n_S": 18,
+  "n_both": 11
+ },
+ "first_mate": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.exhausted_units-",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [
+   "me.runes-"
+  ],
+  "n_H": 13,
+  "n_S": 20,
+  "n_both": 12
+ },
+ "fury_rune": {
+  "only_H": [],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 0,
+  "n_S": 0,
+  "n_both": 0
+ },
+ "grim_apothecary": {
+  "only_H": [
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_my_units-",
+   "me.trash-",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf0-",
+   "SELF.at_bf1+",
+   "SELF.at_bf1-",
+   "SELF.exhausted-",
+   "SELF.in_hand+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "SELF.temp_might+",
+   "SELF.temp_might-",
+   "bf1.combat-",
+   "bf1.contested-",
+   "bf1.ctrl_me-",
+   "bf1.showdown-",
+   "ev_banished+",
+   "ev_dmg_to_my_units+",
+   "ev_moved_me+",
+   "ev_moved_me-",
+   "ev_moved_opp-",
+   "ev_readied_me+",
+   "ev_readied_me-",
+   "me.buffs-",
+   "me.exhausted_units-",
+   "me.facedown-",
+   "me.hand+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_damage+",
+   "me.sum_might-",
+   "me.tokens-",
+   "me.trash+",
+   "me.units-",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "bf1.combat-",
+   "bf1.contested-",
+   "bf1.showdown-",
+   "ev_readied_me+",
+   "ev_readied_me-",
+   "me.buffs-"
+  ],
+  "only_S_test": [
+   "ev_dmg_to_my_units+",
+   "ev_moved_opp-",
+   "me.runes-",
+   "me.sum_damage+"
+  ],
+  "n_H": 18,
+  "n_S": 45,
+  "n_both": 13
+ },
+ "inferna": {
+  "only_H": [
+   "bf0.ctrl_me+",
+   "bf0.ctrl_opp+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "opp.score+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "bf0.combat+",
+   "bf0.contested+",
+   "bf1.ctrl_me+",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "ev_returned_to_hand-",
+   "ev_revealed-",
+   "me.runes_exhausted+",
+   "me.sum_damage+"
+  ],
+  "only_S_train": [
+   "bf0.combat+",
+   "bf0.contested+"
+  ],
+  "only_S_test": [
+   "bf1.ctrl_me+",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "ev_returned_to_hand-",
+   "me.sum_damage+"
+  ],
+  "n_H": 20,
+  "n_S": 25,
+  "n_both": 12
+ },
+ "irresistible_faefolk": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.ctrl_me-",
+   "bf1.ctrl_opp+",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.units-",
+   "opp.score+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "bf0.ctrl_me-",
+   "bf0.ctrl_opp-",
+   "bf0.showdown-",
+   "bf1.combat+",
+   "bf1.contested+",
+   "bf1.ctrl_opp-",
+   "bf1.showdown-",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "bf0.ctrl_opp-",
+   "bf1.showdown-",
+   "ev_readied_me+",
+   "me.runes-"
+  ],
+  "only_S_test": [
+   "bf0.ctrl_me-"
+  ],
+  "n_H": 33,
+  "n_S": 28,
+  "n_both": 15
+ },
+ "kai_sa_survivor": {
+  "only_H": [
+   "SELF.in_trash-",
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might-",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-"
+  ],
+  "only_S_test": [],
+  "n_H": 23,
+  "n_S": 22,
+  "n_both": 14
+ },
+ "kinkou_initiate": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.hand+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [],
+  "n_H": 14,
+  "n_S": 21,
+  "n_both": 13
+ },
+ "lonely_poro": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.units-",
+   "opp.score+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "ev_revealed+",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "ev_revealed+"
+  ],
+  "only_S_test": [
+   "me.runes-"
+  ],
+  "n_H": 32,
+  "n_S": 23,
+  "n_both": 16
+ },
+ "loyal_poro": {
+  "only_H": [
+   "ev_drawn_me+",
+   "me.deck-",
+   "me.hand+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 15,
+  "n_S": 16,
+  "n_both": 11
+ },
+ "machine_evangel": {
+  "only_H": [
+   "SELF.at_base+",
+   "SELF.at_bf0+",
+   "SELF.exhausted+",
+   "SELF.in_hand-",
+   "SELF.in_trash-",
+   "SELF.might+",
+   "SELF.might-",
+   "SELF.on_board+",
+   "bf0.ctrl_me+",
+   "ev_cards_played_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "ev_token_might_me+",
+   "ev_tokens_me+",
+   "me.exhausted_units+",
+   "me.hand-",
+   "me.sum_might+",
+   "me.tokens+",
+   "me.trash-",
+   "me.units+",
+   "pool.energy-",
+   "pool.power_Order-"
+  ],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 22,
+  "n_S": 0,
+  "n_both": 0
+ },
+ "master_yi_tempered": {
+  "only_H": [
+   "SELF.at_bf0-",
+   "SELF.in_trash-",
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "bf1.combat+",
+   "bf1.contested+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might-",
+   "me.trash-",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 25,
+  "n_S": 15,
+  "n_both": 14
+ },
+ "master_yi_wuju_bladesman": {
+  "only_H": [
+   "bf0.ctrl_me+",
+   "bf0.ctrl_opp-",
+   "ev_died_me-",
+   "ev_died_opp+",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might+",
+   "me.trash-",
+   "me.units+",
+   "opp.score-",
+   "opp.sum_might-",
+   "opp.trash+",
+   "opp.units-"
+  ],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 12,
+  "n_S": 0,
+  "n_both": 0
+ },
+ "moonlight_affliction": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.in_deck-",
+   "ev_banished+",
+   "ev_died_me-",
+   "ev_died_opp+",
+   "ev_dmg_to_my_units-",
+   "ev_dmg_to_opp_units-",
+   "ev_revealed-",
+   "me.deck-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_might+",
+   "me.units+",
+   "opp.buffs-",
+   "opp.sum_damage-",
+   "opp.tokens-",
+   "opp.trash+",
+   "opp.units-"
+  ],
+  "only_S_train": [
+   "SELF.in_deck-",
+   "ev_revealed-",
+   "me.deck-"
+  ],
+  "only_S_test": [
+   "ev_banished+",
+   "ev_died_me-",
+   "ev_died_opp+",
+   "ev_dmg_to_my_units-",
+   "me.units+",
+   "opp.buffs-",
+   "opp.tokens-",
+   "opp.trash+",
+   "opp.units-"
+  ],
+  "n_H": 9,
+  "n_S": 25,
+  "n_both": 8
+ },
+ "nidalee_cat_form": {
+  "only_H": [
+   "SELF.in_trash-",
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might-",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_dmg_to_my_units+",
+   "ev_moved_me+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_damage+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [
+   "ev_dmg_to_my_units+",
+   "me.sum_damage+"
+  ],
+  "n_H": 23,
+  "n_S": 22,
+  "n_both": 14
+ },
+ "not_so_fast": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Calm-"
+  ],
+  "only_S": [
+   "bf1.ctrl_me+",
+   "ev_banished-",
+   "ev_dmg_to_opp_units-",
+   "ev_moved_me-",
+   "ev_readied_me-",
+   "ev_revealed-",
+   "me.exhausted_units+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_might-",
+   "me.trash+",
+   "me.xp-",
+   "opp.sum_damage-",
+   "opp.sum_might-"
+  ],
+  "only_S_train": [
+   "bf1.ctrl_me+",
+   "ev_dmg_to_opp_units-",
+   "ev_moved_me-",
+   "ev_readied_me-",
+   "opp.sum_damage-"
+  ],
+  "only_S_test": [
+   "ev_banished-",
+   "ev_revealed-",
+   "me.xp-",
+   "opp.sum_might-"
+  ],
+  "n_H": 16,
+  "n_S": 28,
+  "n_both": 14
+ },
+ "noxian_demolitionist": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.ctrl_me-",
+   "bf1.ctrl_opp+",
+   "ev_banished+",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.units-",
+   "opp.gear-",
+   "opp.score+",
+   "opp.tokens-",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [
+   "me.runes-"
+  ],
+  "n_H": 33,
+  "n_S": 18,
+  "n_both": 12
+ },
+ "noxus_hopeful": {
+  "only_H": [
+   "SELF.in_trash-",
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might-",
+   "me.trash-",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [],
+  "n_H": 19,
+  "n_S": 18,
+  "n_both": 11
+ },
+ "onslaught": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 14,
+  "n_S": 15,
+  "n_both": 13
+ },
+ "pakaa_cub": {
+  "only_H": [
+   "SELF.in_trash-",
+   "bf0.ctrl_me+",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.facedown-",
+   "SELF.temp_might+",
+   "ev_drawn_opp+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "ev_revealed+",
+   "me.facedown-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-",
+   "opp.deck-",
+   "opp.hand+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_drawn_opp+",
+   "ev_readied_me+",
+   "ev_revealed+",
+   "opp.deck-",
+   "opp.hand+"
+  ],
+  "only_S_test": [],
+  "n_H": 19,
+  "n_S": 28,
+  "n_both": 14
+ },
+ "pit_rookie": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.ctrl_me-",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.units-",
+   "opp.score+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [
+   "me.runes-"
+  ],
+  "n_H": 30,
+  "n_S": 19,
+  "n_both": 13
+ },
+ "primal_strength": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-"
+  ],
+  "only_S_test": [],
+  "n_H": 10,
+  "n_S": 12,
+  "n_both": 8
+ },
+ "punch_first": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-"
+  ],
+  "only_S_test": [],
+  "n_H": 10,
+  "n_S": 13,
+  "n_both": 8
+ },
+ "pyke_dockside_butcher": {
+  "only_H": [
+   "SELF.at_bf0-",
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.combat+",
+   "bf1.contested+",
+   "bf1.ctrl_me-",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.units-",
+   "opp.score+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.exhausted-",
+   "SELF.facedown-",
+   "bf1.ctrl_me+",
+   "ev_dmg_to_my_units+",
+   "ev_revealed+",
+   "me.exhausted_units-",
+   "me.facedown-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-"
+  ],
+  "only_S_train": [],
+  "only_S_test": [
+   "bf1.ctrl_me+"
+  ],
+  "n_H": 43,
+  "n_S": 32,
+  "n_both": 22
+ },
+ "rampage": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "bf0.ctrl_me-",
+   "bf0.ctrl_opp-",
+   "bf1.ctrl_me-",
+   "bf1.ctrl_opp-",
+   "ev_banished+",
+   "ev_drawn_me+",
+   "ev_drawn_opp+",
+   "ev_readied_me+",
+   "ev_revealed+",
+   "ev_token_might_me+",
+   "ev_tokens_me+",
+   "ev_tokens_opp+",
+   "me.buffs-",
+   "me.deck-",
+   "me.exhausted_units+",
+   "me.facedown-",
+   "me.gear-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_damage-",
+   "me.tokens+",
+   "me.tokens-",
+   "me.units+",
+   "me.xp+",
+   "opp.buffs-",
+   "opp.deck-",
+   "opp.exhausted_units+",
+   "opp.exhausted_units-",
+   "opp.facedown-",
+   "opp.gear-",
+   "opp.hand+",
+   "opp.runes-",
+   "opp.runes_exhausted-",
+   "opp.stunned-",
+   "opp.sum_damage+",
+   "opp.sum_damage-",
+   "opp.sum_might+",
+   "opp.tokens+",
+   "opp.tokens-",
+   "opp.units+",
+   "opp.xp+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.sum_damage-",
+   "opp.stunned-",
+   "opp.sum_damage-"
+  ],
+  "only_S_test": [
+   "ev_token_might_me+",
+   "ev_tokens_me+",
+   "ev_tokens_opp+",
+   "me.tokens+",
+   "me.units+",
+   "opp.runes-",
+   "opp.runes_exhausted-",
+   "opp.sum_might+",
+   "opp.tokens+",
+   "opp.units+"
+  ],
+  "n_H": 20,
+  "n_S": 59,
+  "n_both": 18
+ },
+ "rengar_pridestalker": {
+  "only_H": [],
+  "only_S": [
+   "bf0.ctrl_me-",
+   "ev_dmg_to_my_units+",
+   "ev_drawn_me+",
+   "me.deck-",
+   "me.hand+",
+   "me.sum_damage+"
+  ],
+  "only_S_train": [
+   "ev_dmg_to_my_units+",
+   "ev_drawn_me+",
+   "me.deck-",
+   "me.hand+",
+   "me.sum_damage+"
+  ],
+  "only_S_test": [],
+  "n_H": 2,
+  "n_S": 8,
+  "n_both": 2
+ },
+ "rengar_trophy_hunter": {
+  "only_H": [
+   "SELF.in_trash-",
+   "SELF.might-",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might-",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "SELF.temp_might+",
+   "bf0.combat+",
+   "bf0.contested+",
+   "bf0.showdown+",
+   "bf0.showdown-",
+   "bf1.showdown-",
+   "ev_moved_me+",
+   "ev_revealed-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "bf0.showdown+",
+   "bf0.showdown-",
+   "bf1.showdown-"
+  ],
+  "only_S_test": [],
+  "n_H": 23,
+  "n_S": 26,
+  "n_both": 15
+ },
+ "ruin_runner": {
+  "only_H": [
+   "SELF.in_trash-",
+   "SELF.might-",
+   "bf0.ctrl_me+",
+   "ev_died_me-",
+   "ev_dmg_to_opp_units+",
+   "me.sum_might-",
+   "me.trash-",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "ev_moved_me+",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 19,
+  "n_S": 14,
+  "n_both": 11
+ },
+ "sabotage": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.sum_might+"
+  ],
+  "only_S_test": [],
+  "n_H": 11,
+  "n_S": 14,
+  "n_both": 9
+ },
+ "scuttle_crab": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might+",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.ctrl_me-",
+   "bf1.ctrl_opp+",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "me.score-",
+   "me.sum_might+",
+   "me.trash+",
+   "me.units-",
+   "opp.score+",
+   "opp.sum_might+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "bf0.ctrl_me-",
+   "ev_moved_me+",
+   "me.hand+",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "bf0.ctrl_me-"
+  ],
+  "only_S_test": [],
+  "n_H": 31,
+  "n_S": 17,
+  "n_both": 12
+ },
+ "seat_of_power": {
+  "only_H": [],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 3,
+  "n_S": 3,
+  "n_both": 3
+ },
+ "star_spring": {
+  "only_H": [],
+  "only_S": [
+   "ev_returned_to_hand-",
+   "me.exhausted_units+",
+   "me.hand-",
+   "me.sum_might+",
+   "me.sum_might-",
+   "me.units+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [
+   "ev_returned_to_hand-",
+   "me.exhausted_units+",
+   "me.hand-",
+   "me.sum_might+",
+   "me.units+"
+  ],
+  "n_H": 1,
+  "n_S": 7,
+  "n_both": 1
+ },
+ "thrill_of_the_hunt": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "bf0.combat+",
+   "bf0.contested+",
+   "bf0.ctrl_me-",
+   "bf0.showdown+",
+   "bf1.ctrl_me-",
+   "bf1.showdown+",
+   "ev_died_opp-",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_my_units-",
+   "ev_dmg_to_opp_units-",
+   "ev_drawn_me+",
+   "ev_moved_me+",
+   "ev_moved_me-",
+   "ev_readied_me+",
+   "ev_returned_to_hand+",
+   "me.buffs+",
+   "me.buffs-",
+   "me.deck-",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_damage+",
+   "me.sum_damage-",
+   "me.sum_might+",
+   "me.sum_might-",
+   "me.tokens-",
+   "me.units-",
+   "opp.exhausted_units+",
+   "opp.exhausted_units-",
+   "opp.sum_might+",
+   "opp.trash-",
+   "opp.units+"
+  ],
+  "only_S_train": [
+   "me.buffs+",
+   "me.buffs-",
+   "me.tokens-",
+   "opp.exhausted_units-"
+  ],
+  "only_S_test": [
+   "ev_died_opp-",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_my_units-",
+   "ev_dmg_to_opp_units-",
+   "ev_moved_me+",
+   "ev_moved_me-",
+   "me.sum_damage+",
+   "me.sum_damage-",
+   "opp.exhausted_units+",
+   "opp.trash-",
+   "opp.units+"
+  ],
+  "n_H": 12,
+  "n_S": 42,
+  "n_both": 10
+ },
+ "zhonya_s_hourglass": {
+  "only_H": [
+   "SELF.at_base-",
+   "SELF.on_board-",
+   "me.gear-",
+   "me.trash-",
+   "pool.energy-",
+   "pool.power_Fury-"
+  ],
+  "only_S": [
+   "SELF.facedown-",
+   "ev_revealed+",
+   "me.facedown-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-"
+  ],
+  "only_S_train": [
+   "ev_revealed+"
+  ],
+  "only_S_test": [],
+  "n_H": 20,
+  "n_S": 20,
+  "n_both": 14
+ },
+ "hush": {
+  "only_H": [
+   "SELF.in_hand-",
+   "SELF.in_trash+",
+   "bf0.ctrl_me+",
+   "ev_cards_played_me+",
+   "ev_died_me-",
+   "ev_spells_resolved_me+",
+   "ev_spells_resolved_opp-",
+   "me.hand-",
+   "me.sum_might+",
+   "me.units+",
+   "pool.energy-",
+   "pool.power_any-"
+  ],
+  "only_S": [],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 12,
+  "n_S": 0,
+  "n_both": 0
+ },
+ "synthetic:punch_first__amount4": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-"
+  ],
+  "only_S_test": [],
+  "n_H": 10,
+  "n_S": 13,
+  "n_both": 8
+ },
+ "synthetic:punch_first__energy3": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [],
+  "only_S_test": [],
+  "n_H": 10,
+  "n_S": 10,
+  "n_both": 8
+ },
+ "synthetic:punch_first__power0": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-"
+  ],
+  "only_S_test": [],
+  "n_H": 9,
+  "n_S": 12,
+  "n_both": 8
+ },
+ "synthetic:punch_first__reaction": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "SELF.in_deck-",
+   "bf0.ctrl_me-",
+   "bf0.ctrl_opp-",
+   "ev_banished-",
+   "ev_died_me+",
+   "ev_died_me-",
+   "ev_died_opp+",
+   "ev_died_opp-",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "ev_readied_me+",
+   "ev_revealed-",
+   "me.buffs+",
+   "me.deck-",
+   "me.exhausted_units+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.runes_exhausted-",
+   "me.sum_damage+",
+   "me.sum_damage-",
+   "me.sum_might-",
+   "me.tokens+",
+   "me.units+",
+   "me.units-",
+   "opp.exhausted_units+",
+   "opp.exhausted_units-",
+   "opp.sum_damage+",
+   "opp.sum_damage-",
+   "opp.sum_might-",
+   "opp.trash+",
+   "opp.trash-",
+   "opp.units+",
+   "opp.units-",
+   "opp.xp-"
+  ],
+  "only_S_train": [
+   "bf0.ctrl_me-",
+   "bf0.ctrl_opp-",
+   "ev_banished-",
+   "ev_died_me+",
+   "ev_died_me-",
+   "ev_died_opp-",
+   "me.buffs+",
+   "me.exhausted_units+",
+   "me.sum_damage+",
+   "me.sum_damage-",
+   "me.sum_might-",
+   "me.tokens+",
+   "me.units+",
+   "me.units-",
+   "opp.exhausted_units+",
+   "opp.exhausted_units-",
+   "opp.sum_damage+",
+   "opp.sum_damage-",
+   "opp.trash-",
+   "opp.units+",
+   "opp.xp-"
+  ],
+  "only_S_test": [],
+  "n_H": 10,
+  "n_S": 43,
+  "n_both": 8
+ },
+ "synthetic:discipline__draw2": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.in_deck-",
+   "bf1.ctrl_opp-",
+   "ev_died_opp+",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "ev_readied_me+",
+   "ev_revealed+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "opp.sum_damage+",
+   "opp.sum_damage-",
+   "opp.sum_might-",
+   "opp.trash+",
+   "opp.units-"
+  ],
+  "only_S_train": [
+   "bf1.ctrl_opp-",
+   "ev_died_opp+",
+   "ev_dmg_to_my_units+",
+   "ev_dmg_to_opp_units+",
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "opp.sum_damage+",
+   "opp.sum_damage-",
+   "opp.sum_might-",
+   "opp.trash+",
+   "opp.units-"
+  ],
+  "only_S_test": [],
+  "n_H": 11,
+  "n_S": 25,
+  "n_both": 10
+ },
+ "synthetic:discipline__enemy": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.in_deck-",
+   "bf1.ctrl_opp+",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_my_units+",
+   "ev_drawn_opp-",
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_damage+",
+   "me.sum_damage-",
+   "me.sum_might+",
+   "me.sum_might-",
+   "me.units-",
+   "opp.deck+",
+   "opp.exhausted_units+",
+   "opp.hand-",
+   "opp.stunned+",
+   "opp.sum_damage+",
+   "opp.trash-",
+   "opp.units+"
+  ],
+  "only_S_train": [
+   "SELF.in_deck-",
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.sum_might+"
+  ],
+  "only_S_test": [
+   "bf1.ctrl_opp+",
+   "ev_drawn_opp-",
+   "opp.deck+",
+   "opp.hand-",
+   "opp.stunned+"
+  ],
+  "n_H": 9,
+  "n_S": 30,
+  "n_both": 8
+ },
+ "synthetic:lonely_poro__draw2": {
+  "only_H": [
+   "SELF.at_bf1-",
+   "SELF.in_trash+",
+   "SELF.might-",
+   "SELF.on_board-",
+   "bf0.ctrl_opp+",
+   "bf1.ctrl_me-",
+   "ev_died_me+",
+   "ev_died_opp-",
+   "ev_dmg_to_opp_units-",
+   "ev_drawn_me+",
+   "me.deck-",
+   "me.hand+",
+   "me.score-",
+   "me.sum_might-",
+   "me.trash+",
+   "me.units-",
+   "opp.score+",
+   "opp.trash-",
+   "opp.units+",
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes-",
+   "me.runes_exhausted+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [
+   "me.runes-"
+  ],
+  "n_H": 32,
+  "n_S": 18,
+  "n_both": 12
+ },
+ "synthetic:defy__cost2": {
+  "only_H": [],
+  "only_S": [
+   "SELF.in_deck-",
+   "SELF.in_hand-",
+   "SELF.in_trash+",
+   "bf0.contested+",
+   "bf0.contested-",
+   "bf0.ctrl_opp+",
+   "bf0.showdown+",
+   "bf0.showdown-",
+   "bf1.combat-",
+   "bf1.contested-",
+   "ev_banished+",
+   "ev_cards_played_me+",
+   "ev_drawn_me+",
+   "ev_drawn_me-",
+   "ev_drawn_opp-",
+   "ev_moved_me+",
+   "ev_moved_me-",
+   "ev_moved_opp-",
+   "ev_revealed-",
+   "ev_spells_resolved_me+",
+   "ev_spells_resolved_opp-",
+   "ev_stun_opp_units+",
+   "me.deck+",
+   "me.deck-",
+   "me.hand-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_might+",
+   "me.sum_might-",
+   "me.trash+",
+   "opp.deck+",
+   "opp.deck-",
+   "opp.hand+",
+   "opp.hand-",
+   "opp.stunned+",
+   "opp.sum_might+",
+   "opp.sum_might-"
+  ],
+  "only_S_train": [
+   "SELF.in_deck-",
+   "bf0.contested+",
+   "bf0.contested-",
+   "bf0.ctrl_opp+",
+   "bf0.showdown+",
+   "bf0.showdown-",
+   "bf1.combat-",
+   "bf1.contested-",
+   "ev_banished+",
+   "ev_drawn_me+",
+   "ev_moved_me+",
+   "ev_moved_me-",
+   "ev_moved_opp-",
+   "ev_stun_opp_units+",
+   "opp.deck-",
+   "opp.hand+",
+   "opp.stunned+",
+   "opp.sum_might+"
+  ],
+  "only_S_test": [],
+  "n_H": 0,
+  "n_S": 37,
+  "n_both": 0
+ },
+ "synthetic:sabotage__unit": {
+  "only_H": [
+   "pool.energy-",
+   "pool.power_Body-"
+  ],
+  "only_S": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.runes-",
+   "me.runes_exhausted+",
+   "me.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+",
+   "me.exhausted_units-",
+   "me.sum_might+"
+  ],
+  "only_S_test": [],
+  "n_H": 11,
+  "n_S": 14,
+  "n_both": 9
+ },
+ "synthetic:pit_rookie__might3": {
+  "only_H": [
+   "pool.energy-"
+  ],
+  "only_S": [
+   "SELF.at_bf1+",
+   "SELF.temp_might+",
+   "ev_moved_me+",
+   "ev_readied_me+",
+   "me.runes_exhausted+",
+   "opp.sum_might+"
+  ],
+  "only_S_train": [
+   "ev_readied_me+"
+  ],
+  "only_S_test": [],
+  "n_H": 13,
+  "n_S": 18,
+  "n_both": 12
+ }
+}

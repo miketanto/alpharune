@@ -1,0 +1,121 @@
+{
+ "E0_top1_recompute": {
+  "B": {
+   "recomputed_per_seed": [
+    0.3527090812044082,
+    0.351777621953134,
+    0.35428942218128917
+   ],
+   "reported_per_seed": [
+    0.3527090847492218,
+    0.3517776131629944,
+    0.3542894124984741
+   ]
+  },
+  "random": {
+   "recomputed_per_seed": [
+    0.3519346094673937,
+    0.3510868768903913,
+    0.3490774367078672
+   ],
+   "reported_per_seed": [
+    0.35193461179733276,
+    0.35108688473701477,
+    0.349077433347702
+   ]
+  }
+ },
+ "uniform_top1": 0.29974128274142886,
+ "E1_card_source_decisions": {
+  "synthetic:defy__cost2": {
+   "n": 50,
+   "teacher_play_rate": 0.44
+  },
+  "synthetic:discipline__draw2": {
+   "n": 192,
+   "teacher_play_rate": 0.28125
+  },
+  "synthetic:discipline__enemy": {
+   "n": 82,
+   "teacher_play_rate": 0.35365853658536583
+  },
+  "synthetic:lonely_poro__draw2": {
+   "n": 173,
+   "teacher_play_rate": 0.17341040462427745
+  },
+  "synthetic:pit_rookie__might3": {
+   "n": 163,
+   "teacher_play_rate": 0.27607361963190186
+  },
+  "primal_strength": {
+   "n": 128,
+   "teacher_play_rate": 0.3125
+  },
+  "synthetic:punch_first__amount4": {
+   "n": 165,
+   "teacher_play_rate": 0.21212121212121213
+  },
+  "synthetic:punch_first__energy3": {
+   "n": 143,
+   "teacher_play_rate": 0.20279720279720279
+  },
+  "synthetic:punch_first__power0": {
+   "n": 111,
+   "teacher_play_rate": 0.2882882882882883
+  },
+  "synthetic:punch_first__reaction": {
+   "n": 102,
+   "teacher_play_rate": 0.3137254901960784
+  },
+  "synthetic:sabotage__unit": {
+   "n": 142,
+   "teacher_play_rate": 0.22535211267605634
+  }
+ },
+ "E1_majority_baseline_pooled": 0.7381116471399035,
+ "E1_n_pooled": 1451,
+ "E1_card_source_top1_diff_game_bootstrap": {
+  "A-random": {
+   "point": 0.004594532506317482,
+   "per_seed": [
+    -0.0006891798759476223,
+    0.0,
+    0.014472777394900068
+   ],
+   "game_boot_95": [
+    -0.010114632501685773,
+    0.019131217645734864
+   ],
+   "n_dec": 1451,
+   "n_games": 293
+  },
+  "B-random": {
+   "point": 0.004824259131633356,
+   "per_seed": [
+    -0.0027567195037904893,
+    -0.011026878015161957,
+    0.028256374913852515
+   ],
+   "game_boot_95": [
+    -0.009156311314584697,
+    0.01904090267983075
+   ],
+   "n_dec": 1451,
+   "n_games": 293
+  },
+  "stats-random": {
+   "point": 0.012634964392373077,
+   "per_seed": [
+    0.0,
+    0.005513439007580979,
+    0.03239145416953825
+   ],
+   "game_boot_95": [
+    -0.002851033499643621,
+    0.028995756718528998
+   ],
+   "n_dec": 1451,
+   "n_games": 293
+  }
+ }
+}

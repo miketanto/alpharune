@@ -1,0 +1,57 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": 4
+ },
+ "keywords": [
+  {
+   "kw": "ambush"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "ambush",
+   "timing": "reaction",
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "has_friendly_units",
+      "v": true
+     }
+    ]
+   }
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "win_combat",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     }
+    }
+   ]
+  }
+ ]
+}

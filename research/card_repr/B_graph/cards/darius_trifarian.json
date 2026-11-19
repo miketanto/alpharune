@@ -1,0 +1,55 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "fury"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "fury": 1
+  },
+  "might": 5
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_card",
+    "subject": "you",
+    "condition": [
+     {
+      "c": "nth_card_this_turn",
+      "v": 2
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "amount": {
+      "n": 2
+     },
+     "duration": "turn"
+    },
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,152 @@
+{
+ "synthetic:punch_first__ctrl_scores": {
+  "n_states": 48,
+  "n_multi_target": 36,
+  "counts": {
+   "n": 48,
+   "single_target": 12,
+   "multi": 36,
+   "tgt_flip": 24,
+   "both_sides": 32,
+   "both_sides_side_flip": 18,
+   "both_sides_swap_best_enemy": 0,
+   "both_sides_orig_best_enemy": 18,
+   "side_flip": 18,
+   "orig_best_side_2": 21,
+   "swap_best_side_1": 33,
+   "has_enemy_option": 35,
+   "has_friendly_option": 33,
+   "noise_tgt_flip": 17,
+   "noise_side_flip": 9,
+   "swap_best_side_2": 3,
+   "orig_best_side_1": 15
+  },
+  "target_flip_rate": 0.6666666666666666,
+  "target_side_flip_rate": 0.5,
+  "noise_target_flip_rate_seed_halves": 0.4722222222222222,
+  "noise_side_flip_rate_seed_halves": 0.25,
+  "n_both_sides_available": 32,
+  "side_flip_rate_both_sides_available": 0.5625,
+  "orig_best_enemy_rate_both_sides": 0.5625,
+  "variant_best_enemy_rate_both_sides": 0.0
+ },
+ "synthetic:punch_first__kill": {
+  "n_states": 48,
+  "n_multi_target": 36,
+  "counts": {
+   "n": 48,
+   "single_target": 12,
+   "multi": 36,
+   "tgt_flip": 26,
+   "both_sides": 32,
+   "both_sides_side_flip": 14,
+   "both_sides_swap_best_enemy": 26,
+   "both_sides_orig_best_enemy": 18,
+   "side_flip": 14,
+   "orig_best_side_2": 21,
+   "swap_best_side_1": 7,
+   "has_enemy_option": 35,
+   "has_friendly_option": 33,
+   "noise_tgt_flip": 17,
+   "noise_side_flip": 9,
+   "swap_best_side_2": 29,
+   "orig_best_side_1": 15
+  },
+  "target_flip_rate": 0.7222222222222222,
+  "target_side_flip_rate": 0.3888888888888889,
+  "noise_target_flip_rate_seed_halves": 0.4722222222222222,
+  "noise_side_flip_rate_seed_halves": 0.25,
+  "n_both_sides_available": 32,
+  "side_flip_rate_both_sides_available": 0.4375,
+  "orig_best_enemy_rate_both_sides": 0.5625,
+  "variant_best_enemy_rate_both_sides": 0.8125
+ },
+ "synthetic:punch_first__minus5": {
+  "n_states": 48,
+  "n_multi_target": 36,
+  "counts": {
+   "n": 48,
+   "single_target": 12,
+   "multi": 36,
+   "tgt_flip": 6,
+   "both_sides": 32,
+   "both_sides_side_flip": 4,
+   "both_sides_swap_best_enemy": 22,
+   "both_sides_orig_best_enemy": 18,
+   "side_flip": 4,
+   "orig_best_side_2": 21,
+   "swap_best_side_2": 25,
+   "has_enemy_option": 35,
+   "has_friendly_option": 33,
+   "noise_tgt_flip": 17,
+   "noise_side_flip": 9,
+   "orig_best_side_1": 15,
+   "swap_best_side_1": 11
+  },
+  "target_flip_rate": 0.16666666666666666,
+  "target_side_flip_rate": 0.1111111111111111,
+  "noise_target_flip_rate_seed_halves": 0.4722222222222222,
+  "noise_side_flip_rate_seed_halves": 0.25,
+  "n_both_sides_available": 32,
+  "side_flip_rate_both_sides_available": 0.125,
+  "orig_best_enemy_rate_both_sides": 0.5625,
+  "variant_best_enemy_rate_both_sides": 0.6875
+ },
+ "synthetic:punch_first__opp_of_ctrl_scores": {
+  "n_states": 48,
+  "n_multi_target": 36,
+  "counts": {
+   "n": 48,
+   "single_target": 12,
+   "multi": 36,
+   "tgt_flip": 25,
+   "both_sides": 32,
+   "both_sides_side_flip": 14,
+   "both_sides_swap_best_enemy": 32,
+   "both_sides_orig_best_enemy": 18,
+   "side_flip": 14,
+   "orig_best_side_2": 21,
+   "swap_best_side_2": 35,
+   "has_enemy_option": 35,
+   "has_friendly_option": 33,
+   "noise_tgt_flip": 17,
+   "noise_side_flip": 9,
+   "orig_best_side_1": 15,
+   "swap_best_side_1": 1
+  },
+  "target_flip_rate": 0.6944444444444444,
+  "target_side_flip_rate": 0.3888888888888889,
+  "noise_target_flip_rate_seed_halves": 0.4722222222222222,
+  "noise_side_flip_rate_seed_halves": 0.25,
+  "n_both_sides_available": 32,
+  "side_flip_rate_both_sides_available": 0.4375,
+  "orig_best_enemy_rate_both_sides": 0.5625,
+  "variant_best_enemy_rate_both_sides": 1.0
+ },
+ "_variant_vs_variant": {
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__kill": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.8125
+  },
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__minus5": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.6875
+  },
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 1.0
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__minus5": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.3125
+  },
+  "synthetic:punch_first__kill | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.1875
+  },
+  "synthetic:punch_first__minus5 | synthetic:punch_first__opp_of_ctrl_scores": {
+   "n_both_sides_states": 32,
+   "best_target_side_flip_rate": 0.3125
+  }
+ }
+}

@@ -1,0 +1,561 @@
+{
+ "alpha_strike": {
+  "unl-192-219": {
+   "ability_text": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields. Then for each unit this kills, do this: Gain 1 XP.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "unl-192-219",
+   "file": "src/cards/spells/0751_alpha_strike.cpp"
+  }
+ },
+ "back_off": {
+  "unl-042-219": {
+   "ability_text": "[Hidden] (Hide now for [A] to react with later for .)\n[Action] (Play on your turn or in showdowns.)\n[Stun] a unit. (It doesn't deal combat damage this turn.)\nIf you played this from your hand, draw 1.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": null,
+   "def_id": "unl-042-219",
+   "file": "src/cards/spells/0604_back_off.cpp"
+  }
+ },
+ "body_rune": {
+  "ogn-126-298": {
+   "ability_text": null,
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogn-126-298",
+   "file": "src/cards/runes/0126_body_rune.cpp"
+  }
+ },
+ "brittle_steel": {
+  "ven-003-166": {
+   "ability_text": "Kill a gear.\n[Flow] [4][R] (You may play this from your trash for its Flow cost. Then banish it.)",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "ven-003-166",
+   "file": "src/cards/spells/0790_brittle_steel.cpp"
+  }
+ },
+ "calm_rune": {
+  "ogn-042-298": {
+   "ability_text": null,
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogn-042-298",
+   "file": "src/cards/runes/0042_calm_rune.cpp"
+  }
+ },
+ "charm": {
+  "ogn-043-298": {
+   "ability_text": "Move an enemy unit.",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "ogn-043-298",
+   "file": "src/cards/spells/0043_charm.cpp"
+  }
+ },
+ "darius_trifarian": {
+  "ogn-027-298": {
+   "ability_text": "When you play your second card in a turn, give me +2 [M] this turn and ready me.",
+   "effect_text": null,
+   "energy_cost": 5,
+   "power_cost": 1,
+   "might": 5,
+   "def_id": "ogn-027-298",
+   "file": "src/cards/units/0027_darius_trifarian.cpp"
+  }
+ },
+ "decisive_strike": {
+  "ogs-024-024": {
+   "ability_text": "[Action] (Play on your turn or in showdowns.)\nGive friendly units +2 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": 5,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "ogs-024-024",
+   "file": "src/cards/spells/0322_decisive_strike.cpp"
+  }
+ },
+ "decree_of_focus": {
+  "ven-040-166": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a friendly unit that's in combat with an enemy Fury ([R]) unit or that's being chosen by an enemy Fury spell. Give it +4 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ven-040-166",
+   "file": "src/cards/spells/0827_decree_of_focus.cpp"
+  }
+ },
+ "decree_of_strength": {
+  "ven-085-166": {
+   "ability_text": "Choose an opponent. They reveal their hand and you choose a Mind ([B]) card from it. They recycle that card.",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ven-085-166",
+   "file": "src/cards/spells/0872_decree_of_strength.cpp"
+  }
+ },
+ "defy": {
+  "ogn-045-298": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nCounter a spell that costs no more than [4] and no more than [A].",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "ogn-045-298",
+   "file": "src/cards/spells/0045_defy.cpp"
+  }
+ },
+ "disarming_rake": {
+  "sfd-032-221": {
+   "ability_text": "When you play me, you may kill a gear.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": 1,
+   "might": 2,
+   "def_id": "sfd-032-221",
+   "file": "src/cards/units/0355_disarming_rake.cpp"
+  }
+ },
+ "discipline": {
+  "ogn-058-298": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a unit +2 [M] this turn. Draw 1.",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogn-058-298",
+   "file": "src/cards/spells/0058_discipline.cpp"
+  }
+ },
+ "emperor_s_dais": {
+  "sfd-207-221": {
+   "ability_text": "When you conquer here, you may pay [1] and return a unit you control here to its owner's hand to play a 2 [M] Sand Soldier unit token here.",
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "sfd-207-221",
+   "file": "src/cards/battlefields/0521_emperor_s_dais.cpp"
+  }
+ },
+ "en_garde": {
+  "ogn-046-298": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a friendly unit +1 [M] this turn, then an additional +1 [M] this turn if it is the only unit you control there.",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogn-046-298",
+   "file": "src/cards/spells/0046_en_garde.cpp"
+  }
+ },
+ "ferrous_forerunner": {
+  "sfd-021-221": {
+   "ability_text": "[Deathknell] — Play two 3 [M] Mech unit tokens to your base. (When I die, get the effect.)",
+   "effect_text": null,
+   "energy_cost": 6,
+   "power_cost": 1,
+   "might": 6,
+   "def_id": "sfd-021-221",
+   "file": "src/cards/units/0344_ferrous_forerunner.cpp"
+  }
+ },
+ "fiora_peerless": {
+  "sfd-110-221": {
+   "ability_text": "When I attack or defend one on one, double my Might this combat.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": 1,
+   "might": 3,
+   "def_id": "sfd-110-221",
+   "file": "src/cards/units/0432_fiora_peerless.cpp"
+  }
+ },
+ "first_mate": {
+  "ogn-132-298": {
+   "ability_text": "When you play me, ready another unit.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": 3,
+   "def_id": "ogn-132-298",
+   "file": "src/cards/units/0132_first_mate.cpp"
+  }
+ },
+ "fury_rune": {
+  "ogn-007-298": {
+   "ability_text": null,
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogn-007-298",
+   "file": "src/cards/runes/0007_fury_rune.cpp"
+  }
+ },
+ "grim_apothecary": {
+  "unl-021-219": {
+   "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nWhen you play me, you may return a friendly unit at a battlefield to its owner's hand.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": 3,
+   "def_id": "unl-021-219",
+   "file": "src/cards/units/0583_grim_apothecary.cpp"
+  }
+ },
+ "inferna": {
+  "unl-002-219": {
+   "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\n[Assault 2] (+2 [M] while I'm an attacker.)",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": 1,
+   "def_id": "unl-002-219",
+   "file": "src/cards/units/0560_inferna.cpp"
+  }
+ },
+ "irresistible_faefolk": {
+  "unl-112-219": {
+   "ability_text": "When I move to a battlefield, you may move an enemy unit to that battlefield.",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": 1,
+   "def_id": "unl-112-219",
+   "file": "src/cards/units/0674_irresistible_faefolk.cpp"
+  }
+ },
+ "kai_sa_survivor": {
+  "ogn-039-298": {
+   "ability_text": "[Accelerate] (You may pay [1][R] as an additional cost to have me enter ready.)\nWhen I conquer, draw 1.",
+   "effect_text": null,
+   "energy_cost": 4,
+   "power_cost": null,
+   "might": 4,
+   "def_id": "ogn-039-298",
+   "file": "src/cards/units/0039_kai_sa_survivor.cpp"
+  }
+ },
+ "kinkou_initiate": {
+  "unl-097-219": {
+   "ability_text": "When you play me, draw 1 if your other units have total Might 5 or more.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": 3,
+   "def_id": "unl-097-219",
+   "file": "src/cards/units/0659_kinkou_initiate.cpp"
+  }
+ },
+ "lonely_poro": {
+  "sfd-036-221": {
+   "ability_text": "[Deathknell] — If I died alone, draw 1. (When I die, get the effect. I'm alone if there are no other friendly units here.)",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": 2,
+   "def_id": "sfd-036-221",
+   "file": "src/cards/units/0359_lonely_poro.cpp"
+  },
+  "unl-221-219": {
+   "ability_text": "[Deathknell][>] If I died alone, draw 1.",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": 2,
+   "def_id": "unl-221-219",
+   "file": "src/cards/units/0777_lonely_poro.cpp"
+  }
+ },
+ "loyal_poro": {
+  "unl-156-219": {
+   "ability_text": "[Deathknell][>] If I didn't die alone, draw 1. (When I die, get the effect. I wasn't alone if there were other friendly units here.)",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": 3,
+   "def_id": "unl-156-219",
+   "file": "src/cards/units/0718_loyal_poro.cpp"
+  }
+ },
+ "machine_evangel": {
+  "ogn-239-298": {
+   "ability_text": "[Deathknell] — Play three 1 [M] Recruit unit tokens into your base. (When I die, get the effect.)",
+   "effect_text": null,
+   "energy_cost": 5,
+   "power_cost": 1,
+   "might": 4,
+   "def_id": "ogn-239-298",
+   "file": "src/cards/units/0239_machine_evangel.cpp"
+  }
+ },
+ "master_yi_tempered": {
+  "unl-113-219": {
+   "ability_text": "[Hunt 2] (When I conquer or hold, gain 2 XP.)\n[Level 6][>] I have [Deflect] and [Ganking]. (While you have 6+ XP, opponents must pay [A] to choose me with a spell or ability and I can move from battlefield to battlefield.)",
+   "effect_text": null,
+   "energy_cost": 4,
+   "power_cost": null,
+   "might": 4,
+   "def_id": "unl-113-219",
+   "file": "src/cards/units/0675_master_yi_tempered.cpp"
+  }
+ },
+ "master_yi_wuju_bladesman": {
+  "ogs-019-024": {
+   "ability_text": "While a friendly unit defends alone, it gets +2 [M].",
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogs-019-024",
+   "file": "src/cards/legends/0317_wuju_bladesman_starter.cpp"
+  }
+ },
+ "moonlight_affliction": {
+  "unl-066-219": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nGive a unit -10 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": 7,
+   "power_cost": null,
+   "might": null,
+   "def_id": "unl-066-219",
+   "file": "src/cards/spells/0628_moonlight_affliction.cpp"
+  }
+ },
+ "nidalee_cat_form": {
+  "unl-114-219": {
+   "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nWhen I win a combat, draw 1. (I win if I remain after combat.)",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": 1,
+   "might": 4,
+   "def_id": "unl-114-219",
+   "file": "src/cards/units/0676_nidalee_cat_form.cpp"
+  }
+ },
+ "not_so_fast": {
+  "sfd-045-221": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nCounter an enemy spell or ability that chooses a friendly unit or gear.",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "sfd-045-221",
+   "file": "src/cards/spells/0368_not_so_fast.cpp"
+  }
+ },
+ "noxian_demolitionist": {
+  "ven-080-166": {
+   "ability_text": "When I conquer, you may kill a gear with Energy cost no more than my Might.",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": 1,
+   "def_id": "ven-080-166",
+   "file": "src/cards/units/0867_noxian_demolitionist.cpp"
+  }
+ },
+ "noxus_hopeful": {
+  "ogn-012-298": {
+   "ability_text": "[Legion] — I cost [2] less. (Get the effect if you've played another card this turn.)",
+   "effect_text": null,
+   "energy_cost": 4,
+   "power_cost": null,
+   "might": 4,
+   "def_id": "ogn-012-298",
+   "file": "src/cards/units/0012_noxus_hopeful.cpp"
+  }
+ },
+ "onslaught": {
+  "ven-081-166": {
+   "ability_text": "Give a unit +6 [M] this turn.\n[Flow] [4] (You may play this from your trash for its Flow cost. Then banish it.)",
+   "effect_text": null,
+   "energy_cost": 4,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ven-081-166",
+   "file": "src/cards/spells/0868_onslaught.cpp"
+  }
+ },
+ "pakaa_cub": {
+  "ogn-135-298": {
+   "ability_text": "[Hidden] (Hide now for [A] to react with later for .)",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": 3,
+   "def_id": "ogn-135-298",
+   "file": "src/cards/units/0135_pakaa_cub.cpp"
+  }
+ },
+ "pit_rookie": {
+  "ogn-136-298": {
+   "ability_text": "When you play me, buff another friendly unit. (If it doesn't have a buff, it gets a +1 [M] buff.)",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": 2,
+   "def_id": "ogn-136-298",
+   "file": "src/cards/units/0136_pit_rookie.cpp"
+  }
+ },
+ "primal_strength": {
+  "ogn-154-298": {
+   "ability_text": "[Action] (Play on your turn or in showdowns.)\nGive a unit +7 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": 4,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "ogn-154-298",
+   "file": "src/cards/spells/0154_primal_strength.cpp"
+  }
+ },
+ "punch_first": {
+  "sfd-097-221": {
+   "ability_text": "[Action] (Play on your turn or in showdowns.)\nGive a unit +5 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": 2,
+   "might": null,
+   "def_id": "sfd-097-221",
+   "file": "src/cards/spells/0419_punch_first.cpp"
+  }
+ },
+ "pyke_dockside_butcher": {
+  "unl-028-219": {
+   "ability_text": "[Hidden] (Hide now for [A] to react with later for .)\n[Ganking] (I can move from battlefield to battlefield.)\nYou may pay [R] as an additional cost to play me.\nWhen you play me, if you paid the additional cost, ready me and give me +2 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": 2,
+   "def_id": "unl-028-219",
+   "file": "src/cards/units/0590_pyke_dockside_butcher.cpp"
+  }
+ },
+ "rampage": {
+  "ven-083-166": {
+   "ability_text": "As you play this, you may pay [O] as an additional cost.\nChoose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 [M] this turn. They deal damage equal to their Mights to each other.",
+   "effect_text": null,
+   "energy_cost": 3,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ven-083-166",
+   "file": "src/cards/spells/0870_rampage.cpp"
+  }
+ },
+ "rengar_pridestalker": {
+  "unl-183-219": {
+   "ability_text": "When you play a unit, give a unit +1 [M] this turn.",
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "unl-183-219",
+   "file": "src/cards/legends/0744_pridestalker.cpp"
+  }
+ },
+ "rengar_trophy_hunter": {
+  "unl-120-219": {
+   "ability_text": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nI can [Ambush] to a battlefield where there are enemy units, even if you don't have units there.",
+   "effect_text": null,
+   "energy_cost": 5,
+   "power_cost": 1,
+   "might": 6,
+   "def_id": "unl-120-219",
+   "file": "src/cards/units/0682_rengar_trophy_hunter.cpp"
+  }
+ },
+ "ruin_runner": {
+  "sfd-105-221": {
+   "ability_text": "I can't be chosen by enemy spells and abilities.",
+   "effect_text": null,
+   "energy_cost": 6,
+   "power_cost": null,
+   "might": 5,
+   "def_id": "sfd-105-221",
+   "file": "src/cards/units/0427_ruin_runner.cpp"
+  }
+ },
+ "sabotage": {
+  "ogn-156-298": {
+   "ability_text": "Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card.",
+   "effect_text": null,
+   "energy_cost": 1,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "ogn-156-298",
+   "file": "src/cards/spells/0156_sabotage.cpp"
+  }
+ },
+ "scuttle_crab": {
+  "unl-053-219": {
+   "ability_text": "(Units with 0 [M] can conquer and hold.)\nWhen you play me, draw 1.\n[Deathknell][>] Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP. (When I die, get the effects.)",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": null,
+   "def_id": "unl-053-219",
+   "file": "src/cards/units/0615_scuttle_crab.cpp"
+  }
+ },
+ "seat_of_power": {
+  "sfd-217-221": {
+   "ability_text": "When you conquer here, draw 1 for each other battlefield you or allies control.",
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "sfd-217-221",
+   "file": "src/cards/battlefields/0531_seat_of_power.cpp"
+  }
+ },
+ "star_spring": {
+  "unl-215-219": {
+   "ability_text": "The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base.",
+   "effect_text": null,
+   "energy_cost": null,
+   "power_cost": null,
+   "might": null,
+   "def_id": "unl-215-219",
+   "file": "src/cards/battlefields/0771_star_spring.cpp"
+  }
+ },
+ "thrill_of_the_hunt": {
+  "unl-184-219": {
+   "ability_text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nBanish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": 1,
+   "might": null,
+   "def_id": "unl-184-219",
+   "file": "src/cards/spells/0745_thrill_of_the_hunt.cpp"
+  }
+ },
+ "zhonya_s_hourglass": {
+  "ogn-077-298": {
+   "ability_text": "[Hidden] (Hide now for [A] to react with later for [0].)\nIf a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. (Send it to base. This isn't a move.)",
+   "effect_text": null,
+   "energy_cost": 2,
+   "power_cost": null,
+   "might": null,
+   "def_id": "ogn-077-298",
+   "file": "src/cards/gear/0077_zhonya_s_hourglass.cpp"
+  }
+ }
+}

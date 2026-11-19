@@ -1,0 +1,207 @@
+{
+ "primal_strength|100": {
+  "n": 144,
+  "legal_same": 24,
+  "n_card_acts_changed": 120,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4513888888888889,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9722222222222222,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.027777777777777776,
+  "mean_seed_sd_rv_orig": 0.0009388169785836227,
+  "mean_abs_drv": 0.004137456597222222
+ },
+ "primal_strength|400": {
+  "n": 144,
+  "legal_same": 24,
+  "n_card_acts_changed": 120,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.6597222222222222,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9375,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.09027777777777778,
+  "mean_seed_sd_rv_orig": 0.0007523873415686654,
+  "mean_abs_drv": 0.005472799045138889
+ },
+ "synthetic:discipline__draw2|100": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4027777777777778,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9305555555555556,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.041666666666666664,
+  "mean_seed_sd_rv_orig": 0.0014918828044467938,
+  "mean_abs_drv": 0.0019049479166666672
+ },
+ "synthetic:discipline__draw2|400": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.5972222222222222,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9444444444444444,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.041666666666666664,
+  "mean_seed_sd_rv_orig": 0.0010778106608553834,
+  "mean_abs_drv": 0.005746635416666666
+ },
+ "synthetic:discipline__enemy|100": {
+  "n": 72,
+  "legal_same": 66,
+  "n_card_acts_changed": 6,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4305555555555556,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9305555555555556,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0015093608679124688,
+  "mean_abs_drv": 0.001115017361111111
+ },
+ "synthetic:discipline__enemy|400": {
+  "n": 72,
+  "legal_same": 66,
+  "n_card_acts_changed": 6,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.5833333333333334,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9444444444444444,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0010736002950486733,
+  "mean_abs_drv": 0.001614224826388889
+ },
+ "synthetic:lonely_poro__draw2|100": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4305555555555556,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9444444444444444,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0012515524319496505,
+  "mean_abs_drv": 0.00030347222222221995
+ },
+ "synthetic:lonely_poro__draw2|400": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.625,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9444444444444444,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.013888888888888888,
+  "mean_seed_sd_rv_orig": 0.0008129556793208881,
+  "mean_abs_drv": 0.00017620659722222254
+ },
+ "synthetic:pit_rookie__might3|100": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.375,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9583333333333334,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0013006664105432878,
+  "mean_abs_drv": 0.00016848958333333004
+ },
+ "synthetic:pit_rookie__might3|400": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.5972222222222222,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9305555555555556,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.013888888888888888,
+  "mean_seed_sd_rv_orig": 0.0006529444022227016,
+  "mean_abs_drv": 0.00025418576388888827
+ },
+ "synthetic:punch_first__amount4|100": {
+  "n": 144,
+  "legal_same": 144,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4305555555555556,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9722222222222222,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0009711012092220445,
+  "mean_abs_drv": 0.0001621093749999985
+ },
+ "synthetic:punch_first__amount4|400": {
+  "n": 144,
+  "legal_same": 144,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.7013888888888888,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9236111111111112,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.020833333333333332,
+  "mean_seed_sd_rv_orig": 0.0006701057781347586,
+  "mean_abs_drv": 0.00023218619791666735
+ },
+ "synthetic:punch_first__energy3|100": {
+  "n": 144,
+  "legal_same": 135,
+  "n_card_acts_changed": 9,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4305555555555556,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9722222222222222,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.013888888888888888,
+  "mean_seed_sd_rv_orig": 0.000976067429116065,
+  "mean_abs_drv": 0.0020874565972222223
+ },
+ "synthetic:punch_first__energy3|400": {
+  "n": 144,
+  "legal_same": 135,
+  "n_card_acts_changed": 9,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.6944444444444444,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9166666666666666,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.041666666666666664,
+  "mean_seed_sd_rv_orig": 0.000685948029307198,
+  "mean_abs_drv": 0.003076045572916665
+ },
+ "synthetic:punch_first__power0|100": {
+  "n": 144,
+  "legal_same": 144,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4375,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9722222222222222,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0009695542554190314,
+  "mean_abs_drv": 0.0005009548611111121
+ },
+ "synthetic:punch_first__power0|400": {
+  "n": 144,
+  "legal_same": 144,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.6944444444444444,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9166666666666666,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.013888888888888888,
+  "mean_seed_sd_rv_orig": 0.0006922593681022322,
+  "mean_abs_drv": 0.0007780186631944428
+ },
+ "synthetic:punch_first__reaction|100": {
+  "n": 144,
+  "legal_same": 144,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4236111111111111,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9722222222222222,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.006944444444444444,
+  "mean_seed_sd_rv_orig": 0.0009709223020738569,
+  "mean_abs_drv": 0.0004019531250000022
+ },
+ "synthetic:punch_first__reaction|400": {
+  "n": 144,
+  "legal_same": 144,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.6944444444444444,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9236111111111112,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.006944444444444444,
+  "mean_seed_sd_rv_orig": 0.0007122820958168763,
+  "mean_abs_drv": 0.0014308953993055534
+ },
+ "synthetic:sabotage__unit|100": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.4722222222222222,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.9861111111111112,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.0,
+  "mean_seed_sd_rv_orig": 0.0012745464632929232,
+  "mean_abs_drv": 0.001268750000000002
+ },
+ "synthetic:sabotage__unit|400": {
+  "n": 72,
+  "legal_same": 72,
+  "n_card_acts_changed": 0,
+  "frac_states_teacher_play_choice_unanimous_over_8_seeds": 0.5555555555555556,
+  "frac_states_qargmax_card_unanimous_over_8_seeds": 0.8888888888888888,
+  "frac_states_majority_qargmax_play_flips_on_swap": 0.041666666666666664,
+  "mean_seed_sd_rv_orig": 0.0008150745478089775,
+  "mean_abs_drv": 0.0028867456597222252
+ },
+ "orig_across_variant_processes": {
+  "identical": 106,
+  "differs": 328,
+  "max_rv_gap_x1e4": 31
+ }
+}
