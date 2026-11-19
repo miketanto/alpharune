@@ -2,6 +2,29 @@
 
 C++20 game engine that simulates 1v1 Riftbound TCG matches. This file is the standards and conventions reference for engine development. For project status, completed work, and active backlog, see git log + the sibling riftbound-trainer repo's `docs/`.
 
+## Code Exploration: codebase-memory-mcp first (MANDATORY)
+
+This repo is indexed in the **codebase-memory-mcp** knowledge graph (project `C-Users-sutanto4-Desktop-RiftboundAI-alpharune`). **Every code exploration task MUST start with the graph tools** — do not open with Grep, Glob, `find`, `rg`, or reading files blind, and do not spawn an Explore agent before querying the graph.
+
+- **Orientation:** `get_architecture` (add `aspects: ["clusters"]` or a `path` such as `src/engine` to scope).
+- **Find a symbol / where something is implemented:** `search_graph` (`query` for natural language, `name_pattern` for regex, `label` / `file_pattern` to narrow; page with `offset` while `has_more`).
+- **Callers, callees, impact:** `trace_path`; for a diff's blast radius, `detect_changes`.
+- **Read code:** `get_code_snippet` with the qualified name from `search_graph`, before falling back to `Read`.
+- **Multi-hop / aggregate questions:** `query_graph` (Cypher).
+
+Fall back to Grep/Read only for (a) literal or non-code text (card data under `cards/`, `rules/`, `docs/`, `decks/`, CMake), (b) the exact lines you are about to edit, or (c) files the graph reports as `parse_partial`/skipped — check with `check_index_coverage` before making any "X is never used" / exhaustive claim, since 42 files (e.g. `src/cards/card.h`) have unparsed ranges.
+
+**Freshness:** a git `post-commit` hook (`.git/hooks/post-commit`, local, not tracked) re-indexes in the background after each commit; log at `.git/codebase-graph-reindex.log`. Uncommitted edits may not be in the graph yet — if results look stale, call `index_repository` on this repo before trusting them.
+
+## Git Workflow: branch → PR → merge → delete (MANDATORY)
+
+Every merge must be trackable through a pull request.
+
+1. **Never commit directly to `master`.** Do the work on a branch of its own.
+2. **Open a PR before merging.** Push the branch and open a PR against `master` (`gh pr create`) with a summary of the change. Do not merge locally with `git merge` and push the result: the PR is the record of the merge.
+3. **Merge through the PR** (`gh pr merge`), never by pushing to `master`.
+4. **Delete the branch after the merge**, both remote and local: `gh pr merge --delete-branch`, or `git push origin --delete <branch>` and `git branch -d <branch>` once the PR shows as merged. Use `git branch -d` (not `-D`) so an unmerged branch is never lost.
+
 ## Build
 
 ```bash
