@@ -1,0 +1,136 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0870_rampage.cpp:93",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0870_rampage.cpp:94",
+   "energy": "src/cards/spells/0870_rampage.cpp:95",
+   "power": "default 0"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "power": 1,
+    "power_domain": "body",
+    "optional": true,
+    "additional": true,
+    "_src": "src/cards/spells/0870_rampage.cpp:29-36"
+   },
+   "effects": [],
+   "_src": "src/cards/spells/0870_rampage.cpp:29-36"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0870_rampage.cpp:41-45"
+     },
+     "_src": "src/cards/spells/0870_rampage.cpp:52-54"
+    },
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "bind": "B",
+      "_src": "src/cards/spells/0870_rampage.cpp:41-45"
+     },
+     "_src": "src/cards/spells/0870_rampage.cpp:52-54"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0870_rampage.cpp:70"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/spells/0870_rampage.cpp:70"
+     },
+     "duration": "turn",
+     "condition": [
+      {
+       "c": "paid_additional_cost",
+       "v": true,
+       "_src": "src/cards/spells/0870_rampage.cpp:61-67"
+      }
+     ],
+     "_src": "src/cards/spells/0870_rampage.cpp:70"
+    },
+    {
+     "verb": "DealDamage",
+     "target": {
+      "type": "ref",
+      "ref": "B",
+      "_src": "src/cards/spells/0870_rampage.cpp:76"
+     },
+     "amount": {
+      "ref": "might_of:A",
+      "_src": "src/cards/spells/0870_rampage.cpp:74"
+     },
+     "source": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0870_rampage.cpp:76"
+     },
+     "_src": "src/cards/spells/0870_rampage.cpp:76"
+    },
+    {
+     "verb": "DealDamage",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0870_rampage.cpp:77"
+     },
+     "amount": {
+      "ref": "might_of:B",
+      "_src": "src/cards/spells/0870_rampage.cpp:75"
+     },
+     "source": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0870_rampage.cpp:77"
+     },
+     "_src": "src/cards/spells/0870_rampage.cpp:77"
+    }
+   ],
+   "_src": "src/cards/spells/0870_rampage.cpp:50"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-083-166",
+  "class_file": "src/cards/spells/0870_rampage.cpp",
+  "source": "engine_code",
+  "flags": [
+   "damage source is the spell (ctx.source), not the two units as the text says"
+  ],
+  "confidence": "medium",
+  "confidence_why": "pair targets + paid flag + simultaneous damage"
+ }
+}

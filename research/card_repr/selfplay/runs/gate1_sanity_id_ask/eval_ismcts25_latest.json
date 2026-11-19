@@ -1,0 +1,17 @@
+{
+ "ckpt": "runs/gate1_sanity_id_ask/latest.pt",
+ "repr": "id",
+ "deck": "rengar",
+ "opp": "ismcts:sims=25",
+ "games": 200,
+ "errors": 0,
+ "wins": 181,
+ "win_rate": 0.905,
+ "wilson95": [
+  0.856,
+  0.938
+ ],
+ "mean_turns": 12.7,
+ "procs": 6,
+ "secs": 32.1
+}

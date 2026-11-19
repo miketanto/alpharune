@@ -1,0 +1,53 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [],
+  "energy": 1,
+  "power": 2,
+  "power_by_domain": {
+   "any": 2
+  },
+  "might": null,
+  "_src": "research/card_repr/cards.json printing rad-041-167"
+ },
+ "keywords": [
+  {
+   "kw": "reaction"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Counter",
+     "target": {
+      "type": "spell",
+      "side": "any",
+      "zone": "chain",
+      "count": 1,
+      "filters": [
+       {
+        "f": "power_cost_ge",
+        "v": 2
+       }
+      ]
+     }
+    }
+   ],
+   "_src": "research/card_repr/B_graph/graphs_src.py:280 (text)"
+  }
+ ],
+ "_meta": {
+  "def_id": "rad-041-167",
+  "class_file": null,
+  "source": "TEXT (no engine class)",
+  "flags": [
+   "TEXT-DERIVED: no engine class exists for this card (Radiance set); graph = path B's text graph, stats from cards.json"
+  ],
+  "confidence": "low",
+  "confidence_why": "no engine class: text-derived (path B graph)"
+ }
+}

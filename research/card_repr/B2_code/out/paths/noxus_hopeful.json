@@ -25,7 +25,7 @@
 "kind:static/verb:ReduceCost/target/count=1": 1.0,
 "kind:static/verb:ReduceCost/target/side=friendly": 1.0,
 "kind:static/verb:ReduceCost/target/type=self": 1.0,
-"kind:static/verb:ReduceCost/target/zone=board": 1.0,
+"kind:static/verb:ReduceCost/target/zone=hand": 1.0,
 "kw:legion": 1.0,
 "might": 4.0,
 "might=4": 1.0,
@@ -47,7 +47,7 @@
 "target/count=1": 1.0,
 "target/side=friendly": 1.0,
 "target/type=self": 1.0,
-"target/zone=board": 1.0,
+"target/zone=hand": 1.0,
 "type=self": 1.0,
 "type=unit": 1.0,
 "v": 1.0,
@@ -60,6 +60,6 @@
 "verb:ReduceCost/target/count=1": 1.0,
 "verb:ReduceCost/target/side=friendly": 1.0,
 "verb:ReduceCost/target/type=self": 1.0,
-"verb:ReduceCost/target/zone=board": 1.0,
-"zone=board": 1.0
+"verb:ReduceCost/target/zone=hand": 1.0,
+"zone=hand": 1.0
 }

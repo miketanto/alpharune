@@ -1,0 +1,53 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 1,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0156_sabotage.cpp:104",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0156_sabotage.cpp:105",
+   "energy": "src/cards/spells/0156_sabotage.cpp:106",
+   "power": "src/cards/spells/0156_sabotage.cpp:107",
+   "power_by_domain": "src/cards/spells/0156_sabotage.cpp:107 x src/cards/spells/0156_sabotage.cpp:105; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Score",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     },
+     "_src": "C_engine/card_probe.cpp (play-changing variants)"
+    }
+   ],
+   "_src": "src/cards/spells/0156_sabotage.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-156-298",
+  "class_file": "src/cards/spells/0156_sabotage.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "synthetic": "sabotage__score1"
+ }
+}

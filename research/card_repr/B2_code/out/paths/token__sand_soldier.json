@@ -1,0 +1,18 @@
+{
+"enters_exhausted": 1.0,
+"is_token": 1.0,
+"might": 2.0,
+"might=2": 1.0,
+"name=sand_soldier": 1.0,
+"stats/enters_exhausted": 1.0,
+"stats/is_token": 1.0,
+"stats/might": 2.0,
+"stats/might=2": 1.0,
+"stats/name=sand_soldier": 1.0,
+"stats/supertype=token": 1.0,
+"stats/tag=shurima": 1.0,
+"stats/type=unit": 1.0,
+"supertype=token": 1.0,
+"tag=shurima": 1.0,
+"type=unit": 1.0
+}

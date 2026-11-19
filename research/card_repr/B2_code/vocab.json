@@ -634,7 +634,17 @@
   "verb Heal": "healExhaustRecall heals (Zhonya's Hourglass)",
   "ability.play_requires": "list of selectors that must be choosable for the card to be playable, beyond its effect targets (hasLegalTargets; Alpha Strike)",
   "condition is_token {v: subject|<bind>}": "generalises B's unit_is_token: Darius (played card), Star Spring (played unit), Thrill of the Hunt (banished unit)",
-  "token.tag from code": "createToken tags argument; the token name is dropped",
+  "token.tag from code": "createToken tags argument (Emperor's Dais also keeps token.name, gate 1)",
+  "gate 1 additions": {
+   "token:<name> graphs": "standalone token-unit graphs (graphs_code.TOKENS): stats.supertype=token, is_token, tag, name, enters_exhausted, no cost; vectors keyed token:mech, token:sand_soldier",
+   "play_mode.condition hidden_this_turn neg": "Hidden: not playable the turn it was hidden (hidden_on_turn, game_engine.cpp:6127)",
+   "condition has_buff {v: target} neg": "Buff places nothing on a unit that already has one",
+   "filter cant_be_moved_by_enemy / at_self_location": "Irresistible Faefolk's legal targets",
+   "effect.dest_filters": "location filters on an effect's destination (Thrill: blocks_unit_play, owner units_play_base_only)",
+   "effect.as_new_object": "the object returns as a new object (no damage, buffs, statuses)",
+   "effect.dest = owner_hand": "Bounce returns to the OWNER's hand (not the controller's)",
+   "ReduceCost target zone=hand": "a self cost reduction applies while the card is in hand"
+  },
   "_src / _meta / _classes": "citations and provenance; stripped before encoding"
  },
  "coverage": {

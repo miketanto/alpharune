@@ -1,0 +1,150 @@
+Gate 0 observation audit: Rengar deck (decks/rengar.txt, sideboard excluded), 2026-11-19
+====================================================================================
+Scope: 1 legend, 1 champion, 17 main-deck cards, 3 battlefields, 2 runes, 2 tokens (Mech, Sand Soldier).
+Input audited: rbenv observation = decision_export Encoder (smoke/data/src/decision_export.cpp:244-455):
+g[72], card/bf/chain tokens (F=17), actions (K=46).
+facts.json has 117 (card, fact) records: 54 OBSERVABLE, 39 DERIVABLE, 23 MISSING, 1 MISSING-but-unused.
+Each record gives the source file:line, the field or derivation, and B2 coverage.
+Generator: gen_facts.py. Prevalence counts: scan.py over smoke/data/out/base_teacher__s*
+(151,827 recorded teacher decisions, Rengar and Yi decks).
+
+MISSING facts, grouped by fix
+-----------------------------
+1. Token-unit vectors (B1). Cards: Ferrous Forerunner -> token:mech; Emperor's Dais -> token:sand_soldier.
+   - Both keys are in vocab.json, but neither has a cards.json key or a B2 graph, so R is OOV.
+   - Tags (Mech, Shurima) are not visible either.
+   - A token unit is on the board in 33,547 decisions (22%).
+   - An action names one in 6,760 decisions.
+   - Sand Soldier alone appears in 72,618 teacher-train decisions (decision_stats.json).
+2. Memory flags (A4). Cards: Star Spring, Pakaa Cub, Pyke (Hidden), Rampage, Darius.
+   - Star Spring: the "first time each turn, per player" stamp (card_counters __starspring_*).
+     A unit play to its slot is offered in 7,259 decisions, and the network cannot tell
+     whether the trigger is still available.
+   - hidden_on_turn: a facedown card is playable only on a later turn
+     (game_object.h:75, game_engine.cpp:6127). Own facedown card present: 3,900 decisions.
+   - Rampage paid flag (__rampage_paid) is lost after the cost prompt.
+     Rampage is on the chain in 1,878 decisions; 229 of them are the opponent's to respond to.
+   - Darius: the play ordinal of a spell already on the chain. Darius on board with a chain: 1,602 decisions.
+   - Not needed: Pyke's paid flag is DERIVABLE, because its trigger reaches the chain only if paid.
+3. Known opponent hand (A8). Card: Sabotage.
+   - Only the NON-unit cards appear as tokens, and only during the choose prompt.
+   - The revealed unit cards never appear.
+   - Everything is forgotten afterwards.
+   - 451 Sabotage prompts; 21,943 later decisions by a seat that had seen a reveal.
+4. Deck knowledge (A9). Cards: Sabotage (the recycled card is known at the bottom of the opponent's deck);
+   global (own remaining deck composition). Decision facts only.
+5. Trash tokens (A1). Cards: Sabotage (inference about the opponent's remaining non-units); global.
+   - Decision facts only: no in-scope card reads a trash.
+6. Chain-item triggering subject (NEW). Cards: Pridestalker legend, Star Spring.
+   - ChainItem.triggering_subject is not exported: which unit's play put the trigger on the chain.
+   - Low impact.
+7. Effective keywords / values (A3). Card: Inferna (temp_assault_value).
+   - Rules-relevant only if the OPPONENT grants or removes keywords.
+   - Every in-scope keyword is printed and static, so R(card) carries it.
+   - Assault's effect is already in tok might once combat=1 (game_engine.cpp:7052-7059).
+   - Own Inferna on board: 17,482 decisions.
+8. Status flags (NEW, minor). Faefolk: cant_be_moved_by_enemy (game_object.h:378).
+   Star Spring: moveToBaseBlocked. Both can be inferred only from the targets offered.
+9. Battlefield statics (NEW, minor). Pakaa Cub, Pyke:
+   - facedown_max_occupancy (game_state.h:464): not exported; always 1 in scope.
+   - blocks_unit_play (Thrill's location filter): only via R(bf key).
+
+DERIVABLE but costly (gate-1 candidates even though not strictly missing)
+-------------------------------------------------------------------------
+- Effective cost / affordable now (A6), for every hand card.
+  - The net must compute: R cost - 2*[g69>=1] (Noxus Hopeful), + Accelerate [1][R] (Kai'Sa),
+    + optional [O] (Rampage) / [R] (Pyke).
+  - Then check that against the pool (g19-38) and the ready runes by domain (g39-62).
+  - Noxus Hopeful is in own hand in 27,936 decisions.
+- Move/play consequences (A7). Join act dst against the tok[b] slot, then sum Might per slot by controller.
+  This feeds conquer (Kai'Sa, Dais, Seat), win combat (Nidalee), Faefolk's pull, Ganking (Pyke),
+  Ambush placement and Thrill.
+- Kinkou Initiate: the sum of own units' Might. Seat of Power: the count of controlled bfs. Both easy.
+
+Priority (cards unblocked / decisions affected)
+-----------------------------------------------
+1. B1 token vectors: 2 cards + 2 tokens; ~22% of decisions have a token unit. Cheap: write 2 B2 graphs.
+2. A4 memory flags, 5 cards:
+   - Star Spring stamp: ~7.3k decisions.
+   - hidden_on_turn: ~3.9k.
+   - Rampage paid: ~1.9k.
+   - Darius ordinal: ~1.6k.
+3. A6 effective cost + affordable-now per hand card: affects every main-phase decision, every card.
+   Derivable, but a 3-step computation; cheap to export.
+4. A8 known opponent hand: 1 card; ~22k decisions after a reveal. Needs a knowledge tracker.
+5. A7 move consequences: 8 cards. Derivable by a join, so lower priority than 1-4.
+6. A9 / A1 deck and trash contents: decision-only, for all cards (inference). Larger input change.
+7. A3 effective keywords: no in-deck source. Needed only against opponents that grant keywords.
+8. Chain subject, status flags, bf statics: rare or constant in scope.
+
+Surprises
+---------
+- B1 is not rare. Emperor's Dais makes Sand Soldiers often: token units are present in 22% of the decisions.
+- Sabotage reveals the whole hand, but the encoder appends only the choosable non-unit cards
+  (Encoder::ref via act ch). The revealed units are never visible, even during the prompt.
+- Thrill's location prompt is answered by v = index into a FILTERED battlefield list
+  (card_helpers.h:1926 valChoice), with no dst/bf field on the action.
+  - Today the list is never filtered (0 of 472 prompts), so v == slot order.
+  - A Rockfall-Path-like bf would silently shift the indices (C4-type action-reference hazard).
+- Playing a unit from facedown and Thrill's replay both count as cards played
+  (effect_executor.cpp:3224). So Darius / Legion / Pridestalker / Star Spring interact with Thrill.
+  That is visible only via g69 and R.
+- B2 errors and omissions versus the engine:
+  - noxus_hopeful: ReduceCost target zone='board'; it applies in hand.
+  - pit_rookie: no "only if unbuffed" condition.
+  - pakaa_cub / pyke: Hidden play_mode lacks the "not the turn it was hidden" restriction.
+  - irresistible_faefolk: no cant_be_moved_by_enemy filter.
+  - thrill: dest any_battlefield is unfiltered, and the replay reset is not encoded.
+  - grim_apothecary: no owner-vs-controller distinction.
+  - emperor_s_dais: the token name is dropped (tag only).
+  - Already flagged in the graphs: rampage (damage source), darius (token exclusion).
+- B2 has graphs for Mech and Sand Soldier only as CreateToken payloads inside their creators.
+  There is no standalone token graph, which is what B1 needs.
+
+- The engine already computes much of what is missing per observer:
+  - engine/observer_view.h (ObserverView) has effective keywords and assault (observer_view.cpp:109),
+    lethal-by-cleanup-rule, spendable resources by purpose, known opponent hand cards,
+    public piles in full, chain subjects, and the opponent's unseen pool (DeckModel).
+  - The Encoder uses none of it.
+  - Gate 1 could export ObserverView facts instead of re-deriving them.
+
+TESTPLAN claims, checked for the Rengar deck
+--------------------------------------------
+A1  Trash contents: CONFIRMED absent (g13-14 sizes only).
+    Decision-only for this deck: no main-deck card reads the trash (Flow is sideboard / Yi deck).
+A2  Banishment contents: REFUTED as a need for this deck.
+    - Absent (sizes only g17-18), but no card reads it.
+    - Thrill banishes and replays in one resolution (thrill_of_the_hunt.cpp:82-84).
+    - No "banished with" links in scope.
+A3  Live keywords: MOSTLY REFUTED in-deck.
+    - Every keyword is printed and static, so R carries it.
+    - Assault is applied to tok might when the unit is an attacker (game_engine.cpp:7052).
+    - Legion is decided from g69.
+    - No gear in the main deck, so the inactive-text flag is not needed.
+    - Remains open only for opponent-granted keywords and temp_assault_value.
+A4  Per-object memory: CONFIRMED.
+    Star Spring stamps, Rampage paid flag, hidden_on_turn (Pakaa Cub, Pyke), Darius play ordinal.
+    The claim about "Pyke's counters" is only half right: the paid flag is derivable from the chain item.
+    No delayed abilities in scope.
+A5  Turn event counts: REFUTED beyond g69/70.
+    - Darius and Legion read cards_played (g69).
+    - Kinkou reads current Might (derivable).
+    - No in-scope card reads units died, moves, draws or power spent.
+    - Scored-this-turn is already in tok[b].
+A6  Effective cost: CONFIRMED absent. DERIVABLE (medium) for in-deck modifiers; MISSING for opponent cost modifiers.
+A7  Move consequences: CONFIRMED implicit; DERIVABLE via the dst -> tok[b] slot join.
+A8  Known opponent hand: CONFIRMED, and worse than stated: revealed units are never shown, even during the prompt.
+A9  Deck knowledge: CONFIRMED absent (sizes only), plus Sabotage's known bottom card.
+A10 Runes: CONFIRMED low impact.
+    - Domain and ready-state counts (g39-62) and pools are present.
+    - rbenv autopay answers rune prompts.
+B1  Token units with no card vector: CONFIRMED (token:mech, token:sand_soldier OOV; no B2 graph). High prevalence.
+B2  Copies / becomeCard / control change: NOT APPLICABLE.
+    - No copy effects in the deck.
+    - Owner vs controller is visible (Grim Apothecary returns to the owner).
+B3  Battlefield replaced by a token: REFUTED for the Dais. It creates a unit token, not a battlefield.
+    No battlefield replacement in scope.
+B4  Reprints: not applicable.
+B5  Cross-card modifiers: NOT PRESENT in the Rengar main deck.
+    - No card reads the Mech or Shurima tags or grants to others.
+    - The token tags are still not observable (part of B1).

@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "legend",
+  "supertype": null,
+  "domains": [
+   "body",
+   "calm"
+  ],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/legends/0317_wuju_bladesman_starter.cpp:52",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/legends/0317_wuju_bladesman_starter.cpp:53"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": "all",
+      "filters": [
+       {
+        "f": "defends_alone",
+        "v": true,
+        "_src": "src/cards/legends/0317_wuju_bladesman_starter.cpp:28-34"
+       }
+      ],
+      "_src": "src/cards/legends/0317_wuju_bladesman_starter.cpp:28-34"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/legends/0317_wuju_bladesman_starter.cpp:38"
+     },
+     "duration": "while",
+     "_src": "src/cards/legends/0317_wuju_bladesman_starter.cpp:35-39"
+    }
+   ],
+   "_src": "src/cards/legends/0317_wuju_bladesman_starter.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogs-019-024",
+  "class_file": "src/cards/legends/0317_wuju_bladesman_starter.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

@@ -1,0 +1,145 @@
+Gate 1 (observation fixes), Rengar deck: report, 2026-11-19
+===========================================================
+Input format is now SCHEMA v2. Every earlier checkpoint is invalid. This is stated in
+selfplay/rbenv/README.txt and smoke/data/SCHEMA.txt.
+- rbenv dims went from G72 T64 F17 A96 K46 to G72 T96 F24 A96 K49; V stays 80.
+- New token kind 4 (pile).
+- rbenv_schema_version() == 2.
+The encoder change is in one place, smoke/data/src/decision_export.cpp (Encoder), which
+rbenv includes. Nothing under src/ was edited, nothing was committed and nothing was downloaded.
+Backups of the v1 files are in audit_gate1/*.v1.*.bak.
+
+Fix status
+----------
+1. Token unit vectors: DONE.
+   - Standalone B2 graphs for token:mech (Might 3, tag Mech) and token:sand_soldier
+     (Might 2, tag Shurima, name kept). Both were built from EffectExecutor::createToken
+     and their creators.
+   - vectors.json grew from 183 to 185 keys. No old vector changed except those of the
+     fix-8 cards (below).
+   - The vocab keys already existed (75, 76). model.card_table now resolves them, with 0 missing.
+   - The old B2 outputs are in B2_code/out/pre_gate1/.
+2. Memory flags: DONE.
+   - Star Spring's "first time this turn", per player: bf [15] self, [16] opp.
+   - Hidden this turn: card [18].
+   - Rampage paid: chain [16]. This reads __rampage_paid or Card::kAdditionalCostPaid.
+   - Darius play order: card [17] and chain [17], from playOrdinalThisTurn.
+   - Added: the chain item's triggering subject, chain [18] (gate-0 gap 6).
+3. Effective cost and affordable now: DONE.
+   - Card fields: [19] energy, [20] power, [21] affordable.
+   - They cover own hand and champion-zone cards, and are -1 elsewhere.
+   - Cost comes from the engine's GameEngine::netCardCost. It is a private member, read
+     through the explicit-instantiation access idiom, so src/ is untouched.
+   - Affordable comes from GameEngine::canAfford (via testHook_canAfford).
+   - The exporter's swap mode has no engine, so it writes -1.
+   - Added: effective Assault [22] and Shield [23], from ObserverView::permanent.
+4. Known opponent hand cards: DONE.
+   - Card tokens with zone=2 and owner=2, for every card ObserverView::knownInHand reports.
+   - Includes the whole hand that Sabotage reveals during its prompt: 376 of 376 opponent
+     hand cards were visible across the Sabotage prompts in test_fields.
+5. Move consequences: DONE.
+   - Action fields: [46] destination controller (-1 n/a, 0 none, 1 self, 2 opp),
+     [47] enemy units there (starts a combat as attacker), [48] not controlled by self (contest).
+   - Set for every action with a battlefield destination (moves and plays).
+6. Trash, banishment and own deck: DONE as aggregated pile tokens ["p", key, owner, zone, count].
+   - Trash and banishment for both players; own main deck composition.
+   - Max tokens seen was 56 in 300 random games, so T=96. Truncation is counted and none was seen.
+7. Thrill's location answer: DONE.
+   - Act [30] dst now holds the REAL slot for value-answered Location prompts.
+   - The index is mapped through battlefieldTakesUnitsFrom, the same filter Thrill uses.
+   - 754 mapped, 0 unmapped.
+8. B2 graph fixes: DONE, all seven, each checked against the engine.
+   - The fixes: Noxus Hopeful's reduction applies in hand; Pit Rookie gets "only if not
+     already buffed"; Hidden can't be played the turn it was hidden; Faefolk's
+     cant_be_moved_by_enemy; Thrill's destination filter and its reset on return;
+     Grim Apothecary's owner vs controller; Dais keeps the token's name.
+   - Hidden is in the shared Hidden expansion, so back_off and zhonya_s_hourglass also changed.
+   - Vectors that changed (plus their printing:/rename: entries): back_off, emperor_s_dais,
+     grim_apothecary, irresistible_faefolk, noxus_hopeful, pakaa_cub, pit_rookie,
+     pyke_dockside_butcher, thrill_of_the_hunt, zhonya_s_hourglass, and
+     synthetic:pit_rookie__might3.
+   - eval.py on B2 shows NO regression. Before and after:
+     - T1: noise floor 0.000 and rank1 1.0 both times.
+     - T2 real: distinct 1.0, partner rank 1, relative distance median 0.329 / 0.328.
+     - T2 synthetic: 1.0, rank 1, 0.070 / 0.069.
+     - Direction tests: 0.227 / 0.227.
+   - T3 R2 dipped slightly (0.330 to 0.311). Two more labels now beat the baseline.
+   - Files: eval/results_B2_code.json, with the old ones saved as *.pre_gate1.*.
+
+Layout, learner and tooling
+---------------------------
+- SCHEMA.txt has a new "SCHEMA VERSION 2" section. rbenv/README.txt has the v2 layout and
+  the invalid-checkpoint note.
+- vocab.json is unchanged; no new keys were needed and unk_key=0 in every test.
+- learner/model.py:
+  - 4 token kinds; every situational field is embedded categorically per kind.
+  - The global token moved to E_kind row 5.
+  - Action fields 46-48 are added to the scalar features.
+  - --ask-head is kept.
+- learner/probes.py skips the v1 probe files (learner/probes/*.npz) with a message. They
+  need to be collected again with cardexp/collect_probes.py.
+- fakeenv.py and probe_eval.py now use the v2 dims.
+- verify_eval.py now detects ask-head checkpoints. Before this change it could not load them.
+- New in rbenv: rbenv_verify / RBEnv.verify (independent field check), rbenv_schema_version,
+  tests/test_fields.py and tests/test_agreement_v2.py. run_all.sh is updated.
+
+Tests (WSL, all pass)
+---------------------
+- test_random: 200 Rengar-mirror games, 0 errors, 0 truncation, 0 unknown keys.
+- test_determinism: ok, 410 steps over 24 games identical.
+- test_multivariant: 3 decks x 40 games, 0 errors; determinism ok over 315 steps.
+- test_opponent random-player: 100 games, 0 errors.
+- test_fields, 300 games and 37,824 decisions. Each v2 field is decoded from the int32
+  observation and compared with a direct read of the engine state (not via Encoder or
+  ObserverView). Results:
+  - Pile counts == player.trash / banishment / main_deck, per card and in total: 0 mismatches.
+  - Known opponent hand == GameKnowledgeView known and zone-confirmed hand cards, with the
+    key equal to the TRUE card: 0 mismatches (20,243 tokens).
+  - Effective cost: 0 mismatches over 125,921 hand-card checks.
+    - The check compares against the printed cost, and for Noxus Hopeful against
+      printed - 2 exactly when cards played this turn >= 1 (11,007 checks).
+  - Offered as a PlayCard while affordable == 0: 0 cases.
+  - Affordable == 1 hand cards in a main phase with an empty chain: 97.4% are offered.
+    The rest have timing or target gates.
+  - Hidden this turn == (hidden_on_turn >= turn), and no facedown play of such a card was
+    offered: 0 mismatches.
+  - Move destination controller == bf.controller over 34,020 moves: 0 mismatches.
+  - Location prompts: 754 mapped, 0 unmapped.
+  - Seen at least once: Star Spring stamps 5,332, Rampage paid 63, chain play ordinal 11,064.
+- test_agreement_v2: rbenv's tensors == decision_export's v2 JSON on 18 games / 3,263
+  decisions, 0 mismatches.
+  - The games are 12 random-player and 6 with ismcts:sims=25 vs random-player, generated
+    into audit_gate1/agree/.
+  - The old smoke/data/out files are schema v1 and are not comparable any more.
+- Throughput: 88 games/s (64 envs, 1 process), down from 152 in v1. The cost is the pile
+  tokens, ObserverView and canAfford per hand card.
+
+Sanity run
+----------
+- Setup: id representation, --ask-head, Rengar mirror, 6 minutes (107 updates), 0 errors.
+  Run: selfplay/runs/gate1_sanity_id_ask (+ .out).
+- Win rate vs random-player during the run: 0.67 at update 11, 0.75 at 20, 0.97 at 31.
+- verify_eval.py vs ismcts:sims=25, 200 games, --procs 6, 0 errors:
+  - Final checkpoint (latest.pt, 6 min): 181/200 = 0.905, Wilson CI [0.856, 0.938].
+  - Checkpoint at about 3 min (ckpt_00050, update 50, 171 s): 166/200 = 0.83, CI [0.772, 0.876].
+- The 3-minute result matches the previous comparison point of about 82%, so learning
+  still works with the v2 input.
+
+What is left
+------------
+- The Sabotage-recycled card's known place at the bottom of the opponent's deck is not
+  exported (A9). Neither is the opponent's unseen pool (DeckModel). Only the own deck
+  composition is exported.
+- Effective cost leaves out Accelerate and the optional extra costs (Rampage [O], Pyke [R]).
+  These are separate prompts, and "affordable" uses canAfford, which allows for additional costs.
+- Star Spring's stamp is read by its key (__starspring_turn_p<i>). Rampage paid reads
+  __rampage_paid and the generic kAdditionalCostPaid flag. Other cards' private counters
+  (other "first time" stamps) would need their keys added.
+- The Location mapping assumes the Thrill pattern: an index over battlefieldTakesUnitsFrom
+  for the chooser. No other value-answered Location prompt is in scope.
+- Status flags not exported: cant_be_moved_by_enemy, moveToBaseBlocked, facedown_max_occupancy.
+  The gate-0 audit lists these as minor.
+- Data to regenerate for v2: the v1 probe npz files (learner/probes); the decision dataset
+  smoke/data/out (still v1, and `decision_export verify` on it will now mismatch); and the
+  exporter's swap mode, which writes -1 costs because it has no engine.
+- Gates 2-5 are not started.

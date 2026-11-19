@@ -11,6 +11,7 @@ final JSON is printed as the last line.
 
 usage: python3 verify_eval.py <ckpt|untrained> <opponent spec> <n_games>
                               [--repr id] [--procs 6] [--every 20] [--seed 990001]
+                              [--deck rengar] [--variants a,b,c] [--out res.json]
 """
 import os, sys, time, json, math, argparse
 import multiprocessing as mp
@@ -29,7 +30,7 @@ def wilson(w, g, z=1.96):
     return [round((c - h) / d, 3), round((c + h) / d, 3)]
 
 
-def worker(wid, ck, opp, n, rep, seed, q):
+def worker(wid, ck, opp, n, rep, seed, q, deck='rengar', variants=None):
     import torch
     sys.path.insert(0, os.path.join(HERE, 'learner'))
     sys.path.insert(0, os.path.join(HERE, 'rbenv'))
@@ -38,11 +39,15 @@ def worker(wid, ck, opp, n, rep, seed, q):
     from rbenv import RBEnv
     torch.set_num_threads(1)
     dev = 'cpu'
-    env = RBEnv(n, 'rengar', 'rengar', seed, autopay=True, opponent=opp)
-    net = Net(env.dims, load_vocab()[0], rep).to(dev)
+    env = RBEnv(n, deck, deck, seed, variant=variants, autopay=True, opponent=opp)
+    sd = None
     if ck != 'untrained':
         sd = torch.load(ck, map_location=dev)
-        net.load_state_dict(sd.get('net', sd.get('model', sd)) if isinstance(sd, dict) else sd)
+        sd = sd.get('net', sd.get('model', sd)) if isinstance(sd, dict) else sd
+    ask = sd is not None and 'W_ask.weight' in sd   # --ask-head checkpoints (model.py)
+    net = Net(env.dims, load_vocab()[0], rep, ask_head=ask).to(dev)
+    if sd is not None:
+        net.load_state_dict(sd)
     net.eval()
     seen = set()
     while len(seen) < n:
@@ -67,12 +72,16 @@ def main():
     ap.add_argument('--procs', type=int, default=6)
     ap.add_argument('--every', type=int, default=20)
     ap.add_argument('--seed', type=int, default=990001)
+    ap.add_argument('--deck', default='rengar', help='deck of BOTH seats (mirror)')
+    ap.add_argument('--variants', default='', help='comma-separated variants to register')
+    ap.add_argument('--out', default='', help='also write the final JSON here')
     a = ap.parse_args()
     P = max(1, min(a.procs, a.n))
     sizes = [a.n // P + (1 if i < a.n % P else 0) for i in range(P)]
     q = mp.get_context('fork').Queue()
     ps = [mp.get_context('fork').Process(target=worker,
-                                         args=(i, a.ckpt, a.opp, sizes[i], a.repr, a.seed + 100000 * i, q))
+                                         args=(i, a.ckpt, a.opp, sizes[i], a.repr, a.seed + 100000 * i, q, a.deck,
+                                               [v for v in a.variants.split(',') if v] or None))
           for i in range(P)]
     t0 = time.time()
     for p in ps:
@@ -95,10 +104,13 @@ def main():
                   f'win rate {wins / games:.3f}  CI {wilson(wins, games)}', flush=True)
     for p in ps:
         p.join()
-    print(json.dumps({'ckpt': os.path.basename(a.ckpt), 'opp': a.opp, 'games': games, 'errors': errs,
+    res = {'ckpt': a.ckpt, 'repr': a.repr, 'deck': a.deck, 'opp': a.opp, 'games': games, 'errors': errs, 'wins': wins,
                       'win_rate': round(wins / games, 3) if games else None, 'wilson95': wilson(wins, games),
                       'mean_turns': round(float(np.mean(turns)), 1) if turns else None,
-                      'procs': P, 'secs': round(time.time() - t0, 1)}), flush=True)
+                      'procs': P, 'secs': round(time.time() - t0, 1)}
+    if a.out:
+        json.dump(res, open(a.out, 'w'), indent=1)
+    print(json.dumps(res), flush=True)
 
 
 if __name__ == '__main__':

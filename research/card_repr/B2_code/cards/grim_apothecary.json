@@ -58,7 +58,8 @@
       "_src": "src/cards/units/0583_grim_apothecary.cpp:23-26"
      },
      "optional": true,
-     "_src": "src/cards/units/0583_grim_apothecary.cpp:36; may src/cards/units/0583_grim_apothecary.cpp:27-29"
+     "dest": "owner_hand",
+     "_src": "src/cards/units/0583_grim_apothecary.cpp:36; may src/cards/units/0583_grim_apothecary.cpp:27-29; owner's hand src/engine/effect_executor.cpp:1166-1215"
     }
    ],
    "_src": "src/cards/units/0583_grim_apothecary.cpp:19"

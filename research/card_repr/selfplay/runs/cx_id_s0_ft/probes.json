@@ -1,0 +1,51 @@
+{
+ "ckpt": "runs/cx_id_s0_ft/latest.pt",
+ "repr": "id",
+ "probes": {
+  "alone": {
+   "mass_right": 0.6889734864234924,
+   "argmax_right": 0.7423076629638672,
+   "value": 0.14408881962299347,
+   "n": 260,
+   "play_mass_cond_true": 0.6480080485343933,
+   "play_top_cond_true": 0.692307710647583,
+   "n_cond_true": 130,
+   "play_mass_cond_false": 0.27006107568740845,
+   "play_top_cond_false": 0.20769231021404266,
+   "n_cond_false": 130
+  },
+  "ctrl_tgt": {
+   "mass_right": 0.990493893623352,
+   "argmax_right": 1.0,
+   "value": 0.11332891881465912,
+   "n": 260
+  },
+  "oppctrl_tgt": {
+   "mass_right": 0.011442595161497593,
+   "argmax_right": 0.0,
+   "value": -0.035899002104997635,
+   "n": 260
+  },
+  "opphand4": {
+   "mass_right": 0.5347886681556702,
+   "argmax_right": 0.5307692289352417,
+   "value": 0.15588802099227905,
+   "n": 260,
+   "play_mass_cond_true": 0.10117078572511673,
+   "play_top_cond_true": 0.0923076942563057,
+   "n_cond_true": 130,
+   "play_mass_cond_false": 0.031593453139066696,
+   "play_top_cond_false": 0.03076923079788685,
+   "n_cond_false": 130
+  },
+  "sab1": {
+   "mass_right": 0.044394515454769135,
+   "argmax_right": 0.0,
+   "value": 0.14524026215076447,
+   "n": 260,
+   "play_mass_cond_true": 0.044394515454769135,
+   "play_top_cond_true": 0.0,
+   "n_cond_true": 260
+  }
+ }
+}

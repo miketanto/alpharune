@@ -47,6 +47,14 @@
       "n": 1,
       "_src": "src/engine/effect_executor.cpp:1321-1345"
      },
+     "condition": [
+      {
+       "c": "has_buff",
+       "v": "target",
+       "neg": true,
+       "_src": "src/engine/effect_executor.cpp:1328-1342"
+      }
+     ],
      "_src": "src/cards/units/0136_pit_rookie.cpp:35"
     }
    ],

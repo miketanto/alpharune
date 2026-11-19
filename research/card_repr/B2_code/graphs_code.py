@@ -286,12 +286,14 @@ def _emperor_s_dais():
     c = at("src/cards/battlefields/0521_emperor_s_dais.cpp")
     return {"abilities": [trig("conquer", "here", [
         eff("CreateToken", sel("unit", "friendly", "here", src=c(51)), amt(1, src=c(53)),
-            token={"type": "unit", "might": 2, "tag": "shurima", "_src": c(52, 54)}, src=c(53, 54)),
+            token={"type": "unit", "might": 2, "tag": "shurima", "name": "sand_soldier",
+                   "_src": c(52, 54)}, src=c(53, 54)),
     ], src=c(19) + "; here " + c(23), cost=cost(energy=1, optional=True, other=[
-        eff("Bounce", sel("unit", "friendly", "here", src=c(26, 34)), src=c(43, 46))],
+        eff("Bounce", sel("unit", "friendly", "here", src=c(26, 34)), dest="owner_hand",
+            src=c(43, 46) + "; owner's hand " + ES + ":1166-1215")],
         src=c(37, 46))),
-    ], "flags": ["token tag from code is 'Shurima' (token NAME 'Sand Soldier' dropped); path B used "
-                 "tag 'sand_soldier' from the token name in the text"]}
+    ], "flags": ["token tag from code is 'Shurima', token name 'Sand Soldier' (gate 1: name kept as "
+                 "token.name; path B used tag 'sand_soldier' from the token name in the text)"]}
 
 
 def _en_garde():
@@ -333,14 +335,16 @@ def _grim_apothecary():
     c = at("src/cards/units/0583_grim_apothecary.cpp")
     return {"abilities": [trig("play", "self", [
         eff("Bounce", sel("unit", "friendly", "battlefield", src=c(23, 26)), optional=True,
-            src=c(36) + "; may " + c(27, 29)),
+            dest="owner_hand", src=c(36) + "; may " + c(27, 29) + "; owner's hand " + ES + ":1166-1215"),
     ], src=c(19))]}
 
 
 def _irresistible_faefolk():
     c = at("src/cards/units/0674_irresistible_faefolk.cpp")
     return {"abilities": [trig("move_to_battlefield", "self", [
-        eff("Move", sel("unit", "enemy", src=c(29, 35)), optional=True, dest="self_location",
+        eff("Move", sel("unit", "enemy", filters=[F("at_self_location", neg=True, src=c(33)),
+                                                  F("cant_be_moved_by_enemy", neg=True, src=c(34))],
+                        src=c(29, 35)), optional=True, dest="self_location",
             src=c(45) + "; may " + c(36, 38)),
     ], src=c(19))]}
 
@@ -442,7 +446,8 @@ def _noxian_demolitionist():
 
 def _noxus_hopeful():
     c = at("src/cards/units/0012_noxus_hopeful.cpp")
-    return {"abilities": [static([eff("ReduceCost", SELF(c(18)), amt(2, src=c(19)), resource="energy",
+    tgt = dict(SELF(c(18)), zone="hand")   # selfCostReduction: the cost of this card as it is played from hand
+    return {"abilities": [static([eff("ReduceCost", tgt, amt(2, src=c(19)), resource="energy",
                                       src=c(18, 19) + "; " + GE + ":9436")],
                                  src=c(18), condition=[C("cards_played_this_turn_ge", 1, src=c(19))])]}
 
@@ -462,7 +467,8 @@ def _pit_rookie():
     c = at("src/cards/units/0136_pit_rookie.cpp")
     return {"abilities": [trig("play", "self", [
         eff("Buff", sel("unit", "friendly", filters=[F("other", src=c(26))], src=c(24, 30)),
-            amt(1, src=ES + ":1321-1345"), src=c(35)),
+            amt(1, src=ES + ":1321-1345"),
+            condition=[C("has_buff", "target", neg=True, src=ES + ":1328-1342")], src=c(35)),
     ], src=c(22))]}
 
 
@@ -575,8 +581,11 @@ def _thrill():
     return {"abilities": [spell([
         eff("Banish", sel("unit", "friendly", bind="A", src=c(19, 20)), src=c(40, 82)),
         eff("PlayIgnoringCost", ref("A", src=c(84)), chooser="owner", dest="any_battlefield",
+            dest_filters=[F("blocks_unit_play", neg=True, src=c(53, 56) + "; " + CH + ":1366-1369"),
+                          F("units_play_base_only", "owner", neg=True, src=CH + ":1366-1369")],
+            as_new_object=True,
             condition=[C("is_token", "A", neg=True, src=c(42, 46))],
-            src=c(84) + "; chooser " + c(77, 78) + "; dest " + c(54, 56)),
+            src=c(84) + "; chooser " + c(77, 78) + "; dest " + c(53, 56) + "; new object (reset) " + c(36, 40)),
     ], src=c(22))], "flags": ["a token is banished and not played back (code-explicit, CR 183.1)"]}
 
 
@@ -592,6 +601,30 @@ def _zhonya():
         "_src": c(29, 41)}],
         "flags": ["engine heals the unit (text does not)", "no 'next time' clause in the engine: "
                   "'If a friendly unit would die' (the gear is killed, so it is once in practice)"]}
+
+
+# ---------------------------------------------------------------- token units (gate 1, B1)
+# Standalone graphs for unit tokens, from the createToken call that makes them
+# (EffectExecutor::createToken, effect_executor.cpp:2376-2410: super_type Token, is_token,
+# name, base Might, tags, keywords; a unit enters exhausted unless enter_ready).
+
+def _token(name, might, tag, call_src):
+    cite = call_src + "; " + ES + ":2386-2413"
+    return {"stats": {"type": "unit", "supertype": "token", "domains": [], "energy": None, "power": None,
+                      "might": might, "tag": tag, "name": name, "is_token": True,
+                      "enters_exhausted": True,
+                      "_src": {"all": cite, "supertype/is_token": ES + ":2391-2392",
+                               "enters_exhausted": ES + ":2412-2413 (enter_ready=false)"}},
+            "keywords": [], "abilities": [],
+            "_meta": {"def_id": None, "class_file": None, "source": "engine_code (createToken call)",
+                      "flags": ["token unit: no card class; graph from the creating createToken call"]}}
+
+
+TOKENS = {   # vocab key -> graph
+    "token:mech": _token("mech", 3, "mech", "src/cards/units/0344_ferrous_forerunner.cpp:20-25"),
+    "token:sand_soldier": _token("sand_soldier", 2, "shurima",
+                                 "src/cards/battlefields/0521_emperor_s_dais.cpp:50-54"),
+}
 
 
 BUILDERS = {

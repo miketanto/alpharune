@@ -1,0 +1,72 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "order": 1
+  },
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0239_machine_evangel.cpp:37",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0239_machine_evangel.cpp:38",
+   "energy": "src/cards/units/0239_machine_evangel.cpp:40",
+   "power": "src/cards/units/0239_machine_evangel.cpp:41",
+   "power_by_domain": "src/cards/units/0239_machine_evangel.cpp:41 x src/cards/units/0239_machine_evangel.cpp:38; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0239_machine_evangel.cpp:42"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "deathknell",
+   "_src": "src/cards/units/0239_machine_evangel.cpp:44"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self",
+    "_src": "src/cards/units/0239_machine_evangel.cpp:17"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1,
+      "_src": "src/cards/units/0239_machine_evangel.cpp:20"
+     },
+     "amount": {
+      "n": 3,
+      "_src": "src/cards/units/0239_machine_evangel.cpp:21"
+     },
+     "token": {
+      "type": "unit",
+      "might": 1,
+      "tag": "recruit",
+      "_src": "src/cards/units/0239_machine_evangel.cpp:22-23"
+     },
+     "_src": "src/cards/units/0239_machine_evangel.cpp:21-23"
+    }
+   ],
+   "_src": "src/cards/units/0239_machine_evangel.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-239-298",
+  "class_file": "src/cards/units/0239_machine_evangel.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

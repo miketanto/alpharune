@@ -19,3 +19,6 @@ smoke/train/runs/*/*.pt
 before_errata/**/vectors*.json
 __pycache__/
 *.pyc
+*.bak
+selfplay/learner/probes/*.npz
+selfplay/runs/*/latest.pt

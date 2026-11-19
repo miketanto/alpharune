@@ -1,0 +1,51 @@
+{
+ "ckpt": "runs/real_smoke_id/latest.pt",
+ "repr": "id",
+ "probes": {
+  "alone": {
+   "mass_right": 0.6234729290008545,
+   "argmax_right": 0.6692307591438293,
+   "value": 0.31347376108169556,
+   "n": 260,
+   "play_mass_cond_true": 0.4036903381347656,
+   "play_top_cond_true": 0.4692307710647583,
+   "n_cond_true": 130,
+   "play_mass_cond_false": 0.15674450993537903,
+   "play_top_cond_false": 0.13076923787593842,
+   "n_cond_false": 130
+  },
+  "ctrl_tgt": {
+   "mass_right": 0.8958113193511963,
+   "argmax_right": 1.0,
+   "value": 0.25697433948516846,
+   "n": 260
+  },
+  "oppctrl_tgt": {
+   "mass_right": 0.11858387291431427,
+   "argmax_right": 0.015384615398943424,
+   "value": 0.4005662798881531,
+   "n": 260
+  },
+  "opphand4": {
+   "mass_right": 0.5224314332008362,
+   "argmax_right": 0.5,
+   "value": 0.29880601167678833,
+   "n": 260,
+   "play_mass_cond_true": 0.05138489976525307,
+   "play_top_cond_true": 0.0,
+   "n_cond_true": 130,
+   "play_mass_cond_false": 0.006522056646645069,
+   "play_top_cond_false": 0.0,
+   "n_cond_false": 130
+  },
+  "sab1": {
+   "mass_right": 0.04724882170557976,
+   "argmax_right": 0.0,
+   "value": 0.33022141456604004,
+   "n": 260,
+   "play_mass_cond_true": 0.04724882170557976,
+   "play_top_cond_true": 0.0,
+   "n_cond_true": 260
+  }
+ }
+}

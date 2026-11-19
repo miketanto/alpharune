@@ -61,6 +61,9 @@ def hidden_mode():
             "cost": {"energy": 0, "power": 0, "_src": V.GE + ":5429-5436"},
             "where": {"zone": "battlefield", "filters": [{"f": "controlled_by_you", "v": True}],
                       "_src": V.GE + ":5781-5783"},
+            # gate 1: playable only on a turn after it was hidden (hidden_on_turn)
+            "condition": [{"c": "hidden_this_turn", "v": True, "neg": True,
+                           "_src": V.GE + ":5395, 6127; src/core/game_object.h:75"}],
             "_src": kwsrc("hidden")}
 
 
@@ -252,6 +255,67 @@ def syn_edit(base, sid):
     g["_meta"] = dict(g["_meta"], synthetic=sid)
     return g
 
+# ---------------------------------------------------------------- score-family variants (smoke/pairs)
+# Engine classes: C_engine/card_probe.cpp ScoreSpellVar / PunchKillVar / PunchScoreTargetVar /
+# ScoreUnitVar (and PunchFirstVar(-5)), registered in smoke/data/src/decision_export.cpp (1631-1642).
+# Each keeps the base card's stats/keywords and replaces the base effect. New schema pieces:
+#   verb Score {target: player selector, amount}; a player selector may carry relative_to: <bind>
+#   (side is then judged from the bound object's controller: friendly = its controller,
+#   enemy = its controller's opponent). Conditions: you_control_units, you_control_other_units
+#   (neg = "no ..."), opponent_hand_size_ge, friendly_unit_at_battlefield, opponent_score_gt_yours.
+SCORE_VARIANTS = {   # sid -> base key
+    "punch_first__score1": "punch_first", "punch_first__score_nounits": "punch_first",
+    "punch_first__score_bfunit": "punch_first", "punch_first__score_behind": "punch_first",
+    "punch_first__ctrl_scores": "punch_first", "punch_first__opp_of_ctrl_scores": "punch_first",
+    "punch_first__kill": "punch_first", "punch_first__minus5": "punch_first",
+    "pit_rookie__score1": "pit_rookie", "pit_rookie__score_alone": "pit_rookie",
+    "sabotage__score1": "sabotage", "sabotage__score_opphand4": "sabotage",
+}
+_SRC = "C_engine/card_probe.cpp (play-changing variants)"
+
+
+def _score(cond=None, side="friendly", rel=None):
+    tgt = {"type": "player", "side": side, "zone": "player", "count": 1}
+    if rel:
+        tgt["relative_to"] = rel
+    e = {"verb": "Score", "target": tgt, "amount": {"n": 1}, "_src": _SRC}
+    if cond:
+        e["condition"] = cond
+    return e
+
+
+def score_edit(base, sid):
+    """Graph edit of the base card for a score-family variant (works on B and B2 graphs)."""
+    g = copy.deepcopy(base)
+    ab = [a for a in g["abilities"] if a["kind"] in ("spell", "triggered")][0]
+    unit_any = {"type": "unit", "side": "any", "zone": "board", "count": 1}
+    if sid in ("punch_first__score1", "sabotage__score1", "pit_rookie__score1"):
+        ab["effects"] = [_score()]
+    elif sid == "punch_first__score_nounits":
+        ab["effects"] = [_score([{"c": "you_control_units", "v": True, "neg": True}])]
+    elif sid == "pit_rookie__score_alone":
+        ab["effects"] = [_score([{"c": "you_control_other_units", "v": True, "neg": True}])]
+    elif sid == "punch_first__score_bfunit":
+        ab["effects"] = [_score([{"c": "friendly_unit_at_battlefield", "v": True}])]
+    elif sid == "punch_first__score_behind":
+        ab["effects"] = [_score([{"c": "opponent_score_gt_yours", "v": True}])]
+    elif sid == "sabotage__score_opphand4":
+        ab["effects"] = [_score([{"c": "opponent_hand_size_ge", "v": 4}])]
+    elif sid in ("punch_first__ctrl_scores", "punch_first__opp_of_ctrl_scores"):
+        side = "friendly" if sid == "punch_first__ctrl_scores" else "enemy"   # the ONLY difference
+        ab["effects"] = [{"verb": "ChooseTarget", "target": dict(unit_any, bind="A"), "_src": _SRC},
+                         _score(side=side, rel="A")]
+    elif sid == "punch_first__kill":
+        ab["effects"] = [{"verb": "Kill", "target": dict(unit_any), "_src": _SRC}]
+    elif sid == "punch_first__minus5":
+        e = [x for x in ab["effects"] if x["verb"] == "GiveMight"][0]
+        e["amount"]["n"] = -5
+    else:
+        raise KeyError(sid)
+    if "_meta" in g:
+        g["_meta"] = dict(g["_meta"], synthetic=sid)
+    return g
+
 # ---------------------------------------------------------------- vocab + coverage
 
 def coverage():
@@ -367,7 +431,7 @@ DISAGREEMENTS = [
                "'Shurima' (name 'Sand Soldier')",
      "engine_cite": ["src/cards/battlefields/0521_emperor_s_dais.cpp:36-54", "src/cards/battlefields/0521_emperor_s_dais.cpp:70"],
      "path_B": "optional cost (same structure); token.tag = sand_soldier (the name)",
-     "B2": "same structure; token.tag = shurima (code tag; the token name is dropped)"},
+     "B2": "same structure; token.tag = shurima (code tag) and token.name = sand_soldier (gate 1)"},
     {"key": "fiora_peerless", "kind": "interpretation", "severity": "minor",
      "text": "double my Might this combat",
      "engine": "adds current_might at resolution as a combat-long bonus (snapshot; a later Might change is "
@@ -493,10 +557,33 @@ def main():
         with open(os.path.join(HERE, "out", "paths", f"{key}.json"), "w", encoding="utf-8") as f:
             json.dump(dict(sorted(B.graph_paths(strip(graphs[key])).items())), f, indent=0)
 
+    # gate 1 (B1): standalone token-unit graphs, keyed as in the rbenv vocab (token:<name>)
+    for tkey, tg in GC.TOKENS.items():
+        vecs[tkey] = vec(tg)
+        fn = tkey.replace(":", "__")
+        with open(os.path.join(HERE, "cards", f"{fn}.json"), "w", encoding="utf-8") as f:
+            json.dump(tg, f, indent=1)
+        with open(os.path.join(HERE, "out", "paths", f"{fn}.json"), "w", encoding="utf-8") as f:
+            json.dump(dict(sorted(B.graph_paths(strip(tg)).items())), f, indent=0)
+
     syn_graphs = {}
     for s in cj["t2_minimal_pairs_synthetic"]:
         syn_graphs[s["id"]] = syn_edit(graphs[s["base"]], s["id"])
         vecs[f"synthetic:{s['id']}"] = vec(syn_graphs[s["id"]])
+
+    # score-family variants: B2 from the B2 base graph; B from path B's base graph (written into
+    # B_graph/out/vectors.json as well, same edit, so B and B2 differ only in their base graphs)
+    bpath = os.path.join(ROOT, "B_graph", "out", "vectors.json")
+    bout = json.load(open(bpath, encoding="utf-8"))
+    for sid, base in SCORE_VARIANTS.items():
+        syn_graphs[sid] = score_edit(graphs[base], sid)
+        vecs[f"synthetic:{sid}"] = vec(syn_graphs[sid])
+        bg = json.load(open(os.path.join(ROOT, "B_graph", "cards", f"{base}.json"), encoding="utf-8"))
+        bout["vectors"][f"synthetic:{sid}"] = B.vectorize(strip(score_edit(bg, sid)))
+        with open(os.path.join(HERE, "cards", f"synthetic__{sid}.json"), "w", encoding="utf-8") as f:
+            json.dump(syn_graphs[sid], f, indent=1)
+    with open(bpath, "w", encoding="utf-8") as f:
+        json.dump(bout, f)
 
     with open(os.path.join(HERE, "out", "vectors.json"), "w", encoding="utf-8") as f:
         json.dump({"dim": B.DIM, "vectors": vecs}, f)
@@ -512,7 +599,19 @@ def main():
                                           "playable, beyond its effect targets (hasLegalTargets; Alpha Strike)",
                  "condition is_token {v: subject|<bind>}": "generalises B's unit_is_token: Darius (played "
                      "card), Star Spring (played unit), Thrill of the Hunt (banished unit)",
-                 "token.tag from code": "createToken tags argument; the token name is dropped",
+                 "token.tag from code": "createToken tags argument (Emperor's Dais also keeps token.name, gate 1)",
+                 "gate 1 additions": {
+                     "token:<name> graphs": "standalone token-unit graphs (graphs_code.TOKENS): stats.supertype=token, "
+                         "is_token, tag, name, enters_exhausted, no cost; vectors keyed token:mech, token:sand_soldier",
+                     "play_mode.condition hidden_this_turn neg": "Hidden: not playable the turn it was hidden "
+                         "(hidden_on_turn, game_engine.cpp:6127)",
+                     "condition has_buff {v: target} neg": "Buff places nothing on a unit that already has one",
+                     "filter cant_be_moved_by_enemy / at_self_location": "Irresistible Faefolk's legal targets",
+                     "effect.dest_filters": "location filters on an effect's destination (Thrill: blocks_unit_play, "
+                         "owner units_play_base_only)",
+                     "effect.as_new_object": "the object returns as a new object (no damage, buffs, statuses)",
+                     "effect.dest = owner_hand": "Bounce returns to the OWNER's hand (not the controller's)",
+                     "ReduceCost target zone=hand": "a self cost reduction applies while the card is in hand"},
                  "_src / _meta / _classes": "citations and provenance; stripped before encoding"},
              "coverage": {k: v for k, v in cov.items() if k != "per_class"},
              "verb_consistency": consistency}

@@ -1,0 +1,18 @@
+{
+ "cx_fix_both_id_ask": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.9921,
+  "synthetic:punch_first__ctrl_scores": 0.0025,
+  "punch_first": 0.6705,
+  "hidden": 0.248,
+  "noxus_hopeful": 0.1921,
+  "<no psrc marker>": 0.1794
+ },
+ "cx_fix_both_id_noask": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0431,
+  "synthetic:punch_first__ctrl_scores": 0.0432,
+  "punch_first": 0.0432,
+  "hidden": 0.0431,
+  "noxus_hopeful": 0.0427,
+  "<no psrc marker>": 0.0431
+ }
+}

@@ -1,6 +1,7 @@
 {
 "count": 1.0,
 "count=1": 1.0,
+"dest=owner_hand": 1.0,
 "domains=fury": 1.0,
 "energy": 3.0,
 "energy=3": 1.0,
@@ -19,6 +20,7 @@
 "kind:triggered/trigger/event=play": 1.0,
 "kind:triggered/trigger/subject=self": 1.0,
 "kind:triggered/verb:Bounce": 1.0,
+"kind:triggered/verb:Bounce/dest=owner_hand": 1.0,
 "kind:triggered/verb:Bounce/optional": 1.0,
 "kind:triggered/verb:Bounce/target/count": 1.0,
 "kind:triggered/verb:Bounce/target/count=1": 1.0,
@@ -52,6 +54,7 @@
 "type=unit": 2.0,
 "v": 1.0,
 "verb:Bounce": 1.0,
+"verb:Bounce/dest=owner_hand": 1.0,
 "verb:Bounce/optional": 1.0,
 "verb:Bounce/target/count": 1.0,
 "verb:Bounce/target/count=1": 1.0,

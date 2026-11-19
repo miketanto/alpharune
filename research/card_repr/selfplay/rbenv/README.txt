@@ -21,12 +21,16 @@ Files
                 'synthetic:*' variants, then 'token:mech', 'token:sand_soldier',
                 'keyword_ability', 'none', 'other' (any other key; counted in
                 counters()['unk_key']). V = 80.
-  tests/        test_random, test_determinism, test_agreement, test_opponent,
-                bench (throughput); run_all.sh runs them all.
+  tests/        test_random, test_determinism, test_agreement (v1 data; superseded by
+                test_agreement_v2), test_fields (v2 field check), test_opponent,
+                bench (throughput), test_multivariant (mixed-variant decks: no errors, no
+  unknown keys, determinism); run_all.sh runs the original five.
 
 Decks: RBEnv(..., deck_a='rengar') resolves a name via the repo decks/
 (decks/rengar.txt, as decision_export used) or smoke/data/decks/<name>.txt,
-or takes a path. Variant decks need variant=<name> (one variant per process).
+or takes a path. Variant decks need variant=<name>, or a list of names
+(2026-11-19): all are registered at once (each variant has its own class id and
+card key), so a deck may mix variants. One variant set per process.
 
 Decisions
   Answered in C++: single-option decisions; with autopay=True every
@@ -39,7 +43,34 @@ Decisions
   with game seed seed+i; each new game takes the next unused seed.
   A game that exceeds 20000 decisions or throws is reported with `error`.
 
-Dims: G 72, T 64, F 17, A 96, K 46, V 80.
+SCHEMA v2 (gate 1, 2026-11-19). rbenv_schema_version() == 2 (RBEnv.schema_version()).
+  ALL CHECKPOINTS TRAINED BEFORE 2026-11-19 (schema v1: T 64, F 17, K 46, 3 token
+  kinds) ARE INVALID: the input layout changed and the B2 table changed (token
+  vectors, 10 fixed cards). They will not load into model.py (shape mismatch), and
+  the v1 probe files in learner/probes/*.npz are skipped until re-collected.
+  The v1 layout is below the v2 one for reference (v1 = v2 without the additions).
+
+Dims (v2): G 72, T 96, F 24, A 96, K 49, V 80.
+  tok kind [0]: 1 card, 2 battlefield, 3 chain item, 4 pile (new).
+  card  [2..16] as v1; [17] play ordinal this turn, [18] hidden this turn,
+        [19] effective energy cost, [20] effective power cost, [21] affordable now
+        (19..21: own hand / champion-zone cards, -1 otherwise), [22] effective
+        Assault, [23] effective Shield
+  bf    [2..14] as v1; [15] Star Spring stamp used this turn by self, [16] by opp
+  chain [2..15] as v1; [16] additional cost paid, [17] source play ordinal,
+        [18] triggering subject token (-1)
+  pile  [2] owner, [3] zone (4 trash, 5 banishment, 0 own main deck), [4] count;
+        one token per (pile, owner, card)
+  Known opponent hand cards are card tokens (zone 2, owner 2).
+  act   [30] dst also for value-answered Location prompts (real slot); [46] dst
+        controller (-1 n/a, 0 none, 1 self, 2 opp), [47] would start a combat as
+        attacker, [48] would contest.
+  Definitions: smoke/data/SCHEMA.txt "SCHEMA VERSION 2". Max tokens seen in 300
+  random Rengar-mirror games: 56 (T 96).
+  rbenv_verify / RBEnv.verify(): independent engine-state check of every v2 field
+  (tests/test_fields.py).
+
+v1 dims (historical): G 72, T 64, F 17, A 96, K 46, V 80.
   Caps from smoke/data/out (597,994 decisions incl. rune prompts): max 40
   tokens, max 64 actions; lists: tg/ch/mv <= 1, mu <= 2, dm <= 6 pairs.
   Truncation (tokens past T, actions past A, list entries past their cap) is
@@ -74,7 +105,14 @@ act (N,A,K), act_mask: the legal options in engine order (index = choice).
 Extra observe() keys: psrc (exporter psrc), nlegal (options before truncation).
 results(): {env, game_seed, winner, length (all decisions), n_ext, turns, error}.
 
-Results (2026-11-19, WSL, cores 8-15)
+Results, schema v2 (2026-11-19, gate 1; audit_gate1/REPORT.txt)
+  test_random 200 games 0 errors; test_determinism ok (410 steps, 24 games);
+  test_multivariant ok (3 decks x 40 games, 0 errors, determinism 315 steps);
+  test_fields 300 games: every v2 field equals an independent engine read (0 mismatches);
+  test_agreement_v2: rbenv == decision_export v2 JSON on 18 games / 3263 decisions
+  (audit_gate1/agree, 12 random-player + 6 ismcts:sims=25 vs random-player).
+
+Results (schema v1, 2026-11-19, WSL, cores 8-15)
   1 random legal actions, 200 Rengar-mirror games: 0 errors (winners 101/99).
   2 determinism: 24 games / 410 steps identical observations and results.
   3 agreement with decision_export JSON (autopay=False, replay of recorded
@@ -88,3 +126,9 @@ Results (2026-11-19, WSL, cores 8-15)
       n_envs 256, 4 proc: 392 games/s, 50.1k decisions/s
   5 opponent='random-player': 100 games, 0 errors, only seat 1 external.
     'ismcts:sims=25' also ran (8 games, 0 errors).
+
+  6 multi-variant (2026-11-19): 5 variants registered at once, decks
+    rengar__exp_train / exp_heldout / exp_heldout_sab1 (cardexp/make_exp_decks.py):
+    40 random games each, 0 errors, 0 unknown keys, each deck's three variant keys
+    seen; same seed + choices -> identical (315 steps, 24 games). test_determinism
+    re-run after the change: ok (410 steps, 24 games).

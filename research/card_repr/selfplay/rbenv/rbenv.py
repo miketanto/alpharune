@@ -9,7 +9,8 @@ Deviations from / additions to the contract (all additive):
     'length' = all engine decisions of the game (auto-answered ones included).
   * extra methods: counters() (truncations, unknown card keys, decision counts),
     close().
-  * One variant per process (the card table is process-global).
+  * variant: None, a name, or a list of names (all registered at once; a deck may mix
+    them). One variant set per process (the card table is process-global).
   * step() raises ValueError for a choice outside the legal mask (that game
     is then recorded with an error and restarted).
   * Game seeds: env i starts with seed+i; every new game takes the next
@@ -52,6 +53,8 @@ def _load():
     L.rbenv_result_get.argtypes = [vp, ci, _I64, cp, ci]; L.rbenv_result_get.restype = None
     L.rbenv_results_clear.argtypes = [vp]; L.rbenv_results_clear.restype = None
     L.rbenv_counters.argtypes = [vp, _I64]; L.rbenv_counters.restype = None
+    L.rbenv_verify.argtypes = [vp, _I64]; L.rbenv_verify.restype = None
+    L.rbenv_schema_version.argtypes = []; L.rbenv_schema_version.restype = ci
     _lib = L
     return L
 
@@ -75,6 +78,8 @@ class RBEnv:
     def __init__(self, n_envs, deck_a, deck_b, seed, variant=None, autopay=True, opponent=None):
         L = _load()
         err = ctypes.create_string_buffer(4096)
+        if isinstance(variant, (list, tuple)):
+            variant = ','.join(sorted(variant))
         if L.rbenv_init(SUBJECTS.encode(), VOCAB_PATH.encode(), (variant or '').encode(), err, 4096) != 0:
             raise RuntimeError(err.value.decode())
         d = np.zeros(6, np.int32)
@@ -128,6 +133,16 @@ class RBEnv:
         self._L.rbenv_counters(self._h, c)
         return dict(trunc_tok=int(c[0]), trunc_act=int(c[1]), trunc_list=int(c[2]), unk_key=int(c[3]),
                     ext_decisions=int(c[4]), auto_decisions=int(c[5]))
+
+    def verify(self, acc=None):
+        """Schema v2 field check of the pending decisions (rbenv.cpp verifyEnv); adds into acc (23 int64)."""
+        if acc is None:
+            acc = np.zeros(23, np.int64)
+        self._L.rbenv_verify(self._h, acc)
+        return acc
+
+    def schema_version(self):
+        return int(self._L.rbenv_schema_version())
 
     def close(self):
         if getattr(self, '_h', None):

@@ -1,0 +1,107 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "body"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0675_master_yi_tempered.cpp:52",
+   "supertype": "src/cards/units/0675_master_yi_tempered.cpp:53",
+   "domains": "src/cards/units/0675_master_yi_tempered.cpp:54",
+   "energy": "src/cards/units/0675_master_yi_tempered.cpp:56",
+   "power": "default 0",
+   "might": "src/cards/units/0675_master_yi_tempered.cpp:57"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "hunt",
+   "_src": "src/cards/units/0675_master_yi_tempered.cpp:59; value src/cards/units/0675_master_yi_tempered.cpp:22",
+   "value": 2
+  },
+  {
+   "kw": "level",
+   "_src": "src/cards/units/0675_master_yi_tempered.cpp:60; value src/cards/units/0675_master_yi_tempered.cpp:27",
+   "value": 6
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer_or_hold",
+    "subject": "self",
+    "_src": "src/cards/units/0675_master_yi_tempered.cpp:20"
+   },
+   "effects": [
+    {
+     "verb": "GainXP",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0675_master_yi_tempered.cpp:22"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0675_master_yi_tempered.cpp:22"
+     },
+     "_src": "src/cards/units/0675_master_yi_tempered.cpp:22"
+    }
+   ],
+   "_src": "src/cards/units/0675_master_yi_tempered.cpp:20"
+  },
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveKeyword",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0675_master_yi_tempered.cpp:29-30"
+     },
+     "duration": "while",
+     "keyword": "deflect",
+     "_src": "src/cards/units/0675_master_yi_tempered.cpp:31-34"
+    },
+    {
+     "verb": "GiveKeyword",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0675_master_yi_tempered.cpp:29-30"
+     },
+     "duration": "while",
+     "keyword": "ganking",
+     "_src": "src/cards/units/0675_master_yi_tempered.cpp:35-38"
+    }
+   ],
+   "_src": "src/cards/units/0675_master_yi_tempered.cpp:26",
+   "condition": [
+    {
+     "c": "xp_ge",
+     "v": 6,
+     "_src": "src/cards/units/0675_master_yi_tempered.cpp:27"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-113-219",
+  "class_file": "src/cards/units/0675_master_yi_tempered.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

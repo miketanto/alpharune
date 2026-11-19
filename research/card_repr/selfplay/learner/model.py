@@ -4,10 +4,12 @@ smoke/train/train.py to the rbenv tensor contract, SELFPLAY.md).
 Inputs (torch tensors, one row per pending decision):
   glob (B,G) int, tok (B,T,F) int, tok_mask (B,T) bool, act (B,A,K) int, act_mask (B,A) bool, pk (B,) int
 
-Field layout: rbenv/README.txt (F=17, K=46). tok[...,2:] situational fields (first 15 embedded
-categorically + a per-kind linear map of all). act: 0 t, 1 src, 2 abs, 3 ai, 4..17 tg/ch/mv/mu tokens,
+Field layout: rbenv/README.txt, schema v2 (F=24, K=49; kinds 1 card, 2 battlefield, 3 chain item,
+4 pile). tok[...,2:] situational fields (all embedded categorically per kind + a per-kind linear map
+of all). act: 0 t, 1 src, 2 abs, 3 ai, 4..17 tg/ch/mv/mu tokens,
 18..29 dm (token, damage) pairs, 30 dst, 31 has_v, 32 v, 33 ci token, 34 nc vocab index, 35 bf, 36 ps,
-37 alt, 38 plc, 39 dec, 40 first, 41..45 counts. Optional b['psrc'] (B,) marks the asking token.
+37 alt, 38 plc, 39 dec, 40 first, 41..45 counts, 46 dst controller (-1 n/a, 0 none, 1 self, 2 opp),
+47 would start a combat as attacker, 48 would contest (schema v2). Optional b['psrc'] (B,) marks the asking token.
 """
 import json, os
 import torch
@@ -16,6 +18,8 @@ import torch.nn.functional as F
 
 D = 64
 N_PK = 40
+N_KIND = 4                                          # token kinds 1..4 (card, bf, chain item, pile)
+SCHEMA_VERSION = 2
 ACT_SRC = [1, 2]                                    # src, abs token refs (summed)
 ACT_REFS = list(range(4, 18)) + list(range(18, 30, 2)) + [33]  # tg ch mv mu, dm tokens, ci (mean-pooled)
 ACT_DST = 30
@@ -25,6 +29,8 @@ CR = os.path.normpath(os.path.join(HERE, '..', '..'))   # research/card_repr
 REPRS_PT = os.path.join(CR, 'smoke', 'train', 'packed', 'reprs.pt')
 VOCAB_JSON = os.path.join(CR, 'selfplay', 'rbenv', 'vocab.json')
 CARDS_JSON = os.path.join(CR, 'cards.json')
+REPR_SRC = {'B2': os.path.join(CR, 'B2_code', 'out', 'vectors.json'),
+            'B': os.path.join(CR, 'B_graph', 'out', 'vectors.json')}
 
 
 def load_vocab():
@@ -62,22 +68,31 @@ def special_index(vocab):
 
 
 def card_table(repr_name, vocab, seed=777):
-    """Returns (table [V, d_in], trainable, n_missing). B2/B from smoke/train/packed/reprs.pt by key."""
+    """Returns (table [V, d_in], trainable, missing keys). B2/B from their source vectors.json."""
     V = len(vocab)
     if repr_name == 'id':
         return None, True, 0
     if repr_name == 'random':
         g = torch.Generator().manual_seed(seed)
         return torch.randn(V, 256, generator=g), False, 0
-    R = torch.load(REPRS_PT)
-    src = R['tables'][repr_name]
-    idx = {k: i for i, k in enumerate(R['vocab'])}
-    tab = torch.zeros(V, src.shape[1])
+    # B2 / B from the SOURCE vectors.json (not the gitignored packed file), with smoke/train/reprs.py's
+    # pipeline: center on the 51 base cards, scale mean base norm to 1, fixed Gaussian projection
+    # (seed 1234) to 256 dims. Covers every vocab key the source has (incl. the score variants).
+    src_path = REPR_SRC[repr_name]
+    raw = json.load(open(src_path))['vectors']
+    cj = json.load(open(CARDS_JSON, encoding='utf-8'))
+    base_keys = [c['key'] for c in cj['cards']]
+    Mb = torch.tensor([raw[k] for k in base_keys], dtype=torch.float64)
+    mu = Mb.mean(0)
+    scale = (Mb - mu).norm(dim=1).mean()
+    gp = torch.Generator().manual_seed(1234)
+    P = torch.randn(Mb.shape[1], 256, generator=gp, dtype=torch.float64)
+    tab = torch.zeros(V, 256)
     missing = []
     for i, k in enumerate(vocab):
-        if k in idx:
-            tab[i] = src[idx[k]]
-        elif not (k in ('<pad>', 'hidden', 'keyword_ability') or k.startswith(('token:', 'other'))):
+        if k in raw:
+            tab[i] = (((torch.tensor(raw[k], dtype=torch.float64) - mu) / scale) @ P).float()
+        elif not (k in ('<pad>', 'hidden', 'keyword_ability', 'none') or k.startswith(('token:', 'other'))):
             missing.append(k)
     return tab, False, missing
 
@@ -92,8 +107,12 @@ def slog(x):
 
 
 class Net(nn.Module):
-    def __init__(self, dims, vocab, repr_name='id'):
+    def __init__(self, dims, vocab, repr_name='id', ask_head=False):
         super().__init__()
+        # ask_head: a direct path from the ASKING object (psrc token: the card being played / the item's
+        # source) to every option's score, as a bilinear term with the option's referenced tokens. Without
+        # it the asking card reaches the pointer head only through attention (CARD_EXPERIMENT.md, Checks).
+        self.ask_head = ask_head
         self.G, self.T, self.F, self.A, self.K = (int(dims[k]) for k in ('G', 'T', 'F', 'A', 'K'))
         V = len(vocab)
         self.repr_name = repr_name
@@ -107,11 +126,12 @@ class Net(nn.Module):
         self.register_buffer('special_idx', special_index(vocab))
         self.E_special = nn.Embedding(6, D)
         nf = self.F - 2
-        self.ncat = min(15, nf)
-        self.E_state = nn.Embedding(3 * 15 * 12, D)
+        self.ncat = nf
+        self.kstride = self.ncat * 12
+        self.E_state = nn.Embedding(N_KIND * self.kstride, D)
         self.register_buffer('field_off', torch.arange(self.ncat) * 12)
-        self.W_num = nn.Linear(nf, 3 * D)
-        self.E_kind = nn.Embedding(5, D)
+        self.W_num = nn.Linear(nf, N_KIND * D)
+        self.E_kind = nn.Embedding(N_KIND + 2, D)   # 0 pad, 1..4 token kinds, 5 the global token
         self.E_psrc = nn.Parameter(torch.zeros(D))
         self.W_glob = nn.Linear(self.G + 11 + N_PK, D)
         layer = nn.TransformerEncoderLayer(D, 4, 2 * D, dropout=0.0, batch_first=True, norm_first=True)
@@ -119,9 +139,12 @@ class Net(nn.Module):
         self.ln = nn.LayerNorm(D)
         self.E_akind = nn.Embedding(24, D)
         self.E_dst = nn.Embedding(8, D)
-        self.W_v = nn.Linear(17 + 6 + 6 + 5 + 5 + 2, D)
+        self.W_v = nn.Linear(17 + 6 + 6 + 5 + 5 + 2 + 4 + 2, D)
         self.val = nn.Sequential(nn.Linear(D, D), nn.ReLU(), nn.Linear(D, 1))
         self.pol = nn.Sequential(nn.Linear(D, D), nn.ReLU(), nn.Linear(D, 1))
+        if ask_head:
+            self.W_ask = nn.Linear(D, D)
+            self.W_ask_src = nn.Linear(D, D, bias=False)
 
     def card_emb(self, key):
         key = key.clamp(0, self.special_idx.shape[0] - 1)
@@ -133,13 +156,13 @@ class Net(nn.Module):
 
     def forward(self, b):
         tok = b['tok'].long()
-        kind = tok[..., 0].clamp(0, 3)
+        kind = tok[..., 0].clamp(0, N_KIND)
         fields = tok[..., 2:]
         x_card = self.card_emb(tok[..., 1])
-        kc = kind.clamp(1, 3) - 1
-        sidx = kc[..., None] * 180 + self.field_off + (fields[..., :self.ncat].clamp(-1, 10) + 1)
+        kc = kind.clamp(1, N_KIND) - 1
+        sidx = kc[..., None] * self.kstride + self.field_off + (fields[..., :self.ncat].clamp(-1, 10) + 1)
         st_cat = self.E_state(sidx).sum(-2)
-        st = self.W_num(slog(fields)).view(*kind.shape, 3, D)
+        st = self.W_num(slog(fields)).view(*kind.shape, N_KIND, D)
         st = torch.gather(st, 2, kc[..., None, None].expand(*kind.shape, 1, D)).squeeze(2) + st_cat
         x = x_card + st + self.E_kind(kind)
         if 'psrc' in b:  # the object asking the prompt
@@ -149,7 +172,7 @@ class Net(nn.Module):
         g = b['glob'].long()
         Bn = g.shape[0]
         gf = torch.cat([slog(g), onehot_clip(g[:, 1], 0, 10), F.one_hot(b['pk'].long().clamp(0, N_PK - 1), N_PK).float()], -1)
-        xg = self.W_glob(gf) + self.E_kind.weight[4]
+        xg = self.W_glob(gf) + self.E_kind.weight[N_KIND + 1]
         h = torch.cat([xg[:, None, :], x], 1)
         mt = b['tok_mask'].bool()
         pad = torch.cat([torch.zeros(Bn, 1, dtype=torch.bool, device=mt.device), ~mt], 1)  # CUDA fix
@@ -176,10 +199,16 @@ class Net(nn.Module):
         sc = torch.cat([onehot_clip(v, -1, 15), onehot_clip(act[..., 3], -1, 4),
                         onehot_clip(act[..., 36], 0, 5), act[..., 37:41].clamp(0, 1).float(),
                         (act[..., 34] > 0).float()[..., None], onehot_clip(act[..., 35], -1, 3),
-                        torch.log1p(dmg.float())[..., None], torch.log1p(nr[..., None])], -1)
+                        torch.log1p(dmg.float())[..., None], torch.log1p(nr[..., None]),
+                        onehot_clip(act[..., 46], -1, 2), act[..., 47:49].clamp(0, 1).float()], -1)
         nc = act[..., 34].clamp(min=0)
         ha = (self.E_akind(act[..., 0].clamp(0, 23)) + h_src + h_ref + self.card_emb(nc) * (nc > 0).float()[..., None]
               + self.E_dst((act[..., ACT_DST] + 1).clamp(0, 7)) + self.W_v(sc) + hg[:, None, :])
+        if self.ask_head:
+            ps = b['psrc'].long() if 'psrc' in b else torch.full((Bn,), -1, device=ht.device, dtype=torch.long)
+            okp = ((ps >= 0) & (ps < T)).float()[:, None]
+            h_ask = torch.gather(ht, 1, ps.clamp(0, T - 1)[:, None, None].expand(Bn, 1, D)).squeeze(1) * okp
+            ha = ha + self.W_ask(h_ask)[:, None, :] * (h_ref + self.W_ask_src(h_src))
         ma = b['act_mask'].bool()
         logits = self.pol(ha).squeeze(-1).masked_fill(~ma, -1e9)
         return F.log_softmax(logits, -1), value

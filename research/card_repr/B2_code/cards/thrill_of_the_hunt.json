@@ -62,7 +62,22 @@
      ],
      "chooser": "owner",
      "dest": "any_battlefield",
-     "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:84; chooser src/cards/spells/0745_thrill_of_the_hunt.cpp:77-78; dest src/cards/spells/0745_thrill_of_the_hunt.cpp:54-56"
+     "dest_filters": [
+      {
+       "f": "blocks_unit_play",
+       "v": true,
+       "neg": true,
+       "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:53-56; src/cards/card_helpers.h:1366-1369"
+      },
+      {
+       "f": "units_play_base_only",
+       "v": "owner",
+       "neg": true,
+       "_src": "src/cards/card_helpers.h:1366-1369"
+      }
+     ],
+     "as_new_object": true,
+     "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:84; chooser src/cards/spells/0745_thrill_of_the_hunt.cpp:77-78; dest src/cards/spells/0745_thrill_of_the_hunt.cpp:53-56; new object (reset) src/cards/spells/0745_thrill_of_the_hunt.cpp:36-40"
     }
    ],
    "_src": "src/cards/spells/0745_thrill_of_the_hunt.cpp:22"

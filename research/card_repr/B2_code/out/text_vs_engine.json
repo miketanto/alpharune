@@ -85,7 +85,7 @@
     "src/cards/battlefields/0521_emperor_s_dais.cpp:70"
    ],
    "path_B": "optional cost (same structure); token.tag = sand_soldier (the name)",
-   "B2": "same structure; token.tag = shurima (code tag; the token name is dropped)"
+   "B2": "same structure; token.tag = shurima (code tag) and token.name = sand_soldier (gate 1)"
   },
   {
    "key": "fiora_peerless",
@@ -179,8 +179,12 @@
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:188",
    "B2_cite": "research/card_repr/B2_code/cards/back_off.json",
    "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B2_code_graph": [
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/neg",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/v"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "unl-042-219": true
    }
@@ -306,6 +310,8 @@
     "card/kind:triggered/verb:CreateToken/token/tag=sand_soldier"
    ],
    "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/cost/other/verb:Bounce/dest=owner_hand",
+    "card/kind:triggered/verb:CreateToken/token/name=sand_soldier",
     "card/kind:triggered/verb:CreateToken/token/tag=shurima"
    ],
    "graphs_identical": false,
@@ -367,8 +373,10 @@
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:274",
    "B2_cite": "research/card_repr/B2_code/cards/grim_apothecary.json",
    "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/verb:Bounce/dest=owner_hand"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "unl-021-219": true
    }
@@ -395,8 +403,15 @@
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:289",
    "B2_cite": "research/card_repr/B2_code/cards/irresistible_faefolk.json",
    "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/verb:Move/target/filters/f:at_self_location",
+    "card/kind:triggered/verb:Move/target/filters/f:at_self_location/neg",
+    "card/kind:triggered/verb:Move/target/filters/f:at_self_location/v",
+    "card/kind:triggered/verb:Move/target/filters/f:cant_be_moved_by_enemy",
+    "card/kind:triggered/verb:Move/target/filters/f:cant_be_moved_by_enemy/neg",
+    "card/kind:triggered/verb:Move/target/filters/f:cant_be_moved_by_enemy/v"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "unl-112-219": true
    }
@@ -515,9 +530,13 @@
   "noxus_hopeful": {
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:351",
    "B2_cite": "research/card_repr/B2_code/cards/noxus_hopeful.json",
-   "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B_text_graph": [
+    "card/kind:static/verb:ReduceCost/target/zone=board"
+   ],
+   "paths_only_in_B2_code_graph": [
+    "card/kind:static/verb:ReduceCost/target/zone=hand"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "ogn-012-298": true
    }
@@ -536,8 +555,12 @@
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:361",
    "B2_cite": "research/card_repr/B2_code/cards/pakaa_cub.json",
    "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B2_code_graph": [
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/neg",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/v"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "ogn-135-298": true
    }
@@ -546,8 +569,12 @@
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:363",
    "B2_cite": "research/card_repr/B2_code/cards/pit_rookie.json",
    "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B2_code_graph": [
+    "card/kind:triggered/verb:Buff/condition/c:has_buff",
+    "card/kind:triggered/verb:Buff/condition/c:has_buff/neg",
+    "card/kind:triggered/verb:Buff/condition/c:has_buff/v=target"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "ogn-136-298": true
    }
@@ -576,8 +603,12 @@
    "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:376",
    "B2_cite": "research/card_repr/B2_code/cards/pyke_dockside_butcher.json",
    "paths_only_in_B_text_graph": [],
-   "paths_only_in_B2_code_graph": [],
-   "graphs_identical": true,
+   "paths_only_in_B2_code_graph": [
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/neg",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/v"
+   ],
+   "graphs_identical": false,
    "engine_def_text_equals_card_text": {
     "unl-028-219": true
    }
@@ -613,36 +644,17 @@
    }
   },
   "rengar_trophy_hunter": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:400",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:402",
    "B2_cite": "research/card_repr/B2_code/cards/rengar_trophy_hunter.json",
-   "paths_only_in_B_text_graph": [
-    "card/kind:play_mode@reaction/where/filters/f:has_friendly_units",
-    "card/kind:play_mode@reaction/where/filters/f:has_friendly_units/v",
-    "card/kind:static",
-    "card/kind:static/verb:AllowPlayTo",
-    "card/kind:static/verb:AllowPlayTo/target/count",
-    "card/kind:static/verb:AllowPlayTo/target/count=1",
-    "card/kind:static/verb:AllowPlayTo/target/side=friendly",
-    "card/kind:static/verb:AllowPlayTo/target/type=self",
-    "card/kind:static/verb:AllowPlayTo/target/zone=board",
-    "card/kind:static/verb:AllowPlayTo/where/filters/f:has_enemy_units",
-    "card/kind:static/verb:AllowPlayTo/where/filters/f:has_enemy_units/v",
-    "card/kind:static/verb:AllowPlayTo/where/zone=battlefield"
-   ],
-   "paths_only_in_B2_code_graph": [
-    "card/kind:play_mode@reaction/where/filters/f:any_of",
-    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_enemy_units",
-    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_enemy_units/v",
-    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_friendly_units",
-    "card/kind:play_mode@reaction/where/filters/f:any_of/v/f:has_friendly_units/v"
-   ],
-   "graphs_identical": false,
+   "paths_only_in_B_text_graph": [],
+   "paths_only_in_B2_code_graph": [],
+   "graphs_identical": true,
    "engine_def_text_equals_card_text": {
     "unl-120-219": false
    }
   },
   "ruin_runner": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:406",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:408",
    "B2_cite": "research/card_repr/B2_code/cards/ruin_runner.json",
    "paths_only_in_B_text_graph": [],
    "paths_only_in_B2_code_graph": [],
@@ -652,7 +664,7 @@
    }
   },
   "sabotage": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:410",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:412",
    "B2_cite": "research/card_repr/B2_code/cards/sabotage.json",
    "paths_only_in_B_text_graph": [],
    "paths_only_in_B2_code_graph": [],
@@ -662,7 +674,7 @@
    }
   },
   "scuttle_crab": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:415",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:417",
    "B2_cite": "research/card_repr/B2_code/cards/scuttle_crab.json",
    "paths_only_in_B_text_graph": [],
    "paths_only_in_B2_code_graph": [],
@@ -672,7 +684,7 @@
    }
   },
   "seat_of_power": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:424",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:426",
    "B2_cite": "research/card_repr/B2_code/cards/seat_of_power.json",
    "paths_only_in_B_text_graph": [],
    "paths_only_in_B2_code_graph": [],
@@ -682,7 +694,7 @@
    }
   },
   "star_spring": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:429",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:431",
    "B2_cite": "research/card_repr/B2_code/cards/star_spring.json",
    "paths_only_in_B_text_graph": [
     "card/kind:triggered/trigger/condition/c:unit_is_token",
@@ -700,13 +712,20 @@
    }
   },
   "thrill_of_the_hunt": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:437",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:439",
    "B2_cite": "research/card_repr/B2_code/cards/thrill_of_the_hunt.json",
    "paths_only_in_B_text_graph": [],
    "paths_only_in_B2_code_graph": [
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/as_new_object",
     "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token",
     "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token/neg",
-    "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token/v=A"
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/condition/c:is_token/v=A",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/dest_filters/f:blocks_unit_play",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/dest_filters/f:blocks_unit_play/neg",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/dest_filters/f:blocks_unit_play/v",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/dest_filters/f:units_play_base_only",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/dest_filters/f:units_play_base_only/neg",
+    "card/kind:spell@reaction/verb:PlayIgnoringCost/dest_filters/f:units_play_base_only/v=owner"
    ],
    "graphs_identical": false,
    "engine_def_text_equals_card_text": {
@@ -714,15 +733,13 @@
    }
   },
   "zhonya_s_hourglass": {
-   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:442",
+   "B_graph_cite": "research/card_repr/B_graph/graphs_src.py:444",
    "B2_cite": "research/card_repr/B2_code/cards/zhonya_s_hourglass.json",
-   "paths_only_in_B_text_graph": [
-    "card/kind:replacement/trigger/once=next_time"
-   ],
+   "paths_only_in_B_text_graph": [],
    "paths_only_in_B2_code_graph": [
-    "card/kind:replacement/verb:Heal",
-    "card/kind:replacement/verb:Heal/target/ref=subject",
-    "card/kind:replacement/verb:Heal/target/type=ref"
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/neg",
+    "card/kind:play_mode@reaction/condition/c:hidden_this_turn/v"
    ],
    "graphs_identical": false,
    "engine_def_text_equals_card_text": {

@@ -1,0 +1,50 @@
+{
+ "cx_B2_s0": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0038,
+  "synthetic:punch_first__ctrl_scores": 0.0038,
+  "punch_first": 0.0038,
+  "hidden": 0.0038,
+  "noxus_hopeful": 0.0038,
+  "<no psrc marker>": 0.0038
+ },
+ "cx_id_s0": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0067,
+  "synthetic:punch_first__ctrl_scores": 0.0067,
+  "punch_first": 0.0067,
+  "hidden": 0.0063,
+  "noxus_hopeful": 0.0066,
+  "<no psrc marker>": 0.0067
+ },
+ "cx_random_s0": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0215,
+  "synthetic:punch_first__ctrl_scores": 0.0213,
+  "punch_first": 0.022,
+  "hidden": 0.022,
+  "noxus_hopeful": 0.0214,
+  "<no psrc marker>": 0.0215
+ },
+ "cx_B2_s0_ft": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0024,
+  "synthetic:punch_first__ctrl_scores": 0.0024,
+  "punch_first": 0.0023,
+  "hidden": 0.0022,
+  "noxus_hopeful": 0.0021,
+  "<no psrc marker>": 0.0024
+ },
+ "cx_id_s0_ft": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0114,
+  "synthetic:punch_first__ctrl_scores": 0.0112,
+  "punch_first": 0.0111,
+  "hidden": 0.0101,
+  "noxus_hopeful": 0.0112,
+  "<no psrc marker>": 0.0115
+ },
+ "cx_random_s0_ft": {
+  "synthetic:punch_first__opp_of_ctrl_scores": 0.0186,
+  "synthetic:punch_first__ctrl_scores": 0.0181,
+  "punch_first": 0.0193,
+  "hidden": 0.019,
+  "noxus_hopeful": 0.0184,
+  "<no psrc marker>": 0.0186
+ }
+}

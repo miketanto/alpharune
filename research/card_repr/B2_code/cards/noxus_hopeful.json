@@ -32,7 +32,7 @@
      "target": {
       "type": "self",
       "side": "friendly",
-      "zone": "board",
+      "zone": "hand",
       "count": 1,
       "_src": "src/cards/units/0012_noxus_hopeful.cpp:18"
      },

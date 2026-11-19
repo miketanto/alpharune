@@ -1,0 +1,2 @@
+update,wall_s,games,decisions,games_per_s,dec_per_s,mean_len,draws,errors,lost_traj,wr_vs_pool,pool_games,pol_loss,v_loss,entropy,approx_kl,clipfrac,explained_var,eval_random_wr,eval_ismcts_wr,pool_size
+1,4.4,20,4576,10.61,2427.8,290.4,0,0,0,,0,0.00042,0.19389,1.41293,0.00154,0.00916,-0.049,,,0

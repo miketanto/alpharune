@@ -1,0 +1,53 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0043_charm.cpp:64",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0043_charm.cpp:65",
+   "energy": "src/cards/spells/0043_charm.cpp:66",
+   "power": "src/cards/spells/0043_charm.cpp:67",
+   "power_by_domain": "src/cards/spells/0043_charm.cpp:67 x src/cards/spells/0043_charm.cpp:65; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0043_charm.cpp:25-27"
+     },
+     "dest": "base_or_other_battlefield",
+     "_src": "src/cards/spells/0043_charm.cpp:49; dest src/cards/spells/0043_charm.cpp:40-42, src/cards/card_helpers.h:1520-1529"
+    }
+   ],
+   "_src": "src/cards/spells/0043_charm.cpp:30"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-043-298",
+  "class_file": "src/cards/spells/0043_charm.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

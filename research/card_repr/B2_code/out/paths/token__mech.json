@@ -1,0 +1,18 @@
+{
+"enters_exhausted": 1.0,
+"is_token": 1.0,
+"might": 3.0,
+"might=3": 1.0,
+"name=mech": 1.0,
+"stats/enters_exhausted": 1.0,
+"stats/is_token": 1.0,
+"stats/might": 3.0,
+"stats/might=3": 1.0,
+"stats/name=mech": 1.0,
+"stats/supertype=token": 1.0,
+"stats/tag=mech": 1.0,
+"stats/type=unit": 1.0,
+"supertype=token": 1.0,
+"tag=mech": 1.0,
+"type=unit": 1.0
+}

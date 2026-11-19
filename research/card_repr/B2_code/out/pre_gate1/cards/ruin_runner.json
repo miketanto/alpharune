@@ -1,0 +1,56 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 6,
+  "power": 0,
+  "might": 5,
+  "_src": {
+   "type": "src/cards/units/0427_ruin_runner.cpp:30",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0427_ruin_runner.cpp:31",
+   "energy": "src/cards/units/0427_ruin_runner.cpp:33",
+   "power": "default 0",
+   "might": "src/cards/units/0427_ruin_runner.cpp:34"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "CantBeChosen",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0427_ruin_runner.cpp:18"
+     },
+     "by": {
+      "side": "enemy",
+      "type": [
+       "spell",
+       "ability"
+      ],
+      "_src": "src/cards/units/0427_ruin_runner.cpp:18"
+     },
+     "_src": "src/cards/units/0427_ruin_runner.cpp:18; src/engine/game_engine.cpp:8084-8085; src/cards/card_helpers.h:712-717"
+    }
+   ],
+   "_src": "src/cards/units/0427_ruin_runner.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-105-221",
+  "class_file": "src/cards/units/0427_ruin_runner.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

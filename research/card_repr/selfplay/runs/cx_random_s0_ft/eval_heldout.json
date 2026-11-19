@@ -1,0 +1,17 @@
+{
+ "ckpt": "runs/cx_random_s0_ft/latest.pt",
+ "repr": "random",
+ "deck": "rengar__exp_heldout",
+ "opp": "ismcts:sims=100",
+ "games": 200,
+ "errors": 0,
+ "wins": 132,
+ "win_rate": 0.66,
+ "wilson95": [
+  0.592,
+  0.722
+ ],
+ "mean_turns": 11.0,
+ "procs": 5,
+ "secs": 159.9
+}

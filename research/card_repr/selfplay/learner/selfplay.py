@@ -151,6 +151,9 @@ def main():
     ap.add_argument('--repr', default='id', choices=['id', 'random', 'B2', 'B'])
     ap.add_argument('--env', default='real', choices=['real', 'fake', 'fake-learnable'])
     ap.add_argument('--deck', default=os.path.join(REPO, 'decks', 'rengar.txt'))
+    ap.add_argument('--variants', default='', help='comma-separated variant names registered in the env (mixed-variant decks)')
+    ap.add_argument('--init', default='', help='start from the weights of this checkpoint (fine-tuning; fresh optimizer)')
+    ap.add_argument('--ask-head', action='store_true', help='direct asking-card -> option-score path (model.py)')
     ap.add_argument('--n-envs', type=int, default=256)
     ap.add_argument('--updates', type=int, default=100)
     ap.add_argument('--samples-per-update', type=int, default=16384, help='learner decisions from finished games')
@@ -185,12 +188,13 @@ def main():
     os.makedirs(out, exist_ok=True)
     t_start = time.time()
 
-    env = make_env(args.env, args.n_envs, args.seed, args.deck)
+    VARIANTS = [v for v in args.variants.split(',') if v] or None
+    env = make_env(args.env, args.n_envs, args.seed, args.deck, variant=VARIANTS)
     dims = env.dims
     vocab, vocab_src = load_vocab()
     assert len(vocab) == int(dims['V']), f'vocab {len(vocab)} != dims V {dims["V"]} ({vocab_src})'
-    net = Net(dims, vocab, args.repr).to(dev)
-    pool_net = Net(dims, vocab, args.repr).to(dev)
+    net = Net(dims, vocab, args.repr, ask_head=args.ask_head).to(dev)
+    pool_net = Net(dims, vocab, args.repr, ask_head=args.ask_head).to(dev)
     opt = torch.optim.Adam(net.parameters(), lr=args.lr, eps=1e-5)
     nparam = sum(p.numel() for p in net.parameters())
     cfg = dict(vars(args), dims={k: int(v) for k, v in dims.items()}, vocab_src=vocab_src, device=str(dev),
@@ -198,6 +202,10 @@ def main():
     json.dump(cfg, open(os.path.join(out, 'config.json'), 'w'), indent=1)
     print('config', json.dumps(cfg), flush=True)
 
+    if args.init:
+        ck0 = torch.load(args.init, map_location=dev)
+        net.load_state_dict(ck0['model'])
+        print('initialised from', args.init, flush=True)
     start_update = 0
     pool = []  # list of (update, cpu state dict)
     if args.resume and os.path.exists(os.path.join(out, 'latest.pt')):
@@ -359,7 +367,7 @@ def main():
                 specs.append(('ismcts', 'ismcts:sims=25', args.eval_ismcts_games))
             for name, spec, ng in specs:
                 # a fresh env per eval (fixed seeds), so no game started by an older policy is counted
-                eenv = make_env(args.env, min(args.eval_envs, ng), 10**6 + args.seed, args.deck, opponent=spec)
+                eenv = make_env(args.env, min(args.eval_envs, ng), 10**6 + args.seed, args.deck, opponent=spec, variant=VARIANTS)
                 te = time.time()
                 wr, ng_, dr, er = play_eval(net, eenv, ng, dev, args.eval_greedy)
                 if hasattr(eenv, 'close'):

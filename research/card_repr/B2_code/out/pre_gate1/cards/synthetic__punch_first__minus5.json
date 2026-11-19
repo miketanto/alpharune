@@ -1,0 +1,61 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 1,
+  "power": 2,
+  "power_by_domain": {
+   "body": 2
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0419_punch_first.cpp:39",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0419_punch_first.cpp:40",
+   "energy": "src/cards/spells/0419_punch_first.cpp:41",
+   "power": "src/cards/spells/0419_punch_first.cpp:42",
+   "power_by_domain": "src/cards/spells/0419_punch_first.cpp:42 x src/cards/spells/0419_punch_first.cpp:40; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0419_punch_first.cpp:43"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0419_punch_first.cpp:18-19"
+     },
+     "amount": {
+      "n": -5,
+      "_src": "src/cards/spells/0419_punch_first.cpp:26"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0419_punch_first.cpp:26"
+    }
+   ],
+   "_src": "src/cards/spells/0419_punch_first.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-097-221",
+  "class_file": "src/cards/spells/0419_punch_first.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "synthetic": "punch_first__minus5"
+ }
+}

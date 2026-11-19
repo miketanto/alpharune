@@ -162,7 +162,7 @@
    "nearest": [
     "decree_of_strength",
     "charm",
-    "irresistible_faefolk"
+    "rengar_pridestalker"
    ]
   },
   "defy|hush": {
@@ -189,15 +189,20 @@
  },
  "identical_card_vectors": [],
  "cosine_B_vs_B2_per_card": {
+  "irresistible_faefolk": 0.2254,
+  "thrill_of_the_hunt": 0.2205,
   "star_spring": 0.1969,
   "rampage": 0.1728,
-  "rengar_trophy_hunter": 0.1618,
-  "thrill_of_the_hunt": 0.0783,
-  "zhonya_s_hourglass": 0.0609,
+  "pit_rookie": 0.0811,
+  "emperor_s_dais": 0.0646,
+  "pakaa_cub": 0.0609,
+  "zhonya_s_hourglass": 0.0457,
   "alpha_strike": 0.0386,
-  "emperor_s_dais": 0.0317,
+  "back_off": 0.0368,
+  "noxus_hopeful": 0.0315,
   "darius_trifarian": 0.0292,
-  "back_off": 0.0,
+  "pyke_dockside_butcher": 0.0267,
+  "grim_apothecary": 0.0148,
   "body_rune": -0.0,
   "brittle_steel": 0.0,
   "calm_rune": -0.0,
@@ -213,10 +218,8 @@
   "fiora_peerless": 0.0,
   "first_mate": 0.0,
   "fury_rune": -0.0,
-  "grim_apothecary": 0.0,
   "hush": 0.0,
   "inferna": 0.0,
-  "irresistible_faefolk": 0.0,
   "kai_sa_survivor": 0.0,
   "kinkou_initiate": -0.0,
   "lonely_poro": -0.0,
@@ -228,21 +231,17 @@
   "nidalee_cat_form": -0.0,
   "not_so_fast": 0.0,
   "noxian_demolitionist": 0.0,
-  "noxus_hopeful": 0.0,
   "onslaught": 0.0,
-  "pakaa_cub": 0.0,
-  "pit_rookie": 0.0,
   "primal_strength": -0.0,
   "punch_first": -0.0,
-  "pyke_dockside_butcher": 0.0,
   "rengar_pridestalker": 0.0,
+  "rengar_trophy_hunter": 0.0,
   "ruin_runner": 0.0,
   "sabotage": 0.0,
   "scuttle_crab": 0.0,
   "seat_of_power": -0.0
  },
  "cards_identical_to_B": [
-  "back_off",
   "body_rune",
   "brittle_steel",
   "calm_rune",
@@ -258,10 +257,8 @@
   "fiora_peerless",
   "first_mate",
   "fury_rune",
-  "grim_apothecary",
   "hush",
   "inferna",
-  "irresistible_faefolk",
   "kai_sa_survivor",
   "kinkou_initiate",
   "lonely_poro",
@@ -273,14 +270,11 @@
   "nidalee_cat_form",
   "not_so_fast",
   "noxian_demolitionist",
-  "noxus_hopeful",
   "onslaught",
-  "pakaa_cub",
-  "pit_rookie",
   "primal_strength",
   "punch_first",
-  "pyke_dockside_butcher",
   "rengar_pridestalker",
+  "rengar_trophy_hunter",
   "ruin_runner",
   "sabotage",
   "scuttle_crab",
@@ -299,7 +293,7 @@
   "printing:unl-183-219 (rengar_pridestalker) emitted from its engine class (not listed in cards.json)",
   "printing:ven-179-166 (rengar_trophy_hunter) has no engine class of its own: uses src/cards/units/0682_rengar_trophy_hunter.cpp"
  ],
- "n_vectors": 171,
+ "n_vectors": 185,
  "coverage_tally": {
   "verb": 56,
   "structure": 53,
@@ -308,5 +302,5 @@
   "unmapped": 0
  },
  "unmapped": [],
- "build_seconds": 1.09
+ "build_seconds": 1.64
 }

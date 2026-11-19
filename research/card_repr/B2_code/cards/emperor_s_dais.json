@@ -39,6 +39,7 @@
       "type": "unit",
       "might": 2,
       "tag": "shurima",
+      "name": "sand_soldier",
       "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:52-54"
      },
      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:53-54"
@@ -58,7 +59,8 @@
        "count": 1,
        "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:26-34"
       },
-      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:43-46"
+      "dest": "owner_hand",
+      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:43-46; owner's hand src/engine/effect_executor.cpp:1166-1215"
      }
     ],
     "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:37-46"
@@ -70,7 +72,7 @@
   "class_file": "src/cards/battlefields/0521_emperor_s_dais.cpp",
   "source": "engine_code",
   "flags": [
-   "token tag from code is 'Shurima' (token NAME 'Sand Soldier' dropped); path B used tag 'sand_soldier' from the token name in the text"
+   "token tag from code is 'Shurima', token name 'Sand Soldier' (gate 1: name kept as token.name; path B used tag 'sand_soldier' from the token name in the text)"
   ],
   "confidence": "medium",
   "confidence_why": "cost-to-effect structure under costDueNow"

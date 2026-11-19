@@ -1,0 +1,72 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 6,
+  "power": 1,
+  "power_by_domain": {
+   "fury": 1
+  },
+  "might": 6,
+  "_src": {
+   "type": "src/cards/units/0344_ferrous_forerunner.cpp:38",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0344_ferrous_forerunner.cpp:39",
+   "energy": "src/cards/units/0344_ferrous_forerunner.cpp:41",
+   "power": "src/cards/units/0344_ferrous_forerunner.cpp:42",
+   "power_by_domain": "src/cards/units/0344_ferrous_forerunner.cpp:42 x src/cards/units/0344_ferrous_forerunner.cpp:39; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0344_ferrous_forerunner.cpp:43"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "deathknell",
+   "_src": "src/cards/units/0344_ferrous_forerunner.cpp:45"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self",
+    "_src": "src/cards/units/0344_ferrous_forerunner.cpp:18"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1,
+      "_src": "src/cards/units/0344_ferrous_forerunner.cpp:21"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0344_ferrous_forerunner.cpp:22-25"
+     },
+     "token": {
+      "type": "unit",
+      "might": 3,
+      "tag": "mech",
+      "_src": "src/cards/units/0344_ferrous_forerunner.cpp:22-23"
+     },
+     "_src": "src/cards/units/0344_ferrous_forerunner.cpp:22-25"
+    }
+   ],
+   "_src": "src/cards/units/0344_ferrous_forerunner.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-021-221",
+  "class_file": "src/cards/units/0344_ferrous_forerunner.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

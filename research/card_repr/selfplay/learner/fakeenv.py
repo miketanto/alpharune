@@ -5,7 +5,7 @@ import numpy as np
 
 class FakeEnv:
     def __init__(self, n_envs, deck_a=None, deck_b=None, seed=0, variant=None, autopay=True, opponent=None,
-                 V=80, T=64, A=96, K=46, F=17, G=72, learnable=False):
+                 V=80, T=96, A=96, K=49, F=24, G=72, learnable=False):
         # learnable=True: the winner is the seat that more often picked option 0 (a sanity task for PPO)
         self.learnable = learnable
         self.n = n_envs
@@ -36,7 +36,7 @@ class FakeEnv:
         nt = r.integers(3, T + 1, n)
         na = r.integers(1, A + 1, n)
         tok = r.integers(0, 6, (n, T, F)).astype(np.int32)
-        tok[..., 0] = r.integers(1, 4, (n, T))
+        tok[..., 0] = r.integers(1, 5, (n, T))
         tok[..., 1] = r.integers(1, d['V'], (n, T))
         self.tok_mask = np.arange(T)[None] < nt[:, None]
         tok[~self.tok_mask] = 0

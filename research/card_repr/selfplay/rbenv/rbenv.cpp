@@ -20,7 +20,10 @@ using namespace riftbound;
 using namespace riftbound::probe;
 using namespace riftbound::probe::dx;
 
-constexpr int G = 72, T = 64, F = 17, A = 96, K = 46;
+// Schema v2 (gate 1, 2026-11-19): T 64 -> 96 (pile tokens, known opponent hand),
+// F 17 -> 24 (memory flags, effective cost, affordable), K 46 -> 49 (move consequences).
+constexpr int kSchemaVersion = 2;
+constexpr int G = 72, T = 96, F = 24, A = 96, K = 49;
 constexpr int kMaxList = 4, kMaxMu = 2, kMaxDm = 6, kMaxChosen = 4;
 constexpr int kDecisionCap = 20000;
 
@@ -67,7 +70,7 @@ struct Handle {
 
 void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
     const GameState& s = e.engine->state();
-    Encoder enc(s, dec);
+    Encoder enc(s, dec, e.engine.get());
     enc.build();
     std::fill(e.glob.begin(), e.glob.end(), 0);
     std::fill(e.tok.begin(), e.tok.end(), 0);
@@ -107,7 +110,11 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
             if (j > kMaxDm) h.c.trunc_list++;
             buf[45] = j;
         }
-        buf[30] = i.play_location.has_value() ? locCode(i.play_location) : locCode(i.move_destination);
+        buf[30] = enc.actionDst(i, p);
+        {
+            const auto q = enc.consequences(buf[30]);
+            buf[46] = q[0]; buf[47] = q[1]; buf[48] = q[2];
+        }
         buf[31] = i.chosen_value.has_value() ? 1 : 0;
         buf[32] = i.chosen_value.has_value() ? static_cast<int32_t>(*i.chosen_value) : 0;
         if (i.chosen_value.has_value() && p.kind == PromptKind::ChainItem)
@@ -135,12 +142,15 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
         const Tok& tk = all[t];
         int32_t* row = &e.tok[t * F];
         for (int k = 0; k < F; ++k) row[k] = 0;
-        row[0] = tk.kind == 'c' ? 1 : (tk.kind == 'b' ? 2 : 3);
+        row[0] = tk.kind == 'c' ? 1 : (tk.kind == 'b' ? 2 : (tk.kind == 'k' ? 3 : 4));
         row[1] = vocabOf(tk.key, h.c);
         int k = 2;
         for (long x : tk.f) if (k < F) row[k++] = static_cast<int32_t>(x);
         if (tk.kind == 'c') {
             row[16] = tk.refs.empty() ? -1 : idx(tk.refs[0]);
+            // v2 [17..23]: play ordinal, hidden this turn, eff energy, eff power, affordable, assault, shield
+            for (size_t j = 0; j < tk.x.size() && 17 + j < static_cast<size_t>(F); ++j)
+                row[17 + j] = static_cast<int32_t>(tk.x[j]);
         } else if (tk.kind == 'k') {
             // 2..9 the 8 fields, 10 source token, 11..14 chosen tokens, 15 n chosen, 16 unused
             row[10] = idx(tk.refs[0]);
@@ -149,6 +159,10 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
             for (size_t j = 1; j < tk.refs.size(); ++j, ++n) if (n < kMaxChosen) row[11 + n] = idx(tk.refs[j]);
             if (n > kMaxChosen) h.c.trunc_list++;
             row[15] = n;
+            // v2 [16] additional cost paid, [17] source play ordinal, [18] triggering subject token
+            row[16] = tk.x.size() > 0 ? static_cast<int32_t>(tk.x[0]) : 0;
+            row[17] = tk.x.size() > 1 ? static_cast<int32_t>(tk.x[1]) : 0;
+            row[18] = tk.subj ? idx(tk.subj) : -1;
         }
         e.tmask[t] = 1;
     }
@@ -158,7 +172,7 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
         for (int t = 0; t < T; ++t) {
             int32_t* row = &e.tok[t * F];
             if (row[0] == 1) fix(row[16]);
-            else if (row[0] == 3) { fix(row[10]); for (int j = 11; j <= 14; ++j) fix(row[j]); }
+            else if (row[0] == 3) { fix(row[10]); for (int j = 11; j <= 14; ++j) fix(row[j]); fix(row[18]); }
         }
         for (int a = 0; a < na && a < A; ++a) {
             int32_t* r = &e.act[a * K];
@@ -257,20 +271,30 @@ std::vector<std::string> parseJsonStrings(const std::string& path) {
 
 extern "C" {
 
-// Process-wide setup: card table (+ one variant), card keys, vocabulary.
+// Process-wide setup: card table (+ variants, comma-separated), card keys, vocabulary.
 // Returns 0, or -1 with the message in err.
 int rbenv_init(const char* subjects, const char* vocab, const char* variant, char* err, int errlen) {
     using namespace rbe;
     try {
         const std::string v = variant ? variant : "";
         if (g_inited) {
-            if (v != g_variant) throw std::runtime_error("rbenv: one variant per process (have '" + g_variant + "')");
+            if (v != g_variant) throw std::runtime_error("rbenv: one variant set per process (have '" + g_variant + "')");
             return 0;
         }
         auto& shared = const_cast<openspiel::SharedCards&>(openspiel::sharedCards());
+        // variant: one name or a comma-separated list. Each variant has its own class id and
+        // card key, so several can be registered at once (a deck may then mix them).
         if (!v.empty()) {
-            if (!findVariant(v)) throw std::runtime_error("unknown variant " + v);
-            registerVariant(shared.registry, v);
+            std::vector<std::string> names;
+            std::string cur;
+            for (char ch : v + ",") {
+                if (ch == ',') { if (!cur.empty()) names.push_back(cur); cur.clear(); }
+                else if (ch != ' ') cur += ch;
+            }
+            for (const auto& n : names) {
+                if (!findVariant(n)) throw std::runtime_error("unknown variant " + n);
+                registerVariant(shared.registry, n);
+            }
             shared.db.buildFromClasses(shared.registry);
         }
         g_reg = &shared.registry;
@@ -288,6 +312,8 @@ int rbenv_init(const char* subjects, const char* vocab, const char* variant, cha
         return -1;
     }
 }
+
+int rbenv_schema_version() { return rbe::kSchemaVersion; }
 
 void rbenv_dims(int32_t* out) {  // G T F A K V
     out[0] = rbe::G; out[1] = rbe::T; out[2] = rbe::F; out[3] = rbe::A; out[4] = rbe::K;
@@ -375,6 +401,184 @@ int rbenv_step(void* p, const int32_t* choices, char* err, int errlen) {
         return -2;
     }
     return rc;
+}
+
+}  // extern "C"
+namespace rbe {
+// Schema v2 field check (gate 1): decodes each pending env's int32 observation
+// and compares the new fields with an independent read of the engine state
+// (not through the Encoder / ObserverView). Adds into out[0..kVerifyN):
+//  0 decisions checked
+//  1 pile mismatches (sum of pile counts per (owner, zone) != pile size, or a
+//    per-card count != a direct count of the pile)   2 pile tokens seen
+//  3 known-hand mismatches (opp-hand tokens vs GameKnowledgeView known+confirmed
+//    hand cards; key must equal the true card)        4 known opp-hand tokens seen
+//  5 cost mismatches: eff energy/power differ from the printed cost where no
+//    modifier can apply (all in-scope cards but Noxus Hopeful), or Noxus Hopeful
+//    not printed-2 exactly when Legion is on (cards played this turn >= 1)
+//  6 hand cards with a cost checked                    7 Noxus Hopeful checked
+//  8 a hand card offered as a PlayCard from hand while affordable == 0
+//  9 affordable == 1 hand cards in a main-phase decision with an empty chain
+// 10 ... of which a PlayCard from hand is offered
+// 11 hidden-this-turn mismatches (vs hidden_on_turn == turn, and a facedown play
+//    of such a card offered)                           12 hidden-this-turn = 1 seen
+// 13 Star Spring stamps set seen                       14 chain items with paid = 1
+// 15 chain items with play ordinal > 0                 16 Location prompts mapped
+//    to a real slot (dst >= 1)                         17 Location options left unmapped
+// 18 move consequence mismatches (dst controller vs bf.controller)   19 moves checked
+// 20 Sabotage prompts: opp hand size                   21 ... opp-hand tokens visible then
+// 22 max tokens in one observation
+constexpr int kVerifyN = 23;
+void verifyEnv(Handle& h, Env& e, int64_t* out) {
+    const GameState& s = e.engine->state();
+    const StepResult& sr = e.engine->currentStep();
+    const PlayerId me = e.seat == 1 ? PlayerId::Player1 : PlayerId::Player2;
+    const PlayerId op = me == PlayerId::Player1 ? PlayerId::Player2 : PlayerId::Player1;
+    out[0]++;
+    int ntok = 0;
+    for (int t = 0; t < T; ++t) ntok += e.tmask[t];
+    out[22] = std::max<int64_t>(out[22], ntok);
+    Counters dummy;
+    auto vocab = [&](const std::string& k) { return vocabOf(k, dummy); };
+    auto row = [&](int t) { return &e.tok[t * F]; };
+    // 1. piles
+    std::map<std::tuple<int, int, int>, long> got;   // (owner, zone, vocab) -> count
+    std::map<std::pair<int, int>, long> got_sum;
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] != 4) continue;
+        out[2]++;
+        got[{r[2], r[3], r[1]}] += r[4];
+        got_sum[{r[2], r[3]}] += r[4];
+    }
+    auto checkPile = [&](PlayerId pl, ZoneType z, const std::vector<GameObjectId>& ids) {
+        const int ow = pl == me ? 1 : 2, zc = static_cast<int>(z);
+        std::map<int, long> want;
+        for (auto id : ids) { const auto& o = s.getObject(id); want[vocab(cardKey(o.card_def_id, &o))]++; }
+        if (got_sum[{ow, zc}] != static_cast<long>(ids.size())) out[1]++;
+        for (auto& [v, n] : want) if (got[{ow, zc, v}] != n) out[1]++;
+    };
+    checkPile(me, ZoneType::Trash, s.player(me).trash);
+    checkPile(op, ZoneType::Trash, s.player(op).trash);
+    checkPile(me, ZoneType::Banishment, s.player(me).banishment);
+    checkPile(op, ZoneType::Banishment, s.player(op).banishment);
+    checkPile(me, ZoneType::MainDeck, s.player(me).main_deck);
+    // 2. known opponent hand
+    {
+        knowledge::GameKnowledgeView kv(s, me);
+        std::multiset<int> want;
+        for (const auto& k : kv.knownHiddenCards(op))
+            if (k.last_known_zone == ZoneType::Hand && k.zone_confirmed) {
+                const auto& o = s.getObject(k.object);
+                want.insert(vocab(cardKey(o.card_def_id, &o)));   // the TRUE card
+            }
+        std::multiset<int> have;
+        for (int t = 0; t < ntok; ++t) {
+            const int32_t* r = row(t);
+            if (r[0] == 1 && r[2 + 1] == 2 && r[2 + 2] == static_cast<int>(ZoneType::Hand)) have.insert(r[1]);
+        }
+        out[4] += static_cast<int64_t>(have.size());
+        // action-referenced opp hand cards (Sabotage's choosable ones) are tokens too: have >= want
+        for (int v : want) { auto it = have.find(v); if (it == have.end()) out[3]++; else have.erase(it); }
+        if (sr.prompt.source.valid() && s.objectExists(sr.prompt.source) &&
+            cardKey(s.getObject(sr.prompt.source).card_def_id, nullptr) == "sabotage" &&
+            sr.prompt.kind != PromptKind::MainPhase && sr.prompt.kind != PromptKind::ChainPriority) {
+            out[20] += static_cast<int64_t>(s.player(op).hand.size());
+            for (int t = 0; t < ntok; ++t) { const int32_t* r = row(t); if (r[0] == 1 && r[3] == 2 && r[4] == 2) out[21]++; }
+        }
+    }
+    // 3. cost / affordable / hidden: map token -> object through the hand order is not
+    // available, so match own hand tokens by key against the hand's objects.
+    const bool main_decision = sr.prompt.kind == PromptKind::MainPhase && s.chain.items.empty();
+    std::set<uint64_t> offered;
+    std::set<uint64_t> offered_facedown;
+    for (const auto& i : sr.legal) {
+        if (i.type == IntentType::PlayCard && i.card.valid()) {
+            if (i.play_source == Intent::PlaySource::Hand) offered.insert(i.card.raw());
+            if (i.play_source == Intent::PlaySource::Hidden) offered_facedown.insert(i.card.raw());
+        }
+    }
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] != 1 || r[3] != 1 || r[4] != static_cast<int>(ZoneType::Hand)) continue;
+        // candidate objects in own hand with this key
+        for (auto hid : s.player(me).hand) {
+            const auto& o = s.getObject(hid);
+            if (vocab(cardKey(o.card_def_id, &o)) != r[1]) continue;
+            const auto& def = g_db->get(o.card_def_id);
+            const std::string key = cardKey(o.card_def_id, &o);
+            out[6]++;
+            if (key == "noxus_hopeful") {
+                out[7]++;
+                const bool legion = s.player(me).cards_played_this_turn >= 1;
+                const int want_e = std::max(0, def.energy_cost - (legion ? 2 : 0));
+                if (r[19] != want_e || r[20] != def.power_cost) out[5]++;
+            } else if (r[19] != def.energy_cost || r[20] != def.power_cost) {
+                out[5]++;
+            }
+            if (offered.count(hid.raw()) && r[21] == 0) out[8]++;
+            if (main_decision && s.turn.turn_player == me && r[21] == 1) {
+                out[9]++;
+                if (offered.count(hid.raw())) out[10]++;
+            }
+            break;   // copies share a key and a cost
+        }
+    }
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] != 1 || r[13] != 1 || r[3] != 1) continue;   // own facedown cards
+        if (r[18] == 1) out[12]++;
+    }
+    {
+        int want_hid = 0;
+        for (const auto& b : s.battlefields)
+            for (auto fd : b.facedown)
+                if (s.objectExists(fd)) {
+                    const auto& o = s.getObject(fd);
+                    if (o.controller == me && o.hidden_on_turn >= s.turn.turn_number) {
+                        ++want_hid;
+                        if (offered_facedown.count(fd.raw())) out[11]++;
+                    }
+                }
+        int have_hid = 0;
+        for (int t = 0; t < ntok; ++t) { const int32_t* r = row(t); if (r[0] == 1 && r[3] == 1 && r[13] == 1 && r[18] == 1) ++have_hid; }
+        if (have_hid != want_hid) out[11]++;
+    }
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] == 2 && (r[15] || r[16])) out[13]++;
+        if (r[0] == 3 && r[16] == 1) out[14]++;
+        if (r[0] == 3 && r[17] > 0) out[15]++;
+    }
+    // actions: Location prompts and move consequences
+    for (int a = 0; a < e.n_legal && a < A; ++a) {
+        const int32_t* r = &e.act[a * K];
+        const Intent& i = sr.legal[a];
+        if (sr.prompt.kind == PromptKind::Location && i.type == IntentType::MakeChoice && !i.declines) {
+            if (r[30] >= 1) out[16]++; else out[17]++;
+        }
+        if (i.type == IntentType::StandardMove && i.move_destination.has_value()) {
+            out[19]++;
+            const auto* bl = std::get_if<BattlefieldLocation>(&*i.move_destination);
+            if (bl) {
+                const auto& bf = s.battlefields[bl->id];
+                const int want = bf.controller.has_value() ? (*bf.controller == me ? 1 : 2) : 0;
+                if (r[46] != want || r[30] != 1 + static_cast<int>(bl->id.raw())) out[18]++;
+            } else if (r[46] != -1 || r[30] != 0) {
+                out[18]++;
+            }
+        }
+    }
+    (void)h;
+}
+}  // namespace rbe
+
+extern "C" {
+
+// Adds the schema-v2 field checks of every env with a pending decision into out[0..23).
+void rbenv_verify(void* p, int64_t* out) {
+    auto& h = *static_cast<rbe::Handle*>(p);
+    for (auto& e : h.envs) if (e.need && e.engine) rbe::verifyEnv(h, e, out);
 }
 
 int rbenv_results_count(void* p) { return static_cast<int>(static_cast<rbe::Handle*>(p)->results.size()); }

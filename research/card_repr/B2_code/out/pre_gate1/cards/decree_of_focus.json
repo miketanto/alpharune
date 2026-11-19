@@ -1,0 +1,84 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0827_decree_of_focus.cpp:81",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0827_decree_of_focus.cpp:82",
+   "energy": "src/cards/spells/0827_decree_of_focus.cpp:83",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0827_decree_of_focus.cpp:85"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "any_of",
+        "v": [
+         {
+          "f": "in_combat_with",
+          "v": {
+           "side": "enemy",
+           "type": "unit",
+           "domain": "fury"
+          },
+          "_src": "src/cards/spells/0827_decree_of_focus.cpp:29-36"
+         },
+         {
+          "f": "chosen_by",
+          "v": {
+           "side": "enemy",
+           "type": "spell",
+           "domain": "fury"
+          },
+          "_src": "src/cards/spells/0827_decree_of_focus.cpp:37-48"
+         }
+        ],
+        "_src": "src/cards/spells/0827_decree_of_focus.cpp:28-49"
+       }
+      ],
+      "_src": "src/cards/spells/0827_decree_of_focus.cpp:50-62"
+     },
+     "amount": {
+      "n": 4,
+      "_src": "src/cards/spells/0827_decree_of_focus.cpp:68"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0827_decree_of_focus.cpp:68"
+    }
+   ],
+   "_src": "src/cards/spells/0827_decree_of_focus.cpp:64"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-040-166",
+  "class_file": "src/cards/spells/0827_decree_of_focus.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "medium",
+  "confidence_why": "two predicates (in combat with / chosen by enemy Fury) named by hand"
+ }
+}

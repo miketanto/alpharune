@@ -52,6 +52,14 @@
     ],
     "_src": "src/engine/game_engine.cpp:5781-5783"
    },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
    "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
   },
   {

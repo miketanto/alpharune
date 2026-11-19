@@ -1,0 +1,73 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0368_not_so_fast.cpp:71",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0368_not_so_fast.cpp:72",
+   "energy": "src/cards/spells/0368_not_so_fast.cpp:73",
+   "power": "src/cards/spells/0368_not_so_fast.cpp:74",
+   "power_by_domain": "src/cards/spells/0368_not_so_fast.cpp:74 x src/cards/spells/0368_not_so_fast.cpp:72; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0368_not_so_fast.cpp:76"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Counter",
+     "target": {
+      "type": [
+       "spell",
+       "ability"
+      ],
+      "side": "enemy",
+      "zone": "chain",
+      "count": 1,
+      "filters": [
+       {
+        "f": "chooses",
+        "v": {
+         "side": "friendly",
+         "type": [
+          "unit",
+          "gear"
+         ]
+        },
+        "_src": "src/cards/spells/0368_not_so_fast.cpp:34-43"
+       }
+      ],
+      "_src": "src/cards/spells/0368_not_so_fast.cpp:30-44; src/cards/spells/0368_not_so_fast.cpp:51-55"
+     },
+     "_src": "src/cards/spells/0368_not_so_fast.cpp:58"
+    }
+   ],
+   "_src": "src/cards/spells/0368_not_so_fast.cpp:50"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-045-221",
+  "class_file": "src/cards/spells/0368_not_so_fast.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "medium",
+  "confidence_why": "'chooses' predicate named by hand"
+ }
+}
