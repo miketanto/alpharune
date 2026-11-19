@@ -1,0 +1,60 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0132_first_mate.cpp:43",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0132_first_mate.cpp:44",
+   "energy": "src/cards/units/0132_first_mate.cpp:46",
+   "power": "default 0",
+   "might": "src/cards/units/0132_first_mate.cpp:47"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0132_first_mate.cpp:21"
+   },
+   "effects": [
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/units/0132_first_mate.cpp:24"
+       }
+      ],
+      "_src": "src/cards/units/0132_first_mate.cpp:23-25"
+     },
+     "_src": "src/cards/units/0132_first_mate.cpp:30"
+    }
+   ],
+   "_src": "src/cards/units/0132_first_mate.cpp:21"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-132-298",
+  "class_file": "src/cards/units/0132_first_mate.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

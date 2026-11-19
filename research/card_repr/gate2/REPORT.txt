@@ -1,0 +1,177 @@
+Gate 2: representation unit tests (TESTPLAN.md C1-C4, D4). No self-play training, 2026-11-19
+=========================================================================================
+Question: can the input pipeline CARRY each mechanical fact of an in-scope card from its B2 vector?
+
+Scope: 50 vectors.
+- 26 real: Rengar legend and champion, the 17 main-deck cards, 3 battlefields, 2 runes,
+  token:mech and token:sand_soldier.
+- 24 synthetic variants (every synthetic: key in B2_code/out/vectors.json).
+- 1,225 pairs.
+
+Files (all in research/card_repr/gate2/):
+- gate2.py: every test; writes results.json; stdout in gate2_stdout.txt.
+- fix_estimate.py: what reweighting would buy; writes fix_estimate.json.
+- rbenv_fields_200.txt: a failed rbenv run (see C4).
+
+Pipeline measured. This is exactly selfplay/learner/model.py; the stages are named here and used in every table:
+- raw: the 8192-dim vector.
+- proj: centred on the 51 base cards, scaled to mean norm 1, then the fixed N(0,1) projection P (8192 to 256, seed 1234). This is the frozen table R.
+- init: W_card (Linear 256 to 64, default init, 5 seeds) plus E_special.
+- ln: the first pre-norm LayerNorm, applied to the whole token (card_emb + state embedding + kind embedding), init weights.
+- trained: the W_card of the 6 self-play B2 checkpoints (runs/cx_B2_s{0,1,2}{,_ft}), applied to today's R.
+  This is approximate, because R has gained gate-1 keys since those runs.
+
+Main metric: a pair's distance divided by the median distance between the 26 real cards in the same space ("rel").
+- Bands: PASS ≥ 0.25; WEAK 0.05–0.25; FAIL below 0.05 or identical.
+- The known failure (punch_first ctrl_scores vs opp_of_ctrl_scores) sits at rel 0.205 at init, which is inside the WEAK band.
+
+Checks that passed:
+- Every vector rebuilt from its graph with the B2 encoder equals vectors.json.
+- All 50 keys are in rbenv/vocab.json.
+- Type, energy, power, Might and keywords agree with each engine CardDef (24 of 24 classes; tokens have no class).
+
+HEADLINE
+--------
+1. Nothing in scope is identical or crushed.
+   - Every pair whose mechanics differ has a different vector.
+   - There are no pairs with the same mechanics in scope, so "same mechanics must be identical" cannot be tested here.
+     It is guaranteed by construction (deterministic hash of the stripped graph); T1 printings showed it before.
+2. The projection is NOT where the signal is lost.
+   - Median rel(init) / rel(raw) is 0.95: the random Gaussian projection keeps the ratios, as Johnson-Lindenstrauss predicts.
+   - The known pair goes:
+
+     | raw | proj | init | ln | trained |
+     |---|---|---|---|---|
+     | 0.220 | 0.213 | 0.205 | 0.206 | 0.141 |
+
+   - So it starts 4.5× closer than a typical pair IN THE RAW B2 VECTOR, and training shrinks it to 7× (1/0.141).
+   - The trained W_card shrinks small differences by about 1.5× on average for the WEAK items (median over all pairs ≈ 1.0).
+3. The weakness is structural to the bag of hashed paths.
+   - A one-word mechanical change (side, duration, chooser, "may", condition polarity, +1 to +2) flips only 3–12 of the 100–300 paths a card has.
+   - That is rel 0.12–0.24 for every such edit, the same band as the known failure.
+4. The card is a small part of the token at init.
+   - Card embedding norm is about 9.1; the rest of the token (state embeddings + kind) is about 39.4.
+   - The typical distance between two cards is about 17% of the token norm, before and after the LayerNorm.
+   - A WEAK difference (rel 0.2) is therefore about 3% of the token the transformer sees.
+5. Order and binding are NOT carried at all. Each of these gives a bit-identical vector:
+   - effect order (5 of 5 edits);
+   - ability order (4 of 4);
+   - which chosen object an effect refers to (Rampage with its A/B binds swapped, so the +2 goes to the ENEMY unit).
+   - Attributes of one node are separate leaves with no conjunction, so the trigger event × subject pairing and the play-mode × location pairing are only implied by the card having one of each.
+
+VERDICT TABLE (per fact type)
+-----------------------------
+Columns:
+- det: the decisive path is present in exactly the cards with the fact (and whether its hash slot is unique in scope).
+- share: that path's amplitude as a fraction of ||v||.
+- LOO: leave-one-card-out kernel-ridge balanced accuracy (atoms with ≥2 positives) as raw / init / trained.
+  Controls: random 0.48–0.51, id 0.50 for every family.
+- edit rel: the C2 edit or C1 pair for that fact, at init (trained in brackets).
+
+| Fact | det | share | LOO raw/init/trained | edit rel, init (trained) | VERDICT |
+|---|---|---|---|---|---|
+| card type | 5/5, unique | .115 | .92/.90/.90 | (type changes ~all paths) | ROBUST |
+| ability kind: trigger/static/activated | 5/6 * | .109 | .85/.79/.82 | .38–.50 (.24–.36) | ROBUST |
+| effect verb | 20/20 (16 unique) | .099 | .87/.84/.88 | kill vs score etc. ≥ .25 | ROBUST |
+| target type | 23/23 (19 unique) | .096 | .86/.82/.85 | – | ROBUST-ish |
+| Energy / Power cost | exact linear, unique slot | – | LOO R² .96/.78/.87 (Energy), .96/.55/.74 (Power) | energy 2→3: .252 (.246) | CARRIED, borderline (1 point ≈ rel .25) |
+| Might | exact linear, unique slot | – | LOO R² .90/.73/.90 | 2→3: .185 (.187) | WEAK per point |
+| keyword presence | 9/9 (deathknell slot collides) | .090 | .79/.73/.76 | – | WEAK-to-OK |
+| keyword VALUE (Assault 2) | log2-coded, slot collides with Rampage's might_of:A path | .101 | not decodable (one Assault card) | – | WEAK / NOT LINEAR |
+| timing Action/Reaction | 3/3 (action slot collides) | .104 | .83/.80/.85 | – | OK |
+| trigger event/subject | event and subject separate leaves | .101 | .60/.66/.70 | subject you→self: .189 (.115) | WEAK; joint NOT carried |
+| effect amounts | category path 14/14; numeric = log2(1+n) summed over a card's effects | .100 | GiveMight amount R² .39/.22/−0.86, Spearman .69/.66/.23 | +1→+2: .229 (.135); punch 2→4: .217 (.151) | WEAK (monotonic only in raw, not linear) |
+| target side | 25/25 | .095 | .87/.82/.85 | 18 flips: .20–.22 (.11–.15) | WEAK (the known failure) |
+| conditions (presence) | 14/14 (2 collide) | .098 | .68/.69/.71 | – | WEAK |
+| condition gating (which effect) | – | – | – | Rampage: .200–.202 (.10–.11); trigger vs effect (Star Spring): .259 (.143) | WEAK |
+| condition polarity (neg) | – | – | – | Thrill: .158 (.095) | WEAK |
+| duration "this turn" | 2/2 | .099 | .94/.84/.87 | 5 edits: .119–.129 (.073–.075) | WEAK, the weakest |
+| chooser (you/owner/opp) | 1/1 | .088 | n/a (one card) | .14–.19 (.08–.11) | WEAK |
+| optional "may" | 2/2 | .106 | .50/.54/.70 | .131 (.079) | WEAK |
+| play location / dest | dest 4/4; play_mode where not joined to its mode | .09–.10 | .88/.77/.81 | – | WEAK (no joint) |
+| effect order ("A then B") | – | – | – | 0.000 ×5 | NOT CARRIED |
+| ability order / modes order | – | – | – | 0.000 ×4 | NOT CARRIED (no in-scope card needs it, see C4) |
+| object binding (refs A/B) | – | – | – | 0.000 | NOT CARRIED |
+
+\* The one failure on "ability" is ability=spell. It has no own path by design: it is the spell@timing label.
+
+C1: AT-RISK PAIRS (lowest rel at init; all 1,128 pairs with different mechanics are distinct)
+--------------------------------------------------------------------------------------
+| pair | dims | raw | init | trained | what differs |
+|---|---|---|---|---|---|
+| body_rune / fury_rune | 4 | .156 | .133 | .094 | domain only |
+| sabotage / syn:sabotage__unit | 6 | .191 | .184 | .128 | recycle filter non-unit → unit |
+| pit_rookie / syn:pit_rookie__might3 | 6 | .191 | .185 | .187 | Might 2 vs 3 |
+| syn:punch_first__ctrl_scores / __opp_of_ctrl_scores | 8 | .220 | .205 | .141 | side (the KNOWN failure) |
+| syn:punch_first__score1 / __score_bfunit | 9 | .234 | .216 | .141 | one condition |
+| punch_first / syn:punch_first__amount4 | 12 | .224 | .217 | .151 | amount 2 vs 4 |
+| syn:punch_first__score1 / __score_behind | 9 | .234 | .235 | .129 | one condition |
+| punch_first / syn:punch_first__energy3 | 6 | .270 | .252 | .246 | Energy 2 vs 3 |
+
+Close behind: token:mech / token:sand_soldier at .287 (trained .186), and the score-condition variants against each other at .27–.33.
+All score variants fall to .13–.21 after training.
+
+Controls:
+- random: every pair is at rel ≥ 0.84. C1 passes by construction, but nothing is shared: LOO 0.5, number R² < 0.
+- id: learned one-hot. C1 is not applicable. LOO is exactly 0.5 and R² < 0 by construction: no card says anything about another.
+- B2 is the only one with readable facts. Its readouts are well above chance (0.7–0.9).
+  The problem is MARGIN (C1/C2 rel ≈ 0.1–0.2), not absence.
+
+C3: NUMBERS
+-----------
+- Energy, Power, Might: raw value in a dedicated unique slot ("stats/energy" etc.), so the raw vector is exactly linear.
+  - After the projection the LOO R² stays at 0.55–0.90.
+  - A one-point change is rel 0.19–0.27: decodable, but small.
+- Ability amounts and keyword values are stored as signed log2(1+|n|) and SUMMED over every effect of that verb in the card.
+  - Monotonic but not linear, and confounded on multi-effect cards.
+  - The kw:assault/value slot collides with another path in scope.
+  - GiveMight amount: LOO R² 0.39 raw, 0.22 at init, negative with the trained W.
+
+C4: MODE ALIGNMENT
+------------------
+- The only in-scope class with a value-answered prompt is Thrill of the Hunt.
+  - It calls pickValueAs with PromptKind::Location; the code also mentions pickMode in a comment.
+  - v indexes the battlefields the owner may play to (battlefieldTakesUnitsFrom, board order).
+  - This is not a printed mode list. The graph correctly has no "modes"; it has dest = any_battlefield with the location filters.
+  - Alignment therefore lives in rbenv, not in R: act[30] dst holds the real slot.
+  - Gate 1 measured 754 Location prompts mapped and 0 unmapped (audit_gate1/REPORT.txt).
+- No in-scope card has printed modes, so "graph mode order = chosen_value order" has nothing to check today: PASS by vacuity.
+- Play modes (Hidden, Ambush, Accelerate) are separate intents with flags (play_source, alt, accelerate), not an index into R, so their order in R does not matter.
+- Caveat: B2 does NOT encode ability order (identical vectors). So when a modal card enters scope, R cannot carry "mode i" by position. It will need a positional feature (see fix 3).
+- The rbenv re-run could not be done on this machine: rbenv.py loads a Linux librbenv.so from C:\Users\sutanto4\riftbound\alpharune\build_pic\, which does not exist. See rbenv_fields_200.txt.
+
+RECOMMENDATIONS (cost = engineering time; every option re-generates vectors.json and invalidates B2 checkpoints)
+-----------------------------------------------------------------------------------------------
+1. Reweighting paths: tried, and not sufficient alone (fix_estimate.json).
+   - Generic IDF: side stays at .214, and duration drops to .10.
+   - ×3 on decisive leaves (side, duration, chooser, optional, neg, conditions, relative_to): known pair .22 → .48, side .48, chooser .36, duration .29.
+   - But the Might, amount and domain pairs drop to .11–.16, because the typical distance grows. It is zero-sum inside one hashed vector.
+   - Cost: about 1 hour. Use it only together with item 2.
+2. Explicit numeric slots: a small dense, standardised block concatenated to R.
+   - Contents: energy, power, Might, keyword values (Assault, Shield, Deflect, Hunt, Level) and the main amount per verb.
+   - Raw linear values, no log, no summing.
+   - Fixes C3 and the Might/amount/cost pairs.
+   - Cost: about 2 hours (extract.py plus model.py card_table).
+3. Structured feature block alongside the hash (the main fix for WEAK and NOT CARRIED). Recommended.
+   - A fixed grid: up to 3 abilities × 4 effects.
+   - Each slot one-hot: ability kind, timing, trigger event, trigger subject, verb, target side and type with refs RESOLVED to the bound selector (so binding is carried), duration, chooser, optional, condition id and polarity, dest.
+   - Slot position carries effect order and, later, mode order.
+   - About 400–800 dims. Every decisive fact gets its own unit-weight coordinate that no other path shares.
+   - Gives side, duration and chooser a margin of the order of a whole slot, not 3 of 300 paths.
+   - Cost: about 1 day, plus re-running gates 2–3.
+4. Cheaper interim inside the hash.
+   - Emit node-conjunction paths: target{side,type,zone} as one leaf, trigger{event,subject}.
+   - Replace ref=A with the bound selector's attributes.
+   - Add an effect-index segment (eff#i) and "then" pairs (verb_i>verb_i+1).
+   - Fixes binding, order and the event × subject joint. Does not fix margin.
+   - Cost: about half a day in B_graph/build.py (shared with B).
+5. Pipeline side (model.py, no vector change). Two options:
+   - give the card embedding its own LayerNorm or scale, so card identity is not 17% of the token at init;
+   - a contrastive or auxiliary loss on W_card that rewards keeping the C1 at-risk pairs apart.
+   - Training shrank the WEAK items about 1.5×, and the network never used them.
+   - Cost: about 2–4 hours. Re-check D4 with a 5-minute fine-tune.
+6. Learned graph encoder (PHASE2.md section 4): carries structure by construction.
+   - With 50 cards it will overfit unless it is trained on the contrasts and synthetic edits above.
+   - Cost: days.
+
+Suggested order: 3 (with 2 folded in) then 5. Re-run gate2.py; the pass bar is that every C2 family and every at-risk pair has rel(init) ≥ 0.25.

@@ -1,0 +1,43 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4
+ },
+ "keywords": [
+  {
+   "kw": "legion"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "ReduceCost",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "amount": {
+      "n": 2
+     },
+     "resource": "energy"
+    }
+   ],
+   "condition": [
+    {
+     "c": "cards_played_this_turn_ge",
+     "v": 1
+    }
+   ]
+  }
+ ]
+}

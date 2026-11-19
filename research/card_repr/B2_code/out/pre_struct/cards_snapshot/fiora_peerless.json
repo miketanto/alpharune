@@ -1,0 +1,72 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0432_fiora_peerless.cpp:75",
+   "supertype": "src/cards/units/0432_fiora_peerless.cpp:76",
+   "domains": "src/cards/units/0432_fiora_peerless.cpp:77",
+   "energy": "src/cards/units/0432_fiora_peerless.cpp:79",
+   "power": "src/cards/units/0432_fiora_peerless.cpp:80",
+   "power_by_domain": "src/cards/units/0432_fiora_peerless.cpp:80 x src/cards/units/0432_fiora_peerless.cpp:77; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0432_fiora_peerless.cpp:81"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "attack_or_defend",
+    "subject": "self",
+    "_src": "src/cards/units/0432_fiora_peerless.cpp:20",
+    "condition": [
+     {
+      "c": "one_on_one",
+      "v": true,
+      "_src": "src/cards/units/0432_fiora_peerless.cpp:25-37"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0432_fiora_peerless.cpp:45"
+     },
+     "amount": {
+      "ref": "might_of:self",
+      "mult": 1,
+      "_src": "src/cards/units/0432_fiora_peerless.cpp:46"
+     },
+     "duration": "combat",
+     "_src": "src/cards/units/0432_fiora_peerless.cpp:46; aura src/cards/units/0432_fiora_peerless.cpp:50-62"
+    }
+   ],
+   "_src": "src/cards/units/0432_fiora_peerless.cpp:20"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-110-221",
+  "class_file": "src/cards/units/0432_fiora_peerless.cpp",
+  "source": "engine_code",
+  "flags": [
+   "'double my Might' is a snapshot: +current Might at resolution, held for the combat (not re-doubled if Might changes later)"
+  ],
+  "confidence": "medium",
+  "confidence_why": "snapshot 'double' via aura counter; one_on_one named from a count"
+ }
+}

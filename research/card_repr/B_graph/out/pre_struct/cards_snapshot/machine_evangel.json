@@ -1,0 +1,48 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "order": 1
+  },
+  "might": 4
+ },
+ "keywords": [
+  {
+   "kw": "deathknell"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1
+     },
+     "amount": {
+      "n": 3
+     },
+     "token": {
+      "type": "unit",
+      "might": 1,
+      "tag": "recruit"
+     }
+    }
+   ]
+  }
+ ]
+}

@@ -24,7 +24,7 @@ def decode(name, n=3):
 
 def sensitivity(run, rep):
     sd = torch.load(os.path.join(HERE, '..', 'runs', run, 'latest.pt'), map_location='cpu')['model']
-    net = Net(D, voc, rep, ask_head='W_ask.weight' in sd)
+    net = Net(D, voc, rep, ask_head='W_ask.weight' in sd, card_norm='card_ln.weight' in sd)
     net.load_state_dict(sd)
     net.eval()
     d = np.load(os.path.join(P, 'oppctrl_tgt.npz'))

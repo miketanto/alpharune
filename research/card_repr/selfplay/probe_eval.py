@@ -22,9 +22,11 @@ def main():
     a = ap.parse_args()
     voc = load_vocab()[0]
     dev = 'cuda' if torch.cuda.is_available() else 'cpu'
-    net = Net(dict(DIMS, V=len(voc)), voc, a.repr, ask_head=a.ask_head).to(dev)
-    if a.ckpt != 'untrained':
-        net.load_state_dict(torch.load(a.ckpt, map_location=dev)['model'])
+    sd = torch.load(a.ckpt, map_location=dev)['model'] if a.ckpt != 'untrained' else None
+    cnorm = sd is None or 'card_ln.weight' in sd   # pre-gate-2 checkpoints have no card LayerNorm
+    net = Net(dict(DIMS, V=len(voc)), voc, a.repr, ask_head=a.ask_head, card_norm=cnorm).to(dev)
+    if sd is not None:
+        net.load_state_dict(sd)
     r = probes.run_probes(net, dev, [p for p in a.probes.split(',') if p] or None)
     res = dict(ckpt=a.ckpt, repr=a.repr, probes=r)
     if a.out:

@@ -1,0 +1,107 @@
+C2 STRUCTURAL EDITS: rel at init (before = hash only, no card LN; after = v2 model card_emb incl. card LN)
+| family | edit | before init | after init_lin | after init | after ln | after trained* | verdict |
+|---|---|---|---|---|---|---|---|
+| ability_kind | rengar_pridestalker: triggered -> activated (exhaust) | 0.396 | 0.363 | 0.379 | 0.383 | 0.247 | PASS |
+| ability_kind | rengar_pridestalker: triggered -> static | 0.387 | 0.367 | 0.384 | 0.390 | 0.282 | PASS |
+| ability_kind | first_mate: triggered -> activated (exhaust) | 0.387 | 0.373 | 0.391 | 0.393 | 0.269 | PASS |
+| ability_kind | first_mate: triggered -> static | 0.382 | 0.378 | 0.398 | 0.401 | 0.320 | PASS |
+| ability_kind | inferna: static Assault -> triggered on attack | 0.446 | 0.401 | 0.415 | 0.417 | 0.293 | PASS |
+| ability_kind | pit_rookie: triggered -> static | 0.500 | 0.456 | 0.487 | 0.486 | 0.355 | PASS |
+| ability_kind | pit_rookie: triggered -> activated (exhaust) | 0.487 | 0.473 | 0.495 | 0.493 | 0.313 | PASS |
+| ability_order | inferna: ability order reversed | 0.000 | 0.499 | 0.527 | 0.534 | 0.355 | PASS |
+| ability_order | kai_sa_survivor: ability order reversed | 0.000 | 0.621 | 0.590 | 0.586 | 0.387 | PASS |
+| ability_order | rampage: ability order reversed | 0.000 | 0.719 | 0.615 | 0.602 | 0.494 | PASS |
+| ability_order | pyke_dockside_butcher: ability order reversed | 0.000 | 0.670 | 0.628 | 0.628 | 0.540 | PASS |
+| amount | rengar_pridestalker: +1 -> +2 | 0.229 | 0.381 | 0.396 | 0.400 | 0.271 | PASS |
+| binding | rampage: bind letters swapped (the +2 and the self-damage now hit the ENEMY unit) | 0.000 | 0.564 | 0.493 | 0.483 | 0.381 | PASS |
+| chooser | thrill_of_the_hunt: location chosen by controller instead of owner | 0.186 | 0.307 | 0.289 | 0.288 | 0.209 | PASS |
+| chooser | first_mate: target chosen by the opponent | 0.138 | 0.283 | 0.289 | 0.290 | 0.217 | PASS |
+| chooser | punch_first: target chosen by the opponent | 0.159 | 0.329 | 0.347 | 0.346 | 0.210 | PASS |
+| chooser | rengar_pridestalker: target chosen by the opponent | 0.141 | 0.396 | 0.422 | 0.428 | 0.238 | PASS |
+| condition_gating | rampage: +2 unconditional (paid branch removed) | 0.200 | 0.315 | 0.274 | 0.268 | 0.202 | PASS |
+| condition_gating | rampage: paid-condition gates the damage instead of the +2 | 0.202 | 0.466 | 0.403 | 0.394 | 0.319 | PASS |
+| condition_gating | star_spring: not-token condition on the effect instead of the trigger | 0.259 | 0.420 | 0.439 | 0.440 | 0.290 | PASS |
+| condition_polarity | thrill_of_the_hunt: replay only if the unit IS a token (neg flipped) | 0.158 | 0.418 | 0.401 | 0.399 | 0.276 | PASS |
+| duration | darius_trifarian: 'GiveMight' this turn -> permanent | 0.119 | 0.299 | 0.280 | 0.280 | 0.178 | PASS |
+| duration | rampage: 'GiveMight' this turn -> permanent | 0.129 | 0.351 | 0.303 | 0.297 | 0.292 | PASS |
+| duration | rengar_pridestalker: 'GiveMight' this turn -> permanent | 0.119 | 0.289 | 0.303 | 0.308 | 0.213 | PASS |
+| duration | pyke_dockside_butcher: 'GiveMight' this turn -> permanent | 0.119 | 0.356 | 0.330 | 0.330 | 0.211 | PASS |
+| duration | punch_first: 'GiveMight' this turn -> permanent | 0.125 | 0.349 | 0.367 | 0.366 | 0.258 | PASS |
+| effect_order | sabotage: effect order reversed in ability 0 (Reveal -> Recycle) | 0.000 | 0.394 | 0.385 | 0.386 | 0.253 | PASS |
+| effect_order | thrill_of_the_hunt: effect order reversed in ability 0 (Banish -> PlayIgnoringCost) | 0.000 | 0.457 | 0.436 | 0.436 | 0.270 | PASS |
+| effect_order | darius_trifarian: effect order reversed in ability 0 (GiveMight -> Ready) | 0.000 | 0.483 | 0.445 | 0.447 | 0.279 | PASS |
+| effect_order | pyke_dockside_butcher: effect order reversed in ability 2 (Ready -> GiveMight) | 0.000 | 0.500 | 0.463 | 0.464 | 0.347 | PASS |
+| effect_order | rampage: effect order reversed in ability 1 (ChooseTarget -> ChooseTarget -> GiveMight -> DealDamage -> DealDamage) | 0.000 | 0.620 | 0.543 | 0.534 | 0.441 | PASS |
+| kw_value | inferna: [Assault 2] -> [Assault 3] | new | 0.463 | 0.473 | 0.480 | 0.285 | PASS |
+| might | kai_sa_survivor: Might +1 | new | 0.304 | 0.280 | 0.279 | 0.327 | PASS |
+| optional | star_spring: "may move" -> must move | 0.131 | 0.344 | 0.353 | 0.356 | 0.237 | PASS |
+| target_side | emperor_s_dais: CreateToken target side friendly -> enemy | 0.199 | 0.326 | 0.325 | 0.321 | 0.224 | PASS |
+| target_side | kai_sa_survivor: Draw target side friendly -> enemy | 0.199 | 0.341 | 0.326 | 0.325 | 0.272 | PASS |
+| target_side | punch_first: GiveMight target side any -> enemy | 0.202 | 0.314 | 0.331 | 0.328 | 0.221 | PASS |
+| target_side | kinkou_initiate: Draw target side friendly -> enemy | 0.199 | 0.332 | 0.334 | 0.337 | 0.230 | PASS |
+| target_side | ferrous_forerunner: CreateToken target side friendly -> enemy | 0.199 | 0.368 | 0.335 | 0.331 | 0.225 | PASS |
+| target_side | seat_of_power: Draw target side friendly -> enemy | 0.199 | 0.328 | 0.345 | 0.350 | 0.218 | PASS |
+| target_side | rengar_pridestalker: GiveMight target side any -> enemy | 0.212 | 0.339 | 0.359 | 0.362 | 0.215 | PASS |
+| target_side | first_mate: Ready target side any -> enemy | 0.206 | 0.349 | 0.362 | 0.360 | 0.218 | PASS |
+| target_side | star_spring: Move target side friendly -> enemy | 0.202 | 0.355 | 0.367 | 0.368 | 0.246 | PASS |
+| target_side | grim_apothecary: Bounce target side friendly -> enemy | 0.208 | 0.358 | 0.370 | 0.371 | 0.260 | PASS |
+| target_side | nidalee_cat_form: Draw target side friendly -> enemy | 0.199 | 0.341 | 0.372 | 0.370 | 0.272 | PASS |
+| target_side | sabotage: Reveal target side enemy -> friendly | 0.205 | 0.381 | 0.376 | 0.378 | 0.244 | PASS |
+| target_side | fury_rune: AddEnergy target side friendly -> enemy | 0.224 | 0.374 | 0.380 | 0.386 | 0.271 | PASS |
+| target_side | body_rune: AddEnergy target side friendly -> enemy | 0.224 | 0.374 | 0.384 | 0.385 | 0.271 | PASS |
+| target_side | irresistible_faefolk: Move target side enemy -> friendly | 0.202 | 0.391 | 0.402 | 0.394 | 0.262 | PASS |
+| target_side | pit_rookie: Buff target side friendly -> enemy | 0.220 | 0.402 | 0.412 | 0.408 | 0.254 | PASS |
+| target_side | rampage: ChooseTarget target side friendly -> enemy | 0.200 | 0.500 | 0.435 | 0.425 | 0.438 | PASS |
+| target_side | thrill_of_the_hunt: Banish target side friendly -> enemy | 0.198 | 0.552 | 0.527 | 0.529 | 0.343 | PASS |
+| trigger | rengar_pridestalker: trigger subject you -> self | 0.189 | 0.281 | 0.292 | 0.296 | 0.193 | PASS |
+min after init over C2 edits: 0.274
+
+C1 AT-RISK PAIRS (v1 lowest 12 at init), rel at init
+| pair | before init | after init | after trained* | verdict |
+|---|---|---|---|---|
+| body_rune / fury_rune | 0.133 | 0.366 | 0.223 | PASS |
+| sabotage / synthetic:sabotage__unit | 0.184 | 0.350 | 0.235 | PASS |
+| pit_rookie / synthetic:pit_rookie__might3 | 0.185 | 0.313 | 0.265 | PASS |
+| synthetic:punch_first__ctrl_scores / synthetic:punch_first__opp_of_ctrl_scores | 0.205 | 0.322 | 0.194 | PASS |
+| synthetic:punch_first__score1 / synthetic:punch_first__score_bfunit | 0.216 | 0.334 | 0.200 | PASS |
+| punch_first / synthetic:punch_first__amount4 | 0.217 | 0.385 | 0.269 | PASS |
+| synthetic:punch_first__score1 / synthetic:punch_first__score_behind | 0.235 | 0.362 | 0.213 | PASS |
+| punch_first / synthetic:punch_first__energy3 | 0.252 | 0.324 | 0.276 | PASS |
+| synthetic:punch_first__score1 / synthetic:punch_first__score_nounits | 0.270 | 0.396 | 0.281 | PASS |
+| synthetic:pit_rookie__score1 / synthetic:pit_rookie__score_alone | 0.271 | 0.416 | 0.269 | PASS |
+| token:mech / token:sand_soldier | 0.287 | 0.344 | 0.238 | PASS |
+| synthetic:discipline__draw2 / synthetic:discipline__enemy | 0.288 | >0.520 | - | PASS |
+
+C1 all pairs: before {'PASS': 1121, 'WEAK': 7, 'FAIL (crushed)': 0, 'FAIL (identical)': 0}; after {'PASS': 1128, 'WEAK': 0, 'FAIL (crushed)': 0, 'FAIL (identical)': 0}; after min init 0.313 (v2 lowest pair pit_rookie / synthetic:pit_rookie__might3)
+init norms before {'card_emb_mean': 9.1444933780567, 'token_context_mean': 39.35654212836528} / after {'card_emb_mean': 37.5231730612411, 'card_emb_lin_mean': 9.025927311230998, 'token_context_mean': 39.35654212836528}
+token share before {'typical_card_distance_over_token_norm': 0.16945283366389388, 'ln_typical_distance_over_ln_norm': 0.16292509294739624} / after {'typical_card_distance_over_token_norm': 0.6888363873813867, 'ln_typical_distance_over_ln_norm': 0.48817926289019625}
+
+C3 NUMBERS (LOO R2 / Spearman), raw | init | trained*: before -> after
+  energy             0.96/0.86 | 0.78/0.80 | 0.87/0.79  ->  0.91/0.85 | 0.53/0.72 | 0.78/0.74
+  power              0.96/0.87 | 0.55/0.72 | 0.74/0.79  ->  0.90/0.86 | 0.47/0.71 | 0.66/0.78
+  might              0.90/0.90 | 0.73/0.82 | 0.90/0.90  ->  0.80/0.91 | 0.50/0.65 | 0.80/0.83
+  kw_value:assault   -0.28/-0.14 | -0.67/-0.12 | -0.85/-0.18  ->  -0.24/0.03 | -0.68/0.02 | -1.14/-0.03
+  amount:GiveMight   0.39/0.69 | 0.22/0.66 | -0.86/0.23  ->  0.38/0.79 | 0.31/0.73 | 0.17/0.57
+  amount:any_first   0.59/0.66 | 0.38/0.57 | -0.01/0.55  ->  0.68/0.75 | 0.42/0.43 | 0.35/0.48
+
+ATOM FAMILIES LOO balanced acc at init: before -> after
+  ability      0.79 -> 0.75   (raw 0.85 -> 0.82)
+  amount       0.85 -> 0.85   (raw 0.89 -> 0.86)
+  chooser      - -> -   (raw - -> -)
+  cond         0.69 -> 0.65   (raw 0.68 -> 0.69)
+  dest         0.48 -> 0.47   (raw 0.50 -> 0.50)
+  dur          0.84 -> 0.78   (raw 0.94 -> 0.92)
+  kw           0.73 -> 0.68   (raw 0.79 -> 0.74)
+  kwval        - -> -   (raw - -> -)
+  once         - -> -   (raw - -> -)
+  optional     0.54 -> 0.49   (raw 0.50 -> 0.50)
+  playmode     0.77 -> 0.64   (raw 0.88 -> 0.75)
+  playwhere    0.77 -> 0.64   (raw 0.88 -> 0.75)
+  side         0.82 -> 0.79   (raw 0.87 -> 0.82)
+  supertype    0.81 -> 0.81   (raw 0.85 -> 0.80)
+  timing       0.80 -> 0.84   (raw 0.83 -> 0.87)
+  trigger      0.66 -> 0.62   (raw 0.60 -> 0.62)
+  ttype        0.82 -> 0.79   (raw 0.86 -> 0.81)
+  type         0.90 -> 0.91   (raw 0.92 -> 0.92)
+  verb         0.84 -> 0.81   (raw 0.87 -> 0.84)
+* trained = W_card of the old B2 checkpoints (no card LN) applied to the new R: approximate.

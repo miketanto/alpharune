@@ -1,0 +1,87 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "fury"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0039_kai_sa_survivor.cpp:33",
+   "supertype": "src/cards/units/0039_kai_sa_survivor.cpp:34",
+   "domains": "src/cards/units/0039_kai_sa_survivor.cpp:35",
+   "energy": "src/cards/units/0039_kai_sa_survivor.cpp:37",
+   "power": "default 0",
+   "might": "src/cards/units/0039_kai_sa_survivor.cpp:38"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "accelerate",
+   "_src": "src/cards/units/0039_kai_sa_survivor.cpp:40"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "energy": 1,
+    "power": 1,
+    "power_domain": "card",
+    "optional": true,
+    "additional": true,
+    "_src": "src/engine/game_engine.cpp:2380-2382"
+   },
+   "effects": [
+    {
+     "verb": "EnterReady",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:4885"
+     },
+     "_src": "src/engine/game_engine.cpp:4885"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:2302-2318 (accelerateAvailable); src/engine/game_engine.cpp:2380-2382 ([1] + one Power of the card's Domain); src/engine/game_engine.cpp:4885 (enters ready)"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "self",
+    "_src": "src/cards/units/0039_kai_sa_survivor.cpp:17"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0039_kai_sa_survivor.cpp:19"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0039_kai_sa_survivor.cpp:19"
+     },
+     "_src": "src/cards/units/0039_kai_sa_survivor.cpp:19"
+    }
+   ],
+   "_src": "src/cards/units/0039_kai_sa_survivor.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-039-298",
+  "class_file": "src/cards/units/0039_kai_sa_survivor.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

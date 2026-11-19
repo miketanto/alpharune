@@ -1,0 +1,62 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 4,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0154_primal_strength.cpp:35",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0154_primal_strength.cpp:36",
+   "energy": "src/cards/spells/0154_primal_strength.cpp:37",
+   "power": "src/cards/spells/0154_primal_strength.cpp:38",
+   "power_by_domain": "src/cards/spells/0154_primal_strength.cpp:38 x src/cards/spells/0154_primal_strength.cpp:36; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0154_primal_strength.cpp:40"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0154_primal_strength.cpp:21-22"
+     },
+     "amount": {
+      "n": 7,
+      "_src": "src/cards/spells/0154_primal_strength.cpp:19"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0154_primal_strength.cpp:18-19"
+    }
+   ],
+   "_src": "src/cards/spells/0154_primal_strength.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-154-298",
+  "class_file": "src/cards/spells/0154_primal_strength.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

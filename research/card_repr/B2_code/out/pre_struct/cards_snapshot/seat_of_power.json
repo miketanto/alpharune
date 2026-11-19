@@ -1,0 +1,53 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/battlefields/0531_seat_of_power.cpp:44",
+   "supertype": "default SuperType::None",
+   "domains": "default {}"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "here",
+    "_src": "src/cards/battlefields/0531_seat_of_power.cpp:18"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/battlefields/0531_seat_of_power.cpp:29"
+     },
+     "amount": {
+      "n": 1,
+      "per": "other_battlefield_controlled",
+      "_src": "src/cards/battlefields/0531_seat_of_power.cpp:22-27"
+     },
+     "_src": "src/cards/battlefields/0531_seat_of_power.cpp:28-29"
+    }
+   ],
+   "_src": "src/cards/battlefields/0531_seat_of_power.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-217-221",
+  "class_file": "src/cards/battlefields/0531_seat_of_power.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

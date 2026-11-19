@@ -1,0 +1,41 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [],
+  "energy": 1,
+  "power": 2,
+  "power_by_domain": {
+   "any": 2
+  },
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "reaction"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Counter",
+     "target": {
+      "type": "spell",
+      "side": "any",
+      "zone": "chain",
+      "count": 1,
+      "filters": [
+       {
+        "f": "power_cost_ge",
+        "v": 2
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

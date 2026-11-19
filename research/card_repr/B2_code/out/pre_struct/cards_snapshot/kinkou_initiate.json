@@ -1,0 +1,64 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0659_kinkou_initiate.cpp:46",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0659_kinkou_initiate.cpp:47",
+   "energy": "src/cards/units/0659_kinkou_initiate.cpp:49",
+   "power": "default 0",
+   "might": "src/cards/units/0659_kinkou_initiate.cpp:50"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0659_kinkou_initiate.cpp:17"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0659_kinkou_initiate.cpp:27"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0659_kinkou_initiate.cpp:27"
+     },
+     "condition": [
+      {
+       "c": "other_friendly_units_total_might_ge",
+       "v": 5,
+       "_src": "src/cards/units/0659_kinkou_initiate.cpp:19-26"
+      }
+     ],
+     "_src": "src/cards/units/0659_kinkou_initiate.cpp:26-27"
+    }
+   ],
+   "_src": "src/cards/units/0659_kinkou_initiate.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-097-219",
+  "class_file": "src/cards/units/0659_kinkou_initiate.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

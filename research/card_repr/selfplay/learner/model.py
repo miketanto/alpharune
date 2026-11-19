@@ -11,7 +11,7 @@ of all). act: 0 t, 1 src, 2 abs, 3 ai, 4..17 tg/ch/mv/mu tokens,
 37 alt, 38 plc, 39 dec, 40 first, 41..45 counts, 46 dst controller (-1 n/a, 0 none, 1 self, 2 opp),
 47 would start a combat as attacker, 48 would contest (schema v2). Optional b['psrc'] (B,) marks the asking token.
 """
-import json, os
+import json, math, os
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -107,8 +107,14 @@ def slog(x):
 
 
 class Net(nn.Module):
-    def __init__(self, dims, vocab, repr_name='id', ask_head=False):
+    def __init__(self, dims, vocab, repr_name='id', ask_head=False, card_norm=True):
         super().__init__()
+        # card_norm (gate 2, 2026-11-19): the card embedding gets its own LayerNorm and a learned scalar
+        # gain (init sqrt(F-2) ~ 4.7, so its norm ~37 matches the ~39 of the summed state embeddings)
+        # before it joins the token; without it the card was ~9 of the token's ~40 at init and a card
+        # difference was a few % of what the transformer sees. card_norm=False = the pre-gate-2 net
+        # (old checkpoints have no card_ln.* keys; verify_eval / probe_eval detect that).
+        self.card_norm = card_norm
         # ask_head: a direct path from the ASKING object (psrc token: the card being played / the item's
         # source) to every option's score, as a bilinear term with the option's referenced tokens. Without
         # it the asking card reaches the pointer head only through attention (CARD_EXPERIMENT.md, Checks).
@@ -126,6 +132,9 @@ class Net(nn.Module):
         self.register_buffer('special_idx', special_index(vocab))
         self.E_special = nn.Embedding(6, D)
         nf = self.F - 2
+        if card_norm:
+            self.card_ln = nn.LayerNorm(D)
+            self.card_scale = nn.Parameter(torch.tensor(math.sqrt(nf)))
         self.ncat = nf
         self.kstride = self.ncat * 12
         self.E_state = nn.Embedding(N_KIND * self.kstride, D)
@@ -152,7 +161,10 @@ class Net(nn.Module):
             x = self.E_card(key)
         else:
             x = self.W_card(self.R)[key]
-        return x + self.E_special(self.special_idx[key])
+        x = x + self.E_special(self.special_idx[key])
+        if self.card_norm:
+            x = self.card_ln(x) * self.card_scale
+        return x
 
     def forward(self, b):
         tok = b['tok'].long()

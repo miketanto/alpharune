@@ -1,0 +1,66 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "body"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": 6,
+  "_src": {
+   "type": "src/cards/units/0682_rengar_trophy_hunter.cpp:35",
+   "supertype": "src/cards/units/0682_rengar_trophy_hunter.cpp:36",
+   "domains": "src/cards/units/0682_rengar_trophy_hunter.cpp:37",
+   "energy": "src/cards/units/0682_rengar_trophy_hunter.cpp:39",
+   "power": "src/cards/units/0682_rengar_trophy_hunter.cpp:40",
+   "power_by_domain": "src/cards/units/0682_rengar_trophy_hunter.cpp:40 x src/cards/units/0682_rengar_trophy_hunter.cpp:37; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0682_rengar_trophy_hunter.cpp:41"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "ambush",
+   "_src": "src/cards/units/0682_rengar_trophy_hunter.cpp:43"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "ambush",
+   "timing": "reaction",
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "any_of",
+      "v": [
+       {
+        "f": "has_friendly_units",
+        "v": true
+       },
+       {
+        "f": "has_enemy_units",
+        "v": true
+       }
+      ],
+      "_src": "src/cards/units/0682_rengar_trophy_hunter.cpp:23; src/engine/play_permissions.cpp:17-21"
+     }
+    ],
+    "_src": "src/engine/play_permissions.cpp:17-21"
+   },
+   "_src": "src/engine/play_permissions.cpp:17-21 (ambushLocation); src/engine/play_permissions.cpp:32; src/engine/game_engine.cpp:9305 (Reaction timing)"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-120-219",
+  "class_file": "src/cards/units/0682_rengar_trophy_hunter.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

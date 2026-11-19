@@ -1,0 +1,52 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3
+ },
+ "keywords": [
+  {
+   "kw": "ambush"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "ambush",
+   "timing": "reaction",
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "has_friendly_units",
+      "v": true
+     }
+    ]
+   }
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "Bounce",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "battlefield",
+      "count": 1
+     },
+     "optional": true
+    }
+   ]
+  }
+ ]
+}

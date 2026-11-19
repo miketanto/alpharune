@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 7,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0628_moonlight_affliction.cpp:35",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0628_moonlight_affliction.cpp:36",
+   "energy": "src/cards/spells/0628_moonlight_affliction.cpp:37",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0628_moonlight_affliction.cpp:38"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0628_moonlight_affliction.cpp:21-22"
+     },
+     "amount": {
+      "n": -10,
+      "_src": "src/cards/spells/0628_moonlight_affliction.cpp:19"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0628_moonlight_affliction.cpp:18-19"
+    }
+   ],
+   "_src": "src/cards/spells/0628_moonlight_affliction.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-066-219",
+  "class_file": "src/cards/spells/0628_moonlight_affliction.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

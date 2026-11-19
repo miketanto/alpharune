@@ -1,0 +1,47 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_unit",
+    "subject": "any_player_here",
+    "condition": [
+     {
+      "c": "unit_is_token",
+      "v": true,
+      "neg": true
+     }
+    ],
+    "once": "per_player_per_turn"
+   },
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "here",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true
+       }
+      ]
+     },
+     "optional": true,
+     "dest": "base"
+    }
+   ]
+  }
+ ]
+}

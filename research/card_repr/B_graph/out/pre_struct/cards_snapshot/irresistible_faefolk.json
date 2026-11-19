@@ -1,0 +1,35 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 1
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "move_to_battlefield",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1
+     },
+     "optional": true,
+     "dest": "self_location"
+    }
+   ]
+  }
+ ]
+}

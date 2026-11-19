@@ -12,8 +12,9 @@ deck = ['noxus_hopeful', 'synthetic:pit_rookie__score_alone', 'synthetic:sabotag
 out = {}
 for run in sys.argv[1:]:
     rep = run.split('cx_')[1].split('_s')[0]
-    net = Net(D, voc, rep)
-    net.load_state_dict(torch.load(os.path.join(HERE, '..', 'runs', run, 'latest.pt'), map_location='cpu')['model'])
+    sd = torch.load(os.path.join(HERE, '..', 'runs', run, 'latest.pt'), map_location='cpu')['model']
+    net = Net(D, voc, rep, ask_head='W_ask.weight' in sd, card_norm='card_ln.weight' in sd)
+    net.load_state_dict(sd)
     with torch.no_grad():
         E = net.card_emb(torch.arange(len(voc)))
     a, b = E[V['synthetic:punch_first__ctrl_scores']], E[V['synthetic:punch_first__opp_of_ctrl_scores']]

@@ -1,0 +1,69 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 1,
+  "_src": {
+   "type": "src/cards/units/0674_irresistible_faefolk.cpp:60",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0674_irresistible_faefolk.cpp:61",
+   "energy": "src/cards/units/0674_irresistible_faefolk.cpp:63",
+   "power": "default 0",
+   "might": "src/cards/units/0674_irresistible_faefolk.cpp:64"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "move_to_battlefield",
+    "subject": "self",
+    "_src": "src/cards/units/0674_irresistible_faefolk.cpp:19"
+   },
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "at_self_location",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/units/0674_irresistible_faefolk.cpp:33"
+       },
+       {
+        "f": "cant_be_moved_by_enemy",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/units/0674_irresistible_faefolk.cpp:34"
+       }
+      ],
+      "_src": "src/cards/units/0674_irresistible_faefolk.cpp:29-35"
+     },
+     "optional": true,
+     "dest": "self_location",
+     "_src": "src/cards/units/0674_irresistible_faefolk.cpp:45; may src/cards/units/0674_irresistible_faefolk.cpp:36-38"
+    }
+   ],
+   "_src": "src/cards/units/0674_irresistible_faefolk.cpp:19"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-112-219",
+  "class_file": "src/cards/units/0674_irresistible_faefolk.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

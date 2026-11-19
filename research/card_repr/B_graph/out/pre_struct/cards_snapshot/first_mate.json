@@ -1,0 +1,39 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self"
+   },
+   "effects": [
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true
+       }
+      ]
+     }
+    }
+   ]
+  }
+ ]
+}

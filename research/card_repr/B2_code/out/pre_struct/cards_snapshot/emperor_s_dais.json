@@ -1,0 +1,80 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/battlefields/0521_emperor_s_dais.cpp:68",
+   "supertype": "default SuperType::None",
+   "domains": "default {}"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "here",
+    "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:19; here src/cards/battlefields/0521_emperor_s_dais.cpp:23"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "here",
+      "count": 1,
+      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:51"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:53"
+     },
+     "token": {
+      "type": "unit",
+      "might": 2,
+      "tag": "shurima",
+      "name": "sand_soldier",
+      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:52-54"
+     },
+     "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:53-54"
+    }
+   ],
+   "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:19; here src/cards/battlefields/0521_emperor_s_dais.cpp:23",
+   "cost": {
+    "energy": 1,
+    "optional": true,
+    "other": [
+     {
+      "verb": "Bounce",
+      "target": {
+       "type": "unit",
+       "side": "friendly",
+       "zone": "here",
+       "count": 1,
+       "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:26-34"
+      },
+      "dest": "owner_hand",
+      "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:43-46; owner's hand src/engine/effect_executor.cpp:1166-1215"
+     }
+    ],
+    "_src": "src/cards/battlefields/0521_emperor_s_dais.cpp:37-46"
+   }
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-207-221",
+  "class_file": "src/cards/battlefields/0521_emperor_s_dais.cpp",
+  "source": "engine_code",
+  "flags": [
+   "token tag from code is 'Shurima', token name 'Sand Soldier' (gate 1: name kept as token.name; path B used tag 'sand_soldier' from the token name in the text)"
+  ],
+  "confidence": "medium",
+  "confidence_why": "cost-to-effect structure under costDueNow"
+ }
+}

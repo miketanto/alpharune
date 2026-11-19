@@ -1,0 +1,40 @@
+{
+ "stats": {
+  "type": "legend",
+  "supertype": null,
+  "domains": [
+   "body",
+   "calm"
+  ],
+  "energy": null,
+  "power": null,
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": "all",
+      "filters": [
+       {
+        "f": "defends_alone",
+        "v": true
+       }
+      ]
+     },
+     "amount": {
+      "n": 2
+     },
+     "duration": "while"
+    }
+   ]
+  }
+ ]
+}

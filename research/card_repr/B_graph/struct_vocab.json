@@ -1,0 +1,301 @@
+{
+ "source": "B2 graphs: 91 (cards, engine classes, tokens, synthetic variants) + SCHEMA_EXTRAS",
+ "max_abilities_seen": 3,
+ "fields": {
+  "amt_kind": [
+   "might_of:choice0",
+   "might_of:choice1",
+   "might_of:self",
+   "n",
+   "none"
+  ],
+  "amt_per": [
+   "none",
+   "other_battlefield_controlled",
+   "unit_killed_by_prev"
+  ],
+  "binds": [
+   "choice0",
+   "choice1",
+   "choice2",
+   "none"
+  ],
+  "chooser": [
+   "controller",
+   "none",
+   "opponent",
+   "owner",
+   "you"
+  ],
+  "cond": [
+   "cards_played_this_turn_ge/pos",
+   "hidden_this_turn/neg",
+   "is_attacker/pos",
+   "xp_ge/pos"
+  ],
+  "cost_flags": [
+   "additional",
+   "exhaust",
+   "other",
+   "recycle_self",
+   "setup_cost"
+  ],
+  "dest": [
+   "any_battlefield",
+   "base",
+   "base_or_other_battlefield",
+   "none",
+   "owner_hand",
+   "self_location"
+  ],
+  "domains": [
+   "body",
+   "calm",
+   "chaos",
+   "fury",
+   "mind",
+   "order"
+  ],
+  "duration": [
+   "combat",
+   "none",
+   "turn",
+   "while"
+  ],
+  "eff_cond": [
+   "died_alone/neg",
+   "died_alone/pos",
+   "friendly_unit_at_battlefield/pos",
+   "has_buff/neg",
+   "is_token/neg",
+   "only_friendly_unit_at_location/pos",
+   "opponent_hand_size_ge/pos",
+   "opponent_score_gt_yours/pos",
+   "other_friendly_units_total_might_ge/pos",
+   "paid_additional_cost/pos",
+   "played_from_hand/pos",
+   "you_control_other_units/neg",
+   "you_control_units/neg"
+  ],
+  "eff_may": [
+   "may",
+   "must"
+  ],
+  "filters": [
+   "any_of/pos",
+   "at_self_location/neg",
+   "cant_be_moved_by_enemy/neg",
+   "chooses/pos",
+   "defends_alone/pos",
+   "domain/pos",
+   "energy_cost_le/pos",
+   "other/pos",
+   "power_cost_ge/pos",
+   "power_cost_le/pos",
+   "type/neg",
+   "type/pos"
+  ],
+  "keyword": [
+   "deflect",
+   "ganking",
+   "none"
+  ],
+  "keywords": [
+   "accelerate",
+   "action",
+   "ambush",
+   "assault",
+   "deathknell",
+   "deflect",
+   "flow",
+   "ganking",
+   "hidden",
+   "hunt",
+   "legion",
+   "level",
+   "reaction",
+   "shield",
+   "tank",
+   "temporary"
+  ],
+  "kind": [
+   "activated",
+   "additional_cost",
+   "play_mode",
+   "replacement",
+   "spell",
+   "static",
+   "triggered"
+  ],
+  "kwval": [
+   "assault",
+   "deflect",
+   "hunt",
+   "level",
+   "shield"
+  ],
+  "may": [
+   "may",
+   "must"
+  ],
+  "mode": [
+   "ambush",
+   "from_facedown",
+   "from_trash",
+   "none"
+  ],
+  "play_requires": [
+   "none",
+   "yes"
+  ],
+  "present": [
+   "yes"
+  ],
+  "ref": [
+   "choice0",
+   "choice1",
+   "choice2",
+   "none",
+   "subject"
+  ],
+  "rel_ref": [
+   "choice0",
+   "none"
+  ],
+  "rel_side": [
+   "any",
+   "enemy",
+   "friendly"
+  ],
+  "rel_type": [
+   "unit"
+  ],
+  "source": [
+   "choice0",
+   "none",
+   "self"
+  ],
+  "supertype": [
+   "champion",
+   "none",
+   "signature",
+   "token"
+  ],
+  "tgt_count": [
+   "1",
+   "all",
+   "bound",
+   "split"
+  ],
+  "tgt_side": [
+   "any",
+   "enemy",
+   "friendly",
+   "subject"
+  ],
+  "tgt_type": [
+   "card",
+   "gear",
+   "player",
+   "self",
+   "spell",
+   "spell|ability",
+   "subject:friendly_unit",
+   "unit"
+  ],
+  "tgt_zone": [
+   "base",
+   "battlefield",
+   "board",
+   "bound",
+   "chain",
+   "facedown",
+   "hand",
+   "here",
+   "player"
+  ],
+  "timing": [
+   "action",
+   "main",
+   "none",
+   "reaction",
+   "same"
+  ],
+  "trig_cond": [
+   "is_token/neg",
+   "nth_card_this_turn/pos",
+   "one_on_one/pos",
+   "paid_additional_cost/pos"
+  ],
+  "trig_event": [
+   "attack_or_defend",
+   "conquer",
+   "conquer_or_hold",
+   "die",
+   "move_to_battlefield",
+   "none",
+   "play",
+   "play_card",
+   "play_unit",
+   "win_combat",
+   "would_die"
+  ],
+  "trig_once": [
+   "none",
+   "per_player_per_turn"
+  ],
+  "trig_subject": [
+   "any_player_here",
+   "friendly_unit",
+   "here",
+   "none",
+   "self",
+   "you"
+  ],
+  "type": [
+   "battlefield",
+   "gear",
+   "legend",
+   "rune",
+   "spell",
+   "unit"
+  ],
+  "verb": [
+   "AddEnergy",
+   "AddPower",
+   "Banish",
+   "Bounce",
+   "Buff",
+   "CantBeChosen",
+   "Counter",
+   "CreateToken",
+   "DealDamage",
+   "Draw",
+   "EnterReady",
+   "GainXP",
+   "GiveKeyword",
+   "GiveMight",
+   "Heal",
+   "Kill",
+   "LookAt",
+   "Move",
+   "PlayIgnoringCost",
+   "Ready",
+   "Recall",
+   "Recycle",
+   "ReduceCost",
+   "Reveal",
+   "Score",
+   "Stun"
+  ],
+  "where_filters": [
+   "any_of/pos",
+   "controlled_by_you/pos",
+   "has_friendly_units/pos"
+  ],
+  "where_zone": [
+   "battlefield",
+   "none"
+  ]
+ }
+}

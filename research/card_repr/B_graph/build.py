@@ -21,7 +21,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 import graphs_src as GS  # noqa: E402
 
-DIM = 8192
+HASH_DIM = 8192
+import struct_block as SB  # noqa: E402  (structured block, gate 2 fix; concatenated after the hash)
+DIM = HASH_DIM + SB.size()
 ROOT = "card"
 SKIP_SEGMENTS = {"abilities", "effects"}   # carried by the ab:/eff: labels already
 LABEL_KEYS = ("kind", "verb", "f", "c", "kw")   # dict keys that name the node
@@ -140,17 +142,23 @@ def graph_paths(graph):
 
 def h(path):
     d = hashlib.md5(path.encode("utf-8")).digest()
-    idx = int.from_bytes(d[:4], "little") % DIM
+    idx = int.from_bytes(d[:4], "little") % HASH_DIM
     sign = 1.0 if d[4] & 1 else -1.0
     return idx, sign
 
 
-def vectorize(graph):
-    v = [0.0] * DIM
+def hash_vectorize(graph):
+    """The original 8192-dim path hash (pre-gate-2 vectors = exactly this)."""
+    v = [0.0] * HASH_DIM
     for p, val in graph_paths(graph).items():
         i, s = h(p)
         v[i] += s * val
     return [0 if x == 0 else round(x, 6) for x in v]
+
+
+def vectorize(graph):
+    """Hash (8192) ++ structured block (struct_block.py, weighted). DIM = 8192 + block size."""
+    return hash_vectorize(graph) + [0 if x == 0 else round(x, 6) for x in SB.vectorize(graph)]
 
 # ---------------------------------------------------------------- synthetic edits
 

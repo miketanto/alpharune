@@ -1,0 +1,56 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "reaction"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A"
+     },
+     "amount": {
+      "n": 1
+     },
+     "duration": "turn"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "A"
+     },
+     "amount": {
+      "n": 1
+     },
+     "duration": "turn",
+     "condition": [
+      {
+       "c": "only_friendly_unit_at_location",
+       "v": "A"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

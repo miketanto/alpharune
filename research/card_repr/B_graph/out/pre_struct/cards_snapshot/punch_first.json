@@ -1,0 +1,41 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 1,
+  "power": 2,
+  "power_by_domain": {
+   "body": 2
+  },
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "action"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1
+     },
+     "amount": {
+      "n": 5
+     },
+     "duration": "turn"
+    }
+   ]
+  }
+ ]
+}

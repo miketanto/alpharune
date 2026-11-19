@@ -1,0 +1,59 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "fury": 1
+  },
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "flow"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "gear",
+      "side": "any",
+      "zone": "board",
+      "count": 1
+     }
+    }
+   ]
+  },
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 4,
+    "power": 1,
+    "power_domain": "card"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "after": "resolve"
+    }
+   ]
+  }
+ ]
+}

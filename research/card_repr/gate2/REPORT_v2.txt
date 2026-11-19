@@ -1,0 +1,252 @@
+Gate 2, v2: the structured block + card LayerNorm. 2026-11-19
+================================================================
+Verdict: PASS.
+- Every C2 structural edit reaches rel(init) >= 0.25. That covers all 53 edits: order, binding, side, duration,
+  chooser, may, condition gating and polarity, ability kind, trigger, amount, and the new keyword-value and Might edits.
+  The lowest is 0.274.
+- Every v1 at-risk pair passes. The lowest is 0.313.
+- All 1,128 pairs with different mechanics pass. Before, the count was 1,121 PASS and 7 WEAK.
+- No previously passing pair is now below 0.25.
+- T1 is still exact: printings and renames give identical vectors.
+- Cost: cross-card generalisation measures drop, in eval T2-direction and T3 (see "eval.py" below).
+
+Files
+-----
+- B_graph/struct_block.py: the structured block (features, layout, weights, slot signatures).
+  Run `python struct_block.py` to print the layout.
+- B_graph/struct_vocab_build.py writes B_graph/struct_vocab.json, the frozen vocabularies.
+- B_graph/build.py:
+  - vectorize = hash_vectorize (the unchanged 8192-dim hash) ++ the block;
+  - DIM = 11211;
+  - the hash still takes slots mod HASH_DIM = 8192.
+- B_graph/schema.md has a new "Structured block" section with the layout.
+- Rebuilt with the new encoder (build.py, then extract.py):
+  - B_graph/out/vectors.json and B2_code/out/vectors.json (dim 11211);
+  - the old ones are in out/pre_struct/, with selfcheck.json and a snapshot of the cards.
+  - The first 8192 dims are bit-identical to pre_struct.
+- selfplay/learner/model.py:
+  - card_norm (default on): LayerNorm(64) on the card embedding, times a learned scalar gain initialised to
+    sqrt(F-2) = 4.69, before it joins the token. This applies to all representations.
+  - card_table already sized P by the source dim, so the learner loads dim 11211 with no other change
+    (0 missing keys for B2 and B).
+  - selfplay.py has --no-card-norm, to rebuild the old net.
+  - verify_eval.py, probe_eval.py and cardexp/{check_probes,real_stats,emb_diag}.py read card_norm from the
+    checkpoint ('card_ln.weight' in it), so old checkpoints still load.
+  - --ask-head is unchanged and was exercised in the sanity run.
+- gate2/gate2.py, extended:
+  - the projection dim now follows the source;
+  - "init" is now exactly model.card_emb (W_card, E_special, card LN times gain), and "init_lin" is the old
+    linear stage;
+  - 2 new edits: Inferna [Assault 2] to [Assault 3], and Kai'Sa Might +1.
+  - Results: results.json and gate2_stdout.txt. The v1 results are kept as results_v1.json and gate2_stdout_v1.txt.
+- gate2/tune_struct.py, gate2/tune_sigcap.py: weight search (tune_struct.json, tune_sigcap.json).
+- gate2/compare_v1_v2.py writes compare_v1_v2.txt: the full before/after tables, C3 and the atom probes.
+
+Layout (3,019 dims; full listing in schema.md)
+----------------------------------------------
+Card header:
+- one-hots: type, supertype, domains, keywords;
+- numeric: energy, power, Might, keyword values (Assault, Hunt, Level, Shield, Deflect N).
+
+Ability slots: 3, in graph order. Each has:
+- present, kind, timing;
+- trigger event, subject and once;
+- trigger conditions and ability conditions (condition x polarity);
+- play mode, where-zone and where-filters;
+- may (optional cost), cost flags;
+- numeric cost energy and cost power;
+- play_requires.
+
+Effect slots: 4 per ability, in graph order. Each has:
+- verb;
+- ref (none / choice0..2 / subject);
+- target side, type, zone, count;
+- binds;
+- relative_to (ref, side, type);
+- filters (x polarity);
+- chooser, duration, dest, may;
+- effect conditions (x polarity);
+- amount kind (n / might_of:choiceK / self), amount per;
+- source, keyword;
+- numeric amount (clipped to ±10) and token Might.
+
+Binding:
+- A ChooseTarget whose only job is to bind an object is folded out of the grid.
+- Every reference to a bound object (target ref, relative_to, might_of:X, source) is replaced by:
+  - the bound selector's side and type;
+  - the choice index, which is the order of binding inside the ability.
+- So with Rampage's binds swapped, the +2 slot reads "enemy unit, choice1".
+- Rampage has 5 effects, 2 of them binds, so after folding the maximum is 3 effects per ability. Nothing overflows the grid.
+
+Other encoding rules:
+- Slot position carries effect order and ability order.
+- Every categorical field in a present slot emits a value ("none" when absent), so a change is a flip of
+  two coordinates.
+
+Slot signatures. Each slot gets a 64-dim unit code seeded by the MD5 of the slot's whole content:
+- one for the card header;
+- one for each ability header;
+- one for each effect slot.
+Any edit inside a slot moves its code by about √2. Without them, the most any weighting reached was a
+minimum rel of 0.19 (see below).
+
+Vocabularies:
+- Derived from 91 B2 graphs: cards, every engine class, both token units, all synthetic variants.
+- Plus the schema-documented values (chooser controller / opponent / you, Shield / Deflect, and so on).
+- Out-of-vocabulary values in use: 2, both in B's text graphs (source choice1, unit_is_token/neg). They go to <other>.
+
+Scaling: the choice and the trade-off
+-------------------------------------
+Exact decomposition of the squared distance:
+  d^2 = d_hash^2 + ALPHA^2 * sum_g w_g^2 d_g^2
+
+How the weights were chosen:
+- Weights were searched to maximise the minimum rel over all 1,128 pairs and the 53 edits (raw space).
+- The Gaussian projection keeps the ratios; gate2 then checks init.
+
+What the search showed:
+1. One-hot / numeric fields alone, with any weights: minimum rel 0.19, and 23 items below 0.25.
+   It is zero-sum, as v1 predicted. Raising side, duration and chooser crushes Might, amount and the runes.
+2. Adding slot signatures makes one-word edits as large as replacing the whole effect.
+   - With signatures unconstrained, the optimiser drove the hash to 0% and reached a minimum of 0.44.
+   - So the hash share was fixed instead, then the signature share was capped.
+
+Trade-off curve (raw min rel; then init min rel and the model-view T3 R² for non-provisional / provisional labels):
+
+| signature share of typical d^2 | raw min rel | init min rel | T3 R² (non-prov / prov) |
+|---|---|---|---|
+| 0.42 (uncapped, hash 50%) | 0.33 | 0.303 | 0.485 / 0.332 |
+| 0.30 (hash 50%) | 0.30 | 0.289 | 0.595 / 0.406 |
+| 0.25 (hash 60%) **CHOSEN** | 0.29 | 0.274 | 0.600 / 0.444 |
+| 0.20 (hash 50%) | 0.26 | 0.238 FAIL | 0.661 / 0.509 |
+
+The pre-block value of T3 R² was 0.639 / 0.608.
+
+CHOSEN:
+- the hash keeps 60% of the typical squared distance;
+- the signatures take at most 25%;
+- one-hot and numeric fields take the rest;
+- ALPHA = 1.09; weights in struct_block.WEIGHTS.
+- Among those passing at init with some margin, it is the setting that keeps the most cross-card
+  generalisation (T3).
+- The lowest init items sit at 0.27–0.29:
+  - Rampage "+2 unconditional": 0.274;
+  - Might +1: 0.280;
+  - Darius duration: 0.280;
+  - chooser: 0.289;
+  - trigger subject: 0.292.
+
+Model side:
+- The card LayerNorm and gain lift the card from 9.1 to 37.5 of the token's norm. The rest of the token is 39.4.
+- Typical card distance as a share of the token norm: 0.17 → 0.69.
+- After the first LayerNorm: 0.16 → 0.49.
+- The card LN itself lowers a few C2 rels by up to about 15% against init_lin (e.g. Rampage ungate: 0.315 → 0.274).
+
+BEFORE / AFTER, rel at init (mean over 5 W_card seeds)
+-------------------------------------------------------
+Before = v1 (hash only, no card LN). After = v2 card_emb.
+Every line is checked against the pass bar (≥ 0.25); per-edit rows are in compare_v1_v2.txt.
+
+| item | before | after |
+|---|---|---|
+| effect order (5 edits) | 0.000 | 0.385–0.543 |
+| ability order (4) | 0.000 | 0.527–0.628 |
+| binding (Rampage A/B swapped) | 0.000 | 0.493 |
+| target side (18) | 0.198–0.224 | 0.325–0.527 |
+| duration "this turn" (5) | 0.119–0.129 | 0.280–0.367 |
+| chooser (4) | 0.138–0.186 | 0.289–0.422 |
+| may / optional (Star Spring) | 0.131 | 0.353 |
+| condition polarity (Thrill) | 0.158 | 0.401 |
+| condition gating (Rampage ×2, Star Spring) | 0.200 / 0.202 / 0.259 | 0.274 / 0.403 / 0.439 |
+| trigger subject you→self | 0.189 | 0.292 |
+| ability kind (7) | 0.382–0.500 | 0.379–0.495 |
+| amount +1→+2 | 0.229 | 0.396 |
+| [Assault 2]→[3] (new) | – | 0.473 |
+| Might +1 (new) | – | 0.280 |
+| body_rune / fury_rune (domain only) | 0.133 | 0.366 |
+| sabotage / sabotage__unit (filter) | 0.184 | 0.350 |
+| pit_rookie / might3 | 0.185 | 0.313 |
+| ctrl_scores / opp_of_ctrl_scores (KNOWN) | 0.205 | 0.322 |
+| score1 / score_bfunit | 0.216 | 0.334 |
+| punch_first / amount4 | 0.217 | 0.385 |
+| score1 / score_behind | 0.235 | 0.362 |
+| punch_first / energy3 | 0.252 | 0.324 |
+| token:mech / token:sand_soldier | 0.287 | 0.344 |
+| all 1,128 differing pairs | 1,121 PASS, 7 WEAK | 1,128 PASS, min 0.313 |
+
+Ability kind is the only family that did not rise. It was already passing, and it still does.
+
+"Trained" column:
+- In compare_v1_v2.txt, this is the old checkpoints' W_card (no card LN) applied to the new R. It is approximate only.
+- Most items are 0.19–0.44 there.
+- No checkpoint has yet been trained on the new vectors long enough to measure the trained shrinkage.
+
+C3 numbers (LOO R², init) and probes:
+- energy 0.78 → 0.53; power 0.55 → 0.47; Might 0.73 → 0.50.
+- GiveMight amount 0.22 → 0.31; first amount 0.38 → 0.42.
+- The raw slots are exact, but the more numerous structured dims dilute a 50-sample ridge.
+- The atom LOO probes drop by 0.00–0.13 (playmode 0.77 → 0.64; the others are within 0.05).
+- Assault value: only one in-scope card has it, so it cannot be decoded by LOO in either version.
+  The Assault 2 → 3 edit is 0.473.
+
+eval.py (T1 / T2 / T3)
+----------------------
+Official run on the raw vectors: eval/results_{B2_code,B_graph}_struct.json (stdout_*_struct.txt).
+
+T1, printing (13) and rename (51): distance 0.000, rank 1 = 1.000, for both B and B2. No regression.
+
+| test | B2 before → after | B before → after |
+|---|---|---|
+| T2 real: distinct | 1.0 → 1.0 | 1.0 → 1.0 |
+| T2 real: rel-dist median | 0.328 → 0.438 | 0.331 → 0.441 |
+| T2 synthetic: distinct | 1.0 → 1.0 | 1.0 → 1.0 |
+| T2 synthetic: rel-dist median | 0.069 → 0.147 | 0.070 → 0.148 |
+| T2 direction (within-field cos, raw) | 0.227 → 0.071 | 0.227 → 0.071 |
+| T3 non-provisional R² | 0.311 → -0.195 | 0.321 → -0.124 |
+| T3 provisional R² | 0.236 → 0.199 | 0.279 → 0.206 |
+
+- T3 balanced accuracy (logit) is roughly unchanged: 0.676 → 0.651 (non-provisional) and 0.650 → 0.653 (provisional).
+- The T3 R² drop on the raw vectors is mostly an artefact of eval.py's per-dimension standardisation.
+  - It ignores the block weights and weighs every one of the 960 signature dims like a hash dim.
+  - Without the signature dims the same vectors give T3 R² 0.322 / 0.286, the pre-block level.
+- In the model's own view the drop is smaller. That view is centre, global scale, then the seed-1234
+  projection to 256; the files are eval/results_B2_code_{modelview_pre_struct,struct_modelview}.json.
+  - T3 R²: 0.639 / 0.608 → 0.600 / 0.444.
+  - T2 direction: 0.236 → 0.081.
+- This is the price of the slot signatures. They are identity-like per slot, so the same edit in two cards
+  points in different directions.
+
+Sanity self-play (WSL, --repr B2 --ask-head, Rengar mirror, 5 min)
+-------------------------------------------------------------------
+- Run: selfplay/runs/gate2v2_sanity_B2_ask (+ .out).
+- 70 updates, 0 errors. Throughput was lower because eval.py ran on Windows at the same time.
+- Same settings as the gate-1 sanity run: n-envs 128, 8192 samples per update, minibatch 1024, pool-every 2.
+- Win rate vs random during the run: 0.84 (update 10) → 0.95 (40) → 1.00 (70).
+- Explained variance 0.78; entropy 1.33 → 0.83.
+- verify_eval.py vs ismcts:sims=25, 200 games, --procs 6, 0 errors:
+  - latest (5 min, update 70): 172/200 = 0.860, CI [0.805, 0.901];
+  - ckpt_00040 (about 3 min): 150/200 = 0.750, CI [0.686, 0.805].
+- The reference is the gate-1 id + ask-head run: 0.905 after 6 min / 107 updates, 0.83 at update 50.
+  This run is in the same range at fewer updates, so the network still trains with the new input and the card LN.
+
+What's left
+-----------
+1. The margin is modest, 0.27–0.29 on about 8 items.
+   - The bar is a 5-seed mean; the per-seed spread was not measured.
+   - Each new card, or vocabulary entry, re-derived changes the typical distance.
+   - So re-run gate2.py whenever the card set grows. Re-deriving struct_vocab.json changes the layout.
+2. Generalisation costs, T2-direction and T3, are real in the model view. Options:
+   - a learned graph encoder (PHASE2.md §4);
+   - an auxiliary contrastive loss;
+   - lowering the signature cap once training shows the trained W keeps the margins.
+3. Trained-stage check (D4).
+   - The old W_card shrinks the new items to 0.18–0.44.
+   - A real re-check needs B2 runs trained on the new vectors: re-run gate2 with `runs/cx_B2_*` replaced.
+   - Every earlier B / B2 checkpoint is invalidated: R changed, and the net has card_ln.
+4. Some values are carried only by the hash, not by the block:
+   - filter values (Defy cost 4 → 2 is identical in the block);
+   - token tags and names;
+   - condition values (xp_ge 6, hand_size_ge 4).
+5. The Assault value is decodable only per card (one in-scope card has it). C4 (modes) is unchanged.
+6. Not done: the rbenv re-run (rbenv's input is unchanged, so it is not needed for this fix).
+   No git commits, per the rules.

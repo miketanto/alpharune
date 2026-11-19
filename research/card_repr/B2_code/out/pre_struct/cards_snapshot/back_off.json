@@ -1,0 +1,114 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0604_back_off.cpp:62",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0604_back_off.cpp:63",
+   "energy": "src/cards/spells/0604_back_off.cpp:64",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0604_back_off.cpp:66"
+  },
+  {
+   "kw": "hidden",
+   "_src": "src/cards/spells/0604_back_off.cpp:67"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "Stun",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0604_back_off.cpp:18-19"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0604_back_off.cpp:39; src/engine/effect_executor.cpp:1732"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/spells/0604_back_off.cpp:49"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0604_back_off.cpp:49"
+     },
+     "condition": [
+      {
+       "c": "played_from_hand",
+       "v": true,
+       "_src": "src/cards/spells/0604_back_off.cpp:46-48"
+      }
+     ],
+     "_src": "src/cards/spells/0604_back_off.cpp:49"
+    }
+   ],
+   "_src": "src/cards/spells/0604_back_off.cpp:24"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-042-219",
+  "class_file": "src/cards/spells/0604_back_off.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

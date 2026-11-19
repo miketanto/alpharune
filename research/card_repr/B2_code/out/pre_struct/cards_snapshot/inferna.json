@@ -1,0 +1,86 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 1,
+  "_src": {
+   "type": "src/cards/units/0560_inferna.cpp:29",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0560_inferna.cpp:30",
+   "energy": "src/cards/units/0560_inferna.cpp:32",
+   "power": "default 0",
+   "might": "src/cards/units/0560_inferna.cpp:33"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "ambush",
+   "_src": "src/cards/units/0560_inferna.cpp:35"
+  },
+  {
+   "kw": "assault",
+   "_src": "src/cards/units/0560_inferna.cpp:36; value src/cards/units/0560_inferna.cpp:34",
+   "value": 2
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "ambush",
+   "timing": "reaction",
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "has_friendly_units",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/play_permissions.cpp:17-21"
+   },
+   "_src": "src/engine/play_permissions.cpp:17-21 (ambushLocation); src/engine/play_permissions.cpp:32; src/engine/game_engine.cpp:9305 (Reaction timing)"
+  },
+  {
+   "kind": "static",
+   "condition": [
+    {
+     "c": "is_attacker",
+     "v": true,
+     "_src": "src/core/game_object.h:466"
+    }
+   ],
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/core/game_object.h:467"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0560_inferna.cpp:34"
+     },
+     "duration": "while",
+     "_src": "src/core/game_object.h:466-467"
+    }
+   ],
+   "_src": "src/core/game_object.h:466-467 (current_might += assault_value while Attacker)"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-002-219",
+  "class_file": "src/cards/units/0560_inferna.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

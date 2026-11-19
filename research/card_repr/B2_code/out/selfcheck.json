@@ -112,52 +112,52 @@
  },
  "real_pairs": {
   "punch_first|primal_strength": {
-   "dist": 6.759365565308331,
+   "dist": 9.720893329204113,
    "rank_of_partner": 1,
    "nearest": [
     "primal_strength",
-    "rengar_pridestalker",
-    "decisive_strike"
+    "decisive_strike",
+    "rengar_pridestalker"
    ]
   },
   "punch_first|decisive_strike": {
-   "dist": 9.539392014169456,
-   "rank_of_partner": 3,
+   "dist": 12.91476851357418,
+   "rank_of_partner": 2,
    "nearest": [
     "primal_strength",
-    "rengar_pridestalker",
-    "decisive_strike"
+    "decisive_strike",
+    "rengar_pridestalker"
    ]
   },
   "discipline|moonlight_affliction": {
-   "dist": 14.763511224099096,
-   "rank_of_partner": 46,
+   "dist": 21.510938346435726,
+   "rank_of_partner": 48,
    "nearest": [
     "en_garde",
-    "rengar_pridestalker",
+    "lonely_poro",
     "seat_of_power"
    ]
   },
   "lonely_poro|loyal_poro": {
-   "dist": 4.58257569495584,
+   "dist": 10.013445369132295,
    "rank_of_partner": 1,
    "nearest": [
     "loyal_poro",
     "seat_of_power",
-    "nidalee_cat_form"
+    "disarming_rake"
    ]
   },
   "ferrous_forerunner|machine_evangel": {
-   "dist": 8.042948641230778,
+   "dist": 11.718773781559271,
    "rank_of_partner": 1,
    "nearest": [
     "machine_evangel",
     "ruin_runner",
-    "rengar_trophy_hunter"
+    "noxus_hopeful"
    ]
   },
   "sabotage|decree_of_strength": {
-   "dist": 6.324555320336759,
+   "dist": 9.388777728757189,
    "rank_of_partner": 1,
    "nearest": [
     "decree_of_strength",
@@ -166,74 +166,74 @@
    ]
   },
   "defy|hush": {
-   "dist": 10.465865188984138,
+   "dist": 13.380615378311642,
    "rank_of_partner": 3,
    "nearest": [
-    "charm",
     "not_so_fast",
+    "charm",
     "hush"
    ]
   }
  },
  "synthetic_dist": {
-  "punch_first__amount4": 2.8769340703081814,
-  "punch_first__energy3": 3.4641016151377544,
-  "punch_first__power0": 5.196152422706632,
-  "discipline__draw2": 3.0608372229875274,
-  "discipline__enemy": 2.8284271247461903,
-  "lonely_poro__draw2": 3.0608376052113577,
-  "defy__cost2": 3.906239171805792,
-  "sabotage__unit": 2.449489742783178,
-  "pit_rookie__might3": 2.449489742783178,
-  "punch_first__reaction": 5.9467694946700265
+  "punch_first__amount4": 6.811044071332456,
+  "punch_first__energy3": 5.640288888258119,
+  "punch_first__power0": 7.144852416009584,
+  "discipline__draw2": 6.641498574009785,
+  "discipline__enemy": 6.061881316719587,
+  "lonely_poro__draw2": 6.1004815127026655,
+  "defy__cost2": 3.9062391718057925,
+  "sabotage__unit": 6.118813149852102,
+  "pit_rookie__might3": 5.259754450714311,
+  "punch_first__reaction": 8.006978182678345
  },
  "identical_card_vectors": [],
  "cosine_B_vs_B2_per_card": {
-  "irresistible_faefolk": 0.2254,
-  "thrill_of_the_hunt": 0.2205,
-  "star_spring": 0.1969,
-  "rampage": 0.1728,
-  "pit_rookie": 0.0811,
-  "emperor_s_dais": 0.0646,
-  "pakaa_cub": 0.0609,
-  "zhonya_s_hourglass": 0.0457,
-  "alpha_strike": 0.0386,
-  "back_off": 0.0368,
-  "noxus_hopeful": 0.0315,
-  "darius_trifarian": 0.0292,
-  "pyke_dockside_butcher": 0.0267,
-  "grim_apothecary": 0.0148,
-  "body_rune": -0.0,
-  "brittle_steel": 0.0,
+  "onslaught": 0.2694,
+  "irresistible_faefolk": 0.2477,
+  "brittle_steel": 0.2263,
+  "rampage": 0.1962,
+  "thrill_of_the_hunt": 0.1941,
+  "star_spring": 0.1853,
+  "pit_rookie": 0.139,
+  "noxus_hopeful": 0.1237,
+  "pakaa_cub": 0.0989,
+  "grim_apothecary": 0.0905,
+  "zhonya_s_hourglass": 0.0563,
+  "back_off": 0.0536,
+  "alpha_strike": 0.05,
+  "emperor_s_dais": 0.048,
+  "pyke_dockside_butcher": 0.041,
+  "darius_trifarian": 0.0399,
+  "body_rune": 0.0,
   "calm_rune": -0.0,
   "charm": 0.0,
   "decisive_strike": 0.0,
   "decree_of_focus": 0.0,
   "decree_of_strength": 0.0,
   "defy": 0.0,
-  "disarming_rake": -0.0,
+  "disarming_rake": 0.0,
   "discipline": 0.0,
   "en_garde": 0.0,
-  "ferrous_forerunner": -0.0,
+  "ferrous_forerunner": 0.0,
   "fiora_peerless": 0.0,
   "first_mate": 0.0,
-  "fury_rune": -0.0,
+  "fury_rune": 0.0,
   "hush": 0.0,
   "inferna": 0.0,
   "kai_sa_survivor": 0.0,
   "kinkou_initiate": -0.0,
-  "lonely_poro": -0.0,
-  "loyal_poro": -0.0,
+  "lonely_poro": 0.0,
+  "loyal_poro": 0.0,
   "machine_evangel": 0.0,
-  "master_yi_tempered": -0.0,
-  "master_yi_wuju_bladesman": 0.0,
-  "moonlight_affliction": -0.0,
+  "master_yi_tempered": 0.0,
+  "master_yi_wuju_bladesman": -0.0,
+  "moonlight_affliction": 0.0,
   "nidalee_cat_form": -0.0,
   "not_so_fast": 0.0,
-  "noxian_demolitionist": 0.0,
-  "onslaught": 0.0,
-  "primal_strength": -0.0,
-  "punch_first": -0.0,
+  "noxian_demolitionist": -0.0,
+  "primal_strength": 0.0,
+  "punch_first": 0.0,
   "rengar_pridestalker": 0.0,
   "rengar_trophy_hunter": 0.0,
   "ruin_runner": 0.0,
@@ -243,7 +243,6 @@
  },
  "cards_identical_to_B": [
   "body_rune",
-  "brittle_steel",
   "calm_rune",
   "charm",
   "decisive_strike",
@@ -270,7 +269,6 @@
   "nidalee_cat_form",
   "not_so_fast",
   "noxian_demolitionist",
-  "onslaught",
   "primal_strength",
   "punch_first",
   "rengar_pridestalker",
@@ -302,5 +300,5 @@
   "unmapped": 0
  },
  "unmapped": [],
- "build_seconds": 1.64
+ "build_seconds": 2.24
 }

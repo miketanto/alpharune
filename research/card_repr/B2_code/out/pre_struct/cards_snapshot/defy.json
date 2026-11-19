@@ -1,0 +1,69 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0045_defy.cpp:60",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0045_defy.cpp:61",
+   "energy": "src/cards/spells/0045_defy.cpp:62",
+   "power": "src/cards/spells/0045_defy.cpp:63",
+   "power_by_domain": "src/cards/spells/0045_defy.cpp:63 x src/cards/spells/0045_defy.cpp:61; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0045_defy.cpp:64"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Counter",
+     "target": {
+      "type": "spell",
+      "side": "any",
+      "zone": "chain",
+      "count": 1,
+      "filters": [
+       {
+        "f": "energy_cost_le",
+        "v": 4,
+        "_src": "src/cards/spells/0045_defy.cpp:30"
+       },
+       {
+        "f": "power_cost_le",
+        "v": 1,
+        "_src": "src/cards/spells/0045_defy.cpp:30"
+       }
+      ],
+      "_src": "src/cards/spells/0045_defy.cpp:27-31; src/cards/spells/0045_defy.cpp:42-44"
+     },
+     "_src": "src/cards/spells/0045_defy.cpp:47; src/cards/card_helpers.h:395"
+    }
+   ],
+   "_src": "src/cards/spells/0045_defy.cpp:40"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-045-298",
+  "class_file": "src/cards/spells/0045_defy.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

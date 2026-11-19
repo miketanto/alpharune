@@ -1,0 +1,65 @@
+{
+ "plain": {
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__opp_of_ctrl_scores": 0.22019275302527214,
+  "body_rune | fury_rune": 0.1556997888323046,
+  "pit_rookie | synthetic:pit_rookie__might3": 0.19069251784911845,
+  "punch_first | synthetic:punch_first__amount4": 0.22396899669927733,
+  "sabotage | synthetic:sabotage__unit": 0.19069251784911845,
+  "c2_family_mean": {
+   "condition_gating": 0.2411407937530086,
+   "binding": 0.0,
+   "effect_order": 0.0,
+   "ability_order": 0.0,
+   "duration": 0.1348399724926484,
+   "chooser": 0.16444797108650808,
+   "ability_kind": 0.4252795189253821,
+   "trigger": 0.19069251784911845,
+   "target_side": 0.22019275302527216,
+   "condition_polarity": 0.17407765595569785,
+   "optional": 0.1348399724926484,
+   "amount": 0.23828585467751268
+  }
+ },
+ "idf": {
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__opp_of_ctrl_scores": 0.21437158256658898,
+  "body_rune | fury_rune": 0.08134591898753445,
+  "pit_rookie | synthetic:pit_rookie__might3": 0.13020835907801076,
+  "punch_first | synthetic:punch_first__amount4": 0.2781686566853117,
+  "sabotage | synthetic:sabotage__unit": 0.2800913117463046,
+  "c2_family_mean": {
+   "condition_gating": 0.35563663241316923,
+   "binding": 0.0,
+   "effect_order": 0.0,
+   "ability_order": 0.0,
+   "duration": 0.10445875952100274,
+   "chooser": 0.2606867535898094,
+   "ability_kind": 0.5633997497220625,
+   "trigger": 0.19018073523824638,
+   "target_side": 0.23214172759578366,
+   "condition_polarity": 0.22291721094133354,
+   "optional": 0.15854822794389634,
+   "amount": 0.22426418243321328
+  }
+ },
+ "family_x3": {
+  "synthetic:punch_first__ctrl_scores | synthetic:punch_first__opp_of_ctrl_scores": 0.4813817583822606,
+  "body_rune | fury_rune": 0.11346276856386689,
+  "pit_rookie | synthetic:pit_rookie__might3": 0.13896294389248678,
+  "punch_first | synthetic:punch_first__amount4": 0.16321243996895557,
+  "sabotage | synthetic:sabotage__unit": 0.4168888316774604,
+  "c2_family_mean": {
+   "condition_gating": 0.40554387401112524,
+   "binding": 0.0,
+   "effect_order": 0.0,
+   "ability_order": 0.0,
+   "duration": 0.2947849198800694,
+   "chooser": 0.35951343718806555,
+   "ability_kind": 0.4504819695368552,
+   "trigger": 0.13896294389248678,
+   "target_side": 0.4813817583822606,
+   "condition_polarity": 0.38056569513619887,
+   "optional": 0.2947849198800694,
+   "amount": 0.1736455327530174
+  }
+ }
+}

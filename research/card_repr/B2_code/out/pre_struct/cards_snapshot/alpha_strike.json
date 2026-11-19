@@ -1,0 +1,109 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "body",
+   "calm"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1,
+   "calm": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0751_alpha_strike.cpp:109",
+   "supertype": "src/cards/spells/0751_alpha_strike.cpp:110",
+   "domains": "src/cards/spells/0751_alpha_strike.cpp:111",
+   "energy": "src/cards/spells/0751_alpha_strike.cpp:113",
+   "power": "src/cards/spells/0751_alpha_strike.cpp:114",
+   "power_by_domain": "src/cards/spells/0751_alpha_strike.cpp:114 x src/cards/spells/0751_alpha_strike.cpp:111; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0751_alpha_strike.cpp:116"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0751_alpha_strike.cpp:20-22"
+     },
+     "_src": "src/cards/spells/0751_alpha_strike.cpp:51-53"
+    },
+    {
+     "verb": "DealDamage",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "battlefield",
+      "count": "split",
+      "bind": "B",
+      "_src": "src/cards/spells/0751_alpha_strike.cpp:72-75"
+     },
+     "amount": {
+      "ref": "might_of:A",
+      "_src": "src/cards/spells/0751_alpha_strike.cpp:67"
+     },
+     "source": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0751_alpha_strike.cpp:76"
+     },
+     "split": true,
+     "_src": "src/cards/spells/0751_alpha_strike.cpp:76; src/cards/card_helpers.h:990-1003"
+    },
+    {
+     "verb": "GainXP",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/spells/0751_alpha_strike.cpp:96"
+     },
+     "amount": {
+      "n": 1,
+      "per": "unit_killed_by_prev",
+      "_src": "src/cards/spells/0751_alpha_strike.cpp:80-88"
+     },
+     "_src": "src/cards/spells/0751_alpha_strike.cpp:93-96"
+    }
+   ],
+   "_src": "src/cards/spells/0751_alpha_strike.cpp:41",
+   "play_requires": [
+    {
+     "type": "unit",
+     "side": "enemy",
+     "zone": "battlefield",
+     "count": 1,
+     "_src": "src/cards/spells/0751_alpha_strike.cpp:35-39"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-192-219",
+  "class_file": "src/cards/spells/0751_alpha_strike.cpp",
+  "source": "engine_code",
+  "flags": [
+   "play_requires (legality gate: an enemy unit at a battlefield must be choosable) is a B2 schema extension; not in the text"
+  ],
+  "confidence": "medium",
+  "confidence_why": "split damage + reflexive per-kill XP + play gate; split division not expressible"
+ }
+}

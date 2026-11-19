@@ -1,0 +1,47 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": 3
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "attack_or_defend",
+    "subject": "self",
+    "condition": [
+     {
+      "c": "one_on_one",
+      "v": true
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1
+     },
+     "amount": {
+      "ref": "might_of:self",
+      "mult": 1
+     },
+     "duration": "combat"
+    }
+   ]
+  }
+ ]
+}

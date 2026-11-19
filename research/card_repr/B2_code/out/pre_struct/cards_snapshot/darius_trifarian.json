@@ -1,0 +1,88 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "fury"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "fury": 1
+  },
+  "might": 5,
+  "_src": {
+   "type": "src/cards/units/0027_darius_trifarian.cpp:55",
+   "supertype": "src/cards/units/0027_darius_trifarian.cpp:56",
+   "domains": "src/cards/units/0027_darius_trifarian.cpp:57",
+   "energy": "src/cards/units/0027_darius_trifarian.cpp:59",
+   "power": "src/cards/units/0027_darius_trifarian.cpp:60",
+   "power_by_domain": "src/cards/units/0027_darius_trifarian.cpp:60 x src/cards/units/0027_darius_trifarian.cpp:57; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0027_darius_trifarian.cpp:61"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_card",
+    "subject": "you",
+    "_src": "src/cards/units/0027_darius_trifarian.cpp:20-25",
+    "condition": [
+     {
+      "c": "nth_card_this_turn",
+      "v": 2,
+      "_src": "src/cards/units/0027_darius_trifarian.cpp:36"
+     },
+     {
+      "c": "is_token",
+      "v": "subject",
+      "neg": true,
+      "_src": "src/cards/units/0027_darius_trifarian.cpp:35"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0027_darius_trifarian.cpp:40"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0027_darius_trifarian.cpp:40"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0027_darius_trifarian.cpp:40"
+    },
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0027_darius_trifarian.cpp:41"
+     },
+     "_src": "src/cards/units/0027_darius_trifarian.cpp:41"
+    }
+   ],
+   "_src": "src/cards/units/0027_darius_trifarian.cpp:20-25"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-027-298",
+  "class_file": "src/cards/units/0027_darius_trifarian.cpp",
+  "source": "engine_code",
+  "flags": [
+   "condition is_token(subject) neg: the engine excludes tokens; the text does not say"
+  ],
+  "confidence": "medium",
+  "confidence_why": "play-ordinal condition named from playOrdinalThisTurn"
+ }
+}

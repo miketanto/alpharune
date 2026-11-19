@@ -105,3 +105,26 @@ as abilities, so two cards that get the same mechanics in different words meet:
    a new verb or filter needs no code change and never changes existing vectors.
 
 `out/paths/<key>.json` lists each card's explicit (unhashed) path features.
+
+## Structured block (gate 2 fix, 2026-11-19)
+
+`vectorize(graph)` = the 8192-dim hash above (`hash_vectorize`, unchanged) **++ a structured block**
+(`struct_block.py`), so `dim` = 8192 + 3019 = 11211 for both B and B2. Pre-block vectors are kept in
+`out/pre_struct/`. The block's vocabularies are frozen in `struct_vocab.json`, derived from the B2
+graphs (cards, engine classes, token units, synthetic variants) by `struct_vocab_build.py` plus a few
+schema-documented values; anything else goes to the field's `<other>` coordinate.
+
+| part | fields (one-hot unless noted) |
+|---|---|
+| card header | type, supertype, domains (multi), keywords (multi); numeric: energy, power, Might, keyword values (Assault/Hunt/Level/Shield/Deflect N) |
+| ability slot ×3 (graph order) | present, kind, timing, trigger event, trigger subject, once, trigger conditions (condition×polarity, multi), ability conditions (multi), play mode, where zone, where filters (multi), may (optional cost), cost flags (multi); numeric: cost energy, cost power; play_requires |
+| effect slot ×4 per ability (graph order) | verb, ref (none / choice0..2 / subject), target side, type, zone, count, binds (which choice index this effect's selector binds), relative_to (ref, side, type), target filters (filter×polarity, multi), chooser, duration, dest, may, effect conditions (multi), amount kind (n / might_of:choiceK / might_of:self), amount per, source (self / choiceK), keyword; numeric: amount (clipped ±10), token Might |
+| slot signatures | per slot (card header, each ability header, each effect slot) a dense unit-norm 64-dim code seeded by the MD5 of the slot's whole content: any change inside a slot moves its code by ~√2 |
+
+- **Binding:** ChooseTarget effects whose only job is to bind an object are folded out of the effect
+  grid; every reference to a bound object (`ref`, `relative_to`, `might_of:X`, `source`) is replaced by
+  the bound selector's side and type plus its choice index (order of binding inside the ability).
+- **Order:** slot position = effect / ability order.
+- Every categorical field of a present slot emits a value (`none` when absent), so a change is a flip.
+- Weights: one per group times `ALPHA` (`struct_block.WEIGHTS`), chosen by `gate2/tune_struct.py` and
+  `gate2/tune_sigcap.py`; see `gate2/REPORT_v2.txt`. `python struct_block.py` prints the layout.

@@ -22,3 +22,4 @@ __pycache__/
 *.bak
 selfplay/learner/probes/*.npz
 selfplay/runs/*/latest.pt
+**/out/pre_struct/*vectors*.json

@@ -45,7 +45,8 @@ def worker(wid, ck, opp, n, rep, seed, q, deck='rengar', variants=None):
         sd = torch.load(ck, map_location=dev)
         sd = sd.get('net', sd.get('model', sd)) if isinstance(sd, dict) else sd
     ask = sd is not None and 'W_ask.weight' in sd   # --ask-head checkpoints (model.py)
-    net = Net(env.dims, load_vocab()[0], rep, ask_head=ask).to(dev)
+    cnorm = sd is None or 'card_ln.weight' in sd   # pre-gate-2 checkpoints have no card LayerNorm
+    net = Net(env.dims, load_vocab()[0], rep, ask_head=ask, card_norm=cnorm).to(dev)
     if sd is not None:
         net.load_state_dict(sd)
     net.eval()

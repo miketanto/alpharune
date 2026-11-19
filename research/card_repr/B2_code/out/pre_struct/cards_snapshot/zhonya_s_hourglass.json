@@ -1,0 +1,113 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0077_zhonya_s_hourglass.cpp:53",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0077_zhonya_s_hourglass.cpp:54",
+   "energy": "src/cards/gear/0077_zhonya_s_hourglass.cpp:55",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "hidden",
+   "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:57"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "replacement",
+   "trigger": {
+    "event": "would_die",
+    "subject": "friendly_unit",
+    "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:17-28"
+   },
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:36"
+     },
+     "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:36"
+    },
+    {
+     "verb": "Heal",
+     "target": {
+      "type": "ref",
+      "ref": "subject",
+      "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:39"
+     },
+     "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:39; src/engine/effect_executor.cpp:1469"
+    },
+    {
+     "verb": "Recall",
+     "target": {
+      "type": "ref",
+      "ref": "subject",
+      "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:39"
+     },
+     "exhausted": true,
+     "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:39; src/engine/effect_executor.cpp:1470-1471"
+    }
+   ],
+   "_src": "src/cards/gear/0077_zhonya_s_hourglass.cpp:29-41"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-077-298",
+  "class_file": "src/cards/gear/0077_zhonya_s_hourglass.cpp",
+  "source": "engine_code",
+  "flags": [
+   "engine heals the unit (text does not)",
+   "no 'next time' clause in the engine: 'If a friendly unit would die' (the gear is killed, so it is once in practice)"
+  ],
+  "confidence": "medium",
+  "confidence_why": "replacement; healExhaustRecall split into Heal + Recall exhausted"
+ }
+}

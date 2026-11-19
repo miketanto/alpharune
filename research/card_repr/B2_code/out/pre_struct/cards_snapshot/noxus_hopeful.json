@@ -1,0 +1,65 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "fury"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0012_noxus_hopeful.cpp:32",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0012_noxus_hopeful.cpp:33",
+   "energy": "src/cards/units/0012_noxus_hopeful.cpp:35",
+   "power": "default 0",
+   "might": "src/cards/units/0012_noxus_hopeful.cpp:36"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "legion",
+   "_src": "src/cards/units/0012_noxus_hopeful.cpp:37"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "ReduceCost",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "_src": "src/cards/units/0012_noxus_hopeful.cpp:18"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0012_noxus_hopeful.cpp:19"
+     },
+     "resource": "energy",
+     "_src": "src/cards/units/0012_noxus_hopeful.cpp:18-19; src/engine/game_engine.cpp:9436"
+    }
+   ],
+   "_src": "src/cards/units/0012_noxus_hopeful.cpp:18",
+   "condition": [
+    {
+     "c": "cards_played_this_turn_ge",
+     "v": 1,
+     "_src": "src/cards/units/0012_noxus_hopeful.cpp:19"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-012-298",
+  "class_file": "src/cards/units/0012_noxus_hopeful.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

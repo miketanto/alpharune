@@ -1,0 +1,29 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "token",
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": 2,
+  "tag": "shurima",
+  "name": "sand_soldier",
+  "is_token": true,
+  "enters_exhausted": true,
+  "_src": {
+   "all": "src/cards/battlefields/0521_emperor_s_dais.cpp:50-54; src/engine/effect_executor.cpp:2386-2413",
+   "supertype/is_token": "src/engine/effect_executor.cpp:2391-2392",
+   "enters_exhausted": "src/engine/effect_executor.cpp:2412-2413 (enter_ready=false)"
+  }
+ },
+ "keywords": [],
+ "abilities": [],
+ "_meta": {
+  "def_id": null,
+  "class_file": null,
+  "source": "engine_code (createToken call)",
+  "flags": [
+   "token unit: no card class; graph from the creating createToken call"
+  ]
+ }
+}

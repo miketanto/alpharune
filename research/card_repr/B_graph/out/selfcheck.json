@@ -2,52 +2,52 @@
  "max_t1_distance": 0.0,
  "real_pairs": {
   "punch_first|primal_strength": {
-   "dist": 6.759365565308331,
+   "dist": 9.720893329204113,
    "rank_of_partner": 1,
    "nearest": [
     "primal_strength",
-    "rengar_pridestalker",
-    "decisive_strike"
+    "decisive_strike",
+    "rengar_pridestalker"
    ]
   },
   "punch_first|decisive_strike": {
-   "dist": 9.539392014169456,
-   "rank_of_partner": 3,
+   "dist": 12.91476851357418,
+   "rank_of_partner": 2,
    "nearest": [
     "primal_strength",
-    "rengar_pridestalker",
-    "decisive_strike"
+    "decisive_strike",
+    "rengar_pridestalker"
    ]
   },
   "discipline|moonlight_affliction": {
-   "dist": 14.763511224099096,
-   "rank_of_partner": 46,
+   "dist": 21.510938346435726,
+   "rank_of_partner": 49,
    "nearest": [
     "en_garde",
-    "rengar_pridestalker",
+    "lonely_poro",
     "seat_of_power"
    ]
   },
   "lonely_poro|loyal_poro": {
-   "dist": 4.58257569495584,
+   "dist": 10.013445369132295,
    "rank_of_partner": 1,
    "nearest": [
     "loyal_poro",
     "seat_of_power",
-    "nidalee_cat_form"
+    "disarming_rake"
    ]
   },
   "ferrous_forerunner|machine_evangel": {
-   "dist": 8.042948641230778,
+   "dist": 11.718773781559271,
    "rank_of_partner": 1,
    "nearest": [
     "machine_evangel",
     "ruin_runner",
-    "rengar_trophy_hunter"
+    "noxus_hopeful"
    ]
   },
   "sabotage|decree_of_strength": {
-   "dist": 6.324555320336759,
+   "dist": 9.388777728757189,
    "rank_of_partner": 1,
    "nearest": [
     "decree_of_strength",
@@ -56,37 +56,37 @@
    ]
   },
   "defy|hush": {
-   "dist": 10.465865188984138,
+   "dist": 13.380615378311642,
    "rank_of_partner": 3,
    "nearest": [
-    "charm",
     "not_so_fast",
+    "charm",
     "hush"
    ]
   }
  },
  "synthetic_dist": {
-  "punch_first__amount4": 2.8769340703081814,
-  "punch_first__energy3": 3.4641016151377544,
-  "punch_first__power0": 5.196152422706632,
-  "discipline__draw2": 3.0608372229875274,
-  "discipline__enemy": 2.8284271247461903,
-  "lonely_poro__draw2": 3.0608376052113577,
-  "defy__cost2": 3.906239171805792,
-  "sabotage__unit": 2.449489742783178,
-  "pit_rookie__might3": 2.449489742783178,
-  "punch_first__reaction": 5.9467694946700265
+  "punch_first__amount4": 6.811044071332456,
+  "punch_first__energy3": 5.640288888258119,
+  "punch_first__power0": 7.144852416009584,
+  "discipline__draw2": 6.641498574009785,
+  "discipline__enemy": 6.061881316719587,
+  "lonely_poro__draw2": 6.1004815127026655,
+  "defy__cost2": 3.9062391718057925,
+  "sabotage__unit": 6.118813149852102,
+  "pit_rookie__might3": 5.259754450714311,
+  "punch_first__reaction": 8.006978182678345
  },
  "pairwise_card_distance_min_median_max": [
-  2.0,
-  12.84019778081693,
-  20.977078859384903
+  6.893123064436903,
+  17.034877858398282,
+  27.28286873553788
  ],
  "identical_card_vectors": [],
  "distinct_paths": 1317,
  "hash_slots_used": 1214,
- "nonzeros_total": 3570,
+ "nonzeros_total": 18002,
  "problems": [],
  "n_vectors": 169,
- "build_seconds": 0.86
+ "build_seconds": 1.22
 }

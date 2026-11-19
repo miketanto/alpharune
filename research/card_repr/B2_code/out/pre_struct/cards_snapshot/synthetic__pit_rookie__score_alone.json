@@ -1,0 +1,61 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0136_pit_rookie.cpp:48",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0136_pit_rookie.cpp:49",
+   "energy": "src/cards/units/0136_pit_rookie.cpp:51",
+   "power": "default 0",
+   "might": "src/cards/units/0136_pit_rookie.cpp:52"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0136_pit_rookie.cpp:22"
+   },
+   "effects": [
+    {
+     "verb": "Score",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1
+     },
+     "amount": {
+      "n": 1
+     },
+     "_src": "C_engine/card_probe.cpp (play-changing variants)",
+     "condition": [
+      {
+       "c": "you_control_other_units",
+       "v": true,
+       "neg": true
+      }
+     ]
+    }
+   ],
+   "_src": "src/cards/units/0136_pit_rookie.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-136-298",
+  "class_file": "src/cards/units/0136_pit_rookie.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "synthetic": "pit_rookie__score_alone"
+ }
+}

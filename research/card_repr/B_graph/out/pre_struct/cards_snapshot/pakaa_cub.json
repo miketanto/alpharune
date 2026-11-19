@@ -1,0 +1,41 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3
+ },
+ "keywords": [
+  {
+   "kw": "hidden"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ]
+   }
+  }
+ ]
+}

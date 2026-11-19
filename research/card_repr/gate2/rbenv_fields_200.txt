@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\selfplay\rbenv\tests\test_fields.py", line 13, in <module>
+    env = RBEnv(32, 'rengar', 'rengar', seed=7000)
+  File "C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\selfplay\rbenv\tests\..\rbenv.py", line 79, in __init__
+    L = _load()
+  File "C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\selfplay\rbenv\tests\..\rbenv.py", line 43, in _load
+    L = ctypes.CDLL(LIB_PATH)
+  File "C:\Users\sutanto4\Anaconda3\lib\ctypes\__init__.py", line 382, in __init__
+    self._handle = _dlopen(self._name, mode)
+FileNotFoundError: Could not find module 'C:\Users\sutanto4\riftbound\alpharune\build_pic\librbenv.so' (or one of its dependencies). Try using the full path with constructor syntax.

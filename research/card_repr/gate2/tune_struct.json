@@ -1,0 +1,548 @@
+{
+ "hash_share": 0.5,
+ "curve": {
+  "0.75": {
+   "min_rel": 0.26663568594048714,
+   "below_025": 0,
+   "alpha": 1.0377441475655858,
+   "w": {
+    "amt": 0.42243121614358586,
+    "amtnum": 0.46326918725418936,
+    "bind": 0.3837411407205744,
+    "cond": 0.696123140906982,
+    "dec": 0.343963010159404,
+    "dom": 0.7328601735235893,
+    "filt": 0.7871909950954448,
+    "hdr": 0.45142768365344876,
+    "kind": 0.32238156408827184,
+    "kwval": 0.832734953474915,
+    "might": 0.3753940960014071,
+    "num": 0.3392006563562338,
+    "side": 0.5847887556225613,
+    "sig_ab": 1.9200548644353403,
+    "sig_card": 2.2873720712873236,
+    "sig_eff": 2.8400591633093235,
+    "tgt": 0.3618692200353436,
+    "trig": 0.7230060299898868,
+    "verb": 0.4132350819340757
+   }
+  },
+  "0.6": {
+   "min_rel": 0.3114854538343297,
+   "below_025": 0,
+   "alpha": 1.8392509830356067,
+   "w": {
+    "amt": 0.376131258121758,
+    "amtnum": 0.3922614976101078,
+    "bind": 0.29126165287050904,
+    "cond": 0.6000368601086805,
+    "dec": 0.2843716056875195,
+    "dom": 0.635073739007199,
+    "filt": 0.6801768849628981,
+    "hdr": 0.38618689208979073,
+    "kind": 0.2610856396857104,
+    "kwval": 0.7855507838053815,
+    "might": 0.3131042134970345,
+    "num": 0.2329434143820258,
+    "side": 0.5357375008802764,
+    "sig_ab": 1.5960841853832006,
+    "sig_card": 1.847042585423093,
+    "sig_eff": 2.2047565393489963,
+    "tgt": 0.28818503376129073,
+    "trig": 0.5718999498181239,
+    "verb": 0.3463993633104226
+   }
+  },
+  "0.5": {
+   "min_rel": 0.34135221663855503,
+   "below_025": 0,
+   "alpha": 2.3370167596727076,
+   "w": {
+    "amt": 0.2887326698233012,
+    "amtnum": 0.2930349067649368,
+    "bind": 0.24747065982938757,
+    "cond": 0.5152570131851661,
+    "dec": 0.24307047587769368,
+    "dom": 0.5371883827759132,
+    "filt": 0.5957301869228874,
+    "hdr": 0.3106540807745001,
+    "kind": 0.2068331121379559,
+    "kwval": 0.5811704003687252,
+    "might": 0.2284690332496537,
+    "num": 0.23916505340693472,
+    "side": 0.5053529339392377,
+    "sig_ab": 1.649673481023789,
+    "sig_card": 1.8266344770738334,
+    "sig_eff": 2.222370581065379,
+    "tgt": 0.270490565856893,
+    "trig": 0.46870552321767506,
+    "verb": 0.3118325874155362
+   }
+  },
+  "0.4": {
+   "min_rel": 0.3628907933733752,
+   "below_025": 0,
+   "alpha": 3.2887649148766593,
+   "w": {
+    "amt": 0.2942191001005522,
+    "amtnum": 0.21963317973134103,
+    "bind": 0.2721152089614745,
+    "cond": 0.506295219463145,
+    "dec": 0.23109455084865183,
+    "dom": 0.49708916132219927,
+    "filt": 0.5438628047996397,
+    "hdr": 0.261816766255506,
+    "kind": 0.18096939925507874,
+    "kwval": 0.6683103120941605,
+    "might": 0.21052780008875727,
+    "num": 0.24517173959735875,
+    "side": 0.4155416327222139,
+    "sig_ab": 1.3374057611552728,
+    "sig_card": 1.6025097616262924,
+    "sig_eff": 1.8759872110422284,
+    "tgt": 0.23377821212235467,
+    "trig": 0.5738859330833144,
+    "verb": 0.2950192020003574
+   }
+  },
+  "0.3": {
+   "min_rel": 0.3896443666397576,
+   "below_025": 0,
+   "alpha": 4.133706186404435,
+   "w": {
+    "amt": 0.2987955597901002,
+    "amtnum": 0.25628807120501074,
+    "bind": 0.21655275074286548,
+    "cond": 0.42294148231209355,
+    "dec": 0.2097113447790551,
+    "dom": 0.46899382130034184,
+    "filt": 0.4869499738235929,
+    "hdr": 0.25763088638242887,
+    "kind": 0.2275939906568324,
+    "kwval": 0.5325881336436225,
+    "might": 0.23602092217552387,
+    "num": 0.22167467495233437,
+    "side": 0.45786929582742053,
+    "sig_ab": 1.3479185504791824,
+    "sig_card": 1.6141546977221963,
+    "sig_eff": 1.8492386747724971,
+    "tgt": 0.2287902635992607,
+    "trig": 0.5954530395710006,
+    "verb": 0.26693569357304475
+   }
+  },
+  "0.2": {
+   "min_rel": 0.4181710029899111,
+   "below_025": 0,
+   "alpha": 5.651065309366455,
+   "w": {
+    "amt": 0.24137116779607465,
+    "amtnum": 0.3262456270063157,
+    "bind": 0.21876315972558155,
+    "cond": 0.4395176720159284,
+    "dec": 0.2586632335505661,
+    "dom": 0.4317908879428977,
+    "filt": 0.4755412900192689,
+    "hdr": 0.271149063012701,
+    "kind": 0.20332664350453572,
+    "kwval": 0.8103767465493975,
+    "might": 0.14345635652608607,
+    "num": 0.19983310146360564,
+    "side": 0.4451069513386271,
+    "sig_ab": 1.3512788066505645,
+    "sig_card": 1.589435559930768,
+    "sig_eff": 1.7257257983889198,
+    "tgt": 0.22326371985526647,
+    "trig": 0.5256868898592576,
+    "verb": 0.26110091238675126
+   }
+  }
+ },
+ "alpha": 0.739,
+ "weights": {
+  "amt": 1.067,
+  "amtnum": 0.911,
+  "bind": 0.908,
+  "cond": 1.458,
+  "dec": 0.893,
+  "dom": 1.588,
+  "filt": 1.582,
+  "hdr": 0.989,
+  "kind": 0.834,
+  "kwval": 1.84,
+  "might": 0.762,
+  "num": 0.604,
+  "side": 1.544,
+  "sig_ab": 5.215,
+  "sig_card": 5.905,
+  "sig_eff": 6.929,
+  "tgt": 0.87,
+  "trig": 1.227,
+  "verb": 1.0
+ },
+ "min_rel_raw": 0.34657943080741266,
+ "n_items": 1181,
+ "below_025": 0,
+ "lowest": [
+  [
+   0.34657943080741266,
+   0.19069251784911845,
+   [
+    "edit",
+    "trigger",
+    "rengar_pridestalker: trigger subject you -> self"
+   ]
+  ],
+  [
+   0.3495072463201826,
+   0.19069251784911845,
+   [
+    "edit",
+    "might",
+    "kai_sa_survivor: Might +1"
+   ]
+  ],
+  [
+   0.3715493299564717,
+   0.1556997888323046,
+   [
+    "pair",
+    "body_rune",
+    "fury_rune"
+   ]
+  ],
+  [
+   0.37290531935014337,
+   0.1348399724926484,
+   [
+    "edit",
+    "duration",
+    "darius_trifarian: 'GiveMight' this turn -> permanent"
+   ]
+  ],
+  [
+   0.37569833544175807,
+   0.19069251784911845,
+   [
+    "edit",
+    "chooser",
+    "thrill_of_the_hunt: location chosen by controller instead of owner"
+   ]
+  ],
+  [
+   0.38181329898971494,
+   0.1556997888323046,
+   [
+    "edit",
+    "chooser",
+    "first_mate: target chosen by the opponent"
+   ]
+  ],
+  [
+   0.3824147611507916,
+   0.19069251784911845,
+   [
+    "pair",
+    "pit_rookie",
+    "synthetic:pit_rookie__might3"
+   ]
+  ],
+  [
+   0.39031620064718675,
+   0.29128763250176765,
+   [
+    "pair",
+    "token:mech",
+    "token:sand_soldier"
+   ]
+  ],
+  [
+   0.39127464227847103,
+   0.2696799449852968,
+   [
+    "pair",
+    "punch_first",
+    "synthetic:punch_first__energy3"
+   ]
+  ],
+  [
+   0.3930602716063424,
+   0.1348399724926484,
+   [
+    "edit",
+    "duration",
+    "rengar_pridestalker: 'GiveMight' this turn -> permanent"
+   ]
+  ],
+  [
+   0.3942694522593625,
+   0.1556997888323046,
+   [
+    "edit",
+    "chooser",
+    "punch_first: target chosen by the opponent"
+   ]
+  ],
+  [
+   0.3963163984120624,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "punch_first: GiveMight target side any -> enemy"
+   ]
+  ],
+  [
+   0.3993293006555329,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "first_mate: Ready target side any -> enemy"
+   ]
+  ],
+  [
+   0.4015628140686066,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "seat_of_power: Draw target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.40460719293242964,
+   0.23354968324845687,
+   [
+    "pair",
+    "synthetic:punch_first__score1",
+    "synthetic:punch_first__score_bfunit"
+   ]
+  ],
+  [
+   0.4107356590478254,
+   0.23354968324845687,
+   [
+    "edit",
+    "condition_gating",
+    "rampage: +2 unconditional (paid branch removed)"
+   ]
+  ],
+  [
+   0.4128803461463944,
+   0.3813850356982369,
+   [
+    "edit",
+    "ability_kind",
+    "first_mate: triggered -> static"
+   ]
+  ],
+  [
+   0.42227764582803373,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "rengar_pridestalker: GiveMight target side any -> enemy"
+   ]
+  ],
+  [
+   0.4241280651180552,
+   0.3969581307590985,
+   [
+    "edit",
+    "ability_kind",
+    "rengar_pridestalker: triggered -> static"
+   ]
+  ],
+  [
+   0.4297705778419342,
+   0.19069251784911845,
+   [
+    "pair",
+    "sabotage",
+    "synthetic:sabotage__unit"
+   ]
+  ],
+  [
+   0.4302342953784364,
+   0.1348399724926484,
+   [
+    "edit",
+    "optional",
+    "star_spring: \"may move\" -> must move"
+   ]
+  ],
+  [
+   0.43220002271481855,
+   0.1348399724926484,
+   [
+    "edit",
+    "duration",
+    "punch_first: 'GiveMight' this turn -> permanent"
+   ]
+  ],
+  [
+   0.4338023164656778,
+   0.1348399724926484,
+   [
+    "edit",
+    "duration",
+    "pyke_dockside_butcher: 'GiveMight' this turn -> permanent"
+   ]
+  ],
+  [
+   0.4343631695686599,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "body_rune: AddEnergy target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.4343631695686599,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "fury_rune: AddEnergy target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.43723918128811146,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "kai_sa_survivor: Draw target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.43723918128811146,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "nidalee_cat_form: Draw target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.43847038878859684,
+   0.4192345116490003,
+   [
+    "edit",
+    "ability_kind",
+    "rengar_pridestalker: triggered -> activated (exhaust)"
+   ]
+  ],
+  [
+   0.4410173232587318,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "grim_apothecary: Bounce target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.4412814013401921,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "irresistible_faefolk: Move target side enemy -> friendly"
+   ]
+  ],
+  [
+   0.4422673288083399,
+   0.23354968324845687,
+   [
+    "pair",
+    "synthetic:punch_first__score1",
+    "synthetic:punch_first__score_behind"
+   ]
+  ],
+  [
+   0.44432659992089857,
+   0.40451991747794525,
+   [
+    "edit",
+    "ability_kind",
+    "first_mate: triggered -> activated (exhaust)"
+   ]
+  ],
+  [
+   0.4444016023105985,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "pit_rookie: Buff target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.4455620469752924,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "emperor_s_dais: CreateToken target side friendly -> enemy"
+   ]
+  ],
+  [
+   0.448136721935005,
+   0.4539389893593698,
+   [
+    "edit",
+    "ability_kind",
+    "pit_rookie: triggered -> static"
+   ]
+  ],
+  [
+   0.4495287815416635,
+   0.22019275302527214,
+   [
+    "pair",
+    "synthetic:punch_first__ctrl_scores",
+    "synthetic:punch_first__opp_of_ctrl_scores"
+   ]
+  ],
+  [
+   0.4503432307600379,
+   0.22019275302527214,
+   [
+    "edit",
+    "target_side",
+    "sabotage: Reveal target side enemy -> friendly"
+   ]
+  ],
+  [
+   0.45430020427802426,
+   0.1556997888323046,
+   [
+    "edit",
+    "chooser",
+    "rengar_pridestalker: target chosen by the opponent"
+   ]
+  ],
+  [
+   0.4572045444708911,
+   0.23828588439069265,
+   [
+    "edit",
+    "amount",
+    "rengar_pridestalker: +1 -> +2"
+   ]
+  ],
+  [
+   0.4599344196441211,
+   0.4861724348043977,
+   [
+    "pair",
+    "synthetic:punch_first__energy3",
+    "synthetic:punch_first__power0"
+   ]
+  ]
+ ]
+}

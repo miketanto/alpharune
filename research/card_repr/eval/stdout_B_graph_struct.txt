@@ -1,0 +1,12 @@
+== B_graph_struct  dim=11211  vectors=181  base cards=51  missing=0  invalid=0
+   median pairwise base distance: cos 0.772  l2s 61.072 ; identical base pairs (cos): 0
+T1 printing n=13   cos max 0.000 (rel 0.000)  rank1 1.000  near0 1.000 | l2s max 0.000  rank1 1.000
+T1 rename   n=51   cos max 0.000 (rel 0.000)  rank1 1.000  near0 1.000 | l2s max 0.000  rank1 1.000
+   noise floor (max T1): cos 0.000  l2s 0.000 ; printings only: cos 0.000
+T2 real      n=7   distinct 1.000  >floor cos 1.000 l2s 1.000  >printing-floor cos 1.000  rel-dist median 0.441  median partner rank 1.000
+T2 synthetic n=10  distinct 1.000  >floor cos 1.000 l2s 1.000  >printing-floor cos 1.000  rel-dist median 0.148  median partner rank 1.000
+T2 direction (raw): within-field cos 0.071  shuffled 0.021  p=0.104  random-diff |cos| 0.104  amount-group 0.071
+T2 direction (std): within-field cos 0.037  shuffled 0.017  p=0.253  random-diff |cos| 0.035  amount-group 0.037
+T3 non_provisional labels=16 beat baseline=6  R2 -0.124 (base -0.057)  bacc logit 0.662 centroid 0.600 (majority 0.438)
+T3 provisional     labels=17 beat baseline=6  R2 0.206 (base -0.040)  bacc logit 0.658 centroid 0.599 (majority 0.481)
+-> wrote C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\eval\results_B_graph_struct.json

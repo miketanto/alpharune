@@ -1,0 +1,66 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0872_decree_of_strength.cpp:60",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0872_decree_of_strength.cpp:61",
+   "energy": "src/cards/spells/0872_decree_of_strength.cpp:62",
+   "power": "default 0"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "Reveal",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": "all",
+      "_src": "src/cards/spells/0872_decree_of_strength.cpp:21-22"
+     },
+     "_src": "src/cards/spells/0872_decree_of_strength.cpp:30-35"
+    },
+    {
+     "verb": "Recycle",
+     "target": {
+      "type": "card",
+      "side": "enemy",
+      "zone": "hand",
+      "count": 1,
+      "filters": [
+       {
+        "f": "domain",
+        "v": "mind",
+        "_src": "src/cards/spells/0872_decree_of_strength.cpp:37-38"
+       }
+      ],
+      "_src": "src/cards/spells/0872_decree_of_strength.cpp:41"
+     },
+     "_src": "src/cards/spells/0872_decree_of_strength.cpp:43-47"
+    }
+   ],
+   "_src": "src/cards/spells/0872_decree_of_strength.cpp:20"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-085-166",
+  "class_file": "src/cards/spells/0872_decree_of_strength.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "medium",
+  "confidence_why": "reveal via events"
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0718_loyal_poro.cpp:41",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0718_loyal_poro.cpp:42",
+   "energy": "src/cards/units/0718_loyal_poro.cpp:44",
+   "power": "default 0",
+   "might": "src/cards/units/0718_loyal_poro.cpp:45"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "deathknell",
+   "_src": "src/cards/units/0718_loyal_poro.cpp:46"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self",
+    "_src": "src/cards/units/0718_loyal_poro.cpp:18"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0718_loyal_poro.cpp:28"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0718_loyal_poro.cpp:28"
+     },
+     "condition": [
+      {
+       "c": "died_alone",
+       "v": true,
+       "neg": true,
+       "_src": "src/cards/units/0718_loyal_poro.cpp:25-26"
+      }
+     ],
+     "_src": "src/cards/units/0718_loyal_poro.cpp:28"
+    }
+   ],
+   "_src": "src/cards/units/0718_loyal_poro.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-156-219",
+  "class_file": "src/cards/units/0718_loyal_poro.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

@@ -154,6 +154,7 @@ def main():
     ap.add_argument('--variants', default='', help='comma-separated variant names registered in the env (mixed-variant decks)')
     ap.add_argument('--init', default='', help='start from the weights of this checkpoint (fine-tuning; fresh optimizer)')
     ap.add_argument('--ask-head', action='store_true', help='direct asking-card -> option-score path (model.py)')
+    ap.add_argument('--no-card-norm', action='store_true', help='pre-gate-2 net: no card LayerNorm / gain (model.py)')
     ap.add_argument('--n-envs', type=int, default=256)
     ap.add_argument('--updates', type=int, default=100)
     ap.add_argument('--samples-per-update', type=int, default=16384, help='learner decisions from finished games')
@@ -193,8 +194,8 @@ def main():
     dims = env.dims
     vocab, vocab_src = load_vocab()
     assert len(vocab) == int(dims['V']), f'vocab {len(vocab)} != dims V {dims["V"]} ({vocab_src})'
-    net = Net(dims, vocab, args.repr, ask_head=args.ask_head).to(dev)
-    pool_net = Net(dims, vocab, args.repr, ask_head=args.ask_head).to(dev)
+    net = Net(dims, vocab, args.repr, ask_head=args.ask_head, card_norm=not args.no_card_norm).to(dev)
+    pool_net = Net(dims, vocab, args.repr, ask_head=args.ask_head, card_norm=not args.no_card_norm).to(dev)
     opt = torch.optim.Adam(net.parameters(), lr=args.lr, eps=1e-5)
     nparam = sum(p.numel() for p in net.parameters())
     cfg = dict(vars(args), dims={k: int(v) for k, v in dims.items()}, vocab_src=vocab_src, device=str(dev),

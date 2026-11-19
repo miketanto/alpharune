@@ -1,0 +1,49 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "body",
+   "fury"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1,
+   "fury": 1
+  },
+  "might": null
+ },
+ "keywords": [
+  {
+   "kw": "reaction"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A"
+     }
+    },
+    {
+     "verb": "PlayIgnoringCost",
+     "target": {
+      "type": "ref",
+      "ref": "A"
+     },
+     "chooser": "owner",
+     "dest": "any_battlefield"
+    }
+   ]
+  }
+ ]
+}

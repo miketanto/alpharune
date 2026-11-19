@@ -1,0 +1,80 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0046_en_garde.cpp:57",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0046_en_garde.cpp:58",
+   "energy": "src/cards/spells/0046_en_garde.cpp:59",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0046_en_garde.cpp:60"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0046_en_garde.cpp:17-19"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0046_en_garde.cpp:27"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0046_en_garde.cpp:27"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0046_en_garde.cpp:42"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0046_en_garde.cpp:42"
+     },
+     "duration": "turn",
+     "condition": [
+      {
+       "c": "only_friendly_unit_at_location",
+       "v": "A",
+       "_src": "src/cards/spells/0046_en_garde.cpp:32-41"
+      }
+     ],
+     "_src": "src/cards/spells/0046_en_garde.cpp:41-43"
+    }
+   ],
+   "_src": "src/cards/spells/0046_en_garde.cpp:21"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-046-298",
+  "class_file": "src/cards/spells/0046_en_garde.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

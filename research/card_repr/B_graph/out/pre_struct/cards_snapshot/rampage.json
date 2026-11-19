@@ -1,0 +1,96 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "power": 1,
+    "power_domain": "body",
+    "optional": true,
+    "additional": true
+   },
+   "effects": []
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A"
+     }
+    },
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "bind": "B"
+     }
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "A"
+     },
+     "amount": {
+      "n": 2
+     },
+     "duration": "turn",
+     "condition": [
+      {
+       "c": "paid_additional_cost",
+       "v": true
+      }
+     ]
+    },
+    {
+     "verb": "DealDamage",
+     "target": {
+      "type": "ref",
+      "ref": "B"
+     },
+     "amount": {
+      "ref": "might_of:A"
+     },
+     "source": {
+      "type": "ref",
+      "ref": "A"
+     }
+    },
+    {
+     "verb": "DealDamage",
+     "target": {
+      "type": "ref",
+      "ref": "A"
+     },
+     "amount": {
+      "ref": "might_of:B"
+     },
+     "source": {
+      "type": "ref",
+      "ref": "B"
+     }
+    }
+   ]
+  }
+ ]
+}

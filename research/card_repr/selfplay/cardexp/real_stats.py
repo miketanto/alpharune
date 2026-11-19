@@ -29,7 +29,7 @@ def run_stats(run, deck, n_games):
     rep = 'id' if 'fix_' in run else run.split('cx_')[1].split('_s')[0]
     env = RBEnv(64, deck, deck, 777000, variant=ALL_VARIANTS)
     sd = torch.load(os.path.join(HERE, '..', 'runs', run, 'latest.pt'), map_location='cpu')['model']
-    net = Net(env.dims, voc, rep, ask_head='W_ask.weight' in sd)
+    net = Net(env.dims, voc, rep, ask_head='W_ask.weight' in sd, card_norm='card_ln.weight' in sd)
     net.load_state_dict(sd)
     net.eval()
     S = {k: dict(held=0, offered=0, played=0, offered_c=0, played_c=0, offered_nc=0, played_nc=0, tgt2=0, enemy=0, friendly=0)

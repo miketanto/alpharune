@@ -1,0 +1,45 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "body"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "body": 1
+  },
+  "might": 6
+ },
+ "keywords": [
+  {
+   "kw": "ambush"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "ambush",
+   "timing": "reaction",
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "any_of",
+      "v": [
+       {
+        "f": "has_friendly_units",
+        "v": true
+       },
+       {
+        "f": "has_enemy_units",
+        "v": true
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

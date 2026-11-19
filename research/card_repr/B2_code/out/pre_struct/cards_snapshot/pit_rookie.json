@@ -1,0 +1,72 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0136_pit_rookie.cpp:48",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0136_pit_rookie.cpp:49",
+   "energy": "src/cards/units/0136_pit_rookie.cpp:51",
+   "power": "default 0",
+   "might": "src/cards/units/0136_pit_rookie.cpp:52"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0136_pit_rookie.cpp:22"
+   },
+   "effects": [
+    {
+     "verb": "Buff",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/units/0136_pit_rookie.cpp:26"
+       }
+      ],
+      "_src": "src/cards/units/0136_pit_rookie.cpp:24-30"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/engine/effect_executor.cpp:1321-1345"
+     },
+     "condition": [
+      {
+       "c": "has_buff",
+       "v": "target",
+       "neg": true,
+       "_src": "src/engine/effect_executor.cpp:1328-1342"
+      }
+     ],
+     "_src": "src/cards/units/0136_pit_rookie.cpp:35"
+    }
+   ],
+   "_src": "src/cards/units/0136_pit_rookie.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-136-298",
+  "class_file": "src/cards/units/0136_pit_rookie.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}

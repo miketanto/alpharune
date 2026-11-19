@@ -1,0 +1,124 @@
+
+A module that was compiled using NumPy 1.x cannot be run in
+NumPy 2.0.2 as it may crash. To support both 1.x and 2.x
+versions of NumPy, modules must be compiled with NumPy 2.0.
+Some module may need to rebuild instead e.g. with 'pybind11>=2.12'.
+
+If you are a user of the module, the easiest solution will be to
+downgrade to 'numpy<2' or try to upgrade the affected module.
+We expect that some modules will need time to support NumPy 2.
+
+Traceback (most recent call last):  File "C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\gate2\gate2.py", line 69, in <module>
+    P = torch.randn(8192, 256, generator=torch.Generator().manual_seed(1234), dtype=torch.float64).numpy()
+C:\Users\sutanto4\Desktop\RiftboundAI\alpharune\research\card_repr\gate2\gate2.py:69: UserWarning: Failed to initialize NumPy: _ARRAY_API not found (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\builder\windows\pytorch\torch\csrc\utils\tensor_numpy.cpp:84.)
+  P = torch.randn(8192, 256, generator=torch.Generator().manual_seed(1234), dtype=torch.float64).numpy()
+rebuild mismatch [] missing vocab []
+crosscheck {}
+init norms {'card_emb_mean': 9.1444933780567, 'token_context_mean': 39.35654212836528} {'typical_card_distance_over_token_norm': 0.16945283366389388, 'ln_typical_distance_over_ln_norm': 0.16292509294739624}
+C1 {
+ "pairs_differing_mechanics": 1128,
+ "identical_vectors_despite_different_mechanics": [],
+ "counts_by_verdict": {
+  "PASS": 1121,
+  "WEAK": 7,
+  "FAIL (crushed)": 0,
+  "FAIL (identical)": 0
+ },
+ "ratio_init_over_raw_median": 0.9489693995989199,
+ "ratio_trained_over_raw_median": 1.0054899708199085,
+ "random_control_min_rel": 0.8382548537007366
+}
+known {'dims_differ': 8, 'raw': 0.22019275302527214, 'proj': 0.21252091239922294, 'init': 0.20536652806825706, 'ln': 0.20647360350897181, 'trained': 0.14129478278896399, 'share_of_norm': 0.2773500981126146}
+same-mech pairs []
+  risk body_rune                                     fury_rune                                     nd=   4 raw=0.156 init=0.133 trained=0.094
+  risk sabotage                                      synthetic:sabotage__unit                      nd=   6 raw=0.191 init=0.184 trained=0.128
+  risk pit_rookie                                    synthetic:pit_rookie__might3                  nd=   6 raw=0.191 init=0.185 trained=0.187
+  risk synthetic:punch_first__ctrl_scores            synthetic:punch_first__opp_of_ctrl_scores     nd=   8 raw=0.220 init=0.205 trained=0.141
+  risk synthetic:punch_first__score1                 synthetic:punch_first__score_bfunit           nd=   9 raw=0.234 init=0.216 trained=0.141
+  risk punch_first                                   synthetic:punch_first__amount4                nd=  12 raw=0.224 init=0.217 trained=0.151
+  risk synthetic:punch_first__score1                 synthetic:punch_first__score_behind           nd=   9 raw=0.234 init=0.235 trained=0.129
+  risk punch_first                                   synthetic:punch_first__energy3                nd=   6 raw=0.270 init=0.252 trained=0.246
+  risk synthetic:punch_first__score1                 synthetic:punch_first__score_nounits          nd=  14 raw=0.291 init=0.270 trained=0.201
+  risk synthetic:pit_rookie__score1                  synthetic:pit_rookie__score_alone             nd=  14 raw=0.291 init=0.271 trained=0.278
+  risk token:mech                                    token:sand_soldier                            nd=  14 raw=0.291 init=0.287 trained=0.186
+  risk synthetic:discipline__draw2                   synthetic:discipline__enemy                   nd=  20 raw=0.324 init=0.288 trained=0.171
+  risk synthetic:punch_first__score_behind           synthetic:punch_first__score_bfunit           nd=  16 raw=0.311 init=0.298 trained=0.165
+  risk synthetic:punch_first__score_bfunit           synthetic:punch_first__score_nounits          nd=  21 raw=0.357 init=0.320 trained=0.174
+  risk synthetic:punch_first__score_behind           synthetic:punch_first__score_nounits          nd=  21 raw=0.357 init=0.332 trained=0.209
+  fam ability      n= 6 det= 5 uniq= 6 share=0.109 loo(n=6) raw=0.85 init=0.79 tr=0.82 rnd=0.49 id=0.50 fails=['ability=spell']
+  fam amount       n=14 det=14 uniq=14 share=0.100 loo(n=8) raw=0.89 init=0.85 tr=0.86 rnd=0.50 id=0.50 fails=[]
+  fam chooser      n= 1 det= 1 uniq= 1 share=0.088 loo(n=0) raw=- init=- tr=- rnd=- id=- fails=[]
+  fam cond         n=14 det=14 uniq=12 share=0.098 loo(n=4) raw=0.68 init=0.69 tr=0.71 rnd=0.50 id=0.50 fails=[]
+  fam dest         n= 4 det= 4 uniq= 4 share=0.102 loo(n=1) raw=0.50 init=0.48 tr=0.49 rnd=0.50 id=0.50 fails=[]
+  fam dur          n= 2 det= 2 uniq= 2 share=0.099 loo(n=1) raw=0.94 init=0.84 tr=0.87 rnd=0.51 id=0.50 fails=[]
+  fam kw           n= 9 det= 9 uniq= 8 share=0.090 loo(n=5) raw=0.79 init=0.73 tr=0.76 rnd=0.50 id=0.50 fails=[]
+  fam kwval        n= 1 det= 1 uniq= 1 share=0.101 loo(n=0) raw=- init=- tr=- rnd=- id=- fails=[]
+  fam once         n= 1 det= 1 uniq= 1 share=0.124 loo(n=0) raw=- init=- tr=- rnd=- id=- fails=[]
+  fam optional     n= 2 det= 2 uniq= 2 share=0.106 loo(n=1) raw=0.50 init=0.54 tr=0.70 rnd=0.50 id=0.50 fails=[]
+  fam playmode     n= 2 det= 2 uniq= 2 share=0.089 loo(n=2) raw=0.88 init=0.77 tr=0.81 rnd=0.50 id=0.50 fails=[]
+  fam playwhere    n= 2 det= 0 uniq= 2 share=0.089 loo(n=2) raw=0.88 init=0.77 tr=0.81 rnd=0.50 id=0.50 fails=['playwhere=ambush:battlefield', 'playwhere=from_facedown:battlefield']
+  fam side         n=25 det=25 uniq=24 share=0.095 loo(n=13) raw=0.87 init=0.82 tr=0.85 rnd=0.51 id=0.50 fails=[]
+  fam supertype    n= 4 det= 3 uniq= 3 share=0.089 loo(n=3) raw=0.85 init=0.81 tr=0.65 rnd=0.49 id=0.50 fails=['supertype=none']
+  fam timing       n= 3 det= 3 uniq= 2 share=0.104 loo(n=3) raw=0.83 init=0.80 tr=0.85 rnd=0.50 id=0.50 fails=[]
+  fam trigger      n= 9 det= 5 uniq= 9 share=0.101 loo(n=3) raw=0.60 init=0.66 tr=0.70 rnd=0.50 id=0.50 fails=['trigger=conquer/here', 'trigger=conquer/self', 'trigger=play_unit/any_player_here', 'trigger=play_unit/you']
+  fam ttype        n=23 det=23 uniq=19 share=0.096 loo(n=14) raw=0.86 init=0.82 tr=0.85 rnd=0.50 id=0.50 fails=[]
+  fam type         n= 5 det= 5 uniq= 5 share=0.115 loo(n=4) raw=0.92 init=0.90 tr=0.90 rnd=0.48 id=0.50 fails=[]
+  fam verb         n=20 det=20 uniq=16 share=0.099 loo(n=13) raw=0.87 init=0.84 tr=0.88 rnd=0.51 id=0.50 fails=[]
+  num energy             det={'slot_unique': True, 'exactly_linear': True, 'monotonic_spearman': 1.0} {'raw': '0.96/0.86', 'proj': '0.92/0.85', 'init': '0.78/0.80', 'trained': '0.87/0.79', 'ctrl_random': '-0.37/-0.08', 'ctrl_id': '-0.05/-0.95'}
+  num power              det={'slot_unique': True, 'exactly_linear': True, 'monotonic_spearman': 1.0} {'raw': '0.96/0.87', 'proj': '0.90/0.83', 'init': '0.55/0.72', 'trained': '0.74/0.79', 'ctrl_random': '-0.49/-0.13', 'ctrl_id': '-0.05/-0.86'}
+  num might              det={'slot_unique': True, 'exactly_linear': True, 'monotonic_spearman': 1.0} {'raw': '0.90/0.90', 'proj': '0.86/0.89', 'init': '0.73/0.82', 'trained': '0.90/0.90', 'ctrl_random': '-0.09/0.00', 'ctrl_id': '-0.11/-0.93'}
+  num kw_value:assault   det={'slot_unique': False, 'exactly_linear': False, 'monotonic_spearman': 1.0} {'raw': '-0.28/-0.14', 'proj': '-0.28/-0.21', 'init': '-0.67/-0.12', 'trained': '-0.85/-0.18', 'ctrl_random': '-0.17/0.01', 'ctrl_id': '-0.11/-0.45'}
+  num amount:GiveMight   det={'slot_unique': True, 'exactly_linear': False, 'monotonic_spearman': 1.0} {'raw': '0.39/0.69', 'proj': '0.32/0.68', 'init': '0.22/0.66', 'trained': '-0.86/0.23', 'ctrl_random': '-0.12/0.10', 'ctrl_id': '-0.17/-0.93'}
+  num amount:any_first   det=None {'raw': '0.59/0.66', 'proj': '0.53/0.59', 'init': '0.38/0.57', 'trained': '-0.01/0.55', 'ctrl_random': '-0.23/-0.05', 'ctrl_id': '-0.06/-0.80'}
+  c2 condition_gating nd=  8 raw=0.220 init=0.202 ln=0.196 tr=0.101 WEAK               rampage: paid-condition gates the damage instead of the +2
+  c2 condition_gating nd=  9 raw=0.234 init=0.200 ln=0.193 tr=0.114 WEAK               rampage: +2 unconditional (paid branch removed)
+  c2 condition_gating nd= 12 raw=0.270 init=0.259 ln=0.260 tr=0.143 PASS               star_spring: not-token condition on the effect instead of the trigger
+  c2 binding          nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   rampage: bind letters swapped (the +2 and the self-damage now hit the ENEMY unit)
+  c2 effect_order     nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   sabotage: effect order reversed in ability 0 (Reveal -> Recycle)
+  c2 effect_order     nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   thrill_of_the_hunt: effect order reversed in ability 0 (Banish -> PlayIgnoringCost)
+  c2 effect_order     nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   rampage: effect order reversed in ability 1 (ChooseTarget -> ChooseTarget -> GiveMight -> DealDamage -> DealDamage)
+  c2 effect_order     nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   darius_trifarian: effect order reversed in ability 0 (GiveMight -> Ready)
+  c2 effect_order     nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   pyke_dockside_butcher: effect order reversed in ability 2 (Ready -> GiveMight)
+  c2 ability_order    nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   inferna: ability order reversed
+  c2 ability_order    nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   rampage: ability order reversed
+  c2 ability_order    nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   pyke_dockside_butcher: ability order reversed
+  c2 ability_order    nd=  0 raw=0.000 init=0.000 ln=0.000 tr=0.000 FAIL (identical)   kai_sa_survivor: ability order reversed
+  c2 duration         nd=  3 raw=0.135 init=0.119 ln=0.120 tr=0.075 WEAK               rengar_pridestalker: 'GiveMight' this turn -> permanent
+  c2 duration         nd=  3 raw=0.135 init=0.125 ln=0.126 tr=0.074 WEAK               punch_first: 'GiveMight' this turn -> permanent
+  c2 duration         nd=  3 raw=0.135 init=0.129 ln=0.126 tr=0.073 WEAK               rampage: 'GiveMight' this turn -> permanent
+  c2 duration         nd=  3 raw=0.135 init=0.119 ln=0.118 tr=0.075 WEAK               darius_trifarian: 'GiveMight' this turn -> permanent
+  c2 duration         nd=  3 raw=0.135 init=0.119 ln=0.118 tr=0.075 WEAK               pyke_dockside_butcher: 'GiveMight' this turn -> permanent
+  c2 chooser          nd=  6 raw=0.191 init=0.186 ln=0.184 tr=0.107 WEAK               thrill_of_the_hunt: location chosen by controller instead of owner
+  c2 chooser          nd=  4 raw=0.156 init=0.141 ln=0.141 tr=0.080 WEAK               rengar_pridestalker: target chosen by the opponent
+  c2 chooser          nd=  4 raw=0.156 init=0.159 ln=0.159 tr=0.091 WEAK               punch_first: target chosen by the opponent
+  c2 chooser          nd=  4 raw=0.156 init=0.138 ln=0.138 tr=0.078 WEAK               first_mate: target chosen by the opponent
+  c2 ability_kind     nd= 26 raw=0.397 init=0.387 ln=0.395 tr=0.294 PASS               rengar_pridestalker: triggered -> static
+  c2 ability_kind     nd= 29 raw=0.419 init=0.396 ln=0.397 tr=0.242 PASS               rengar_pridestalker: triggered -> activated (exhaust)
+  c2 ability_kind     nd= 34 raw=0.454 init=0.500 ln=0.504 tr=0.361 PASS               pit_rookie: triggered -> static
+  c2 ability_kind     nd= 37 raw=0.474 init=0.487 ln=0.492 tr=0.329 PASS               pit_rookie: triggered -> activated (exhaust)
+  c2 ability_kind     nd= 24 raw=0.381 init=0.382 ln=0.386 tr=0.351 PASS               first_mate: triggered -> static
+  c2 ability_kind     nd= 27 raw=0.405 init=0.387 ln=0.388 tr=0.292 PASS               first_mate: triggered -> activated (exhaust)
+  c2 ability_kind     nd= 30 raw=0.447 init=0.446 ln=0.450 tr=0.316 PASS               inferna: static Assault -> triggered on attack
+  c2 trigger          nd=  6 raw=0.191 init=0.189 ln=0.188 tr=0.115 WEAK               rengar_pridestalker: trigger subject you -> self
+  c2 target_side      nd=  8 raw=0.220 init=0.212 ln=0.215 tr=0.124 WEAK               rengar_pridestalker: GiveMight target side any -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.220 ln=0.220 tr=0.121 WEAK               pit_rookie: Buff target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.205 ln=0.205 tr=0.130 WEAK               sabotage: Reveal target side enemy -> friendly
+  c2 target_side      nd=  8 raw=0.220 init=0.202 ln=0.202 tr=0.116 WEAK               punch_first: GiveMight target side any -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.208 ln=0.206 tr=0.122 WEAK               grim_apothecary: Bounce target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.199 ln=0.198 tr=0.119 WEAK               kinkou_initiate: Draw target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.202 ln=0.201 tr=0.128 WEAK               irresistible_faefolk: Move target side enemy -> friendly
+  c2 target_side      nd=  8 raw=0.220 init=0.206 ln=0.206 tr=0.115 WEAK               first_mate: Ready target side any -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.198 ln=0.195 tr=0.121 WEAK               thrill_of_the_hunt: Banish target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.200 ln=0.194 tr=0.146 WEAK               rampage: ChooseTarget target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.199 ln=0.193 tr=0.114 WEAK               ferrous_forerunner: CreateToken target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.199 ln=0.194 tr=0.119 WEAK               kai_sa_survivor: Draw target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.199 ln=0.197 tr=0.119 WEAK               nidalee_cat_form: Draw target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.199 ln=0.194 tr=0.114 WEAK               emperor_s_dais: CreateToken target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.199 ln=0.198 tr=0.119 WEAK               seat_of_power: Draw target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.202 ln=0.202 tr=0.128 WEAK               star_spring: Move target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.224 ln=0.227 tr=0.139 WEAK               body_rune: AddEnergy target side friendly -> enemy
+  c2 target_side      nd=  8 raw=0.220 init=0.224 ln=0.227 tr=0.139 WEAK               fury_rune: AddEnergy target side friendly -> enemy
+  c2 condition_polarity nd=  5 raw=0.174 init=0.158 ln=0.156 tr=0.095 WEAK               thrill_of_the_hunt: replay only if the unit IS a token (neg flipped)
+  c2 optional         nd=  3 raw=0.135 init=0.131 ln=0.132 tr=0.079 WEAK               star_spring: "may move" -> must move
+  c2 amount           nd= 12 raw=0.238 init=0.229 ln=0.231 tr=0.135 WEAK               rengar_pridestalker: +1 -> +2
+C4 {'thrill_of_the_hunt': {'calls': ['pickMode', 'pickValueAs'], 'prompt_kinds': ['Location'], 'graph_modes': [], 'graph_dest': [('PlayIgnoringCost', 'any_battlefield')]}}

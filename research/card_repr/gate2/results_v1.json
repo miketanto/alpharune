@@ -1,0 +1,6919 @@
+{
+ "scope": [
+  "rengar_pridestalker",
+  "rengar_trophy_hunter",
+  "noxus_hopeful",
+  "pit_rookie",
+  "sabotage",
+  "punch_first",
+  "inferna",
+  "grim_apothecary",
+  "kinkou_initiate",
+  "irresistible_faefolk",
+  "first_mate",
+  "thrill_of_the_hunt",
+  "rampage",
+  "pakaa_cub",
+  "ferrous_forerunner",
+  "kai_sa_survivor",
+  "nidalee_cat_form",
+  "darius_trifarian",
+  "pyke_dockside_butcher",
+  "emperor_s_dais",
+  "seat_of_power",
+  "star_spring",
+  "body_rune",
+  "fury_rune",
+  "token:mech",
+  "token:sand_soldier",
+  "synthetic:defy__cost2",
+  "synthetic:discipline__draw2",
+  "synthetic:discipline__enemy",
+  "synthetic:lonely_poro__draw2",
+  "synthetic:pit_rookie__might3",
+  "synthetic:pit_rookie__score1",
+  "synthetic:pit_rookie__score_alone",
+  "synthetic:punch_first__amount4",
+  "synthetic:punch_first__ctrl_scores",
+  "synthetic:punch_first__energy3",
+  "synthetic:punch_first__kill",
+  "synthetic:punch_first__minus5",
+  "synthetic:punch_first__opp_of_ctrl_scores",
+  "synthetic:punch_first__power0",
+  "synthetic:punch_first__reaction",
+  "synthetic:punch_first__score1",
+  "synthetic:punch_first__score_behind",
+  "synthetic:punch_first__score_bfunit",
+  "synthetic:punch_first__score_nounits",
+  "synthetic:sabotage__score1",
+  "synthetic:sabotage__score_opphand4",
+  "synthetic:sabotage__unit"
+ ],
+ "n_real": 26,
+ "n_synthetic": 22,
+ "rebuild_mismatch_vs_vectors_json": [],
+ "missing_in_vocab": [],
+ "typical_distance": {
+  "raw": 12.84523257866513,
+  "proj": 22.131200725234518,
+  "init_s0": 6.853885778843802,
+  "ln_s0": 1.4971304479468914,
+  "init_s1": 6.580552497630245,
+  "ln_s1": 1.0739365052045078,
+  "init_s2": 6.660703244426594,
+  "ln_s2": 1.2355809404523743,
+  "init_s3": 6.701052143358128,
+  "ln_s3": 1.391034184879423,
+  "init_s4": 6.549194270060804,
+  "ln_s4": 1.3193216394126532,
+  "trained_cx_B2_s0": 13.673112945925993,
+  "trained_cx_B2_s1": 14.0886578696833,
+  "trained_cx_B2_s2": 13.042927396508743,
+  "trained_cx_B2_s0_ft": 14.625930827281701,
+  "trained_cx_B2_s1_ft": 14.659189517708066,
+  "trained_cx_B2_s2_ft": 13.097948070645977,
+  "ctrl_random": 23.21314160400812,
+  "ctrl_id": 1.4142135623730951
+ },
+ "checkpoints": [
+  "cx_B2_s0",
+  "cx_B2_s1",
+  "cx_B2_s2",
+  "cx_B2_s0_ft",
+  "cx_B2_s1_ft",
+  "cx_B2_s2_ft"
+ ],
+ "init_norms": {
+  "card_emb_mean": 9.1444933780567,
+  "token_context_mean": 39.35654212836528
+ },
+ "token_share_at_init": {
+  "typical_card_distance_over_token_norm": 0.16945283366389388,
+  "ln_typical_distance_over_ln_norm": 0.16292509294739624
+ },
+ "facts": {
+  "rengar_pridestalker": {
+   "type": "legend",
+   "supertype": "none",
+   "energy": null,
+   "power": null,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play_unit/you"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "rengar_trophy_hunter": {
+   "type": "unit",
+   "supertype": "champion",
+   "energy": 5,
+   "power": 1,
+   "might": 6,
+   "keywords": [
+    "ambush"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "play_mode"
+   ],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [],
+   "amounts": [],
+   "target_side": [],
+   "target_type": [],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [
+    "ambush"
+   ],
+   "play_where": [
+    [
+     "ambush",
+     "battlefield"
+    ]
+   ]
+  },
+  "noxus_hopeful": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 4,
+   "power": 0,
+   "might": 4,
+   "keywords": [
+    "legion"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "static"
+   ],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "ReduceCost"
+   ],
+   "amounts": [
+    [
+     "ReduceCost",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "ReduceCost",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "ReduceCost",
+     "self"
+    ]
+   ],
+   "conditions": [
+    [
+     "ability",
+     "cards_played_this_turn_ge",
+     false
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "pit_rookie": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 2,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Buff"
+   ],
+   "amounts": [
+    [
+     "Buff",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Buff",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Buff",
+     "unit"
+    ]
+   ],
+   "conditions": [
+    [
+     "Buff",
+     "has_buff",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "sabotage": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 1,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "main"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Reveal",
+    "Recycle"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Reveal",
+     "enemy"
+    ],
+    [
+     "Recycle",
+     "enemy"
+    ]
+   ],
+   "target_type": [
+    [
+     "Reveal",
+     "card"
+    ],
+    [
+     "Recycle",
+     "card"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "punch_first": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     5
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "inferna": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 1,
+   "keywords": [
+    "ambush",
+    "assault"
+   ],
+   "kw_values": {
+    "assault": 2
+   },
+   "ability_kinds": [
+    "play_mode",
+    "static"
+   ],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "self"
+    ]
+   ],
+   "conditions": [
+    [
+     "ability",
+     "is_attacker",
+     false
+    ]
+   ],
+   "durations": [
+    [
+     "GiveMight",
+     "while"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [
+    "ambush"
+   ],
+   "play_where": [
+    [
+     "ambush",
+     "battlefield"
+    ]
+   ]
+  },
+  "grim_apothecary": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 3,
+   "power": 0,
+   "might": 3,
+   "keywords": [
+    "ambush"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "play_mode",
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Bounce"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Bounce",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Bounce",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [
+    [
+     "Bounce",
+     "owner_hand"
+    ]
+   ],
+   "optional": [
+    "Bounce"
+   ],
+   "play_modes": [
+    "ambush"
+   ],
+   "play_where": [
+    [
+     "ambush",
+     "battlefield"
+    ]
+   ]
+  },
+  "kinkou_initiate": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 3,
+   "power": 0,
+   "might": 3,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "Draw",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Draw",
+     "other_friendly_units_total_might_ge",
+     false
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "irresistible_faefolk": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 1,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "move_to_battlefield/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Move"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Move",
+     "enemy"
+    ]
+   ],
+   "target_type": [
+    [
+     "Move",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [
+    [
+     "Move",
+     "self_location"
+    ]
+   ],
+   "optional": [
+    "Move"
+   ],
+   "play_modes": [],
+   "play_where": []
+  },
+  "first_mate": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 3,
+   "power": 0,
+   "might": 3,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Ready"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Ready",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "Ready",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "thrill_of_the_hunt": {
+   "type": "spell",
+   "supertype": "signature",
+   "energy": 2,
+   "power": 1,
+   "might": null,
+   "keywords": [
+    "reaction"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "reaction"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Banish",
+    "PlayIgnoringCost"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Banish",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Banish",
+     "unit"
+    ],
+    [
+     "PlayIgnoringCost",
+     "ref"
+    ]
+   ],
+   "conditions": [
+    [
+     "PlayIgnoringCost",
+     "is_token",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [
+    [
+     "PlayIgnoringCost",
+     "owner"
+    ]
+   ],
+   "dest": [
+    [
+     "PlayIgnoringCost",
+     "any_battlefield"
+    ]
+   ],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "rampage": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 3,
+   "power": 0,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "additional_cost",
+    "spell"
+   ],
+   "timing": [
+    "main"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "ChooseTarget",
+    "ChooseTarget",
+    "GiveMight",
+    "DealDamage",
+    "DealDamage"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "ChooseTarget",
+     "friendly"
+    ],
+    [
+     "ChooseTarget",
+     "enemy"
+    ]
+   ],
+   "target_type": [
+    [
+     "ChooseTarget",
+     "unit"
+    ],
+    [
+     "ChooseTarget",
+     "unit"
+    ],
+    [
+     "GiveMight",
+     "ref"
+    ],
+    [
+     "DealDamage",
+     "ref"
+    ],
+    [
+     "DealDamage",
+     "ref"
+    ]
+   ],
+   "conditions": [
+    [
+     "GiveMight",
+     "paid_additional_cost",
+     false
+    ]
+   ],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "pakaa_cub": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 3,
+   "power": 0,
+   "might": 3,
+   "keywords": [
+    "hidden"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "play_mode"
+   ],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [],
+   "amounts": [],
+   "target_side": [],
+   "target_type": [],
+   "conditions": [
+    [
+     "ability",
+     "hidden_this_turn",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [
+    "from_facedown"
+   ],
+   "play_where": [
+    [
+     "from_facedown",
+     "battlefield"
+    ]
+   ]
+  },
+  "ferrous_forerunner": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 6,
+   "power": 1,
+   "might": 6,
+   "keywords": [
+    "deathknell"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "die/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "CreateToken"
+   ],
+   "amounts": [
+    [
+     "CreateToken",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "CreateToken",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "CreateToken",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "kai_sa_survivor": {
+   "type": "unit",
+   "supertype": "champion",
+   "energy": 4,
+   "power": 0,
+   "might": 4,
+   "keywords": [
+    "accelerate"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "additional_cost",
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "conquer/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "EnterReady",
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "Draw",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "EnterReady",
+     "friendly"
+    ],
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "EnterReady",
+     "self"
+    ],
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "nidalee_cat_form": {
+   "type": "unit",
+   "supertype": "champion",
+   "energy": 3,
+   "power": 1,
+   "might": 4,
+   "keywords": [
+    "ambush"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "play_mode",
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "win_combat/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "Draw",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [
+    "ambush"
+   ],
+   "play_where": [
+    [
+     "ambush",
+     "battlefield"
+    ]
+   ]
+  },
+  "darius_trifarian": {
+   "type": "unit",
+   "supertype": "champion",
+   "energy": 5,
+   "power": 1,
+   "might": 5,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play_card/you"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight",
+    "Ready"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "friendly"
+    ],
+    [
+     "Ready",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "self"
+    ],
+    [
+     "Ready",
+     "self"
+    ]
+   ],
+   "conditions": [
+    [
+     "ability",
+     "nth_card_this_turn",
+     false
+    ],
+    [
+     "ability",
+     "is_token",
+     true
+    ]
+   ],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "pyke_dockside_butcher": {
+   "type": "unit",
+   "supertype": "champion",
+   "energy": 3,
+   "power": 0,
+   "might": 2,
+   "keywords": [
+    "ganking",
+    "hidden"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "play_mode",
+    "additional_cost",
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Ready",
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "Ready",
+     "friendly"
+    ],
+    [
+     "GiveMight",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Ready",
+     "self"
+    ],
+    [
+     "GiveMight",
+     "self"
+    ]
+   ],
+   "conditions": [
+    [
+     "ability",
+     "hidden_this_turn",
+     true
+    ],
+    [
+     "ability",
+     "paid_additional_cost",
+     false
+    ]
+   ],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [
+    "from_facedown"
+   ],
+   "play_where": [
+    [
+     "from_facedown",
+     "battlefield"
+    ]
+   ]
+  },
+  "emperor_s_dais": {
+   "type": "battlefield",
+   "supertype": "none",
+   "energy": null,
+   "power": null,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "conquer/here"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "CreateToken",
+    "Bounce"
+   ],
+   "amounts": [
+    [
+     "CreateToken",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "CreateToken",
+     "friendly"
+    ],
+    [
+     "Bounce",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "CreateToken",
+     "unit"
+    ],
+    [
+     "Bounce",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [
+    [
+     "Bounce",
+     "owner_hand"
+    ]
+   ],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "seat_of_power": {
+   "type": "battlefield",
+   "supertype": "none",
+   "energy": null,
+   "power": null,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "conquer/here"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "Draw",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "star_spring": {
+   "type": "battlefield",
+   "supertype": "none",
+   "energy": null,
+   "power": null,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play_unit/any_player_here"
+   ],
+   "trigger_once": [
+    "per_player_per_turn"
+   ],
+   "verbs": [
+    "Move"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Move",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Move",
+     "unit"
+    ]
+   ],
+   "conditions": [
+    [
+     "ability",
+     "is_token",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [
+    [
+     "Move",
+     "base"
+    ]
+   ],
+   "optional": [
+    "Move"
+   ],
+   "play_modes": [],
+   "play_where": []
+  },
+  "body_rune": {
+   "type": "rune",
+   "supertype": "none",
+   "energy": null,
+   "power": null,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "activated",
+    "activated"
+   ],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "AddEnergy",
+    "AddPower"
+   ],
+   "amounts": [
+    [
+     "AddEnergy",
+     1
+    ],
+    [
+     "AddPower",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "AddEnergy",
+     "friendly"
+    ],
+    [
+     "AddPower",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "AddEnergy",
+     "player"
+    ],
+    [
+     "AddPower",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "fury_rune": {
+   "type": "rune",
+   "supertype": "none",
+   "energy": null,
+   "power": null,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "activated",
+    "activated"
+   ],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "AddEnergy",
+    "AddPower"
+   ],
+   "amounts": [
+    [
+     "AddEnergy",
+     1
+    ],
+    [
+     "AddPower",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "AddEnergy",
+     "friendly"
+    ],
+    [
+     "AddPower",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "AddEnergy",
+     "player"
+    ],
+    [
+     "AddPower",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "token:mech": {
+   "type": "unit",
+   "supertype": "token",
+   "energy": null,
+   "power": null,
+   "might": 3,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [],
+   "amounts": [],
+   "target_side": [],
+   "target_type": [],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "token:sand_soldier": {
+   "type": "unit",
+   "supertype": "token",
+   "energy": null,
+   "power": null,
+   "might": 2,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [],
+   "timing": [],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [],
+   "amounts": [],
+   "target_side": [],
+   "target_type": [],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:defy__cost2": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 1,
+   "might": null,
+   "keywords": [
+    "reaction"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "reaction"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Counter"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Counter",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "Counter",
+     "spell"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:discipline__draw2": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": null,
+   "keywords": [
+    "reaction"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "reaction"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight",
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     2
+    ],
+    [
+     "Draw",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ],
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ],
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:discipline__enemy": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": null,
+   "keywords": [
+    "reaction"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "reaction"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight",
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     2
+    ],
+    [
+     "Draw",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "enemy"
+    ],
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ],
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:lonely_poro__draw2": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 2,
+   "keywords": [
+    "deathknell"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "die/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Draw"
+   ],
+   "amounts": [
+    [
+     "Draw",
+     2
+    ]
+   ],
+   "target_side": [
+    [
+     "Draw",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Draw",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Draw",
+     "died_alone",
+     false
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:pit_rookie__might3": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 3,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Buff"
+   ],
+   "amounts": [
+    [
+     "Buff",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Buff",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Buff",
+     "unit"
+    ]
+   ],
+   "conditions": [
+    [
+     "Buff",
+     "has_buff",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:pit_rookie__score1": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 2,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:pit_rookie__score_alone": {
+   "type": "unit",
+   "supertype": "none",
+   "energy": 2,
+   "power": 0,
+   "might": 2,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "triggered"
+   ],
+   "timing": [],
+   "triggers": [
+    "play/self"
+   ],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Score",
+     "you_control_other_units",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__amount4": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     4
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__ctrl_scores": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "ChooseTarget",
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "ChooseTarget",
+     "any"
+    ],
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "ChooseTarget",
+     "unit"
+    ],
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__energy3": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 3,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     5
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__kill": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Kill"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Kill",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "Kill",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__minus5": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     -5
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__opp_of_ctrl_scores": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "ChooseTarget",
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "ChooseTarget",
+     "any"
+    ],
+    [
+     "Score",
+     "enemy"
+    ]
+   ],
+   "target_type": [
+    [
+     "ChooseTarget",
+     "unit"
+    ],
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__power0": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 0,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     5
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__reaction": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "reaction"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "reaction"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "GiveMight"
+   ],
+   "amounts": [
+    [
+     "GiveMight",
+     5
+    ]
+   ],
+   "target_side": [
+    [
+     "GiveMight",
+     "any"
+    ]
+   ],
+   "target_type": [
+    [
+     "GiveMight",
+     "unit"
+    ]
+   ],
+   "conditions": [],
+   "durations": [
+    [
+     "GiveMight",
+     "turn"
+    ]
+   ],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__score1": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__score_behind": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Score",
+     "opponent_score_gt_yours",
+     false
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__score_bfunit": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Score",
+     "friendly_unit_at_battlefield",
+     false
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:punch_first__score_nounits": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 2,
+   "might": null,
+   "keywords": [
+    "action"
+   ],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "action"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Score",
+     "you_control_units",
+     true
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:sabotage__score1": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 1,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "main"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:sabotage__score_opphand4": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 1,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "main"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Score"
+   ],
+   "amounts": [
+    [
+     "Score",
+     1
+    ]
+   ],
+   "target_side": [
+    [
+     "Score",
+     "friendly"
+    ]
+   ],
+   "target_type": [
+    [
+     "Score",
+     "player"
+    ]
+   ],
+   "conditions": [
+    [
+     "Score",
+     "opponent_hand_size_ge",
+     false
+    ]
+   ],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  },
+  "synthetic:sabotage__unit": {
+   "type": "spell",
+   "supertype": "none",
+   "energy": 1,
+   "power": 1,
+   "might": null,
+   "keywords": [],
+   "kw_values": {},
+   "ability_kinds": [
+    "spell"
+   ],
+   "timing": [
+    "main"
+   ],
+   "triggers": [],
+   "trigger_once": [],
+   "verbs": [
+    "Reveal",
+    "Recycle"
+   ],
+   "amounts": [],
+   "target_side": [
+    [
+     "Reveal",
+     "enemy"
+    ],
+    [
+     "Recycle",
+     "enemy"
+    ]
+   ],
+   "target_type": [
+    [
+     "Reveal",
+     "card"
+    ],
+    [
+     "Recycle",
+     "card"
+    ]
+   ],
+   "conditions": [],
+   "durations": [],
+   "chooser": [],
+   "dest": [],
+   "optional": [],
+   "play_modes": [],
+   "play_where": []
+  }
+ },
+ "carddef_crosscheck": {
+  "rengar_pridestalker": "ok",
+  "rengar_trophy_hunter": "ok",
+  "noxus_hopeful": "ok",
+  "pit_rookie": "ok",
+  "sabotage": "ok",
+  "punch_first": "ok",
+  "inferna": "ok",
+  "grim_apothecary": "ok",
+  "kinkou_initiate": "ok",
+  "irresistible_faefolk": "ok",
+  "first_mate": "ok",
+  "thrill_of_the_hunt": "ok",
+  "rampage": "ok",
+  "pakaa_cub": "ok",
+  "ferrous_forerunner": "ok",
+  "kai_sa_survivor": "ok",
+  "nidalee_cat_form": "ok",
+  "darius_trifarian": "ok",
+  "pyke_dockside_butcher": "ok",
+  "emperor_s_dais": "ok",
+  "seat_of_power": "ok",
+  "star_spring": "ok",
+  "body_rune": "ok",
+  "fury_rune": "ok"
+ },
+ "c1_pairs_total": 1128,
+ "c1_same_mechanics_pairs": [],
+ "c1_summary": {
+  "pairs_differing_mechanics": 1128,
+  "identical_vectors_despite_different_mechanics": [],
+  "counts_by_verdict": {
+   "PASS": 1121,
+   "WEAK": 7,
+   "FAIL (crushed)": 0,
+   "FAIL (identical)": 0
+  },
+  "ratio_init_over_raw_median": 0.9489693995989199,
+  "ratio_trained_over_raw_median": 1.0054899708199085,
+  "random_control_min_rel": 0.8382548537007366
+ },
+ "c1_at_risk": [
+  {
+   "a": "body_rune",
+   "b": "fury_rune",
+   "same_mechanics": false,
+   "dims_differ": 4,
+   "raw": 0.1556997888323046,
+   "proj": 0.15194876431281087,
+   "init": 0.13323926296932603,
+   "ln": 0.13517776378821655,
+   "trained": 0.09369683142379054,
+   "ctrl_random": 1.0783592086378315,
+   "share_of_norm": 0.19518001458970666,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "sabotage",
+   "b": "synthetic:sabotage__unit",
+   "same_mechanics": false,
+   "dims_differ": 6,
+   "raw": 0.19069251784911845,
+   "proj": 0.18724016151782785,
+   "init": 0.18436787578470554,
+   "ln": 0.18345409216842826,
+   "trained": 0.12797892098524558,
+   "ctrl_random": 0.9999767995070948,
+   "share_of_norm": 0.26111648393354675,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "pit_rookie",
+   "b": "synthetic:pit_rookie__might3",
+   "same_mechanics": false,
+   "dims_differ": 6,
+   "raw": 0.19069251784911845,
+   "proj": 0.19599167544202759,
+   "init": 0.18461927508158443,
+   "ln": 0.18457528532712586,
+   "trained": 0.18697870041155384,
+   "ctrl_random": 1.0020788345940312,
+   "share_of_norm": 0.2449489742783178,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "synthetic:punch_first__ctrl_scores",
+   "b": "synthetic:punch_first__opp_of_ctrl_scores",
+   "same_mechanics": false,
+   "dims_differ": 8,
+   "raw": 0.22019275302527214,
+   "proj": 0.21252091239922294,
+   "init": 0.20536652806825706,
+   "ln": 0.20647360350897181,
+   "trained": 0.14129478278896399,
+   "ctrl_random": 0.9304949273660779,
+   "share_of_norm": 0.2773500981126146,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "synthetic:punch_first__score1",
+   "b": "synthetic:punch_first__score_bfunit",
+   "same_mechanics": false,
+   "dims_differ": 9,
+   "raw": 0.23354968324845687,
+   "proj": 0.2338687703060882,
+   "init": 0.21636640354715775,
+   "ln": 0.21657269974728138,
+   "trained": 0.1413260294092962,
+   "ctrl_random": 0.9547352393292539,
+   "share_of_norm": 0.3511234415883917,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "punch_first",
+   "b": "synthetic:punch_first__amount4",
+   "same_mechanics": false,
+   "dims_differ": 12,
+   "raw": 0.2239690136157232,
+   "proj": 0.22951791551753373,
+   "init": 0.21749377375054238,
+   "ln": 0.22085841521751082,
+   "trained": 0.1511179387166444,
+   "ctrl_random": 1.0016055748721984,
+   "share_of_norm": 0.30038526699170603,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "synthetic:punch_first__score1",
+   "b": "synthetic:punch_first__score_behind",
+   "same_mechanics": false,
+   "dims_differ": 9,
+   "raw": 0.23354968324845687,
+   "proj": 0.2372248518219528,
+   "init": 0.2348010776942946,
+   "ln": 0.23436297699650158,
+   "trained": 0.1286113558896198,
+   "ctrl_random": 0.950613025780525,
+   "share_of_norm": 0.3464101615137754,
+   "pass": false,
+   "verdict": "WEAK"
+  },
+  {
+   "a": "punch_first",
+   "b": "synthetic:punch_first__energy3",
+   "same_mechanics": false,
+   "dims_differ": 6,
+   "raw": 0.2696799449852968,
+   "proj": 0.2705924927610165,
+   "init": 0.25205110218605725,
+   "ln": 0.25088175494945364,
+   "trained": 0.24628000653915857,
+   "ctrl_random": 0.996569199566718,
+   "share_of_norm": 0.3337536720711186,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__score1",
+   "b": "synthetic:punch_first__score_nounits",
+   "same_mechanics": false,
+   "dims_differ": 14,
+   "raw": 0.29128763250176765,
+   "proj": 0.2914053466753068,
+   "init": 0.2704383415154554,
+   "ln": 0.27245887636443183,
+   "trained": 0.20084940933010786,
+   "ctrl_random": 0.9400437548499605,
+   "share_of_norm": 0.4183300132670377,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:pit_rookie__score1",
+   "b": "synthetic:pit_rookie__score_alone",
+   "same_mechanics": false,
+   "dims_differ": 14,
+   "raw": 0.29128763250176765,
+   "proj": 0.29476175862472337,
+   "init": 0.2714432102990028,
+   "ln": 0.2751451382021942,
+   "trained": 0.27829601704622736,
+   "ctrl_random": 0.9400934702476001,
+   "share_of_norm": 0.42640143271122083,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "token:mech",
+   "b": "token:sand_soldier",
+   "same_mechanics": false,
+   "dims_differ": 14,
+   "raw": 0.29128763250176765,
+   "proj": 0.29289189584067,
+   "init": 0.28701967145744434,
+   "ln": 0.28651296320814024,
+   "trained": 0.18633556565329049,
+   "ctrl_random": 0.9735116878969431,
+   "share_of_norm": 0.6614378277661476,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:discipline__draw2",
+   "b": "synthetic:discipline__enemy",
+   "same_mechanics": false,
+   "dims_differ": 20,
+   "raw": 0.32444567650655154,
+   "proj": 0.31054928576227986,
+   "init": 0.2877037884064846,
+   "ln": 0.28800553023337205,
+   "trained": 0.17104237181340212,
+   "ctrl_random": 0.8860991768709565,
+   "share_of_norm": 0.3867080216652857,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__score_behind",
+   "b": "synthetic:punch_first__score_bfunit",
+   "same_mechanics": false,
+   "dims_differ": 16,
+   "raw": 0.3113995776646092,
+   "proj": 0.32007191412254843,
+   "init": 0.29784791522132975,
+   "ln": 0.30050765605322105,
+   "trained": 0.16534739763078024,
+   "ctrl_random": 0.8960279360095993,
+   "share_of_norm": 0.46188021535170054,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__score_bfunit",
+   "b": "synthetic:punch_first__score_nounits",
+   "same_mechanics": false,
+   "dims_differ": 21,
+   "raw": 0.35675303400633784,
+   "proj": 0.33898322303921286,
+   "init": 0.3198335095008506,
+   "ln": 0.31893665176117775,
+   "trained": 0.17402283187444975,
+   "ctrl_random": 0.9160900027522244,
+   "share_of_norm": 0.5123475382979799,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__score_behind",
+   "b": "synthetic:punch_first__score_nounits",
+   "same_mechanics": false,
+   "dims_differ": 21,
+   "raw": 0.35675303400633784,
+   "proj": 0.3582659922616524,
+   "init": 0.33225783156758754,
+   "ln": 0.33446895899737916,
+   "trained": 0.2094214517759152,
+   "ctrl_random": 0.9916460472710283,
+   "share_of_norm": 0.5123475382979799,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__amount4",
+   "b": "synthetic:punch_first__energy3",
+   "same_mechanics": false,
+   "dims_differ": 18,
+   "raw": 0.35055583262480844,
+   "proj": 0.3600762547281371,
+   "init": 0.35115490265380467,
+   "ln": 0.3528466522089144,
+   "trained": 0.33181977943257496,
+   "ctrl_random": 0.9827769188801329,
+   "share_of_norm": 0.4338450024930744,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "punch_first",
+   "b": "synthetic:punch_first__power0",
+   "same_mechanics": false,
+   "dims_differ": 12,
+   "raw": 0.40451991747794525,
+   "proj": 0.3872614662032263,
+   "init": 0.367529636437526,
+   "ln": 0.37311600497179576,
+   "trained": 0.4461044498675501,
+   "ctrl_random": 1.0420662066195252,
+   "share_of_norm": 0.542538547870557,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:sabotage__score1",
+   "b": "synthetic:sabotage__score_opphand4",
+   "same_mechanics": false,
+   "dims_differ": 14,
+   "raw": 0.4668186864032681,
+   "proj": 0.45033960650525073,
+   "init": 0.42680814278917945,
+   "ln": 0.4325127689081891,
+   "trained": 0.31818054022694303,
+   "ctrl_random": 0.992804029920811,
+   "share_of_norm": 0.6505658524121533,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__energy3",
+   "b": "synthetic:punch_first__power0",
+   "same_mechanics": false,
+   "dims_differ": 18,
+   "raw": 0.4861724348043977,
+   "proj": 0.4535019282588684,
+   "init": 0.435508511268064,
+   "ln": 0.4423488846249143,
+   "trained": 0.4566362945744064,
+   "ctrl_random": 1.0067088391418946,
+   "share_of_norm": 0.6016829890134059,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "punch_first",
+   "b": "synthetic:punch_first__reaction",
+   "same_mechanics": false,
+   "dims_differ": 24,
+   "raw": 0.4629553772772569,
+   "proj": 0.44167347860493733,
+   "init": 0.4368830785492805,
+   "ln": 0.436630301684162,
+   "trained": 0.24645205006750512,
+   "ctrl_random": 0.9828778633185712,
+   "share_of_norm": 0.6209116715014729,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__amount4",
+   "b": "synthetic:punch_first__power0",
+   "same_mechanics": false,
+   "dims_differ": 24,
+   "raw": 0.4623834801291712,
+   "proj": 0.454811112306945,
+   "init": 0.4406605759247296,
+   "ln": 0.44832737141422196,
+   "trained": 0.5460323669419878,
+   "ctrl_random": 0.9753672533663125,
+   "share_of_norm": 0.6383694792980784,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__amount4",
+   "b": "synthetic:punch_first__reaction",
+   "same_mechanics": false,
+   "dims_differ": 33,
+   "raw": 0.4940920389184528,
+   "proj": 0.4660654807011385,
+   "init": 0.4531313020409041,
+   "ln": 0.4544339452841443,
+   "trained": 0.28077887520004746,
+   "ctrl_random": 0.9949118051359942,
+   "share_of_norm": 0.6626718876551615,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__score1",
+   "b": "synthetic:sabotage__score1",
+   "same_mechanics": false,
+   "dims_differ": 35,
+   "raw": 0.4605661864718383,
+   "proj": 0.47748957644997214,
+   "init": 0.4636166753455452,
+   "ln": 0.4692714379333355,
+   "trained": 0.55578121956421,
+   "ctrl_random": 0.9779979587049766,
+   "share_of_norm": 0.7282190812544191,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__ctrl_scores",
+   "b": "synthetic:punch_first__score1",
+   "same_mechanics": false,
+   "dims_differ": 30,
+   "raw": 0.4264014327112209,
+   "proj": 0.45445070619860795,
+   "init": 0.46982733540981814,
+   "ln": 0.46802235293450856,
+   "trained": 0.4605308795092038,
+   "ctrl_random": 0.9935706552233047,
+   "share_of_norm": 0.5370861555295747,
+   "pass": true,
+   "verdict": "PASS"
+  },
+  {
+   "a": "synthetic:punch_first__opp_of_ctrl_scores",
+   "b": "synthetic:punch_first__score1",
+   "same_mechanics": false,
+   "dims_differ": 38,
+   "raw": 0.4798989792685855,
+   "proj": 0.49576554159242175,
+   "init": 0.4848411976009734,
+   "ln": 0.48059106894397213,
+   "trained": 0.46467130508998533,
+   "ctrl_random": 0.944796253134443,
+   "share_of_norm": 0.6044705248269889,
+   "pass": true,
+   "verdict": "PASS"
+  }
+ ],
+ "c1_known_case": {
+  "a": "synthetic:punch_first__ctrl_scores",
+  "b": "synthetic:punch_first__opp_of_ctrl_scores",
+  "same_mechanics": false,
+  "dims_differ": 8,
+  "raw": 0.22019275302527214,
+  "proj": 0.21252091239922294,
+  "init": 0.20536652806825706,
+  "ln": 0.20647360350897181,
+  "trained": 0.14129478278896399,
+  "ctrl_random": 0.9304949273660779,
+  "share_of_norm": 0.2773500981126146,
+  "pass": false,
+  "verdict": "WEAK"
+ },
+ "atoms": [
+  {
+   "atom": "ability=activated",
+   "family": "ability",
+   "n_pos": 2,
+   "det": {
+    "path": "kind:activated@reaction",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.19518001458970666
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ability=additional_cost",
+   "family": "ability",
+   "n_pos": 3,
+   "det": {
+    "path": "kind:additional_cost",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06651294999543422
+   },
+   "loo_bacc_raw": 0.6555555555555556,
+   "loo_bacc_proj": 0.6666666666666666,
+   "loo_bacc_init": 0.7288888888888888,
+   "loo_bacc_trained": 0.6648148148148147,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ability=play_mode",
+   "family": "ability",
+   "n_pos": 6,
+   "det": {
+    "path": "kind:play_mode@reaction",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08937970502697175
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.9880952380952381,
+   "loo_bacc_init": 0.830952380952381,
+   "loo_bacc_trained": 0.878968253968254,
+   "loo_bacc_ctrl_random": 0.4880952380952381,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ability=spell",
+   "family": "ability",
+   "n_pos": 22,
+   "det": {
+    "path": "kind:spell@main",
+    "present_iff_fact": false,
+    "missing_in": [
+     "punch_first",
+     "synthetic:defy__cost2",
+     "synthetic:discipline__draw2",
+     "synthetic:discipline__enemy",
+     "synthetic:punch_first__amount4",
+     "synthetic:punch_first__ctrl_scores",
+     "synthetic:punch_first__energy3",
+     "synthetic:punch_first__kill",
+     "synthetic:punch_first__minus5",
+     "synthetic:punch_first__opp_of_ctrl_scores",
+     "synthetic:punch_first__power0",
+     "synthetic:punch_first__reaction",
+     "synthetic:punch_first__score1",
+     "synthetic:punch_first__score_behind",
+     "synthetic:punch_first__score_bfunit",
+     "synthetic:punch_first__score_nounits",
+     "thrill_of_the_hunt"
+    ],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10476954992239255
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9045454545454547,
+   "loo_bacc_trained": 0.9796037296037295,
+   "loo_bacc_ctrl_random": 0.4353146853146853,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ability=static",
+   "family": "ability",
+   "n_pos": 2,
+   "det": {
+    "path": "kind:static",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09471697998919734
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.4891304347826087,
+   "loo_bacc_trained": 0.4963768115942029,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ability=triggered",
+   "family": "ability",
+   "n_pos": 18,
+   "det": {
+    "path": "kind:triggered",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10146716694839514
+   },
+   "loo_bacc_raw": 0.9722222222222222,
+   "loo_bacc_proj": 0.9722222222222222,
+   "loo_bacc_init": 0.7955555555555555,
+   "loo_bacc_trained": 0.9203703703703704,
+   "loo_bacc_ctrl_random": 0.5444444444444445,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=AddEnergy:1",
+   "family": "amount",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddEnergy/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=AddPower:1",
+   "family": "amount",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddPower/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=Buff:1",
+   "family": "amount",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Buff/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.102704627669473
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 0.9963768115942028,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=CreateToken:1",
+   "family": "amount",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:CreateToken/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08605086272189957
+   }
+  },
+  {
+   "atom": "amount=CreateToken:2",
+   "family": "amount",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:CreateToken/amount/n=2",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.061656964864969535
+   }
+  },
+  {
+   "atom": "amount=Draw:1",
+   "family": "amount",
+   "n_pos": 5,
+   "det": {
+    "path": "verb:Draw/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.1011777120371008
+   },
+   "loo_bacc_raw": 0.8883720930232558,
+   "loo_bacc_proj": 0.7767441860465116,
+   "loo_bacc_init": 0.6865116279069767,
+   "loo_bacc_trained": 0.7337209302325581,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=Draw:2",
+   "family": "amount",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Draw/amount/n=2",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10299107480897582
+   },
+   "loo_bacc_raw": 0.4891304347826087,
+   "loo_bacc_proj": 0.4782608695652174,
+   "loo_bacc_init": 0.46739130434782605,
+   "loo_bacc_trained": 0.4655797101449275,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=GiveMight:-5",
+   "family": "amount",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:GiveMight/amount/n=-5",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10441159221960492
+   }
+  },
+  {
+   "atom": "amount=GiveMight:1",
+   "family": "amount",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:GiveMight/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.14744195615489714
+   }
+  },
+  {
+   "atom": "amount=GiveMight:2",
+   "family": "amount",
+   "n_pos": 6,
+   "det": {
+    "path": "verb:GiveMight/amount/n=2",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08019946276531907
+   },
+   "loo_bacc_raw": 0.9166666666666667,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.8,
+   "loo_bacc_trained": 0.9226190476190476,
+   "loo_bacc_ctrl_random": 0.4880952380952381,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=GiveMight:4",
+   "family": "amount",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:GiveMight/amount/n=4",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10748004350840172
+   }
+  },
+  {
+   "atom": "amount=GiveMight:5",
+   "family": "amount",
+   "n_pos": 4,
+   "det": {
+    "path": "verb:GiveMight/amount/n=5",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10644832287566214
+   },
+   "loo_bacc_raw": 0.8636363636363636,
+   "loo_bacc_proj": 0.8636363636363636,
+   "loo_bacc_init": 0.8522727272727273,
+   "loo_bacc_trained": 0.8030303030303031,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "amount=ReduceCost:2",
+   "family": "amount",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:ReduceCost/amount/n=2",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08871873632013941
+   }
+  },
+  {
+   "atom": "amount=Score:1",
+   "family": "amount",
+   "n_pos": 10,
+   "det": {
+    "path": "verb:Score/amount/n=1",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11548209384461734
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9689473684210526,
+   "loo_bacc_trained": 0.9745614035087719,
+   "loo_bacc_ctrl_random": 0.5236842105263158,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "chooser=PlayIgnoringCost:owner",
+   "family": "chooser",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:PlayIgnoringCost/chooser=owner",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "cond=cards_played_this_turn_ge",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:cards_played_this_turn_ge",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08871873632013941
+   }
+  },
+  {
+   "atom": "cond=died_alone",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:died_alone",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11319256776660062
+   }
+  },
+  {
+   "atom": "cond=friendly_unit_at_battlefield",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:friendly_unit_at_battlefield",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "kind:spell@action"
+    ],
+    "share": 0.11704114719613057
+   }
+  },
+  {
+   "atom": "cond=has_buff(neg)",
+   "family": "cond",
+   "n_pos": 2,
+   "det": {
+    "path": "c:has_buff/neg",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.102704627669473
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 0.9963768115942028,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "cond=hidden_this_turn(neg)",
+   "family": "cond",
+   "n_pos": 2,
+   "det": {
+    "path": "c:hidden_this_turn/neg",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08651231155753591
+   },
+   "loo_bacc_raw": 0.75,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.7413043478260869,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "cond=is_attacker",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:is_attacker",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "filters/f:energy_cost_le",
+     "verb:Move/target/side=enemy"
+    ],
+    "share": 0.10071522365825528
+   }
+  },
+  {
+   "atom": "cond=is_token(neg)",
+   "family": "cond",
+   "n_pos": 3,
+   "det": {
+    "path": "c:is_token/neg",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09193677856745193
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.49111111111111116,
+   "loo_bacc_trained": 0.6055555555555555,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "cond=nth_card_this_turn",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:nth_card_this_turn",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06406979918244445
+   }
+  },
+  {
+   "atom": "cond=opponent_hand_size_ge",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:opponent_hand_size_ge",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10849283543308835
+   }
+  },
+  {
+   "atom": "cond=opponent_score_gt_yours",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:opponent_score_gt_yours",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11547005383792514
+   }
+  },
+  {
+   "atom": "cond=other_friendly_units_total_might_ge",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:other_friendly_units_total_might_ge",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09001699837556375
+   }
+  },
+  {
+   "atom": "cond=paid_additional_cost",
+   "family": "cond",
+   "n_pos": 2,
+   "det": {
+    "path": "c:paid_additional_cost",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06239767035555453
+   },
+   "loo_bacc_raw": 0.4891304347826087,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.5391304347826087,
+   "loo_bacc_trained": 0.5416666666666666,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "cond=you_control_other_units(neg)",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:you_control_other_units/neg",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11396057645963795
+   }
+  },
+  {
+   "atom": "cond=you_control_units(neg)",
+   "family": "cond",
+   "n_pos": 1,
+   "det": {
+    "path": "c:you_control_units/neg",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11180339887498948
+   }
+  },
+  {
+   "atom": "dest=Bounce:owner_hand",
+   "family": "dest",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Bounce/dest=owner_hand",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09253280850978352
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.4826086956521739,
+   "loo_bacc_trained": 0.4855072463768117,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "dest=Move:base",
+   "family": "dest",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Move/dest=base",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.12403473458920847
+   }
+  },
+  {
+   "atom": "dest=Move:self_location",
+   "family": "dest",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Move/dest=self_location",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10259783520851541
+   }
+  },
+  {
+   "atom": "dest=PlayIgnoringCost:any_battlefield",
+   "family": "dest",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:PlayIgnoringCost/dest=any_battlefield",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "dur=GiveMight:turn",
+   "family": "dur",
+   "n_pos": 12,
+   "det": {
+    "path": "verb:GiveMight/duration=turn",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09713403635993428
+   },
+   "loo_bacc_raw": 0.9444444444444444,
+   "loo_bacc_proj": 0.9583333333333333,
+   "loo_bacc_init": 0.836111111111111,
+   "loo_bacc_trained": 0.8680555555555557,
+   "loo_bacc_ctrl_random": 0.513888888888889,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "dur=GiveMight:while",
+   "family": "dur",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:GiveMight/duration=while",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10071522365825528
+   }
+  },
+  {
+   "atom": "kw=accelerate",
+   "family": "kw",
+   "n_pos": 1,
+   "det": {
+    "path": "kw:accelerate",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07474350927519359
+   }
+  },
+  {
+   "atom": "kw=action",
+   "family": "kw",
+   "n_pos": 12,
+   "det": {
+    "path": "kw:action",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11067516615811124
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.9444444444444444,
+   "loo_bacc_init": 0.8833333333333334,
+   "loo_bacc_trained": 0.9444444444444445,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "kw=ambush",
+   "family": "kw",
+   "n_pos": 4,
+   "det": {
+    "path": "kw:ambush",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09081340176168969
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.7909090909090909,
+   "loo_bacc_trained": 0.9071969696969697,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "kw=assault",
+   "family": "kw",
+   "n_pos": 1,
+   "det": {
+    "path": "kw:assault",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10071522365825528
+   }
+  },
+  {
+   "atom": "kw=deathknell",
+   "family": "kw",
+   "n_pos": 2,
+   "det": {
+    "path": "kw:deathknell",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "target/zone=player"
+    ],
+    "share": 0.08742476631578508
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.49347826086956526,
+   "loo_bacc_trained": 0.47463768115942023,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "kw=ganking",
+   "family": "kw",
+   "n_pos": 1,
+   "det": {
+    "path": "kw:ganking",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06932945364202929
+   }
+  },
+  {
+   "atom": "kw=hidden",
+   "family": "kw",
+   "n_pos": 2,
+   "det": {
+    "path": "kw:hidden",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08651231155753591
+   },
+   "loo_bacc_raw": 0.75,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.7413043478260869,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "kw=legion",
+   "family": "kw",
+   "n_pos": 1,
+   "det": {
+    "path": "kw:legion",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08871873632013941
+   }
+  },
+  {
+   "atom": "kw=reaction",
+   "family": "kw",
+   "n_pos": 5,
+   "det": {
+    "path": "kw:reaction",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.0976845705257737
+   },
+   "loo_bacc_raw": 0.7,
+   "loo_bacc_proj": 0.6883720930232557,
+   "loo_bacc_init": 0.723720930232558,
+   "loo_bacc_trained": 0.763953488372093,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "kwval=assault:2",
+   "family": "kwval",
+   "n_pos": 1,
+   "det": {
+    "path": "kw:assault/value=2",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10071522365825528
+   }
+  },
+  {
+   "atom": "once=per_player_per_turn",
+   "family": "once",
+   "n_pos": 1,
+   "det": {
+    "path": "once=per_player_per_turn",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.12403473458920847
+   }
+  },
+  {
+   "atom": "optional=Bounce",
+   "family": "optional",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Bounce/optional",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09901475429766744
+   }
+  },
+  {
+   "atom": "optional=Move",
+   "family": "optional",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Move/optional",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11331628489886195
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.5434782608695652,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "playmode=ambush",
+   "family": "playmode",
+   "n_pos": 4,
+   "det": {
+    "path": "kind:play_mode@reaction/mode=ambush",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09081340176168969
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.7909090909090909,
+   "loo_bacc_trained": 0.9071969696969697,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "playmode=from_facedown",
+   "family": "playmode",
+   "n_pos": 2,
+   "det": {
+    "path": "kind:play_mode@reaction/mode=from_facedown",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08651231155753591
+   },
+   "loo_bacc_raw": 0.75,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.7413043478260869,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "playwhere=ambush:battlefield",
+   "family": "playwhere",
+   "n_pos": 4,
+   "det": {
+    "path": "where/zone=battlefield",
+    "present_iff_fact": false,
+    "missing_in": [],
+    "extra_in": [
+     "pakaa_cub",
+     "pyke_dockside_butcher"
+    ],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09081340176168969
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.7909090909090909,
+   "loo_bacc_trained": 0.9071969696969697,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "playwhere=from_facedown:battlefield",
+   "family": "playwhere",
+   "n_pos": 2,
+   "det": {
+    "path": "where/zone=battlefield",
+    "present_iff_fact": false,
+    "missing_in": [],
+    "extra_in": [
+     "grim_apothecary",
+     "inferna",
+     "nidalee_cat_form",
+     "rengar_trophy_hunter"
+    ],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08651231155753591
+   },
+   "loo_bacc_raw": 0.75,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.7413043478260869,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=AddEnergy:friendly",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddEnergy/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=AddPower:friendly",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddPower/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=Banish:friendly",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Banish/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "side=Bounce:friendly",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Bounce/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09253280850978352
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.4826086956521739,
+   "loo_bacc_trained": 0.4855072463768117,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=Buff:friendly",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Buff/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.102704627669473
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 0.9963768115942028,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=ChooseTarget:any",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:ChooseTarget/target/side=any",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09805806756909202
+   },
+   "loo_bacc_raw": 0.9891304347826086,
+   "loo_bacc_proj": 0.9891304347826086,
+   "loo_bacc_init": 0.9869565217391305,
+   "loo_bacc_trained": 0.9891304347826085,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=ChooseTarget:enemy",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:ChooseTarget/target/side=enemy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.05546588706907978
+   }
+  },
+  {
+   "atom": "side=ChooseTarget:friendly",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:ChooseTarget/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.05546588706907978
+   }
+  },
+  {
+   "atom": "side=Counter:any",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Counter/target/side=any",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10468904543845511
+   }
+  },
+  {
+   "atom": "side=CreateToken:friendly",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:CreateToken/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07385391379343456
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.49347826086956526,
+   "loo_bacc_trained": 0.8333333333333334,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=Draw:friendly",
+   "family": "side",
+   "n_pos": 7,
+   "det": {
+    "path": "verb:Draw/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10169581568620796
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.9878048780487805,
+   "loo_bacc_init": 0.975609756097561,
+   "loo_bacc_trained": 0.983739837398374,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=EnterReady:friendly",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:EnterReady/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07474350927519359
+   }
+  },
+  {
+   "atom": "side=GiveMight:any",
+   "family": "side",
+   "n_pos": 8,
+   "det": {
+    "path": "verb:GiveMight/target/side=any",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10973955815461292
+   },
+   "loo_bacc_raw": 0.8625,
+   "loo_bacc_proj": 0.8,
+   "loo_bacc_init": 0.765,
+   "loo_bacc_trained": 0.7854166666666668,
+   "loo_bacc_ctrl_random": 0.5625,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=GiveMight:enemy",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:GiveMight/target/side=enemy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09882683118875456
+   }
+  },
+  {
+   "atom": "side=GiveMight:friendly",
+   "family": "side",
+   "n_pos": 3,
+   "det": {
+    "path": "verb:GiveMight/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07803815882757635
+   },
+   "loo_bacc_raw": 0.8333333333333333,
+   "loo_bacc_proj": 0.6666666666666666,
+   "loo_bacc_init": 0.5888888888888888,
+   "loo_bacc_trained": 0.5481481481481482,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=Kill:any",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Kill/target/side=any",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.13130643285972254
+   }
+  },
+  {
+   "atom": "side=Move:enemy",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Move/target/side=enemy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "c:is_attacker",
+     "filters/f:energy_cost_le"
+    ],
+    "share": 0.10259783520851541
+   }
+  },
+  {
+   "atom": "side=Move:friendly",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Move/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.12403473458920847
+   }
+  },
+  {
+   "atom": "side=Ready:any",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Ready/target/side=any",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10660035817780521
+   }
+  },
+  {
+   "atom": "side=Ready:friendly",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Ready/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06669962641223687
+   },
+   "loo_bacc_raw": 0.75,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.5456521739130434,
+   "loo_bacc_trained": 0.4963768115942029,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=Recycle:enemy",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Recycle/target/side=enemy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10851594212632587
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9978260869565216,
+   "loo_bacc_trained": 0.9981884057971014,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=ReduceCost:friendly",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:ReduceCost/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08871873632013941
+   }
+  },
+  {
+   "atom": "side=Reveal:enemy",
+   "family": "side",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Reveal/target/side=enemy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10851594212632587
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9978260869565216,
+   "loo_bacc_trained": 0.9981884057971014,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "side=Score:enemy",
+   "family": "side",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Score/target/side=enemy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09805806756909202
+   }
+  },
+  {
+   "atom": "side=Score:friendly",
+   "family": "side",
+   "n_pos": 9,
+   "det": {
+    "path": "verb:Score/target/side=friendly",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11741809676412017
+   },
+   "loo_bacc_raw": 0.9316239316239316,
+   "loo_bacc_proj": 0.9188034188034188,
+   "loo_bacc_init": 0.8846153846153847,
+   "loo_bacc_trained": 0.8896011396011397,
+   "loo_bacc_ctrl_random": 0.5299145299145299,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "supertype=champion",
+   "family": "supertype",
+   "n_pos": 5,
+   "det": {
+    "path": "stats/supertype=champion",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07433327823810068
+   },
+   "loo_bacc_raw": 0.7883720930232558,
+   "loo_bacc_proj": 0.7883720930232558,
+   "loo_bacc_init": 0.6390697674418606,
+   "loo_bacc_trained": 0.7042635658914729,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "supertype=none",
+   "family": "supertype",
+   "n_pos": 40,
+   "det": {
+    "path": null,
+    "present_iff_fact": false,
+    "slot_unique": null,
+    "share": 0.0
+   },
+   "loo_bacc_raw": 0.775,
+   "loo_bacc_proj": 0.7625,
+   "loo_bacc_init": 0.7924999999999999,
+   "loo_bacc_trained": 0.5729166666666666,
+   "loo_bacc_ctrl_random": 0.4625,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "supertype=signature",
+   "family": "supertype",
+   "n_pos": 1,
+   "det": {
+    "path": "stats/supertype=signature",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "supertype=token",
+   "family": "supertype",
+   "n_pos": 2,
+   "det": {
+    "path": "stats/supertype=token",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.19498870582612365
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 0.6829710144927535,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "timing=action",
+   "family": "timing",
+   "n_pos": 12,
+   "det": {
+    "path": "kind:spell@action",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "c:friendly_unit_at_battlefield"
+    ],
+    "share": 0.11067516615811124
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.9444444444444444,
+   "loo_bacc_init": 0.8833333333333334,
+   "loo_bacc_trained": 0.9444444444444445,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "timing=main",
+   "family": "timing",
+   "n_pos": 5,
+   "det": {
+    "path": "kind:spell@main",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10476954992239255
+   },
+   "loo_bacc_raw": 0.8,
+   "loo_bacc_proj": 0.7883720930232558,
+   "loo_bacc_init": 0.792093023255814,
+   "loo_bacc_trained": 0.8306201550387597,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "timing=reaction",
+   "family": "timing",
+   "n_pos": 5,
+   "det": {
+    "path": "kind:spell@reaction",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.0976845705257737
+   },
+   "loo_bacc_raw": 0.7,
+   "loo_bacc_proj": 0.6883720930232557,
+   "loo_bacc_init": 0.723720930232558,
+   "loo_bacc_trained": 0.763953488372093,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "trigger=conquer/here",
+   "family": "trigger",
+   "n_pos": 2,
+   "det": {
+    "path": "trigger/event=conquer",
+    "present_iff_fact": false,
+    "missing_in": [],
+    "extra_in": [
+     "kai_sa_survivor"
+    ],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11927471652725212
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.6282608695652174,
+   "loo_bacc_trained": 0.7445652173913043,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "trigger=conquer/self",
+   "family": "trigger",
+   "n_pos": 1,
+   "det": {
+    "path": "trigger/event=conquer",
+    "present_iff_fact": false,
+    "missing_in": [],
+    "extra_in": [
+     "emperor_s_dais",
+     "seat_of_power"
+    ],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07474350927519359
+   }
+  },
+  {
+   "atom": "trigger=die/self",
+   "family": "trigger",
+   "n_pos": 2,
+   "det": {
+    "path": "trigger/event=die",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08742476631578508
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.49347826086956526,
+   "loo_bacc_trained": 0.47463768115942023,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "trigger=move_to_battlefield/self",
+   "family": "trigger",
+   "n_pos": 1,
+   "det": {
+    "path": "trigger/event=move_to_battlefield",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10259783520851541
+   }
+  },
+  {
+   "atom": "trigger=play/self",
+   "family": "trigger",
+   "n_pos": 8,
+   "det": {
+    "path": "trigger/event=play",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.101289944245174
+   },
+   "loo_bacc_raw": 0.8125,
+   "loo_bacc_proj": 0.875,
+   "loo_bacc_init": 0.865,
+   "loo_bacc_trained": 0.8708333333333335,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "trigger=play_card/you",
+   "family": "trigger",
+   "n_pos": 1,
+   "det": {
+    "path": "trigger/event=play_card",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06406979918244445
+   }
+  },
+  {
+   "atom": "trigger=play_unit/any_player_here",
+   "family": "trigger",
+   "n_pos": 1,
+   "det": {
+    "path": "trigger/event=play_unit",
+    "present_iff_fact": false,
+    "missing_in": [],
+    "extra_in": [
+     "rengar_pridestalker"
+    ],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.12403473458920847
+   }
+  },
+  {
+   "atom": "trigger=play_unit/you",
+   "family": "trigger",
+   "n_pos": 1,
+   "det": {
+    "path": "trigger/event=play_unit",
+    "present_iff_fact": false,
+    "missing_in": [],
+    "extra_in": [
+     "star_spring"
+    ],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.14744195615489714
+   }
+  },
+  {
+   "atom": "trigger=win_combat/self",
+   "family": "trigger",
+   "n_pos": 1,
+   "det": {
+    "path": "trigger/event=win_combat",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08980265101338746
+   }
+  },
+  {
+   "atom": "ttype=AddEnergy:player",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddEnergy/target/type=player",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "chooser=owner"
+    ],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=AddPower:player",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddPower/target/type=player",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=Banish:unit",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Banish/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "ttype=Bounce:unit",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Bounce/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09253280850978352
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.4826086956521739,
+   "loo_bacc_trained": 0.4855072463768117,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=Buff:unit",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Buff/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "kind:activated@reaction/verb:AddPower/target/zone=player"
+    ],
+    "share": 0.102704627669473
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 0.9963768115942028,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=ChooseTarget:unit",
+   "family": "ttype",
+   "n_pos": 3,
+   "det": {
+    "path": "verb:ChooseTarget/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10234930309211454
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9977777777777778,
+   "loo_bacc_trained": 0.9981481481481481,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=Counter:spell",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Counter/target/type=spell",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10468904543845511
+   }
+  },
+  {
+   "atom": "ttype=CreateToken:unit",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:CreateToken/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07385391379343456
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.49347826086956526,
+   "loo_bacc_trained": 0.8333333333333334,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=DealDamage:ref",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:DealDamage/target/type=ref",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11093177413815956
+   }
+  },
+  {
+   "atom": "ttype=Draw:player",
+   "family": "ttype",
+   "n_pos": 7,
+   "det": {
+    "path": "verb:Draw/target/type=player",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10169581568620796
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.9878048780487805,
+   "loo_bacc_init": 0.975609756097561,
+   "loo_bacc_trained": 0.983739837398374,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=EnterReady:self",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:EnterReady/target/type=self",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07474350927519359
+   }
+  },
+  {
+   "atom": "ttype=GiveMight:ref",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:GiveMight/target/type=ref",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "f:power_cost_le"
+    ],
+    "share": 0.05546588706907978
+   }
+  },
+  {
+   "atom": "ttype=GiveMight:self",
+   "family": "ttype",
+   "n_pos": 3,
+   "det": {
+    "path": "verb:GiveMight/target/type=self",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "kind:additional_cost/verb:EnterReady/target/side=friendly"
+    ],
+    "share": 0.07803815882757635
+   },
+   "loo_bacc_raw": 0.8333333333333333,
+   "loo_bacc_proj": 0.6666666666666666,
+   "loo_bacc_init": 0.5888888888888888,
+   "loo_bacc_trained": 0.5481481481481482,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=GiveMight:unit",
+   "family": "ttype",
+   "n_pos": 9,
+   "det": {
+    "path": "verb:GiveMight/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10852703293618421
+   },
+   "loo_bacc_raw": 0.9444444444444444,
+   "loo_bacc_proj": 0.8888888888888888,
+   "loo_bacc_init": 0.8615384615384617,
+   "loo_bacc_trained": 0.8589743589743589,
+   "loo_bacc_ctrl_random": 0.5299145299145299,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=Kill:unit",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Kill/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.13130643285972254
+   }
+  },
+  {
+   "atom": "ttype=Move:unit",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Move/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11331628489886195
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.5434782608695652,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=PlayIgnoringCost:ref",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:PlayIgnoringCost/target/type=ref",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "ttype=Ready:self",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Ready/target/type=self",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.06669962641223687
+   },
+   "loo_bacc_raw": 0.75,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.5456521739130434,
+   "loo_bacc_trained": 0.4963768115942029,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=Ready:unit",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Ready/target/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10660035817780521
+   }
+  },
+  {
+   "atom": "ttype=Recycle:card",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Recycle/target/type=card",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10851594212632587
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9978260869565216,
+   "loo_bacc_trained": 0.9981884057971014,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=ReduceCost:self",
+   "family": "ttype",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:ReduceCost/target/type=self",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08871873632013941
+   }
+  },
+  {
+   "atom": "ttype=Reveal:card",
+   "family": "ttype",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Reveal/target/type=card",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10851594212632587
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9978260869565216,
+   "loo_bacc_trained": 0.9981884057971014,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "ttype=Score:player",
+   "family": "ttype",
+   "n_pos": 10,
+   "det": {
+    "path": "verb:Score/target/type=player",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11548209384461734
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9689473684210526,
+   "loo_bacc_trained": 0.9745614035087719,
+   "loo_bacc_ctrl_random": 0.5236842105263158,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "type=battlefield",
+   "family": "type",
+   "n_pos": 3,
+   "det": {
+    "path": "stats/type=battlefield",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.1208613892145709
+   },
+   "loo_bacc_raw": 0.6666666666666666,
+   "loo_bacc_proj": 0.6666666666666666,
+   "loo_bacc_init": 0.711111111111111,
+   "loo_bacc_trained": 0.6537037037037036,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "type=legend",
+   "family": "type",
+   "n_pos": 1,
+   "det": {
+    "path": "stats/type=legend",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.14744195615489714
+   }
+  },
+  {
+   "atom": "type=rune",
+   "family": "type",
+   "n_pos": 2,
+   "det": {
+    "path": "stats/type=rune",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "type=spell",
+   "family": "type",
+   "n_pos": 22,
+   "det": {
+    "path": "stats/type=spell",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10638057255173483
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9045454545454547,
+   "loo_bacc_trained": 0.9796037296037295,
+   "loo_bacc_ctrl_random": 0.4353146853146853,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "type=unit",
+   "family": "type",
+   "n_pos": 20,
+   "det": {
+    "path": "stats/type=unit",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.1036605200226818
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.975,
+   "loo_bacc_init": 0.9657142857142856,
+   "loo_bacc_trained": 0.9470238095238095,
+   "loo_bacc_ctrl_random": 0.4892857142857143,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=AddEnergy",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddEnergy",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=AddPower",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:AddPower",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.09759000729485333
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 1.0,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=Banish",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Banish",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "verb=Bounce",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Bounce",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "trigger/subject=here"
+    ],
+    "share": 0.09253280850978352
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.4826086956521739,
+   "loo_bacc_trained": 0.4855072463768117,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=Buff",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Buff",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "verb:Recycle/target/filters/f:type"
+    ],
+    "share": 0.102704627669473
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 1.0,
+   "loo_bacc_trained": 0.9963768115942028,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=ChooseTarget",
+   "family": "verb",
+   "n_pos": 3,
+   "det": {
+    "path": "verb:ChooseTarget",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10234930309211454
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9977777777777778,
+   "loo_bacc_trained": 0.9981481481481481,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=Counter",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Counter",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10468904543845511
+   }
+  },
+  {
+   "atom": "verb=CreateToken",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:CreateToken",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07385391379343456
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.75,
+   "loo_bacc_init": 0.49347826086956526,
+   "loo_bacc_trained": 0.8333333333333334,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=DealDamage",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:DealDamage",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11093177413815956
+   }
+  },
+  {
+   "atom": "verb=Draw",
+   "family": "verb",
+   "n_pos": 7,
+   "det": {
+    "path": "verb:Draw",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10169581568620796
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 0.9878048780487805,
+   "loo_bacc_init": 0.975609756097561,
+   "loo_bacc_trained": 0.983739837398374,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=EnterReady",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:EnterReady",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.07474350927519359
+   }
+  },
+  {
+   "atom": "verb=GiveMight",
+   "family": "verb",
+   "n_pos": 13,
+   "det": {
+    "path": "verb:GiveMight",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "kind:spell@main/verb:ChooseTarget/target/bind=A"
+    ],
+    "share": 0.09740951230595898
+   },
+   "loo_bacc_raw": 0.9615384615384616,
+   "loo_bacc_proj": 0.9230769230769231,
+   "loo_bacc_init": 0.8167032967032967,
+   "loo_bacc_trained": 0.8490842490842491,
+   "loo_bacc_ctrl_random": 0.5824175824175823,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=Kill",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:Kill",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.13130643285972254
+   }
+  },
+  {
+   "atom": "verb=Move",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Move",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11331628489886195
+   },
+   "loo_bacc_raw": 0.5,
+   "loo_bacc_proj": 0.5,
+   "loo_bacc_init": 0.5434782608695652,
+   "loo_bacc_trained": 0.7047101449275361,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=PlayIgnoringCost",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:PlayIgnoringCost",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08770580193070293
+   }
+  },
+  {
+   "atom": "verb=Ready",
+   "family": "verb",
+   "n_pos": 3,
+   "det": {
+    "path": "verb:Ready",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": false,
+    "slot_shared_with": [
+     "kind:spell@action/verb:Kill/target/side=any"
+    ],
+    "share": 0.07999987033409299
+   },
+   "loo_bacc_raw": 0.8333333333333333,
+   "loo_bacc_proj": 0.6666666666666666,
+   "loo_bacc_init": 0.6266666666666666,
+   "loo_bacc_trained": 0.6592592592592592,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=Recycle",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Recycle",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10851594212632587
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9978260869565216,
+   "loo_bacc_trained": 0.9981884057971014,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=ReduceCost",
+   "family": "verb",
+   "n_pos": 1,
+   "det": {
+    "path": "verb:ReduceCost",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.08871873632013941
+   }
+  },
+  {
+   "atom": "verb=Reveal",
+   "family": "verb",
+   "n_pos": 2,
+   "det": {
+    "path": "verb:Reveal",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.10851594212632587
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9978260869565216,
+   "loo_bacc_trained": 0.9981884057971014,
+   "loo_bacc_ctrl_random": 0.5,
+   "loo_bacc_ctrl_id": 0.5
+  },
+  {
+   "atom": "verb=Score",
+   "family": "verb",
+   "n_pos": 10,
+   "det": {
+    "path": "verb:Score",
+    "present_iff_fact": true,
+    "missing_in": [],
+    "extra_in": [],
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "share": 0.11548209384461734
+   },
+   "loo_bacc_raw": 1.0,
+   "loo_bacc_proj": 1.0,
+   "loo_bacc_init": 0.9689473684210526,
+   "loo_bacc_trained": 0.9745614035087719,
+   "loo_bacc_ctrl_random": 0.5236842105263158,
+   "loo_bacc_ctrl_id": 0.5
+  }
+ ],
+ "atom_families": {
+  "ability": {
+   "n_atoms": 6,
+   "det_present_iff": 5,
+   "det_slot_unique": 6,
+   "share": 0.10867106107868296,
+   "loo_init": 0.7915121191208149,
+   "loo_raw": 0.8546296296296295,
+   "loo_trained": 0.8233556633918951,
+   "loo_random": 0.49464239464239473,
+   "loo_id": 0.5,
+   "n_loo": 6,
+   "fails": [
+    "ability=spell"
+   ]
+  },
+  "amount": {
+   "n_atoms": 14,
+   "det_present_iff": 14,
+   "det_slot_unique": 14,
+   "share": 0.09999596174148337,
+   "loo_init": 0.8468903784935728,
+   "loo_raw": 0.8947256947636119,
+   "loo_trained": 0.8619860257662264,
+   "loo_random": 0.5014724310776942,
+   "loo_id": 0.5,
+   "n_loo": 8,
+   "fails": []
+  },
+  "chooser": {
+   "n_atoms": 1,
+   "det_present_iff": 1,
+   "det_slot_unique": 1,
+   "share": 0.08770580193070293,
+   "loo_init": null,
+   "loo_raw": null,
+   "loo_trained": null,
+   "loo_random": null,
+   "loo_id": null,
+   "n_loo": 0,
+   "fails": []
+  },
+  "cond": {
+   "n_atoms": 14,
+   "det_present_iff": 14,
+   "det_slot_unique": 12,
+   "share": 0.09764519466105645,
+   "loo_init": 0.6928864734299517,
+   "loo_raw": 0.6847826086956522,
+   "loo_trained": 0.7120772946859902,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 4,
+   "fails": []
+  },
+  "dest": {
+   "n_atoms": 4,
+   "det_present_iff": 4,
+   "det_slot_unique": 4,
+   "share": 0.10171779505955258,
+   "loo_init": 0.4826086956521739,
+   "loo_raw": 0.5,
+   "loo_trained": 0.4855072463768117,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 1,
+   "fails": []
+  },
+  "dur": {
+   "n_atoms": 2,
+   "det_present_iff": 2,
+   "det_slot_unique": 2,
+   "share": 0.09892463000909478,
+   "loo_init": 0.836111111111111,
+   "loo_raw": 0.9444444444444444,
+   "loo_trained": 0.8680555555555557,
+   "loo_random": 0.513888888888889,
+   "loo_id": 0.5,
+   "n_loo": 1,
+   "fails": []
+  },
+  "kw": {
+   "n_atoms": 9,
+   "det_present_iff": 9,
+   "det_slot_unique": 8,
+   "share": 0.08962412657939035,
+   "loo_init": 0.726549192634127,
+   "loo_raw": 0.79,
+   "loo_trained": 0.7589885457200928,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 5,
+   "fails": []
+  },
+  "kwval": {
+   "n_atoms": 1,
+   "det_present_iff": 1,
+   "det_slot_unique": 1,
+   "share": 0.10071522365825528,
+   "loo_init": null,
+   "loo_raw": null,
+   "loo_trained": null,
+   "loo_random": null,
+   "loo_id": null,
+   "n_loo": 0,
+   "fails": []
+  },
+  "once": {
+   "n_atoms": 1,
+   "det_present_iff": 1,
+   "det_slot_unique": 1,
+   "share": 0.12403473458920847,
+   "loo_init": null,
+   "loo_raw": null,
+   "loo_trained": null,
+   "loo_random": null,
+   "loo_id": null,
+   "n_loo": 0,
+   "fails": []
+  },
+  "optional": {
+   "n_atoms": 2,
+   "det_present_iff": 2,
+   "det_slot_unique": 2,
+   "share": 0.1061655195982647,
+   "loo_init": 0.5434782608695652,
+   "loo_raw": 0.5,
+   "loo_trained": 0.7047101449275361,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 1,
+   "fails": []
+  },
+  "playmode": {
+   "n_atoms": 2,
+   "det_present_iff": 2,
+   "det_slot_unique": 2,
+   "share": 0.0886628566596128,
+   "loo_init": 0.7661067193675889,
+   "loo_raw": 0.875,
+   "loo_trained": 0.8059535573122529,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 2,
+   "fails": []
+  },
+  "playwhere": {
+   "n_atoms": 2,
+   "det_present_iff": 0,
+   "det_slot_unique": 2,
+   "share": 0.0886628566596128,
+   "loo_init": 0.7661067193675889,
+   "loo_raw": 0.875,
+   "loo_trained": 0.8059535573122529,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 2,
+   "fails": [
+    "playwhere=ambush:battlefield",
+    "playwhere=from_facedown:battlefield"
+   ]
+  },
+  "side": {
+   "n_atoms": 25,
+   "det_present_iff": 25,
+   "det_slot_unique": 24,
+   "share": 0.09524662795698578,
+   "loo_init": 0.8244970658222146,
+   "loo_raw": 0.8743528999799903,
+   "loo_trained": 0.8464620954684379,
+   "loo_random": 0.5071088099934253,
+   "loo_id": 0.5,
+   "n_loo": 13,
+   "fails": []
+  },
+  "supertype": {
+   "n_atoms": 4,
+   "det_present_iff": 3,
+   "det_slot_unique": 3,
+   "share": 0.08925694649873181,
+   "loo_init": 0.8105232558139535,
+   "loo_raw": 0.8544573643410853,
+   "loo_trained": 0.6533837490169643,
+   "loo_random": 0.4875,
+   "loo_id": 0.5,
+   "n_loo": 3,
+   "fails": [
+    "supertype=none"
+   ]
+  },
+  "timing": {
+   "n_atoms": 3,
+   "det_present_iff": 3,
+   "det_slot_unique": 2,
+   "share": 0.10437642886875916,
+   "loo_init": 0.7997157622739017,
+   "loo_raw": 0.8333333333333334,
+   "loo_trained": 0.8463393626184325,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 3,
+   "fails": []
+  },
+  "trigger": {
+   "n_atoms": 9,
+   "det_present_iff": 5,
+   "det_slot_unique": 9,
+   "share": 0.10118665694576197,
+   "loo_init": 0.6622463768115943,
+   "loo_raw": 0.6041666666666666,
+   "loo_trained": 0.6966787439613528,
+   "loo_random": 0.5,
+   "loo_id": 0.5,
+   "n_loo": 3,
+   "fails": [
+    "trigger=conquer/here",
+    "trigger=conquer/self",
+    "trigger=play_unit/any_player_here",
+    "trigger=play_unit/you"
+   ]
+  },
+  "ttype": {
+   "n_atoms": 23,
+   "det_present_iff": 23,
+   "det_slot_unique": 19,
+   "share": 0.09631647441968738,
+   "loo_init": 0.8181165584243667,
+   "loo_raw": 0.8591269841269842,
+   "loo_trained": 0.848303789685578,
+   "loo_random": 0.5038284814600604,
+   "loo_id": 0.5,
+   "n_loo": 14,
+   "fails": []
+  },
+  "type": {
+   "n_atoms": 5,
+   "det_present_iff": 5,
+   "det_slot_unique": 5,
+   "share": 0.11518688904774761,
+   "loo_init": 0.8953427128427128,
+   "loo_raw": 0.9166666666666666,
+   "loo_trained": 0.8950828107078106,
+   "loo_random": 0.48115009990009994,
+   "loo_id": 0.5,
+   "n_loo": 4,
+   "fails": []
+  },
+  "verb": {
+   "n_atoms": 20,
+   "det_present_iff": 20,
+   "det_slot_unique": 16,
+   "share": 0.09886786154349897,
+   "loo_init": 0.8385324813054387,
+   "loo_raw": 0.8688362919132151,
+   "loo_trained": 0.8831613265557609,
+   "loo_random": 0.5081616763802999,
+   "loo_id": 0.5,
+   "n_loo": 13,
+   "fails": []
+  }
+ },
+ "c3_numbers": {
+  "energy": {
+   "det": {
+    "path": "stats/energy",
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "exactly_linear": true,
+    "monotonic_spearman": 1.0,
+    "encoding": "raw value"
+   },
+   "raw": {
+    "n": 40.0,
+    "loo_r2": 0.9626847493015471,
+    "loo_spearman": 0.8557223264540338,
+    "loo_mae": 0.1347660213617296
+   },
+   "proj": {
+    "n": 40.0,
+    "loo_r2": 0.9235263047765279,
+    "loo_spearman": 0.8463414634146341,
+    "loo_mae": 0.26757904999003024
+   },
+   "init": {
+    "n": 40.0,
+    "loo_r2": 0.7796813116885783,
+    "loo_spearman": 0.7954221388367732,
+    "loo_mae": 0.4418767579748466
+   },
+   "trained": {
+    "n": 40.0,
+    "loo_r2": 0.8679607278012574,
+    "loo_spearman": 0.7933395872420265,
+    "loo_mae": 0.33352171546177195
+   },
+   "ctrl_random": {
+    "n": 40.0,
+    "loo_r2": -0.37084284495547126,
+    "loo_spearman": -0.07692307692307694,
+    "loo_mae": 1.1487298541677802
+   },
+   "ctrl_id": {
+    "n": 40.0,
+    "loo_r2": -0.05193951347785242,
+    "loo_spearman": -0.951969981238274,
+    "loo_mae": 1.0448717948716244
+   }
+  },
+  "power": {
+   "det": {
+    "path": "stats/power",
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "exactly_linear": true,
+    "monotonic_spearman": 1.0,
+    "encoding": "raw value"
+   },
+   "raw": {
+    "n": 40.0,
+    "loo_r2": 0.9576448708910738,
+    "loo_spearman": 0.8666041275797374,
+    "loo_mae": 0.09538025881813969
+   },
+   "proj": {
+    "n": 40.0,
+    "loo_r2": 0.8964507883705743,
+    "loo_spearman": 0.827954971857411,
+    "loo_mae": 0.18688886072175193
+   },
+   "init": {
+    "n": 40.0,
+    "loo_r2": 0.54542608829356,
+    "loo_spearman": 0.7159099437148218,
+    "loo_mae": 0.42361207909071813
+   },
+   "trained": {
+    "n": 40.0,
+    "loo_r2": 0.7435949366778064,
+    "loo_spearman": 0.7874609130706692,
+    "loo_mae": 0.30557431102605453
+   },
+   "ctrl_random": {
+    "n": 40.0,
+    "loo_r2": -0.4884003004213737,
+    "loo_spearman": -0.12870544090056285,
+    "loo_mae": 0.8891932644011682
+   },
+   "ctrl_id": {
+    "n": 40.0,
+    "loo_r2": -0.05193951347802317,
+    "loo_spearman": -0.855347091932458,
+    "loo_mae": 0.7846153846153759
+   }
+  },
+  "might": {
+   "det": {
+    "path": "stats/might",
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "exactly_linear": true,
+    "monotonic_spearman": 1.0,
+    "encoding": "raw value"
+   },
+   "raw": {
+    "n": 20.0,
+    "loo_r2": 0.898906594428668,
+    "loo_spearman": 0.8977443609022555,
+    "loo_mae": 0.3169393132807795
+   },
+   "proj": {
+    "n": 20.0,
+    "loo_r2": 0.855391790494429,
+    "loo_spearman": 0.8917293233082706,
+    "loo_mae": 0.38678068843319924
+   },
+   "init": {
+    "n": 20.0,
+    "loo_r2": 0.7316828346568871,
+    "loo_spearman": 0.8249624060150376,
+    "loo_mae": 0.5643467904235694
+   },
+   "trained": {
+    "n": 20.0,
+    "loo_r2": 0.8999799658178418,
+    "loo_spearman": 0.8969924812030076,
+    "loo_mae": 0.33206417260695176
+   },
+   "ctrl_random": {
+    "n": 20.0,
+    "loo_r2": -0.08665313147380482,
+    "loo_spearman": 0.0,
+    "loo_mae": 1.095868973573085
+   },
+   "ctrl_id": {
+    "n": 20.0,
+    "loo_r2": -0.10803324099723555,
+    "loo_spearman": -0.9263157894736842,
+    "loo_mae": 1.1263157894737332
+   }
+  },
+  "kw_value:assault": {
+   "det": {
+    "path": "kw:assault/value",
+    "slot_unique": false,
+    "slot_shared_with": [
+     "kind:spell@main/verb:DealDamage/amount/ref=might_of:A"
+    ],
+    "exactly_linear": false,
+    "monotonic_spearman": 1.0,
+    "encoding": "log2(1+|n|) (signed), summed over effects"
+   },
+   "raw": {
+    "n": 20.0,
+    "loo_r2": -0.2797736420417636,
+    "loo_spearman": -0.1413533834586466,
+    "loo_mae": 0.25503863604479443
+   },
+   "proj": {
+    "n": 20.0,
+    "loo_r2": -0.277939730031737,
+    "loo_spearman": -0.2120300751879699,
+    "loo_mae": 0.25860082284581215
+   },
+   "init": {
+    "n": 20.0,
+    "loo_r2": -0.6696371653450064,
+    "loo_spearman": -0.12451127819548868,
+    "loo_mae": 0.3523301483052046
+   },
+   "trained": {
+    "n": 20.0,
+    "loo_r2": -0.8450831360748404,
+    "loo_spearman": -0.18045112781954886,
+    "loo_mae": 0.38188327872911354
+   },
+   "ctrl_random": {
+    "n": 20.0,
+    "loo_r2": -0.1726946061507313,
+    "loo_spearman": 0.007518796992481202,
+    "loo_mae": 0.22028331833953846
+   },
+   "ctrl_id": {
+    "n": 20.0,
+    "loo_r2": -0.10803324099724465,
+    "loo_spearman": -0.4496240601503759,
+    "loo_mae": 0.2000000000000129
+   }
+  },
+  "amount:GiveMight": {
+   "det": {
+    "path": "verb:GiveMight/amount/n",
+    "slot_unique": true,
+    "slot_shared_with": [],
+    "exactly_linear": false,
+    "monotonic_spearman": 1.0,
+    "encoding": "log2(1+|n|) (signed), summed over effects"
+   },
+   "raw": {
+    "n": 13.0,
+    "loo_r2": 0.38705177374770383,
+    "loo_spearman": 0.6868131868131868,
+    "loo_mae": 0.9495842349773203
+   },
+   "proj": {
+    "n": 13.0,
+    "loo_r2": 0.321100830792022,
+    "loo_spearman": 0.6813186813186813,
+    "loo_mae": 1.0610553968313672
+   },
+   "init": {
+    "n": 13.0,
+    "loo_r2": 0.2216942515293173,
+    "loo_spearman": 0.6604395604395605,
+    "loo_mae": 1.328098249455654
+   },
+   "trained": {
+    "n": 13.0,
+    "loo_r2": -0.8574240213385446,
+    "loo_spearman": 0.23168498168498167,
+    "loo_mae": 2.4178494840837996
+   },
+   "ctrl_random": {
+    "n": 13.0,
+    "loo_r2": -0.12021093191244425,
+    "loo_spearman": 0.1043956043956044,
+    "loo_mae": 1.830517658183384
+   },
+   "ctrl_id": {
+    "n": 13.0,
+    "loo_r2": -0.17361111111121375,
+    "loo_spearman": -0.9340659340659341,
+    "loo_mae": 1.9487179487178794
+   }
+  },
+  "amount:any_first": {
+   "det": null,
+   "raw": {
+    "n": 35.0,
+    "loo_r2": 0.5937654040022862,
+    "loo_spearman": 0.6593837535014005,
+    "loo_mae": 0.4012050752916301
+   },
+   "proj": {
+    "n": 35.0,
+    "loo_r2": 0.5280055197658091,
+    "loo_spearman": 0.5913165266106444,
+    "loo_mae": 0.5057413285891132
+   },
+   "init": {
+    "n": 35.0,
+    "loo_r2": 0.37563372234143194,
+    "loo_spearman": 0.5711484593837535,
+    "loo_mae": 0.8147877601919568
+   },
+   "trained": {
+    "n": 35.0,
+    "loo_r2": -0.009627042153077118,
+    "loo_spearman": 0.5517273576097106,
+    "loo_mae": 1.003805913141391
+   },
+   "ctrl_random": {
+    "n": 35.0,
+    "loo_r2": -0.23109425273587592,
+    "loo_spearman": -0.05434173669467787,
+    "loo_mae": 1.268423665633256
+   },
+   "ctrl_id": {
+    "n": 35.0,
+    "loo_r2": -0.05968858131474253,
+    "loo_spearman": -0.8014005602240897,
+    "loo_mae": 1.129411764705865
+   }
+  }
+ },
+ "c2_structure": [
+  {
+   "edit": "rampage: paid-condition gates the damage instead of the +2",
+   "family": "condition_gating",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20760401989668212,
+   "share_of_norm": 0.15688121948429423,
+   "init_rel": 0.20201020725848656,
+   "ln_rel": 0.19576173104118239,
+   "trained_rel": 0.10061817866291715,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rampage: +2 unconditional (paid branch removed)",
+   "family": "condition_gating",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 9,
+   "raw_rel": 0.23354968324845687,
+   "proj_rel": 0.21386047223761576,
+   "share_of_norm": 0.16639766120723934,
+   "init_rel": 0.1996557322956376,
+   "ln_rel": 0.19319735337355864,
+   "trained_rel": 0.11411896914559162,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "star_spring: not-token condition on the effect instead of the trigger",
+   "family": "condition_gating",
+   "base": "star_spring",
+   "graph_changed": true,
+   "dims_differ": 12,
+   "raw_rel": 0.2696799449852968,
+   "proj_rel": 0.27270840660675033,
+   "share_of_norm": 0.4296689244236597,
+   "init_rel": 0.2590376695955344,
+   "ln_rel": 0.2598225749068005,
+   "trained_rel": 0.14327379956854927,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "rampage: bind letters swapped (the +2 and the self-damage now hit the ENEMY unit)",
+   "family": "binding",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "sabotage: effect order reversed in ability 0 (Reveal -> Recycle)",
+   "family": "effect_order",
+   "base": "sabotage",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "thrill_of_the_hunt: effect order reversed in ability 0 (Banish -> PlayIgnoringCost)",
+   "family": "effect_order",
+   "base": "thrill_of_the_hunt",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "rampage: effect order reversed in ability 1 (ChooseTarget -> ChooseTarget -> GiveMight -> DealDamage -> DealDamage)",
+   "family": "effect_order",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "darius_trifarian: effect order reversed in ability 0 (GiveMight -> Ready)",
+   "family": "effect_order",
+   "base": "darius_trifarian",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "pyke_dockside_butcher: effect order reversed in ability 2 (Ready -> GiveMight)",
+   "family": "effect_order",
+   "base": "pyke_dockside_butcher",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "inferna: ability order reversed",
+   "family": "ability_order",
+   "base": "inferna",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "rampage: ability order reversed",
+   "family": "ability_order",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "pyke_dockside_butcher: ability order reversed",
+   "family": "ability_order",
+   "base": "pyke_dockside_butcher",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "kai_sa_survivor: ability order reversed",
+   "family": "ability_order",
+   "base": "kai_sa_survivor",
+   "graph_changed": true,
+   "dims_differ": 0,
+   "raw_rel": 0.0,
+   "proj_rel": 0.0,
+   "share_of_norm": 0.0,
+   "init_rel": 0.0,
+   "ln_rel": 0.0,
+   "trained_rel": 0.0,
+   "verdict": "FAIL (identical)"
+  },
+  {
+   "edit": "rengar_pridestalker: 'GiveMight' this turn -> permanent",
+   "family": "duration",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 3,
+   "raw_rel": 0.1348399724926484,
+   "proj_rel": 0.1266591218521857,
+   "share_of_norm": 0.25537695922762454,
+   "init_rel": 0.11864841700524176,
+   "ln_rel": 0.12020328834067291,
+   "trained_rel": 0.07450856440993835,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "punch_first: 'GiveMight' this turn -> permanent",
+   "family": "duration",
+   "base": "punch_first",
+   "graph_changed": true,
+   "dims_differ": 3,
+   "raw_rel": 0.1348399724926484,
+   "proj_rel": 0.13193578169252154,
+   "share_of_norm": 0.180846182623519,
+   "init_rel": 0.12496057596091378,
+   "ln_rel": 0.1255429852474182,
+   "trained_rel": 0.0737894560473575,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rampage: 'GiveMight' this turn -> permanent",
+   "family": "duration",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 3,
+   "raw_rel": 0.1348399724926484,
+   "proj_rel": 0.13258965258978092,
+   "share_of_norm": 0.09606973449052378,
+   "init_rel": 0.12938423626783196,
+   "ln_rel": 0.12596866641859908,
+   "trained_rel": 0.07250608538315768,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "darius_trifarian: 'GiveMight' this turn -> permanent",
+   "family": "duration",
+   "base": "darius_trifarian",
+   "graph_changed": true,
+   "dims_differ": 3,
+   "raw_rel": 0.1348399724926484,
+   "proj_rel": 0.12665912185218572,
+   "share_of_norm": 0.11097214741472868,
+   "init_rel": 0.1186484170052418,
+   "ln_rel": 0.11778993555868242,
+   "trained_rel": 0.07450856440993836,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "pyke_dockside_butcher: 'GiveMight' this turn -> permanent",
+   "family": "duration",
+   "base": "pyke_dockside_butcher",
+   "graph_changed": true,
+   "dims_differ": 3,
+   "raw_rel": 0.1348399724926484,
+   "proj_rel": 0.1266591218521857,
+   "share_of_norm": 0.12008213616898587,
+   "init_rel": 0.11864841700524179,
+   "ln_rel": 0.11791280818387588,
+   "trained_rel": 0.07450856440993835,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "thrill_of_the_hunt: location chosen by controller instead of owner",
+   "family": "chooser",
+   "base": "thrill_of_the_hunt",
+   "graph_changed": true,
+   "dims_differ": 6,
+   "raw_rel": 0.19069251784911845,
+   "proj_rel": 0.18896523158495274,
+   "share_of_norm": 0.21483446221182986,
+   "init_rel": 0.18622596549197182,
+   "ln_rel": 0.18399968322515367,
+   "trained_rel": 0.1068848195466763,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rengar_pridestalker: target chosen by the opponent",
+   "family": "chooser",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 4,
+   "raw_rel": 0.1556997888323046,
+   "proj_rel": 0.1502142142103117,
+   "share_of_norm": 0.29488391230979427,
+   "init_rel": 0.14070379506948355,
+   "ln_rel": 0.14086211919551062,
+   "trained_rel": 0.07956157814853469,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "punch_first: target chosen by the opponent",
+   "family": "chooser",
+   "base": "punch_first",
+   "graph_changed": true,
+   "dims_differ": 4,
+   "raw_rel": 0.1556997888323046,
+   "proj_rel": 0.1589465205553343,
+   "share_of_norm": 0.20882318443920983,
+   "init_rel": 0.1586003142185246,
+   "ln_rel": 0.15944237210757267,
+   "trained_rel": 0.0914807633067488,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "first_mate: target chosen by the opponent",
+   "family": "chooser",
+   "base": "first_mate",
+   "graph_changed": true,
+   "dims_differ": 4,
+   "raw_rel": 0.1556997888323046,
+   "proj_rel": 0.15023908789225587,
+   "share_of_norm": 0.21320071635561041,
+   "init_rel": 0.13764791674637147,
+   "ln_rel": 0.13821359649941112,
+   "trained_rel": 0.07817250031404771,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rengar_pridestalker: triggered -> static",
+   "family": "ability_kind",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 26,
+   "raw_rel": 0.3969581307590985,
+   "proj_rel": 0.4249447853346404,
+   "share_of_norm": 0.7518094115561123,
+   "init_rel": 0.3867684667879513,
+   "ln_rel": 0.39461457193154176,
+   "trained_rel": 0.2944724189695757,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "rengar_pridestalker: triggered -> activated (exhaust)",
+   "family": "ability_kind",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 29,
+   "raw_rel": 0.4192345116490003,
+   "proj_rel": 0.4269041352717643,
+   "share_of_norm": 0.7939992333804206,
+   "init_rel": 0.3956664821781326,
+   "ln_rel": 0.397348649263929,
+   "trained_rel": 0.2419752298622803,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "pit_rookie: triggered -> static",
+   "family": "ability_kind",
+   "base": "pit_rookie",
+   "graph_changed": true,
+   "dims_differ": 34,
+   "raw_rel": 0.4539389893593698,
+   "proj_rel": 0.4867722402272129,
+   "share_of_norm": 0.6146362971528592,
+   "init_rel": 0.49987185998705713,
+   "ln_rel": 0.5036514067716196,
+   "trained_rel": 0.3607025000757747,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "pit_rookie: triggered -> activated (exhaust)",
+   "family": "ability_kind",
+   "base": "pit_rookie",
+   "graph_changed": true,
+   "dims_differ": 37,
+   "raw_rel": 0.47354242074224373,
+   "proj_rel": 0.48705587768454256,
+   "share_of_norm": 0.6411794687223781,
+   "init_rel": 0.4865386268339552,
+   "ln_rel": 0.49214276948301894,
+   "trained_rel": 0.3291008547223055,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "first_mate: triggered -> static",
+   "family": "ability_kind",
+   "base": "first_mate",
+   "graph_changed": true,
+   "dims_differ": 24,
+   "raw_rel": 0.3813850356982369,
+   "proj_rel": 0.3921706780896334,
+   "share_of_norm": 0.5222329678670935,
+   "init_rel": 0.3824385100504615,
+   "ln_rel": 0.38581785531140345,
+   "trained_rel": 0.35104173895227664,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "first_mate: triggered -> activated (exhaust)",
+   "family": "ability_kind",
+   "base": "first_mate",
+   "graph_changed": true,
+   "dims_differ": 27,
+   "raw_rel": 0.40451991747794525,
+   "proj_rel": 0.4130325200690366,
+   "share_of_norm": 0.5539117094069973,
+   "init_rel": 0.3868011268396542,
+   "ln_rel": 0.3882172178536184,
+   "trained_rel": 0.29221832941566783,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "inferna: static Assault -> triggered on attack",
+   "family": "ability_kind",
+   "base": "inferna",
+   "graph_changed": true,
+   "dims_differ": 30,
+   "raw_rel": 0.4473776482322357,
+   "proj_rel": 0.4528552556517012,
+   "share_of_norm": 0.5787771485026613,
+   "init_rel": 0.44648860656630135,
+   "ln_rel": 0.4495912172940037,
+   "trained_rel": 0.31579585711959557,
+   "verdict": "PASS"
+  },
+  {
+   "edit": "rengar_pridestalker: trigger subject you -> self",
+   "family": "trigger",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 6,
+   "raw_rel": 0.19069251784911845,
+   "proj_rel": 0.1869636485599284,
+   "share_of_norm": 0.3611575592573076,
+   "init_rel": 0.18875152539764647,
+   "ln_rel": 0.18764569343894866,
+   "trained_rel": 0.11490431207112257,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rengar_pridestalker: GiveMight target side any -> enemy",
+   "family": "target_side",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20704659875414805,
+   "share_of_norm": 0.41702882811414954,
+   "init_rel": 0.21224217381001317,
+   "ln_rel": 0.2145827575503294,
+   "trained_rel": 0.12439752689486057,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "pit_rookie: Buff target side friendly -> enemy",
+   "family": "target_side",
+   "base": "pit_rookie",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.2116627755181054,
+   "share_of_norm": 0.29814239699997197,
+   "init_rel": 0.2197283739168568,
+   "ln_rel": 0.22012458075509728,
+   "trained_rel": 0.12143523425147186,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "sabotage: Reveal target side enemy -> friendly",
+   "family": "target_side",
+   "base": "sabotage",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.22349125669587544,
+   "share_of_norm": 0.30151134457776363,
+   "init_rel": 0.20465146188633448,
+   "ln_rel": 0.20460117295202324,
+   "trained_rel": 0.1296963623034956,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "punch_first: GiveMight target side any -> enemy",
+   "family": "target_side",
+   "base": "punch_first",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20550680088416565,
+   "share_of_norm": 0.29532057957186886,
+   "init_rel": 0.20239584997096732,
+   "ln_rel": 0.2021741675363789,
+   "trained_rel": 0.11626106883222542,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "grim_apothecary: Bounce target side friendly -> enemy",
+   "family": "target_side",
+   "base": "grim_apothecary",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.2240227098617252,
+   "share_of_norm": 0.280056016805602,
+   "init_rel": 0.20757796572767195,
+   "ln_rel": 0.20608929402577353,
+   "trained_rel": 0.12211495683841196,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "kinkou_initiate: Draw target side friendly -> enemy",
+   "family": "target_side",
+   "base": "kinkou_initiate",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20796274567861575,
+   "share_of_norm": 0.2546065198936782,
+   "init_rel": 0.1986597847687891,
+   "ln_rel": 0.19750947688246842,
+   "trained_rel": 0.11858271113696356,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "irresistible_faefolk: Move target side enemy -> friendly",
+   "family": "target_side",
+   "base": "irresistible_faefolk",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.22171792139386623,
+   "share_of_norm": 0.2901905000440047,
+   "init_rel": 0.20228960832500298,
+   "ln_rel": 0.20064280103051205,
+   "trained_rel": 0.12849163174752365,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "first_mate: Ready target side any -> enemy",
+   "family": "target_side",
+   "base": "first_mate",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20887317244980994,
+   "share_of_norm": 0.30151134457776363,
+   "init_rel": 0.20564119303097433,
+   "ln_rel": 0.20638757883045883,
+   "trained_rel": 0.11513720296538693,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "thrill_of_the_hunt: Banish target side friendly -> enemy",
+   "family": "target_side",
+   "base": "thrill_of_the_hunt",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.2117548476305601,
+   "share_of_norm": 0.24806946917841693,
+   "init_rel": 0.19779087167259185,
+   "ln_rel": 0.19457085532143462,
+   "trained_rel": 0.12050141420162004,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rampage: ChooseTarget target side friendly -> enemy",
+   "family": "target_side",
+   "base": "rampage",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.21258300047601916,
+   "share_of_norm": 0.15688121948429423,
+   "init_rel": 0.20005202913906853,
+   "ln_rel": 0.19441391235309313,
+   "trained_rel": 0.14617822204782946,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "ferrous_forerunner: CreateToken target side friendly -> enemy",
+   "family": "target_side",
+   "base": "ferrous_forerunner",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20501802769747993,
+   "share_of_norm": 0.17439223185360267,
+   "init_rel": 0.19917043749543423,
+   "ln_rel": 0.19293214528959046,
+   "trained_rel": 0.1144542718561351,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "kai_sa_survivor: Draw target side friendly -> enemy",
+   "family": "target_side",
+   "base": "kai_sa_survivor",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20796274567861583,
+   "share_of_norm": 0.211406569032676,
+   "init_rel": 0.1986597847687892,
+   "ln_rel": 0.1942709345095249,
+   "trained_rel": 0.11858271113696357,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "nidalee_cat_form: Draw target side friendly -> enemy",
+   "family": "target_side",
+   "base": "nidalee_cat_form",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20796274567861575,
+   "share_of_norm": 0.254000254000381,
+   "init_rel": 0.1986597847687891,
+   "ln_rel": 0.19665553317284437,
+   "trained_rel": 0.11858271113696357,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "emperor_s_dais: CreateToken target side friendly -> enemy",
+   "family": "target_side",
+   "base": "emperor_s_dais",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.20501802769748007,
+   "share_of_norm": 0.24338859423043155,
+   "init_rel": 0.19917043749543434,
+   "ln_rel": 0.19360266448017308,
+   "trained_rel": 0.11445427185613516,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "seat_of_power: Draw target side friendly -> enemy",
+   "family": "target_side",
+   "base": "seat_of_power",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.2079627456786158,
+   "share_of_norm": 0.4313310928137537,
+   "init_rel": 0.19865978476878915,
+   "ln_rel": 0.19846749806009573,
+   "trained_rel": 0.1185827111369636,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "star_spring: Move target side friendly -> enemy",
+   "family": "target_side",
+   "base": "star_spring",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.2217179213938662,
+   "share_of_norm": 0.3508232077228117,
+   "init_rel": 0.20228960832500306,
+   "ln_rel": 0.20226101414969336,
+   "trained_rel": 0.12849163174752368,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "body_rune: AddEnergy target side friendly -> enemy",
+   "family": "target_side",
+   "base": "body_rune",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.22546855202123875,
+   "share_of_norm": 0.2760262237369417,
+   "init_rel": 0.22445406212946967,
+   "ln_rel": 0.2268603724896598,
+   "trained_rel": 0.1389867895508585,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "fury_rune: AddEnergy target side friendly -> enemy",
+   "family": "target_side",
+   "base": "fury_rune",
+   "graph_changed": true,
+   "dims_differ": 8,
+   "raw_rel": 0.22019275302527214,
+   "proj_rel": 0.2254685520212388,
+   "share_of_norm": 0.2760262237369417,
+   "init_rel": 0.22445406212946972,
+   "ln_rel": 0.22667947031595875,
+   "trained_rel": 0.13898678955085847,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "thrill_of_the_hunt: replay only if the unit IS a token (neg flipped)",
+   "family": "condition_polarity",
+   "base": "thrill_of_the_hunt",
+   "graph_changed": true,
+   "dims_differ": 5,
+   "raw_rel": 0.17407765595569785,
+   "proj_rel": 0.16196009980781215,
+   "share_of_norm": 0.19611613513818404,
+   "init_rel": 0.1576648941725812,
+   "ln_rel": 0.156419774679893,
+   "trained_rel": 0.09468767796217221,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "star_spring: \"may move\" -> must move",
+   "family": "optional",
+   "base": "star_spring",
+   "graph_changed": true,
+   "dims_differ": 3,
+   "raw_rel": 0.1348399724926484,
+   "proj_rel": 0.14372869616006267,
+   "share_of_norm": 0.21483446221182986,
+   "init_rel": 0.1309455272988913,
+   "ln_rel": 0.13192407261342362,
+   "trained_rel": 0.07923621548869378,
+   "verdict": "WEAK"
+  },
+  {
+   "edit": "rengar_pridestalker: +1 -> +2",
+   "family": "amount",
+   "base": "rengar_pridestalker",
+   "graph_changed": true,
+   "dims_differ": 12,
+   "raw_rel": 0.23828588439069265,
+   "proj_rel": 0.24141328840854642,
+   "share_of_norm": 0.45129588398483333,
+   "init_rel": 0.22864977899397548,
+   "ln_rel": 0.2310849689329772,
+   "trained_rel": 0.13474975048348242,
+   "verdict": "WEAK"
+  }
+ ],
+ "c4_modal_classes": {
+  "thrill_of_the_hunt": {
+   "calls": [
+    "pickMode",
+    "pickValueAs"
+   ],
+   "prompt_kinds": [
+    "Location"
+   ],
+   "graph_modes": [],
+   "graph_dest": [
+    [
+     "PlayIgnoringCost",
+     "any_battlefield"
+    ]
+   ]
+  }
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "body"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0868_onslaught.cpp:41",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0868_onslaught.cpp:42",
+   "energy": "src/cards/spells/0868_onslaught.cpp:43",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "flow",
+   "_src": "src/cards/spells/0868_onslaught.cpp:45"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 4,
+    "_src": "src/cards/spells/0868_onslaught.cpp:29"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:8388"
+     },
+     "after": "resolve",
+     "_src": "src/engine/game_engine.cpp:8388"
+    }
+   ],
+   "_src": "src/cards/spells/0868_onslaught.cpp:29; src/engine/game_engine.cpp:8382-8392 (trash replay grant, banish_after)"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0868_onslaught.cpp:19-20"
+     },
+     "amount": {
+      "n": 6,
+      "_src": "src/cards/spells/0868_onslaught.cpp:27"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0868_onslaught.cpp:27"
+    }
+   ],
+   "_src": "src/cards/spells/0868_onslaught.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-081-166",
+  "class_file": "src/cards/spells/0868_onslaught.cpp",
+  "source": "engine_code",
+  "flags": [],
+  "confidence": "high",
+  "confidence_why": "direct executor calls with literal arguments"
+ }
+}
