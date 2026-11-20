@@ -1,0 +1,23 @@
+{
+ "threads": 14,
+ "sims_per_decision": 64,
+ "leaves": 4,
+ "perfect": false,
+ "searched_decisions": 1504,
+ "sims": 94240,
+ "fails": 0,
+ "terminals": 0,
+ "reexpand": 16149,
+ "mean_depth": 1.89,
+ "replay_steps_per_sim": 0.02,
+ "ms_per_sim_build": 0.2003,
+ "ms_per_sim_edit": 0.0979,
+ "ms_per_sim_descend": 0.1386,
+ "ms_per_sim_encode": 0.1294,
+ "ms_per_sim_teardown": 0.1085,
+ "ms_per_sim_cpp_total": 0.6746,
+ "wall_ms_per_sim": 0.058,
+ "collect_ms_per_sim": 0.053,
+ "sims_per_sec_wall": 17254.2,
+ "snap_ms_total": 75.5
+}

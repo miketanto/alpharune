@@ -1,0 +1,67 @@
+[
+ {
+  "decision": 17,
+  "chosen": "End Turn",
+  "chosen_prior": 0.461,
+  "chosen_visits": 145,
+  "chosen_q": 0.2,
+  "net_pick": "Play Irresistible Faefolk #674(1M) -> Base",
+  "net_prior": 0.481,
+  "net_visits": 49,
+  "net_q": -0.01,
+  "total": 199,
+  "value": 0.09
+ },
+ {
+  "decision": 109,
+  "chosen": "Move Ferrous Forerunner #344 -> Star Spring",
+  "chosen_prior": 0.285,
+  "chosen_visits": 107,
+  "chosen_q": 0.76,
+  "net_pick": "Play Rampage #870[S]",
+  "net_prior": 0.519,
+  "net_visits": 62,
+  "net_q": 0.57,
+  "total": 199,
+  "value": 0.65
+ },
+ {
+  "decision": 118,
+  "chosen": "Play Inferna #560(1M) -> Star Spring",
+  "chosen_prior": 0.5,
+  "chosen_visits": 110,
+  "chosen_q": 0.85,
+  "net_pick": "Play Inferna #560(1M) -> Star Spring",
+  "net_prior": 0.5,
+  "net_visits": 87,
+  "net_q": 0.8,
+  "total": 199,
+  "value": 0.72
+ },
+ {
+  "decision": 134,
+  "chosen": "Assign Damage: Rengar, Trophy Hunter #682(8), Inferna #560(7)",
+  "chosen_prior": 0.5,
+  "chosen_visits": 100,
+  "chosen_q": 0.93,
+  "net_pick": "Assign Damage: Inferna #560(1), Rengar, Trophy Hunter #682(14)",
+  "net_prior": 0.5,
+  "net_visits": 99,
+  "net_q": 0.93,
+  "total": 199,
+  "value": 0.9
+ },
+ {
+  "decision": 138,
+  "chosen": "Assign Damage: Kinkou Initiate #659(3), Sand Soldier(6)",
+  "chosen_prior": 0.5,
+  "chosen_visits": 100,
+  "chosen_q": 0.94,
+  "net_pick": "Assign Damage: Sand Soldier(2), Kinkou Initiate #659(7)",
+  "net_prior": 0.5,
+  "net_visits": 99,
+  "net_q": 0.94,
+  "total": 199,
+  "value": 0.89
+ }
+]

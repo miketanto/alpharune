@@ -1,0 +1,22 @@
+{
+ "games": 200,
+ "errors": 0,
+ "leak": {
+  "dec_main": 7142,
+  "dec_other": 18986,
+  "worlds_main": 57136,
+  "worlds_other": 151888,
+  "mismatch_main": 0,
+  "mismatch_other": 0,
+  "worlds_differ": 209024,
+  "check_problems": 0,
+  "build_fail": 0,
+  "opp_hidden_compared": 6963104,
+  "opp_hidden_redrawn": 6934410,
+  "control_opp_view_differs": 209024
+ },
+ "first_mismatch": "",
+ "secs": 15.8,
+ "worlds_per_decision": 8,
+ "strict_vis": true
+}

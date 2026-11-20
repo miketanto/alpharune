@@ -33,6 +33,8 @@ def main():
     ap.add_argument('--name1', default='P1 net')
     ap.add_argument('--name2', default='P2 net')
     ap.add_argument('--greedy', action='store_true')
+    ap.add_argument('--deck', default='rengar', help='P1 deck (both seats unless --deck2)')
+    ap.add_argument('--deck2', default='', help='P2 deck')
     ap.add_argument('--out', required=True)
     a = ap.parse_args()
     torch.manual_seed(a.seed)
@@ -40,7 +42,7 @@ def main():
     os.makedirs(a.out, exist_ok=True)
     mode = 'greedy' if a.greedy else 'sampled'
     labels = ('%s (%s)' % (a.name1, mode), '%s (%s)' % (a.name2, mode))
-    env = RBEnv(1, 'rengar', 'rengar', a.seed, autopay=True, opponent=None,
+    env = RBEnv(1, a.deck, a.deck2 or a.deck, a.seed, autopay=True, opponent=None,
                 viz_dir=os.path.abspath(a.out), opp_seat=0, labels=labels)
     assert env.schema_version() == 4, env.schema_version()
     nets = {1: load_net(a.ckpt, env.dims), 2: load_net(a.ckpt2, env.dims)}

@@ -1,0 +1,22 @@
+{
+ "games": 60,
+ "errors": 0,
+ "leak": {
+  "dec_main": 2230,
+  "dec_other": 6448,
+  "worlds_main": 17840,
+  "worlds_other": 51584,
+  "mismatch_main": 28,
+  "mismatch_other": 134,
+  "worlds_differ": 69424,
+  "check_problems": 0,
+  "build_fail": 0,
+  "opp_hidden_compared": 2270272,
+  "opp_hidden_redrawn": 2260804,
+  "control_opp_view_differs": 69424
+ },
+ "first_mismatch": "game 48 pk 3: tok[73] tok 3 truth [1,24,2,2,3,0,1,0,0,1,0,0,0,0,0,0,-1,0,0,-1,-1,-1,0,0] obj 16 irresistible_faefolk zone 3 owner 1 vis 1 world [1,1,2,2,10,-1,0,0,0,0,0,0,0,1,0,0,-1,0,0,-1,-1,-1,0,0] obj 37 other:mischievous_marai zone 10 owner 1 vis 0 | truth tok 7 [1,42,2,2,10,-1,0,0,0,0,0,0,0,1,0,0,-1,0,0,-1,-1,-1,0,0] obj 37 pyke_dockside_butcher zone 10 owner 1 vis 1",
+ "secs": 7.2,
+ "worlds_per_decision": 8,
+ "strict_vis": false
+}

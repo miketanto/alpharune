@@ -1,0 +1,12 @@
+{
+ "phase_no": 16,
+ "last_rate_t": 1795200257.9123087,
+ "rated": [
+  "az_main@30",
+  "az_main@100",
+  "az_main@200",
+  "az_main@250",
+  "az_main@300"
+ ],
+ "fails": 0
+}

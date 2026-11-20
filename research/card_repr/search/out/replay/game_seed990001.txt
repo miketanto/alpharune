@@ -1,0 +1,445 @@
+game seed 990001   P1 = search N=200 (net league_02080)   P2 = network greedy (league_02080)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[NET] Mull: Sabotage
+        net: pick 99.8% | v +0.38
+~ P1 brings Emperor's Dais
+~ P2 brings Star Spring
+~ P1 opening hand: Grim Apothecary, Ferrous Forerunner, Pakaa Cub, Sabotage
+~ P2 opening hand: Grim Apothecary, Kai'Sa, Survivor, First Mate, Sabotage
+~ P2 set aside Sabotage
+~ P2 drew replacement Pit Rookie
+  P1[NET] Mull: Sabotage
+        net: pick 99.0% | alt: Mull: Grim Apothecary Sabotage 0.5% | v +0.20
+~ P1 set aside Sabotage
+~ P1 drew replacement Inferna
+
+=== TURN 0 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Pit Rookie(2M) -> Base
+        net: pick 100.0% | v +0.42
+    ~ play Pit Rookie (Unit, 2E)
+  P2[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 99.6% | v +0.45
+    ~ effect: give Pit Rookie 1 [M] this turn
+
+=== TURN 1 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Play Grim Apothecary(3M) -> Base
+        net: pick 89.9% | alt: Play Irresistible Faefolk(1M) -> Base 9.0% | v +0.41
+    ~ play Grim Apothecary (Unit, 3E)
+  P1[NET] Order — Pridestalker (Grim Apothecary)
+        net: pick 99.5% | alt: Order — Grim Apothecary 0.5% | v +0.33
+  P1[NET] Choose: Grim Apothecary@Base
+        net: pick 92.5% | alt: Choose: Pit Rookie@Base 7.5% | v +0.33
+    ~ effect: give Grim Apothecary 1 [M] this turn
+
+=== TURN 2 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Move Pit Rookie -> Star Spring
+        net: pick 97.2% | v +0.28
+    ~ move Pit Rookie -> Star Spring
+  P2[NET] Pass Focus
+        net: pick 100.0% | v +0.33
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 0 - P2 1
+  P2[NET] Play First Mate(3M) -> Base
+        net: pick 88.0% | v +0.38
+    ~ play First Mate (Unit, 3E)
+  P2[NET] Order — Pridestalker (First Mate)
+        net: pick 52.6% | v +0.35
+  P2[NET] Choose: Pit Rookie@BF
+        net: pick 65.3% | v +0.34
+  P2[NET] Choose: Pit Rookie@BF
+        net: pick 100.0% | v +0.36
+    ~ effect: give Pit Rookie 1 [M] this turn
+  P2[NET] Move Pit Rookie -> Base
+        net: pick 100.0% | v +0.37
+    ~ move Pit Rookie -> Base(P2)
+
+=== TURN 3 (P1, ISMCTS)   score P1 0 - P2 1 ===
+  P1[NET] Move Grim Apothecary -> Star Spring
+        net: pick 81.4% | alt: Play Irresistible Faefolk(1M) -> Base 10.1% | v +0.12
+    ~ move Grim Apothecary -> Star Spring
+  P1[NET] Pass Focus
+        net: pick 99.5% | alt: Play Inferna(1M) -> Star Spring 0.5% | v +0.10
+    ~ P1 conquers Star Spring
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 1
+  P1[NET] End Turn
+        net: pick 72.9% | alt: Play Irresistible Faefolk(1M) -> Base 24.6% | v +0.09
+
+=== TURN 4 (P2, NET)   score P1 1 - P2 1 ===
+  P2[NET] Play Irresistible Faefolk(1M) -> Base
+        net: pick 79.1% | v +0.20
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P2[NET] Choose: First Mate@Base
+        net: pick 74.0% | v +0.18
+  P2[NET] Pass Priority
+        net: pick 100.0% | v +0.16
+  P1[NET] Pass Priority
+        net: pick 99.5% | alt: Play Rengar, Trophy Hunter(6M) -> Star Spring 0.5% | v -0.03
+    ~ effect: give First Mate 1 [M] this turn
+  P2[NET] Play Kinkou Initiate(3M) -> Base
+        net: pick 94.5% | v +0.25
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 90.6% | v +0.13
+  P2[NET] Choose: First Mate@Base
+        net: pick 84.9% | v +0.12
+  P1[NET] Pass Priority
+        net: pick 99.5% | alt: Play Rengar, Trophy Hunter(6M) -> Star Spring 0.5% | v +0.11
+    ~ effect: give First Mate 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 99.5% | alt: Play Rengar, Trophy Hunter(6M) -> Star Spring 0.5% | v +0.13
+  P2[NET] Move First Mate -> Star Spring
+        net: pick 95.5% | v +0.32
+  P2[NET] Move no more units
+        net: pick 75.9% | v +0.40
+    ~ move First Mate -> Star Spring
+  P1[NET] Play Rengar, Trophy Hunter(6M) -> Star Spring
+        net: pick 99.5% | alt: Play Inferna(1M) -> Star Spring 0.5% | v -0.04
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P1[NET] Order — Star Spring (Rengar, Trophy Hunter)
+        net: pick 57.3% | alt: Order — Pridestalker (Rengar, Trophy Hunter) 42.7% | v +0.01
+  P1[NET] No — Star Spring: move another unit here to its base?
+        net: pick 99.5% | alt: Yes — Star Spring: move another unit here to its base? 0.5% | v +0.00
+  P1[NET] Choose: Grim Apothecary@BF
+        net: pick 92.5% | alt: Choose: Rengar, Trophy Hunter@BF 7.0% | v +0.01
+    ~ effect: give Grim Apothecary 1 [M] this turn
+    ~ COMBAT at Star Spring: P2 attacks [First Mate(5M)]  vs  P1 defends [Grim Apothecary(4M), Rengar, Trophy Hunter(6M)]
+  P2[NET] Assign Damage: Grim Apothecary(4), Rengar, Trophy Hunter(1)
+        net: pick 77.3% | v +0.32
+    ~ KILL First Mate (5M, dmg=10)
+    ~ KILL Grim Apothecary (4M, dmg=4)
+  P2[NET] Move Pit Rookie -> Emperor's Dais
+        net: pick 99.9% | v -0.03
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P2[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 97.9% | v -0.07
+    ~ effect: bounce Pit Rookie to hand
+  P2[NET] Choose: Sand Soldier@BF
+        net: pick 78.4% | v -0.00
+    ~ effect: give Sand Soldier 1 [M] this turn
+
+=== TURN 5 (P1, ISMCTS)   score P1 1 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Star Spring)   -> P1 2 - P2 2
+  P1[NET] Play Ferrous Forerunner(6M) -> Star Spring
+        net: pick 99.0% | alt: Play Ferrous Forerunner(6M) -> Base 0.5% | v +0.23
+    ~ play Ferrous Forerunner (Unit, 6E)
+  P1[NET] Order — Star Spring (Ferrous Forerunner)
+        net: pick 58.8% | alt: Order — Pridestalker (Ferrous Forerunner) 41.2% | v +0.16
+  P1[NET] Yes — Star Spring: move another unit here to its base?
+        net: pick 78.9% | alt: No — Star Spring: move another unit here to its base? 21.1% | v +0.13
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 75.4% | alt: Choose: Irresistible Faefolk@Base 13.1% | v +0.21
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Move Rengar, Trophy Hunter -> Emperor's Dais
+        net: pick 98.0% | alt: Hide Pakaa Cub(3M) @ Star Spring 1.0% | v +0.34
+    ~ move Rengar, Trophy Hunter -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Rengar, Trophy Hunter(7M)]  vs  P2 defends [Sand Soldier(2M)]
+    ~ KILL Sand Soldier (2M, dmg=7)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 3 - P2 2
+  P1[NET] Hide Pakaa Cub(3M) @ Star Spring
+        net: pick 81.4% | alt: Hide Pakaa Cub(3M) @ Emperor's Dais 18.1% | v +0.31
+    ~ hide Pakaa Cub at Star Spring by P1
+
+=== TURN 6 (P2, NET)   score P1 3 - P2 2 ===
+  P2[NET] Play Pit Rookie(2M) -> Base
+        net: pick 99.3% | v -0.25
+    ~ play Pit Rookie (Unit, 2E)
+  P2[NET] Order — Pit Rookie
+        net: pick 94.9% | v -0.26
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 99.6% | v -0.24
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 99.2% | v -0.27
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.20
+  P1[NET] Pass Priority
+        net: pick 95.0% | alt: Play Pakaa Cub(3M) 5.0% | v +0.38
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.19
+  P1[NET] Pass Priority
+        net: pick 96.0% | alt: Play Pakaa Cub(3M) 4.0% | v +0.41
+    ~ effect: [Buff] Kinkou Initiate (+1 permanent) -> 5M
+  P2[NET] Play Kinkou Initiate(3M) -> Base
+        net: pick 98.1% | v -0.21
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 99.2% | v -0.15
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 98.3% | v -0.18
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.10
+  P1[NET] Pass Priority
+        net: pick 92.0% | alt: Play Pakaa Cub(3M) 8.0% | v +0.41
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.05
+  P1[NET] Pass Priority
+        net: pick 93.5% | alt: Play Pakaa Cub(3M) 6.5% | v +0.41
+  P2[NET] Move Kinkou Initiate -> Emperor's Dais
+        net: pick 56.8% | v +0.02
+  P2[NET] Move no more units
+        net: pick 97.8% | v +0.01
+    ~ move Kinkou Initiate -> Emperor's Dais
+  P2[NET] Pass Focus
+        net: pick 99.3% | v +0.00
+  P1[NET] Play Pakaa Cub(3M)
+        net: pick 98.5% | alt: Pass Focus 1.5% | v +0.08
+  P1[NET] Order — Star Spring (Pakaa Cub)
+        net: pick 58.8% | alt: Order — Pridestalker (Pakaa Cub) 41.2% | v +0.15
+  P1[NET] No — Star Spring: move another unit here to its base?
+        net: pick 99.5% | alt: Yes — Star Spring: move another unit here to its base? 0.5% | v +0.12
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 99.5% | alt: Choose: Ferrous Forerunner@BF 0.5% | v +0.08
+  P2[NET] Pass Priority
+        net: pick 99.9% | v -0.11
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Pass Focus
+        net: pick 75.1% | v -0.10
+    ~ COMBAT at Emperor's Dais: P2 attacks [Kinkou Initiate(6M)]  vs  P1 defends [Rengar, Trophy Hunter(7M)]
+    ~ KILL Kinkou Initiate (6M, dmg=7)
+  P2[NET] Play Grim Apothecary(3M) -> Base
+        net: pick 29.3% | v -0.65
+    ~ play Grim Apothecary (Unit, 3E)
+  P2[NET] Order — Grim Apothecary
+        net: pick 99.0% | v -0.54
+  P2[NET] Choose: Irresistible Faefolk@Base
+        net: pick 92.0% | v -0.59
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 97.1% | v -0.60
+
+=== TURN 7 (P1, ISMCTS)   score P1 3 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 4 - P2 2
+    ~ SCORE P1 +1 (Hold Star Spring)   -> P1 5 - P2 2
+  P1[NET] Play Pit Rookie(2M) -> Base
+        net: pick 33.7% | alt: Play Irresistible Faefolk(1M) -> Base 26.6% | v +0.76
+    ~ play Pit Rookie (Unit, 2E)
+  P1[NET] Order — Pit Rookie
+        net: pick 75.4% | alt: Order — Pridestalker (Pit Rookie) 24.6% | v +0.75
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 50.3% | alt: Choose: Ferrous Forerunner@BF 37.7% | v +0.74
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 25.1% | alt: Choose: Pakaa Cub@BF 16.6% | v +0.70
+  P1[NET] Pass Priority
+        net: pick 98.0% | alt: Play Inferna(1M) -> Emperor's Dais 0.5% | v +0.74
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 98.0% | alt: Play Inferna(1M) -> Emperor's Dais 0.5% | v +0.74
+    ~ effect: [Buff] Rengar, Trophy Hunter (+1 permanent) -> 8M
+  P1[NET] Play Rampage[S]
+        net: pick 41.7% | alt: Move Rengar, Trophy Hunter -> Base 21.6% | v +0.74
+    ~ spell Rampage targets=[]
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 97.5% | alt: Choose: Pakaa Cub@BF 1.0% | v +0.80
+  P1[NET] Choose: Grim Apothecary@Base
+        net: pick 82.9% | alt: Choose: Kinkou Initiate@Base 15.6% | v +0.79
+  P1[NET] Choose: =1
+        net: pick 99.0% | alt: Choose: =0 1.0% | v +0.77
+    ~ additional_cost: Rampage paid optional additional cost
+    ~ effect: give Rengar, Trophy Hunter 2 [M] this turn
+    ~ effect: deal 10 damage to Grim Apothecary (id=91, was 0/3M)
+    ~ effect: deal 3 damage to Rengar, Trophy Hunter (id=2, was 0/10M)
+    ~ effect: kill Grim Apothecary
+  P1[NET] Move Rengar, Trophy Hunter -> Base
+        net: pick 67.8% | alt: Move Pakaa Cub -> Base 25.1% | v +0.56
+  P1[NET] Move no more units
+        net: pick 46.7% | alt: Choose: Pakaa Cub@BF 28.1% | v +0.53
+    ~ move Rengar, Trophy Hunter -> Base(P1)
+  P1[NET] Move Pakaa Cub -> Base
+        net: pick 78.9% | alt: Move Ferrous Forerunner -> Base 20.6% | v +0.66
+  P1[NET] Choose: Ferrous Forerunner@BF
+        net: pick 60.3% | alt: Move no more units 39.7% | v +0.64
+    ~ move Pakaa Cub -> Base(P1)
+    ~ move Ferrous Forerunner -> Base(P1)
+
+=== TURN 8 (P2, NET)   score P1 5 - P2 2 ===
+  P2[NET] Move Irresistible Faefolk -> Star Spring
+        net: pick 42.3% | v -0.74
+  P2[NET] Move no more units
+        net: pick 97.1% | v -0.71
+    ~ move Irresistible Faefolk -> Star Spring
+  P2[NET] Yes — Irresistible Faefolk: move an enemy unit to my battlefield?
+        net: pick 99.8% | v -0.78
+  P2[NET] Choose: Pakaa Cub@Base
+        net: pick 71.3% | v -0.75
+  P2[NET] Pass Priority
+        net: pick 99.8% | v -0.77
+  P2[NET] Play Inferna(1M) -> Star Spring
+        net: pick 43.2% | v -0.76
+    ~ play Inferna (Unit, 2E)
+  P2[NET] Order — Star Spring (Inferna)
+        net: pick 88.5% | v -0.82
+  P2[NET] No — Star Spring: move another unit here to its base?
+        net: pick 100.0% | v -0.84
+  P2[NET] Choose: Irresistible Faefolk@BF
+        net: pick 49.1% | v -0.83
+  P2[NET] Pass Priority
+        net: pick 99.8% | v -0.83
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+  P2[NET] Pass Focus
+        net: pick 100.0% | v -0.81
+    ~ COMBAT at Star Spring: P2 attacks [Inferna(3M), Irresistible Faefolk(2M)]  vs  P1 defends [Pakaa Cub(3M)]
+  P1[NET] Assign Damage: Irresistible Faefolk(2), Inferna(1)
+        net: pick 98.5% | alt: Assign Damage: Inferna(3) 1.5% | v +0.60
+    ~ KILL Irresistible Faefolk (2M, dmg=2)
+    ~ KILL Pakaa Cub (3M, dmg=5)
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 5 - P2 3
+  P2[NET] Move Kinkou Initiate -> Emperor's Dais
+        net: pick 71.9% | v -0.81
+  P2[NET] Choose: Pit Rookie@Base
+        net: pick 52.9% | v -0.80
+    ~ move Kinkou Initiate -> Emperor's Dais
+    ~ move Pit Rookie -> Emperor's Dais
+  P2[NET] Pass Focus
+        net: pick 100.0% | v -0.80
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 5 - P2 4
+  P2[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 90.8% | v -0.82
+  P2[NET] Choose: Pit Rookie@BF
+        net: pick 82.0% | v -0.79
+    ~ effect: bounce Pit Rookie to hand
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.80
+  P2[NET] Choose: Kinkou Initiate@BF
+        net: pick 35.3% | v -0.79
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.78
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 50.8% | v -0.79
+
+=== TURN 9 (P1, ISMCTS)   score P1 5 - P2 4 ===
+  P1[NET] Play Irresistible Faefolk(1M) -> Base
+        net: pick 97.5% | alt: Play Rampage[S] 2.0% | v +0.56
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P1[NET] Choose: Ferrous Forerunner@Base
+        net: pick 72.4% | alt: Choose: Rengar, Trophy Hunter@Base 16.1% | v +0.51
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.72
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P1[NET] Move Ferrous Forerunner -> Star Spring
+        net: pick 53.8% | alt: Play Rampage[S] 31.2% | v +0.65
+  P1[NET] Move no more units
+        net: pick 82.4% | alt: Choose: Pit Rookie@Base 16.1% | v +0.63
+    ~ move Ferrous Forerunner -> Star Spring
+  P1[NET] Pass Focus
+        net: pick 99.0% | alt: Play Inferna(1M) -> Star Spring 0.5% | v +0.53
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Star Spring
+        net: pick 73.6% | v -0.74
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Order — Star Spring (Rengar, Trophy Hunter)
+        net: pick 68.9% | v -0.81
+  P2[NET] No — Star Spring: move another unit here to its base?
+        net: pick 99.9% | v -0.83
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 96.3% | v -0.80
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.81
+  P1[NET] Pass Priority
+        net: pick 96.0% | alt: Play Inferna(1M) -> Star Spring 2.0% | v +0.69
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Play Inferna(1M) -> Star Spring
+        net: pick 55.3% | alt: Play Inferna(1M) -> Star Spring 43.7% | v +0.72
+    ~ play Inferna (Unit, 2E)
+  P1[NET] Order — Star Spring (Inferna)
+        net: pick 67.8% | alt: Order — Pridestalker (Inferna) 32.2% | v +0.76
+  P1[NET] No — Star Spring: move another unit here to its base?
+        net: pick 99.0% | alt: Yes — Star Spring: move another unit here to its base? 1.0% | v +0.74
+  P1[NET] Choose: Ferrous Forerunner@BF
+        net: pick 98.0% | alt: Choose: Rengar, Trophy Hunter@Base 1.0% | v +0.78
+  P1[NET] Pass Priority
+        net: pick 99.5% | alt: Play Inferna(1M) -> Star Spring 0.5% | v +0.77
+  P2[NET] Pass Priority
+        net: pick 100.0% | v -0.84
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] Play Thrill of the Hunt[S]
+        net: pick 59.9% | v -0.87
+    ~ spell Thrill of the Hunt targets=[]
+  P2[NET] Choose: Kinkou Initiate@BF
+        net: pick 100.0% | v -0.90
+  P1[NET] Pass Priority
+        net: pick 98.0% | alt: Play Inferna(1M) -> Star Spring 2.0% | v +0.90
+  P2[NET] Emperor's Dais
+        net: pick 52.2% | v -0.89
+    ~ effect: banish Kinkou Initiate
+    ~ thrill: Kinkou Initiate played to Emperor's Dais, ignoring cost
+  P2[NET] Order — Kinkou Initiate
+        net: pick 99.8% | v -0.88
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 95.1% | v -0.88
+  P1[NET] Pass Priority
+        net: pick 98.5% | alt: Play Inferna(1M) -> Star Spring 1.5% | v +0.90
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 98.5% | alt: Play Inferna(1M) -> Star Spring 1.5% | v +0.90
+  P1[NET] Play Inferna(1M) -> Star Spring
+        net: pick 60.8% | alt: Pass Focus 39.2% | v +0.89
+    ~ play Inferna (Unit, 2E)
+  P1[NET] Choose: Ferrous Forerunner@BF
+        net: pick 97.5% | alt: Choose: Rengar, Trophy Hunter@Base 1.5% | v +0.81
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+    ~ COMBAT at Star Spring: P1 attacks [Ferrous Forerunner(9M), Inferna(3M), Inferna(3M)]  vs  P2 defends [Inferna(1M), Rengar, Trophy Hunter(8M)]
+  P1[NET] Assign Damage: Rengar, Trophy Hunter(8), Inferna(7)
+        net: pick 50.3% | alt: Assign Damage: Inferna(1), Rengar, Trophy Hunter(14) 49.7% | v +0.90
+  P2[NET] Assign Damage: Inferna(3), Inferna(3), Ferrous Forerunner(3)
+        net: pick 56.1% | v -0.86
+    ~ KILL Inferna (3M, dmg=3)
+    ~ KILL Inferna (3M, dmg=3)
+    ~ KILL Inferna (1M, dmg=7)
+    ~ KILL Rengar, Trophy Hunter (8M, dmg=8)
+    ~ P1 conquers Star Spring
+    ~ SCORE P1 +1 (Conquer)   -> P1 6 - P2 4
+  P1[NET] Move Rengar, Trophy Hunter -> Emperor's Dais
+        net: pick 90.5% | alt: Move Pit Rookie -> Emperor's Dais 8.0% | v +0.85
+  P1[NET] Choose: Pit Rookie@Base
+        net: pick 92.5% | alt: Move no more units 7.5% | v +0.83
+    ~ move Rengar, Trophy Hunter -> Emperor's Dais
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Pit Rookie(2M), Rengar, Trophy Hunter(7M)]  vs  P2 defends [Kinkou Initiate(3M), Sand Soldier(2M)]
+  P1[NET] Assign Damage: Kinkou Initiate(3), Sand Soldier(6)
+        net: pick 50.3% | alt: Assign Damage: Sand Soldier(2), Kinkou Initiate(7) 49.7% | v +0.89
+  P2[NET] Assign Damage: Pit Rookie(2), Rengar, Trophy Hunter(3)
+        net: pick 96.8% | v -0.89
+    ~ KILL Pit Rookie (2M, dmg=2)
+    ~ KILL Sand Soldier (2M, dmg=6)
+    ~ KILL Kinkou Initiate (3M, dmg=3)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 7 - P2 4
+  P1[NET] No — Emperor's Dais: pay [1], return a unit
+        net: pick 97.0% | alt: Yes — Emperor's Dais: pay [1], return a unit 3.0% | v +0.92
+
+=== TURN 10 (P2, NET)   score P1 7 - P2 4 ===
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 49.9% | v -0.96
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =1
+        net: pick 99.6% | v -0.97
+  P2[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 100.0% | v -0.96
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P2[NET] Move Kai'Sa, Survivor -> Star Spring
+        net: pick 49.6% | v -0.97
+    ~ move Kai'Sa, Survivor -> Star Spring
+  P2[NET] Pass Focus
+        net: pick 99.3% | v -0.95
+    ~ COMBAT at Star Spring: P2 attacks [Kai'Sa, Survivor(5M)]  vs  P1 defends [Ferrous Forerunner(6M)]
+    ~ KILL Kai'Sa, Survivor (5M, dmg=6)
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 94.2% | v -0.99
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =0
+        net: pick 60.0% | v -0.99
+  P2[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 70.7% | v -1.00
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+
+=== TURN 11 (P1, ISMCTS)   score P1 7 - P2 4 ===
+
+GAME OVER: winner P1 (ISMCTS) score 8-4, 11 turns, 294 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

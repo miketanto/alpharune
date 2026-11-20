@@ -1,0 +1,436 @@
+game seed 7001   P1 = Azir agent@300 (Azir deck) (greedy)   P2 = Rengar agent@2080 (Rengar deck) (greedy)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[NET] Keep hand
+        net: pick 65.3% | alt: Mull: Pit Rookie Irresistible Faefolk 18.3% | v +0.11
+~ P1 brings Seat of Power
+~ P2 brings Emperor's Dais
+~ P1 opening hand: Doran's Shield, Deathgrip, Arise!, Defy
+~ P2 opening hand: Punch First, Pit Rookie, Irresistible Faefolk, Pakaa Cub
+  P1[NET] Mull: Deathgrip Defy
+        net: pick 84.9% | alt: Mull: Defy 15.0% | v +0.01
+~ P1 set aside Deathgrip
+~ P1 set aside Defy
+~ P1 drew replacement Guards!
+~ P1 drew replacement B.F. Sword
+
+=== TURN 0 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Irresistible Faefolk(1M) -> Base
+        net: pick 99.7% | alt: Play Pit Rookie(2M) -> Base 0.2% | v +0.26
+    ~ play Irresistible Faefolk (Unit, 2E)
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+
+=== TURN 1 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Play Doran's Shield[G] -> Base
+        net: pick 96.7% | alt: Play Guards![S] 2.2% | v +0.17
+    ~ play Doran's Shield (Gear, 1E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 100.0% | alt: End Turn 0.0% | v +0.04
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 100.0% | alt: No — Weaponmaster: equip an Equipment to me? 0.0% | v +0.07
+
+=== TURN 2 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Pit Rookie(2M) -> Base
+        net: pick 67.3% | alt: Move Irresistible Faefolk -> Emperor's Dais 22.2% | v +0.43
+    ~ play Pit Rookie (Unit, 2E)
+  P2[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 81.5% | alt: Order — Pit Rookie 18.5% | v +0.52
+  P2[NET] Choose: Irresistible Faefolk@Base
+        net: pick 99.5% | alt: Choose: Pit Rookie@Base 0.5% | v +0.52
+    ~ effect: [Buff] Irresistible Faefolk (+1 permanent) -> 2M
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+  P2[NET] Move Irresistible Faefolk -> Emperor's Dais
+        net: pick 59.4% | alt: Move Irresistible Faefolk -> Seat of Power 33.4% | v +0.66
+    ~ move Irresistible Faefolk -> Emperor's Dais
+  P2[NET] Yes — Irresistible Faefolk: move an enemy unit to my battlefield?
+        net: pick 99.9% | alt: No — Irresistible Faefolk: move an enemy unit to my battlefield? 0.1% | v +0.60
+  P2[NET] Play Inferna(1M) -> Emperor's Dais
+        net: pick 49.9% | alt: Play Inferna(1M) -> Emperor's Dais 49.9% | v +0.56
+    ~ play Inferna (Unit, 2E)
+  P2[NET] Choose: Irresistible Faefolk@BF
+        net: pick 100.0% | alt: Choose: Inferna@BF 0.0% | v +0.38
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(3M), Irresistible Faefolk(4M)]  vs  P1 defends [Sand Soldier(3M)]
+  P1[NET] Assign Damage: Irresistible Faefolk(3)
+        net: pick 95.7% | alt: Assign Damage: Inferna(3) 4.3% | v +0.24
+    ~ KILL Sand Soldier (3M, dmg=7)
+    ~ effect: unattach Doran's Shield
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 0 - P2 1
+  P2[NET] End Turn
+        net: pick 99.7% | alt: Hide Pakaa Cub(3M) @ Emperor's Dais 0.3% | v +0.58
+
+=== TURN 3 (P1, ISMCTS)   score P1 0 - P2 1 ===
+  P1[NET] Play Azir, Sovereign(4M) -> Base
+        net: pick 89.0% | alt: Play Guards![S] 6.9% | v -0.17
+    ~ play Azir, Sovereign (Unit, 4E)
+  P1[NET] Choose: =1
+        net: pick 97.6% | alt: Choose: =0 2.4% | v -0.17
+  P1[NET] Move Azir, Sovereign -> Emperor's Dais
+        net: pick 100.0% | alt: Move Azir, Sovereign -> Seat of Power 0.0% | v +0.02
+    ~ move Azir, Sovereign -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Azir, Sovereign(4M)]  vs  P2 defends [Inferna(1M), Irresistible Faefolk(2M)]
+  P1[NET] Assign Damage: Inferna(1), Irresistible Faefolk(3)
+        net: pick 50.0% | alt: Assign Damage: Irresistible Faefolk(2), Inferna(2) 50.0% | v +0.28
+    ~ KILL Inferna (1M, dmg=1)
+    ~ KILL Irresistible Faefolk (2M, dmg=3)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 1
+  P1[NET] Hide Guards![S] @ Emperor's Dais
+        net: pick 55.6% | alt: End Turn 44.4% | v +0.14
+    ~ hide Guards! at Emperor's Dais by P1
+  P1[NET] End Turn
+        net: pick 100.0% | alt: Activate Doran's Shield @ Azir, Sovereign 0.0% | v +0.16
+
+=== TURN 4 (P2, NET)   score P1 1 - P2 1 ===
+  P2[NET] Move Pit Rookie -> Seat of Power
+        net: pick 39.7% | alt: Play Rengar, Trophy Hunter(6M) -> Base 25.6% | v +0.10
+    ~ move Pit Rookie -> Seat of Power
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Seat of Power
+        net: pick 96.1% | alt: Play Rengar, Trophy Hunter(6M) -> Emperor's Dais 3.9% | v -0.21
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 98.8% | alt: Choose: Pit Rookie@BF 1.2% | v -0.38
+  P1[NET] Pass Priority
+        net: pick 64.2% | alt: Play Guards![S] 35.8% | v +0.29
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Pass Focus
+        net: pick 92.8% | alt: Play Guards![S] 7.2% | v +0.26
+  P2[NET] Pass Focus
+        net: pick 99.5% | alt: Play Punch First[S] 0.5% | v -0.48
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P1[NET] Pass Priority
+        net: pick 90.8% | alt: Play Guards![S] 9.2% | v +0.17
+  P2[NET] Hide Pakaa Cub(3M) @ Seat of Power
+        net: pick 88.2% | alt: End Turn 10.5% | v -0.12
+    ~ hide Pakaa Cub at Seat of Power by P2
+  P2[NET] Play Sabotage[S]
+        net: pick 71.5% | alt: End Turn 28.1% | v -0.19
+    ~ spell Sabotage targets=[]
+  P1[NET] Pass Priority
+        net: pick 80.9% | alt: Play Guards![S] 19.1% | v +0.42
+    ~ sabotage: revealed Arise! to P2
+    ~ sabotage: revealed B.F. Sword to P2
+    ~ sabotage: revealed B.F. Sword to P2
+    ~ sabotage: revealed Discipline to P2
+  P2[NET] Choose: Discipline@Hand
+        net: pick 95.2% | alt: Choose: Arise!@Hand 1.6% | v -0.15
+    ~ sabotage: recycling Discipline to bottom of P1's deck
+
+=== TURN 5 (P1, ISMCTS)   score P1 1 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 2 - P2 2
+  P1[NET] Play B.F. Sword[G] -> Base
+        net: pick 47.4% | alt: Play B.F. Sword[G] -> Base 47.4% | v +0.31
+    ~ play B.F. Sword (Gear, 4E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 98.4% | alt: End Turn 1.5% | v +0.28
+  P1[NET] Pass Priority
+        net: pick 93.8% | alt: Play Guards![S] 6.2% | v +0.37
+  P2[NET] Play Pakaa Cub(3M)
+        net: pick 99.9% | alt: Pass Priority 0.1% | v +0.29
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 80.5% | alt: Choose: Pit Rookie@BF 12.3% | v +0.14
+  P1[NET] Pass Priority
+        net: pick 89.9% | alt: Play Guards![S] 10.1% | v +0.33
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 95.1% | alt: Play Guards![S] 4.9% | v +0.25
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 99.8% | alt: No — Weaponmaster: equip an Equipment to me? 0.2% | v +0.30
+  P1[NET] Choose: B.F. Sword@Base
+        net: pick 82.8% | alt: Choose: Doran's Shield@Base 17.2% | v +0.24
+  P1[NET] Pass Priority
+        net: pick 97.6% | alt: Play Guards![S] 2.4% | v +0.41
+  P1[NET] End Turn
+        net: pick 99.5% | alt: Play Guards![S] 0.2% | v +0.39
+
+=== TURN 6 (P2, NET)   score P1 2 - P2 2 ===
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 2 - P2 3
+  P2[NET] Move Rengar, Trophy Hunter -> Base
+        net: pick 50.3% | alt: Play Noxus Hopeful(4M) -> Base 45.5% | v -0.15
+  P2[NET] Choose: Pakaa Cub@BF
+        net: pick 47.0% | alt: Choose: Pit Rookie@BF 27.0% | v -0.13
+  P2[NET] Choose: Pit Rookie@BF
+        net: pick 50.3% | alt: Move no more units 49.7% | v -0.13
+    ~ move Rengar, Trophy Hunter -> Base(P2)
+    ~ move Pakaa Cub -> Base(P2)
+    ~ move Pit Rookie -> Base(P2)
+  P2[NET] Play Noxus Hopeful(4M) -> Base
+        net: pick 99.9% | alt: Play Inferna(1M) -> Base 0.1% | v +0.28
+    ~ play Noxus Hopeful (Unit, 4E)
+  P2[NET] Choose: Rengar, Trophy Hunter@Base
+        net: pick 48.0% | alt: Choose: Pakaa Cub@Base 23.4% | v +0.18
+  P1[NET] Pass Priority
+        net: pick 97.1% | alt: Play Guards![S] 2.9% | v +0.59
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 100.0% | alt: Play Punch First[S] 0.0% | v +0.21
+
+=== TURN 7 (P1, ISMCTS)   score P1 2 - P2 3 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 3 - P2 3
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 98.9% | alt: Play B.F. Sword[G] -> Base 0.8% | v +0.67
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 100.0% | alt: Play Guards![S] 0.0% | v +0.64
+  P2[NET] Pass Focus
+        net: pick 100.0% | alt: Play Punch First[S] 0.0% | v +0.75
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 4 - P2 3
+  P1[NET] Pass Priority
+        net: pick 96.4% | alt: Play Guards![S] 3.0% | v +0.72
+  P1[NET] Play B.F. Sword[G] -> Base
+        net: pick 74.9% | alt: End Turn 22.9% | v +0.72
+    ~ play B.F. Sword (Gear, 4E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 97.9% | alt: End Turn 2.0% | v +0.70
+  P1[NET] Pass Priority
+        net: pick 96.0% | alt: Play Guards![S] 3.2% | v +0.75
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 95.3% | alt: No — Weaponmaster: equip an Equipment to me? 4.7% | v +0.75
+  P1[NET] Choose: B.F. Sword@Base
+        net: pick 63.7% | alt: Choose: Doran's Shield@Base 35.9% | v +0.74
+  P1[NET] Pass Priority
+        net: pick 96.6% | alt: Play Guards![S] 2.4% | v +0.79
+  P1[NET] End Turn
+        net: pick 96.2% | alt: Move Azir, Sovereign -> Base 1.5% | v +0.78
+
+=== TURN 8 (P2, NET)   score P1 4 - P2 3 ===
+  P2[NET] Play First Mate(3M) -> Base
+        net: pick 97.0% | alt: Move Rengar, Trophy Hunter -> Emperor's Dais 1.5% | v +0.06
+    ~ play First Mate (Unit, 3E)
+  P2[NET] Order — First Mate
+        net: pick 71.6% | alt: Order — Pridestalker (First Mate) 28.4% | v +0.29
+  P2[NET] Choose: Sand Soldier@Base
+        net: pick 53.5% | alt: Choose: Sand Soldier@BF 25.8% | v +0.25
+  P2[NET] Choose: Rengar, Trophy Hunter@Base
+        net: pick 96.1% | alt: Choose: Noxus Hopeful@Base 3.4% | v +0.23
+  P1[NET] Pass Priority
+        net: pick 75.5% | alt: Play Guards![S] 20.8% | v +0.87
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 80.7% | alt: Play Guards![S] 15.8% | v +0.87
+  P2[NET] Move Rengar, Trophy Hunter -> Emperor's Dais
+        net: pick 66.0% | alt: Move Rengar, Trophy Hunter -> Seat of Power 29.5% | v +0.32
+  P2[NET] Move no more units
+        net: pick 52.1% | alt: Choose: Noxus Hopeful@Base 21.6% | v +0.32
+    ~ move Rengar, Trophy Hunter -> Emperor's Dais
+  P2[NET] Play Inferna(1M) -> Emperor's Dais
+        net: pick 100.0% | alt: Play Punch First[S] 0.0% | v +0.22
+    ~ play Inferna (Unit, 2E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 98.7% | alt: Choose: Noxus Hopeful@Base 0.6% | v +0.35
+  P1[NET] Play Guards![S]
+        net: pick 77.3% | alt: Play Discipline[S] 15.0% | v +0.81
+  P1[NET] Pass Priority
+        net: pick 64.8% | alt: Play Discipline[S] 35.2% | v +0.74
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 99.2% | alt: No — Weaponmaster: equip an Equipment to me? 0.8% | v +0.83
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 72.0% | alt: Choose: B.F. Sword@Base 20.8% | v +0.83
+  P1[NET] No — Guards!: pay [Y] to ready the Sand Soldier?
+        net: pick 96.5% | alt: Yes — Guards!: pay [Y] to ready the Sand Soldier? 3.5% | v +0.81
+  P1[NET] Play Discipline[S]
+        net: pick 67.1% | alt: Pass Priority 32.9% | v +0.83
+    ~ spell Discipline targets=[]
+  P1[NET] Choose: Azir, Sovereign@BF
+        net: pick 66.6% | alt: Choose: Sand Soldier@BF 19.5% | v +0.85
+    ~ effect: give Azir, Sovereign 2 [M] this turn
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Play Punch First[S]
+        net: pick 99.5% | alt: Pass Focus 0.5% | v +0.49
+    ~ spell Punch First targets=[]
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 99.3% | alt: Choose: Inferna@BF 0.7% | v +0.49
+    ~ effect: give Rengar, Trophy Hunter 5 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(3M), Rengar, Trophy Hunter(13M)]  vs  P1 defends [Azir, Sovereign(6M), Sand Soldier(3M)]
+  P1[NET] Assign Damage: Inferna(3), Rengar, Trophy Hunter(6)
+        net: pick 99.7% | alt: Assign Damage: Rengar, Trophy Hunter(9) 0.3% | v +0.60
+    ~ KILL Inferna (3M, dmg=3)
+    ~ KILL Sand Soldier (3M, dmg=3)
+    ~ effect: unattach Doran's Shield
+    ~ KILL Azir, Sovereign (6M, dmg=13)
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 4 - P2 4
+  P2[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 89.3% | alt: No — Emperor's Dais: pay [1], return a unit 10.7% | v +0.78
+    ~ effect: bounce Rengar, Trophy Hunter to hand
+  P2[NET] Choose: Noxus Hopeful@Base
+        net: pick 80.5% | alt: Choose: Pakaa Cub@Base 8.8% | v -0.04
+    ~ effect: give Noxus Hopeful 1 [M] this turn
+  P2[NET] Move Noxus Hopeful -> Seat of Power
+        net: pick 98.2% | alt: Move Pit Rookie -> Seat of Power 0.9% | v +0.05
+  P2[NET] Choose: Pit Rookie@Base
+        net: pick 56.7% | alt: Choose: Pakaa Cub@Base 43.2% | v +0.07
+  P2[NET] Choose: Pakaa Cub@Base
+        net: pick 99.6% | alt: Move no more units 0.4% | v +0.07
+    ~ move Noxus Hopeful -> Seat of Power
+    ~ move Pit Rookie -> Seat of Power
+    ~ move Pakaa Cub -> Seat of Power
+    ~ COMBAT at Seat of Power: P2 attacks [Noxus Hopeful(5M), Pakaa Cub(3M), Pit Rookie(2M)]  vs  P1 defends [Sand Soldier(5M)]
+  P1[NET] Assign Damage: Pakaa Cub(3), Pit Rookie(2)
+        net: pick 93.4% | alt: Assign Damage: Pakaa Cub(3), Noxus Hopeful(2) 3.3% | v +0.93
+    ~ KILL Pakaa Cub (3M, dmg=3)
+    ~ KILL Pit Rookie (2M, dmg=2)
+    ~ KILL Sand Soldier (5M, dmg=10)
+    ~ effect: unattach B.F. Sword
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 4 - P2 5
+
+=== TURN 9 (P1, ISMCTS)   score P1 4 - P2 5 ===
+  P1[NET] Play Arise![S]
+        net: pick 94.4% | alt: Move Sand Soldier -> Seat of Power 2.0% | v +0.73
+    ~ spell Arise! targets=[]
+  P1[NET] Pass Priority
+        net: pick 99.1% | alt: Play En Garde[S] @ Sand Soldier 0.9% | v +0.64
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 96.8% | alt: No — Weaponmaster: equip an Equipment to me? 3.2% | v +0.74
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 48.0% | alt: Choose: B.F. Sword@Base 48.0% | v +0.72
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 96.9% | alt: No — Weaponmaster: equip an Equipment to me? 3.1% | v +0.74
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 48.2% | alt: Choose: B.F. Sword@Base 48.2% | v +0.73
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 97.0% | alt: No — Weaponmaster: equip an Equipment to me? 3.0% | v +0.74
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 48.3% | alt: Choose: B.F. Sword@Base 48.3% | v +0.73
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 32.7% | alt: Choose: Sand Soldier@Base 32.7% | v +0.77
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 48.7% | alt: Choose: Sand Soldier@Base 48.7% | v +0.77
+  P1[NET] Pass Priority
+        net: pick 85.1% | alt: Play En Garde[S] @ Sand Soldier 5.8% | v +0.75
+  P1[NET] Pass Priority
+        net: pick 83.6% | alt: Play En Garde[S] @ Sand Soldier 6.3% | v +0.74
+  P1[NET] Pass Priority
+        net: pick 84.4% | alt: Play En Garde[S] @ Sand Soldier 6.2% | v +0.72
+    ~ effect: unattach Doran's Shield
+  P1[NET] Pass Priority
+        net: pick 85.9% | alt: Play En Garde[S] @ Sand Soldier 5.6% | v +0.69
+    ~ effect: unattach Doran's Shield
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 23.6% | alt: Activate B.F. Sword @ Sand Soldier 17.0% | v +0.66
+  P1[NET] Move no more units
+        net: pick 99.5% | alt: Choose: Sand Soldier@Base 0.4% | v +0.70
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 99.9% | alt: Play Back Off[S] 0.1% | v +0.67
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(5M)]  vs  P2 defends [Noxus Hopeful(4M)]
+    ~ KILL Noxus Hopeful (4M, dmg=5)
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 5 - P2 5
+  P1[NET] Pass Priority
+        net: pick 49.8% | alt: Play En Garde[S] @ Sand Soldier 23.9% | v +0.71
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 33.5% | alt: Activate B.F. Sword @ Sand Soldier 29.6% | v +0.80
+  P1[NET] Pass Priority
+        net: pick 74.1% | alt: Play En Garde[S] @ Sand Soldier 9.2% | v +0.81
+  P1[NET] Move Sand Soldier -> Emperor's Dais
+        net: pick 40.5% | alt: Play En Garde[S] @ Sand Soldier 16.3% | v +0.80
+  P1[NET] Move no more units
+        net: pick 68.8% | alt: Choose: Sand Soldier@Base 31.2% | v +0.81
+    ~ move Sand Soldier -> Emperor's Dais
+  P1[NET] Pass Focus
+        net: pick 99.6% | alt: Play Back Off[S] 0.3% | v +0.86
+    ~ COMBAT at Emperor's Dais: P1 attacks [Sand Soldier(6M)]  vs  P2 defends [Sand Soldier(2M)]
+    ~ KILL Sand Soldier (2M, dmg=6)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 6 - P2 5
+  P1[NET] No — Emperor's Dais: pay [1], return a unit
+        net: pick 92.3% | alt: Yes — Emperor's Dais: pay [1], return a unit 7.7% | v +0.87
+  P1[NET] Hide Back Off[S] @ Emperor's Dais
+        net: pick 54.7% | alt: End Turn 19.3% | v +0.90
+    ~ hide Back Off at Emperor's Dais by P1
+  P1[NET] End Turn
+        net: pick 63.8% | alt: Play En Garde[S] @ Sand Soldier 13.7% | v +0.89
+
+=== TURN 10 (P2, NET)   score P1 6 - P2 5 ===
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Seat of Power
+        net: pick 54.3% | alt: Play Rengar, Trophy Hunter(6M) -> Base 41.2% | v -0.91
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 96.8% | alt: Choose: First Mate@Base 3.1% | v -0.92
+  P2[NET] Pass Priority
+        net: pick 100.0% | alt: Play Thrill of the Hunt[S] 0.0% | v -0.90
+  P1[NET] Pass Priority
+        net: pick 88.5% | alt: Play En Garde[S] @ Sand Soldier 5.4% | v +0.94
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Pass Focus
+        net: pick 81.2% | alt: Play Thrill of the Hunt[S] 18.8% | v -0.91
+  P1[NET] Pass Focus
+        net: pick 65.6% | alt: Play En Garde[S] @ Sand Soldier 23.3% | v +0.97
+    ~ COMBAT at Seat of Power: P2 attacks [Rengar, Trophy Hunter(7M)]  vs  P1 defends [Sand Soldier(5M)]
+    ~ KILL Sand Soldier (5M, dmg=7)
+    ~ effect: unattach B.F. Sword
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 6 - P2 6
+  P2[NET] Pass Priority
+        net: pick 99.4% | alt: Play Thrill of the Hunt[S] 0.6% | v -0.92
+  P1[NET] Play En Garde[S] @ Sand Soldier
+        net: pick 43.5% | alt: Pass Priority 37.2% | v +0.90
+    ~ spell En Garde targets=[Sand Soldier(id=115)]
+  P1[NET] Pass Priority
+        net: pick 99.2% | alt: Play Back Off[S] @ Sand Soldier 0.8% | v +0.88
+  P2[NET] Pass Priority
+        net: pick 99.7% | alt: Play Thrill of the Hunt[S] 0.3% | v -0.90
+    ~ effect: give Sand Soldier 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 99.1% | alt: Play Thrill of the Hunt[S] 0.9% | v -0.88
+  P1[NET] Pass Priority
+        net: pick 99.6% | alt: Play Back Off[S] @ Sand Soldier 0.4% | v +0.85
+  P2[NET] Play Irresistible Faefolk(1M) -> Base
+        net: pick 71.0% | alt: Move First Mate -> Seat of Power 26.4% | v -0.90
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P2[NET] Choose: First Mate@Base
+        net: pick 91.7% | alt: Choose: Rengar, Trophy Hunter@BF 2.8% | v -0.92
+  P1[NET] Pass Priority
+        net: pick 100.0% | alt: Play Back Off[S] @ Sand Soldier 0.0% | v +0.66
+    ~ effect: give First Mate 1 [M] this turn
+  P2[NET] Move First Mate -> Seat of Power
+        net: pick 99.0% | alt: End Turn 0.6% | v -0.90
+    ~ move First Mate -> Seat of Power
+
+=== TURN 11 (P1, ISMCTS)   score P1 6 - P2 6 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 7 - P2 6
+  P1[NET] Play Guards![S]
+        net: pick 52.3% | alt: Play Hidden Blade[S] 39.8% | v +0.89
+    ~ spell Guards! targets=[]
+  P1[NET] Pass Priority
+        net: pick 99.3% | alt: Play Back Off[S] @ Sand Soldier 0.7% | v +0.88
+  P1[NET] Base
+        net: pick 100.0% | alt: Emperor's Dais 0.0% | v +0.90
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 77.3% | alt: No — Weaponmaster: equip an Equipment to me? 22.7% | v +0.84
+  P1[NET] Choose: B.F. Sword@Base
+        net: pick 84.0% | alt: Choose: B.F. Sword@BF 8.0% | v +0.84
+  P1[NET] Yes — Guards!: pay [Y] to ready the Sand Soldier?
+        net: pick 95.7% | alt: No — Guards!: pay [Y] to ready the Sand Soldier? 4.3% | v +0.85
+  P1[NET] Pass Priority
+        net: pick 97.0% | alt: Play Back Off[S] @ Sand Soldier 3.0% | v +0.81
+  P1[NET] Pass Priority
+        net: pick 95.2% | alt: Play Back Off[S] @ Sand Soldier 4.8% | v +0.80
+  P1[NET] Play Hidden Blade[S]
+        net: pick 60.5% | alt: Move Sand Soldier -> Seat of Power 25.8% | v +0.94
+    ~ spell Hidden Blade targets=[]
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 100.0% | alt: Choose: First Mate@BF 0.0% | v +0.93
+  P1[NET] Pass Priority
+        net: pick 98.8% | alt: Play Back Off[S] @ Sand Soldier 1.2% | v +0.93
+    ~ effect: kill Rengar, Trophy Hunter
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 75.7% | alt: Move Sand Soldier -> Seat of Power 10.7% | v +0.94
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 42.4% | alt: Choose: Sand Soldier@Base 42.4% | v +0.91
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 84.2% | alt: Move no more units 15.8% | v +0.91
+    ~ move Sand Soldier -> Seat of Power
+    ~ move Sand Soldier -> Seat of Power
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 100.0% | alt: Play Back Off[S] @ Sand Soldier 0.0% | v +0.95
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(2M), Sand Soldier(2M), Sand Soldier(5M)]  vs  P2 defends [First Mate(3M)]
+
+GAME OVER: winner P1 (ISMCTS) score 8-6, 11 turns, 304 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

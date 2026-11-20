@@ -31,7 +31,7 @@ import numpy as np
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from common import EVAL_CORES, SP, act_rows, import_rbenv, load_net, pin_cores  # noqa: E402
 
-DECK = 'rengar'
+DECK = os.environ.get('RB_DECK', 'rengar')   # mirror deck (league runs on other decks: RB_DECK=azir)
 
 
 def _first_legal(mask_rows):
@@ -172,7 +172,7 @@ def play_anchor(ck, spec, n_games, rep=None, procs=4, greedy=True, seed=990001, 
     if not force_native:
         cmd = ['taskset', '-c', ','.join(map(str, cores)), sys.executable, os.path.join(SP, 'verify_eval.py'), ck,
                spec, str(n_games), '--procs', str(procs), '--seed', str(seed), '--every', str(10 ** 9),
-               '--repr', rep or 'id']
+               '--repr', rep or 'id', '--deck', DECK]
         if not greedy:
             cmd.append('--sample')
         p = subprocess.run(cmd, capture_output=True, text=True, cwd=SP)

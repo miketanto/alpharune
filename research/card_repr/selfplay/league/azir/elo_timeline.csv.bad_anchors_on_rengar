@@ -1,0 +1,3 @@
+time,update,member,elo,ci_lo,ci_hi,wr_ismcts200,wr_ismcts100,wr_cf_B2,wr_cf_id,wr_prev,prev,wr_first,first,wr_best,best,wr_vs_exploiter,exploiter,games,secs
+2026-11-20T11:55:14,0,rengar_main@2080,957.3,710.6,1204.0,1.0,1.0,0.5,0.67,,,,,,,,,600,7
+2026-11-20T12:00:21,100,az_main@100,1400.4,1130.0,1670.8,0.96,0.97,1.0,1.0,1.0,rengar_main@2080,,,,,0.54,az_exp@60,500,314

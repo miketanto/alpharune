@@ -280,6 +280,26 @@ inline void noteChoice(MoveTrack& t, const Prompt& p, const Intent& chosen) {
     }
 }
 
+// Search M0 (research/card_repr/search, 2026-11-20): strict visibility, OFF by default (training,
+// the exporter and rbenv observations are unchanged). knowledge::identityVisible (src/) reports an
+// opponent's hand / facedown / deck card as visible when the observer knows the card by identity
+// but not its slot (CardKnowledge::zone_confirmed false, or a deck card known only within a group);
+// the token then pins that identity to the object's real slot, which the observer does not know
+// (WorldSampler places such a card at a random slot). With g_strict_vis such a card is "hidden",
+// so every world sampled for the observer encodes identically to the truth (search/m0.py leak).
+inline bool g_strict_vis = false;
+inline bool visibleTo(const GameState& s, GameObjectId id, PlayerId me) {
+    const bool v = knowledge::identityVisible(s, id, me);
+    if (!v || !g_strict_vis || !s.objectExists(id)) return v;
+    const GameObject& o = s.getObject(id);
+    if (o.owner == me) return true;
+    const ZoneType z = o.zone;
+    if (z != ZoneType::Hand && z != ZoneType::FacedownZone && z != ZoneType::MainDeck) return true;
+    const CardKnowledge k = knowledge::GameKnowledgeView(s, me).about(id);
+    if (z == ZoneType::MainDeck) return k.deck_position != DeckPosition::Unknown && k.deck_rank_span == 1;
+    return k.zone_confirmed;
+}
+
 class Encoder {
 public:
     // `eng` (optional, schema v2): the engine that owns `s`; needed for the
@@ -296,7 +316,7 @@ public:
         Tok t;
         t.kind = 'c';
         t.obj = id.raw();
-        const bool vis = knowledge::identityVisible(s_, id, me_);
+        const bool vis = visibleTo(s_, id, me_);
         t.key = vis ? cardKey(o.card_def_id, &o) : "hidden";
         const bool board = o.location.has_value();
         t.f = {rel(o.controller), rel(o.owner), static_cast<long>(o.zone.get()), locOf(o),
@@ -616,7 +636,7 @@ public:
             t.kind = 'k';
             t.obj = ci.id.raw();
             const GameObject* so = (ci.source.valid() && s_.objectExists(ci.source)) ? &s_.getObject(ci.source) : nullptr;
-            const bool vis = !so || so->owner == me_ || knowledge::identityVisible(s_, ci.source, me_) || so->location.has_value();
+            const bool vis = !so || so->owner == me_ || visibleTo(s_, ci.source, me_) || so->location.has_value();
             t.key = ci.keyword_ability.has_value() ? "keyword_ability" : (vis ? cardKey(ci.card_def_id, so) : "hidden");
             t.f = {rel(ci.controller), pos, resolving ? 1 : 0, ci.is_spell ? 1 : 0, ci.is_ability ? 1 : 0,
                    ci.is_activated_ability ? 1 : 0, static_cast<long>(ci.status), ci.is_equip ? 1 : 0};

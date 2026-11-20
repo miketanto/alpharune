@@ -1,0 +1,27 @@
+Overnight league summary (Fri Nov 20 13:04:27 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/azir
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+2026-11-20T12:31:25      0 rengar_main@2080          83.9 [   28.9,  138.9]      87      0.2     0.24     0.5    0.67                
+2026-11-20T12:36:27      0 rengar_main@2080          88.1 [   33.1,  143.1]      87      0.2     0.24     0.5    0.67                
+2026-11-20T12:42:58    200 az_main@200             1207.6 [ 1005.4, 1409.7]    1169      1.0      1.0     1.0     1.0     1.0    0.76
+2026-11-20T12:49:32    250 az_main@250             1215.4 [ 1044.4, 1386.5]    1191      1.0      1.0     1.0     1.0    0.56    0.94
+2026-11-20T13:04:21    300 az_main@300             1191.0 [ 1043.2, 1338.8]    1191      1.0      1.0     1.0     1.0    0.52    0.95
+
+Main Elo slope over the last 4 ratings (refit Elo vs update, weighted LS): +424.4 Elo per 100 updates, 95% CI [+315.1, +533.6] -> STILL RISING (CI above 0)
+Start (rengar_main@2080): vs ISMCTS-200 0.2, vs cf_B2 0.5, refit Elo 87
+End   (az_main@300): vs ISMCTS-200 1.0, vs cf_B2 1.0, refit Elo 1191
+
+Main exploiter: 140 updates, 2 snapshots, 2 resets
+  az_exp@60 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/azir': 0.216})
+  az_exp@120 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/azir': 0.018})
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.217 at update 40 (9933 games since reset)
+  found a weakness (>= 70% vs the main target): no
+  rating games (greedy): main snapshot vs newest exploiter snapshot, main win rate:
+    az_main@200 vs az_exp@60: 0.76
+    az_main@250 vs az_exp@120: 0.94
+    az_main@300 vs az_exp@120: 0.95
+
+Throughput per phase (games/s median): e40:32.7, m120:30.0, e60:33.5, m160:26.6, e80:38.8, m200:25.1, e100:30.4, m240:19.7, e120:27.7, m280:21.6, e140:41.7, m320:25.6
+  over the run: median 30.0, min 19.7 games/s, 15 phases

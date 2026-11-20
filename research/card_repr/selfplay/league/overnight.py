@@ -47,8 +47,8 @@ sys.path.insert(0, HERE)
 from common import RUNS  # noqa: E402
 
 PY = sys.executable
-INIT = os.path.join(RUNS, 'cf_B2', 'latest.pt')
-BASE_B2, BASE_ID = 'cf_B2@230', 'cf_id@230'
+INIT = os.environ.get('RB_LEAGUE_INIT') or os.path.join(RUNS, 'cf_B2', 'latest.pt')   # start / exploiter-reset weights
+BASE_B2, BASE_ID = os.environ.get('RB_LEAGUE_BASE', 'cf_B2@230'), 'cf_id@230'   # BASE_B2 = the name INIT is registered under
 LINK = {'gate4_B2@150': 'runs/gate4_B2/latest.pt', 'gate4_id@150': 'runs/gate4_id/latest.pt'}
 A100, A200 = 'anchor:ismcts:sims=100', 'anchor:ismcts:sims=200'
 DEMO_RESULTS = os.path.join(HERE, 'results_demo.jsonl')
@@ -221,6 +221,7 @@ def train_phase(a, P, log, which, n_upd, max_min, seed):
            '--samples-per-update', str(a.samples_per_update), '--eval-every', '0', '--ckpt-every', '1000000',
            '--run-name', run, '--league', cfg, '--gpu-mem-frac', str(a.gpu_mem_frac), '--seed', str(seed),
            '--threads', '2', '--max-minutes', f'{max_min:.2f}', '--resume']
+    cmd += ['--deck', os.path.normpath(os.path.join(SP, '..', '..', '..', 'decks', os.environ.get('RB_DECK', 'rengar') + '.txt'))]
     if cur == 0:
         cmd += ['--init', INIT]
     env = dict(os.environ, PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True', LEAGUE_MODEL='live')
@@ -346,7 +347,8 @@ def wr_of(recs, a, b):
 
 def fit_all(P):
     from ratings import fit_bt
-    ms = Multi([DEMO_RESULTS, P['res']])
+    # The demo results are Rengar-mirror games: tie them in only for a Rengar league (RB_DECK).
+    ms = Multi(([DEMO_RESULTS] if os.environ.get('RB_DECK', 'rengar') == 'rengar' else []) + [P['res']])
     names, W, N = ms.matrix()
     return fit_bt(names, W, N, anchor='anchor:random-player', prior_games=1.0), ms
 
@@ -380,8 +382,10 @@ def rate(a):
     tl = read_csv(P['tl'])
     if not any(r['member'] == BASE_B2 for r in tl):          # baselines once: tie cf_B2 / cf_id into the demo scale
         log('rating baselines (once): cf_B2@230, cf_id@230')
+        # Off Rengar the demo results are not loaded, so the scale's zero (random-player) needs games here.
+        rand = ['anchor:random-player'] if os.environ.get('RB_DECK', 'rengar') != 'rengar' else []
         for b in (BASE_B2, BASE_ID):
-            for y in anchors + list(LINK):
+            for y in rand + anchors + list(LINK):
                 game(b, y)
         game(BASE_B2, BASE_ID)
         write_row(P, log, BASE_B2, 0, None, None, None, None, t0)

@@ -1,0 +1,192 @@
+2026-11-20 10:58:46 === overnight.py start; deadline Fri Nov 20 13:15:00 2026; training stops Fri Nov 20 13:00:00 2026; args {'cmd': 'run', 'deadline': '13:15', 'out': 'league/azir', 'tag': 'az', 'member': '', 'main_updates': 40, 'exp_updates': 20, 'snapshot_every': 50, 'exp_max_updates': 60, 'p_osfp': 0.8, 'osfp_period': 163840, 'n_slots': 1, 'n_envs': 256, 'samples_per_update': 16384, 'gpu_mem_frac': 0.4, 'train_cores': '0-11', 'phase_max_min': 30, 'rate_every_min': 25.0, 'first_rate_min': 15.0, 'rate_games': 100, 'rate_procs': 4, 'no_ismcts': False, 'final_rate_min': 15.0, 'max_ckpts': 30, 'min_ram_mb': 1024, 'min_disk_gb': 5, 'min_gps': 40, 'slope_points': 5}
+2026-11-20 10:58:49 rating cycle started for rengar_main@2080 (pid 6421)
+2026-11-20 10:58:49 phase main: az_main updates 0->40 (max 30.0 min)
+2026-11-20 10:58:49 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-20 10:59:54   rate rengar_main@2080 vs anchor:ismcts:sims=100: 100-0 (65.2s)
+2026-11-20 11:02:29   rate rengar_main@2080 vs anchor:ismcts:sims=200: 100-0 (154.7s)
+2026-11-20 11:02:38   rate rengar_main@2080 vs gate4_B2@150: 51-49 (8.9s)
+2026-11-20 11:02:45   rate rengar_main@2080 vs gate4_id@150: 99-1 (7.1s)
+2026-11-20 11:04:07   rate cf_id@230 vs anchor:ismcts:sims=100: 98-2 (82.1s)
+2026-11-20 11:07:12   rate cf_id@230 vs anchor:ismcts:sims=200: 93-7 (185.7s)
+2026-11-20 11:07:23   rate cf_id@230 vs gate4_B2@150: 16-84 (10.4s)
+2026-11-20 11:07:27   rate cf_id@230 vs gate4_id@150: 59-41 (4.5s)
+2026-11-20 11:07:39   rate rengar_main@2080 vs cf_id@230: 67-33 (11.7s)
+2026-11-20 11:09:34 phase main done rc=0 updates 0->40 in 645s (16.1 s/update), games/s median 23.0 min 14.2  WARN below 40 games/s
+2026-11-20 11:09:34 rating cycle for rengar_main@2080 finished rc=1
+2026-11-20 11:09:34 ERROR rating cycle failed; tail of rate.log:
+2026-11-20 11:07:39   rate rengar_main@2080 vs cf_id@230: 67-33 (11.7s)
+Traceback (most recent call last):
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 712, in <module>
+    main()
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 706, in main
+    rate(a)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 389, in rate
+    write_row(P, log, BASE_B2, 0, None, None, None, None, t0)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 416, in write_row
+    fit, ms = fit_all(P)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 353, in fit_all
+    return fit_bt(names, W, N, anchor='anchor:random-player', prior_games=1.0), ms
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/ratings.py", line 126, in fit_bt
+    raise ValueError(f'anchor {anchor} has no games')
+ValueError: anchor anchor:random-player has no games
+
+2026-11-20 11:09:34 exploiter target = main @40
+2026-11-20 11:09:34 phase exp: az_exp updates 0->20 (max 30.0 min)
+2026-11-20 11:15:19 phase exp done rc=0 updates 0->20 in 345s (17.3 s/update), games/s median 34.9 min 29.6  WARN below 40 games/s
+2026-11-20 11:15:19 rating cycle started for az_main@30 (pid 6710)
+2026-11-20 11:15:19 phase main: az_main updates 40->80 (max 30.0 min)
+2026-11-20 11:15:19 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-20 11:24:44 phase main done rc=0 updates 40->80 in 565s (14.1 s/update), games/s median 30.4 min 21.2  WARN below 40 games/s
+2026-11-20 11:24:44 rating cycle for az_main@30 finished rc=1
+2026-11-20 11:24:44 ERROR rating cycle failed; tail of rate.log:
+2026-11-20 11:15:19 rating baselines (once): cf_B2@230, cf_id@230
+Traceback (most recent call last):
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 712, in <module>
+    main()
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 706, in main
+    rate(a)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 389, in rate
+    write_row(P, log, BASE_B2, 0, None, None, None, None, t0)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 416, in write_row
+    fit, ms = fit_all(P)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 353, in fit_all
+    return fit_bt(names, W, N, anchor='anchor:random-player', prior_games=1.0), ms
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/ratings.py", line 126, in fit_bt
+    raise ValueError(f'anchor {anchor} has no games')
+ValueError: anchor anchor:random-player has no games
+
+2026-11-20 11:24:44 exploiter target = main @80
+2026-11-20 11:24:44 phase exp: az_exp updates 20->40 (max 30.0 min)
+2026-11-20 11:30:11 phase exp done rc=0 updates 20->40 in 327s (16.3 s/update), games/s median 32.7 min 24.9  WARN below 40 games/s
+2026-11-20 11:30:11 phase main: az_main updates 80->120 (max 30.0 min)
+2026-11-20 11:39:33 phase main done rc=0 updates 80->120 in 562s (14.1 s/update), games/s median 30.0 min 21.8  WARN below 40 games/s
+2026-11-20 11:39:33 exploiter target = main @120
+2026-11-20 11:39:33 phase exp: az_exp updates 40->60 (max 30.0 min)
+2026-11-20 11:44:43 phase exp done rc=0 updates 40->60 in 310s (15.5 s/update), games/s median 33.5 min 25.5  WARN below 40 games/s
+2026-11-20 11:44:43 rating cycle started for az_main@100 (pid 7030)
+2026-11-20 11:44:43 phase main: az_main updates 120->160 (max 30.0 min)
+2026-11-20 11:44:43 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-20 11:54:08 phase main done rc=0 updates 120->160 in 564s (14.1 s/update), games/s median 26.6 min 19.2  WARN below 40 games/s
+2026-11-20 11:54:08 rating cycle for az_main@100 finished rc=1
+2026-11-20 11:54:08 ERROR rating cycle failed; tail of rate.log:
+2026-11-20 11:44:43 rating baselines (once): cf_B2@230, cf_id@230
+Traceback (most recent call last):
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 712, in <module>
+    main()
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 706, in main
+    rate(a)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 389, in rate
+    write_row(P, log, BASE_B2, 0, None, None, None, None, t0)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 416, in write_row
+    fit, ms = fit_all(P)
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight.py", line 353, in fit_all
+    return fit_bt(names, W, N, anchor='anchor:random-player', prior_games=1.0), ms
+  File "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/ratings.py", line 126, in fit_bt
+    raise ValueError(f'anchor {anchor} has no games')
+ValueError: anchor anchor:random-player has no games
+
+2026-11-20 11:54:08 exploiter target = main @160
+2026-11-20 11:54:08 phase exp: az_exp updates 60->80 (max 30.0 min)
+2026-11-20 11:55:07 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-20 11:55:10   rate rengar_main@2080 vs anchor:random-player: 100-0 (3.5s)
+2026-11-20 11:55:14   rate cf_id@230 vs anchor:random-player: 99-1 (3.4s)
+2026-11-20 11:55:14 timeline: rengar_main@2080 Elo 957.3 [710.6, 1204.0] wr vs ismcts200 1.0 vs cf_B2 0.5 vs prev  (7s)
+2026-11-20 11:55:14 rating cycle az_main@100: vs ['anchor:ismcts:sims=100', 'anchor:ismcts:sims=200', 'rengar_main@2080', 'cf_id@230', 'az_exp@60']
+2026-11-20 11:56:25   rate az_main@100 vs anchor:ismcts:sims=100: 97-3 (71.4s)
+2026-11-20 12:00:02   rate az_main@100 vs anchor:ismcts:sims=200: 96-4 (217.1s)
+2026-11-20 12:00:08   rate az_main@100 vs rengar_main@2080: 100-0 (5.7s)
+2026-11-20 12:00:13   rate az_main@100 vs cf_id@230: 100-0 (5.1s)
+2026-11-20 12:00:17 phase exp done rc=0 updates 60->80 in 369s (18.5 s/update), games/s median 38.8 min 33.7  WARN below 40 games/s
+2026-11-20 12:00:17 phase main: az_main updates 160->200 (max 30.0 min)
+2026-11-20 12:00:21   rate az_main@100 vs az_exp@60: 54-46 (7.7s)
+2026-11-20 12:00:21 timeline: az_main@100 Elo 1400.4 [1130.0, 1670.8] wr vs ismcts200 0.96 vs cf_B2 1.0 vs prev 1.0 (314s)
+2026-11-20 12:06:37 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-20 12:06:45   rate rengar_main@2080 vs anchor:random-player: 53-47 (8.3s)
+2026-11-20 12:09:41   rate rengar_main@2080 vs anchor:ismcts:sims=100: 24-76 (176.4s)
+2026-11-20 12:10:26 phase main done rc=0 updates 160->200 in 609s (15.2 s/update), games/s median 25.1 min 16.1  WARN below 40 games/s
+2026-11-20 12:10:26 rating cycle started for az_main@200 (pid 7380)
+2026-11-20 12:10:26 exploiter target = main @200
+2026-11-20 12:10:26 phase exp: az_exp updates 80->100 (max 30.0 min)
+2026-11-20 12:10:26 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-20 12:16:41 phase exp done rc=0 updates 80->100 in 374s (18.7 s/update), games/s median 30.4 min 23.5  WARN below 40 games/s
+2026-11-20 12:16:41 phase main: az_main updates 200->240 (max 30.0 min)
+2026-11-20 12:18:51   rate rengar_main@2080 vs anchor:ismcts:sims=200: 20-80 (550.1s)
+2026-11-20 12:19:10   rate cf_id@230 vs anchor:random-player: 40-60 (18.5s)
+2026-11-20 12:23:53   rate cf_id@230 vs anchor:ismcts:sims=100: 3-97 (282.8s)
+2026-11-20 12:24:35   rate rengar_main@2080 vs anchor:ismcts:sims=200: 20-80 (848.9s)
+2026-11-20 12:27:47 phase main done rc=0 updates 200->240 in 666s (16.6 s/update), games/s median 19.7 min 13.3  WARN below 40 games/s
+2026-11-20 12:27:47 exploiter target = main @240
+2026-11-20 12:27:47 phase exp: az_exp updates 100->120 (max 30.0 min)
+2026-11-20 12:31:25   rate cf_id@230 vs anchor:ismcts:sims=200: 2-98 (452.0s)
+2026-11-20 12:31:25 timeline: rengar_main@2080 Elo 83.9 [28.9, 138.9] wr vs ismcts200 0.2 vs cf_B2 0.5 vs prev  (1488s)
+2026-11-20 12:31:25 rating cycle az_main@100: vs ['anchor:ismcts:sims=100', 'anchor:ismcts:sims=200', 'rengar_main@2080', 'cf_id@230', 'az_exp@60']
+2026-11-20 12:33:47 phase exp done rc=0 updates 100->120 in 360s (18.0 s/update), games/s median 27.7 min 21.0  WARN below 40 games/s
+2026-11-20 12:33:47 phase main: az_main updates 240->280 (max 26.2 min)
+2026-11-20 12:34:09   rate az_main@100 vs anchor:ismcts:sims=100: 100-0 (164.1s)
+2026-11-20 12:36:27   rate cf_id@230 vs anchor:ismcts:sims=200: 2-98 (712.0s)
+2026-11-20 12:36:27 timeline: rengar_main@2080 Elo 88.1 [33.1, 143.1] wr vs ismcts200 0.2 vs cf_B2 0.5 vs prev  (1561s)
+2026-11-20 12:36:27 rating cycle az_main@200: vs ['anchor:ismcts:sims=100', 'anchor:ismcts:sims=200', 'rengar_main@2080', 'cf_id@230', 'az_exp@60']
+2026-11-20 12:39:45   rate az_main@200 vs anchor:ismcts:sims=100: 100-0 (197.5s)
+2026-11-20 12:42:40   rate az_main@200 vs anchor:ismcts:sims=200: 100-0 (175.1s)
+2026-11-20 12:42:45   rate az_main@200 vs rengar_main@2080: 100-0 (5.2s)
+2026-11-20 12:42:50   rate az_main@200 vs cf_id@230: 100-0 (5.2s)
+2026-11-20 12:42:58   rate az_main@200 vs az_exp@60: 76-24 (7.3s)
+2026-11-20 12:42:58 timeline: az_main@200 Elo 1207.6 [1005.4, 1409.7] wr vs ismcts200 1.0 vs cf_B2 1.0 vs prev 1.0 (1951s)
+2026-11-20 12:44:17 phase main done rc=0 updates 240->280 in 630s (15.8 s/update), games/s median 21.6 min 13.6  WARN below 40 games/s
+2026-11-20 12:44:17 rating cycle for az_main@200 finished rc=0
+2026-11-20 12:44:17 rating cycle started for az_main@250 (pid 7632)
+2026-11-20 12:44:18 exploiter target = main @280
+2026-11-20 12:44:18 rating cycle az_main@250: vs ['anchor:ismcts:sims=100', 'anchor:ismcts:sims=200', 'rengar_main@2080', 'cf_id@230', 'az_main@200', 'az_exp@120']
+2026-11-20 12:44:18 phase exp: az_exp updates 120->140 (max 15.7 min)
+2026-11-20 12:45:41   rate az_main@250 vs anchor:ismcts:sims=100: 100-0 (83.0s)
+2026-11-20 12:49:07   rate az_main@250 vs anchor:ismcts:sims=200: 100-0 (206.7s)
+2026-11-20 12:49:13   rate az_main@250 vs rengar_main@2080: 100-0 (5.4s)
+2026-11-20 12:49:18   rate az_main@250 vs cf_id@230: 100-0 (5.2s)
+2026-11-20 12:49:26   rate az_main@250 vs az_main@200: 56-44 (7.7s)
+2026-11-20 12:49:32   rate az_main@250 vs az_exp@120: 94-6 (6.7s)
+2026-11-20 12:49:32 timeline: az_main@250 Elo 1215.4 [1044.4, 1386.5] wr vs ismcts200 1.0 vs cf_B2 1.0 vs prev 0.56 (315s)
+2026-11-20 12:50:17 phase exp done rc=0 updates 120->140 in 360s (18.0 s/update), games/s median 41.7 min 32.2
+2026-11-20 12:50:17 rating cycle for az_main@250 finished rc=0
+2026-11-20 12:50:17 phase main: az_main updates 280->320 (max 9.7 min)
+2026-11-20 12:59:56 phase main done rc=0 updates 280->320 in 578s (14.5 s/update), games/s median 25.6 min 18.4  WARN below 40 games/s
+2026-11-20 12:59:56 exploiter target = main @320
+2026-11-20 12:59:56 rating cycle started for az_main@300 (pid 7732)
+2026-11-20 12:59:56 rating cycle az_main@300: vs ['anchor:ismcts:sims=100', 'anchor:ismcts:sims=200', 'rengar_main@2080', 'cf_id@230', 'az_main@200', 'az_main@250', 'az_exp@120']
+2026-11-20 13:01:10   rate az_main@300 vs anchor:ismcts:sims=100: 100-0 (74.1s)
+2026-11-20 13:03:53   rate az_main@300 vs anchor:ismcts:sims=200: 100-0 (163.2s)
+2026-11-20 13:03:57   rate az_main@300 vs rengar_main@2080: 100-0 (4.2s)
+2026-11-20 13:04:01   rate az_main@300 vs cf_id@230: 100-0 (4.1s)
+2026-11-20 13:04:08   rate az_main@300 vs az_main@200: 51-49 (6.8s)
+2026-11-20 13:04:15   rate az_main@300 vs az_main@250: 52-48 (6.5s)
+2026-11-20 13:04:21   rate az_main@300 vs az_exp@120: 95-5 (6.0s)
+2026-11-20 13:04:21 timeline: az_main@300 Elo 1191.0 [1043.2, 1338.8] wr vs ismcts200 1.0 vs cf_B2 1.0 vs prev 0.52 (265s)
+2026-11-20 13:04:27 SUMMARY written:
+Overnight league summary (Fri Nov 20 13:04:27 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/azir
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+2026-11-20T12:31:25      0 rengar_main@2080          83.9 [   28.9,  138.9]      87      0.2     0.24     0.5    0.67                
+2026-11-20T12:36:27      0 rengar_main@2080          88.1 [   33.1,  143.1]      87      0.2     0.24     0.5    0.67                
+2026-11-20T12:42:58    200 az_main@200             1207.6 [ 1005.4, 1409.7]    1169      1.0      1.0     1.0     1.0     1.0    0.76
+2026-11-20T12:49:32    250 az_main@250             1215.4 [ 1044.4, 1386.5]    1191      1.0      1.0     1.0     1.0    0.56    0.94
+2026-11-20T13:04:21    300 az_main@300             1191.0 [ 1043.2, 1338.8]    1191      1.0      1.0     1.0     1.0    0.52    0.95
+
+Main Elo slope over the last 4 ratings (refit Elo vs update, weighted LS): +424.4 Elo per 100 updates, 95% CI [+315.1, +533.6] -> STILL RISING (CI above 0)
+Start (rengar_main@2080): vs ISMCTS-200 0.2, vs cf_B2 0.5, refit Elo 87
+End   (az_main@300): vs ISMCTS-200 1.0, vs cf_B2 1.0, refit Elo 1191
+
+Main exploiter: 140 updates, 2 snapshots, 2 resets
+  az_exp@60 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/azir': 0.216})
+  az_exp@120 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/azir': 0.018})
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.217 at update 40 (9933 games since reset)
+  found a weakness (>= 70% vs the main target): no
+  rating games (greedy): main snapshot vs newest exploiter snapshot, main win rate:
+    az_main@200 vs az_exp@60: 0.76
+    az_main@250 vs az_exp@120: 0.94
+    az_main@300 vs az_exp@120: 0.95
+
+Throughput per phase (games/s median): e40:32.7, m120:30.0, e60:33.5, m160:26.6, e80:38.8, m200:25.1, e100:30.4, m240:19.7, e120:27.7, m280:21.6, e140:41.7, m320:25.6
+  over the run: median 30.0, min 19.7 games/s, 15 phases
+
+2026-11-20 13:04:27 === overnight.py done

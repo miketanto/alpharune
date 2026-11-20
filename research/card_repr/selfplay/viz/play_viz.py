@@ -44,6 +44,7 @@ def main():
     ap.add_argument('--opp', default='ismcts:sims=100')
     ap.add_argument('--ckpt', default=CKPT)
     ap.add_argument('--greedy', action='store_true')
+    ap.add_argument('--deck', default='rengar', help='mirror deck')
     ap.add_argument('--out', default=os.path.join(HERE, 'replays_v4'))
     a = ap.parse_args()
     torch.manual_seed(a.seed)
@@ -51,7 +52,7 @@ def main():
     os.makedirs(a.out, exist_ok=True)
     net_label = 'network(gate4 B2, %s)' % ('greedy' if a.greedy else 'sampled')
     labels = (net_label, a.opp) if a.net_seat == 1 else (a.opp, net_label)
-    env = RBEnv(1, 'rengar', 'rengar', a.seed, autopay=True, opponent=a.opp,
+    env = RBEnv(1, a.deck, a.deck, a.seed, autopay=True, opponent=a.opp,
                 viz_dir=os.path.abspath(a.out), opp_seat=3 - a.net_seat, labels=labels)
     assert env.schema_version() == 4, env.schema_version()
     sd = torch.load(a.ckpt, map_location='cpu')

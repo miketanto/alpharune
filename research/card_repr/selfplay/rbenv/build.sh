@@ -5,11 +5,12 @@
 set -euo pipefail
 SRC=/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr
 DST=$HOME/riftbound/alpharune
-mkdir -p $DST/research/card_repr/C_engine/out $DST/research/card_repr/smoke/data/src $DST/research/card_repr/selfplay/rbenv
+mkdir -p $DST/research/card_repr/search $DST/research/card_repr/C_engine/out $DST/research/card_repr/smoke/data/src $DST/research/card_repr/selfplay/rbenv
 cp $SRC/C_engine/card_probe.cpp $DST/research/card_repr/C_engine/
 cp $SRC/C_engine/out/subjects.txt $DST/research/card_repr/C_engine/out/
 cp $SRC/smoke/data/src/decision_export.cpp $SRC/smoke/data/src/decision_export.cmake $DST/research/card_repr/smoke/data/src/
 cp $SRC/selfplay/rbenv/rbenv.cpp $SRC/selfplay/rbenv/rbenv.cmake $DST/research/card_repr/selfplay/rbenv/
+cp $SRC/search/rbsearch.cpp $DST/research/card_repr/search/
 grep -q selfplay/rbenv/rbenv.cmake $DST/CMakeLists.txt || echo 'include(research/card_repr/selfplay/rbenv/rbenv.cmake)' >> $DST/CMakeLists.txt
 cd $DST
 if [ ! -f build_pic/build.ninja ]; then

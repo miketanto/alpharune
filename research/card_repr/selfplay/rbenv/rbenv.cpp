@@ -92,26 +92,33 @@ struct Handle {
     std::shared_ptr<Po> po;   // gate 4: playout handle
 };
 
-void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
-    const GameState& s = e.engine->state();
-    Encoder enc(s, dec, e.engine.get());
-    enc.setMove(&e.mtrack[static_cast<int>(dec) % 3]);
+// Thread-safe core of encode (search M0): writes one observation of decision `sr` of
+// state `s` (its engine `eng`, may be null) for `dec` into caller-owned buffers, counting
+// into caller-owned counters. Touches no Env / Handle.
+struct ObsOut {
+    int32_t* glob; int32_t* tok; int32_t* act; uint8_t* tmask; uint8_t* amask; int64_t* tok_obj;
+    int psrc = -1;
+};
+void encodeRaw(const GameState& s, const GameEngine* eng, const MoveTrack* mt, const StepResult& sr,
+               PlayerId dec, Counters& c, ObsOut& o) {
+    Encoder enc(s, dec, eng);
+    enc.setMove(mt);
     enc.build();
-    std::fill(e.glob.begin(), e.glob.end(), 0);
-    std::fill(e.tok.begin(), e.tok.end(), 0);
-    std::fill(e.act.begin(), e.act.end(), 0);
-    std::fill(e.tmask.begin(), e.tmask.end(), 0);
-    std::fill(e.amask.begin(), e.amask.end(), 0);
+    std::fill(o.glob, o.glob + G, 0);
+    std::fill(o.tok, o.tok + T * F, 0);
+    std::fill(o.act, o.act + A * K, 0);
+    std::fill(o.tmask, o.tmask + T, 0);
+    std::fill(o.amask, o.amask + A, 0);
     const auto& legal = sr.legal;
     const Prompt& p = sr.prompt;
     enc.prepare(legal, p);   // v4: TriggerOrder option -> chain item
-    h.c.trig_opts += p.kind == PromptKind::TriggerOrder ? static_cast<long>(legal.size()) : 0;
-    h.c.trig_mapped += enc.trigMapped();
-    h.c.trig_amb += enc.trigAmbiguous();
+    c.trig_opts += p.kind == PromptKind::TriggerOrder ? static_cast<long>(legal.size()) : 0;
+    c.trig_mapped += enc.trigMapped();
+    c.trig_amb += enc.trigAmbiguous();
     // Actions first (same ref() order as Encoder::encode/action, so appended
     // tokens get the same indices as in the exporter's JSON).
     const int na = static_cast<int>(legal.size());
-    if (na > A) h.c.trunc_act += na - A;
+    if (na > A) c.trunc_act += na - A;
     for (int a = 0; a < na; ++a) {
         const Intent& i = legal[a];
         int32_t buf[K];
@@ -124,7 +131,7 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
         auto list = [&](int off, int cap, int cnt_slot, const std::vector<GameObjectId>& v) {
             int j = 0;
             for (auto id : v) { const int r = enc.ref(id); if (j < cap) buf[off + j] = r; ++j; }
-            if (j > cap) h.c.trunc_list++;
+            if (j > cap) c.trunc_list++;
             buf[cnt_slot] = j;
         };
         list(4, kMaxList, 41, i.targets);
@@ -138,7 +145,7 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
                 if (j < kMaxDm) { buf[18 + 2 * j] = r; buf[19 + 2 * j] = d.damage; }
                 ++j;
             }
-            if (j > kMaxDm) h.c.trunc_list++;
+            if (j > kMaxDm) c.trunc_list++;
             buf[45] = j;
         }
         buf[30] = enc.actionDst(i, p);
@@ -152,7 +159,7 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
             buf[33] = enc.itemRef(static_cast<uint64_t>(*i.chosen_value));
         else if (trig)
             buf[33] = enc.itemRef(trig);
-        buf[34] = i.chosen_card_def.valid() ? vocabOf(cardKey(i.chosen_card_def, nullptr), h.c) : 0;
+        buf[34] = i.chosen_card_def.valid() ? vocabOf(cardKey(i.chosen_card_def, nullptr), c) : 0;
         buf[35] = i.chosen_battlefield.valid() ? static_cast<int32_t>(i.chosen_battlefield.raw()) : -1;
         buf[36] = static_cast<int>(i.play_source);
         buf[37] = i.use_alt_play_cost ? 1 : 0;
@@ -167,29 +174,29 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
             const auto mg = enc.moveGroup(p);
             int j = 0;
             for (auto id : mg) { const int r = enc.ref(id); if (j < kMaxList) buf[56 + j] = r; ++j; }
-            if (j > kMaxList) h.c.trunc_list++;
+            if (j > kMaxList) c.trunc_list++;
             buf[60] = p.kind == PromptKind::MoveJoin ? j : -1;
         }
-        if (a < A) { std::memcpy(&e.act[a * K], buf, sizeof buf); e.amask[a] = 1; }
+        if (a < A) { std::memcpy(&o.act[a * K], buf, sizeof buf); o.amask[a] = 1; }
     }
-    e.psrc = p.source.valid() ? enc.ref(p.source) : -1;
+    o.psrc = p.source.valid() ? enc.ref(p.source) : -1;
     const auto g = enc.global(p);
-    for (int k = 0; k < G && k < static_cast<int>(g.size()); ++k) e.glob[k] = static_cast<int32_t>(g[k]);
+    for (int k = 0; k < G && k < static_cast<int>(g.size()); ++k) o.glob[k] = static_cast<int32_t>(g[k]);
     // tokens
     const auto& all = enc.all();
     std::unordered_map<uint64_t, int> obj_idx;
     for (size_t t = 0; t < all.size(); ++t) if (all[t].kind != 'k') obj_idx[all[t].obj] = static_cast<int>(t);
     auto idx = [&](uint64_t r) { auto it = obj_idx.find(r); return it == obj_idx.end() ? -1 : it->second; };
     const int nt = static_cast<int>(all.size());
-    if (nt > T) h.c.trunc_tok += nt - T;
-    e.tok_obj.assign(T, -1);
+    if (nt > T) c.trunc_tok += nt - T;
+    std::fill(o.tok_obj, o.tok_obj + T, int64_t{-1});
     for (int t = 0; t < nt && t < T; ++t) {
         const Tok& tk = all[t];
-        e.tok_obj[t] = (tk.kind == 'c' || tk.kind == 'b') ? static_cast<int64_t>(tk.obj) : -1;
-        int32_t* row = &e.tok[t * F];
+        o.tok_obj[t] = (tk.kind == 'c' || tk.kind == 'b') ? static_cast<int64_t>(tk.obj) : -1;
+        int32_t* row = &o.tok[t * F];
         for (int k = 0; k < F; ++k) row[k] = 0;
         row[0] = tk.kind == 'c' ? 1 : (tk.kind == 'b' ? 2 : (tk.kind == 'k' ? 3 : 4));
-        row[1] = vocabOf(tk.key, h.c);
+        row[1] = vocabOf(tk.key, c);
         int k = 2;
         for (long x : tk.f) if (k < F) row[k++] = static_cast<int32_t>(x);
         if (tk.kind == 'c') {
@@ -203,29 +210,38 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
             for (int j = 11; j <= 14; ++j) row[j] = -1;
             int n = 0;
             for (size_t j = 1; j < tk.refs.size(); ++j, ++n) if (n < kMaxChosen) row[11 + n] = idx(tk.refs[j]);
-            if (n > kMaxChosen) h.c.trunc_list++;
+            if (n > kMaxChosen) c.trunc_list++;
             row[15] = n;
             // v2 [16] additional cost paid, [17] source play ordinal, [18] triggering subject token
             row[16] = tk.x.size() > 0 ? static_cast<int32_t>(tk.x[0]) : 0;
             row[17] = tk.x.size() > 1 ? static_cast<int32_t>(tk.x[1]) : 0;
             row[18] = tk.subj ? idx(tk.subj) : -1;
         }
-        e.tmask[t] = 1;
+        o.tmask[t] = 1;
     }
     // references to truncated tokens become -1
     if (nt > T) {
         auto fix = [](int32_t& v) { if (v >= T) v = -1; };
         for (int t = 0; t < T; ++t) {
-            int32_t* row = &e.tok[t * F];
+            int32_t* row = &o.tok[t * F];
             if (row[0] == 1) fix(row[16]);
             else if (row[0] == 3) { fix(row[10]); for (int j = 11; j <= 14; ++j) fix(row[j]); fix(row[18]); }
         }
         for (int a = 0; a < na && a < A; ++a) {
-            int32_t* r = &e.act[a * K];
+            int32_t* r = &o.act[a * K];
             for (int j : {1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 33, 56, 57, 58, 59}) fix(r[j]);
         }
-        if (e.psrc >= T) e.psrc = -1;
+        if (o.psrc >= T) o.psrc = -1;
     }
+}
+
+void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
+    e.tok_obj.resize(T);
+    ObsOut o{e.glob.data(), e.tok.data(), e.act.data(), e.tmask.data(), e.amask.data(), e.tok_obj.data()};
+    encodeRaw(e.engine->state(), e.engine.get(), &e.mtrack[static_cast<int>(dec) % 3], sr, dec, h.c, o);
+    e.psrc = o.psrc;
+    const Prompt& p = sr.prompt;
+    const int na = static_cast<int>(sr.legal.size());
     e.seat = dec == PlayerId::Player1 ? 1 : 2;
     e.dec = dec;
     e.pk = static_cast<int>(p.kind);
@@ -1096,3 +1112,6 @@ int rbenv_advise(void* p, int i, int sims, int64_t seed) {
 }
 }  // extern "C"
 // ---- END PART B ----
+
+// ---- search (research/card_repr/search, M0/M1) ----
+#include "research/card_repr/search/rbsearch.cpp"

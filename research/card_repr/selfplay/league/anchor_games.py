@@ -23,7 +23,7 @@ from ratings import ResultStore  # noqa: E402
 
 REPO_WSL = os.path.expanduser('~/riftbound/alpharune')
 BIN = os.path.join(REPO_WSL, 'build', 'riftbound')
-DECK = os.path.join(REPO_WSL, 'decks', 'rengar.txt')
+DECK = os.path.join(REPO_WSL, 'decks', os.environ.get('RB_DECK', 'rengar') + '.txt')   # RB_DECK: mirror deck (default rengar)
 
 
 def run_cli(a1, a2, n, seed, threads, cores=EVAL_CORES):

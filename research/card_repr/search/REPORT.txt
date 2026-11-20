@@ -1,0 +1,146 @@
+Network-guided determinized PUCT: M0 + M1 report (2026-11-20)
+=============================================================
+Plan: research/card_repr/SEARCH_PLAN.md. How to run: README.txt. Raw results: out/*.json, out/*.log.
+Network: selfplay/runs/ov_main/league_02080.pt (repr B2, options from the state dict). Rengar mirror.
+
+VERDICT: M1 PASSES. N=64 wins 64.2% [59.4, 68.8] against the same network playing greedy, and the
+win rate rises with the budget: 53.5% (N=16) -> 64.2% (N=64) -> 71.0% (N=200). The network's value
+head is good enough for search to add strength. Recommended next step: M2 (below).
+
+What was built
+--------------
+- search/rbsearch.cpp (#included at the end of selfplay/rbenv/rbenv.cpp, so in librbenv.so):
+  determinized PUCT and an evaluation harness with a leaf-queue API (collect -> rows -> feed),
+  a persistent C++ thread pool running games in parallel, virtual loss (4 leaves in flight per game),
+  batched GPU evaluation in Python (mean batch ~800 rows).
+  * World per simulation: a fresh GameEngine resumed from the live game's last top-level main-phase
+    snapshot (resumeFromSnapshot) plus a replay of the choices since (0.0-0.2 steps per simulation on
+    average), then WorldSampler::sample for the root player through GameEngine::editHiddenInformation
+    (engine RNG reseeded), exactly as IsMctsAgent::makeWorld. No src/ change was needed: rbenv
+    already drives GameEngine directly, and GameEngine::editHiddenInformation is public.
+  * Nodes keyed by openspiel::infoSetIdFor(..., player = root player) (single-observer, as
+    IsMctsSearch); children by action id; root options matched to the live list by Intent equality.
+    A node is (re)expanded when it is new or offers an option it has no prior for (opponent nodes
+    in other worlds: 35% of leaves at N=64).
+  * Net prior for expansion, net value at the leaf for the leaf's decider, sign-flipped per node;
+    terminal +-1; no rollouts. Single-option decisions and rune payments auto-taken in simulations.
+    Every external decision of the searching seat with >= 2 options is searched, mulligan and
+    prompts included, with the full budget. Move = most visited root option (ties: higher prior).
+  * Optional: --perfect (diagnostic only), --deck-model decklist (opponent's unseen cards from its
+    decklist: the plan's "public decklist" setting), --opponent <C++ agent spec> on the other seat.
+- selfplay/rbenv/rbenv.cpp: encode split into encodeRaw (caller-owned buffers and counters,
+  thread-safe on distinct states) + a wrapper. rbenv output unchanged: tests/test_agreement_v2.py
+  0 mismatches (18 games, 3263 decisions), test_determinism ok.
+- smoke/data/src/decision_export.cpp: opt-in strict visibility (g_strict_vis, OFF by default), see
+  the leak test.
+
+M0: leak test
+-------------
+Real games of the network (greedy, both seats); at every external decision, 8 worlds built for the
+decider exactly as a simulation builds them; encode(world, decider) must equal encode(truth,
+decider) byte for byte (glob, tokens, token mask, options, option mask, psrc, pk, nlegal).
+
+  encoder              games  decisions (main / other)  worlds    mismatches        check problems
+  strict visibility      200   7,142 / 18,986           209,024   0 / 0             0
+  strict (seed 770001)    60   2,230 /  6,448            69,424   0 / 0             0
+  strict + decklist       60   2,230 /  6,448            69,424   0 / 0             0
+  default (loose)         60   2,230 /  6,448            69,424   28 / 134          0
+
+  Not vacuous: 99.6% of the opponent's hidden cards were redrawn to another card (6.93M of 6.96M
+  compared), every world's hidden cards differed from the truth, and the negative control (the same
+  comparison from the OPPONENT's view, whose hand was redrawn) differs in 100% of worlds (pool model).
+
+  FINDING (a leak in the trained network's observations, not in the search): with the default
+  encoder the 162 mismatching worlds (4 games, 2 seeds) are all one case. The observer had seen an
+  opponent card (e.g. Pyke, Dockside Butcher) in their hand; the opponent then hid a card facedown.
+  The knowledge tracker knows the identity but not the place (CardKnowledge::zone_confirmed false),
+  yet knowledge::identityVisible (src/engine/knowledge_tracker.cpp:666) returns identity_known and
+  ignores zone_confirmed, so the encoder writes the card's key on the facedown token: the network
+  is told WHICH slot holds Pyke. WorldSampler (correctly) places such a card at a random hidden slot.
+  Fix applied outside src/: visibleTo() in decision_export.cpp (g_strict_vis) also requires
+  zone_confirmed for an opponent hand / facedown card, and an exact slot for a deck card. The search
+  harness turns it on for BOTH seats (also the greedy one), so every M1 row uses the strict encoder;
+  training is unchanged. Games under strict vs loose encoders were identical on the leak-test seeds.
+  Recommended src/ fix (not made): identityVisible should return false for a card in an
+  opponent's Hand / FacedownZone unless zone_confirmed (and for a Main Deck card unless its slot
+  is exact), or the encoder should keep using visibleTo. That also changes action-id slots and
+  descriptions (they use identityVisible), so it needs the HiddenOrderLeak tests re-run.
+
+M0: ms per simulation (dummy evaluator: uniform prior, value 0; out/bench_*.json)
+--------------------------------------------------------------------------------
+  per simulation, 1 thread (200 searched decisions, N=64): 0.347 ms
+    build (engine + resume snapshot + replay) 0.075, world draw (sample + edit) 0.058,
+    descent 0.086, encode 0.082, teardown 0.047.  (Plan estimate: 0.65 ms.)
+  14 threads: 17,250 simulations/s wall (0.675 ms per simulation per thread: memory contention).
+  With the GPU network (M1 runs): ~10,800 simulations/s wall; collect (C++) 64%, network 31%.
+
+M1: win rates (Wilson 95%; search side seat-balanced, common seeds: seed s is played twice, the search
+on seat 1 then seat 2; non-search seat = the same network, greedy; strict encoder; pool deck model)
+-----------------------------------------------------------------------------------------------------
+  row                         N  games  win     Wilson 95%      pairs 0/1/2  moves changed  games/h
+  greedy vs greedy (sanity)   0   400   0.500   [0.451, 0.549]   0/200/0      -            460,000
+  search N=1 (= greedy)       1   400   0.500   [0.451, 0.549]   0/200/0      0.0%         351,000
+  search N=16                16   400   0.535   [0.486, 0.583]  14/158/28     2.7%          38,300
+  search N=64                64   400   0.642   [0.594, 0.688]   8/127/65     4.8%           9,060
+  search N=200              200   400   0.710   [0.664, 0.752]   7/102/91     6.9%           2,730
+  -- diagnostics / variants at N=64 --
+  cpuct 1.5                  64   400   0.640   [0.592, 0.686]  10/124/66     5.5%           8,940
+  cpuct 3.0                  64   400   0.615   [0.566, 0.661]  12/130/58     4.0%           8,960
+  public decklist model      64   400   0.600   [0.551, 0.647]  10/140/50     4.8%           9,170
+  perfect info (diag only)   64   400   0.685   [0.638, 0.729]   4/118/78     4.8%           9,330
+  -- vs ISMCTS-200 on the other seat (ismcts:sims=200) --
+  network greedy (N=1)        1   200   0.995   [0.972, 0.999]   0/1/99       -              5,570
+  search N=64                64   200   1.000   [0.981, 1.000]   0/0/100      2.5%           3,320
+
+  pairs 0/1/2: per seed, how many of its two games the search won (1 = a split, e.g. both games
+  won by the same seat; with greedy on both sides every pair is 1-1). moves changed: share of
+  searched decisions where the played option differs from the network's argmax.
+  Seat 1 wins 42.5% of greedy-vs-greedy games (the second player is favoured in this mirror), which
+  is why rates are reported seat-balanced. ~67 searched decisions per game per seat; 0 errors, 0
+  failed simulations, 0 option / token truncations in all runs.
+
+Pass criterion (SEARCH_PLAN.md): N=64 >= 58%: yes (64.2%, lower CI bound 59.4%); rises 16 -> 64 ->
+200: yes (53.5 -> 64.2 -> 71.0). The 16 and 64 CIs do not overlap; the 64 and 200 CIs overlap
+slightly (68.8 vs 66.4), but on common seeds the pair counts move the same way (2-0 pairs 65 -> 91).
+No regression vs ISMCTS-200: greedy already wins 99.5%, search N=64 wins 200/200.
+
+Checks and diagnosis
+--------------------
+- N=1 reproduces greedy exactly (every pair 1-1, same game lengths): the root prior from a sampled
+  world equals the true-state prior (consistent with the leak test), and the harness adds nothing.
+- Value sign handling: search improves monotonically with N; a sign error would make it worse.
+- Perfect-information worlds (diagnostic only): 68.5% vs 64.2% honest at N=64 (difference within
+  noise, ~1.3 SE). Honest worlds stop earlier (mean path depth 3.7 vs 6.2 decisions): opponent nodes
+  offer options with no prior in new worlds (their hand differs) and are re-expanded.
+- The search changes few moves (5-7%) but the changes matter: at N=64 the search wins 65 seeds 2-0
+  and loses 8 0-2. The value head is usable; strength is still rising at N=200.
+- Deck model: in honest worlds the opponent's unseen cards are drawn from the whole legend pool,
+  mostly cards outside the network's 51-card vocabulary (~15 'other' tokens per leaf at N=64), so
+  opponent-view priors and values are made on unfamiliar cards. The public-decklist variant removes
+  that (0 unknown keys) but did NOT do better (60.0% vs 64.2%, difference within noise). Not
+  understood yet; candidates: the decklist model drops "known in deck vs hand" zone restrictions,
+  and redrawing from 40 Rengar cards gives opponent hands the network handles more confidently but
+  not more accurately. Worth a paired, larger comparison before relying on either.
+- Light cpuct tuning: 1.5 and 2.0 equal (64.0 / 64.2), 3.0 a little lower (61.5). 2.0 kept.
+
+Throughput
+----------
+  N=16: 38k games/h, N=64: 9.1k games/h, N=200: 2.7k games/h (one seat searching, 400 games at once,
+  14 threads + GPU). Plan estimates: 38k / 9.6k / 3.1k. ~10.8k simulations/s.
+
+Issues / not done / unverified
+------------------------------
+- Prompts get the full budget (M2 plans a quarter); no skipping of confident decisions.
+- Strategy fusion at opponent nodes is not measured (plan's guard: compare the opponent's prior from
+  its own view against sampling opponent moves from the net). Opponent nodes use the network's own
+  prior from the opponent's view in each world.
+- The decklist model's lower result is unexplained (see above); runs are single-seed sets (CI only).
+- The setup battlefield choice of a Match is not handled (Duel only, as rbenv).
+- rbenv's own tests other than agreement and determinism were not re-run after the encoder split.
+
+Recommended next step
+---------------------
+M2 (Gumbel root at N=16-32, prompt budget, skip confident decisions), then M3. The stop rule (fix the
+value head first) does not apply: N=64 and N=200 both pass. In parallel, decide on the
+identityVisible leak (src/ fix or keep strict visibility in the encoder; if the encoder changes for
+training, it is a small observation change for future checkpoints).

@@ -1,0 +1,15 @@
+refit Fri Nov 20 13:04:21 2026 (demo + overnight results; random-player = 0)
+rank  member                                 Elo    95% CI (Laplace)  games  note
+   1  az_main@250                           1191 [   1043,   1339]    700  
+   2  az_main@300                           1191 [   1043,   1339]    700  
+   3  az_main@200                           1169 [   1024,   1314]    700  
+   4  az_main@100                           1012 [    856,   1169]    400  
+   5  az_exp@60                              979 [    826,   1132]    200  
+   6  az_exp@120                             711 [    534,    888]    200  
+   7  anchor:ismcts:sims=200                 356 [    282,    430]    700  
+   8  anchor:ismcts:sims=100                 305 [    221,    389]    600  
+   9  gate4_B2@150                           104 [     30,    177]    200  
+  10  rengar_main@2080                        87 [     32,    142]   1100  
+  11  anchor:random-player                     0 [      0,      0]    200  anchor (fixed 0)
+  12  cf_id@230                             -141 [   -196,    -85]   1100  
+  13  gate4_id@150                          -275 [   -355,   -196]    200  
