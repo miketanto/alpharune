@@ -5,8 +5,10 @@ Every network decision gets annotation lines in the replay's trace panel (top-3 
 probability, the chosen option, the value estimate) and its value in the win-probability
 slot; every ISMCTS decision gets its root value and top-3 options by visits.
 
-Uses HEAD (25d8dd6) copies only: viz/model.py, viz/rbenv_viz.py (+ librbenv_viz.so).
-Sampling policy (as verify_eval.py / the 86% eval), torch seeded per game.
+Schema v4 (2026-11-19): viz/model.py = working-tree learner/model.py, viz/rbenv_viz.py = rbenv.py
+(+ librbenv_viz4.so). Net options are detected from the checkpoint as in gate4/po.py load_net.
+Default network: runs/gate4_B2/latest.pt. --greedy = top choice (gate-4 eval); otherwise sampled.
+The v2 tool (old network, old replays) is viz/v2/.
 
   python3 play_viz.py --seed 7001 --net-seat 1 [--opp ismcts:sims=100] [--greedy]
 """
@@ -16,13 +18,13 @@ import torch
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
-from model import Net, load_vocab  # noqa: E402  (viz copy of HEAD model.py)
+from model import Net, load_vocab  # noqa: E402  (viz copy of learner/model.py)
 from rbenv_viz import RBEnv  # noqa: E402
 
 
 
 def to_dev(obs, rows, dev):
-    """Verbatim from HEAD learner/selfplay.py: rows of an observe() dict -> torch, trimmed to used T/A."""
+    """Verbatim from learner/selfplay.py: rows of an observe() dict -> torch, trimmed to used T/A."""
     tm = obs['tok_mask'][rows]
     am = obs['act_mask'][rows]
     T = int(tm.any(0).nonzero()[0].max()) + 1 if tm.any() else 1
@@ -32,7 +34,7 @@ def to_dev(obs, rows, dev):
     return {k: torch.from_numpy(np.ascontiguousarray(v)).to(dev, non_blocking=True) for k, v in b.items()}
 
 
-CKPT = os.path.join(HERE, '..', 'runs', 'gate2v2_sanity_B2_ask', 'latest.pt')
+CKPT = os.path.join(HERE, '..', 'runs', 'gate4_B2', 'latest.pt')
 
 
 def main():
@@ -42,19 +44,20 @@ def main():
     ap.add_argument('--opp', default='ismcts:sims=100')
     ap.add_argument('--ckpt', default=CKPT)
     ap.add_argument('--greedy', action='store_true')
-    ap.add_argument('--out', default=os.path.join(HERE, 'replays'))
+    ap.add_argument('--out', default=os.path.join(HERE, 'replays_v4'))
     a = ap.parse_args()
     torch.manual_seed(a.seed)
     torch.set_num_threads(1)
     os.makedirs(a.out, exist_ok=True)
-    net_label = 'network(B2 ask, %s)' % ('greedy' if a.greedy else 'sampled')
+    net_label = 'network(gate4 B2, %s)' % ('greedy' if a.greedy else 'sampled')
     labels = (net_label, a.opp) if a.net_seat == 1 else (a.opp, net_label)
     env = RBEnv(1, 'rengar', 'rengar', a.seed, autopay=True, opponent=a.opp,
                 viz_dir=os.path.abspath(a.out), opp_seat=3 - a.net_seat, labels=labels)
-    assert env.schema_version() == 2
+    assert env.schema_version() == 4, env.schema_version()
     sd = torch.load(a.ckpt, map_location='cpu')
     sd = sd.get('net', sd.get('model', sd)) if isinstance(sd, dict) else sd
-    net = Net(env.dims, load_vocab()[0], 'B2', ask_head='W_ask.weight' in sd, card_norm='card_ln.weight' in sd)
+    net = Net(env.dims, load_vocab()[0], 'B2', ask_head='W_ask.weight' in sd, card_norm='card_ln.weight' in sd,
+              ask_opt='W_ask_opt.weight' in sd, opt_cost='W_oc.weight' in sd, opt_refs='W_mg.weight' in sd)
     net.load_state_dict(sd)
     net.eval()
     t0 = time.time()

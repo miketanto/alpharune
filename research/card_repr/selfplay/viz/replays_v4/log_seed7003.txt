@@ -1,0 +1,1 @@
+{'env': 0, 'game_seed': 7003, 'winner': 1, 'length': 407, 'n_ext': 67, 'turns': 17, 'error': '', 'net_seat': 1, 'net_won': 1, 'secs': 5.8, 'net_decisions': 67, 'net_value_first_last': [-0.14, 0.77]}

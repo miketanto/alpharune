@@ -1,0 +1,285 @@
+Gate 4 (TESTPLAN.md): does a TRAINED self-play network understand card mechanics IN CONTEXT? Rengar mirror, 2026-11-19
+=====================================================================================================================
+
+ANSWER
+------
+No. Neither network passes gate 4 in any (mechanic, context) cell, B2 or id.
+The value head knows who is winning: its root value correlates r = 0.67 with the playout win rate over 431 positions.
+But it does not track the ground-truth effect of a single counterfactual edit. Across positions, in every cell, the
+correlation between the model's dvalue and the playout dwin has a 95% bootstrap CI that includes 0.
+Pooled over all 855 non-null edits there is a weak positive correlation:
+- B2 r = +0.15 [+0.07, +0.24];
+- id r = +0.14 [+0.06, +0.22].
+That comes mostly from differences BETWEEN cells (e.g. both nets lower the value when an opposing hidden card is
+present), not from tracking within a cell.
+
+What the networks get, and what they don't (B2 / id; truth = playout dwin, model = dvalue in win units):
+- Might +-2 on a key unit: truth -0.14 / +0.16 / -0.12, the largest effects measured. The value head barely moves:
+  |dv| about 0.01 for both nets, about 10x too small, with r about 0. FAIL for both.
+- [Assault 2] given this turn to a unit that can attack now: truth +0.062 +- 0.027, and the model has the WRONG SIGN.
+  B2 dv = -0.081, id dv = -0.087; sign agreement 0 of 12 clear positions for both. This is the clearest result of the
+  gate: the effective-Assault token field (the only thing this edit changes in the observation) is read, but read
+  backwards. Plausibly a training correlation: almost the only unit with effective Assault > 0 is Inferna, a
+  1-Might unit.
+- Context, Assault on an attacker vs on a defender (it expires before the defender can attack):
+  - truth: +0.062 vs +0.003, so the rule is visible in the ground truth;
+  - B2: -0.081 vs +0.008;
+  - id: -0.087 vs -0.025.
+  Neither net shows the right context dependence. B2 at least treats the defender case as near-null.
+- [Shield 2] on an enemy defender: truth -0.086 +- 0.049.
+  - B2: right sign but tiny (dv -0.007, sign agreement 0.86 of 14 clear positions).
+  - id: larger (-0.044, 1.00 of 14), but id gives about the same response to Shield on its own ATTACKER (-0.065,
+    truth +0.009) and on its own exhausted unit in base (null, -0.046).
+  So id reads "a Shield field anywhere = bad", not the defending context.
+- Hidden card present vs absent: truth is large.
+  - Opponent's hidden card: -0.137 +- 0.054. Both nets lower the value (B2 -0.076, id -0.085; sign agreement 0.82 /
+    0.79 of 34 clear), but with r about 0 across positions: they register THAT the card is there, not how much it
+    matters.
+  - Own hidden card: +0.073 +- 0.030. B2 is blind (+0.006). id has the right sign on average (+0.028, sign 0.93 of 15
+    clear), but r = 0.01.
+- Kinkou Initiate condition crossing (other units' total Might 5): truth +0.127 / -0.109, but the edit is a Might
+  change on another unit, so it is confounded with Might. Both nets near 0 (|dv| 0.005-0.02). B2's true-to-false cell
+  is the only "WEAK" verdict (r +0.24 [-0.09, +0.55], sign 0.58).
+- Legion (Noxus Hopeful in hand), Darius's second-card condition (board / hand), Star Spring's once-per-turn stamp,
+  Inferna's Assault while it cannot attack:
+  - Under this policy at these positions the ground truth is about 0: +0.005, +0.025, +0.009, +0.021 (relevant) /
+    -0.001 (irrelevant), +0.001.
+  - Too few clear positions (2-20) to test tracking; the models' responses are small too.
+  These mechanics are not shown to be understood; there is nothing to track here.
+- Unit at a battlefield vs in base: truth varies in sign by position (mean -0.015, 26 of 40 clear).
+  r = +0.05 (B2) / -0.05 (id). FAIL.
+- Null edits:
+  - B2 passes 2 of 3 (cards-played with no reader 0.007; Shield on own exhausted base unit 0.006). It fails narrowly
+    on Assault for an enemy unit in base: |dv| 0.012 against a limit of 0.011.
+  - id passes 1 of 3: it responds -0.028 and -0.046 to the two keyword nulls. id's keyword responses are mostly
+    "any keyword field changes the value", whatever the context.
+
+B2 vs id
+- Strength: id 0.955 [0.917, 0.976] vs B2 0.905 [0.856, 0.938] against ISMCTS-100 (greedy, 200 games each). The
+  CIs overlap.
+- Understanding: neither passes any cell.
+  - B2 is more inert (|dv| 0.021 pooled vs 0.030) and has the cleaner nulls.
+  - id reacts more to keyword fields, but context-blind.
+  - Both share the inverted Assault reading.
+- On a secondary ground truth (the id net's OWN policy playing out 72 of the positions; tables_idpolicy.txt), the
+  conclusions are the same: no cell passes, pooled r +0.09 [-0.05, +0.23] for id.
+
+Rare contexts (gate 3 D3)
+- "Inferna can attack now" occurs in 6 of about 2,500 collected main-phase positions (0.2%); 3 were played out.
+  TOO-FEW: the attacking context of Inferna's own Assault cannot be tested from the trained policy's games.
+  (An early checkpoint had 12 of 155: the trained policy seldom leaves Inferna ready to attack.)
+- Defending contexts were reachable as edits: "defender" = an enemy unit at a battlefield a legal move would attack,
+  40 positions each for Assault / Shield. But the units ACTING while defending (D3) are not what gate 4 measures:
+  every edit is judged at the turn player's main-phase decision. The only decision the engine can snapshot and
+  resume is the main-phase one; see caveats.
+- Own hidden card (27 positions), Kinkou true-to-false (29) and Darius on board (50) were reached only with a second,
+  rare-cell collection of 600 more games.
+
+MAIN TABLE (B2-policy ground truth, 431 positions, 975 edits; tables.txt / results.json)
+---------------------------------------------------------------------------------------
+Columns:
+- n = positions;
+- clr = positions where |truth| > 2 se and > 0.05 ("clearly exceeds the noise");
+- truth = mean playout dwin with its 95% CI across positions (oriented: + = "mechanic on");
+- r [CI] = Pearson r(model dv, truth) across positions with a bootstrap 95% CI;
+- sign = sign agreement on the clear positions;
+- dv = mean model dvalue in win units.
+
+cell                                 n  clr  truth            | B2: r  [CI]           sign   dv     | id: r  [CI]           sign   dv     | verdict B2 / id
+assault+:attacker                   40   12  +0.062+-0.027    | +0.10 [-0.25,+0.35]  0.00 -0.081   | -0.04 [-0.29,+0.25]  0.00 -0.087   | FAIL / FAIL (wrong sign)
+assault+:defender                   40    4  +0.003+-0.012    | -0.08 [-0.38,+0.26]  0.75 +0.008   | +0.10 [-0.19,+0.37]  0.25 -0.025   | FAIL / FAIL
+shield+:defender                    40   14  -0.086+-0.049    | +0.17 [-0.07,+0.45]  0.86 -0.007   | -0.02 [-0.34,+0.30]  1.00 -0.044   | FAIL / FAIL
+shield+:attacker                    40    3  +0.009+-0.011    | +0.04 [-0.24,+0.32]  0.00 +0.004   | +0.05 [-0.29,+0.35]  0.33 -0.065   | TOO-FEW (id spurious)
+inferna_assault-:can_attack          3    2  +0.120+-0.175    | n/a                  0.00 -0.024   | n/a                  0.00 -0.034   | TOO-FEW
+inferna_assault-:cannot_attack      40    0  +0.001+-0.008    | +0.09 [-0.22,+0.38]   -   -0.015   | +0.07 [-0.22,+0.41]   -   -0.016   | TOO-FEW (truth ~0)
+hidden-:opp (present vs absent)     56   34  -0.137+-0.054    | +0.02 [-0.20,+0.27]  0.82 -0.076   | -0.10 [-0.30,+0.13]  0.79 -0.085   | FAIL / FAIL (sign ok, no tracking)
+hidden-:own                         27   15  +0.073+-0.030    | -0.21 [-0.55,+0.26]  0.40 +0.006   | +0.01 [-0.36,+0.34]  0.93 +0.028   | FAIL / FAIL
+legion:noxus_in_hand                40    2  +0.005+-0.009    | -0.11 [-0.41,+0.10]  0.50 +0.021   | -0.06 [-0.23,+0.11]  0.50 -0.002   | TOO-FEW (truth ~0)
+darius_second_card:board            50    5  +0.025+-0.020    | +0.37 [-0.23,+0.66]  0.40 +0.004   | -0.01 [-0.17,+0.18]  1.00 +0.007   | FAIL / FAIL
+darius_second_card:hand             99   12  +0.009+-0.008    | -0.04 [-0.22,+0.16]  0.75 +0.004   | +0.00 [-0.14,+0.15]  0.50 -0.002   | FAIL / FAIL
+starspring_unused:relevant         102   20  +0.021+-0.017    | -0.01 [-0.14,+0.16]  0.30 -0.012   | +0.06 [-0.11,+0.22]  0.35 -0.025   | FAIL / FAIL
+starspring_unused:irrelevant        40    3  -0.001+-0.011    | +0.05 [-0.23,+0.33]  1.00 -0.012   | +0.01 [-0.29,+0.33]  1.00 -0.025   | TOO-FEW (truth ~0)
+might+2:own_key                     40   35  +0.159+-0.034    | +0.19 [-0.04,+0.42]  0.51 +0.001   | +0.14 [-0.17,+0.47]  0.63 +0.006   | FAIL / FAIL
+might-2:own_key                     40   33  -0.115+-0.022    | +0.10 [-0.21,+0.36]  0.73 -0.011   | +0.06 [-0.20,+0.31]  0.76 -0.008   | FAIL / FAIL
+might+2:opp_key                     40   35  -0.140+-0.030    | -0.18 [-0.42,+0.11]  0.69 -0.008   | +0.04 [-0.21,+0.30]  0.86 -0.007   | FAIL / FAIL
+kinkou_condition:false_to_true      49   35  +0.127+-0.030    | +0.24 [-0.03,+0.46]  0.26 -0.003   | -0.21 [-0.48,+0.10]  0.43 +0.004   | FAIL / FAIL
+kinkou_condition:true_to_false      29   26  -0.109+-0.025    | +0.24 [-0.09,+0.55]  0.58 -0.007   | +0.18 [-0.14,+0.49]  0.77 -0.013   | WEAK / FAIL
+location:bf_to_base                 40   26  -0.015+-0.046    | +0.05 [-0.37,+0.47]  0.69 +0.015   | -0.05 [-0.51,+0.42]  0.54 +0.038   | FAIL / FAIL
+null:assault_opp_unit_in_base       40    2  +0.001+-0.007    | |dv| 0.012, mean +0.007            | |dv| 0.028, mean -0.028            | NULL-FAIL (marginal) / NULL-FAIL
+null:played_no_reader               40    2  +0.002+-0.009    | |dv| 0.007, mean -0.000            | |dv| 0.008, mean -0.003            | NULL-OK / NULL-OK
+null:shield_own_exhausted_base_unit 40    3  +0.003+-0.010    | |dv| 0.006, mean +0.001            | |dv| 0.046, mean -0.046            | NULL-OK / NULL-FAIL
+ALL non-null (pooled)              855  316  -0.003+-0.008    | +0.15 [+0.07,+0.24]  0.56 -0.010   | +0.14 [+0.06,+0.22]  0.65 -0.019   |
+Policy shift (root TV, both nets):
+- 0.002-0.06 where the options are unchanged;
+- 0.14-0.70 where an edit changes the legal options: hidden own card back in hand 0.70 / 0.59, Legion cost 0.14 / 0.16,
+  location 0.22 / 0.18.
+Full table with rho, |dv| and TV per net: tables.txt.
+
+Verdict rules (analyze.py):
+- PASS: bootstrap r CI above 0, and sign agreement >= 0.7 on >= 4 clear positions out of >= 8.
+- WEAK: r > 0.2 and sign agreement > 0.5.
+- TOO-FEW: fewer clear positions than that.
+- Null cell NULL-OK: mean |dv| <= half the pooled mechanic |dv| of that net, and |mean dv| <= 0.01.
+
+Ground-truth precision: N = 384 playouts per variant.
+- Original-position win rate 95% CI: median +-0.046 (max +-0.050).
+- Per-edit paired effect CI: median +-0.060.
+
+PHASE A: TRAINING AND STRENGTH
+------------------------------
+- Runs (kept): selfplay/runs/gate4_B2 and gate4_id (ckpt_*.pt, latest.pt = update 150).
+  - Both: --ask-head --ask-opt, schema v4, Rengar mirror, 128 envs, seed 0.
+  - Both trained to the SAME fixed update count, 150.
+- eval_B2_ismcts100.json: B2 181/200 = 0.905 [0.856, 0.938].
+- eval_id_ismcts100.json: id 191/200 = 0.955 [0.917, 0.976].
+- Both evals: verify_eval.py, greedy, vs ismcts:sims=100, 200 games, --procs 6, 0 errors.
+  (Reference: an earlier 72-update checkpoint scored 0.68 vs ISMCTS-100, selfplay/verify_ismcts100.json.)
+- Resource incident:
+  - The first attempt ran both 40-minute trainings concurrently at 16:44. Both ran about 10x slow.
+  - GPU: 11.7 of 12.3 GB in use, mostly our two processes; WDDM oversubscription. At 16:43 the GPU had held 772 MiB
+    from other (desktop) processes; nothing else showed GPU compute afterwards.
+  - Windows RAM: about 0.1 GB free.
+  - On the coordinator's request, both were stopped:
+    - B2 at update 33-36; its latest.pt was update 30, then 40 after one short resume.
+    - id at update 41; latest.pt was update 40.
+  - Both were RESUMED one after the other to update 150, with CUDA memory capped at 0.4 per process
+    (gate4/sp_wrap.py, PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True) (run_train.sh). B2 then ran at about 45-50
+    games/s and 9.3 s per update.
+  - id ran at 15-23 games/s, because CPU playout shards (phase B) shared its cores until 17:36. Then the shards were
+    stopped and it ran at 11 s per update.
+  - So the id net got the same updates but more wall time. Its first 40 updates (and B2's first 30) were made under
+    the contended conditions, with no change to the algorithm.
+  - The B2 log (runs/gate4_B2.out, log.csv) has a few duplicate update rows (31-36 from the killed run, then the
+    resumed 31-...).
+
+PHASE B: HARNESS (gate4/)
+-------------------------
+- rbenv extension (research code only; nothing under src/ edited; no commits)
+  - Source: gate4/rbenv_gate4_ext.cpp, appended to selfplay/rbenv/rbenv.cpp. Backup of the previous file:
+    gate4/rbenv.pre_gate4.cpp.bak.
+  - Other rbenv.cpp changes: Env::hist records every applied choice index (applyTracked), and Env::tok_obj the token's
+    object id. Result carries the playout job. startGame() hands off to a playout start when the handle is a playout
+    handle.
+  - Normal rbenv behaviour is unchanged. Re-run on the final build: test_determinism ok (410 steps, 24 games
+    identical); test_fields OK (all v2 / v4 checks 0 mismatches, 300 games).
+  - C API:
+    - rbenv_hist, rbenv_resumable, rbenv_tok_obj;
+    - rbenv_po_create (replay a position), rbenv_po_describe;
+    - rbenv_po_add_variant (edit + resume + Cleanup + root observation), rbenv_po_variant_info, rbenv_po_root_obs;
+    - rbenv_po_start / rbenv_po_busy / rbenv_po_results (playout jobs, played with rbenv_observe / rbenv_step).
+  - Python: gate4/po.py.
+- Snapshot: a position = (game seed, history of applied choice indices).
+  - Replay is deterministic: an earlier test replayed and played the same seeds twice with identical results.
+  - Only a top-level main-phase decision can be snapshotted: GameEngine::isResumableDecision; resumeFromSnapshot
+    accepts nothing else.
+- Edits go through the engine's own path:
+  - StateEditor::moveObject / moveObjectToBattlefield for zone changes;
+  - otherwise the fields the engine's own effects write: giveTemporaryKeyword's "this turn" Assault / Shield, base
+    Might, cards_played_this_turn, Star Spring's __starspring_turn_p<i> stamp.
+  - "Remove Assault" sets the value to 0 for this turn with the matching negative temp value, so the expiration step
+    restores it.
+  - A probe engine resumes the edited state (resumeFromSnapshot: the Main Phase settles the chain and staged combats
+    and runs Cleanup, recomputing auras, Might, deaths and control). The edit is kept only if the engine then asks
+    the same player a main-phase decision. That post-Cleanup state and decision are the variant's root.
+  - Result: 0 of 975 edits refused, and every edit still visible in the post-Cleanup root state (check_edits.txt).
+- Playouts:
+  - Each (variant, seed) resumes the root with the engine RNG seeded from the seed, and both Main Decks reshuffled
+    (the order is hidden from both players; hands and board are the true ones).
+  - The network plays both seats.
+  - All variants of a position use the same seeds (common random numbers): the effect is a paired difference.
+  - A 64-playout screen skips positions whose original win rate is outside [0.08, 0.92] (212 skipped): decided
+    positions carry no signal.
+- Positions:
+  - Taken from the final B2 net's own SAMPLED self-play: 300 games (positions.json, 871 candidates), plus 600 games
+    for the rare cells only (positions2_rare.json).
+  - Main-phase decisions from turn 2 on, p = 0.12, at most 3 per game.
+  - The edit plan comes from the engine's description plus the root observation:
+    - attacker = a turn-player unit some legal move would send into a combat as attacker (act[47] = 1);
+    - defender = an enemy unit at such a destination.
+  - Caps: 40 positions per cell (10 per shard), and up to 80 more for the rare cells.
+- Ground-truth policy: SAMPLED, not greedy.
+  - A greedy pilot (8 positions, 49 edits, N = 128, gate4/tmp/res_test.jsonl) gave original win rates of 0.99, 0.00,
+    0.13, 0.75, 0.00, 1.00, 0.02 and 1.00.
+  - In it, 46 of 49 edits had ZERO discordant seeds: greedy self-play from a position is nearly deterministic even
+    with reshuffled decks, so it cannot measure an edit.
+  - The same positions sampled gave 5-50% discordant seeds (tmp/res_samp.jsonl).
+  - The value head is trained on the sampling policy's returns, so the sampled playout win rate is exactly what it
+    estimates.
+  - Strength evaluations (phase A) stay greedy.
+- Model response, at the root decision of each variant:
+  - dv = (v(edited) - v(original)) / 2, the decider's perspective;
+  - policy TV between the root distributions, options matched by the engine's option text; an option present on
+    one side only counts in full.
+  - id's responses were added after the fact by rebuilding each variant (add_model.py; the rebuilt legal lists were
+    asserted equal).
+- Compute:
+  - Playouts first ran on CPU (no GPU while a training ran), then on the GPU, 4 processes capped at 0.2 of its memory
+    each. About 0.7M games in total.
+  - Windows had 5-6 GB free RAM after the coordinator's intervention; WSL used up to 5.6 GB.
+
+CAVEATS
+-------
+1. One ground truth for both nets: the B2 policy's playouts. A value head estimates its OWN policy's returns.
+   - The id net was also checked against its own policy on 72 positions (results_idpol_s2.jsonl,
+     tables_idpolicy.txt), with the same conclusion. That subset is small (10 per cell).
+2. Only main-phase roots. The engine resumes only top-level main-phase snapshots, so:
+   - no edit is judged at a combat, showdown, chain or target decision;
+   - "attacking vs defending" is a context of the edited UNIT (can attack now / is an enemy defender), not of the
+     decision;
+   - the D3 contexts (units acting while defending) stay untested. Testing them needs a snapshot at other decisions,
+     e.g. replay to the decision, then edit through mutableState() while parked, which the engine supports for
+     ChainPriority / ShowdownFocus.
+3. Some cells have ~0 ground truth under this policy at these positions:
+   - Legion, Darius (hand), Star Spring, Inferna's Assault while it cannot attack.
+   - "Fails to track" there is untestable, not a demonstrated failure. The positions were not chosen for the
+     mechanic being decisive.
+4. Confounds:
+   - The Kinkou edit is a Might change on another unit, so it carries the Might effect too.
+   - The Legion / Darius / null "played" edit changes cards_played_this_turn, which also changes the global feature
+     g69.
+   - "location: bf -> base" can also change who holds the battlefield.
+5. The "Assault wrong sign" result rests on 40 positions (12 clear), consistent for both nets. The edit changes only
+   tok[22] (effective Assault) and keyword bits the encoder doesn't read: Might is unchanged until the unit attacks.
+   So the response is the net's reading of that field. A follow-up could check the training-data correlation of
+   tok[22] with the return.
+6. Training is short: 150 updates (about 29k games). Gate 3's wiring tests passed, but the fields here are clearly
+   under-used. The gate-3 note that the Star Spring stamps and CombatDamage Might paths are about 10x weaker than
+   other fields is consistent with this.
+7. Per-position precision is +-0.06 for an edit, so "clear" positions are those with |dwin| >~ 0.12. Small real
+   effects (Legion's cost, Star Spring) are below what one position can resolve. The cell means have CIs of +-0.01 to
+   +-0.05.
+
+WHAT IS LEFT
+------------
+- Contexts at non-main-phase decisions (D3): edit while parked at a chain-priority or showdown-focus decision
+  (recomputePendingLegalActions supports those). Combat-damage contexts need replay-to-decision + edit + continue,
+  with no resume.
+- Positions selected for the mechanic being decisive: e.g. a combat that the +2 decides. Then Legion, Darius, Star
+  Spring and Inferna get non-zero ground truth to track.
+- A longer training, or a training that rewards reading these fields (TESTPLAN gate 5: "train on contrasts"), then
+  this harness again. It runs unattended:
+  - collect.py, then run.py (shards; --sample);
+  - add_model.py for more nets;
+  - analyze.py, check_edits.py.
+- rbenv test_agreement_v2 / test_multivariant / test_random were not re-run after the extension (test_determinism and
+  test_fields were, both OK). The changes are additive (history vector, token object ids, playout handles).
+- The id net's own-policy ground truth on more positions (one shard so far).
+
+FILES (research/card_repr/gate4/)
+---------------------------------
+- REPORT.txt: this report.
+- results.json: per-cell statistics + every (position, edit) row with truth, se, model dv and TV for B2 and id.
+- tables.txt: the full main table.
+- results_idpolicy.json / tables_idpolicy.txt: the id-policy ground truth.
+- check_edits.txt: edit legality.
+- results_s{0..3}[_both].jsonl, results_rare_s{0..3}[_both].jsonl: raw playouts; _both = with id responses.
+- results_idpol_s2.jsonl: the id-policy playouts.
+- positions.json, positions2.json, positions2_rare.json: positions and edit plans.
+- eval_{B2,id}_ismcts100.json/.log: phase A evaluations.
+- Scripts:
+  - rbenv_gate4_ext.cpp, po.py: the harness.
+  - collect.py, run.py, add_model.py, analyze.py, check_edits.py.
+  - run_train.sh, sp_wrap.py, eval.sh, phaseB_*.sh, final.sh.
+- Logs: collect*.log, run_*.log.
+- tmp/: the greedy (res_test.jsonl) and sampled (res_samp.jsonl) pilots and patch scripts.
+- Checkpoints: selfplay/runs/gate4_B2, selfplay/runs/gate4_id.

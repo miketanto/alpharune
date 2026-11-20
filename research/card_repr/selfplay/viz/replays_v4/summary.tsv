@@ -1,0 +1,6 @@
+7002	1	8	5	13	311	63	network(gate4 B2, greedy)	ismcts:sims=100	P1 reached 8 points
+7001	1	8	7	15	290	49	network(gate4 B2, greedy)	ismcts:sims=100	P1 reached 8 points
+7003	1	8	7	17	407	67	network(gate4 B2, greedy)	ismcts:sims=100	P1 reached 8 points
+7101	2	3	8	11	202	30	ismcts:sims=100	network(gate4 B2, greedy)	P2 reached 8 points
+7102	2	5	8	13	325	51	ismcts:sims=100	network(gate4 B2, greedy)	P2 reached 8 points
+7103	2	6	8	16	384	60	ismcts:sims=100	network(gate4 B2, greedy)	P2 reached 8 points

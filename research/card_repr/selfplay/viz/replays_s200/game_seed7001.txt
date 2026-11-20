@@ -1,0 +1,308 @@
+game seed 7001   P1 = network(gate4 B2, greedy)   P2 = ismcts:sims=200
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[ISMCTS] Mull: Punch First Irresistible Faefolk   (ismcts 19/200 visits)
+~ P1 brings Star Spring
+~ P2 brings Emperor's Dais
+~ P1 opening hand: Punch First, Nidalee, Cat Form, First Mate, Noxus Hopeful
+~ P2 opening hand: Punch First, Pit Rookie, Irresistible Faefolk, Pakaa Cub
+~ P2 set aside Punch First
+~ P2 set aside Irresistible Faefolk
+~ P2 drew replacement Inferna
+~ P2 drew replacement Inferna
+  P1[NET] Keep hand
+        net: pick 89.5% | alt: Mull: Punch First 2.3% | v +0.19
+
+=== TURN 0 (P2, ISMCTS)   score P1 0 - P2 0 ===
+  P2[ISMCTS] Play Pit Rookie(2M) -> Base   (ismcts 40/200 visits)
+    ~ play Pit Rookie (Unit, 2E)
+  P2[ISMCTS] Order — Pit Rookie   (ismcts 100/200 visits)
+    ~ effect: give Pit Rookie 1 [M] this turn
+
+=== TURN 1 (P1, NET)   score P1 0 - P2 0 ===
+  P1[NET] Play Kinkou Initiate(3M) -> Base
+        net: pick 94.9% | alt: Play First Mate(3M) -> Base 4.6% | v +0.14
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[NET] Order — Pridestalker (Kinkou Initiate)
+        net: pick 56.1% | alt: Order — Kinkou Initiate 43.9% | v +0.13
+  P1[NET] Choose: Kinkou Initiate@Base
+        net: pick 100.0% | alt: Choose: Pit Rookie@Base 0.0% | v +0.12
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+
+=== TURN 2 (P2, ISMCTS)   score P1 0 - P2 0 ===
+  P2[ISMCTS] Move Pit Rookie -> Star Spring   (ismcts 27/200 visits)
+    ~ move Pit Rookie -> Star Spring
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 0 - P2 1
+  P2[ISMCTS] Play Inferna(1M) -> Star Spring   (ismcts 19/200 visits)
+    ~ play Inferna (Unit, 2E)
+  P2[ISMCTS] Order — Pridestalker (Inferna)   (ismcts 100/200 visits)
+  P2[ISMCTS] Choose: Kinkou Initiate@Base   (ismcts 67/200 visits)
+  P2[ISMCTS] No — Star Spring: move another unit here to its base?   (ismcts 100/200 visits)
+  P2[ISMCTS] Play Inferna(1M) -> Star Spring   (ismcts 101/200 visits)
+    ~ play Inferna (Unit, 2E)
+  P2[ISMCTS] Choose: Inferna@BF   (ismcts 50/200 visits)
+    ~ effect: give Inferna 1 [M] this turn
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[ISMCTS] Hide Pakaa Cub(3M) @ Star Spring   (ismcts 101/200 visits)
+    ~ hide Pakaa Cub at Star Spring by P2
+
+=== TURN 3 (P1, NET)   score P1 0 - P2 1 ===
+  P1[NET] Play Rengar, Trophy Hunter(6M) -> Star Spring
+        net: pick 94.0% | alt: Move Kinkou Initiate -> Emperor's Dais 2.6% | v +0.26
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P1[NET] Order — Pridestalker (Rengar, Trophy Hunter)
+        net: pick 88.2% | alt: Order — Star Spring (Rengar, Trophy Hunter) 11.8% | v +0.30
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 99.0% | alt: Choose: Kinkou Initiate@Base 1.0% | v +0.30
+  P2[ISMCTS] Play Pakaa Cub(3M)   (ismcts 108/200 visits)
+  P2[ISMCTS] Order — Star Spring (Pakaa Cub)   (ismcts 101/200 visits)
+  P2[ISMCTS] No — Star Spring: move another unit here to its base?   (ismcts 104/200 visits)
+  P2[ISMCTS] Choose: Pit Rookie@BF   (ismcts 36/200 visits)
+    ~ effect: give Pit Rookie 1 [M] this turn
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ COMBAT at Star Spring: P1 attacks [Rengar, Trophy Hunter(7M)]  vs  P2 defends [Inferna(1M), Inferna(1M), Pakaa Cub(3M), Pit Rookie(3M)]
+  P1[NET] Assign Damage: Pakaa Cub(3), Inferna(1), Pit Rookie(3)
+        net: pick 27.7% | alt: Assign Damage: Inferna(1), Pit Rookie(3), Pakaa Cub(3) 27.7% | v +0.25
+    ~ KILL Rengar, Trophy Hunter (7M, dmg=8)
+    ~ KILL Pakaa Cub (3M, dmg=3)
+    ~ KILL Pit Rookie (3M, dmg=3)
+    ~ KILL Inferna (1M, dmg=1)
+  P1[NET] Move Kinkou Initiate -> Emperor's Dais
+        net: pick 76.0% | alt: Move Kinkou Initiate -> Star Spring 23.9% | v -0.02
+    ~ move Kinkou Initiate -> Emperor's Dais
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 1
+
+=== TURN 4 (P2, ISMCTS)   score P1 1 - P2 1 ===
+    ~ SCORE P2 +1 (Hold Star Spring)   -> P1 1 - P2 2
+  P2[ISMCTS] Play First Mate(3M) -> Star Spring   (ismcts 21/200 visits)
+    ~ play First Mate (Unit, 3E)
+  P2[ISMCTS] Order — Star Spring (First Mate)   (ismcts 67/200 visits)
+  P2[ISMCTS] Order — First Mate   (ismcts 101/200 visits)
+  P2[ISMCTS] Yes — Star Spring: move another unit here to its base?   (ismcts 102/200 visits)
+  P2[ISMCTS] Choose: Kinkou Initiate@BF   (ismcts 101/200 visits)
+  P2[ISMCTS] Choose: Inferna@BF   (ismcts 69/200 visits)
+    ~ effect: give Inferna 1 [M] this turn
+  P2[ISMCTS] Move Inferna -> Emperor's Dais   (ismcts 48/200 visits)
+    ~ move Inferna -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(4M)]  vs  P1 defends [Kinkou Initiate(3M)]
+    ~ KILL Kinkou Initiate (3M, dmg=4)
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 3
+  P2[ISMCTS] No — Emperor's Dais: pay [1], return a unit   (ismcts 102/200 visits)
+  P2[ISMCTS] End Turn   (ismcts 41/200 visits)
+
+=== TURN 5 (P1, NET)   score P1 1 - P2 3 ===
+  P1[NET] Play Noxus Hopeful(4M) -> Base
+        net: pick 79.3% | alt: Play First Mate(3M) -> Base 16.5% | v -0.41
+    ~ play Noxus Hopeful (Unit, 4E)
+  P1[NET] Choose: Noxus Hopeful@Base
+        net: pick 99.9% | alt: Choose: First Mate@BF 0.1% | v -0.38
+    ~ effect: give Noxus Hopeful 1 [M] this turn
+  P1[NET] Play Irresistible Faefolk(1M) -> Base
+        net: pick 49.0% | alt: Play Irresistible Faefolk(1M) -> Base 49.0% | v -0.42
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P1[NET] Choose: Irresistible Faefolk@Base
+        net: pick 81.0% | alt: Choose: Noxus Hopeful@Base 19.0% | v -0.53
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+
+=== TURN 6 (P2, ISMCTS)   score P1 1 - P2 3 ===
+    ~ SCORE P2 +1 (Hold Star Spring)   -> P1 1 - P2 4
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 1 - P2 5
+  P2[ISMCTS] Play Rengar, Trophy Hunter(6M) -> Star Spring
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[ISMCTS] Order — Pridestalker (Rengar, Trophy Hunter)   (ismcts 100/200 visits)
+  P2[ISMCTS] Choose: Rengar, Trophy Hunter@BF   (ismcts 40/200 visits)
+  P2[ISMCTS] No — Star Spring: move another unit here to its base?   (ismcts 101/200 visits)
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[ISMCTS] Play Irresistible Faefolk(1M) -> Emperor's Dais
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P2[ISMCTS] Choose: First Mate@BF   (ismcts 34/200 visits)
+    ~ effect: give First Mate 1 [M] this turn
+  P2[ISMCTS] Move Inferna -> Base   (ismcts 68/200 visits)
+  P2[ISMCTS] Move no more units   (ismcts 100/200 visits)
+    ~ move Inferna -> Base(P2)
+  P2[ISMCTS] Move First Mate -> Base   (ismcts 100/200 visits)
+    ~ move First Mate -> Base(P2)
+
+=== TURN 7 (P1, NET)   score P1 1 - P2 5 ===
+  P1[NET] Move Irresistible Faefolk -> Emperor's Dais
+        net: pick 59.5% | alt: Move Irresistible Faefolk -> Star Spring 10.9% | v -0.12
+  P1[NET] Choose: Noxus Hopeful@Base
+        net: pick 86.9% | alt: Move no more units 13.1% | v -0.10
+    ~ move Irresistible Faefolk -> Emperor's Dais
+    ~ move Noxus Hopeful -> Emperor's Dais
+  P1[NET] Yes — Irresistible Faefolk: move an enemy unit to my battlefield?
+        net: pick 94.8% | alt: No — Irresistible Faefolk: move an enemy unit to my battlefield? 5.2% | v -0.29
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 48.1% | alt: Choose: First Mate@Base 39.3% | v -0.37
+  P1[NET] Play Nidalee, Cat Form(4M) -> Emperor's Dais
+        net: pick 87.6% | alt: Pass Priority 12.4% | v -0.28
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P1[NET] Choose: Irresistible Faefolk@BF
+        net: pick 71.4% | alt: Choose: Noxus Hopeful@BF 15.7% | v -0.32
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+  P1[NET] Play Punch First[S]
+        net: pick 92.0% | alt: Pass Focus 8.0% | v -0.09
+    ~ spell Punch First targets=[]
+  P1[NET] Choose: Noxus Hopeful@BF
+        net: pick 64.8% | alt: Choose: Irresistible Faefolk@BF 22.4% | v -0.13
+    ~ effect: give Noxus Hopeful 5 [M] this turn
+    ~ COMBAT at Emperor's Dais: P1 attacks [Irresistible Faefolk(2M), Nidalee, Cat Form(4M), Noxus Hopeful(9M)]  vs  P2 defends [Irresistible Faefolk(1M), Rengar, Trophy Hunter(6M)]
+  P1[NET] Assign Damage: Irresistible Faefolk(1), Rengar, Trophy Hunter(14)
+        net: pick 50.0% | alt: Assign Damage: Rengar, Trophy Hunter(6), Irresistible Faefolk(9) 50.0% | v -0.46
+  P2[ISMCTS] Assign Damage: Irresistible Faefolk(2), Noxus Hopeful(5)   (ismcts 52/200 visits)
+    ~ KILL Irresistible Faefolk (2M, dmg=2)
+    ~ KILL Irresistible Faefolk (1M, dmg=1)
+    ~ KILL Rengar, Trophy Hunter (6M, dmg=14)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 2 - P2 5
+  P1[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 82.0% | alt: No — Emperor's Dais: pay [1], return a unit 18.0% | v +0.10
+  P1[NET] Choose: Noxus Hopeful@BF
+        net: pick 60.9% | alt: Choose: Nidalee, Cat Form@BF 39.1% | v +0.07
+    ~ effect: bounce Noxus Hopeful to hand
+  P1[NET] Choose: Sand Soldier@BF
+        net: pick 58.4% | alt: Choose: Nidalee, Cat Form@BF 41.6% | v -0.11
+    ~ effect: give Sand Soldier 1 [M] this turn
+  P1[NET] End Turn
+        net: pick 89.3% | alt: Play Sabotage[S] 10.7% | v -0.03
+
+=== TURN 8 (P2, ISMCTS)   score P1 2 - P2 5 ===
+  P2[ISMCTS] Move Inferna -> Star Spring   (ismcts 28/200 visits)
+  P2[ISMCTS] Choose: First Mate@Base   (ismcts 101/200 visits)
+    ~ move Inferna -> Star Spring
+    ~ move First Mate -> Star Spring
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 2 - P2 6
+  P2[ISMCTS] Play Sabotage[S]   (ismcts 43/200 visits)
+    ~ spell Sabotage targets=[]
+  P2[ISMCTS] Play Thrill of the Hunt[S]   (ismcts 101/200 visits)
+    ~ spell Thrill of the Hunt targets=[]
+  P2[ISMCTS] Choose: Inferna@BF   (ismcts 100/200 visits)
+  P2[ISMCTS] Emperor's Dais   (ismcts 101/200 visits)
+    ~ effect: banish Inferna
+    ~ thrill: Inferna played to Emperor's Dais, ignoring cost
+  P2[ISMCTS] Choose: First Mate@BF   (ismcts 50/200 visits)
+    ~ effect: give First Mate 1 [M] this turn
+    ~ sabotage: revealed First Mate to P2
+    ~ sabotage: revealed Irresistible Faefolk to P2
+    ~ sabotage: revealed Pit Rookie to P2
+    ~ sabotage: revealed Sabotage to P2
+    ~ sabotage: revealed Noxus Hopeful to P2
+    ~ sabotage: recycling Sabotage to bottom of P1's deck
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(3M)]  vs  P1 defends [Nidalee, Cat Form(4M), Sand Soldier(2M)]
+  P2[ISMCTS] Assign Damage: Sand Soldier(2), Nidalee, Cat Form(1)   (ismcts 100/200 visits)
+    ~ KILL Inferna (3M, dmg=6)
+    ~ KILL Sand Soldier (2M, dmg=2)
+  P2[ISMCTS] Play Noxus Hopeful(4M) -> Star Spring   (ismcts 74/200 visits)
+    ~ play Noxus Hopeful (Unit, 4E)
+  P2[ISMCTS] Order — Star Spring (Noxus Hopeful)   (ismcts 101/200 visits)
+  P2[ISMCTS] Yes — Star Spring: move another unit here to its base?   (ismcts 102/200 visits)
+  P2[ISMCTS] Choose: Nidalee, Cat Form@BF   (ismcts 67/200 visits)
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+
+=== TURN 9 (P1, NET)   score P1 2 - P2 6 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 3 - P2 6
+  P1[NET] Play Noxus Hopeful(4M) -> Base
+        net: pick 50.1% | alt: Play First Mate(3M) -> Base 10.6% | v +0.23
+    ~ play Noxus Hopeful (Unit, 4E)
+  P1[NET] Choose: Nidalee, Cat Form@BF
+        net: pick 50.6% | alt: Choose: Noxus Hopeful@Base 49.1% | v +0.29
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+  P1[NET] Play First Mate(3M) -> Base
+        net: pick 24.3% | alt: Play Pit Rookie(2M) -> Base 22.7% | v +0.24
+    ~ play First Mate (Unit, 3E)
+  P1[NET] Order — Pridestalker (First Mate)
+        net: pick 74.1% | alt: Order — First Mate 25.9% | v -0.00
+  P1[NET] Choose: Noxus Hopeful@Base
+        net: pick 42.5% | alt: Choose: Nidalee, Cat Form@BF 36.1% | v -0.03
+  P1[NET] Choose: Noxus Hopeful@Base
+        net: pick 71.2% | alt: Choose: Nidalee, Cat Form@BF 20.2% | v -0.03
+    ~ effect: give Noxus Hopeful 1 [M] this turn
+  P1[NET] Move Noxus Hopeful -> Star Spring
+        net: pick 85.4% | alt: Hide Pakaa Cub(3M) @ Emperor's Dais 12.1% | v -0.01
+    ~ move Noxus Hopeful -> Star Spring
+    ~ COMBAT at Star Spring: P1 attacks [Noxus Hopeful(5M)]  vs  P2 defends [Noxus Hopeful(4M)]
+    ~ KILL Noxus Hopeful (4M, dmg=5)
+    ~ P1 conquers Star Spring
+    ~ SCORE P1 +1 (Conquer)   -> P1 4 - P2 6
+  P1[NET] Hide Pakaa Cub(3M) @ Emperor's Dais
+        net: pick 49.1% | alt: Hide Pakaa Cub(3M) @ Star Spring 48.0% | v +0.75
+    ~ hide Pakaa Cub at Emperor's Dais by P1
+  P1[NET] End Turn
+        net: pick 88.0% | alt: Move Nidalee, Cat Form -> Base 12.0% | v +0.77
+
+=== TURN 10 (P2, ISMCTS)   score P1 4 - P2 6 ===
+  P2[ISMCTS] Play Pyke, Dockside Butcher(2M) -> Base   (ismcts 58/200 visits)
+    ~ play Pyke, Dockside Butcher (Unit, 3E)
+  P2[ISMCTS] Choose: =1   (ismcts 101/200 visits)
+    ~ additional_cost: Pyke, Dockside Butcher paid optional additional cost
+  P2[ISMCTS] Order — Pyke, Dockside Butcher   (ismcts 101/200 visits)
+  P2[ISMCTS] Choose: Pyke, Dockside Butcher@Base
+  P1[NET] Pass Priority
+        net: pick 87.4% | alt: Play Pakaa Cub(3M) 12.6% | v +0.88
+    ~ effect: give Pyke, Dockside Butcher 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 87.5% | alt: Play Pakaa Cub(3M) 12.5% | v +0.89
+    ~ effect: give Pyke, Dockside Butcher 2 [M] this turn
+  P2[ISMCTS] Move Pyke, Dockside Butcher -> Star Spring   (ismcts 45/200 visits)
+  P2[ISMCTS] Choose: First Mate@Base   (ismcts 100/200 visits)
+    ~ move Pyke, Dockside Butcher -> Star Spring
+    ~ move First Mate -> Star Spring
+  P1[NET] Play Pakaa Cub(3M)
+        net: pick 99.6% | alt: Pass Focus 0.4% | v +0.92
+  P1[NET] Choose: Pakaa Cub@BF
+        net: pick 63.2% | alt: Choose: Noxus Hopeful@BF 28.0% | v +0.90
+    ~ effect: give Pakaa Cub 1 [M] this turn
+    ~ COMBAT at Star Spring: P2 attacks [First Mate(3M), Pyke, Dockside Butcher(5M)]  vs  P1 defends [Noxus Hopeful(4M)]
+  P1[NET] Assign Damage: First Mate(3), Pyke, Dockside Butcher(1)
+        net: pick 57.3% | alt: Assign Damage: Pyke, Dockside Butcher(4) 42.7% | v +0.88
+    ~ KILL First Mate (3M, dmg=3)
+    ~ KILL Noxus Hopeful (4M, dmg=8)
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 4 - P2 7
+
+=== TURN 11 (P1, NET)   score P1 4 - P2 7 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 5 - P2 7
+  P1[NET] Play Kinkou Initiate(3M) -> Base
+        net: pick 76.0% | alt: Play Kinkou Initiate(3M) -> Emperor's Dais 11.7% | v +0.54
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[NET] Order — Kinkou Initiate
+        net: pick 61.1% | alt: Order — Pridestalker (Kinkou Initiate) 38.9% | v +0.61
+  P1[NET] Choose: Pakaa Cub@BF
+        net: pick 85.8% | alt: Choose: Nidalee, Cat Form@BF 6.2% | v +0.62
+    ~ effect: give Pakaa Cub 1 [M] this turn
+  P1[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 92.8% | alt: Play Kai'Sa, Survivor(4M) -> Emperor's Dais 5.3% | v +0.65
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[NET] Choose: =1
+        net: pick 57.3% | alt: Choose: =0 42.7% | v +0.72
+  P1[NET] Choose: Pakaa Cub@BF
+        net: pick 50.6% | alt: Choose: Kai'Sa, Survivor@Base 35.2% | v +0.52
+    ~ effect: give Pakaa Cub 1 [M] this turn
+  P1[NET] Move Kai'Sa, Survivor -> Star Spring
+        net: pick 97.0% | alt: Move First Mate -> Star Spring 1.9% | v +0.47
+  P1[NET] Choose: First Mate@Base
+        net: pick 66.2% | alt: Move no more units 33.8% | v +0.70
+    ~ move Kai'Sa, Survivor -> Star Spring
+    ~ move First Mate -> Star Spring
+    ~ COMBAT at Star Spring: P1 attacks [First Mate(3M), Kai'Sa, Survivor(4M)]  vs  P2 defends [Pyke, Dockside Butcher(2M)]
+  P2[ISMCTS] Assign Damage: First Mate(2)   (ismcts 119/200 visits)
+    ~ KILL Pyke, Dockside Butcher (2M, dmg=7)
+    ~ P1 conquers Star Spring
+    ~ SCORE P1 +1 (Conquer)   -> P1 6 - P2 7
+  P1[NET] End Turn
+        net: pick 87.3% | alt: Move Pakaa Cub -> Base 7.8% | v +0.95
+
+=== TURN 12 (P2, ISMCTS)   score P1 6 - P2 7 ===
+  P2[ISMCTS] Play Darius, Trifarian(5M) -> Base   (ismcts 159/200 visits)
+    ~ play Darius, Trifarian (Unit, 5E)
+  P2[ISMCTS] Choose: Darius, Trifarian@Base   (ismcts 35/200 visits)
+    ~ effect: give Darius, Trifarian 1 [M] this turn
+
+=== TURN 13 (P1, NET)   score P1 6 - P2 7 ===
+
+GAME OVER: winner P1 (NET) score 8-7, 13 turns, 293 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

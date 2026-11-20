@@ -1,0 +1,5 @@
+cd /tmp
+rm -f /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/gate4/tmp/res_samp.jsonl
+CUDA_VISIBLE_DEVICES= G4_THREADS=4 taskset -c 8-11 timeout 240 python3 /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/gate4/run.py /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/gate4/tmp/pos_test.json --out /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/gate4/tmp/res_samp.jsonl --playout-ckpt /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/gate4_B2/latest.pt --nets B2=/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/gate4_B2/latest.pt,id=/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/gate4_id/latest.pt --n 128 --cap 2 --sample --n-envs 256 2>&1 | tail -8
+sed -i 's/res_test/res_samp/' /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/gate4/tmp/a.py
+python3 /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/gate4/tmp/a.py

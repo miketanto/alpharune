@@ -1,0 +1,178 @@
+game seed 7101   P1 = ismcts:sims=200   P2 = network(gate4 B2, greedy)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P1[ISMCTS] Mull: Noxus Hopeful   (ismcts 19/200 visits)
+~ P1 brings Seat of Power
+~ P2 brings Emperor's Dais
+~ P1 opening hand: Grim Apothecary, Kinkou Initiate, Kinkou Initiate, Noxus Hopeful
+~ P2 opening hand: Rampage, Sabotage, Pakaa Cub, Pit Rookie
+~ P1 set aside Noxus Hopeful
+~ P1 drew replacement Kai'Sa, Survivor
+  P2[NET] Mull: Rampage Sabotage
+        net: pick 36.2% | alt: Mull: Sabotage 32.1% | v +0.07
+~ P2 set aside Rampage
+~ P2 set aside Sabotage
+~ P2 drew replacement Noxus Hopeful
+~ P2 drew replacement Inferna
+
+=== TURN 0 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[ISMCTS] Play Inferna(1M) -> Base   (ismcts 100/200 visits)
+    ~ play Inferna (Unit, 2E)
+    ~ effect: give Inferna 1 [M] this turn
+
+=== TURN 1 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Pit Rookie(2M) -> Base
+        net: pick 49.1% | alt: Play Pit Rookie(2M) -> Base 49.1% | v +0.12
+    ~ play Pit Rookie (Unit, 2E)
+  P2[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 91.6% | alt: Order — Pit Rookie 8.4% | v +0.09
+  P2[NET] Choose: Pit Rookie@Base
+        net: pick 99.9% | alt: Choose: Inferna@Base 0.1% | v +0.08
+    ~ effect: give Pit Rookie 1 [M] this turn
+
+=== TURN 2 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[ISMCTS] Move Inferna -> Seat of Power   (ismcts 26/200 visits)
+    ~ move Inferna -> Seat of Power
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 0
+  P1[ISMCTS] Play Grim Apothecary(3M) -> Seat of Power   (ismcts 100/200 visits)
+    ~ play Grim Apothecary (Unit, 3E)
+  P1[ISMCTS] Order — Pridestalker (Grim Apothecary)   (ismcts 101/200 visits)
+  P1[ISMCTS] Choose: Inferna@BF   (ismcts 67/200 visits)
+  P1[ISMCTS] No — Grim Apothecary: return a friendly unit at a battlefield to hand?   (ismcts 100/200 visits)
+    ~ effect: give Inferna 1 [M] this turn
+  P1[ISMCTS] Play Punch First[S]   (ismcts 100/200 visits)
+    ~ spell Punch First targets=[]
+  P1[ISMCTS] Choose: Inferna@BF   (ismcts 67/200 visits)
+    ~ effect: give Inferna 5 [M] this turn
+
+=== TURN 3 (P2, NET)   score P1 1 - P2 0 ===
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Seat of Power
+        net: pick 96.0% | alt: Play Kinkou Initiate(3M) -> Base 1.9% | v +0.57
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 99.9% | alt: Choose: Pit Rookie@Base 0.1% | v +0.58
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ COMBAT at Seat of Power: P2 attacks [Rengar, Trophy Hunter(7M)]  vs  P1 defends [Grim Apothecary(3M), Inferna(1M)]
+  P2[NET] Assign Damage: Inferna(1), Grim Apothecary(6)
+        net: pick 50.0% | alt: Assign Damage: Grim Apothecary(3), Inferna(4) 50.0% | v +0.55
+    ~ KILL Inferna (1M, dmg=1)
+    ~ KILL Grim Apothecary (3M, dmg=6)
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 1
+  P2[NET] Move Pit Rookie -> Emperor's Dais
+        net: pick 96.9% | alt: Hide Pakaa Cub(3M) @ Seat of Power 3.0% | v +0.70
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P2[NET] Hide Pakaa Cub(3M) @ Seat of Power
+        net: pick 55.8% | alt: Hide Pakaa Cub(3M) @ Emperor's Dais 43.7% | v +0.73
+    ~ hide Pakaa Cub at Seat of Power by P2
+
+=== TURN 4 (P1, ISMCTS)   score P1 1 - P2 2 ===
+  P1[ISMCTS] Play Kinkou Initiate(3M) -> Base   (ismcts 45/200 visits)
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[ISMCTS] Order — Pridestalker (Kinkou Initiate)   (ismcts 100/200 visits)
+  P1[ISMCTS] Choose: Pit Rookie@BF   (ismcts 67/200 visits)
+  P2[NET] Pass Priority
+        net: pick 66.8% | alt: Play Pakaa Cub(3M) 33.2% | v +0.73
+    ~ effect: give Pit Rookie 1 [M] this turn
+  P1[ISMCTS] Play Sabotage[S]   (ismcts 145/200 visits)
+    ~ spell Sabotage targets=[]
+  P2[NET] Pass Priority
+        net: pick 68.5% | alt: Play Pakaa Cub(3M) 31.5% | v +0.80
+    ~ sabotage: revealed Noxus Hopeful to P1
+    ~ sabotage: revealed Inferna to P1
+    ~ sabotage: revealed Pit Rookie to P1
+    ~ sabotage: revealed Kinkou Initiate to P1
+    ~ sabotage: opponent has no non-unit cards in hand; recycle skipped.
+
+=== TURN 5 (P2, NET)   score P1 1 - P2 2 ===
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 1 - P2 3
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 1 - P2 4
+  P2[NET] Play Kinkou Initiate(3M) -> Seat of Power
+        net: pick 44.1% | alt: Play Kinkou Initiate(3M) -> Emperor's Dais 29.0% | v +0.95
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 71.1% | alt: Order — Pridestalker (Kinkou Initiate) 28.9% | v +0.94
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 96.3% | alt: Choose: Kinkou Initiate@BF 3.2% | v +0.94
+  P2[NET] Play Pakaa Cub(3M)
+        net: pick 46.5% | alt: Pass Priority 42.5% | v +0.93
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 75.6% | alt: Choose: Pakaa Cub@BF 21.6% | v +0.93
+  P2[NET] Pass Priority
+        net: pick 77.3% | alt: Play Inferna(1M) -> Emperor's Dais 20.0% | v +0.92
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 73.8% | alt: Play Inferna(1M) -> Emperor's Dais 23.4% | v +0.93
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 75.3% | alt: Play Inferna(1M) -> Emperor's Dais 21.7% | v +0.93
+  P2[NET] Play Noxus Hopeful(4M) -> Emperor's Dais
+        net: pick 41.3% | alt: Play Noxus Hopeful(4M) -> Seat of Power 34.3% | v +0.96
+    ~ play Noxus Hopeful (Unit, 4E)
+  P2[NET] Choose: Pakaa Cub@BF
+        net: pick 42.9% | alt: Choose: Rengar, Trophy Hunter@BF 40.8% | v +0.95
+    ~ effect: give Pakaa Cub 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 97.7% | alt: Move Pit Rookie -> Base 1.6% | v +0.96
+
+=== TURN 6 (P1, ISMCTS)   score P1 1 - P2 4 ===
+  P1[ISMCTS] Play Rengar, Trophy Hunter(6M) -> Seat of Power   (ismcts 24/200 visits)
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P1[ISMCTS] Choose: Kinkou Initiate@Base   (ismcts 29/200 visits)
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+    ~ COMBAT at Seat of Power: P1 attacks [Rengar, Trophy Hunter(6M)]  vs  P2 defends [Kinkou Initiate(3M), Pakaa Cub(3M), Rengar, Trophy Hunter(6M)]
+  P1[ISMCTS] Assign Damage: Kinkou Initiate(3), Rengar, Trophy Hunter(3)   (ismcts 51/200 visits)
+    ~ KILL Rengar, Trophy Hunter (6M, dmg=12)
+    ~ KILL Kinkou Initiate (3M, dmg=3)
+  P1[ISMCTS] Move Kinkou Initiate -> Emperor's Dais   (ismcts 69/200 visits)
+    ~ move Kinkou Initiate -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Kinkou Initiate(4M)]  vs  P2 defends [Noxus Hopeful(4M), Pit Rookie(2M)]
+  P1[ISMCTS] Assign Damage: Noxus Hopeful(4)   (ismcts 101/200 visits)
+    ~ KILL Kinkou Initiate (4M, dmg=6)
+    ~ KILL Noxus Hopeful (4M, dmg=4)
+
+=== TURN 7 (P2, NET)   score P1 1 - P2 4 ===
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 1 - P2 5
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 1 - P2 6
+  P2[NET] Play Pit Rookie(2M) -> Seat of Power
+        net: pick 56.0% | alt: Play Pit Rookie(2M) -> Emperor's Dais 18.0% | v +0.99
+    ~ play Pit Rookie (Unit, 2E)
+  P2[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 75.7% | alt: Order — Pit Rookie 24.3% | v +0.99
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 73.3% | alt: Choose: Pakaa Cub@BF 25.6% | v +0.99
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 72.9% | alt: Choose: Pakaa Cub@BF 19.8% | v +0.99
+  P2[NET] Play Nidalee, Cat Form(4M) -> Seat of Power
+        net: pick 24.6% | alt: Play Nidalee, Cat Form(4M) -> Seat of Power 24.6% | v +0.99
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 69.8% | alt: Choose: Pakaa Cub@BF 27.0% | v +0.98
+  P2[NET] Pass Priority
+        net: pick 72.3% | alt: Play Inferna(1M) -> Emperor's Dais 10.6% | v +0.98
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 69.9% | alt: Play Inferna(1M) -> Emperor's Dais 11.7% | v +0.98
+    ~ effect: [Buff] Rengar, Trophy Hunter (+1 permanent) -> 8M
+  P2[NET] Pass Priority
+        net: pick 70.5% | alt: Play Inferna(1M) -> Emperor's Dais 11.8% | v +0.99
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 73.3% | alt: Play Inferna(1M) -> Emperor's Dais 7.7% | v +0.99
+
+=== TURN 8 (P1, ISMCTS)   score P1 1 - P2 6 ===
+  P1[ISMCTS] Play Kinkou Initiate(3M) -> Base   (ismcts 48/200 visits)
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[ISMCTS] Order — Kinkou Initiate   (ismcts 102/200 visits)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF   (ismcts 35/200 visits)
+  P2[NET] Pass Priority
+        net: pick 77.3% | alt: Play Inferna(1M) -> Emperor's Dais 9.0% | v +0.98
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+
+=== TURN 9 (P2, NET)   score P1 1 - P2 6 ===
+
+GAME OVER: winner P2 (NET) score 1-8, 9 turns, 148 decisions -- P2 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

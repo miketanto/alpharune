@@ -9,7 +9,9 @@ Field layout: rbenv/README.txt, schema v2 (F=24, K=49; kinds 1 card, 2 battlefie
 of all). act: 0 t, 1 src, 2 abs, 3 ai, 4..17 tg/ch/mv/mu tokens,
 18..29 dm (token, damage) pairs, 30 dst, 31 has_v, 32 v, 33 ci token, 34 nc vocab index, 35 bf, 36 ps,
 37 alt, 38 plc, 39 dec, 40 first, 41..45 counts, 46 dst controller (-1 n/a, 0 none, 1 self, 2 opp),
-47 would start a combat as attacker, 48 would contest (schema v2). Optional b['psrc'] (B,) marks the asking token.
+47 would start a combat as attacker, 48 would contest (schema v2). 49..55 optional-cost consequences (v3).
+v4: TriggerOrder options carry 1 src = the ordered item's source and 33 ci = that chain item; MoveJoin options
+carry 30 dst + 46..48, 56..59 the units already moving (leading unit first), 60 their count, 39 dec = "no more". Optional b['psrc'] (B,) marks the asking token.
 """
 import json, math, os
 import torch
@@ -27,7 +29,7 @@ ACT_DST = 30
 HERE = os.path.dirname(os.path.abspath(__file__))
 CR = os.path.normpath(os.path.join(HERE, '..', '..'))   # research/card_repr
 REPRS_PT = os.path.join(CR, 'smoke', 'train', 'packed', 'reprs.pt')
-VOCAB_JSON = os.path.join(HERE, 'vocab.json')  # viz: HEAD copy
+VOCAB_JSON = os.path.join(HERE, 'vocab.json')   # viz copy of selfplay/rbenv/vocab.json
 CARDS_JSON = os.path.join(CR, 'cards.json')
 REPR_SRC = {'B2': os.path.join(CR, 'B2_code', 'out', 'vectors.json'),
             'B': os.path.join(CR, 'B_graph', 'out', 'vectors.json')}
@@ -107,8 +109,16 @@ def slog(x):
 
 
 class Net(nn.Module):
-    def __init__(self, dims, vocab, repr_name='id', ask_head=False, card_norm=True):
+    def __init__(self, dims, vocab, repr_name='id', ask_head=False, card_norm=True, ask_opt=False, opt_cost=None,
+                 opt_refs=None):
         super().__init__()
+        # ask_opt (gate 3, 2026-11-19; needs ask_head): the ask head's bilinear term also multiplies the
+        # option's OWN features (intent kind, value v, decline flag, destination, move-consequence fields,
+        # named card). Without it an option that references no token (yes/no of May / Accelerate /
+        # AdditionalCost, Location's destinations, TriggerOrder's values) gets an ask term of exactly 0, and
+        # the asking card reaches those choices only through the global token (gate3/REPORT.txt: 100-400x
+        # weaker than at Target). Checkpoints without W_ask_opt.* are ask_opt=False nets.
+        self.ask_opt = bool(ask_opt and ask_head)
         # card_norm (gate 2, 2026-11-19): the card embedding gets its own LayerNorm and a learned scalar
         # gain (init sqrt(F-2) ~ 4.7, so its norm ~37 matches the ~39 of the summed state embeddings)
         # before it joins the token; without it the card was ~9 of the token's ~40 at init and a card
@@ -146,6 +156,13 @@ class Net(nn.Module):
         layer = nn.TransformerEncoderLayer(D, 4, 2 * D, dropout=0.0, batch_first=True, norm_first=True)
         self.enc = nn.TransformerEncoder(layer, 2, enable_nested_tensor=False)
         self.ln = nn.LayerNorm(D)
+        # opt_cost (gate 3, schema v3, K >= 56): act[49..55] = optional-cost consequences of an Accelerate /
+        # AdditionalCost answer (extra Energy, extra Power, runes recycled, their Domain, own runes ready / total
+        # after the payment, unit enters ready), encoded into the option's own features. Default: on when the
+        # env has those columns; schema-v2 checkpoints (no W_oc.*) load with opt_cost=False.
+        self.opt_cost = (self.K >= 56) if opt_cost is None else bool(opt_cost and self.K >= 56)
+        if self.opt_cost:
+            self.W_oc = nn.Linear(16, D)
         self.E_akind = nn.Embedding(24, D)
         self.E_dst = nn.Embedding(8, D)
         self.W_v = nn.Linear(17 + 6 + 6 + 5 + 5 + 2 + 4 + 2, D)
@@ -154,6 +171,24 @@ class Net(nn.Module):
         if ask_head:
             self.W_ask = nn.Linear(D, D)
             self.W_ask_src = nn.Linear(D, D, bias=False)
+            if self.ask_opt:
+                self.W_ask_opt = nn.Linear(D, D, bias=False)
+                # and the same bilinear form with the GLOBAL token (resources, pk, turn): without it hg is added
+                # equally to every option and a resource fact can only reach a yes/no through the pol MLP's
+                # nonlinearity (gate 3: Accelerate yes/no from pool Energy stayed at 0.62 after 300 steps).
+                self.W_ctx = nn.Linear(D, D)
+                self.W_ctx_opt = nn.Linear(D, D, bias=False)
+        # opt_refs (gate 3 completion, schema v4, K >= 61): the tokens an option is ABOUT go into its own
+        # features h_opt, so they reach the score directly and through W_ask_opt / W_ctx_opt like W_oc's fields:
+        #   W_ci: the chain item an option orders (act 33; TriggerOrder, ChainItem);
+        #   W_mg: the units already in the move (act 56..59, mean; 60 their count; MoveJoin).
+        # MoveJoin's destination (30) and its consequences (46..48) already enter h_opt through E_dst / W_v.
+        # Created last, so a fresh net's other parameters are initialised as before. Default: on when the env
+        # has the columns; checkpoints without W_mg.* load with opt_refs=False.
+        self.opt_refs = (self.K >= 61) if opt_refs is None else bool(opt_refs and self.K >= 61)
+        if self.opt_refs:
+            self.W_ci = nn.Linear(D, D)
+            self.W_mg = nn.Linear(D + 1, D)
 
     def card_emb(self, key):
         key = key.clamp(0, self.special_idx.shape[0] - 1)
@@ -214,13 +249,32 @@ class Net(nn.Module):
                         torch.log1p(dmg.float())[..., None], torch.log1p(nr[..., None]),
                         onehot_clip(act[..., 46], -1, 2), act[..., 47:49].clamp(0, 1).float()], -1)
         nc = act[..., 34].clamp(min=0)
-        ha = (self.E_akind(act[..., 0].clamp(0, 23)) + h_src + h_ref + self.card_emb(nc) * (nc > 0).float()[..., None]
-              + self.E_dst((act[..., ACT_DST] + 1).clamp(0, 7)) + self.W_v(sc) + hg[:, None, :])
+        h_opt = (self.E_akind(act[..., 0].clamp(0, 23)) + self.card_emb(nc) * (nc > 0).float()[..., None]
+                 + self.E_dst((act[..., ACT_DST] + 1).clamp(0, 7)) + self.W_v(sc))   # the option's own features
+        if self.opt_cost:
+            oc = act[..., 49:56]
+            valid = (oc[..., 0] >= 0).float()[..., None]
+            ocf = torch.cat([oc[..., 0:3].clamp(min=0).float(), onehot_clip(oc[..., 3], -1, 5),
+                             oc[..., 4:6].clamp(min=0).float() / 4.0, onehot_clip(oc[..., 6], -1, 1), valid], -1)
+            h_opt = h_opt + self.W_oc(ocf) * valid
+        if self.opt_refs:
+            h_ci, n_ci = tok_h(act[..., 33:34])
+            h_opt = h_opt + self.W_ci(h_ci) * (n_ci > 0).float()[..., None]
+            s_mg, n_mg = tok_h(act[..., 56:60])
+            has = (n_mg > 0).float()[..., None]
+            mg = torch.cat([s_mg / n_mg.clamp(min=1)[..., None], torch.log1p(act[..., 60].clamp(min=0).float())[..., None]], -1)
+            h_opt = h_opt + self.W_mg(mg) * has
+        ha = h_opt + h_src + h_ref + hg[:, None, :]
         if self.ask_head:
             ps = b['psrc'].long() if 'psrc' in b else torch.full((Bn,), -1, device=ht.device, dtype=torch.long)
             okp = ((ps >= 0) & (ps < T)).float()[:, None]
             h_ask = torch.gather(ht, 1, ps.clamp(0, T - 1)[:, None, None].expand(Bn, 1, D)).squeeze(1) * okp
-            ha = ha + self.W_ask(h_ask)[:, None, :] * (h_ref + self.W_ask_src(h_src))
+            other = h_ref + self.W_ask_src(h_src)
+            if self.ask_opt:
+                other = other + self.W_ask_opt(h_opt)
+            ha = ha + self.W_ask(h_ask)[:, None, :] * other
+            if self.ask_opt:
+                ha = ha + self.W_ctx(hg)[:, None, :] * self.W_ctx_opt(h_opt)
         ma = b['act_mask'].bool()
         logits = self.pol(ha).squeeze(-1).masked_fill(~ma, -1e9)
         return F.log_softmax(logits, -1), value

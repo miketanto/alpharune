@@ -1,0 +1,18 @@
+{
+ "ckpt": "runs/gate4_id/latest.pt",
+ "mode": "greedy",
+ "repr": "id",
+ "deck": "rengar",
+ "opp": "ismcts:sims=100",
+ "games": 200,
+ "errors": 0,
+ "wins": 191,
+ "win_rate": 0.955,
+ "wilson95": [
+  0.917,
+  0.976
+ ],
+ "mean_turns": 12.4,
+ "procs": 6,
+ "secs": 256.7
+}

@@ -25,3 +25,4 @@ selfplay/runs/*/latest.pt
 **/out/pre_struct/*vectors*.json
 selfplay/viz/replays/*.html
 gate3/*.npz
+selfplay/viz/replays*/*.html

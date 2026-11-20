@@ -1,0 +1,315 @@
+game seed 7102   P1 = ismcts:sims=100   P2 = network(gate4 B2, greedy)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P1[ISMCTS] Keep hand   (ismcts 10/100 visits)
+~ P1 brings Emperor's Dais
+~ P2 brings Emperor's Dais
+~ P1 opening hand: Pakaa Cub, Sabotage, Pit Rookie, Pyke, Dockside Butcher
+~ P2 opening hand: Kai'Sa, Survivor, Ferrous Forerunner, Inferna, Nidalee, Cat Form
+  P2[NET] Keep hand
+        net: pick 86.7% | alt: Mull: Ferrous Forerunner 2.0% | v +0.39
+
+=== TURN 0 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[ISMCTS] Play Sabotage[S]   (ismcts 34/100 visits)
+    ~ spell Sabotage targets=[]
+    ~ sabotage: revealed Kai'Sa, Survivor to P1
+    ~ sabotage: revealed Ferrous Forerunner to P1
+    ~ sabotage: revealed Inferna to P1
+    ~ sabotage: revealed Nidalee, Cat Form to P1
+    ~ sabotage: opponent has no non-unit cards in hand; recycle skipped.
+
+=== TURN 1 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Nidalee, Cat Form(4M) -> Base
+        net: pick 69.4% | alt: Play Irresistible Faefolk(1M) -> Base 28.5% | v +0.52
+    ~ play Nidalee, Cat Form (Unit, 3E)
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+
+=== TURN 2 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[ISMCTS] Play Pit Rookie(2M) -> Base
+    ~ play Pit Rookie (Unit, 2E)
+  P1[ISMCTS] Order — Pridestalker (Pit Rookie)   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Pit Rookie@Base   (ismcts 50/100 visits)
+    ~ effect: give Pit Rookie 1 [M] this turn
+
+=== TURN 3 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 86.3% | alt: Move Nidalee, Cat Form -> Emperor's Dais (P2's) 13.4% | v +0.67
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 95.1% | alt: Choose: Nidalee, Cat Form@Base 4.9% | v +0.67
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P2[NET] Move Nidalee, Cat Form -> Emperor's Dais (P2's)
+        net: pick 99.2% | alt: Move Nidalee, Cat Form -> Emperor's Dais (P1's) 0.8% | v +0.68
+    ~ move Nidalee, Cat Form -> Emperor's Dais
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 0 - P2 1
+
+=== TURN 4 (P1, ISMCTS)   score P1 0 - P2 1 ===
+  P1[ISMCTS] Move Pit Rookie -> Emperor's Dais (P1's)   (ismcts 11/100 visits)
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 1
+  P1[ISMCTS] Yes — Emperor's Dais: pay [1], return a unit   (ismcts 50/100 visits)
+    ~ effect: bounce Pit Rookie to hand
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@Base   (ismcts 34/100 visits)
+  P1[ISMCTS] Play Grim Apothecary(3M) -> Emperor's Dais (P1's)   (ismcts 51/100 visits)
+    ~ play Grim Apothecary (Unit, 3E)
+  P1[ISMCTS] Order — Grim Apothecary   (ismcts 50/100 visits)
+  P1[ISMCTS] Yes — Grim Apothecary: return a friendly unit at a battlefield to hand?   (ismcts 52/100 visits)
+  P1[ISMCTS] Choose: Sand Soldier@BF   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF   (ismcts 25/100 visits)
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+    ~ effect: bounce Sand Soldier — token ceases to exist (CR 183.1)
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P1[ISMCTS] Hide Pyke, Dockside Butcher(2M) @ Emperor's Dais (P1's)   (ismcts 34/100 visits)
+    ~ hide Pyke, Dockside Butcher at Emperor's Dais by P1
+
+=== TURN 5 (P2, NET)   score P1 1 - P2 1 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 1 - P2 2
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Emperor's Dais (P1's)
+        net: pick 37.7% | alt: Play Ferrous Forerunner(6M) -> Emperor's Dais (P2's) 30.0% | v +0.80
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 94.2% | alt: Choose: Kai'Sa, Survivor@Base 4.8% | v +0.79
+  P1[ISMCTS] Play Pyke, Dockside Butcher(2M)   (ismcts 53/100 visits)
+  P1[ISMCTS] Choose: =1   (ismcts 52/100 visits)
+    ~ additional_cost: Pyke, Dockside Butcher paid optional additional cost
+  P1[ISMCTS] Order — Pyke, Dockside Butcher   (ismcts 51/100 visits)
+  P1[ISMCTS] Choose: Pyke, Dockside Butcher@BF   (ismcts 21/100 visits)
+    ~ effect: give Pyke, Dockside Butcher 1 [M] this turn
+    ~ effect: give Pyke, Dockside Butcher 2 [M] this turn
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Rengar, Trophy Hunter(7M)]  vs  P1 defends [Grim Apothecary(3M), Pyke, Dockside Butcher(5M)]
+  P2[NET] Assign Damage: Pyke, Dockside Butcher(5), Grim Apothecary(2)
+        net: pick 50.0% | alt: Assign Damage: Grim Apothecary(3), Pyke, Dockside Butcher(4) 50.0% | v +0.79
+    ~ KILL Rengar, Trophy Hunter (7M, dmg=8)
+    ~ KILL Pyke, Dockside Butcher (5M, dmg=5)
+  P2[NET] Move Kai'Sa, Survivor -> Emperor's Dais (P1's)
+        net: pick 91.7% | alt: Move Kai'Sa, Survivor -> Emperor's Dais (P2's) 8.1% | v +0.73
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P2 attacks [Kai'Sa, Survivor(4M)]  vs  P1 defends [Grim Apothecary(3M)]
+    ~ KILL Grim Apothecary (3M, dmg=4)
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 3
+  P2[NET] Order — Emperor's Dais
+        net: pick 77.4% | alt: Order — Kai'Sa, Survivor 22.6% | v +0.84
+  P2[NET] No — Emperor's Dais: pay [1], return a unit
+        net: pick 76.2% | alt: Yes — Emperor's Dais: pay [1], return a unit 23.8% | v +0.83
+  P2[NET] End Turn
+        net: pick 98.5% | alt: Move Nidalee, Cat Form -> Base 1.5% | v +0.86
+
+=== TURN 6 (P1, ISMCTS)   score P1 1 - P2 3 ===
+  P1[ISMCTS] Play Rengar, Trophy Hunter(6M) -> Emperor's Dais (P1's)   (ismcts 12/100 visits)
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF   (ismcts 34/100 visits)
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P1 attacks [Rengar, Trophy Hunter(6M)]  vs  P2 defends [Kai'Sa, Survivor(4M)]
+    ~ KILL Kai'Sa, Survivor (4M, dmg=6)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 2 - P2 3
+  P1[ISMCTS] Hide Pakaa Cub(3M) @ Emperor's Dais (P1's)   (ismcts 50/100 visits)
+    ~ hide Pakaa Cub at Emperor's Dais by P1
+
+=== TURN 7 (P2, NET)   score P1 2 - P2 3 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 2 - P2 4
+  P2[NET] Play Ferrous Forerunner(6M) -> Emperor's Dais (P2's)
+        net: pick 42.3% | alt: Play Ferrous Forerunner(6M) -> Base 16.9% | v +0.81
+    ~ play Ferrous Forerunner (Unit, 6E)
+  P2[NET] Choose: Ferrous Forerunner@BF
+        net: pick 82.8% | alt: Choose: Nidalee, Cat Form@BF 16.9% | v +0.88
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 99.1% | alt: Move Nidalee, Cat Form -> Base 0.9% | v +0.84
+
+=== TURN 8 (P1, ISMCTS)   score P1 2 - P2 4 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 3 - P2 4
+  P1[ISMCTS] Play Kinkou Initiate(3M) -> Base   (ismcts 10/100 visits)
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[ISMCTS] Order — Kinkou Initiate   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Kinkou Initiate@Base   (ismcts 25/100 visits)
+  P1[ISMCTS] Play Pakaa Cub(3M)   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P1[ISMCTS] Play Pit Rookie(2M) -> Base   (ismcts 18/100 visits)
+    ~ play Pit Rookie (Unit, 2E)
+  P1[ISMCTS] Order — Pridestalker (Pit Rookie)   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF
+  P1[ISMCTS] Choose: Pakaa Cub@BF   (ismcts 34/100 visits)
+    ~ effect: [Buff] Pakaa Cub (+1 permanent) -> 4M
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+  P1[ISMCTS] Move Rengar, Trophy Hunter -> Base   (ismcts 50/100 visits)
+    ~ move Rengar, Trophy Hunter -> Base(P1)
+
+=== TURN 9 (P2, NET)   score P1 3 - P2 4 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 3 - P2 5
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Emperor's Dais (P2's)
+        net: pick 29.1% | alt: Play Kai'Sa, Survivor(4M) -> Base 24.5% | v +0.93
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =0
+        net: pick 97.1% | alt: Choose: =1 2.9% | v +0.91
+  P2[NET] Choose: Ferrous Forerunner@BF
+        net: pick 60.8% | alt: Choose: Kai'Sa, Survivor@BF 28.0% | v +0.91
+  P2[NET] Pass Priority
+        net: pick 97.0% | alt: Play Inferna(1M) -> Emperor's Dais (P2's) 3.0% | v +0.88
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] Play Kinkou Initiate(3M) -> Emperor's Dais (P2's)
+        net: pick 42.3% | alt: Play Kinkou Initiate(3M) -> Emperor's Dais (P2's) 42.3% | v +0.89
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 86.4% | alt: Order — Pridestalker (Kinkou Initiate) 13.6% | v +0.89
+  P2[NET] Choose: Ferrous Forerunner@BF
+        net: pick 46.6% | alt: Choose: Kai'Sa, Survivor@BF 29.1% | v +0.89
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 95.7% | alt: Move Ferrous Forerunner -> Base 2.4% | v +0.93
+
+=== TURN 10 (P1, ISMCTS)   score P1 3 - P2 5 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 4 - P2 5
+  P1[ISMCTS] Play Kai'Sa, Survivor(4M) -> Base
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[ISMCTS] Choose: =0   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Kinkou Initiate@BF   (ismcts 12/100 visits)
+  P1[ISMCTS] Play Nidalee, Cat Form(4M) -> Emperor's Dais (P1's)   (ismcts 51/100 visits)
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P1[ISMCTS] Choose: Rengar, Trophy Hunter@Base   (ismcts 10/100 visits)
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P1[ISMCTS] Move Pakaa Cub -> Base   (ismcts 13/100 visits)
+    ~ move Pakaa Cub -> Base(P1)
+  P1[ISMCTS] Move Rengar, Trophy Hunter -> Emperor's Dais (P2's)   (ismcts 15/100 visits)
+  P1[ISMCTS] Move no more units   (ismcts 34/100 visits)
+    ~ move Rengar, Trophy Hunter -> Emperor's Dais
+  P2[NET] Play Punch First[S]
+        net: pick 99.2% | alt: Pass Focus 0.8% | v +0.80
+    ~ spell Punch First targets=[]
+  P2[NET] Choose: Ferrous Forerunner@BF
+        net: pick 52.1% | alt: Choose: Kai'Sa, Survivor@BF 23.9% | v +0.81
+    ~ effect: give Ferrous Forerunner 5 [M] this turn
+    ~ COMBAT at Emperor's Dais: P1 attacks [Rengar, Trophy Hunter(7M)]  vs  P2 defends [Ferrous Forerunner(11M), Kai'Sa, Survivor(4M), Kinkou Initiate(4M), Nidalee, Cat Form(4M)]
+  P1[ISMCTS] Assign Damage: Kinkou Initiate(4), Nidalee, Cat Form(3)
+    ~ KILL Rengar, Trophy Hunter (7M, dmg=23)
+    ~ KILL Kinkou Initiate (4M, dmg=4)
+  P1[ISMCTS] Move Kinkou Initiate -> Emperor's Dais (P2's)   (ismcts 22/100 visits)
+  P1[ISMCTS] Move no more units   (ismcts 51/100 visits)
+    ~ move Kinkou Initiate -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Kinkou Initiate(3M)]  vs  P2 defends [Ferrous Forerunner(11M), Kai'Sa, Survivor(4M), Nidalee, Cat Form(4M)]
+  P1[ISMCTS] Assign Damage: Ferrous Forerunner(3)   (ismcts 34/100 visits)
+    ~ KILL Kinkou Initiate (3M, dmg=19)
+  P1[ISMCTS] Move Pit Rookie -> Emperor's Dais (P2's)   (ismcts 34/100 visits)
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Pit Rookie(2M)]  vs  P2 defends [Ferrous Forerunner(11M), Kai'Sa, Survivor(4M), Nidalee, Cat Form(4M)]
+  P1[ISMCTS] Assign Damage: Ferrous Forerunner(2)   (ismcts 34/100 visits)
+    ~ KILL Pit Rookie (2M, dmg=19)
+
+=== TURN 11 (P2, NET)   score P1 4 - P2 5 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 4 - P2 6
+  P2[NET] Play Kinkou Initiate(3M) -> Emperor's Dais (P2's)
+        net: pick 30.4% | alt: Play Rampage[S] 20.7% | v +0.99
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 77.1% | alt: Order — Pridestalker (Kinkou Initiate) 22.9% | v +0.98
+  P2[NET] Choose: Ferrous Forerunner@BF
+        net: pick 53.8% | alt: Choose: Kai'Sa, Survivor@BF 28.9% | v +0.98
+  P2[NET] Pass Priority
+        net: pick 72.9% | alt: Play Thrill of the Hunt[S] 25.6% | v +0.97
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] Pass Priority
+        net: pick 73.7% | alt: Play Thrill of the Hunt[S] 24.5% | v +0.97
+  P2[NET] Play Rampage[S]
+        net: pick 31.3% | alt: Play Darius, Trifarian(5M) -> Emperor's Dais (P2's) 24.4% | v +0.98
+    ~ spell Rampage targets=[]
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 71.5% | alt: Choose: Ferrous Forerunner@BF 12.6% | v +0.97
+  P2[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 54.6% | alt: Choose: Pakaa Cub@Base 38.5% | v +0.98
+  P2[NET] Choose: =1
+        net: pick 99.8% | alt: Choose: =0 0.2% | v +0.98
+    ~ additional_cost: Rampage paid optional additional cost
+    ~ effect: give Kai'Sa, Survivor 2 [M] this turn
+    ~ effect: deal 6 damage to Kai'Sa, Survivor (id=32, was 0/4M)
+    ~ effect: deal 4 damage to Kai'Sa, Survivor (id=73, was 0/6M)
+    ~ effect: kill Kai'Sa, Survivor
+  P2[NET] End Turn
+        net: pick 43.9% | alt: Play Sabotage[S] 20.3% | v +0.99
+
+=== TURN 12 (P1, ISMCTS)   score P1 4 - P2 6 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 5 - P2 6
+  P1[ISMCTS] Play Pit Rookie(2M) -> Emperor's Dais (P1's)   (ismcts 10/100 visits)
+    ~ play Pit Rookie (Unit, 2E)
+  P1[ISMCTS] Order — Pridestalker (Pit Rookie)   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@BF   (ismcts 15/100 visits)
+  P1[ISMCTS] Choose: Pakaa Cub@Base   (ismcts 50/100 visits)
+    ~ effect: [Buff] Pakaa Cub already has a buff — not buffed (CR 427.1.b.1)
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P1[ISMCTS] Play Darius, Trifarian(5M) -> Base   (ismcts 12/100 visits)
+    ~ play Darius, Trifarian (Unit, 5E)
+  P1[ISMCTS] Order — Darius, Trifarian   (ismcts 51/100 visits)
+  P1[ISMCTS] Choose: Pit Rookie@BF   (ismcts 13/100 visits)
+    ~ effect: give Pit Rookie 1 [M] this turn
+    ~ effect: give Darius, Trifarian 2 [M] this turn
+  P1[ISMCTS] Move Darius, Trifarian -> Emperor's Dais (P2's)   (ismcts 18/100 visits)
+  P1[ISMCTS] Move no more units   (ismcts 51/100 visits)
+    ~ move Darius, Trifarian -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Darius, Trifarian(7M)]  vs  P2 defends [Ferrous Forerunner(6M), Kai'Sa, Survivor(5M), Kinkou Initiate(3M), Nidalee, Cat Form(4M)]
+  P1[ISMCTS] Assign Damage: Ferrous Forerunner(6), Nidalee, Cat Form(1)   (ismcts 10/100 visits)
+    ~ KILL Darius, Trifarian (7M, dmg=18)
+    ~ KILL Ferrous Forerunner (6M, dmg=6)
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 54.8% | alt: Choose: Nidalee, Cat Form@BF 14.1% | v +0.98
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 54.8% | alt: Choose: Nidalee, Cat Form@BF 14.0% | v +0.98
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P1[ISMCTS] Move Pakaa Cub -> Emperor's Dais (P2's)   (ismcts 28/100 visits)
+    ~ move Pakaa Cub -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Pakaa Cub(4M)]  vs  P2 defends [Kai'Sa, Survivor(7M), Kinkou Initiate(3M), Nidalee, Cat Form(4M)]
+  P1[ISMCTS] Assign Damage: Kai'Sa, Survivor(4)   (ismcts 26/100 visits)
+    ~ KILL Pakaa Cub (4M, dmg=14)
+  P1[ISMCTS] Move Nidalee, Cat Form -> Base   (ismcts 50/100 visits)
+    ~ move Nidalee, Cat Form -> Base(P1)
+
+=== TURN 13 (P2, NET)   score P1 5 - P2 6 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 5 - P2 7
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 45.4% | alt: Move Mech -> Emperor's Dais (P1's) 17.6% | v +0.99
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =0
+        net: pick 69.4% | alt: Choose: =1 30.6% | v +0.99
+  P2[NET] Choose: Mech@Base
+        net: pick 32.5% | alt: Choose: Mech@Base 32.5% | v +0.99
+  P2[NET] Pass Priority
+        net: pick 81.4% | alt: Play Thrill of the Hunt[S] 17.4% | v +0.99
+    ~ effect: give Mech 1 [M] this turn
+  P2[NET] Move Mech -> Emperor's Dais (P1's)
+        net: pick 40.5% | alt: Move Mech -> Emperor's Dais (P1's) 37.0% | v +0.99
+  P2[NET] Choose: Mech@Base
+        net: pick 96.1% | alt: Move no more units 3.9% | v +0.99
+    ~ move Mech -> Emperor's Dais
+    ~ move Mech -> Emperor's Dais
+  P2[NET] Play Inferna(1M) -> Emperor's Dais (P1's)
+        net: pick 48.2% | alt: Pass Focus 30.0% | v +0.99
+    ~ play Inferna (Unit, 2E)
+  P2[NET] Choose: Mech@BF
+        net: pick 47.7% | alt: Choose: Mech@BF 35.4% | v +1.00
+  P2[NET] Pass Priority
+        net: pick 78.4% | alt: Play Thrill of the Hunt[S] 21.6% | v +0.99
+    ~ effect: give Mech 1 [M] this turn
+  P2[NET] Play Thrill of the Hunt[S]
+        net: pick 50.2% | alt: Pass Focus 49.8% | v +0.99
+    ~ spell Thrill of the Hunt targets=[]
+  P2[NET] Choose: Kinkou Initiate@BF
+        net: pick 49.6% | alt: Choose: Kai'Sa, Survivor@BF 35.4% | v +1.00
+  P2[NET] Emperor's Dais
+        net: pick 94.9% | alt: Emperor's Dais 5.1% | v +1.00
+    ~ effect: banish Kinkou Initiate
+    ~ thrill: Kinkou Initiate played to Emperor's Dais, ignoring cost
+  P2[NET] Order — Kinkou Initiate
+        net: pick 79.6% | alt: Order — Pridestalker (Kinkou Initiate) 20.4% | v +1.00
+  P2[NET] Choose: Mech@BF
+        net: pick 34.1% | alt: Choose: Mech@BF 34.1% | v +1.00
+    ~ effect: give Mech 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(3M), Kinkou Initiate(3M), Mech(4M), Mech(5M)]  vs  P1 defends [Pit Rookie(2M)]
+
+GAME OVER: winner P2 (NET) score 5-8, 13 turns, 325 decisions -- P2 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

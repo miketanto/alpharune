@@ -263,6 +263,23 @@ inline std::pair<int, int> engineNetCost(const GameEngine& e, PlayerId player, G
     return (e.*netCostPtr(NetCostTag{}))(player, card, Card::PlayCostAdjust{}, -1, -1);
 }
 
+// Schema v4 (gate 3): the Standard Move a MoveJoin prompt belongs to. The
+// engine keeps the destination and the units already moving in locals of
+// GameEngine::executeStandardMove, so the caller follows the decider's own
+// choices: the StandardMove chosen, then each unit added at MoveJoin.
+struct MoveTrack {
+    int dst = -1;                         // destination code (0 base, 1+i battlefield i)
+    std::vector<GameObjectId> moving;     // leading unit first, then the units joined
+};
+inline void noteChoice(MoveTrack& t, const Prompt& p, const Intent& chosen) {
+    if (chosen.type == IntentType::StandardMove) {
+        t.dst = chosen.move_destination.has_value() ? locCode(chosen.move_destination) : -1;
+        t.moving = chosen.units_to_move;
+    } else if (p.kind == PromptKind::MoveJoin && !chosen.chosen_objects.empty()) {
+        t.moving.push_back(chosen.chosen_objects.front());
+    }
+}
+
 class Encoder {
 public:
     // `eng` (optional, schema v2): the engine that owns `s`; needed for the
@@ -312,6 +329,7 @@ public:
     // the battlefields its owner may play a unit to, battlefieldTakesUnitsFrom)
     // are mapped back to the real slot.
     int actionDst(const Intent& i, const Prompt& p) const {
+        if (p.kind == PromptKind::MoveJoin) return mt_ ? mt_->dst : -1;   // v4: the move's destination
         const int d = i.play_location.has_value() ? locCode(i.play_location) : locCode(i.move_destination);
         if (d >= 0) return d;
         if (p.kind == PromptKind::Location && i.type == IntentType::MakeChoice && i.chosen_value.has_value() &&
@@ -339,9 +357,8 @@ public:
     //   [5] own runes on the board in total after the payment
     //   [6] the unit enters ready (1) / exhausted (0); -1 not a unit decision
     // -1 everywhere for other prompts. The payment is an estimate from the
-    // engine's cost (netCardCost, as card [19..20]) and the pool / board: the
-    // pool pays first, Energy exhausts ready runes (see below),
-    // Power recycles runes of the card's Domains (exhausted ones first).
+    // engine's cost (netCardCost, as card [19..20]) and the pool / board, paid
+    // in the engine's rune order (schema v4: exact; see below).
     // Accelerate's extra is [1] + one Power of the unit's Domains (CR 805.1.b.1;
     // the optional-cost discount, not in the Rengar deck, is not applied).
     std::array<int, 7> optCost(const Intent& i, const Prompt& p) const {
@@ -353,9 +370,22 @@ public:
         const bool yes = !i.declines;
         std::pair<int, int> base{0, 0};
         try { base = engineNetCost(*eng_, me_, p.source); } catch (...) { return r; }
+        // v4 (gate 3 completion): the payment is replayed rune by rune in the
+        // engine's own order, which is what autopay (option 0 of every rune
+        // prompt) takes:
+        //  1. AdditionalCost "yes": resource::payIn, called by
+        //     GameEngine::maybePayOptionalAdditionalCost before the card's cost:
+        //     pool first; Energy from ready runes that cannot pay the Power
+        //     first, lowest id first; Power from runes that pay it, exhausted
+        //     first, lowest id first.
+        //  2. The card's cost (with Accelerate's [1][C] for "yes"):
+        //     GameEngine::beginPaymentOf / advanceCostPayment: pool first; Energy
+        //     from the ready runes in base in the object table's order
+        //     (readyRunesInBase); Power from the first rune in that order of the
+        //     card's Domains, ready or exhausted (matchingRunesInBase).
         int xe = 0, xp = 0, reduce = 0;
-        std::vector<Domain> doms = card.domains.get();
-        bool any = false;
+        const std::vector<Domain> cdoms = card.domains.get();
+        unsigned xmask = 0;                       // the optional cost's Power Domains
         if (p.kind == PromptKind::Accelerate) {
             if (yes) { xe = 1; xp = 1; }
             r[6] = yes ? 1 : 0;
@@ -365,53 +395,147 @@ public:
                 const auto oc = c->optionalAdditionalCost(s_, me_);
                 if (oc.valid && yes) {
                     xe = oc.energy; xp = oc.power; reduce = oc.reduce_energy;
-                    if (oc.power > 0) { doms = {oc.power_domain}; any = oc.any_domain; }
+                    xmask = oc.any_domain ? 0x3Fu : (1u << static_cast<int>(oc.power_domain));
                 }
             }
         }
         r[0] = xe; r[1] = xp;
-        const int E = std::max(0, base.first - reduce) + xe, P = base.second + xp;
-        const auto& rp = s_.player(me_).rune_pool;
-        std::array<int, 6> rdy{}, exh{};
-        for (const auto& [id, o] : s_.objects.onBoard()) {
-            if (o.card_type != CardType::Rune || o.controller != me_) continue;
-            const int d = o.domains.get().empty() ? 0 : static_cast<int>(o.domains.get()[0]);
-            if (d < 0 || d >= 6) continue;
-            (o.is_exhausted ? exh : rdy)[d]++;
+        struct R { uint64_t id; unsigned dm; bool ex; bool gone; };
+        std::vector<R> runes;   // in the object table's order at the base (readyRunesInBase)
+        for (const auto& [id, o] : s_.objects.atLocation(LocationId{BaseLocation{me_}})) {
+            if (!o.isRune() || o.controller != me_) continue;
+            unsigned dm = 0;
+            for (auto d : o.domains.get()) if (d != Domain::Count) dm |= 1u << static_cast<int>(d);
+            runes.push_back({id.raw(), dm, o.is_exhausted, false});
         }
-        auto inMask = [&](int d) {
-            if (any) return true;
-            for (auto x : doms) if (static_cast<int>(x) == d) return true;
-            return false;
-        };
+        unsigned cmask = 0;
+        for (auto d : cdoms) if (d != Domain::Count) cmask |= 1u << static_cast<int>(d);
+        auto rp = s_.player(me_).rune_pool;      // a copy, spent below
         const bool unit = card.isUnit();
-        int poolP = rp.universal_power + (unit ? 0 : rp.spell_power);
-        for (int d = 0; d < 6; ++d) if (inMask(d)) poolP += rp.power[d];
-        int needE = std::max(0, E - (rp.energy + (unit ? rp.unit_energy : rp.spell_energy)));
-        int needP = std::max(0, P - poolP);
-        // Energy: exhaust ready runes; for a unit the card's Domains first, for a
-        // spell other Domains first (the order that matched the engine best in
-        // gate3/verify_optcost.py; autopay takes the engine's first rune option).
-        std::array<int, 6> r2 = rdy, e2 = exh;
-        for (int pass = 0; pass < 2 && needE > 0; ++pass)
-            for (int d = 0; d < 6 && needE > 0; ++d) {
-                if ((pass == 0) == (unit ? !inMask(d) : inMask(d))) continue;
-                const int k = std::min(needE, r2[d]); r2[d] -= k; e2[d] += k; needE -= k;
-            }
-        // Power: recycle runes of the Domains, exhausted first.
         int rec = 0, rec_dom = -1;
-        for (int pass = 0; pass < 2 && needP > 0; ++pass)
-            for (int d = 0; d < 6 && needP > 0; ++d) {
-                if (!inMask(d)) continue;
-                int& pile = pass == 0 ? e2[d] : r2[d];
-                const int k = std::min(needP, pile); pile -= k; needP -= k; rec += k;
-                if (k > 0 && rec_dom < 0) rec_dom = d;
-            }
+        auto recycle = [&](R& x) {
+            x.gone = true; ++rec;
+            if (rec_dom < 0) for (int d = 0; d < 6; ++d) if (x.dm & (1u << d)) { rec_dom = d; break; }
+        };
+        auto poolEnergy = [&](int need) {
+            int& re = unit ? rp.unit_energy : rp.spell_energy;
+            int k = std::min(re, need); re -= k; need -= k;
+            k = std::min(rp.energy, need); rp.energy -= k; need -= k;
+            return need;
+        };
+        auto poolPower = [&](int need, unsigned mask) {
+            if (!unit) { int k = std::min(rp.spell_power, need); rp.spell_power -= k; need -= k; }
+            for (int d = 0; d < 6; ++d)
+                if (mask & (1u << d)) { int k = std::min(rp.power[d], need); rp.power[d] -= k; need -= k; }
+            int k = std::min(rp.universal_power, need); rp.universal_power -= k; need -= k;
+            return need;
+        };
+        if (xe > 0 || xp > 0) if (p.kind == PromptKind::AdditionalCost) {   // 1. payIn
+            std::vector<R*> byId;
+            for (auto& x : runes) byId.push_back(&x);
+            std::sort(byId.begin(), byId.end(), [](const R* a, const R* b) { return a->id < b->id; });
+            int e = poolEnergy(xe), pw = poolPower(xp, xmask);
+            for (int pass = 0; pass < 2 && e > 0; ++pass)            // non-paying first
+                for (auto* x : byId)
+                    if (e > 0 && !x->gone && !x->ex && ((x->dm & xmask) != 0) == (pass == 1)) { x->ex = true; --e; }
+            for (int pass = 0; pass < 2 && pw > 0; ++pass)           // exhausted first
+                for (auto* x : byId)
+                    if (pw > 0 && !x->gone && (x->dm & xmask) && x->ex == (pass == 0)) { recycle(*x); --pw; }
+        }
+        {   // 2. the card's cost
+            const bool acc = p.kind == PromptKind::Accelerate;
+            int e = poolEnergy(std::max(0, base.first - reduce) + (acc ? xe : 0));
+            int pw = poolPower(base.second + (acc ? xp : 0), cmask);
+            for (auto& x : runes) if (e > 0 && !x.gone && !x.ex) { x.ex = true; --e; }
+            for (auto& x : runes) if (pw > 0 && !x.gone && (x.dm & cmask)) { recycle(x); --pw; }
+        }
         int ready = 0, total = 0;
-        for (int d = 0; d < 6; ++d) { ready += r2[d]; total += r2[d] + e2[d]; }
+        for (const auto& x : runes) if (!x.gone) { ++total; ready += x.ex ? 0 : 1; }
         r[2] = rec; r[3] = rec_dom; r[4] = ready; r[5] = total;
         return r;
     }
+
+    // ---- schema v4 (gate 3) ----
+    void setMove(const MoveTrack* m) { mt_ = m; }
+    // MoveJoin: the units already in the move (leading unit first); empty otherwise.
+    std::vector<GameObjectId> moveGroup(const Prompt& p) const {
+        if (p.kind != PromptKind::MoveJoin || !mt_) return {};
+        return mt_->moving;
+    }
+    // MoveJoin's "Move no more units" option (no unit chosen): marked as the decline.
+    static bool moveJoinStop(const Intent& i, const Prompt& p) {
+        return p.kind == PromptKind::MoveJoin && i.type == IntentType::MakeChoice && i.chosen_objects.empty();
+    }
+    // GameEngine::triggerOrderLabel, mirrored (it is private).
+    std::string trigLabel(const ChainItem& ci) const {
+        std::string l = s_.objectExists(ci.source) ? std::string(s_.getObject(ci.source).name.get()) : std::string("?");
+        if (ci.keyword_ability.has_value()) l += std::string(" [") + toString(*ci.keyword_ability) + "]";
+        if (ci.equipped_unit != kInvalidId && s_.objectExists(ci.equipped_unit))
+            l += " on " + std::string(s_.getObject(ci.equipped_unit).name.get());
+        else if (ci.triggering_subject != kInvalidId && ci.triggering_subject != ci.source &&
+                 s_.objectExists(ci.triggering_subject))
+            l += " (" + std::string(s_.getObject(ci.triggering_subject).name.get()) + ")";
+        return l;
+    }
+    // TriggerOrder: option chosen_value k -> the chain item it orders. The
+    // engine (GameEngine::orderPendingTriggers) offers distinct[k] of the
+    // decider's still-unordered items of the oldest pending batch; that batch
+    // already stands in its canonical order on the chain (canonicalBatchOrder),
+    // and the options keep that order. Rebuilt here: the batch's pending items
+    // of the decider in chain order, matched to the options' labels in order,
+    // skipping items that are the same ability as one already matched. Exact
+    // unless two different items share a label and the earlier one was
+    // ordered already (counted in trig_amb_).
+    void prepare(const std::vector<Intent>& legal, const Prompt& p) {
+        trig_.clear(); trig_amb_ = 0;
+        if (p.kind != PromptKind::TriggerOrder || legal.empty()) return;
+        const PlayerId who = legal[0].player != PlayerId::None ? legal[0].player : me_;
+        const ChainItem* oldest = nullptr;
+        for (const auto& ci : s_.chain.items) if (ci.status == ChainItemStatus::Pending) { oldest = &ci; break; }
+        if (!oldest || oldest->trigger_batch == 0) return;
+        std::vector<const ChainItem*> cand;
+        for (const auto& ci : s_.chain.items)
+            if (ci.status == ChainItemStatus::Pending && ci.trigger_batch == oldest->trigger_batch && ci.controller == who)
+                cand.push_back(&ci);
+        auto same = [](const ChainItem& a, const ChainItem& b) {
+            return a.source == b.source && a.controller == b.controller && a.card_def_id == b.card_def_id &&
+                   a.fired_trigger == b.fired_trigger && a.triggering_subject == b.triggering_subject &&
+                   a.equipped_unit == b.equipped_unit && a.keyword_ability == b.keyword_ability;
+        };
+        std::vector<std::pair<int, const Intent*>> opts;
+        for (const auto& i : legal) if (i.chosen_value.has_value()) opts.emplace_back(*i.chosen_value, &i);
+        std::sort(opts.begin(), opts.end(), [](const auto& a, const auto& b) { return a.first < b.first; });
+        std::vector<const ChainItem*> matched;
+        size_t pos = 0;
+        const std::string pre = "Order \xE2\x80\x94 ";
+        for (const auto& [k, ip] : opts) {
+            for (size_t j = pos; j < cand.size(); ++j) {
+                bool dup = false;
+                for (auto* m : matched) if (same(*m, *cand[j])) dup = true;
+                if (dup) continue;
+                const std::string lj = trigLabel(*cand[j]);
+                if (ip->choice_label != pre + lj) continue;
+                for (size_t q = j + 1; q < cand.size(); ++q)
+                    if (!same(*cand[q], *cand[j]) && trigLabel(*cand[q]) == lj) { ++trig_amb_; break; }
+                trig_[k] = cand[j]->id.raw();
+                matched.push_back(cand[j]);
+                pos = j + 1;
+                break;
+            }
+        }
+    }
+    // The chain item (raw id) a TriggerOrder option orders; 0 when unknown.
+    uint64_t trigItem(const Intent& i, const Prompt& p) const {
+        if (p.kind != PromptKind::TriggerOrder || !i.chosen_value.has_value()) return 0;
+        auto it = trig_.find(*i.chosen_value);
+        return it == trig_.end() ? 0 : it->second;
+    }
+    GameObjectId trigSource(uint64_t item) const {
+        for (const auto& ci : s_.chain.items) if (ci.id.raw() == item) return ci.source;
+        return kInvalidId;
+    }
+    int trigAmbiguous() const { return trig_amb_; }
+    int trigMapped() const { return static_cast<int>(trig_.size()); }
 
     std::array<int, 3> consequences(int dst) const {
         std::array<int, 3> r = {-1, 0, 0};
@@ -644,12 +768,15 @@ public:
             for (size_t j = 0; j < v.size(); ++j) o << (j ? "," : "") << ref(v[j]);
             o << "]";
         };
+        const uint64_t trig = trigItem(i, p);   // v4
         if (i.card.valid()) o << ",\"src\":" << ref(i.card);
+        else if (trig) { const auto sc = trigSource(trig); if (sc.valid()) o << ",\"src\":" << ref(sc); }
         if (i.ability_source.valid()) o << ",\"abs\":" << ref(i.ability_source) << ",\"ai\":" << i.ability_index;
         list("tg", i.targets);
         list("ch", i.chosen_objects);
         list("mv", i.units_to_move);
         list("mu", i.cards_to_mulligan);
+        list("mg", moveGroup(p));   // v4: MoveJoin, the units already moving (leading unit first)
         if (!i.damage_assignments.empty()) {
             o << ",\"dm\":[";
             for (size_t j = 0; j < i.damage_assignments.size(); ++j)
@@ -667,6 +794,9 @@ public:
             if (p.kind == PromptKind::ChainItem) {
                 const int ci = itemRef(static_cast<uint64_t>(*i.chosen_value));
                 if (ci >= 0) o << ",\"ci\":" << ci;
+            } else if (trig) {
+                const int ci = itemRef(trig);
+                if (ci >= 0) o << ",\"ci\":" << ci;
             }
         }
         if (i.chosen_card_def.valid()) o << ",\"nc\":" << jstr(cardKey(i.chosen_card_def, nullptr));
@@ -674,7 +804,7 @@ public:
         if (i.play_source != Intent::PlaySource::Hand) o << ",\"ps\":" << static_cast<int>(i.play_source);
         if (i.use_alt_play_cost) o << ",\"alt\":1";
         if (i.pay_location_cost) o << ",\"plc\":1";
-        if (i.declines) o << ",\"dec\":1";
+        if (i.declines || moveJoinStop(i, p)) o << ",\"dec\":1";
         if (i.type == IntentType::PlayFirstDecision) o << ",\"first\":" << (i.choose_first ? 1 : 0);
         {   // schema v3: optional-cost consequences (Accelerate / AdditionalCost)
             const auto q = optCost(i, p);
@@ -714,6 +844,7 @@ public:
 
     // Everything the network sees at this decision: global, tokens, actions.
     std::string encode(const std::vector<Intent>& legal, const Prompt& p, int* psrc_out = nullptr) {
+        prepare(legal, p);
         std::vector<std::string> acts;
         for (const auto& i : legal) acts.push_back(action(i, p));
         const int psrc = p.source.valid() ? ref(p.source) : -1;
@@ -736,6 +867,9 @@ private:
     std::set<uint64_t> seen_;
     std::vector<Tok> toks_, btoks_, ktoks_, ptoks_, all_;
     std::map<uint64_t, int> obj_idx_, item_idx_, bf_by_obj_;
+    const MoveTrack* mt_ = nullptr;          // v4
+    std::map<int, uint64_t> trig_;           // v4: TriggerOrder value -> chain item
+    int trig_amb_ = 0;
 };
 
 // ─── Games ────────────────────────────────────────────────────────────────
@@ -772,6 +906,7 @@ struct GameCtx {
     std::vector<std::string> checks;      // [seq, fp, hash]
     std::map<std::string, long> key_count;
     std::vector<std::string> swap_cands;
+    std::map<int, MoveTrack> mtrack;      // v4: per decider, the Standard Move being built (MoveJoin)
     std::set<std::string> swap_seen;
     long n_multi = 0;
     // replay
@@ -798,12 +933,15 @@ public:
         if (ctx_.replay) {
             if (ctx_.on_seq && ctx_.on_seq(k, s, legal, p)) throw StopGame();
             if (k >= static_cast<int>(ctx_.replay->size())) throw std::runtime_error("replay ran past its choices");
-            return legal.at((*ctx_.replay)[k]);
+            const Intent& rp = legal.at((*ctx_.replay)[k]);
+            noteChoice(ctx_.mtrack[static_cast<int>(deciderOf(s, legal, p))], p, rp);
+            return rp;
         }
         const PlayerId dec = deciderOf(s, legal, p);
         std::string head;
         if (ctx_.record && legal.size() >= 2) {
             Encoder enc(s, dec, ctx_.engine);
+            enc.setMove(&ctx_.mtrack[static_cast<int>(dec)]);
             enc.build();
             const std::string body = enc.encode(legal, p);
             ++ctx_.n_multi;
@@ -837,6 +975,7 @@ public:
         const Intent pick = inner_->decide(s, legal, p);
         const int idx = indexOf(legal, pick);
         if (idx < 0) throw std::runtime_error("agent answered an option not in the legal list");
+        noteChoice(ctx_.mtrack[static_cast<int>(dec)], p, pick);
         ctx_.choices.push_back(idx);
         if (!head.empty()) {
             std::ostringstream o;

@@ -1,6 +1,24 @@
 viz: annotated HTML replays, self-play network vs ISMCTS-100 (Rengar mirror)
 ==========================================================================
-Made 2026-11-19. Nothing outside this folder was changed. The private build snapshot is
+
+UPDATE 2026-11-19 (schema v4): this folder now holds the v4 tool. The v2 tool (old network, old replays)
+was moved, unchanged apart from relative paths, to v2/; replays/ is still the v2 output.
+  * rbenv_viz.cpp = the working-tree selfplay/rbenv/rbenv.cpp (schema v4, the gate-4 playout code included
+    and unused) + the same viz patch (ReplayWriter, trace, [NET] / [TEACHER] annotations, rbenv_viz_* C API).
+    decision_export.cpp / card_probe.cpp / vocab.json: copies of smoke/data/src/decision_export.cpp (v4),
+    C_engine/card_probe.cpp and rbenv/vocab.json. model.py: learner/model.py (VOCAB_JSON -> ./vocab.json).
+    rbenv_viz.py: rbenv/rbenv.py + the viz bindings.
+  * build_viz.sh builds ~/riftbound/viz_build/librbenv_viz4.so (nice 10, one compile; the v2 library
+    librbenv_viz.so stays). rbenv's own build (build_pic) is not touched.
+  * play_viz.py: default network runs/gate4_B2/latest.pt. Net options come from the checkpoint as in
+    gate4/po.py; --greedy plays the top choice. run_games.sh plays GREEDY, nice 10, 3 at a time, into replays_v4/.
+  * transcript.py writes a readable .txt next to each replay (replays/ and replays_v4/).
+  * New games: replays_v4/ (6/6 won). Old vs new comparison: COMPARE.txt.
+  * Check: in all 6 v4 games, every NET / TEACHER "*" line matches the decision panel's "==>" line (685 of 685).
+  * The engine writes GAME_OVER and the final scoring lines after the last snapshot, so they are not in the
+    HTML; the transcripts take the result from summary.tsv.
+
+----- original (v2) notes; paths now under v2/ -----
 ~/riftbound/viz_build (WSL).
 
 Network: runs/gate2v2_sanity_B2_ask/latest.pt (B2, --ask-head, schema v2), loaded with the

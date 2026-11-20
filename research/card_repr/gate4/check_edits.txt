@@ -1,0 +1,24 @@
+edit visible after resume+Cleanup / not visible / refused, per cell:
+  assault+:attacker                            40    0    0
+  assault+:defender                            40    0    0
+  darius_second_card:board                     50    0    0
+  darius_second_card:hand                      99    0    0
+  hidden-:opp                                  56    0    0
+  hidden-:own                                  27    0    0
+  inferna_assault-:can_attack                   3    0    0
+  inferna_assault-:cannot_attack               40    0    0
+  kinkou_condition:false_to_true               49    0    0
+  kinkou_condition:true_to_false               29    0    0
+  legion:noxus_in_hand                         40    0    0
+  location:bf_to_base                          40    0    0
+  might+2:opp_key                              40    0    0
+  might+2:own_key                              40    0    0
+  might-2:own_key                              40    0    0
+  null:assault_opp_unit_in_base                40    0    0
+  null:played_no_reader                        40    0    0
+  null:shield_own_exhausted_base_unit          40    0    0
+  shield+:attacker                             40    0    0
+  shield+:defender                             40    0    0
+  starspring_unused:irrelevant                 40    0    0
+  starspring_unused:relevant                  102    0    0
+refusal reasons: {}

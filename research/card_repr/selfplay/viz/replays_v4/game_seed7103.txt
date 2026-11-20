@@ -1,0 +1,379 @@
+game seed 7103   P1 = ismcts:sims=100   P2 = network(gate4 B2, greedy)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[NET] Keep hand
+        net: pick 86.1% | alt: Mull: Kinkou Initiate Kinkou Initiate 2.6% | v +0.27
+~ P1 brings Emperor's Dais
+~ P2 brings Star Spring
+~ P1 opening hand: Noxus Hopeful, Darius, Trifarian, Inferna, Grim Apothecary
+~ P2 opening hand: Grim Apothecary, Nidalee, Cat Form, Kinkou Initiate, Kinkou Initiate
+  P1[ISMCTS] Mull: Darius, Trifarian Grim Apothecary   (ismcts 10/100 visits)
+~ P1 set aside Darius, Trifarian
+~ P1 set aside Grim Apothecary
+~ P1 drew replacement Rampage
+~ P1 drew replacement Pit Rookie
+
+=== TURN 0 (P2, NET)   score P1 0 - P2 0 ===
+
+=== TURN 1 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[ISMCTS] Play Inferna(1M) -> Base   (ismcts 34/100 visits)
+    ~ play Inferna (Unit, 2E)
+    ~ effect: give Inferna 1 [M] this turn
+
+=== TURN 2 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Kinkou Initiate(3M) -> Base
+        net: pick 49.6% | alt: Play Kinkou Initiate(3M) -> Base 49.6% | v +0.41
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 51.6% | alt: Order — Pridestalker (Kinkou Initiate) 48.4% | v +0.37
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 100.0% | alt: Choose: Inferna@Base 0.0% | v +0.37
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 100.0% | alt: Play Punch First[S] 0.0% | v +0.39
+
+=== TURN 3 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[ISMCTS] Move Inferna -> Emperor's Dais   (ismcts 12/100 visits)
+    ~ move Inferna -> Emperor's Dais
+  P2[NET] Pass Focus
+        net: pick 100.0% | alt: Play Punch First[S] 0.0% | v +0.36
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 0
+  P1[ISMCTS] No — Emperor's Dais: pay [1], return a unit   (ismcts 50/100 visits)
+  P1[ISMCTS] Play Rengar, Trophy Hunter(6M) -> Base   (ismcts 9/100 visits)
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P1[ISMCTS] Choose: Inferna@BF   (ismcts 34/100 visits)
+    ~ effect: give Inferna 1 [M] this turn
+
+=== TURN 4 (P2, NET)   score P1 1 - P2 0 ===
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Emperor's Dais
+        net: pick 95.1% | alt: Move Kinkou Initiate -> Emperor's Dais 1.6% | v +0.50
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 99.1% | alt: Choose: Kinkou Initiate@Base 0.9% | v +0.51
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] Pass Focus
+        net: pick 96.1% | alt: Play Punch First[S] 3.9% | v +0.54
+    ~ COMBAT at Emperor's Dais: P2 attacks [Rengar, Trophy Hunter(7M)]  vs  P1 defends [Inferna(1M)]
+    ~ KILL Inferna (1M, dmg=7)
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 1
+  P2[NET] No — Emperor's Dais: pay [1], return a unit
+        net: pick 82.8% | alt: Yes — Emperor's Dais: pay [1], return a unit 17.2% | v +0.53
+  P2[NET] Move Kinkou Initiate -> Star Spring
+        net: pick 99.7% | alt: Move Kinkou Initiate -> Emperor's Dais 0.3% | v +0.55
+    ~ move Kinkou Initiate -> Star Spring
+  P2[NET] Pass Focus
+        net: pick 98.2% | alt: Play Punch First[S] 1.8% | v +0.63
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P2[NET] End Turn
+        net: pick 100.0% | alt: Play Punch First[S] 0.0% | v +0.62
+
+=== TURN 5 (P1, ISMCTS)   score P1 1 - P2 2 ===
+  P1[ISMCTS] Play Rampage[S]
+    ~ spell Rampage targets=[]
+  P1[ISMCTS] Choose: Kinkou Initiate@BF   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: =0   (ismcts 50/100 visits)
+    ~ additional_cost: Rampage declined additional cost
+    ~ effect: deal 6 damage to Kinkou Initiate (id=85, was 0/3M)
+    ~ effect: deal 3 damage to Rengar, Trophy Hunter (id=2, was 0/6M)
+    ~ effect: kill Kinkou Initiate
+  P1[ISMCTS] Move Rengar, Trophy Hunter -> Star Spring   (ismcts 17/100 visits)
+    ~ move Rengar, Trophy Hunter -> Star Spring
+  P2[NET] Play Punch First[S]
+        net: pick 80.0% | alt: Pass Focus 20.0% | v +0.72
+    ~ spell Punch First targets=[]
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 100.0% | alt: Choose: Rengar, Trophy Hunter@BF 0.0% | v +0.70
+    ~ effect: give Rengar, Trophy Hunter 5 [M] this turn
+    ~ P1 conquers Star Spring
+    ~ SCORE P1 +1 (Conquer)   -> P1 2 - P2 2
+  P1[ISMCTS] Play Pit Rookie(2M) -> Star Spring   (ismcts 11/100 visits)
+    ~ play Pit Rookie (Unit, 2E)
+  P1[ISMCTS] Order — Star Spring (Pit Rookie)   (ismcts 34/100 visits)
+  P1[ISMCTS] Order — Pridestalker (Pit Rookie)   (ismcts 52/100 visits)
+  P1[ISMCTS] Yes — Star Spring: move another unit here to its base?   (ismcts 51/100 visits)
+  P1[ISMCTS] Choose: Rengar, Trophy Hunter@BF   (ismcts 34/100 visits)
+    ~ effect: [Buff] Rengar, Trophy Hunter (+1 permanent) -> 7M
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[ISMCTS] Hide Pakaa Cub(3M) @ Star Spring   (ismcts 51/100 visits)
+    ~ hide Pakaa Cub at Star Spring by P1
+
+=== TURN 6 (P2, NET)   score P1 2 - P2 2 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 2 - P2 3
+  P2[NET] Play Kinkou Initiate(3M) -> Emperor's Dais
+        net: pick 87.3% | alt: Play Kinkou Initiate(3M) -> Base 9.4% | v +0.41
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Kinkou Initiate
+        net: pick 69.0% | alt: Order — Pridestalker (Kinkou Initiate) 31.0% | v +0.28
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 97.1% | alt: Choose: Kinkou Initiate@BF 2.9% | v +0.26
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 99.4% | alt: Move Rengar, Trophy Hunter -> Base 0.5% | v +0.38
+
+=== TURN 7 (P1, ISMCTS)   score P1 2 - P2 3 ===
+    ~ SCORE P1 +1 (Hold Star Spring)   -> P1 3 - P2 3
+  P1[ISMCTS] Play Kai'Sa, Survivor(4M) -> Base
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[ISMCTS] Choose: =1   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@Base   (ismcts 20/100 visits)
+  P1[ISMCTS] Play Pakaa Cub(3M)   (ismcts 51/100 visits)
+  P1[ISMCTS] Order — Pridestalker (Pakaa Cub)   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Rengar, Trophy Hunter@Base   (ismcts 17/100 visits)
+  P1[ISMCTS] No — Star Spring: move another unit here to its base?   (ismcts 50/100 visits)
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P1[ISMCTS] Move Rengar, Trophy Hunter -> Emperor's Dais   (ismcts 11/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@Base   (ismcts 54/100 visits)
+    ~ move Rengar, Trophy Hunter -> Emperor's Dais
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+  P2[NET] Play Punch First[S]
+        net: pick 99.5% | alt: Pass Focus 0.5% | v +0.24
+    ~ spell Punch First targets=[]
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 79.0% | alt: Choose: Kinkou Initiate@BF 21.0% | v +0.25
+    ~ effect: give Rengar, Trophy Hunter 5 [M] this turn
+    ~ COMBAT at Emperor's Dais: P1 attacks [Kai'Sa, Survivor(5M), Rengar, Trophy Hunter(8M)]  vs  P2 defends [Kinkou Initiate(3M), Rengar, Trophy Hunter(11M)]
+  P1[ISMCTS] Assign Damage: Kinkou Initiate(3), Rengar, Trophy Hunter(10)   (ismcts 50/100 visits)
+  P2[NET] Assign Damage: Rengar, Trophy Hunter(8), Kai'Sa, Survivor(6)
+        net: pick 50.0% | alt: Assign Damage: Kai'Sa, Survivor(5), Rengar, Trophy Hunter(9) 50.0% | v -0.00
+    ~ KILL Kai'Sa, Survivor (5M, dmg=6)
+    ~ KILL Rengar, Trophy Hunter (8M, dmg=8)
+    ~ KILL Kinkou Initiate (3M, dmg=3)
+  P1[ISMCTS] Play Irresistible Faefolk(1M) -> Star Spring
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P1[ISMCTS] Choose: Irresistible Faefolk@BF   (ismcts 26/100 visits)
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+  P1[ISMCTS] Move Pit Rookie -> Base   (ismcts 50/100 visits)
+    ~ move Pit Rookie -> Base(P1)
+
+=== TURN 8 (P2, NET)   score P1 3 - P2 3 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 3 - P2 4
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 73.7% | alt: Play Kai'Sa, Survivor(4M) -> Emperor's Dais 24.7% | v +0.91
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =0
+        net: pick 75.1% | alt: Choose: =1 24.9% | v +0.91
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 95.8% | alt: Choose: Kai'Sa, Survivor@Base 4.1% | v +0.91
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 95.9% | alt: Move Rengar, Trophy Hunter -> Base 4.1% | v +0.93
+
+=== TURN 9 (P1, ISMCTS)   score P1 3 - P2 4 ===
+    ~ SCORE P1 +1 (Hold Star Spring)   -> P1 4 - P2 4
+  P1[ISMCTS] Move Pakaa Cub -> Base   (ismcts 10/100 visits)
+  P1[ISMCTS] Move no more units   (ismcts 50/100 visits)
+    ~ move Pakaa Cub -> Base(P1)
+  P1[ISMCTS] Play Kai'Sa, Survivor(4M) -> Base   (ismcts 11/100 visits)
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[ISMCTS] Choose: =0   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Pit Rookie@Base   (ismcts 17/100 visits)
+  P1[ISMCTS] Play Grim Apothecary(3M) -> Star Spring   (ismcts 51/100 visits)
+    ~ play Grim Apothecary (Unit, 3E)
+  P1[ISMCTS] Order — Grim Apothecary   (ismcts 34/100 visits)
+  P1[ISMCTS] Order — Star Spring (Grim Apothecary)   (ismcts 50/100 visits)
+  P1[ISMCTS] Yes — Grim Apothecary: return a friendly unit at a battlefield to hand?   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Irresistible Faefolk@BF   (ismcts 50/100 visits)
+  P1[ISMCTS] Yes — Star Spring: move another unit here to its base?   (ismcts 51/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@Base   (ismcts 15/100 visits)
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+    ~ effect: give Pit Rookie 1 [M] this turn
+  P1[ISMCTS] Move Irresistible Faefolk -> Emperor's Dais   (ismcts 21/100 visits)
+  P1[ISMCTS] Move no more units   (ismcts 51/100 visits)
+    ~ move Irresistible Faefolk -> Emperor's Dais
+  P1[ISMCTS] No — Irresistible Faefolk: move an enemy unit to my battlefield?   (ismcts 50/100 visits)
+    ~ COMBAT at Emperor's Dais: P1 attacks [Irresistible Faefolk(1M)]  vs  P2 defends [Rengar, Trophy Hunter(6M)]
+    ~ KILL Irresistible Faefolk (1M, dmg=6)
+  P1[ISMCTS] Move Pit Rookie -> Emperor's Dais   (ismcts 36/100 visits)
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Pit Rookie(3M)]  vs  P2 defends [Rengar, Trophy Hunter(6M)]
+    ~ KILL Pit Rookie (3M, dmg=6)
+
+=== TURN 10 (P2, NET)   score P1 4 - P2 4 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 4 - P2 5
+  P2[NET] Move Kai'Sa, Survivor -> Star Spring
+        net: pick 83.7% | alt: Play Rampage[S] 5.7% | v +0.92
+    ~ move Kai'Sa, Survivor -> Star Spring
+  P2[NET] Play Nidalee, Cat Form(4M) -> Star Spring
+        net: pick 41.3% | alt: Play Nidalee, Cat Form(4M) -> Star Spring 41.3% | v +0.93
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P2[NET] Order — Pridestalker (Nidalee, Cat Form)
+        net: pick 63.8% | alt: Order — Star Spring (Nidalee, Cat Form) 36.2% | v +0.96
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 69.8% | alt: Choose: Kai'Sa, Survivor@BF 23.3% | v +0.96
+  P2[NET] No — Star Spring: move another unit here to its base?
+        net: pick 99.3% | alt: Yes — Star Spring: move another unit here to its base? 0.7% | v +0.96
+  P2[NET] Play Nidalee, Cat Form(4M) -> Star Spring
+        net: pick 55.6% | alt: Play Grim Apothecary(3M) -> Star Spring 36.6% | v +0.95
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P2[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 58.0% | alt: Choose: Kai'Sa, Survivor@BF 24.9% | v +0.98
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ COMBAT at Star Spring: P2 attacks [Kai'Sa, Survivor(4M), Nidalee, Cat Form(4M), Nidalee, Cat Form(4M)]  vs  P1 defends [Grim Apothecary(3M)]
+  P1[ISMCTS] Assign Damage: Nidalee, Cat Form(3)   (ismcts 34/100 visits)
+    ~ KILL Grim Apothecary (3M, dmg=12)
+  P2[NET] Order — Nidalee, Cat Form
+        net: pick 62.9% | alt: Order — Nidalee, Cat Form 37.1% | v +0.99
+    ~ P2 conquers Star Spring
+    ~ SCORE P2 +1 (Conquer)   -> P1 4 - P2 6
+  P2[NET] End Turn
+        net: pick 56.4% | alt: Play Sabotage[S] 43.2% | v +0.99
+
+=== TURN 11 (P1, ISMCTS)   score P1 4 - P2 6 ===
+  P1[ISMCTS] Move Pakaa Cub -> Emperor's Dais   (ismcts 16/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@Base   (ismcts 56/100 visits)
+    ~ move Pakaa Cub -> Emperor's Dais
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P1 attacks [Kai'Sa, Survivor(4M), Pakaa Cub(3M)]  vs  P2 defends [Rengar, Trophy Hunter(6M)]
+  P2[NET] Assign Damage: Pakaa Cub(3), Kai'Sa, Survivor(3)
+        net: pick 50.0% | alt: Assign Damage: Kai'Sa, Survivor(4), Pakaa Cub(2) 50.0% | v +0.99
+    ~ KILL Pakaa Cub (3M, dmg=3)
+    ~ KILL Rengar, Trophy Hunter (6M, dmg=7)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 5 - P2 6
+  P1[ISMCTS] Order — Emperor's Dais   (ismcts 50/100 visits)
+  P1[ISMCTS] Yes — Emperor's Dais: pay [1], return a unit   (ismcts 50/100 visits)
+    ~ effect: bounce Kai'Sa, Survivor to hand
+  P1[ISMCTS] Choose: Sand Soldier@BF
+  P1[ISMCTS] Play Grim Apothecary(3M) -> Emperor's Dais   (ismcts 51/100 visits)
+    ~ play Grim Apothecary (Unit, 3E)
+  P1[ISMCTS] Order — Grim Apothecary   (ismcts 51/100 visits)
+  P1[ISMCTS] Yes — Grim Apothecary: return a friendly unit at a battlefield to hand?   (ismcts 51/100 visits)
+  P1[ISMCTS] Choose: Sand Soldier@BF   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@BF   (ismcts 20/100 visits)
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+    ~ effect: bounce Sand Soldier — token ceases to exist (CR 183.1)
+  P1[ISMCTS] Play Noxus Hopeful(4M) -> Base   (ismcts 15/100 visits)
+    ~ play Noxus Hopeful (Unit, 4E)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+  P1[ISMCTS] Play Kinkou Initiate(3M) -> Base   (ismcts 22/100 visits)
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[ISMCTS] Order — Pridestalker (Kinkou Initiate)   (ismcts 51/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@BF   (ismcts 17/100 visits)
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+
+=== TURN 12 (P2, NET)   score P1 5 - P2 6 ===
+    ~ SCORE P2 +1 (Hold Star Spring)   -> P1 5 - P2 7
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 56.7% | alt: Play Kai'Sa, Survivor(4M) -> Star Spring 25.0% | v +0.98
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =0
+        net: pick 63.2% | alt: Choose: =1 36.8% | v +0.97
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 51.2% | alt: Choose: Kai'Sa, Survivor@Base 26.1% | v +0.98
+  P2[NET] Pass Priority
+        net: pick 82.6% | alt: Play Grim Apothecary(3M) -> Star Spring 17.4% | v +0.98
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P2[NET] Play Rampage[S]
+        net: pick 25.6% | alt: Play Rampage[S] 25.6% | v +0.99
+    ~ spell Rampage targets=[]
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 61.0% | alt: Choose: Kai'Sa, Survivor@Base 18.6% | v +0.98
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 52.9% | alt: Choose: Noxus Hopeful@Base 43.0% | v +0.99
+  P2[NET] Choose: =1
+        net: pick 100.0% | alt: Choose: =0 0.0% | v +0.98
+    ~ additional_cost: Rampage paid optional additional cost
+    ~ effect: give Kai'Sa, Survivor 2 [M] this turn
+    ~ effect: deal 7 damage to Kinkou Initiate (id=32, was 0/3M)
+    ~ effect: deal 3 damage to Kai'Sa, Survivor (id=68, was 0/7M)
+    ~ effect: kill Kinkou Initiate
+  P2[NET] End Turn
+        net: pick 94.0% | alt: Move Kai'Sa, Survivor -> Base 5.5% | v +0.99
+
+=== TURN 13 (P1, ISMCTS)   score P1 5 - P2 7 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 6 - P2 7
+  P1[ISMCTS] Play Kai'Sa, Survivor(4M) -> Emperor's Dais   (ismcts 13/100 visits)
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[ISMCTS] Choose: =1   (ismcts 53/100 visits)
+  P1[ISMCTS] Choose: Nidalee, Cat Form@BF   (ismcts 15/100 visits)
+  P1[ISMCTS] Play Thrill of the Hunt[S]   (ismcts 59/100 visits)
+    ~ spell Thrill of the Hunt targets=[]
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@BF   (ismcts 34/100 visits)
+  P1[ISMCTS] Star Spring   (ismcts 51/100 visits)
+    ~ effect: banish Kai'Sa, Survivor
+  P1[ISMCTS] Choose: =0   (ismcts 50/100 visits)
+    ~ thrill: Kai'Sa, Survivor played to Star Spring, ignoring cost
+  P1[ISMCTS] Order — Star Spring (Kai'Sa, Survivor)   (ismcts 50/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@BF   (ismcts 15/100 visits)
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+    ~ COMBAT at Star Spring: P1 attacks [Kai'Sa, Survivor(5M)]  vs  P2 defends [Kai'Sa, Survivor(4M), Nidalee, Cat Form(4M), Nidalee, Cat Form(5M)]
+  P1[ISMCTS] Assign Damage: Kai'Sa, Survivor(4), Nidalee, Cat Form(1)   (ismcts 21/100 visits)
+    ~ KILL Kai'Sa, Survivor (5M, dmg=13)
+    ~ KILL Kai'Sa, Survivor (4M, dmg=4)
+  P2[NET] Order — Nidalee, Cat Form
+        net: pick 55.5% | alt: Order — Nidalee, Cat Form 44.5% | v +0.98
+  P1[ISMCTS] Play Kai'Sa, Survivor(4M) -> Base   (ismcts 22/100 visits)
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[ISMCTS] Choose: =1   (ismcts 52/100 visits)
+  P1[ISMCTS] Choose: Noxus Hopeful@Base   (ismcts 18/100 visits)
+    ~ effect: give Noxus Hopeful 1 [M] this turn
+  P1[ISMCTS] Move Noxus Hopeful -> Star Spring   (ismcts 26/100 visits)
+  P1[ISMCTS] Choose: Kai'Sa, Survivor@Base   (ismcts 66/100 visits)
+    ~ move Noxus Hopeful -> Star Spring
+    ~ move Kai'Sa, Survivor -> Star Spring
+    ~ COMBAT at Star Spring: P1 attacks [Kai'Sa, Survivor(4M), Noxus Hopeful(5M)]  vs  P2 defends [Nidalee, Cat Form(4M), Nidalee, Cat Form(5M)]
+    ~ KILL Noxus Hopeful (5M, dmg=5)
+    ~ KILL Kai'Sa, Survivor (4M, dmg=4)
+    ~ KILL Nidalee, Cat Form (4M, dmg=4)
+    ~ KILL Nidalee, Cat Form (5M, dmg=5)
+  P1[ISMCTS] End Turn   (ismcts 50/100 visits)
+
+=== TURN 14 (P2, NET)   score P1 6 - P2 7 ===
+  P2[NET] Move Kai'Sa, Survivor -> Emperor's Dais
+        net: pick 79.6% | alt: Play Kinkou Initiate(3M) -> Base 12.8% | v +0.99
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+  P2[NET] Play Grim Apothecary(3M) -> Emperor's Dais
+        net: pick 49.9% | alt: Play Grim Apothecary(3M) -> Emperor's Dais 49.9% | v +0.99
+    ~ play Grim Apothecary (Unit, 3E)
+  P2[NET] Order — Pridestalker (Grim Apothecary)
+        net: pick 90.5% | alt: Order — Grim Apothecary 9.5% | v +0.99
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 79.1% | alt: Choose: Grim Apothecary@BF 20.8% | v +0.99
+  P2[NET] No — Grim Apothecary: return a friendly unit at a battlefield to hand?
+        net: pick 99.6% | alt: Yes — Grim Apothecary: return a friendly unit at a battlefield to hand? 0.4% | v +0.99
+  P2[NET] Play Grim Apothecary(3M) -> Emperor's Dais
+        net: pick 98.0% | alt: Pass Priority 2.0% | v +0.99
+    ~ play Grim Apothecary (Unit, 3E)
+  P2[NET] Order — Pridestalker (Grim Apothecary)
+        net: pick 84.3% | alt: Order — Grim Apothecary 15.7% | v +0.99
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 60.4% | alt: Choose: Grim Apothecary@BF 21.3% | v +0.99
+  P2[NET] No — Grim Apothecary: return a friendly unit at a battlefield to hand?
+        net: pick 99.5% | alt: Yes — Grim Apothecary: return a friendly unit at a battlefield to hand? 0.5% | v +0.99
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Grim Apothecary(3M), Grim Apothecary(3M), Kai'Sa, Survivor(6M)]  vs  P1 defends [Grim Apothecary(3M)]
+  P1[ISMCTS] Assign Damage: Grim Apothecary(3)   (ismcts 35/100 visits)
+    ~ KILL Grim Apothecary (3M, dmg=3)
+    ~ KILL Grim Apothecary (3M, dmg=12)
+    ~ P2 conquers Emperor's Dais
+  P2[NET] Order — Kai'Sa, Survivor
+        net: pick 50.3% | alt: Order — Emperor's Dais 49.7% | v +0.99
+  P2[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 57.7% | alt: No — Emperor's Dais: pay [1], return a unit 42.3% | v +0.99
+  P2[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 58.4% | alt: Choose: Grim Apothecary@BF 41.6% | v +0.99
+    ~ effect: bounce Kai'Sa, Survivor to hand
+  P2[NET] Choose: Sand Soldier@BF
+        net: pick 59.6% | alt: Choose: Grim Apothecary@BF 40.4% | v +0.99
+    ~ effect: give Sand Soldier 1 [M] this turn
+  P2[NET] End Turn
+        net: pick 51.1% | alt: Play Sabotage[S] 48.9% | v +0.99
+
+=== TURN 15 (P1, ISMCTS)   score P1 6 - P2 7 ===
+  P1[ISMCTS] Play Noxus Hopeful(4M) -> Base   (ismcts 75/100 visits)
+    ~ play Noxus Hopeful (Unit, 4E)
+  P1[ISMCTS] Choose: Sand Soldier@BF   (ismcts 35/100 visits)
+    ~ effect: give Sand Soldier 1 [M] this turn
+
+=== TURN 16 (P2, NET)   score P1 6 - P2 7 ===
+
+GAME OVER: winner P2 (NET) score 6-8, 16 turns, 384 decisions -- P2 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

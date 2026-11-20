@@ -1,0 +1,338 @@
+game seed 7002   P1 = network(gate4 B2, greedy)   P2 = ismcts:sims=100
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[ISMCTS] Mull: Grim Apothecary   (ismcts 10/100 visits)
+~ P1 brings Emperor's Dais
+~ P2 brings Emperor's Dais
+~ P1 opening hand: Kai'Sa, Survivor, Sabotage, Pit Rookie, Inferna
+~ P2 opening hand: Grim Apothecary, Grim Apothecary, Irresistible Faefolk, Rampage
+~ P2 set aside Grim Apothecary
+~ P2 drew replacement Inferna
+  P1[NET] Mull: Sabotage
+        net: pick 93.9% | alt: Mull: Sabotage Pit Rookie 2.4% | v +0.07
+~ P1 set aside Sabotage
+~ P1 drew replacement Kai'Sa, Survivor
+
+=== TURN 0 (P2, ISMCTS)   score P1 0 - P2 0 ===
+  P2[ISMCTS] Play Inferna(1M) -> Base   (ismcts 34/100 visits)
+    ~ play Inferna (Unit, 2E)
+    ~ effect: give Inferna 1 [M] this turn
+
+=== TURN 1 (P1, NET)   score P1 0 - P2 0 ===
+  P1[NET] Play Pit Rookie(2M) -> Base
+        net: pick 99.7% | alt: Play Inferna(1M) -> Base 0.1% | v +0.01
+    ~ play Pit Rookie (Unit, 2E)
+  P1[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 91.6% | alt: Order — Pit Rookie 8.4% | v +0.02
+  P1[NET] Choose: Pit Rookie@Base
+        net: pick 99.9% | alt: Choose: Inferna@Base 0.1% | v +0.01
+    ~ effect: give Pit Rookie 1 [M] this turn
+
+=== TURN 2 (P2, ISMCTS)   score P1 0 - P2 0 ===
+  P2[ISMCTS] End Turn   (ismcts 13/100 visits)
+
+=== TURN 3 (P1, NET)   score P1 0 - P2 0 ===
+  P1[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 48.9% | alt: Play Kai'Sa, Survivor(4M) -> Base 48.9% | v +0.34
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[NET] Choose: =0
+        net: pick 76.9% | alt: Choose: =1 23.1% | v +0.36
+  P1[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 99.2% | alt: Choose: Pit Rookie@Base 0.8% | v +0.26
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P1[NET] Move Pit Rookie -> Emperor's Dais (P2's)
+        net: pick 98.1% | alt: Move Pit Rookie -> Emperor's Dais (P1's) 1.8% | v +0.30
+    ~ move Pit Rookie -> Emperor's Dais
+  P2[ISMCTS] Play Punch First[S]   (ismcts 57/100 visits)
+    ~ spell Punch First targets=[]
+  P2[ISMCTS] Choose: Pit Rookie@BF   (ismcts 34/100 visits)
+    ~ effect: give Pit Rookie 5 [M] this turn
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 0
+  P1[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 66.1% | alt: No — Emperor's Dais: pay [1], return a unit 33.9% | v +0.48
+    ~ effect: bounce Pit Rookie to hand
+  P1[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 84.7% | alt: Choose: Sand Soldier@BF 15.3% | v +0.59
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+
+=== TURN 4 (P2, ISMCTS)   score P1 1 - P2 0 ===
+  P2[ISMCTS] Play Irresistible Faefolk(1M) -> Base
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P2[ISMCTS] Choose: Inferna@Base   (ismcts 26/100 visits)
+    ~ effect: give Inferna 1 [M] this turn
+  P2[ISMCTS] Move Inferna -> Emperor's Dais (P2's)   (ismcts 43/100 visits)
+    ~ move Inferna -> Emperor's Dais
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(4M)]  vs  P1 defends [Sand Soldier(2M)]
+    ~ KILL Sand Soldier (2M, dmg=4)
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 1
+  P2[ISMCTS] Yes — Emperor's Dais: pay [1], return a unit   (ismcts 50/100 visits)
+    ~ effect: bounce Inferna to hand
+  P2[ISMCTS] Choose: Sand Soldier@BF   (ismcts 34/100 visits)
+    ~ effect: give Sand Soldier 1 [M] this turn
+
+=== TURN 5 (P1, NET)   score P1 1 - P2 1 ===
+  P1[NET] Play Rengar, Trophy Hunter(6M) -> Emperor's Dais (P2's)
+        net: pick 96.9% | alt: Play Kai'Sa, Survivor(4M) -> Base 1.9% | v +0.74
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 97.2% | alt: Choose: Kai'Sa, Survivor@Base 2.8% | v +0.74
+  P1[NET] Pass Priority
+        net: pick 34.1% | alt: Play Inferna(1M) -> Emperor's Dais (P2's) 32.9% | v +0.74
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Play Inferna(1M) -> Emperor's Dais (P2's)
+        net: pick 48.2% | alt: Play Inferna(1M) -> Emperor's Dais (P2's) 48.2% | v +0.79
+    ~ play Inferna (Unit, 2E)
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 99.6% | alt: Choose: Kai'Sa, Survivor@Base 0.3% | v +0.72
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P1 attacks [Inferna(3M), Rengar, Trophy Hunter(8M)]  vs  P2 defends [Sand Soldier(2M)]
+  P2[ISMCTS] Assign Damage: Inferna(2)   (ismcts 51/100 visits)
+    ~ KILL Sand Soldier (2M, dmg=11)
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 2 - P2 1
+  P1[NET] Move Kai'Sa, Survivor -> Emperor's Dais (P1's)
+        net: pick 79.8% | alt: Move Kai'Sa, Survivor -> Emperor's Dais (P2's) 19.9% | v +0.78
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 3 - P2 1
+  P1[NET] Order — Emperor's Dais
+        net: pick 91.0% | alt: Order — Kai'Sa, Survivor 9.0% | v +0.77
+
+=== TURN 6 (P2, ISMCTS)   score P1 3 - P2 1 ===
+  P2[ISMCTS] Play Kai'Sa, Survivor(4M) -> Base   (ismcts 9/100 visits)
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[ISMCTS] Choose: =1   (ismcts 52/100 visits)
+  P2[ISMCTS] Choose: Irresistible Faefolk@Base
+    ~ effect: give Irresistible Faefolk 1 [M] this turn
+  P2[ISMCTS] Move Kai'Sa, Survivor -> Emperor's Dais (P1's)   (ismcts 22/100 visits)
+  P2[ISMCTS] Choose: Irresistible Faefolk@Base   (ismcts 58/100 visits)
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+    ~ move Irresistible Faefolk -> Emperor's Dais
+  P2[ISMCTS] No — Irresistible Faefolk: move an enemy unit to my battlefield?   (ismcts 57/100 visits)
+    ~ COMBAT at Emperor's Dais: P2 attacks [Irresistible Faefolk(2M), Kai'Sa, Survivor(4M)]  vs  P1 defends [Kai'Sa, Survivor(4M)]
+  P1[NET] Assign Damage: Kai'Sa, Survivor(4)
+        net: pick 54.9% | alt: Assign Damage: Irresistible Faefolk(2), Kai'Sa, Survivor(2) 45.1% | v +0.68
+    ~ KILL Kai'Sa, Survivor (4M, dmg=4)
+    ~ KILL Kai'Sa, Survivor (4M, dmg=6)
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 3 - P2 2
+  P2[ISMCTS] Yes — Emperor's Dais: pay [1], return a unit   (ismcts 51/100 visits)
+    ~ effect: bounce Irresistible Faefolk to hand
+  P2[ISMCTS] Choose: Inferna@BF   (ismcts 34/100 visits)
+    ~ effect: give Inferna 1 [M] this turn
+
+=== TURN 7 (P1, NET)   score P1 3 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 4 - P2 2
+  P1[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 65.0% | alt: Play Kai'Sa, Survivor(4M) -> Emperor's Dais (P2's) 18.9% | v +0.84
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[NET] Choose: =0
+        net: pick 92.5% | alt: Choose: =1 7.5% | v +0.82
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 96.5% | alt: Choose: Kai'Sa, Survivor@Base 3.4% | v +0.82
+  P1[NET] Pass Priority
+        net: pick 52.8% | alt: Play Grim Apothecary(3M) -> Emperor's Dais (P2's) 44.5% | v +0.83
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Play Noxus Hopeful(4M) -> Emperor's Dais (P2's)
+        net: pick 46.6% | alt: Play Noxus Hopeful(4M) -> Base 26.3% | v +0.86
+    ~ play Noxus Hopeful (Unit, 4E)
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 93.0% | alt: Choose: Kai'Sa, Survivor@Base 4.3% | v +0.84
+  P1[NET] Pass Priority
+        net: pick 93.8% | alt: Play Inferna(1M) -> Emperor's Dais (P2's) 6.2% | v +0.83
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Play Pit Rookie(2M) -> Emperor's Dais (P2's)
+        net: pick 78.1% | alt: Play Pit Rookie(2M) -> Base 17.5% | v +0.87
+    ~ play Pit Rookie (Unit, 2E)
+  P1[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 65.0% | alt: Order — Pit Rookie 35.0% | v +0.88
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 80.3% | alt: Choose: Kai'Sa, Survivor@Base 10.5% | v +0.87
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 51.3% | alt: Choose: Noxus Hopeful@BF 24.8% | v +0.87
+    ~ effect: [Buff] Rengar, Trophy Hunter (+1 permanent) -> 9M
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] End Turn
+        net: pick 95.2% | alt: Move Rengar, Trophy Hunter -> Base 3.8% | v +0.87
+
+=== TURN 8 (P2, ISMCTS)   score P1 4 - P2 2 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 4 - P2 3
+  P2[ISMCTS] Play Rengar, Trophy Hunter(6M) -> Emperor's Dais (P1's)
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[ISMCTS] Choose: Rengar, Trophy Hunter@BF   (ismcts 15/100 visits)
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P2[ISMCTS] Move Sand Soldier -> Base   (ismcts 13/100 visits)
+    ~ move Sand Soldier -> Base(P2)
+  P2[ISMCTS] Play Pit Rookie(2M) -> Base   (ismcts 15/100 visits)
+    ~ play Pit Rookie (Unit, 2E)
+  P2[ISMCTS] Order — Pridestalker (Pit Rookie)   (ismcts 50/100 visits)
+  P2[ISMCTS] Choose: Rengar, Trophy Hunter@BF   (ismcts 13/100 visits)
+  P2[ISMCTS] Choose: Sand Soldier@Base   (ismcts 50/100 visits)
+    ~ effect: [Buff] Sand Soldier (+1 permanent) -> 3M
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+
+=== TURN 9 (P1, NET)   score P1 4 - P2 3 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 5 - P2 3
+  P1[NET] Play Rampage[S]
+        net: pick 33.2% | alt: Move Kai'Sa, Survivor -> Emperor's Dais (P1's) 28.2% | v +0.89
+    ~ spell Rampage targets=[]
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 50.3% | alt: Choose: Kai'Sa, Survivor@Base 45.3% | v +0.86
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 73.0% | alt: Choose: Sand Soldier@Base 15.9% | v +0.87
+  P1[NET] Choose: =1
+        net: pick 99.7% | alt: Choose: =0 0.3% | v +0.87
+    ~ additional_cost: Rampage paid optional additional cost
+  P1[NET] Pass Priority
+        net: pick 59.8% | alt: Play Grim Apothecary(3M) -> Emperor's Dais (P2's) 38.5% | v +0.85
+    ~ effect: give Rengar, Trophy Hunter 2 [M] this turn
+    ~ effect: deal 9 damage to Rengar, Trophy Hunter (id=55, was 0/6M)
+    ~ effect: deal 6 damage to Rengar, Trophy Hunter (id=2, was 0/9M)
+    ~ effect: kill Rengar, Trophy Hunter
+  P1[NET] Play Darius, Trifarian(5M) -> Base
+        net: pick 55.0% | alt: Move Kai'Sa, Survivor -> Emperor's Dais (P1's) 33.1% | v +0.96
+    ~ play Darius, Trifarian (Unit, 5E)
+  P1[NET] Order — Pridestalker (Darius, Trifarian)
+        net: pick 79.1% | alt: Order — Darius, Trifarian 20.9% | v +0.94
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 65.4% | alt: Choose: Darius, Trifarian@Base 30.1% | v +0.94
+    ~ effect: give Darius, Trifarian 2 [M] this turn
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Move Kai'Sa, Survivor -> Emperor's Dais (P1's)
+        net: pick 81.7% | alt: Move Darius, Trifarian -> Emperor's Dais (P1's) 12.4% | v +0.95
+  P1[NET] Choose: Darius, Trifarian@Base
+        net: pick 55.8% | alt: Move no more units 44.2% | v +0.93
+    ~ move Kai'Sa, Survivor -> Emperor's Dais
+    ~ move Darius, Trifarian -> Emperor's Dais
+    ~ P1 conquers Emperor's Dais
+    ~ SCORE P1 +1 (Conquer)   -> P1 6 - P2 3
+  P1[NET] Order — Emperor's Dais
+        net: pick 77.1% | alt: Order — Kai'Sa, Survivor 22.9% | v +0.97
+  P1[NET] Yes — Emperor's Dais: pay [1], return a unit
+        net: pick 53.7% | alt: No — Emperor's Dais: pay [1], return a unit 46.3% | v +0.96
+  P1[NET] Choose: Kai'Sa, Survivor@BF
+        net: pick 58.6% | alt: Choose: Darius, Trifarian@BF 41.4% | v +0.97
+    ~ effect: bounce Kai'Sa, Survivor to hand
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 95.0% | alt: Choose: Darius, Trifarian@BF 3.1% | v +0.98
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] End Turn
+        net: pick 78.0% | alt: Move Rengar, Trophy Hunter -> Base 10.4% | v +0.98
+
+=== TURN 10 (P2, ISMCTS)   score P1 6 - P2 3 ===
+  P2[ISMCTS] Play Rampage[S]
+    ~ spell Rampage targets=[]
+  P2[ISMCTS] Choose: Sand Soldier@Base   (ismcts 51/100 visits)
+  P2[ISMCTS] Choose: Inferna@BF   (ismcts 18/100 visits)
+  P2[ISMCTS] Choose: =0   (ismcts 50/100 visits)
+    ~ additional_cost: Rampage declined additional cost
+    ~ effect: deal 3 damage to Inferna (id=28, was 0/1M)
+    ~ effect: deal 1 damage to Sand Soldier (id=111, was 0/3M)
+    ~ effect: kill Inferna
+  P2[ISMCTS] Play Kinkou Initiate(3M) -> Base   (ismcts 10/100 visits)
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[ISMCTS] Order — Pridestalker (Kinkou Initiate)   (ismcts 51/100 visits)
+  P2[ISMCTS] Choose: Kinkou Initiate@Base   (ismcts 13/100 visits)
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[ISMCTS] Move Sand Soldier -> Emperor's Dais (P1's)   (ismcts 14/100 visits)
+  P2[ISMCTS] Move no more units   (ismcts 52/100 visits)
+    ~ move Sand Soldier -> Emperor's Dais
+  P2[ISMCTS] Play Inferna(1M) -> Emperor's Dais (P1's)   (ismcts 53/100 visits)
+    ~ play Inferna (Unit, 2E)
+  P2[ISMCTS] Choose: Sand Soldier@BF   (ismcts 12/100 visits)
+    ~ effect: give Sand Soldier 1 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Inferna(3M), Sand Soldier(4M)]  vs  P1 defends [Darius, Trifarian(5M), Sand Soldier(2M)]
+  P1[NET] Assign Damage: Inferna(3), Sand Soldier(4)
+        net: pick 50.0% | alt: Assign Damage: Sand Soldier(3), Inferna(4) 50.0% | v +0.96
+    ~ KILL Sand Soldier (4M, dmg=5)
+    ~ KILL Inferna (3M, dmg=3)
+    ~ KILL Sand Soldier (2M, dmg=2)
+    ~ KILL Darius, Trifarian (5M, dmg=5)
+  P2[ISMCTS] Move Pit Rookie -> Emperor's Dais (P1's)   (ismcts 41/100 visits)
+    ~ move Pit Rookie -> Emperor's Dais
+    ~ P2 conquers Emperor's Dais
+    ~ SCORE P2 +1 (Conquer)   -> P1 6 - P2 4
+
+=== TURN 11 (P1, NET)   score P1 6 - P2 4 ===
+    ~ SCORE P1 +1 (Hold Emperor's Dais)   -> P1 7 - P2 4
+  P1[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 49.5% | alt: Play Kai'Sa, Survivor(4M) -> Emperor's Dais (P2's) 26.7% | v +0.99
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P1[NET] Choose: =0
+        net: pick 90.8% | alt: Choose: =1 9.2% | v +0.99
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 96.6% | alt: Choose: Kai'Sa, Survivor@Base 1.6% | v +0.99
+  P1[NET] Pass Priority
+        net: pick 83.6% | alt: Play Grim Apothecary(3M) -> Emperor's Dais (P2's) 15.1% | v +0.99
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Play Kinkou Initiate(3M) -> Emperor's Dais (P2's)
+        net: pick 56.3% | alt: Play Kinkou Initiate(3M) -> Base 40.8% | v +0.99
+    ~ play Kinkou Initiate (Unit, 3E)
+  P1[NET] Order — Kinkou Initiate
+        net: pick 87.8% | alt: Order — Pridestalker (Kinkou Initiate) 12.2% | v +0.99
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 90.5% | alt: Choose: Kai'Sa, Survivor@Base 3.4% | v +0.99
+  P1[NET] Pass Priority
+        net: pick 80.4% | alt: Play Grim Apothecary(3M) -> Emperor's Dais (P2's) 18.2% | v +0.99
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] Pass Priority
+        net: pick 79.6% | alt: Play Grim Apothecary(3M) -> Emperor's Dais (P2's) 18.9% | v +0.99
+  P1[NET] Play Pit Rookie(2M) -> Emperor's Dais (P2's)
+        net: pick 47.0% | alt: Play Pit Rookie(2M) -> Base 20.6% | v +0.99
+    ~ play Pit Rookie (Unit, 2E)
+  P1[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 56.4% | alt: Order — Pit Rookie 43.6% | v +0.99
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 78.0% | alt: Choose: Kai'Sa, Survivor@Base 7.0% | v +0.99
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 38.1% | alt: Choose: Noxus Hopeful@BF 24.8% | v +0.99
+    ~ effect: [Buff] Rengar, Trophy Hunter already has a buff — not buffed (CR 427.1.b.1)
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+  P1[NET] End Turn
+        net: pick 49.5% | alt: Play Sabotage[S] 42.9% | v +0.99
+
+=== TURN 12 (P2, ISMCTS)   score P1 7 - P2 4 ===
+    ~ SCORE P2 +1 (Hold Emperor's Dais)   -> P1 7 - P2 5
+  P2[ISMCTS] Move Pit Rookie -> Base   (ismcts 7/100 visits)
+    ~ move Pit Rookie -> Base(P2)
+  P2[ISMCTS] Play Nidalee, Cat Form(4M) -> Base
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P2[ISMCTS] Choose: Pit Rookie@BF   (ismcts 13/100 visits)
+    ~ effect: give Pit Rookie 1 [M] this turn
+  P2[ISMCTS] Move Kinkou Initiate -> Emperor's Dais (P2's)   (ismcts 14/100 visits)
+    ~ move Kinkou Initiate -> Emperor's Dais
+  P2[ISMCTS] Play Grim Apothecary(3M) -> Emperor's Dais (P2's)   (ismcts 54/100 visits)
+    ~ play Grim Apothecary (Unit, 3E)
+  P2[ISMCTS] Order — Pridestalker (Grim Apothecary)   (ismcts 50/100 visits)
+  P2[ISMCTS] Choose: Pit Rookie@BF   (ismcts 10/100 visits)
+  P2[ISMCTS] Yes — Grim Apothecary: return a friendly unit at a battlefield to hand?   (ismcts 54/100 visits)
+  P2[ISMCTS] Choose: Grim Apothecary@BF   (ismcts 56/100 visits)
+    ~ effect: bounce Grim Apothecary to hand
+  P2[ISMCTS] Play Grim Apothecary(3M) -> Emperor's Dais (P2's)   (ismcts 54/100 visits)
+    ~ play Grim Apothecary (Unit, 3E)
+  P2[ISMCTS] Order — Grim Apothecary   (ismcts 50/100 visits)
+  P2[ISMCTS] No — Grim Apothecary: return a friendly unit at a battlefield to hand?   (ismcts 50/100 visits)
+  P2[ISMCTS] Choose: Rengar, Trophy Hunter@BF   (ismcts 11/100 visits)
+    ~ effect: give Rengar, Trophy Hunter 1 [M] this turn
+    ~ effect: give Pit Rookie 1 [M] this turn
+  P1[NET] Play Punch First[S]
+        net: pick 99.1% | alt: Pass Focus 0.9% | v +0.99
+    ~ spell Punch First targets=[]
+  P1[NET] Choose: Rengar, Trophy Hunter@BF
+        net: pick 63.7% | alt: Choose: Kinkou Initiate@BF 25.4% | v +0.99
+    ~ effect: give Rengar, Trophy Hunter 5 [M] this turn
+    ~ COMBAT at Emperor's Dais: P2 attacks [Grim Apothecary(3M), Kinkou Initiate(3M)]  vs  P1 defends [Kinkou Initiate(3M), Noxus Hopeful(4M), Pit Rookie(3M), Pit Rookie(3M), Rengar, Trophy Hunter(13M)]
+  P2[ISMCTS] Assign Damage: Pit Rookie(3), Pit Rookie(3)   (ismcts 8/100 visits)
+  P1[NET] Assign Damage: Grim Apothecary(3), Kinkou Initiate(23)
+        net: pick 50.0% | alt: Assign Damage: Kinkou Initiate(3), Grim Apothecary(23) 50.0% | v +0.96
+    ~ KILL Grim Apothecary (3M, dmg=3)
+    ~ KILL Kinkou Initiate (3M, dmg=23)
+    ~ KILL Pit Rookie (3M, dmg=3)
+    ~ KILL Pit Rookie (3M, dmg=3)
+
+=== TURN 13 (P1, NET)   score P1 7 - P2 5 ===
+
+GAME OVER: winner P1 (NET) score 8-5, 13 turns, 311 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

@@ -1,0 +1,739 @@
+// rbenv_viz.cpp -- VIZ COPY of rbenv.cpp at commit 25d8dd6, plus an HTML replay
+// option for env 0 (ReplayWriter + trace log) and decision annotations.
+// Built as librbenv_viz.so (selfplay/viz/build_viz.sh). Original header follows.
+// rbenv.cpp -- vectorised Riftbound environment for no-search self-play
+// (research/card_repr/SELFPLAY.md, "Python interface contract"). C ABI for
+// ctypes (rbenv.py). Research code: built only in the WSL build copy
+// (rbenv.cmake, build.sh), never part of src/.
+//
+// Reuses research/card_repr/smoke/data/src/decision_export.cpp verbatim (its
+// Encoder, card keys, registerVariant, makeAgent) by #including it with its
+// main() renamed. Observations are therefore the exporter's, written as int32
+// fields instead of JSON (layout: README.txt).
+
+#define main decision_export_main
+#include "research/card_repr/selfplay/viz/v2/decision_export.cpp"
+#undef main
+
+#include <cstring>
+#include <memory>
+#include <iomanip>
+#include "io/replay_writer.h"
+#include "io/state_renderer.h"
+
+namespace rbe {
+using namespace riftbound;
+using namespace riftbound::probe;
+using namespace riftbound::probe::dx;
+
+// Schema v2 (gate 1, 2026-11-19): T 64 -> 96 (pile tokens, known opponent hand),
+// F 17 -> 24 (memory flags, effective cost, affordable), K 46 -> 49 (move consequences).
+constexpr int kSchemaVersion = 2;
+constexpr int G = 72, T = 96, F = 24, A = 96, K = 49;
+constexpr int kMaxList = 4, kMaxMu = 2, kMaxDm = 6, kMaxChosen = 4;
+constexpr int kDecisionCap = 20000;
+
+std::unordered_map<std::string, int> g_vocab;
+int g_vocab_other = 0;
+std::string g_variant;
+bool g_inited = false;
+// viz: replay directory ("" = off), seat the opponent spec plays (2 default, 1 = opponent is Player1),
+// labels for the header.
+std::string g_viz_dir;
+int g_opp_seat = 2;
+std::string g_viz_p1 = "P1", g_viz_p2 = "P2";
+
+struct Counters { long trunc_tok = 0, trunc_act = 0, trunc_list = 0, unk_key = 0, ext = 0, auto_ = 0; };
+
+int vocabOf(const std::string& k, Counters& c) {
+    auto it = g_vocab.find(k);
+    if (it != g_vocab.end()) return it->second;
+    ++c.unk_key;
+    return g_vocab_other;
+}
+
+struct Result { int env; int64_t game_seed; int winner; int length; int n_ext; int turns; std::string error; };
+
+struct Env {
+    int idx = 0;
+    int64_t game_seed = 0;
+    std::unique_ptr<EventBus> bus;
+    std::unique_ptr<GameEngine> engine;
+    std::unique_ptr<AgentInterface> opp;
+    IsMctsAgent* opp_m = nullptr;
+    // viz (env 0 only)
+    std::unique_ptr<StateRenderer> rend;
+    std::unique_ptr<ReplayWriter> rep;
+    std::vector<std::string> note;       // annotation for the next recorded decision
+    double note_v = -2.0; int note_sims = 0; int note_player = -1;
+    int length = 0, n_ext = 0;
+    bool need = false;
+    int seat = 0, pk = 0, psrc = -1, n_legal = 0;
+    std::vector<int32_t> glob, tok, act;
+    std::vector<uint8_t> tmask, amask;
+};
+
+struct Handle {
+    int n = 0;
+    int64_t seed = 0, next_seed = 0;
+    std::string deck_a, deck_b, opponent;
+    bool autopay = true;
+    DeckSubmission da, db;
+    std::vector<Env> envs;
+    std::vector<Result> results;
+    Counters c;
+    std::string err;
+};
+
+void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
+    const GameState& s = e.engine->state();
+    Encoder enc(s, dec, e.engine.get());
+    enc.build();
+    std::fill(e.glob.begin(), e.glob.end(), 0);
+    std::fill(e.tok.begin(), e.tok.end(), 0);
+    std::fill(e.act.begin(), e.act.end(), 0);
+    std::fill(e.tmask.begin(), e.tmask.end(), 0);
+    std::fill(e.amask.begin(), e.amask.end(), 0);
+    const auto& legal = sr.legal;
+    const Prompt& p = sr.prompt;
+    // Actions first (same ref() order as Encoder::encode/action, so appended
+    // tokens get the same indices as in the exporter's JSON).
+    const int na = static_cast<int>(legal.size());
+    if (na > A) h.c.trunc_act += na - A;
+    for (int a = 0; a < na; ++a) {
+        const Intent& i = legal[a];
+        int32_t buf[K];
+        for (int k = 0; k < K; ++k) buf[k] = -1;
+        buf[0] = static_cast<int>(i.type);
+        buf[1] = i.card.valid() ? enc.ref(i.card) : -1;
+        if (i.ability_source.valid()) { buf[2] = enc.ref(i.ability_source); buf[3] = i.ability_index; }
+        auto list = [&](int off, int cap, int cnt_slot, const std::vector<GameObjectId>& v) {
+            int j = 0;
+            for (auto id : v) { const int r = enc.ref(id); if (j < cap) buf[off + j] = r; ++j; }
+            if (j > cap) h.c.trunc_list++;
+            buf[cnt_slot] = j;
+        };
+        list(4, kMaxList, 41, i.targets);
+        list(8, kMaxList, 42, i.chosen_objects);
+        list(12, kMaxList, 43, i.units_to_move);
+        list(16, kMaxMu, 44, i.cards_to_mulligan);
+        {
+            int j = 0;
+            for (const auto& d : i.damage_assignments) {
+                const int r = enc.ref(d.target_unit);
+                if (j < kMaxDm) { buf[18 + 2 * j] = r; buf[19 + 2 * j] = d.damage; }
+                ++j;
+            }
+            if (j > kMaxDm) h.c.trunc_list++;
+            buf[45] = j;
+        }
+        buf[30] = enc.actionDst(i, p);
+        {
+            const auto q = enc.consequences(buf[30]);
+            buf[46] = q[0]; buf[47] = q[1]; buf[48] = q[2];
+        }
+        buf[31] = i.chosen_value.has_value() ? 1 : 0;
+        buf[32] = i.chosen_value.has_value() ? static_cast<int32_t>(*i.chosen_value) : 0;
+        if (i.chosen_value.has_value() && p.kind == PromptKind::ChainItem)
+            buf[33] = enc.itemRef(static_cast<uint64_t>(*i.chosen_value));
+        buf[34] = i.chosen_card_def.valid() ? vocabOf(cardKey(i.chosen_card_def, nullptr), h.c) : 0;
+        buf[35] = i.chosen_battlefield.valid() ? static_cast<int32_t>(i.chosen_battlefield.raw()) : -1;
+        buf[36] = static_cast<int>(i.play_source);
+        buf[37] = i.use_alt_play_cost ? 1 : 0;
+        buf[38] = i.pay_location_cost ? 1 : 0;
+        buf[39] = i.declines ? 1 : 0;
+        buf[40] = i.type == IntentType::PlayFirstDecision ? (i.choose_first ? 1 : 0) : -1;
+        if (a < A) { std::memcpy(&e.act[a * K], buf, sizeof buf); e.amask[a] = 1; }
+    }
+    e.psrc = p.source.valid() ? enc.ref(p.source) : -1;
+    const auto g = enc.global(p);
+    for (int k = 0; k < G && k < static_cast<int>(g.size()); ++k) e.glob[k] = static_cast<int32_t>(g[k]);
+    // tokens
+    const auto& all = enc.all();
+    std::unordered_map<uint64_t, int> obj_idx;
+    for (size_t t = 0; t < all.size(); ++t) if (all[t].kind != 'k') obj_idx[all[t].obj] = static_cast<int>(t);
+    auto idx = [&](uint64_t r) { auto it = obj_idx.find(r); return it == obj_idx.end() ? -1 : it->second; };
+    const int nt = static_cast<int>(all.size());
+    if (nt > T) h.c.trunc_tok += nt - T;
+    for (int t = 0; t < nt && t < T; ++t) {
+        const Tok& tk = all[t];
+        int32_t* row = &e.tok[t * F];
+        for (int k = 0; k < F; ++k) row[k] = 0;
+        row[0] = tk.kind == 'c' ? 1 : (tk.kind == 'b' ? 2 : (tk.kind == 'k' ? 3 : 4));
+        row[1] = vocabOf(tk.key, h.c);
+        int k = 2;
+        for (long x : tk.f) if (k < F) row[k++] = static_cast<int32_t>(x);
+        if (tk.kind == 'c') {
+            row[16] = tk.refs.empty() ? -1 : idx(tk.refs[0]);
+            // v2 [17..23]: play ordinal, hidden this turn, eff energy, eff power, affordable, assault, shield
+            for (size_t j = 0; j < tk.x.size() && 17 + j < static_cast<size_t>(F); ++j)
+                row[17 + j] = static_cast<int32_t>(tk.x[j]);
+        } else if (tk.kind == 'k') {
+            // 2..9 the 8 fields, 10 source token, 11..14 chosen tokens, 15 n chosen, 16 unused
+            row[10] = idx(tk.refs[0]);
+            for (int j = 11; j <= 14; ++j) row[j] = -1;
+            int n = 0;
+            for (size_t j = 1; j < tk.refs.size(); ++j, ++n) if (n < kMaxChosen) row[11 + n] = idx(tk.refs[j]);
+            if (n > kMaxChosen) h.c.trunc_list++;
+            row[15] = n;
+            // v2 [16] additional cost paid, [17] source play ordinal, [18] triggering subject token
+            row[16] = tk.x.size() > 0 ? static_cast<int32_t>(tk.x[0]) : 0;
+            row[17] = tk.x.size() > 1 ? static_cast<int32_t>(tk.x[1]) : 0;
+            row[18] = tk.subj ? idx(tk.subj) : -1;
+        }
+        e.tmask[t] = 1;
+    }
+    // references to truncated tokens become -1
+    if (nt > T) {
+        auto fix = [](int32_t& v) { if (v >= T) v = -1; };
+        for (int t = 0; t < T; ++t) {
+            int32_t* row = &e.tok[t * F];
+            if (row[0] == 1) fix(row[16]);
+            else if (row[0] == 3) { fix(row[10]); for (int j = 11; j <= 14; ++j) fix(row[j]); fix(row[18]); }
+        }
+        for (int a = 0; a < na && a < A; ++a) {
+            int32_t* r = &e.act[a * K];
+            for (int j : {1, 2, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28, 33}) fix(r[j]);
+        }
+        if (e.psrc >= T) e.psrc = -1;
+    }
+    e.seat = dec == PlayerId::Player1 ? 1 : 2;
+    e.pk = static_cast<int>(p.kind);
+    e.n_legal = na;
+}
+
+void startGame(Handle& h, Env& e) {
+    e.game_seed = h.next_seed++;
+    const uint64_t es = engineSeedOf(static_cast<uint64_t>(e.game_seed));
+    e.engine.reset();
+    e.opp.reset();
+    e.bus = std::make_unique<EventBus>();
+    e.engine = std::make_unique<GameEngine>(*g_db, *e.bus, *g_reg);
+    e.length = 0; e.n_ext = 0; e.need = false;
+    if (!h.opponent.empty()) {
+        GameSpec g; g.deck_a = h.deck_a; g.deck_b = h.deck_b; g.seed = e.game_seed;
+        IsMctsAgent* m = nullptr;
+        e.opp = makeAgent(h.opponent, g, es, g_opp_seat - 1, &m);
+        e.opp_m = m;
+    }
+    e.rep.reset();
+    e.note.clear(); e.note_v = -2.0; e.note_player = -1;
+    if (!g_viz_dir.empty() && e.idx == 0) {
+        e.rend = std::make_unique<StateRenderer>(*g_db);
+        e.rend->show_hand = true;
+        const std::string path = g_viz_dir + "/game_seed" + std::to_string(e.game_seed) + ".html";
+        e.rep = std::make_unique<ReplayWriter>(*g_db, path);
+        e.rep->setGameHeader("game seed " + std::to_string(e.game_seed) + " (engine seed " + std::to_string(es) +
+                             ") | P1=" + g_viz_p1 + " | P2=" + g_viz_p2 + " | Rengar mirror");
+        ReplayWriter* rp = e.rep.get();
+        e.bus->on_log.connect([rp](const LogEvent& ev) {
+            const char* prefix = "[TRC]";
+            if (ev.level == LogLevel::Debug) prefix = "[DBG]";
+            if (ev.level == LogLevel::Info) prefix = "[INF]";
+            if (ev.level == LogLevel::Warning) prefix = "[WRN]";
+            rp->addTraceLine(std::string(prefix) + " " + ev.message);
+        });
+        Env* ep = &e;
+        e.bus->on_phase_changed.connect([ep](const PhaseChangedEvent& ev) {
+            if (ep->rep) ep->rep->recordPhaseSeam(ep->engine->state(), ev.old_phase, ev.new_phase, *ep->rend);
+        });
+        e.engine->on_decision = [ep](const GameState& st, const std::vector<Intent>& legal, const Intent& chosen) {
+            if (!ep->rep) return;
+            if (!ep->note.empty() && ep->note_player >= 0)
+                ep->rep->setNextWinProb(ep->note_v, ep->note_sims, ep->note_player);
+            ep->rep->recordDecision(st, legal, chosen, *ep->rend);
+            // lines added now are flushed onto THIS snapshot at the next recordDecision
+            for (const auto& l : ep->note) ep->rep->addTraceLine(l);
+            ep->note.clear(); ep->note_v = -2.0; ep->note_player = -1;
+        };
+    }
+    e.engine->beginGame(h.da, h.db, es);
+}
+
+void finish(Handle& h, Env& e, const std::string& error) {
+    Result r;
+    r.env = e.idx; r.game_seed = e.game_seed; r.length = e.length; r.n_ext = e.n_ext;
+    r.winner = 0; r.turns = 0; r.error = error;
+    if (error.empty()) {
+        const GameResult& gr = e.engine->stepResult();
+        r.winner = winnerCode(gr.winner);
+        r.turns = gr.total_turns;
+    }
+    if (e.rep) {
+        std::ostringstream o;
+        if (error.empty()) {
+            const GameResult& gr = e.engine->stepResult();
+            o << "[TRC] GAME_OVER: winner " << toString(gr.winner) << " ("
+              << (gr.winner == PlayerId::Player1 ? g_viz_p1 : g_viz_p2) << ") score " << gr.final_scores[0] << "-"
+              << gr.final_scores[1] << ", " << gr.total_turns << " turns, " << e.length << " decisions -- "
+              << gr.termination_reason;
+            std::ofstream sum(g_viz_dir + "/summary.tsv", std::ios::app);
+            sum << e.game_seed << "\t" << winnerCode(gr.winner) << "\t" << gr.final_scores[0] << "\t"
+                << gr.final_scores[1] << "\t" << gr.total_turns << "\t" << e.length << "\t" << e.n_ext << "\t"
+                << g_viz_p1 << "\t" << g_viz_p2 << "\t" << gr.termination_reason << "\n";
+        } else {
+            o << "[TRC] GAME_OVER: " << error;
+        }
+        e.rep->addTraceLine(o.str());
+        e.rep->writeHtml();
+        e.rep.reset();
+    }
+    h.results.push_back(std::move(r));
+}
+
+// Runs env e until an external decision is pending; finished games are
+// recorded and restarted.
+void advance(Handle& h, Env& e) {
+    for (int guard = 0; guard < 1000; ++guard) {
+        try {
+            if (!e.engine) startGame(h, e);
+            while (true) {
+                const StepResult& sr = e.engine->currentStep();
+                if (sr.kind == StepKind::Done) { finish(h, e, ""); break; }
+                if (e.length >= kDecisionCap) { finish(h, e, "decision cap"); break; }
+                const int n = static_cast<int>(sr.legal.size());
+                const bool rune = sr.prompt.kind == PromptKind::RuneForEnergy || sr.prompt.kind == PromptKind::RuneForPower;
+                const PlayerId dec = deciderOf(e.engine->state(), sr.legal, sr.prompt);
+                if (n <= 1 || (h.autopay && rune)) {
+                    ++e.length; ++h.c.auto_;
+                    e.engine->applyChoice(0);
+                    continue;
+                }
+                if (e.opp && dec == (g_opp_seat == 1 ? PlayerId::Player1 : PlayerId::Player2)) {
+                    const Intent pick = e.opp->decide(e.engine->state(), sr.legal, sr.prompt);
+                    const int k = indexOf(sr.legal, pick);
+                    if (k < 0) throw std::runtime_error("opponent answered an option not in the legal list");
+                    if (e.rep && e.opp_m) {
+                        const SearchSummary& ss = e.opp_m->lastSearch();
+                        if (ss.searched) {
+                            std::vector<int> ord(ss.visits.size());
+                            for (size_t j = 0; j < ord.size(); ++j) ord[j] = static_cast<int>(j);
+                            std::stable_sort(ord.begin(), ord.end(),
+                                             [&](int a, int b) { return ss.visits[a] > ss.visits[b]; });
+                            int tot = 0;
+                            for (int v : ss.visits) tot += v;
+                            std::ostringstream o;
+                            o << std::fixed << std::setprecision(2);
+                            o << "[TEACHER " << h.opponent << "] root value " << ss.root_value << " (win ~"
+                              << (ss.root_value + 1) / 2 * 100 << "%), " << sr.legal.size() << " options; top by visits:";
+                            e.note.push_back(o.str());
+                            for (size_t j = 0; j < ord.size() && j < 3; ++j) {
+                                const int a = ord[j];
+                                std::ostringstream l;
+                                l << std::fixed << std::setprecision(2);
+                                l << "[TEACHER]   " << (a == k ? "* " : "  ") << ss.visits[a] << "/" << tot
+                                  << " visits, Q " << ss.value[a] << " : "
+                                  << e.rend->renderChosenAction(e.engine->state(), sr.legal[a]);
+                                e.note.push_back(l.str());
+                            }
+                            e.note_v = ss.root_value; e.note_sims = ss.simulations;
+                            e.note_player = g_opp_seat - 1;
+                        }
+                    }
+                    ++e.length;
+                    e.engine->applyChoice(k);
+                    continue;
+                }
+                encode(h, e, sr, dec);
+                e.need = true;
+                return;
+            }
+        } catch (const std::exception& ex) {
+            finish(h, e, std::string("error: ") + ex.what());
+        }
+        e.engine.reset();
+        e.opp.reset();
+        e.bus.reset();
+    }
+    throw std::runtime_error("rbenv: 1000 consecutive games ended without a decision");
+}
+
+std::vector<std::string> parseJsonStrings(const std::string& path) {
+    std::ifstream in(path);
+    if (!in) throw std::runtime_error("cannot open vocab " + path);
+    std::string s((std::istreambuf_iterator<char>(in)), {});
+    std::vector<std::string> out;
+    for (size_t i = 0; i < s.size(); ++i) {
+        if (s[i] != '"') continue;
+        std::string v;
+        for (++i; i < s.size() && s[i] != '"'; ++i) { if (s[i] == '\\') ++i; v += s[i]; }
+        out.push_back(v);
+    }
+    return out;
+}
+
+}  // namespace rbe
+
+extern "C" {
+
+// Process-wide setup: card table (+ variants, comma-separated), card keys, vocabulary.
+// Returns 0, or -1 with the message in err.
+int rbenv_init(const char* subjects, const char* vocab, const char* variant, char* err, int errlen) {
+    using namespace rbe;
+    try {
+        const std::string v = variant ? variant : "";
+        if (g_inited) {
+            if (v != g_variant) throw std::runtime_error("rbenv: one variant set per process (have '" + g_variant + "')");
+            return 0;
+        }
+        auto& shared = const_cast<openspiel::SharedCards&>(openspiel::sharedCards());
+        // variant: one name or a comma-separated list. Each variant has its own class id and
+        // card key, so several can be registered at once (a deck may then mix them).
+        if (!v.empty()) {
+            std::vector<std::string> names;
+            std::string cur;
+            for (char ch : v + ",") {
+                if (ch == ',') { if (!cur.empty()) names.push_back(cur); cur.clear(); }
+                else if (ch != ' ') cur += ch;
+            }
+            for (const auto& n : names) {
+                if (!findVariant(n)) throw std::runtime_error("unknown variant " + n);
+                registerVariant(shared.registry, n);
+            }
+            shared.db.buildFromClasses(shared.registry);
+        }
+        g_reg = &shared.registry;
+        g_db = &shared.db;
+        loadKeys(subjects);
+        const auto words = parseJsonStrings(vocab);
+        for (size_t i = 0; i < words.size(); ++i) g_vocab[words[i]] = static_cast<int>(i);
+        if (!g_vocab.count("other")) throw std::runtime_error("vocab has no 'other' entry");
+        g_vocab_other = g_vocab["other"];
+        g_variant = v;
+        g_inited = true;
+        return 0;
+    } catch (const std::exception& ex) {
+        std::snprintf(err, errlen, "%s", ex.what());
+        return -1;
+    }
+}
+
+int rbenv_schema_version() { return rbe::kSchemaVersion; }
+
+void rbenv_dims(int32_t* out) {  // G T F A K V
+    out[0] = rbe::G; out[1] = rbe::T; out[2] = rbe::F; out[3] = rbe::A; out[4] = rbe::K;
+    out[5] = static_cast<int32_t>(rbe::g_vocab.size());
+}
+
+void* rbenv_create(int n_envs, const char* deck_a, const char* deck_b, int64_t seed, int autopay,
+                   const char* opponent, char* err, int errlen) {
+    using namespace rbe;
+    try {
+        if (!g_inited) throw std::runtime_error("rbenv_init first");
+        auto h = std::make_unique<Handle>();
+        h->n = n_envs; h->seed = seed; h->next_seed = seed;
+        h->deck_a = deck_a; h->deck_b = deck_b;
+        h->opponent = opponent ? opponent : "";
+        h->autopay = autopay != 0;
+        h->da = DeckValidator::loadFromDeckList(h->deck_a, *g_db);
+        h->db = DeckValidator::loadFromDeckList(h->deck_b, *g_db);
+        h->envs.resize(n_envs);
+        for (int i = 0; i < n_envs; ++i) {
+            Env& e = h->envs[i];
+            e.idx = i;
+            e.glob.assign(G, 0); e.tok.assign(T * F, 0); e.act.assign(A * K, 0);
+            e.tmask.assign(T, 0); e.amask.assign(A, 0);
+        }
+        // game seeds: env i starts with seed+i; each new game takes the next unused seed
+        for (int i = 0; i < n_envs; ++i) advance(*h, h->envs[i]);
+        return h.release();
+    } catch (const std::exception& ex) {
+        std::snprintf(err, errlen, "%s", ex.what());
+        return nullptr;
+    }
+}
+
+void rbenv_destroy(void* p) { delete static_cast<rbe::Handle*>(p); }
+
+void rbenv_observe(void* p, int32_t* glob, int32_t* tok, uint8_t* tmask, int32_t* act, uint8_t* amask,
+                   uint8_t* need, int32_t* seat, int32_t* pk, int32_t* psrc, int32_t* nlegal) {
+    using namespace rbe;
+    auto& h = *static_cast<Handle*>(p);
+    for (int i = 0; i < h.n; ++i) {
+        const Env& e = h.envs[i];
+        need[i] = e.need;
+        seat[i] = e.need ? e.seat : 0;
+        pk[i] = e.need ? e.pk : 0;
+        psrc[i] = e.need ? e.psrc : -1;
+        nlegal[i] = e.need ? e.n_legal : 0;
+        std::memcpy(glob + i * G, e.glob.data(), G * 4);
+        std::memcpy(tok + static_cast<size_t>(i) * T * F, e.tok.data(), T * F * 4);
+        std::memcpy(tmask + i * T, e.tmask.data(), T);
+        std::memcpy(act + static_cast<size_t>(i) * A * K, e.act.data(), A * K * 4);
+        std::memcpy(amask + i * A, e.amask.data(), A);
+    }
+}
+
+// choices[i] for envs with need. Returns 0, or -1 (err) on a bad choice: the
+// env's game is then ended with an error result and restarted.
+int rbenv_step(void* p, const int32_t* choices, char* err, int errlen) {
+    using namespace rbe;
+    auto& h = *static_cast<Handle*>(p);
+    int rc = 0;
+    try {
+        for (int i = 0; i < h.n; ++i) {
+            Env& e = h.envs[i];
+            if (!e.need) continue;
+            e.need = false;
+            const int c = choices[i];
+            if (c < 0 || c >= e.n_legal || c >= A) {
+                std::snprintf(err, errlen, "env %d: choice %d outside 0..%d", i, c, std::min(e.n_legal, A) - 1);
+                rc = -1;
+                finish(h, e, "error: bad choice from caller");
+                e.engine.reset(); e.opp.reset(); e.bus.reset();
+            } else {
+                ++e.length; ++e.n_ext; ++h.c.ext;
+                try { e.engine->applyChoice(c); }
+                catch (const std::exception& ex) {
+                    finish(h, e, std::string("error: ") + ex.what());
+                    e.engine.reset(); e.opp.reset(); e.bus.reset();
+                }
+            }
+            advance(h, e);
+        }
+    } catch (const std::exception& ex) {
+        std::snprintf(err, errlen, "%s", ex.what());
+        return -2;
+    }
+    return rc;
+}
+
+}  // extern "C"
+namespace rbe {
+// Schema v2 field check (gate 1): decodes each pending env's int32 observation
+// and compares the new fields with an independent read of the engine state
+// (not through the Encoder / ObserverView). Adds into out[0..kVerifyN):
+//  0 decisions checked
+//  1 pile mismatches (sum of pile counts per (owner, zone) != pile size, or a
+//    per-card count != a direct count of the pile)   2 pile tokens seen
+//  3 known-hand mismatches (opp-hand tokens vs GameKnowledgeView known+confirmed
+//    hand cards; key must equal the true card)        4 known opp-hand tokens seen
+//  5 cost mismatches: eff energy/power differ from the printed cost where no
+//    modifier can apply (all in-scope cards but Noxus Hopeful), or Noxus Hopeful
+//    not printed-2 exactly when Legion is on (cards played this turn >= 1)
+//  6 hand cards with a cost checked                    7 Noxus Hopeful checked
+//  8 a hand card offered as a PlayCard from hand while affordable == 0
+//  9 affordable == 1 hand cards in a main-phase decision with an empty chain
+// 10 ... of which a PlayCard from hand is offered
+// 11 hidden-this-turn mismatches (vs hidden_on_turn == turn, and a facedown play
+//    of such a card offered)                           12 hidden-this-turn = 1 seen
+// 13 Star Spring stamps set seen                       14 chain items with paid = 1
+// 15 chain items with play ordinal > 0                 16 Location prompts mapped
+//    to a real slot (dst >= 1)                         17 Location options left unmapped
+// 18 move consequence mismatches (dst controller vs bf.controller)   19 moves checked
+// 20 Sabotage prompts: opp hand size                   21 ... opp-hand tokens visible then
+// 22 max tokens in one observation
+constexpr int kVerifyN = 23;
+void verifyEnv(Handle& h, Env& e, int64_t* out) {
+    const GameState& s = e.engine->state();
+    const StepResult& sr = e.engine->currentStep();
+    const PlayerId me = e.seat == 1 ? PlayerId::Player1 : PlayerId::Player2;
+    const PlayerId op = me == PlayerId::Player1 ? PlayerId::Player2 : PlayerId::Player1;
+    out[0]++;
+    int ntok = 0;
+    for (int t = 0; t < T; ++t) ntok += e.tmask[t];
+    out[22] = std::max<int64_t>(out[22], ntok);
+    Counters dummy;
+    auto vocab = [&](const std::string& k) { return vocabOf(k, dummy); };
+    auto row = [&](int t) { return &e.tok[t * F]; };
+    // 1. piles
+    std::map<std::tuple<int, int, int>, long> got;   // (owner, zone, vocab) -> count
+    std::map<std::pair<int, int>, long> got_sum;
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] != 4) continue;
+        out[2]++;
+        got[{r[2], r[3], r[1]}] += r[4];
+        got_sum[{r[2], r[3]}] += r[4];
+    }
+    auto checkPile = [&](PlayerId pl, ZoneType z, const std::vector<GameObjectId>& ids) {
+        const int ow = pl == me ? 1 : 2, zc = static_cast<int>(z);
+        std::map<int, long> want;
+        for (auto id : ids) { const auto& o = s.getObject(id); want[vocab(cardKey(o.card_def_id, &o))]++; }
+        if (got_sum[{ow, zc}] != static_cast<long>(ids.size())) out[1]++;
+        for (auto& [v, n] : want) if (got[{ow, zc, v}] != n) out[1]++;
+    };
+    checkPile(me, ZoneType::Trash, s.player(me).trash);
+    checkPile(op, ZoneType::Trash, s.player(op).trash);
+    checkPile(me, ZoneType::Banishment, s.player(me).banishment);
+    checkPile(op, ZoneType::Banishment, s.player(op).banishment);
+    checkPile(me, ZoneType::MainDeck, s.player(me).main_deck);
+    // 2. known opponent hand
+    {
+        knowledge::GameKnowledgeView kv(s, me);
+        std::multiset<int> want;
+        for (const auto& k : kv.knownHiddenCards(op))
+            if (k.last_known_zone == ZoneType::Hand && k.zone_confirmed) {
+                const auto& o = s.getObject(k.object);
+                want.insert(vocab(cardKey(o.card_def_id, &o)));   // the TRUE card
+            }
+        std::multiset<int> have;
+        for (int t = 0; t < ntok; ++t) {
+            const int32_t* r = row(t);
+            if (r[0] == 1 && r[2 + 1] == 2 && r[2 + 2] == static_cast<int>(ZoneType::Hand)) have.insert(r[1]);
+        }
+        out[4] += static_cast<int64_t>(have.size());
+        // action-referenced opp hand cards (Sabotage's choosable ones) are tokens too: have >= want
+        for (int v : want) { auto it = have.find(v); if (it == have.end()) out[3]++; else have.erase(it); }
+        if (sr.prompt.source.valid() && s.objectExists(sr.prompt.source) &&
+            cardKey(s.getObject(sr.prompt.source).card_def_id, nullptr) == "sabotage" &&
+            sr.prompt.kind != PromptKind::MainPhase && sr.prompt.kind != PromptKind::ChainPriority) {
+            out[20] += static_cast<int64_t>(s.player(op).hand.size());
+            for (int t = 0; t < ntok; ++t) { const int32_t* r = row(t); if (r[0] == 1 && r[3] == 2 && r[4] == 2) out[21]++; }
+        }
+    }
+    // 3. cost / affordable / hidden: map token -> object through the hand order is not
+    // available, so match own hand tokens by key against the hand's objects.
+    const bool main_decision = sr.prompt.kind == PromptKind::MainPhase && s.chain.items.empty();
+    std::set<uint64_t> offered;
+    std::set<uint64_t> offered_facedown;
+    for (const auto& i : sr.legal) {
+        if (i.type == IntentType::PlayCard && i.card.valid()) {
+            if (i.play_source == Intent::PlaySource::Hand) offered.insert(i.card.raw());
+            if (i.play_source == Intent::PlaySource::Hidden) offered_facedown.insert(i.card.raw());
+        }
+    }
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] != 1 || r[3] != 1 || r[4] != static_cast<int>(ZoneType::Hand)) continue;
+        // candidate objects in own hand with this key
+        for (auto hid : s.player(me).hand) {
+            const auto& o = s.getObject(hid);
+            if (vocab(cardKey(o.card_def_id, &o)) != r[1]) continue;
+            const auto& def = g_db->get(o.card_def_id);
+            const std::string key = cardKey(o.card_def_id, &o);
+            out[6]++;
+            if (key == "noxus_hopeful") {
+                out[7]++;
+                const bool legion = s.player(me).cards_played_this_turn >= 1;
+                const int want_e = std::max(0, def.energy_cost - (legion ? 2 : 0));
+                if (r[19] != want_e || r[20] != def.power_cost) out[5]++;
+            } else if (r[19] != def.energy_cost || r[20] != def.power_cost) {
+                out[5]++;
+            }
+            if (offered.count(hid.raw()) && r[21] == 0) out[8]++;
+            if (main_decision && s.turn.turn_player == me && r[21] == 1) {
+                out[9]++;
+                if (offered.count(hid.raw())) out[10]++;
+            }
+            break;   // copies share a key and a cost
+        }
+    }
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] != 1 || r[13] != 1 || r[3] != 1) continue;   // own facedown cards
+        if (r[18] == 1) out[12]++;
+    }
+    {
+        int want_hid = 0;
+        for (const auto& b : s.battlefields)
+            for (auto fd : b.facedown)
+                if (s.objectExists(fd)) {
+                    const auto& o = s.getObject(fd);
+                    if (o.controller == me && o.hidden_on_turn >= s.turn.turn_number) {
+                        ++want_hid;
+                        if (offered_facedown.count(fd.raw())) out[11]++;
+                    }
+                }
+        int have_hid = 0;
+        for (int t = 0; t < ntok; ++t) { const int32_t* r = row(t); if (r[0] == 1 && r[3] == 1 && r[13] == 1 && r[18] == 1) ++have_hid; }
+        if (have_hid != want_hid) out[11]++;
+    }
+    for (int t = 0; t < ntok; ++t) {
+        const int32_t* r = row(t);
+        if (r[0] == 2 && (r[15] || r[16])) out[13]++;
+        if (r[0] == 3 && r[16] == 1) out[14]++;
+        if (r[0] == 3 && r[17] > 0) out[15]++;
+    }
+    // actions: Location prompts and move consequences
+    for (int a = 0; a < e.n_legal && a < A; ++a) {
+        const int32_t* r = &e.act[a * K];
+        const Intent& i = sr.legal[a];
+        if (sr.prompt.kind == PromptKind::Location && i.type == IntentType::MakeChoice && !i.declines) {
+            if (r[30] >= 1) out[16]++; else out[17]++;
+        }
+        if (i.type == IntentType::StandardMove && i.move_destination.has_value()) {
+            out[19]++;
+            const auto* bl = std::get_if<BattlefieldLocation>(&*i.move_destination);
+            if (bl) {
+                const auto& bf = s.battlefields[bl->id];
+                const int want = bf.controller.has_value() ? (*bf.controller == me ? 1 : 2) : 0;
+                if (r[46] != want || r[30] != 1 + static_cast<int>(bl->id.raw())) out[18]++;
+            } else if (r[46] != -1 || r[30] != 0) {
+                out[18]++;
+            }
+        }
+    }
+    (void)h;
+}
+}  // namespace rbe
+
+extern "C" {
+
+// Adds the schema-v2 field checks of every env with a pending decision into out[0..23).
+void rbenv_verify(void* p, int64_t* out) {
+    auto& h = *static_cast<rbe::Handle*>(p);
+    for (auto& e : h.envs) if (e.need && e.engine) rbe::verifyEnv(h, e, out);
+}
+
+int rbenv_results_count(void* p) { return static_cast<int>(static_cast<rbe::Handle*>(p)->results.size()); }
+
+// row: env, game_seed, winner, length, n_ext, turns
+void rbenv_result_get(void* p, int i, int64_t* row, char* err, int errlen) {
+    const auto& r = static_cast<rbe::Handle*>(p)->results.at(i);
+    row[0] = r.env; row[1] = r.game_seed; row[2] = r.winner; row[3] = r.length; row[4] = r.n_ext; row[5] = r.turns;
+    std::snprintf(err, errlen, "%s", r.error.c_str());
+}
+
+void rbenv_results_clear(void* p) { static_cast<rbe::Handle*>(p)->results.clear(); }
+
+// trunc_tok, trunc_act, trunc_list, unk_key, ext decisions, auto decisions
+void rbenv_counters(void* p, int64_t* out) {
+    const auto& c = static_cast<rbe::Handle*>(p)->c;
+    out[0] = c.trunc_tok; out[1] = c.trunc_act; out[2] = c.trunc_list; out[3] = c.unk_key; out[4] = c.ext; out[5] = c.auto_;
+}
+
+}  // extern "C"
+
+extern "C" {
+
+// viz: call BEFORE rbenv_create. dir "" disables. opp_seat 1 or 2 (which seat the opponent spec plays).
+void rbenv_viz_config(const char* dir, int opp_seat, const char* p1_label, const char* p2_label) {
+    rbe::g_viz_dir = dir ? dir : "";
+    rbe::g_opp_seat = opp_seat == 1 ? 1 : 2;
+    rbe::g_viz_p1 = p1_label ? p1_label : "P1";
+    rbe::g_viz_p2 = p2_label ? p2_label : "P2";
+}
+
+// Readable text of option idx of env i's pending decision (renderChosenAction). Returns its length, or -1.
+int rbenv_viz_option_text(void* p, int i, int idx, char* buf, int len) {
+    auto& h = *static_cast<rbe::Handle*>(p);
+    if (i < 0 || i >= h.n) return -1;
+    auto& e = h.envs[i];
+    if (!e.need || !e.engine) return -1;
+    const auto& sr = e.engine->currentStep();
+    if (idx < 0 || idx >= static_cast<int>(sr.legal.size())) return -1;
+    static std::unique_ptr<riftbound::StateRenderer> r;
+    using namespace rbe;
+    if (!r) r = std::make_unique<riftbound::StateRenderer>(*g_db);
+    std::string t = r->renderChosenAction(e.engine->state(), sr.legal[idx]);
+    std::snprintf(buf, len, "%s", t.c_str());
+    return static_cast<int>(t.size());
+}
+
+// Annotation lines ('\n'-separated) and the decider's value in [-1, 1] for env i's next recorded decision.
+void rbenv_viz_note(void* p, int i, const char* text, double value) {
+    auto& h = *static_cast<rbe::Handle*>(p);
+    if (i < 0 || i >= h.n) return;
+    auto& e = h.envs[i];
+    if (!e.rep) return;
+    e.note.clear();
+    std::string cur;
+    for (const char* c = text; c && *c; ++c) {
+        if (*c == '\n') { e.note.push_back(cur); cur.clear(); } else cur += *c;
+    }
+    if (!cur.empty()) e.note.push_back(cur);
+    e.note_v = value; e.note_sims = 0; e.note_player = e.seat - 1;
+}
+
+}  // extern "C"

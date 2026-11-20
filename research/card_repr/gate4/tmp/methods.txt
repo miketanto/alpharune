@@ -1,0 +1,50 @@
+Method
+======
+A. Training (selfplay/runs/gate4_B2, gate4_id; run_train.sh, sp_wrap.py)
+- Both nets: --ask-head --ask-opt, schema v4 (opt_refs on), Rengar mirror, 128 envs, 16,384 samples per update,
+  default PPO settings (as gate3_B2_v4). Same seed (0) for both.
+- First attempt (16:44): both runs concurrently for 40 min. They ran ~10x slow (5-15 games/s instead of ~45):
+  the GPU was at 11.7 of 12.3 GB (WDDM memory oversubscription; our two processes ~5.9 + 4.8 GB) and Windows RAM was
+  at 0.1 GB free (coordinator report, 17:00). Both were stopped (B2 at update 33-36, id at 41), and RESUMED from their
+  last checkpoints (B2 update 30, then 40; id update 40) ONE AFTER THE OTHER, each process capped at 0.4 of the GPU
+  (torch.cuda.set_per_process_memory_fraction, PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True), to the same fixed
+  update count, 150 (about 20 min each at normal speed, ~9 s per update, ~45 games/s).
+  The B2 log has a few duplicate update rows (31-36 from the killed run, then the resumed 31-40 / 41-...).
+- Evaluation: verify_eval.py, GREEDY, vs ismcts:sims=100, 200 games, --procs 6 (eval_*_ismcts100.json).
+
+B. Counterfactual harness (rbenv extension: gate4/rbenv_gate4_ext.cpp appended to selfplay/rbenv/rbenv.cpp;
+   gate4/po.py; nothing under src/ edited)
+- rbenv records every applied choice index per env (Env::hist). A position = (game seed, history). rbenv_po_create
+  replays it in a fresh engine; it must be a top-level main-phase decision (GameEngine::isResumableDecision) --
+  the only decision the engine can snapshot and resume.
+- Edit = one op applied to a copy of the GameState through the engine's own editing path: StateEditor
+  (moveObject / moveObjectToBattlefield) for zone changes, and otherwise the same GameObject / PlayerState fields the
+  engine's own effects write (EffectExecutor::giveTemporaryKeyword for "this turn" Assault / Shield; base Might;
+  cards_played_this_turn; Star Spring's __starspring_turn_p<i> stamp). A probe engine then resumes the edited state
+  (GameEngine::resumeFromSnapshot), which runs the Main Phase's settle + Cleanup (auras, Might, deaths, control
+  recomputed) before it asks; the edit is accepted only if it arrives at a main-phase decision of the same player
+  without an engine error. That post-Cleanup state and decision are the variant's root. The edited object as the
+  engine left it is stored per variant ("post" in the JSONL) to check the edit stuck.
+- Playouts: each (variant, seed) resumes the root with the engine RNG seeded from the seed and both Main Decks
+  reshuffled with it (hidden to both players; the hands and the board are the true ones). The network plays both
+  seats. Every variant of a position uses the same seeds (common random numbers), so the effect is a paired
+  difference.
+- Positions: the final B2 net in sampled self-play (300 games, 64 envs; the training actors' policy), main-phase
+  decisions from turn 2 on, kept with p = 0.12, at most 3 per game (collect.py, positions.json). The edit plan per
+  position is built from the engine's description and the root observation: "attacker" = a turn-player unit that
+  some legal Standard Move sends into a combat as attacker (act[47] = 1); "defender" = an enemy unit at such a
+  move's destination.
+- Screen: the original is first played 64 times; positions whose win rate is < 0.08 or > 0.92 are skipped
+  (decided positions carry no signal). Then N = 384 playouts per variant.
+
+Ground-truth policy: SAMPLED, not greedy. A greedy pilot (8 positions, 49 edits, N = 128) gave originals at
+0.99 / 0.00 / 0.13 / 0.75 / 0.00 / 1.00 / 0.02 / 1.00 and 46 of 49 edits with ZERO discordant seeds: greedy
+self-play with reshuffled decks is nearly deterministic, so it cannot measure an edit. The same positions sampled
+gave 5-50% discordant seeds. The value head is trained on the sampling policy's returns, so the sampled playout
+win rate is also exactly what the value head estimates. (Strength evaluations stay greedy.)
+
+C. Model response at the root decision (both nets, same root observations): dv = (v(edited) - v(original)) / 2
+(value head in win-probability units, decider's perspective) and the total variation between the two root
+policies (options matched by the engine's option text; an option that exists in one only counts fully).
+Ground truth for BOTH nets is the B2 policy's playouts (one common truth; the id net's own policy was not played
+out -- see caveats).

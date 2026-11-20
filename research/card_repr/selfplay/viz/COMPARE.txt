@@ -1,0 +1,98 @@
+OLD vs NEW self-play network against ISMCTS-100 on the same seeds (Rengar mirror, autopay on)
+==========================================================================================
+Made 2026-11-19.
+OLD: runs/gate2v2_sanity_B2_ask/latest.pt (B2, ask head, schema v2), SAMPLED moves.
+     Replays: replays/game_seedN.html; transcripts: replays/game_seedN.txt (tool: v2/).
+NEW: runs/gate4_B2/latest.pt (B2, --ask-head --ask-opt, opt_refs, schema v4, 150 updates), GREEDY moves (top choice).
+     Replays: replays_v4/game_seedN.html; transcripts: replays_v4/game_seedN.txt (tool: this folder).
+Opponent: ismcts:sims=100, run in C++ with the same agent seed as before.
+
+Caveats:
+  * The old games were SAMPLED and the new ones GREEDY (as asked: greedy is how gate 4 was evaluated).
+    Part of the improvement below comes from that alone: the old network's worst moves were 2-28% samples.
+  * The same seed gives the same battlefields, opening hands and shuffles. The games diverge at the
+    network's mulligan in every seed except 7101 (there the mulligan matched and the games diverge at
+    its second main-phase play). From then on the ISMCTS opponent also plays differently.
+  * Six games per network. This is a set of examples, not an evaluation (gate 4's eval: 90.5% of 200 greedy games).
+
+Per seed (score is P1-P2, the network is P2 in 71xx; "decisions" = all engine decisions, network decisions in brackets)
+--------------------------------------------------------------------------------------------------
+seed  net  OLD (sampled)                          NEW (greedy)                           change
+7001  P1   LOST 4-8, 12 turns, 225 (38)           WON  8-7, 15 turns, 290 (49)           loss -> win
+7002  P1   won  8-6, 15 turns, 357 (66)           won  8-5, 13 turns, 311 (63)           win, faster
+7003  P1   won  8-1, 11 turns, 236 (42)           won  8-7, 17 turns, 407 (67)           win, much closer
+7101  P2   won  7-8, 15 turns, 375 (78)           won  3-8, 11 turns, 202 (30)           win, close -> easy
+7102  P2   won  2-8, 11 turns, 251 (52)           won  5-8, 13 turns, 325 (51)           win, closer
+7103  P2   won  5-8, 16 turns, 457 (95)           won  6-8, 16 turns, 384 (60)           win
+Total      5/6                                    6/6
+
+Seed 7001: the old network's blunders, and what the new one did
+---------------------------------------------------------------
+Both games have the same deal: Star Spring (P1) and Emperor's Dais (P2); P1's hand is Punch First, Nidalee,
+First Mate and Noxus Hopeful. The old network mulliganed Noxus Hopeful (a 7.2% sample; keep was 15.6%).
+The new one keeps (89.5%). Turns 0-3 are almost the same: Rengar takes Star Spring by killing Pakaa Cub,
+Kinkou Initiate takes the Dais (2-1), and on turn 4 ISMCTS kills Rengar with Inferna + Pit Rookie (2-2).
+
+1. "Pit Rookie to base" (old turn 7, a 2.4% sample; Dais was 91%).
+   NEW turn 7, same spot (4-3 up, holding the Dais): Pit Rookie -> Emperor's Dais (45%, its top choice), then
+   Nidalee -> Dais and First Mate -> Dais. Each Pridestalker / First Mate buff went to the Irresistible Faefolk
+   (permanent +1, up to 3 Might). It ended the turn with SIX units (18 Might) on the Dais.
+   Turn 11 (6-5 up) is a similar choice. It played Pit Rookie to base at 52.5% (Dais 39.4%), then pulled both
+   Faefolk back to base. Those three units became its turn-13 attack force, so that base play had a purpose.
+2. "Two 1-Might Faefolk parked on the Dais" (old turn 7: First Mate also left for base on a 7.4% sample,
+   so 2 Might held the Dais; ISMCTS's Inferna 4M killed both and conquered, 4-5).
+   NEW: one Faefolk on the Dais from turn 5, and it never sat there alone. ISMCTS attacked on turn 8 with
+   Pit Rookie + Rengar (10 Might) into 18 Might of defenders. It lost both attackers; P1 lost Nidalee and
+   Noxus Hopeful but kept the Dais. On turn 12 Pyke attacked the Dais alone and died to First Mate + Pit
+   Rookie (Pit Rookie died too). The Dais was held on turns 5, 7, 9, 11, 13 and 15, and the last hold
+   was the 8th point.
+3. "Attacking Star Spring one unit at a time" (old turn 9: Pit Rookie alone, "Move no more units" sampled at
+   28% where adding First Mate was 72%; then First Mate alone; value +0.10 -> -0.50 -> -0.73).
+   NEW turn 9 (5-4 up, Star Spring held by a P2 stack): no attack. It played a Faefolk to the Dais and
+   ended the turn (End Turn 45%, Sabotage 28%).
+   NEW turn 13 (7-6 up): ONE move with all three units (Faefolk, Faefolk, Pit Rookie; join picks 89.7% and
+   77.1%), plus both Faefolk "move an enemy unit here" triggers (91%). That is the opposite of piecemeal.
+   The attack still lost: 6 Might against First Mate 3 + Inferna 1 + Noxus 4. All three attackers died and
+   only Noxus Hopeful fell. It cost the network no points, because Star Spring was P2's anyway and the
+   Dais (plus a hidden Pakaa Cub played after the combat) held for the winning point on turn 15.
+   (The other "P1 attack" in the turn list, turn 12, was not the network's choice: ISMCTS's Faefolk moved
+   Kinkou Initiate into Star Spring, where it died.)
+Value: the old network fell from +0.35 (turn 7) to -0.73 after its turn-9 attacks. The new one sat at
++0.2..+0.8 and followed the trades: -0.01 after the turn-8 combat, +0.79 at 6-5, and -0.47 on turn 14 at 7-7
+after ISMCTS played Darius. That last one was too pessimistic: the Dais was still its own, and holding it
+gave the win at the start of turn 15.
+
+General patterns (all six games; numbers from the transcripts)
+---------------------------------------------------------------
+* A sharper policy, and the top choice is what it plays. The chosen option's mean probability per game was
+  46-57% (old) and 66-76% (new). Choices under 15%: old 4-13 per game, all of them samples; new 0 in five
+  games, 1 in 7001 (a damage assignment among many near-equal splits).
+* Tighter combat. The old network attacked alone into stronger or equal defenders in 7001 (turn 9, twice;
+  turn 11) and in 7002 (turn 13: 5 Might into 10, then 4 into 6). The new network's attacks are mostly
+  coordinated multi-unit moves into weak defence: 7002 t5 (2 units, 11 Might vs 2), 7102 t13 (4 units,
+  15 vs 2), 7103 t10 and t14 (3 units, 12 vs 3). It also attacks less. It mostly stacks the battlefield it
+  holds and lets ISMCTS attack into it: in 7003 it never attacked, and ISMCTS attacked Seat of Power six times
+  into 13-23 Might of defenders. Its one costly attack was 7102 t5: Rengar (7) into Emperor's Dais against
+  Grim Apothecary (3). ISMCTS answered with Pyke (5), so Rengar died. Kai'Sa then attacked alone and conquered.
+  That was one attack after another, but it scored the point.
+* Mulligan. Old: flat (top option usually 12-18%, every mulligan a 6-11% sample). New: decisive where it is
+  obvious (keep 89.5% / 86.7% / 86.1%, "mulligan Sabotage" 93.9% in 7002). In 7003 and 7101 it was still split
+  (31.9% vs 19.3%, 36.2% vs 32.1%). It learned to throw back Sabotage (a hand-disruption spell) and to keep
+  creature curves.
+* Value estimate. Mean squared error of v against the result, over all network decisions: 0.248 (old) and
+  0.226 (new). That is the same within the noise of six games, most of which both networks won. The behaviour
+  differs: the old value stayed at +0.7..+0.9 while 6-7 down in 7101. The new value falls in close games
+  and comes back when it gets ahead (7001: -0.01 at 4-4 after the big trade, -0.47 at 7-7; 7003: +0.03 at
+  6-6 on turn 14, then +0.82). In the lopsided games it reaches +0.9 or more by mid-game, as the old one did.
+  So it is more responsive to close scores, but it can still be too pessimistic (7001 t14), and six games
+  do not show calibration.
+* Pace: 7101 went from an 8-7 squeaker to an 8-3 win in 11 turns. 7003 went the other way: from a 8-1 rout to a
+  17-turn 8-7 holding game, because the new network did not attack at all.
+
+Files
+-----
+replays_v4/game_seed{7001,7002,7003,7101,7102,7103}.html   new annotated replays (open in a browser, arrow keys)
+replays_v4/game_seedN.txt                                  new transcripts
+replays_v4/summary.tsv, replays_v4/log_seedN.txt           raw results
+replays/game_seedN.txt                                     old transcripts (same format)
+transcript.py                                              writes the .txt transcripts from any replay .html
