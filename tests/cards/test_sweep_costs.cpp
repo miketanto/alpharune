@@ -2347,12 +2347,12 @@ TEST_F(SweepCostsTest, FinalizePassSpellDeclarationsMatchTheirPickLists) {
     const std::map<CardDefId, std::vector<std::string>> modes = {
         {kRocketBarrage, {"Deal 4 to a unit in a base", "Kill a gear"}},
         {kCurtainCall, {"Draw 1", "Deal 2 (BF)", "Deal 3 (base)", "-4M (BF)"}},
-        {839, {"Return a friendly unit to its owner's hand",                 // Mesmerize
+        {CardDefId{839}, {"Return a friendly unit to its owner's hand",                 // Mesmerize
                "Give an enemy unit -2 [M] this turn"}},
-        {822, {"Empower a unit (disempower it at end of turn)",              // Sanction
+        {CardDefId{822}, {"Empower a unit (disempower it at end of turn)",              // Sanction
                "Disempower an Empowered unit (empower it at end of turn)"}},
-        {606, {"Counter a spell", "Play four Bird tokens"}},                 // Flurry of Feathers
-        {665, {"Recycle up to 3 from opponent's trash", "Draw 1"}},          // Disposal Order
+        {CardDefId{606}, {"Counter a spell", "Play four Bird tokens"}},                 // Flurry of Feathers
+        {CardDefId{665}, {"Recycle up to 3 from opponent's trash", "Draw 1"}},          // Disposal Order
     };
     std::map<CardDefId, std::set<std::string>> labels_seen;
     const GameState blank = state;
