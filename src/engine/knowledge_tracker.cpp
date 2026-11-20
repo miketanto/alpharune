@@ -680,7 +680,34 @@ bool identityVisible(const GameState& state, GameObjectId object, PlayerId obser
             return true;
     }
     if (observer != PlayerId::Player1 && observer != PlayerId::Player2) return false;
-    return GameKnowledgeView(state, observer).about(object).identity_known;
+    const CardKnowledge k = GameKnowledgeView(state, observer).about(object);
+    if (!k.identity_known) return false;
+    // A player is never shown object ids, so naming the card of an object
+    // pins that card to the object's slot. Identity alone is not enough: the
+    // observer must also know the slot, as WorldSampler keeps it (a card it
+    // knows by identity only goes to a random slot in a world).
+    switch (obj.zone.get()) {
+        case ZoneType::RuneDeck:
+            return true;   // a known rune's slot is read from the deck (aboutRune)
+        case ZoneType::MainDeck: {
+            // Held by a "look at" (in no zone list): the looker holds it.
+            const auto& deck = state.player(obj.owner).main_deck;
+            if (std::find(deck.begin(), deck.end(), object) == deck.end()) return true;
+            // An exact slot; not a member of an unordered group, not a card
+            // known only to be somewhere in the deck.
+            return k.deck_position != DeckPosition::Unknown && k.deck_rank_span == 1;
+        }
+        default: {
+            // An opponent's hand or facedown card: still where it was seen.
+            // Once a card of that zone left it unseen, the observer cannot
+            // tell whether it was this one.
+            const auto& hand = state.player(obj.owner).hand;
+            if (obj.zone == ZoneType::Hand &&
+                std::find(hand.begin(), hand.end(), object) == hand.end())
+                return true;   // held by a look, as `about` reads it
+            return k.zone_confirmed;
+        }
+    }
 }
 
 std::vector<GameObjectId> sortedHand(const GameState& state, PlayerId player) {

@@ -138,9 +138,17 @@ std::vector<std::string> check(const GameState& state);
 
 /// Whether `observer` knows which card `object` is: an object in a public
 /// zone, the observer's own hand and facedown cards, and a hidden card it was
-/// shown (`GameKnowledgeView::about`). Cheap for the public case; what is
-/// shown to a player names a card only through this (batch 5b item T2:
-/// action slots, twin order, the observation).
+/// shown (`GameKnowledgeView::about`) and still knows the place of. Cheap for
+/// the public case; what is shown to a player names a card only through this
+/// (batch 5b item T2: action slots, twin order, the observation).
+///
+/// Object ids are not shown to a player, so naming an object's card says
+/// which slot holds it. A hidden card counts only where the observer knows
+/// both the card and its exact slot — what WorldSampler keeps in every world:
+/// in a Main Deck an exact slot (`deck_position` known, `deck_rank_span` 1:
+/// not a member of an unordered group, not "somewhere in the deck"); in a
+/// hand or facedown, `zone_confirmed` (no card left that zone unseen since);
+/// a card held by a look; a known rune (its slot is read from the deck).
 bool identityVisible(const GameState& state, GameObjectId object, PlayerId observer);
 
 /// `player`'s hand sorted by card id (cards of one card in the order they

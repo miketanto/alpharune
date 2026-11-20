@@ -548,5 +548,126 @@ TEST(KnowledgeTracker, ADeckEndIsJudgedFromTheSpansNotFromTheFactsOrder) {
     EXPECT_EQ(seen[0], seen[1]) << "the same knowledge under other ids";
 }
 
+// identityVisible names a hidden card only where the observer knows both the
+// card and its slot. Object ids are not shown to a player, so naming a card by
+// its object pins it to that object's true slot: a card known by identity
+// whose slot the observer lost must not be named (found by the card_repr leak
+// test: worlds WorldSampler drew for a player encoded differently from the
+// truth).
+
+/// What `observer` is shown of `owner`'s hidden cards: one row per card, its
+/// zone, its slot in a Main Deck (-1 elsewhere: a hand is shown as a set) and
+/// its card if identityVisible names it (-1 otherwise), as a set.
+using NamedRow = std::tuple<int, int, int>;
+std::vector<NamedRow> namedHiddenCards(const GameState& s, PlayerId owner, PlayerId observer) {
+    std::vector<NamedRow> out;
+    auto row = [&](GameObjectId id, int slot) {
+        const auto& o = s.getObject(id);
+        out.emplace_back(static_cast<int>(o.zone.get()), slot,
+                         knowledge::identityVisible(s, id, observer)
+                             ? static_cast<int>(o.card_def_id.raw()) : -1);
+    };
+    const auto& ps = s.player(owner);
+    for (auto id : ps.hand) row(id, -1);
+    for (size_t i = 0; i < ps.main_deck.size(); ++i) row(ps.main_deck[i], static_cast<int>(i));
+    for (const auto& bf : s.battlefields)
+        for (auto id : bf.facedown) if (s.getObject(id).owner == owner) row(id, -1);
+    std::sort(out.begin(), out.end());
+    return out;
+}
+
+TEST(KnowledgeTracker, IdentityVisibleDoesNotNameARevealedCardThatMayHaveBeenHidden) {
+    // P1 saw card 8 in P2's hand; P2 then hides one of its two hand cards
+    // face down, unseen. Whether it hid card 8 or card 9, P1 is shown the
+    // same moves, so the two positions must show it the same thing.
+    std::vector<std::vector<NamedRow>> shown;
+    for (bool hides_the_revealed_card : {false, true}) {
+        Table t;
+        const auto revealed = t.make(P2, 8, ZoneType::Hand);
+        const auto other = t.make(P2, 9, ZoneType::Hand);
+        knowledge::seen(t.s, revealed, Place::Hand, only(P1));
+        EXPECT_TRUE(knowledge::identityVisible(t.s, revealed, P1))
+            << "a revealed card still known in hand is named";
+
+        const auto hidden = hides_the_revealed_card ? revealed : other;
+        auto& ps = t.s.player(P2);
+        t.take(ps.hand, hidden);
+        t.s.battlefields[0].facedown.push_back(hidden);
+        t.s.getObject(hidden).zone = ZoneType::FacedownZone;
+        t.s.getObject(hidden).is_hidden = true;
+        knowledge::moved(t.s, hidden, Place::Hand, Place::Facedown, nobody());
+        t.expectConsistent();
+
+        // The tracker still knows the card, not where it is.
+        const auto k = GameKnowledgeView(t.s, P1).about(revealed);
+        EXPECT_TRUE(k.identity_known);
+        EXPECT_FALSE(k.zone_confirmed);
+        EXPECT_FALSE(knowledge::identityVisible(t.s, revealed, P1));
+        // The owner knows both its cards.
+        EXPECT_TRUE(knowledge::identityVisible(t.s, revealed, P2));
+        EXPECT_TRUE(knowledge::identityVisible(t.s, other, P2));
+        shown.push_back(namedHiddenCards(t.s, P2, P1));
+    }
+    EXPECT_EQ(shown[0], shown[1]);
+}
+
+TEST(KnowledgeTracker, IdentityVisibleNamesADeckCardOnlyAtAnExactSlot) {
+    // Cards recycled together (a mulligan): known as a group, never in order,
+    // to their owner as well.
+    std::vector<std::vector<NamedRow>> shown;
+    for (bool swapped : {false, true}) {
+        Table t;
+        t.deck(P1, 3);
+        const auto a = t.make(P1, 31, ZoneType::Hand);
+        const auto b = t.make(P1, 30, ZoneType::Hand);
+        auto& ps = t.s.player(P1);
+        ps.hand.clear();
+        ps.main_deck.insert(ps.main_deck.begin(), swapped ? a : b);
+        ps.main_deck.insert(ps.main_deck.begin(), swapped ? b : a);
+        for (auto id : {a, b}) t.s.getObject(id).zone = ZoneType::MainDeck;
+        knowledge::movedTogether(t.s,
+            {{a, Place::Hand, nobody()}, {b, Place::Hand, nobody()}}, DeckEnd::Bottom);
+        t.expectConsistent();
+        ASSERT_EQ(GameKnowledgeView(t.s, P1).about(a).deck_rank_span, 2);
+        EXPECT_FALSE(knowledge::identityVisible(t.s, a, P1));
+        EXPECT_FALSE(knowledge::identityVisible(t.s, b, P1));
+        shown.push_back(namedHiddenCards(t.s, P1, P1));
+    }
+    EXPECT_EQ(shown[0], shown[1]) << "the order of a group is not shown";
+
+    // A card known in a deck whose order was then lost (a shuffle).
+    {
+        Table t;
+        t.deck(P2, 4);
+        const auto card = t.make(P2, 55, ZoneType::Trash);
+        t.trashToBottom(card);
+        EXPECT_TRUE(knowledge::identityVisible(t.s, card, P1))
+            << "a card recycled alone is known at the bottom";
+        auto& deck = t.s.player(P2).main_deck;
+        std::rotate(deck.begin(), deck.begin() + 2, deck.end());
+        knowledge::shuffled(t.s, P2);
+        t.expectConsistent();
+        EXPECT_TRUE(GameKnowledgeView(t.s, P1).about(card).identity_known);
+        EXPECT_FALSE(knowledge::identityVisible(t.s, card, P1));
+    }
+
+    // A look at the top: the looker knows those cards at their slots, and
+    // the cards it holds during the look.
+    {
+        Table t;
+        const auto d = t.deck(P1, 5);
+        knowledge::seenInDeck(t.s, d[0], only(P1), DeckEnd::Top, 0);
+        EXPECT_TRUE(knowledge::identityVisible(t.s, d[0], P1));
+        EXPECT_FALSE(knowledge::identityVisible(t.s, d[0], P2));
+        EXPECT_FALSE(knowledge::identityVisible(t.s, d[1], P1));
+        t.s.player(P1).main_deck.pop_back();
+        knowledge::moved(t.s, d[0], Place::Deck, Place::Held, only(P1),
+                         DeckSlot{DeckEnd::Top, 0});
+        EXPECT_TRUE(knowledge::identityVisible(t.s, d[0], P1)) << "held by the looker";
+        EXPECT_FALSE(knowledge::identityVisible(t.s, d[0], P2));
+        t.expectConsistent();
+    }
+}
+
 } // namespace
 } // namespace riftbound
