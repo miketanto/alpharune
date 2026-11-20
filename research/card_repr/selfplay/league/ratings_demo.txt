@@ -1,0 +1,129 @@
+League ratings demo (league/demo.py), 2026-11-19 20:28
+Greedy (argmax) networks on CPU cores 12-15; Rengar mirror; one game per env slot.
+Bradley-Terry / Elo, anchor random-player = 0, prior 1.0 virtual draw per played pair, 300 parametric bootstrap resamples.
+Net-vs-net pairs alternate seats; net-vs-anchor games (verify_eval.py) have the network on seat 1;
+anchor-vs-anchor games (anchor_games.py, riftbound CLI) alternate seats, agents pay runes themselves.
+75 match records, 7100 games.
+
+SKIPPED real_smoke_id@72: schema v1 (dims {'G': 72, 'T': 64, 'F': 17, 'A': 96, 'K': 46, 'V': 80}): input layout differs from the current env
+
+rank  member                                 Elo    95% CI (Laplace)  95% CI (bootstrap)  games  note
+   1  gate4_id@150                           974 [    898,   1050] [    915,   1048]   1160  id, schema v4, ask_head,card_norm,ask_opt,opt_cost,opt_refs
+   2  gate4_B2@150                           964 [    888,   1040] [    904,   1041]   1160  B2, schema v4, ask_head,card_norm,ask_opt,opt_cost,opt_refs
+   3  gate4_B2@100                           924 [    848,    999] [    859,    997]   1160  B2, schema v4, ask_head,card_norm,ask_opt,opt_cost,opt_refs
+   4  gate4_id@100                           868 [    793,    943] [    815,    937]   1160  id, schema v4, ask_head,card_norm,ask_opt,opt_cost,opt_refs
+   5  gate1_sanity_id_ask@100                743 [    669,    817] [    685,    816]   1160  id, schema v2, ask_head
+   6  gate4_B2@50                            680 [    606,    754] [    630,    749]   1160  B2, schema v4, ask_head,card_norm,ask_opt,opt_cost,opt_refs
+   7  gate4_id@50                            680 [    606,    754] [    623,    745]   1160  id, schema v4, ask_head,card_norm,ask_opt,opt_cost,opt_refs
+   8  gate3_B2_v3@50                         665 [    592,    739] [    614,    733]   1160  B2, schema v3, ask_head,card_norm,ask_opt,opt_cost
+   9  gate2v2_sanity_B2_ask@70               647 [    573,    720] [    589,    719]   1160  B2, schema v2, ask_head,card_norm
+  10  anchor:ismcts:sims=200                 498 [    419,    578] [    431,    569]    600  
+  11  anchor:ismcts:sims=100                 396 [    320,    472] [    334,    467]   1060  
+  12  anchor:ismcts:sims=25                  287 [    217,    358] [    232,    349]   1100  
+  13  anchor:random-player                     0 [      0,      0] [      0,      0]   1000  anchor (fixed 0)
+
+win rate of ROW vs COLUMN (draws = 1/2); games in parentheses
+                  g4_id@150    g4_B2@150    g4_B2@100    g4_id@100 g1_id_ask@10     g4_B2@50     g4_id@50  g3_B2_v3@50 g2_B2_ask@70    ismcts200    ismcts100     ismcts25       random
+g4_id@150                 .   0.52( 100)   0.60( 100)   0.60( 100)   0.81( 100)   0.92( 100)   0.85( 100)   0.86( 100)   0.85( 100)   0.90(  60)   0.96( 100)   0.97( 100)   1.00( 100)
+g4_B2@150        0.48( 100)            .   0.56( 100)   0.58( 100)   0.82( 100)   0.87( 100)   0.82( 100)   0.89( 100)   0.88( 100)   0.95(  60)   0.92( 100)   0.99( 100)   1.00( 100)
+g4_B2@100        0.40( 100)   0.44( 100)            .   0.54( 100)   0.80( 100)   0.83( 100)   0.82( 100)   0.86( 100)   0.83( 100)   0.88(  60)   0.95( 100)   0.96( 100)   0.99( 100)
+g4_id@100        0.40( 100)   0.42( 100)   0.46( 100)            .   0.69( 100)   0.73( 100)   0.74( 100)   0.74( 100)   0.80( 100)   0.80(  60)   0.90( 100)   0.96( 100)   0.99( 100)
+g1_id_ask@100    0.19( 100)   0.18( 100)   0.20( 100)   0.31( 100)            .   0.67( 100)   0.58( 100)   0.63( 100)   0.75( 100)   0.78(  60)   0.84( 100)   0.93( 100)   0.98( 100)
+g4_B2@50         0.08( 100)   0.13( 100)   0.17( 100)   0.27( 100)   0.33( 100)            .   0.56( 100)   0.52( 100)   0.56( 100)   0.80(  60)   0.86( 100)   0.97( 100)   0.99( 100)
+g4_id@50         0.15( 100)   0.18( 100)   0.18( 100)   0.26( 100)   0.42( 100)   0.44( 100)            .   0.51( 100)   0.53( 100)   0.78(  60)   0.90( 100)   0.91( 100)   0.97( 100)
+g3_B2_v3@50      0.14( 100)   0.11( 100)   0.14( 100)   0.26( 100)   0.37( 100)   0.48( 100)   0.49( 100)            .   0.51( 100)   0.73(  60)   0.89( 100)   0.92( 100)   0.98( 100)
+g2_B2_ask@70     0.15( 100)   0.12( 100)   0.17( 100)   0.20( 100)   0.25( 100)   0.44( 100)   0.47( 100)   0.49( 100)            .   0.83(  60)   0.81( 100)   0.91( 100)   0.98( 100)
+ismcts200        0.10(  60)   0.05(  60)   0.12(  60)   0.20(  60)   0.22(  60)   0.20(  60)   0.22(  60)   0.27(  60)   0.17(  60)            .   0.67(  60)            -            -
+ismcts100        0.04( 100)   0.08( 100)   0.05( 100)   0.10( 100)   0.16( 100)   0.14( 100)   0.10( 100)   0.11( 100)   0.19( 100)   0.33(  60)            .   0.65( 100)            -
+ismcts25         0.03( 100)   0.01( 100)   0.04( 100)   0.04( 100)   0.07( 100)   0.03( 100)   0.09( 100)   0.08( 100)   0.09( 100)            -   0.35( 100)            .   0.89( 100)
+random           0.00( 100)   0.00( 100)   0.01( 100)   0.01( 100)   0.02( 100)   0.01( 100)   0.03( 100)   0.02( 100)   0.02( 100)            -            -   0.11( 100)            .
+
+Fit check: pairs that fit the single rating line worst (z = (obs - pred) / binomial sd)
+pair                                                             obs  pred    n      z
+gate1_sanity_id_ask@100 vs gate2v2_sanity_B2_ask@70             0.75  0.64  100   2.39
+anchor:ismcts:sims=200 vs gate4_id@100                          0.20  0.11   60   2.35
+anchor:ismcts:sims=100 vs gate4_B2@150                          0.08  0.04  100   2.31
+anchor:ismcts:sims=200 vs gate2v2_sanity_B2_ask@70              0.17  0.30   60  -2.24
+anchor:ismcts:sims=25 vs gate4_B2@50                            0.03  0.09  100  -2.20
+gate4_B2@50 vs gate4_id@150                                     0.08  0.16  100  -2.09
+anchor:ismcts:sims=100 vs gate3_B2_v3@50                        0.11  0.17  100  -1.71
+anchor:ismcts:sims=100 vs gate4_id@50                           0.10  0.16  100  -1.70
+gate1_sanity_id_ask@100 vs gate4_B2@50                          0.67  0.59  100   1.65
+anchor:ismcts:sims=100 vs gate4_id@100                          0.10  0.06  100   1.58
+
+Match records:
+  gate1_sanity_id_ask@100        vs gate2v2_sanity_B2_ask@70       75-  25 (draws 0, err 0, A seat1 39/50) greedy 7.2s 
+  gate1_sanity_id_ask@100        vs gate3_B2_v3@50                 63-  37 (draws 0, err 0, A seat1 33/50) greedy 7.1s 
+  gate1_sanity_id_ask@100        vs gate4_B2@150                   18-  82 (draws 0, err 0, A seat1 11/50) greedy 7.3s 
+  gate1_sanity_id_ask@100        vs gate4_id@150                   19-  81 (draws 0, err 0, A seat1 11/50) greedy 6.0s 
+  gate2v2_sanity_B2_ask@70       vs gate3_B2_v3@50                 49-  51 (draws 0, err 0, A seat1 26/50) greedy 8.2s 
+  gate2v2_sanity_B2_ask@70       vs gate4_B2@150                   12-  88 (draws 0, err 0, A seat1 4/50) greedy 7.4s 
+  gate2v2_sanity_B2_ask@70       vs gate4_id@150                   15-  85 (draws 0, err 0, A seat1 9/50) greedy 7.0s 
+  gate3_B2_v3@50                 vs gate4_B2@150                   11-  89 (draws 0, err 0, A seat1 6/50) greedy 7.6s 
+  gate3_B2_v3@50                 vs gate4_id@150                   14-  86 (draws 0, err 0, A seat1 5/50) greedy 6.3s 
+  gate4_B2@150                   vs gate4_id@150                   48-  52 (draws 0, err 0, A seat1 19/50) greedy 7.8s 
+  gate1_sanity_id_ask@100        vs anchor:random-player           98-   2 (draws 0, err 0, A seat1 98/100) greedy 6.4s verify_eval.py
+  gate2v2_sanity_B2_ask@70       vs anchor:random-player           98-   2 (draws 0, err 0, A seat1 98/100) greedy 8.1s verify_eval.py
+  gate3_B2_v3@50                 vs anchor:random-player           98-   2 (draws 0, err 0, A seat1 98/100) greedy 6.8s verify_eval.py
+  gate4_B2@150                   vs anchor:random-player          100-   0 (draws 0, err 0, A seat1 100/100) greedy 7.1s verify_eval.py
+  gate4_id@150                   vs anchor:random-player          100-   0 (draws 0, err 0, A seat1 100/100) greedy 6.5s verify_eval.py
+  gate1_sanity_id_ask@100        vs anchor:ismcts:sims=25          93-   7 (draws 0, err 0, A seat1 93/100) greedy 39.3s verify_eval.py
+  gate2v2_sanity_B2_ask@70       vs anchor:ismcts:sims=25          91-   9 (draws 0, err 0, A seat1 91/100) greedy 57.9s verify_eval.py
+  gate3_B2_v3@50                 vs anchor:ismcts:sims=25          92-   8 (draws 0, err 0, A seat1 92/100) greedy 47.6s verify_eval.py
+  gate4_B2@150                   vs anchor:ismcts:sims=25          99-   1 (draws 0, err 0, A seat1 99/100) greedy 32.3s verify_eval.py
+  gate4_id@150                   vs anchor:ismcts:sims=25          97-   3 (draws 0, err 0, A seat1 97/100) greedy 38.2s verify_eval.py
+  gate1_sanity_id_ask@100        vs anchor:ismcts:sims=100         84-  16 (draws 0, err 0, A seat1 84/100) greedy 227.8s verify_eval.py
+  gate2v2_sanity_B2_ask@70       vs anchor:ismcts:sims=100         81-  19 (draws 0, err 0, A seat1 81/100) greedy 293.3s verify_eval.py
+  gate3_B2_v3@50                 vs anchor:ismcts:sims=100         89-  11 (draws 0, err 0, A seat1 89/100) greedy 157.3s verify_eval.py
+  gate4_B2@150                   vs anchor:ismcts:sims=100         92-   8 (draws 0, err 0, A seat1 92/100) greedy 138.5s verify_eval.py
+  gate4_id@150                   vs anchor:ismcts:sims=100         96-   4 (draws 0, err 0, A seat1 96/100) greedy 138.2s verify_eval.py
+  anchor:random-player           vs anchor:ismcts:sims=25          11-  89 (draws 0, err 0, A seat1 4/50) agent 87.9s riftbound CLI
+  gate4_B2@150                   vs anchor:ismcts:sims=200         57-   3 (draws 0, err 0, A seat1 57/60) greedy 397.4s verify_eval.py
+  anchor:ismcts:sims=25          vs anchor:ismcts:sims=100         35-  65 (draws 0, err 0, A seat1 19/50) agent 448.1s riftbound CLI
+  gate4_id@150                   vs anchor:ismcts:sims=200         54-   6 (draws 0, err 0, A seat1 54/60) greedy 351.6s verify_eval.py
+  anchor:ismcts:sims=100         vs anchor:ismcts:sims=200         20-  40 (draws 0, err 0, A seat1 9/30) agent 609.0s riftbound CLI
+  gate1_sanity_id_ask@100        vs anchor:ismcts:sims=200         47-  13 (draws 0, err 0, A seat1 47/60) greedy 430.2s verify_eval.py
+  gate1_sanity_id_ask@100        vs gate4_id@50                    58-  42 (draws 0, err 0, A seat1 31/50) greedy 5.2s 
+  gate1_sanity_id_ask@100        vs gate4_id@100                   31-  69 (draws 0, err 0, A seat1 15/50) greedy 5.2s 
+  gate1_sanity_id_ask@100        vs gate4_B2@50                    67-  33 (draws 0, err 0, A seat1 36/50) greedy 7.0s 
+  gate1_sanity_id_ask@100        vs gate4_B2@100                   20-  80 (draws 0, err 0, A seat1 10/50) greedy 6.6s 
+  gate2v2_sanity_B2_ask@70       vs gate4_id@50                    47-  53 (draws 0, err 0, A seat1 22/50) greedy 6.8s 
+  gate2v2_sanity_B2_ask@70       vs gate4_id@100                   20-  80 (draws 0, err 0, A seat1 6/50) greedy 5.5s 
+  gate2v2_sanity_B2_ask@70       vs gate4_B2@50                    44-  56 (draws 0, err 0, A seat1 19/50) greedy 8.1s 
+  gate2v2_sanity_B2_ask@70       vs gate4_B2@100                   17-  83 (draws 0, err 0, A seat1 6/50) greedy 8.0s 
+  gate3_B2_v3@50                 vs gate4_id@50                    49-  51 (draws 0, err 0, A seat1 25/50) greedy 6.8s 
+  gate3_B2_v3@50                 vs gate4_id@100                   26-  74 (draws 0, err 0, A seat1 11/50) greedy 6.7s 
+  gate3_B2_v3@50                 vs gate4_B2@50                    48-  52 (draws 0, err 0, A seat1 22/50) greedy 8.0s 
+  gate3_B2_v3@50                 vs gate4_B2@100                   14-  86 (draws 0, err 0, A seat1 8/50) greedy 7.6s 
+  gate4_B2@150                   vs gate4_id@50                    82-  18 (draws 0, err 0, A seat1 41/50) greedy 6.7s 
+  gate4_B2@150                   vs gate4_id@100                   58-  42 (draws 0, err 0, A seat1 27/50) greedy 7.3s 
+  gate4_B2@150                   vs gate4_B2@50                    87-  13 (draws 0, err 0, A seat1 44/50) greedy 8.6s 
+  gate4_B2@150                   vs gate4_B2@100                   56-  44 (draws 0, err 0, A seat1 29/50) greedy 8.1s 
+  gate4_id@150                   vs gate4_id@50                    85-  15 (draws 0, err 0, A seat1 43/50) greedy 5.5s 
+  gate4_id@150                   vs gate4_id@100                   60-  40 (draws 0, err 0, A seat1 28/50) greedy 6.0s 
+  gate4_id@150                   vs gate4_B2@50                    92-   8 (draws 0, err 0, A seat1 46/50) greedy 7.0s 
+  gate4_id@150                   vs gate4_B2@100                   60-  40 (draws 0, err 0, A seat1 30/50) greedy 6.6s 
+  gate4_id@50                    vs gate4_id@100                   26-  74 (draws 0, err 0, A seat1 14/50) greedy 5.1s 
+  gate4_id@50                    vs gate4_B2@50                    44-  56 (draws 0, err 0, A seat1 21/50) greedy 6.4s 
+  gate4_id@50                    vs gate4_B2@100                   18-  82 (draws 0, err 0, A seat1 8/50) greedy 6.0s 
+  gate4_id@100                   vs gate4_B2@50                    73-  27 (draws 0, err 0, A seat1 38/50) greedy 6.3s 
+  gate4_id@100                   vs gate4_B2@100                   46-  54 (draws 0, err 0, A seat1 21/50) greedy 6.5s 
+  gate4_B2@50                    vs gate4_B2@100                   17-  83 (draws 0, err 0, A seat1 10/50) greedy 6.4s 
+  gate4_id@50                    vs anchor:random-player           97-   3 (draws 0, err 0, A seat1 97/100) greedy 4.5s verify_eval.py
+  gate4_id@100                   vs anchor:random-player           99-   1 (draws 0, err 0, A seat1 99/100) greedy 3.5s verify_eval.py
+  gate4_B2@50                    vs anchor:random-player           99-   1 (draws 0, err 0, A seat1 99/100) greedy 4.0s verify_eval.py
+  gate4_B2@100                   vs anchor:random-player           99-   1 (draws 0, err 0, A seat1 99/100) greedy 3.1s verify_eval.py
+  gate4_id@50                    vs anchor:ismcts:sims=25          91-   9 (draws 0, err 0, A seat1 91/100) greedy 26.2s verify_eval.py
+  gate4_id@100                   vs anchor:ismcts:sims=25          96-   4 (draws 0, err 0, A seat1 96/100) greedy 18.7s verify_eval.py
+  gate4_B2@50                    vs anchor:ismcts:sims=25          97-   3 (draws 0, err 0, A seat1 97/100) greedy 26.8s verify_eval.py
+  gate4_B2@100                   vs anchor:ismcts:sims=25          96-   4 (draws 0, err 0, A seat1 96/100) greedy 27.3s verify_eval.py
+  gate4_id@50                    vs anchor:ismcts:sims=100         90-  10 (draws 0, err 0, A seat1 90/100) greedy 131.5s verify_eval.py
+  gate4_id@100                   vs anchor:ismcts:sims=100         90-  10 (draws 0, err 0, A seat1 90/100) greedy 110.8s verify_eval.py
+  gate4_B2@50                    vs anchor:ismcts:sims=100         86-  14 (draws 0, err 0, A seat1 86/100) greedy 144.4s verify_eval.py
+  gate4_B2@100                   vs anchor:ismcts:sims=100         95-   5 (draws 0, err 0, A seat1 95/100) greedy 113.2s verify_eval.py
+  gate4_B2@100                   vs anchor:ismcts:sims=200         53-   7 (draws 0, err 0, A seat1 53/60) greedy 131.7s verify_eval.py
+  gate4_id@100                   vs anchor:ismcts:sims=200         48-  12 (draws 0, err 0, A seat1 48/60) greedy 129.7s verify_eval.py
+  gate4_id@50                    vs anchor:ismcts:sims=200         47-  13 (draws 0, err 0, A seat1 47/60) greedy 152.1s verify_eval.py
+  gate4_B2@50                    vs anchor:ismcts:sims=200         48-  12 (draws 0, err 0, A seat1 48/60) greedy 179.0s verify_eval.py
+  gate3_B2_v3@50                 vs anchor:ismcts:sims=200         44-  16 (draws 0, err 0, A seat1 44/60) greedy 156.3s verify_eval.py
+  gate2v2_sanity_B2_ask@70       vs anchor:ismcts:sims=200         50-  10 (draws 0, err 0, A seat1 50/60) greedy 179.6s verify_eval.py

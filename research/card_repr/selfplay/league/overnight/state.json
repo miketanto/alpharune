@@ -1,0 +1,18 @@
+{
+ "phase_no": 105,
+ "last_rate_t": 1795178590.4718525,
+ "rated": [
+  "ov_main@200",
+  "ov_main@400",
+  "ov_main@600",
+  "ov_main@800",
+  "ov_main@1000",
+  "ov_main@1200",
+  "ov_main@1400",
+  "ov_main@1600",
+  "ov_main@1800",
+  "ov_main@2000",
+  "ov_main@2080"
+ ],
+ "fails": 0
+}

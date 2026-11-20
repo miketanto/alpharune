@@ -783,6 +783,29 @@ std::string describeState(const GameState& s, const StepResult& sr) {
 // One edit on a copy of the state. Ops separated by ';', fields by ' ':
 //   none | kw_give <id> A|S <v> | kw_remove <id> A|S | might <id> <delta> | to_base <id> | to_bf <id> <slot>
 //   unhide <id> | played <n> | ss <slot> <0|1>   (Star Spring stamp of the turn player)
+// ---- PART A ----
+// (inside namespace rbe; agents/determinizer.h is included at file scope by splice.py)
+CardDefId defOfKey(const std::string& key) {
+    for (const auto& kv : g_keys)
+        if (kv.second == key) return CardDefId::fromRaw(kv.first);
+    throw std::runtime_error("swap: unknown card key " + key);
+}
+void swapCard(GameObject& o, const std::string& key) {
+    if (o.is_hidden) throw std::runtime_error("swap: facedown object");
+    if (o.isToken()) throw std::runtime_error("swap: token");
+    if (o.attached_to.has_value() || !o.attachments.empty()) throw std::runtime_error("swap: attachments");
+    const CardDef& def = g_db->get(defOfKey(key));
+    const bool ex = o.is_exhausted, st = o.is_stunned;
+    const int dmg = o.damage_marked;
+    const ZoneType z = o.zone;
+    const bool onboard = z == ZoneType::Base || z == ZoneType::BattlefieldZone;
+    if (onboard && !(o.isUnit() && def.card_type == CardType::Unit))
+        throw std::runtime_error("swap: board swap must be unit->unit");
+    riftbound::becomeCard(o, def);
+    if (onboard) { o.is_exhausted = ex; o.is_stunned = st; o.damage_marked = dmg; }
+    o.recomputeMight();
+}
+// ---- END PART A ----
 void applyEdit(GameState& s, const std::string& spec) {
     std::stringstream all(spec);
     std::string one;
@@ -819,6 +842,11 @@ void applyEdit(GameState& s, const std::string& spec) {
                 val = 0;
             }
             o.recomputeMight();
+        } else if (op == "swap") {   // gate 5
+            GameObject& o = obj();
+            std::string key;
+            ss >> key;
+            swapCard(o, key);
         } else if (op == "might") {
             GameObject& o = obj();
             int d = 0;
@@ -1052,3 +1080,19 @@ int rbenv_po_results(void* p, int64_t* out, int cap) {
 }
 
 }  // extern "C"
+
+// ---- PART B ----
+extern "C" {
+int rbenv_advise(void* p, int i, int sims, int64_t seed) {
+    using namespace rbe;
+    auto& h = *static_cast<Handle*>(p);
+    auto& e = h.envs[i];
+    if (!e.need || !e.engine) return -1;
+    const StepResult& sr = e.engine->currentStep();
+    const uint64_t es = engineSeedOf(static_cast<uint64_t>(e.game_seed));
+    IsMctsAgent a(h.deck_a, h.deck_b, "", es, static_cast<uint64_t>(seed), sims);
+    const Intent pick = a.decide(e.engine->state(), sr.legal, sr.prompt);
+    return indexOf(sr.legal, pick);
+}
+}  // extern "C"
+// ---- END PART B ----

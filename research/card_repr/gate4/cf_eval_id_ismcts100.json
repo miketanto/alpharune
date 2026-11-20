@@ -1,0 +1,18 @@
+{
+ "ckpt": "runs/cf_id/latest.pt",
+ "mode": "greedy",
+ "repr": "id",
+ "deck": "rengar",
+ "opp": "ismcts:sims=100",
+ "games": 200,
+ "errors": 0,
+ "wins": 190,
+ "win_rate": 0.95,
+ "wilson95": [
+  0.91,
+  0.973
+ ],
+ "mean_turns": 12.0,
+ "procs": 6,
+ "secs": 160.7
+}

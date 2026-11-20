@@ -1,0 +1,22 @@
+{
+ "_doc": "overnight main exploiter: only vs the frozen main copy exp_target.pt; exploiter.py rules; resets to cf_B2@230.",
+ "role_rules": {
+  "role": "main-exploiter",
+  "init": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/cf_B2/latest.pt",
+  "win_threshold": 0.7,
+  "min_games": 200,
+  "max_updates": 6,
+  "reset_prob": 1.0,
+  "target_refresh": 10,
+  "target": "main"
+ },
+ "opponents": {
+  "kind": "role",
+  "role": "main-exploiter"
+ },
+ "target_ckpt": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry/exp_target.pt",
+ "n_slots": 1,
+ "resample": "game",
+ "registry": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry/registry.json",
+ "seed_members": []
+}

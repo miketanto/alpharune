@@ -1,0 +1,18 @@
+{
+ "ckpt": "runs/cf_B2/latest.pt",
+ "mode": "greedy",
+ "repr": "B2",
+ "deck": "rengar",
+ "opp": "ismcts:sims=100",
+ "games": 200,
+ "errors": 0,
+ "wins": 190,
+ "win_rate": 0.95,
+ "wilson95": [
+  0.91,
+  0.973
+ ],
+ "mean_turns": 11.6,
+ "procs": 6,
+ "secs": 192.3
+}

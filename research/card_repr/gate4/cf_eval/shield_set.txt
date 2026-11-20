@@ -1,0 +1,4 @@
+CF val split: 143 positions, 333 edits
+family             n  clr     dwin | B2     r     sign  dv     | B2_cf  r     sign  dv     | id     r     sign  dv     | id_cf  r     sign  dv    
+shield_give      333   22   -0.010 | -0.03  0.27 +0.013     | -0.04  0.23 +0.012     | -0.10  0.18 -0.000     | -0.10  0.23 +0.010    
+ALL              333   22   -0.010 | -0.03  0.27 +0.013     | -0.04  0.23 +0.012     | -0.10  0.18 -0.000     | -0.10  0.23 +0.010    

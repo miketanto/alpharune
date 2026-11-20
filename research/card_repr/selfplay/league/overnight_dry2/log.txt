@@ -1,0 +1,98 @@
+2026-11-19 22:26:40 === overnight.py start; deadline Thu Nov 19 22:44:00 2026; training stops Thu Nov 19 22:40:00 2026; args {'cmd': 'run', 'deadline': '22:44', 'out': 'league/overnight_dry2', 'tag': 'dry2', 'member': '', 'main_updates': 6, 'exp_updates': 4, 'snapshot_every': 5, 'exp_max_updates': 6, 'p_osfp': 0.8, 'osfp_period': 32768, 'n_slots': 2, 'n_envs': 256, 'samples_per_update': 16384, 'gpu_mem_frac': 0.4, 'train_cores': '0-11', 'phase_max_min': 8.0, 'rate_every_min': 3.0, 'first_rate_min': 2.0, 'rate_games': 20, 'rate_procs': 4, 'no_ismcts': True, 'final_rate_min': 4.0, 'max_ckpts': 6, 'min_ram_mb': 1024, 'min_disk_gb': 5, 'min_gps': 40, 'slope_points': 5}
+2026-11-19 22:26:43 rating cycle started for cf_B2@230 (pid 2712)
+2026-11-19 22:26:43 phase main: dry2_main updates 0->6 (max 8.0 min)
+2026-11-19 22:26:46 rating baselines (once): cf_B2@230, cf_id@230
+2026-11-19 22:28:10 phase main done rc=0 updates 0->6 in 87s (14.5 s/update), games/s median 25.9 min 19.4  WARN below 40 games/s
+2026-11-19 22:28:10 exploiter target = main @6
+2026-11-19 22:28:10 phase exp: dry2_exp updates 0->4 (max 8.0 min)
+2026-11-19 22:28:24   rate cf_B2@230 vs gate4_B2@150: 10-10 (97.7s)
+2026-11-19 22:29:13 phase exp done rc=0 updates 0->4 in 63s (15.8 s/update), games/s median 35.3 min 24.0  WARN below 40 games/s
+2026-11-19 22:29:13 phase main: dry2_main updates 6->12 (max 8.0 min)
+2026-11-19 22:29:35   rate cf_B2@230 vs gate4_id@150: 11-9 (70.5s)
+2026-11-19 22:30:37 phase main done rc=0 updates 6->12 in 84s (14.0 s/update), games/s median 25.7 min 20.0  WARN below 40 games/s
+2026-11-19 22:30:37 exploiter target = main @12
+2026-11-19 22:30:37 phase exp: dry2_exp updates 4->8 (max 8.0 min)
+2026-11-19 22:30:56   rate cf_id@230 vs gate4_B2@150: 10-10 (81.1s)
+2026-11-19 22:31:44 phase exp done rc=0 updates 4->8 in 66s (16.5 s/update), games/s median 33.2 min 23.1  WARN below 40 games/s
+2026-11-19 22:31:44 phase main: dry2_main updates 12->18 (max 8.0 min)
+2026-11-19 22:31:57   rate cf_id@230 vs gate4_id@150: 15-5 (61.0s)
+2026-11-19 22:32:38   rate cf_B2@230 vs cf_id@230: 7-13 (41.4s)
+2026-11-19 22:32:38 timeline: cf_B2@230 Elo 977.2 [859.4, 1095.1] wr vs ismcts200  vs cf_B2 0.5 vs prev  (352s)
+2026-11-19 22:32:38 rating cycle cf_B2@230: vs ['cf_id@230']
+2026-11-19 22:32:38 timeline: cf_B2@230 Elo 977.2 [859.4, 1095.1] wr vs ismcts200  vs cf_B2 0.5 vs prev  (352s)
+2026-11-19 22:33:12 phase main done rc=0 updates 12->18 in 88s (14.7 s/update), games/s median 22.8 min 20.0  WARN below 40 games/s
+2026-11-19 22:33:12 rating cycle for cf_B2@230 finished rc=0
+2026-11-19 22:33:12 rating cycle started for dry2_main@16 (pid 3045)
+2026-11-19 22:33:12 exploiter target = main @18
+2026-11-19 22:33:12 phase exp: dry2_exp updates 8->12 (max 6.8 min)
+2026-11-19 22:33:14 rating cycle dry2_main@16: vs ['cf_B2@230', 'cf_id@230', 'dry2_exp@6']
+2026-11-19 22:34:11   rate dry2_main@16 vs cf_B2@230: 11-9 (57.6s)
+2026-11-19 22:34:13 phase exp done rc=0 updates 8->12 in 61s (15.3 s/update), games/s median 40.6 min 23.2
+2026-11-19 22:34:13 phase main: dry2_main updates 18->24 (max 5.8 min)
+2026-11-19 22:34:59   rate dry2_main@16 vs cf_id@230: 9-11 (47.4s)
+2026-11-19 22:35:31 phase main done rc=0 updates 18->24 in 78s (13.0 s/update), games/s median 29.3 min 25.1  WARN below 40 games/s
+2026-11-19 22:35:32 exploiter target = main @24
+2026-11-19 22:35:32 phase exp: dry2_exp updates 12->16 (max 4.5 min)
+2026-11-19 22:36:04   rate dry2_main@16 vs dry2_exp@6: 11-9 (64.7s)
+2026-11-19 22:36:04 timeline: dry2_main@16 Elo 1019.5 [869.9, 1169.1] wr vs ismcts200  vs cf_B2 0.55 vs prev 0.55 (170s)
+2026-11-19 22:36:38 phase exp done rc=0 updates 12->16 in 66s (16.6 s/update), games/s median 31.8 min 21.6  WARN below 40 games/s
+2026-11-19 22:36:38 rating cycle for dry2_main@16 finished rc=0
+2026-11-19 22:36:38 rating cycle started for dry2_main@20 (pid 3340)
+2026-11-19 22:36:38 pruned 1 checkpoints: ['dry2_main@5']; 6 left
+2026-11-19 22:36:38 phase main: dry2_main updates 24->30 (max 3.4 min)
+2026-11-19 22:36:40 rating cycle dry2_main@20: vs ['cf_B2@230', 'cf_id@230', 'dry2_main@16', 'dry2_exp@12']
+2026-11-19 22:37:38   rate dry2_main@20 vs cf_B2@230: 13-7 (58.0s)
+2026-11-19 22:38:12   rate dry2_main@20 vs cf_id@230: 8-12 (33.7s)
+2026-11-19 22:38:12 phase main done rc=0 updates 24->30 in 93s (15.6 s/update), games/s median 22.3 min 17.5  WARN below 40 games/s
+2026-11-19 22:38:12 pruned 2 checkpoints: ['dry2_main@10', 'dry2_main@15']; 6 left
+2026-11-19 22:38:12 exploiter target = main @30
+2026-11-19 22:38:12 phase exp: dry2_exp updates 16->20 (max 1.8 min)
+2026-11-19 22:38:23   rate dry2_main@20 vs dry2_main@16: 10-10 (11.0s)
+2026-11-19 22:38:31   rate dry2_main@20 vs dry2_exp@12: 11-9 (8.7s)
+2026-11-19 22:38:31 timeline: dry2_main@20 Elo 1032.4 [892.2, 1172.5] wr vs ismcts200  vs cf_B2 0.65 vs prev 0.5 (112s)
+2026-11-19 22:39:16 phase exp done rc=0 updates 16->20 in 64s (16.0 s/update), games/s median 34.8 min 22.6  WARN below 40 games/s
+2026-11-19 22:39:16 rating cycle for dry2_main@20 finished rc=0
+2026-11-19 22:39:16 pruned 1 checkpoints: ['dry2_exp@6']; 6 left
+2026-11-19 22:39:16 rating cycle started for dry2_main@30 (pid 3490)
+2026-11-19 22:39:16 rating cycle dry2_main@30: vs ['cf_B2@230', 'cf_id@230', 'dry2_main@16', 'dry2_main@20', 'dry2_exp@18']
+2026-11-19 22:39:22   rate dry2_main@30 vs cf_B2@230: 17-3 (6.0s)
+2026-11-19 22:39:27   rate dry2_main@30 vs cf_id@230: 12-8 (5.4s)
+2026-11-19 22:39:33   rate dry2_main@30 vs dry2_main@16: 11-9 (5.6s)
+2026-11-19 22:39:39   rate dry2_main@30 vs dry2_main@20: 12-8 (5.5s)
+2026-11-19 22:39:44   rate dry2_main@30 vs dry2_exp@18: 15-5 (5.7s)
+2026-11-19 22:39:44 timeline: dry2_main@30 Elo 1137.6 [1001.3, 1273.9] wr vs ismcts200  vs cf_B2 0.85 vs prev 0.6 (28s)
+2026-11-19 22:39:46 SUMMARY written:
+Overnight league summary (Thu Nov 19 22:39:46 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+2026-11-19T22:32:38      0 cf_B2@230                977.2 [  859.4, 1095.1]     966                       0.5    0.35                
+2026-11-19T22:32:38    230 cf_B2@230                977.2 [  859.4, 1095.1]     966                       0.5    0.35                
+2026-11-19T22:36:04     16 dry2_main@16            1019.5 [  869.9, 1169.1]    1048                      0.55    0.45    0.55    0.55
+2026-11-19T22:38:31     20 dry2_main@20            1032.4 [  892.2, 1172.5]    1048                      0.65     0.4     0.5    0.55
+2026-11-19T22:39:44     30 dry2_main@30            1137.6 [ 1001.3, 1273.9]    1138                      0.85     0.6     0.6    0.75
+
+Main Elo slope over the last 5 ratings (refit Elo vs update, weighted LS): -28.6 Elo per 100 updates, 95% CI [-98.5, +41.4] -> FLAT / not distinguishable from 0
+Start (cf_B2@230): vs ISMCTS-200 , vs cf_B2 0.5, refit Elo 966
+End   (dry2_main@30): vs ISMCTS-200 , vs cf_B2 0.85, refit Elo 1138
+
+Main exploiter: 20 updates, 3 snapshots, 3 resets
+  dry2_exp@6 (6 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2': 0.485})
+  dry2_exp@12 (6 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2': 0.471})
+  dry2_exp@18 (6 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2': 0.443})
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.505 at update 4 (1184 games since reset)
+  found a weakness (>= 70% vs the main target): no
+  rating games (greedy): main snapshot vs newest exploiter snapshot, main win rate:
+    dry2_main@16 vs dry2_exp@6: 0.55
+    dry2_main@20 vs dry2_exp@12: 0.55
+    dry2_main@30 vs dry2_exp@18: 0.75
+
+Throughput per phase (games/s median): m6:25.9, e4:35.3, m12:25.7, e8:33.2, m18:22.8, e12:40.6, m24:29.3, e16:31.8, m30:22.3, e20:34.8
+  over the run: median 31.8, min 22.3 games/s, 10 phases
+
+2026-11-19 22:39:46 === overnight.py done
+2026-11-19 22:43:13 rating cycle dry2_main@30: vs ['anchor:ismcts:sims=100', 'anchor:ismcts:sims=200', 'cf_B2@230', 'cf_id@230', 'dry2_main@16', 'dry2_exp@18']
+2026-11-19 22:44:46   rate dry2_main@30 vs anchor:ismcts:sims=100: 8-0 (93.2s)
+2026-11-19 22:45:55   rate dry2_main@30 vs anchor:ismcts:sims=200: 8-0 (69.2s)
+2026-11-19 22:45:55 timeline: dry2_main@30 Elo 1124.8 [990.9, 1258.7] wr vs ismcts200 1.0 vs cf_B2 0.85 vs prev  (162s)

@@ -1,0 +1,36 @@
+{
+ "_doc": "overnight main agent: 0.8 OSFP over its own history (paper settings) + 0.2 PFSP (1-p)^2 over the league (exploiter snapshots synced from the registry + fixed nets). Periodic snapshots for ratings.",
+ "role_rules": {
+  "role": "main",
+  "snapshot_every": 5
+ },
+ "opponents": {
+  "kind": "osfp_mix",
+  "p_osfp": 0.8,
+  "osfp": {
+   "p_self": 0.6,
+   "optimism": 1.0,
+   "xi": 0.55,
+   "max_periods": 6,
+   "period_samples": 32768,
+   "f": null
+  },
+  "pfsp": {
+   "weighting": "squared"
+  }
+ },
+ "n_slots": 3,
+ "resample": "game",
+ "registry": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry/registry.json",
+ "seed_members": [
+  "cf_id@230",
+  "gate4_B2@150",
+  "gate4_id@150"
+ ],
+ "seed_history": [
+  "cf_B2@230"
+ ],
+ "sync_roles": [
+  "main-exploiter"
+ ]
+}

@@ -1,0 +1,14 @@
+Overnight league summary (Thu Nov 19 22:26:19 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+
+Main Elo slope: fewer than 3 rated main snapshots (0), no slope.
+
+Main exploiter: 5 updates, 0 snapshots, 0 resets
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.498 at update 1 (311 games since reset)
+  found a weakness (>= 70% vs the main target): no
+
+Throughput per phase (games/s median): m6:13.8, e4:27.1, m12:20.6, e4:nan
+  over the run: median 20.6, min 13.8 games/s, 4 phases

@@ -1,0 +1,5 @@
+time,phase,run,from,to,rc,secs,secs_per_update,games_per_s_med,games_per_s_min,mem_avail_mb
+2026-11-19T22:22:46,main,dry_main,0,6,0,147,24.6,13.8,9.2,4887
+2026-11-19T22:24:08,exp,dry_exp,0,4,0,82,20.5,27.1,17.7,6116
+2026-11-19T22:25:54,main,dry_main,6,12,0,105,17.5,20.6,12.8,6445
+2026-11-19T22:26:19,exp,dry_exp,4,4,-15,25,25.3,nan,,6675

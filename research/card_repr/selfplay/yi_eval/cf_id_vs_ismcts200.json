@@ -1,0 +1,18 @@
+{
+ "ckpt": "runs/cf_id/latest.pt",
+ "mode": "greedy",
+ "repr": "id",
+ "deck": "yi_rebuild",
+ "opp": "ismcts:sims=200",
+ "games": 200,
+ "errors": 0,
+ "wins": 128,
+ "win_rate": 0.64,
+ "wilson95": [
+  0.571,
+  0.703
+ ],
+ "mean_turns": 13.0,
+ "procs": 6,
+ "secs": 226.9
+}

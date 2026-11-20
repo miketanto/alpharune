@@ -1,0 +1,23 @@
+refit Thu Nov 19 22:45:55 2026 (demo + overnight results; random-player = 0)
+rank  member                                 Elo    95% CI (Laplace)  games  note
+   1  dry2_main@30                          1125 [    991,   1259]    116  
+   2  cf_id@230                             1068 [    954,   1182]    120  
+   3  dry2_main@16                          1040 [    906,   1174]    100  
+   4  dry2_main@20                          1040 [    906,   1174]    100  
+   5  dry2_exp@12                           1007 [    806,   1207]     20  
+   6  dry2_exp@6                            1007 [    806,   1207]     20  
+   7  gate4_id@150                           970 [    894,   1046]   1200  
+   8  gate4_B2@150                           966 [    890,   1042]   1200  
+   9  cf_B2@230                              960 [    848,   1073]    120  
+  10  dry2_exp@18                            945 [    729,   1160]     20  
+  11  gate4_B2@100                           923 [    848,    999]   1160  
+  12  gate4_id@100                           868 [    793,    943]   1160  
+  13  gate1_sanity_id_ask@100                743 [    668,    817]   1160  
+  14  gate4_B2@50                            680 [    606,    754]   1160  
+  15  gate4_id@50                            680 [    606,    754]   1160  
+  16  gate3_B2_v3@50                         665 [    592,    739]   1160  
+  17  gate2v2_sanity_B2_ask@70               647 [    573,    720]   1160  
+  18  anchor:ismcts:sims=200                 499 [    419,    578]    608  
+  19  anchor:ismcts:sims=100                 396 [    321,    472]   1068  
+  20  anchor:ismcts:sims=25                  288 [    217,    358]   1100  
+  21  anchor:random-player                     0 [      0,      0]   1000  anchor (fixed 0)

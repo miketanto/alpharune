@@ -1,0 +1,4 @@
+{"_doc": "Today's trainer behaviour (learner/selfplay.py): p_self 0.5, else uniform over the last 20 snapshots, snapshot every 5 updates.",
+ "role_rules": {"role": "main", "snapshot_every": 5},
+ "opponents": {"kind": "uniform", "p_self": 0.5, "window": 20},
+ "n_slots": 1, "resample": "update", "registry": "league/registry.json", "seed_members": []}

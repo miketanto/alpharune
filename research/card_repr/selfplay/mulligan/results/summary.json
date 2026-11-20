@@ -1,0 +1,23 @@
+{
+ "keep": {
+  "games": 10000,
+  "first_player_wr": 0.588,
+  "p1_wr": 0.498,
+  "mull_rate": 0.0,
+  "mean_p_keep": 0.266
+ },
+ "net": {
+  "games": 10000,
+  "first_player_wr": 0.581,
+  "p1_wr": 0.494,
+  "mull_rate": 0.718,
+  "mean_p_keep": 0.266
+ },
+ "sample": {
+  "games": 10000,
+  "first_player_wr": 0.585,
+  "p1_wr": 0.495,
+  "mull_rate": 0.732,
+  "mean_p_keep": 0.266
+ }
+}

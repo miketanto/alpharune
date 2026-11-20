@@ -1,0 +1,4 @@
+{"_doc": "AlphaStar-style main agent: 35% self-play, 50% PFSP (1-p)^2 vs all frozen members, 15% PFSP vs forgotten main snapshots and main-exploiter snapshots (self-play if none). Snapshot every 10 updates.",
+ "role_rules": {"role": "main", "snapshot_every": 10},
+ "opponents": {"kind": "role", "role": "main", "p_sp": 0.35, "p_pfsp": 0.5, "forgotten_p": 0.3},
+ "n_slots": 4, "resample": "game", "registry": "league/registry.json", "seed_members": []}

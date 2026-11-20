@@ -1,0 +1,4 @@
+{"_doc": "Main agent with OSFP (arXiv 2303.05197 App. VII-4 Alg. 1, Table IV; arXiv 2303.04096 Eq. 6/16): self-play 0.6, else history with the newest snapshot weighted 1+optimism=2; the learner joins the history at the end of a learning period if its period score G/C > xi vs every historical model, or after max_periods periods. period_samples = 10 updates x 16384 decisions. snapshot_every is ignored (OSFP decides).",
+ "role_rules": {"role": "main", "snapshot_every": null},
+ "opponents": {"kind": "osfp", "p_self": 0.6, "optimism": 1.0, "xi": 0.55, "max_periods": 6, "period_samples": 163840, "f": null},
+ "n_slots": 4, "resample": "game", "registry": "league/registry.json", "seed_members": []}

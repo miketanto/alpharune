@@ -1,0 +1,18 @@
+{
+ "ckpt": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/g5ft_id/ckpt_00100.pt",
+ "mode": "greedy",
+ "repr": "id",
+ "deck": "yi_rebuild",
+ "opp": "ismcts:sims=200",
+ "games": 200,
+ "errors": 0,
+ "wins": 188,
+ "win_rate": 0.94,
+ "wilson95": [
+  0.898,
+  0.965
+ ],
+ "mean_turns": 11.7,
+ "procs": 8,
+ "secs": 174.0
+}

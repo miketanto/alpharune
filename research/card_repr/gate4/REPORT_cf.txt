@@ -1,0 +1,208 @@
+Gate 4 follow-up: counterfactual-pair (CF) supervision mixed into self-play PPO. Rengar mirror, 2026-11-19
+=========================================================================================================
+
+ANSWER
+------
+1. Does pair supervision make the nets track mechanics? PARTLY. It fixes the AVERAGE effect of every trained
+   mechanic, but not the position-by-position effect within a cell.
+   - Pooled over the 855 non-null gate-4 test edits, r(model dv, playout dwin):
+     - B2 +0.15 -> +0.46 [+0.40, +0.53];
+     - id +0.14 -> +0.50 [+0.44, +0.57].
+     Sign agreement on the clear positions: B2 0.56 -> 0.80, id 0.65 -> 0.86.
+     The responses are now the right size: slope of dv on dwin 0.04 -> 0.26 (B2), 0.05 -> 0.32 (id).
+   - Almost all of that is BETWEEN cells: the correlation of cell means is +0.15 -> +0.91 (B2), +0.22 -> +0.94 (id).
+   - Within cells (each cell's mean removed from both sides) the tracking is still weak:
+     B2 +0.05 -> +0.10 [+0.00, +0.21], id -0.02 -> +0.12 [+0.02, +0.22].
+     Only one cell PASSes for both nets: own hidden card (B2 r +0.31, sign 0.93; id r +0.48, sign 0.93).
+     WEAK: opponent hidden card (both nets), Darius on board and location (B2), Shield on defender (id).
+   - The gate-4 failures that were about size and sign are fixed, for both nets:
+     - Might +-2: dv was about 0.01 against truth 0.12-0.16. Now B2 +0.076 / -0.078 / -0.087 and
+       id +0.085 / -0.096 / -0.090, sign 0.94-1.00. Still about half of the truth, and r within cell is about 0.
+     - Effective Assault on an attacker: the wrong sign is gone (truth +0.062).
+       B2 -0.081 -> +0.085 (sign 0.00 -> 0.83); id -0.087 -> +0.075 (0.00 -> 1.00).
+       The context rule is now partly visible: on a defender (truth +0.003) B2 -0.011, id -0.012.
+     - Kinkou condition crossing (a Might edit on another unit): B2 +0.115 / -0.062, id +0.095 / -0.081 against
+       truth +0.127 / -0.109, sign 0.89-0.97.
+   - No gate-4 cell is passed by the strict rule (r CI above 0 AND sign >= 0.7) except "hidden: own".
+     The PASS rule needs within-cell tracking, and 48-playout targets on ~440 training positions did not buy that.
+
+2. Does B2 generalise to the held-out mechanic family (Shield) better than id? NO. Neither generalises, and B2 does
+   worse, not better.
+   - Gate-4 Shield on an enemy defender (truth -0.086 +- 0.049, 14 clear):
+     - B2 -0.007 (sign 0.86) -> +0.021 (sign 0.36): the WRONG sign. The no-CF control drifts too (+0.000,
+       sign 0.57), so part of the drift is the extra training; with CF it goes further, in the direction of the
+       positive Assault response it was trained on (a guess: both are "this turn" keyword-value fields);
+     - id -0.044 (1.00) -> -0.030 (0.93, WEAK, r +0.23): id keeps the context-blind "a Shield anywhere = bad"
+       reading it had before.
+   - Shield on an own attacker (truth +0.009, TOO-FEW): B2 -0.003, id -0.062.
+   - Null "Shield on own exhausted base unit" (truth +0.003): B2 +0.001 -> -0.015 (now NULL-FAIL); id -0.046 -> -0.053.
+   - A second, broader held-out test (Shield 1-3 given to ARBITRARY units, 143 positions, 333 edits, 22 clear):
+     the truth is about 0 (mean -0.010). r = -0.03 / -0.04 (B2 before / after), -0.10 / -0.10 (id). Nothing to track,
+     and nothing tracked.
+   - So the structured card vector gives B2 no transfer here. That is expected in hindsight: the Shield / Assault
+     edits change TOKEN fields (effective keyword values), which both nets read through the same token encoder.
+     The B2 vs id difference is only in the card embedding, which this edit does not touch. A held-out family
+     that tests B2's advantage has to change WHICH CARD is there (see "What is left").
+
+3. Strength did not drop (greedy vs ISMCTS-100, 200 games, verify_eval.py --procs 6):
+   - B2: 0.905 [0.856, 0.938] (gate 4) -> 0.950 [0.910, 0.973] (CF);
+   - id: 0.955 [0.917, 0.976] (gate 4) -> 0.950 [0.910, 0.973] (CF);
+   - control (B2, the same 80 extra PPO updates with CF weight 0): 0.950 [0.910, 0.973].
+   So the rise from 0.905 is the extra training, not the CF loss; the CF loss cost no strength. The CIs overlap;
+   "no drop" is what this shows.
+
+4. The change is caused by the CF loss, not by the 80 extra updates: the control (same updates, CF weight 0) is
+   like gate 4: pooled r +0.19 [+0.09, +0.28], sign 0.64, slope 0.06, Assault-on-attacker still -0.084 (sign 0.00),
+   Might +-2 still |dv| <= 0.015, r of cell means +0.25.
+
+MAIN TABLE: GATE 4 BEFORE / AFTER (the same 431 held-out test positions, 975 edits, B2-policy ground truth N=384)
+------------------------------------------------------------------------------------------------------------
+Per net: r = Pearson r(dv, truth) across positions; sign = sign agreement on clear positions; dv = mean model
+dvalue in win units; verdict as gate 4 (analyze.py). B2 / id = gate-4 checkpoints (update 150); B2_cf / id_cf =
+after CF training (update 230). Full table with CIs, rho, |dv| and TV: cf_eval/tables_cf.txt; JSON:
+cf_eval/results_cf.json.
+
+cell                                n clr  truth          | B2: r  sign  dv     verdict | B2_cf: r sign dv     verdict | id: r  sign  dv     verdict | id_cf: r sign dv     verdict
+assault+:attacker                  40  12  +0.062+-0.027 | +0.10 0.00 -0.081 FAIL      | -0.10 0.83 +0.085 FAIL      | -0.04 0.00 -0.087 FAIL      | +0.12 1.00 +0.075 FAIL
+assault+:defender                  40   4  +0.003+-0.012 | -0.08 0.75 +0.008 FAIL      | -0.06 0.25 -0.011 FAIL      | +0.10 0.25 -0.025 FAIL      | -0.20 0.50 -0.012 FAIL
+shield+:defender (HELD OUT)        40  14  -0.086+-0.049 | +0.17 0.86 -0.007 FAIL      | +0.19 0.36 +0.021 FAIL      | -0.02 1.00 -0.044 FAIL      | +0.23 0.93 -0.030 WEAK
+shield+:attacker (HELD OUT)        40   3  +0.009+-0.011 | +0.04 0.00 +0.004 TOO-FEW   | +0.09 0.33 -0.003 TOO-FEW   | +0.05 0.33 -0.065 TOO-FEW   | +0.01 0.33 -0.062 TOO-FEW
+inferna_assault-:can_attack         3   2  +0.120+-0.175 | -0.99 0.00 -0.024 TOO-FEW   | -0.54 1.00 +0.075 TOO-FEW   | -0.83 0.00 -0.034 TOO-FEW   | +0.99 1.00 +0.110 TOO-FEW
+inferna_assault-:cannot_attack     40   0  +0.001+-0.008 | +0.09  -   -0.015 TOO-FEW   | +0.26  -   -0.006 TOO-FEW   | +0.07  -   -0.016 TOO-FEW   | +0.04  -   +0.003 TOO-FEW
+hidden-:opp                        56  34  -0.137+-0.054 | +0.02 0.82 -0.076 FAIL      | +0.23 0.73 -0.066 WEAK      | -0.10 0.79 -0.085 FAIL      | +0.27 0.79 -0.125 WEAK
+hidden-:own                        27  15  +0.073+-0.030 | -0.21 0.40 +0.006 FAIL      | +0.31 0.93 +0.043 PASS      | +0.01 0.93 +0.028 FAIL      | +0.48 0.93 +0.053 PASS
+legion:noxus_in_hand               40   2  +0.005+-0.009 | -0.11 0.50 +0.021 TOO-FEW   | -0.17 0.50 +0.012 TOO-FEW   | -0.06 0.50 -0.002 TOO-FEW   | -0.15 1.00 +0.006 TOO-FEW
+darius_second_card:board           50   5  +0.025+-0.020 | +0.37 0.40 +0.004 FAIL      | +0.42 1.00 +0.024 WEAK      | -0.01 1.00 +0.007 FAIL      | +0.11 1.00 +0.026 FAIL
+darius_second_card:hand            99  12  +0.009+-0.008 | -0.04 0.75 +0.004 FAIL      | -0.01 0.58 +0.004 FAIL      | +0.00 0.50 -0.002 FAIL      | -0.07 0.50 +0.010 FAIL
+starspring_unused:relevant        102  20  +0.021+-0.017 | -0.01 0.30 -0.012 FAIL      | -0.14 0.40 -0.004 FAIL      | +0.06 0.35 -0.025 FAIL      | -0.08 0.55 +0.004 FAIL
+starspring_unused:irrelevant       40   3  -0.001+-0.011 | +0.05 1.00 -0.012 TOO-FEW   | +0.15 0.67 -0.002 TOO-FEW   | +0.01 1.00 -0.025 TOO-FEW   | -0.06 1.00 -0.010 TOO-FEW
+might+2:own_key                    40  35  +0.159+-0.034 | +0.19 0.51 +0.001 FAIL      | -0.13 0.97 +0.076 FAIL      | +0.14 0.63 +0.006 FAIL      | -0.09 0.94 +0.085 FAIL
+might-2:own_key                    40  33  -0.115+-0.022 | +0.10 0.73 -0.011 FAIL      | +0.06 0.94 -0.078 FAIL      | +0.06 0.76 -0.008 FAIL      | +0.08 0.97 -0.096 FAIL
+might+2:opp_key                    40  35  -0.140+-0.030 | -0.18 0.69 -0.008 FAIL      | +0.04 0.97 -0.087 FAIL      | +0.04 0.86 -0.007 FAIL      | -0.07 1.00 -0.090 FAIL
+kinkou_condition:false_to_true     49  35  +0.127+-0.030 | +0.24 0.26 -0.003 FAIL      | +0.00 0.94 +0.115 FAIL      | -0.21 0.43 +0.004 FAIL      | -0.22 0.97 +0.095 FAIL
+kinkou_condition:true_to_false     29  26  -0.109+-0.025 | +0.24 0.58 -0.007 WEAK      | +0.07 0.89 -0.062 FAIL      | +0.18 0.77 -0.013 FAIL      | +0.10 0.96 -0.081 FAIL
+location:bf_to_base                40  26  -0.015+-0.046 | +0.05 0.69 +0.015 FAIL      | +0.23 0.65 -0.022 WEAK      | -0.05 0.54 +0.038 FAIL      | +0.16 0.58 -0.004 FAIL
+null:assault_opp_unit_in_base      40   2  +0.001+-0.007 | |dv| .012 mean +0.007 FAIL  | |dv| .019 mean -0.011 FAIL  | |dv| .028 mean -0.028 FAIL  | |dv| .048 mean -0.048 FAIL
+null:played_no_reader              40   2  +0.002+-0.009 | |dv| .007 mean -0.000 OK    | |dv| .011 mean +0.007 OK    | |dv| .008 mean -0.003 OK    | |dv| .009 mean -0.003 OK
+null:shield_own_exh_base_unit      40   3  +0.003+-0.010 | |dv| .006 mean +0.001 OK    | |dv| .019 mean -0.015 FAIL  | |dv| .046 mean -0.046 FAIL  | |dv| .053 mean -0.053 FAIL
+ALL non-null (pooled)             855 316  -0.003+-0.008 | +0.15 0.56 -0.010           | +0.46 0.80 +0.003           | +0.14 0.65 -0.019           | +0.50 0.86 -0.007
+  pooled r CI: B2 [+0.07,+0.24] -> B2_cf [+0.40,+0.53]; id [+0.06,+0.22] -> id_cf [+0.44,+0.57]
+control B2_ctl (80 updates, CF weight 0), pooled: r +0.19 [+0.09,+0.28], sign 0.64, mean dv -0.010; per cell:
+  assault+:attacker -0.084 (sign 0.00); might+2 own/opp +0.009/-0.012; might-2 -0.015; hidden own +0.030 (0.93)
+  / opp -0.084 (0.82); kinkou +0.002/-0.015; shield+:defender +0.000 (0.57); no PASS (cf_eval/tables_ctl.txt).
+
+Decomposition of the pooled r (non-null edits; cf_eval/ numbers computed from results_cf.json):
+net     within-cell r [95% CI]     r of the 19 cell means   slope dv/dwin
+B2      +0.05 [-0.04, +0.13]       +0.15                    0.04
+B2_cf   +0.10 [+0.00, +0.21]       +0.91                    0.26
+id      -0.02 [-0.11, +0.06]       +0.22                    0.05
+id_cf   +0.12 [+0.02, +0.22]       +0.94                    0.32
+B2_ctl  +0.04 [-0.08, +0.16]       +0.25                    0.06
+
+Level check (value head at the original root vs the playout win rate, 431 positions): r 0.672 -> 0.609 (B2),
+0.672 -> 0.634 (id), control 0.675; mean |value - win| 0.152 -> 0.164, 0.149 -> 0.154. The CF value regression made the level
+slightly WORSE on the test positions (see caveats: it overfits the training positions' levels).
+
+Nulls: the CF nets react more to the two keyword nulls. id_cf gives -0.048 for Assault on an enemy unit in base
+(it learnt "enemy Assault = bad" without the "can it attack this turn" context). The trained families include
+Assault given to enemy units at a battlefield, which with "this turn" Assault is nearly null too; the net did not
+learn to separate those contexts from 48-playout targets.
+
+CF VALIDATION (47 training-distribution positions never trained on, 200 edits; cf_eval/cf_val.txt)
+--------------------------------------------------------------------------------------------------
+family         n  clr  dwin   | B2: r  sign  dv    | B2_cf: r sign  dv   | id: r  sign  dv    | id_cf: r sign  dv
+might         94   26 -0.015  | +0.29 0.73 -0.005  | +0.67 1.00 +0.000   | +0.19 0.73 +0.000  | +0.64 0.96 -0.007
+to_base       33   10 -0.012  | -0.01 0.40 -0.002  | +0.15 0.50 -0.002   | +0.03 0.40 +0.003  | +0.11 0.40 +0.007
+assault_give  43    2 -0.002  | +0.02 0.00 +0.000  | +0.03 0.50 +0.013   | -0.09 0.00 -0.024  | +0.33 0.50 +0.009
+ALL          200   39 -0.013  | +0.11 0.59 -0.002  | +0.46 0.82 +0.003   | +0.10 0.62 -0.004  | +0.48 0.79 -0.000
+(played / ss / unhide / to_bf: 2-13 edits, none clear.) In training-distribution positions the Might family IS
+tracked within family (r 0.67 / 0.64). On the gate-4 test cells, which hold one specific Might edit (the key unit,
++-2), the within-cell r stays about 0: the variation left inside such a cell is smaller than what the net resolves.
+During training the validation pair r rose 0.11 -> 0.46 (B2) and 0.10 -> 0.48 (id) (runs/cf_*/cf_metrics.jsonl);
+the validation VALUE mse did not improve (0.139 -> 0.18 / 0.17).
+
+METHOD
+------
+Data (gate4/cf_gen.py, cf_gen.sh; gate4/cf_data/w{0,1,2}_*.npz)
+- Positions: the gate-4 B2 checkpoint's own SAMPLED self-play, fresh game seeds 5550001.., 5560001.., 5570001..
+  (gate-4 test positions use 7770001.. and 8880001..; asserted disjoint). Top-level main-phase decisions from turn 2,
+  p = 0.06 per decision, at most 3 per game.
+- Screen: 24 sampled playouts of the original; outside [0.05, 0.95] only the original is kept (a level sample).
+- Edits: up to 7 per position, families drawn uniformly, then a random edit in the family, on ARBITRARY units /
+  cards (not the gate-4 key units): Assault 1-3 given to any unit except an enemy unit in base (= a gate-4 null
+  cell), Assault removed, Might +-1..3 on any unit, to_base, to_bf, unhide, cards-played toggled (only with a
+  Legion / Darius reader present; without one it is a null cell), Star Spring stamp toggled.
+- HELD OUT, never generated for training: (a) every gate-4 position (seeds disjoint); (b) the whole Shield family
+  (chosen before training: no "kw_* ... S" edit at all); (c) all null-edit cells.
+- Ground truth: 48 playouts per variant, SAMPLED policy on both seats, common seeds for every variant of a position
+  (paired differences; per-pair se about 0.09).
+- Result: 483 positions (315 with edits, 168 screened), 2,522 variants, 2,039 edit pairs. Families: Might 799,
+  Assault given 474, to_base 357, Star Spring 168, played 137, to_bf 41, Assault removed 34, unhide 29.
+  Split by position-id hash: 436 train, 47 validation.
+- 3 CPU workers (cores 0-11, 4 threads each), 45 minutes, about 0.33M playouts.
+Loss (selfplay/learner/cf_train.py; selfplay.py --cf-data ...)
+- value term: (v - (2 win - 1))^2 over every variant;
+- pair term: ((v_edit - v_orig) - 2 (win_edit - win_orig))^2 over every edit (value units);
+- added to EVERY PPO minibatch: 0.5 * value + 2.0 * pair, on 8 CF positions (all their variants, about 40 obs)
+  per minibatch. The PPO loss and its settings are unchanged (vf 0.5, ent 0.01, clip 0.2, grad clip 0.5).
+Training (gate4/cf_train.sh, sp_wrap.py: CUDA memory fraction 0.4, expandable_segments)
+- Both nets CONTINUE from their gate-4 checkpoints (update 150; optimizer state and opponent pool kept) for 80
+  more updates to update 230: runs/cf_B2, runs/cf_id. Same budget, one at a time (B2 20:03-20:19, id 20:19-20:31).
+  Each net saw each training position about 30 times.
+- Control: runs/ctl_B2, the same 80 updates from the same B2 checkpoint with CF weights 0 (gate4/cf_train_ctl.sh).
+- Throughput: games/s over the 80 updates: B2 mean 28.5, id 35.3, control 42.9 (gate 4: B2 45-50, id 15-23).
+  Why B2 was below 40: from 19:59 the league agent ran 5 CPU processes (demo.py and verify_eval.py ISMCTS
+  workers, pinned to cores 12-15, CPU only) and, from 20:04 to 20:18, my own Shield test-set generator ran on
+  cores 8-11. With all 16 threads busy the single-threaded actor loop (98% of one core) runs slower; updates with
+  the generator running dropped to 24-29 games/s, those without it ran 34-47. The learning step itself is
+  update-count based, so this changes wall time, not the result.
+Gate-4 re-run (gate4/cf_gate4.sh, add_model.py, analyze.py; cf_eval/)
+- The same 431 positions, 975 edits and N=384 B2-policy ground truth as gate 4; each new net's root value and
+  policy added by rebuilding every variant (legal lists asserted equal). Analysis unchanged (analyze.py).
+Strength: gate4/cf_eval.sh (verify_eval.py, greedy, ismcts:sims=100, 200 games, --procs 6, cores 8-11).
+
+CAVEATS
+-------
+1. The CF targets come from the B2 policy's playouts and are used for BOTH nets (same targets = a fair B2 vs id
+   comparison, and the same ground truth as the gate-4 test). For id they are not its own policy's returns.
+2. "Current policy" means the gate-4 checkpoint: the data was generated once, before training, not refreshed as
+   the policy moved during the 80 updates.
+3. Small data: 436 training positions, about 30 passes each. The validation value mse got worse and the gate-4 level
+   r dropped (0.67 -> 0.61 / 0.63): the value term overfits position levels. The pair term generalised (val pair r
+   0.46 / 0.48) but mostly as family/cell averages.
+4. Within-cell tracking is the gate-4 PASS criterion and is still weak (r about 0.1). Per-position target noise
+   (se 0.09 per pair at N=48) is about as large as many true effects; the clear edits in training are mostly Might
+   and location.
+5. The held-out family is a token-field mechanic, so it cannot show B2's card-vector advantage (answer 2). The broad
+   Shield test set has almost no ground-truth signal (Shield given at a random main-phase decision rarely matters
+   under this policy).
+6. One seed per net; the control exists for B2 only.
+7. Training-family coverage is uneven: unhide 29, to_bf 41, Assault removed 34 edits; hidden-card cells still
+   improved (PASS for "own"), partly through the shared "card in hand vs on the board" features.
+
+WHAT IS LEFT
+------------
+- A held-out family that changes the CARD, so that B2's shared fields matter: e.g. swap a unit for another card
+  with the same keyword/Might (or a card in hand for one with the same cost and different text), hold out a set of
+  cards, and compare B2 vs id zero-shot.
+- More and less noisy pair data aimed at within-cell tracking: positions selected for the mechanic being decisive
+  (gate-4 "what is left"), N 96-128 on fewer, harder edits, and refreshing the data from the current policy
+  during training (online CF), so the value targets are the policy's own.
+- Keep the value term small or drop it (it hurt the level); weight the pair term by 1/se^2.
+- Contexts for the nulls: train Assault on enemy units at a battlefield / in base explicitly as near-zero pairs
+  (currently a test-only null, by the rules of this run).
+- id control run, and 3 seeds.
+
+FILES (research/card_repr/)
+---------------------------
+- gate4/REPORT_cf.txt: this report.
+- gate4/cf_gen.py, cf_gen.sh: CF data generator; gate4/cf_data/: the training data (+ worker logs).
+- gate4/cf_shield_test/: the held-out Shield test set (cf_gen.py --shield-test, seeds 5590001..).
+- selfplay/learner/cf_train.py: the CF loss and data loader; selfplay/learner/selfplay.py: --cf-data, --cf-coef,
+  --cf-pair-coef, --cf-pos, --cf-val-frac (off unless --cf-data is given; backup of the previous file:
+  gate4/selfplay.pre_cf.py.bak).
+- gate4/cf_train.sh, cf_train_ctl.sh: training; selfplay/runs/cf_B2, cf_id, ctl_B2 (+ .out logs, cf_metrics.jsonl).
+- gate4/cf_gate4.sh: gate-4 re-run; gate4/cf_eval/: results_*_{b2cf,all,ctl}.jsonl (model responses added),
+  tables_cf.txt, results_cf.json, results_*_ctl.jsonl, tables_ctl.txt, results_ctl.json, cf_val.txt/.json, shield_set.txt/.json.
+- gate4/cf_val_eval.py: per-family tracking on the CF validation split or the Shield set.
+- gate4/cf_eval.sh, cf_eval_run.sh: strength; gate4/cf_eval_{B2,id}_ismcts100.json/.log, ctl_B2_eval_ismcts100.*.

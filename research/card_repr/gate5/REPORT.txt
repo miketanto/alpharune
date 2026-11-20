@@ -1,0 +1,318 @@
+Gate 5 (TESTPLAN.md): does the B2 card representation help a network with cards it never trained on? 2026-11-19
+=================================================================================================================
+
+ANSWER
+------
+YES, MODESTLY, AND ONLY FOR CARDS THE NET HAS NOT LEARNT YET. One training seed per representation, so how sure we
+are depends on the test:
+
+1. Zero-shot strength in the Yi mirror (Yi's 18 deck cards never seen in training) is SIGNIFICANT.
+   Greedy vs ISMCTS-200, 400 games per net (2 batches of 200, different seeds):
+   - B2 0.695 [0.648, 0.738];
+   - id 0.605 [0.556, 0.652];
+   - B2 - id = +0.090 [+0.024, +0.156], p = 0.007.
+   The first batch alone (0.70 vs 0.64) was not significant; the second (0.69 vs 0.57) made the difference clear.
+   Same training, data and update count, and the two nets were equal in the Rengar mirror they trained on
+   (gate 4 CF: both 0.950 vs ISMCTS-100). So the gap is about the new cards. With one seed per representation it
+   can't be separated from seed luck (section 4).
+
+2. Card-swap counterfactuals: does each net's value move with the playout truth when WHICH CARD an object is
+   changes? B2 tracks the unseen cards better than id, but the difference has a CI touching 0. On seen cards
+   the two nets are equal.
+   - 61 positions, 357 swaps, truth CI +-0.05 per swap.
+   - r(dv, truth), seen cards: B2 +0.70, id +0.65. B2 - id = +0.05 [-0.04, +0.16].
+   - r(dv, truth), UNSEEN (Yi-only) cards: B2 +0.45 [+0.30, +0.61], id +0.25 [+0.02, +0.43].
+     B2 - id = +0.20 [-0.05, +0.46] (P(diff <= 0) = 0.07).
+     Mean |dv - truth|: B2 lower by 0.027 [0.007, 0.046], which IS significant.
+   - Synthetic variants (never-trained cards derived from Pit Rookie, Punch First, Sabotage, Lonely Poro,
+     Discipline, Defy): B2 +0.50, id +0.41.
+   - Within-target test: the three swaps of one object share "the old card is gone". Demeaned per target, what is
+     left is the part due to which new card arrives:
+     - seen: B2 +0.57, id +0.56 (diff +0.00);
+     - unseen: B2 +0.41, id +0.26 (diff +0.15 [-0.10, +0.39]);
+     - synthetic: B2 +0.47, id +0.25 (diff +0.22 [+0.02, +0.38], significant).
+     Diff-in-diff, i.e. how much more B2's edge is on new cards than on seen cards: unseen +0.15 [-0.09, +0.37],
+     synthetic +0.21 [-0.02, +0.40].
+   - id has a systematic bias on unseen cards: mean dv +0.027 against a truth of -0.022. Its untrained embeddings
+     make a swap to an unknown card look good. B2's mean dv is -0.002.
+
+3. Sample efficiency (fine-tuning both nets on the Yi mirror, same budgets): B2 learns the new deck faster at
+   first (significant at 20 updates), and id catches up by 100.
+   - Win rate vs ISMCTS-200, 400 games per cell (B2 / id, B2 - id):
+     - 0 updates: 0.695 / 0.605, +0.090 [+0.024, +0.156], p = 0.007;
+     - 20: 0.843 / 0.735, +0.108 [+0.051, +0.164], p < 0.001;
+     - 50: 0.897 / 0.855, +0.042 [-0.003, +0.088], p = 0.07;
+     - 100: 0.927 / 0.940, -0.012 [-0.047, +0.022], p = 0.48.
+     B2 at 20 updates (0.843) is about where id is at 50 (0.855). In this run B2 needed roughly 2.5x fewer
+     Yi-mirror updates to reach that level; this is the gate-5 sample-efficiency result, one seed.
+   - Unseen-swap value tracking (raw r, B2 / id):
+     - 0 updates: 0.45 / 0.25;
+     - 20: 0.64 / 0.63;
+     - 50: 0.61 / 0.66;
+     - 100: 0.60 / 0.66.
+     20 Yi updates (about 5,600 games) close the value-tracking gap. The win-rate gap at 20 updates therefore comes
+     from the policy, not the value head.
+   - So B2's advantage is a head start that lasts for the first few tens of updates (by 100 updates the two nets
+     are equal). It is not a higher final level.
+
+4. Policy-choice proxy (agreement with ISMCTS-400) shows NO B2 advantage:
+   - unseen-card decisions: B2 0.317, id 0.333 (diff -0.016 [-0.047, +0.015]);
+   - seen-only control: 0.448 vs 0.465.
+   ISMCTS-400 agrees with itself only 0.63 / 0.68 of the time, so this proxy is weak (see caveats). Whatever B2
+   gains in play shows in value and in results, not in matching this search.
+
+Bottom line: B2's structured vectors transfer something real to unseen cards. Evidence:
+- a significant zero-shot win-rate gain (+9 points, one seed), and a faster start when fine-tuned on the new deck
+  (+11 points at 20 updates, p < 0.001; equal by 100);
+- a significantly smaller value error on unseen swaps;
+- a better ranking of which new card is better, significant for the synthetic variants and borderline for the
+  real Yi cards;
+- none of this edge on cards both nets have seen.
+The head start is worth roughly 30 Yi-mirror updates (B2 at 20 matches id at 50; about 8,000 games). After that,
+id is as good. One seed per representation.
+
+MAIN TABLE (test 1, 61 positions, 357 swaps; truth = mean of the B2-policy and id-policy playout dwin, N = 256 + 256
+per variant, common seeds; tables.txt / results.json)
+---------------------------------------------------------------------------------------------------------------
+Columns:
+- n = swaps;
+- clr = swaps with |truth| > 2 se and > 0.05;
+- truth = mean dwin +- 95% CI;
+- r [CI] = Pearson r(dv, truth) with a cluster bootstrap over positions;
+- sign = sign agreement on clear swaps;
+- dv = mean model dvalue (win units).
+cell                      n  pos clr  truth          | B2: r [CI]           sign  dv     | id: r [CI]           sign  dv     | B2 - id r [CI]
+seen (Rengar deck)      119  61  67  +0.009+-0.032  | +0.70 [+0.57,+0.80] 0.84 -0.005 | +0.65 [+0.49,+0.78] 0.78 -0.005 | +0.05 [-0.04,+0.16]
+UNSEEN (Yi-only)        119  61  80  -0.022+-0.027  | +0.45 [+0.30,+0.61] 0.81 -0.002 | +0.25 [+0.02,+0.43] 0.57 +0.027 | +0.20 [-0.05,+0.46]
+synth (variants)        119  61  61  -0.023+-0.026  | +0.50 [+0.35,+0.64] 0.77 -0.001 | +0.41 [+0.23,+0.57] 0.70 +0.019 | +0.09 [-0.04,+0.25]
+  seen:board             59      38  +0.032+-0.056  | +0.76 0.89                      | +0.73 0.87
+  seen:hand              60      29  -0.014+-0.029  | +0.59 0.76                      | +0.39 0.66
+  unseen:board           59      45  -0.014+-0.048  | +0.52 0.82                      | +0.42 0.71
+  unseen:hand            60      35  -0.029+-0.025  | +0.25 0.80                      | -0.20 0.40
+  synth:board            59      29  +0.005+-0.041  | +0.57 0.86                      | +0.49 0.83
+  synth:hand             60      32  -0.049+-0.032  | +0.36 0.69                      | +0.24 0.59
+  unseen@Rengar mirror   57      35  -0.031+-0.036  | +0.35 0.77                      | +0.31 0.51
+  unseen@Yi mirror       62      45  -0.013+-0.039  | +0.55 0.84                      | +0.24 0.62
+ALL                     357  61 208  -0.012+-0.016  | +0.56 [+0.46,+0.66] 0.81 -0.003 | +0.45 [+0.33,+0.55] 0.68 +0.014 | +0.12 [+0.01,+0.23]
+Mean |dv - truth|, B2 - id:
+- seen -0.007 [-0.019, +0.005];
+- UNSEEN -0.027 [-0.046, -0.007];
+- synth -0.015 [-0.029, -0.001];
+- all -0.016 [-0.025, -0.007].
+WITHIN-TARGET (each target's 3 swaps demeaned; the new card's identity only), r:
+- seen: B2 +0.57 [+0.39, +0.71], id +0.56 [+0.38, +0.69], diff +0.00 [-0.13, +0.15];
+- unseen: B2 +0.41 [+0.21, +0.60], id +0.26 [+0.09, +0.42], diff +0.15 [-0.10, +0.39];
+- synth: B2 +0.47 [+0.27, +0.63], id +0.25 [+0.13, +0.37], diff +0.22 [+0.02, +0.38];
+- unseen hand cards only: B2 +0.12, id -0.03 (16 clear; little signal).
+Own-policy truth (each net judged by its own policy's playouts):
+- unseen: B2 +0.40, id +0.18;
+- seen: +0.64 / +0.64.
+The conclusion does not depend on which policy defines the truth.
+
+Test 3 table (greedy vs ISMCTS-200, Yi mirror; test3_winrates.json; per budget 2 x 200 games, seeds 990001 / 1990001)
+budget B2 wins/games rate [CI]    id wins/games rate [CI]    B2 - id [95% CI]        p      batches (seed 990001, 1990001)
+0      278/400 0.695 [0.648,0.738] 242/400 0.605 [0.556,0.652] +0.090 [+0.024,+0.156] 0.007  B2 0.700 0.690 | id 0.640 0.570
+20     337/400 0.843 [0.804,0.875] 294/400 0.735 [0.690,0.776] +0.108 [+0.051,+0.164] <0.001 B2 0.830 0.855 | id 0.755 0.715
+50     359/400 0.897 [0.864,0.924] 342/400 0.855 [0.817,0.886] +0.042 [-0.003,+0.088] 0.067  B2 0.900 0.895 | id 0.865 0.845
+100    371/400 0.927 [0.898,0.949] 376/400 0.940 [0.912,0.959] -0.012 [-0.047,+0.022] 0.477  B2 0.935 0.920 | id 0.940 0.940
+(Budget 0 = the zero-shot cf nets. ft50_B2_s2.log was overwritten by a duplicate run that was stopped; the JSON is
+from the completed run.)
+
+Unseen-swap value tracking per budget (the same 357 swaps, truth from the zero-shot policies; tables_ft.txt):
+net        seen raw r  within  | UNSEEN raw r [CI]     within r     | synth raw r  within
+B2 (0)        +0.70    +0.57   | +0.45 [+0.30,+0.61]   +0.41        | +0.50   +0.47
+id (0)        +0.65    +0.56   | +0.25 [+0.02,+0.43]   +0.26        | +0.41   +0.25
+B2 ft20       +0.74    +0.61   | +0.64 [+0.47,+0.81]   +0.56        | +0.67   +0.47
+id ft20       +0.62    +0.51   | +0.63 [+0.42,+0.78]   +0.46        | +0.55   +0.30
+B2 ft50       +0.66    +0.52   | +0.61 [+0.47,+0.76]   +0.60        | +0.62   +0.42
+id ft50       +0.59    +0.52   | +0.66 [+0.40,+0.81]   +0.54        | +0.54   +0.38
+B2 ft100      +0.67    +0.55   | +0.60 [+0.46,+0.75]   +0.54        | +0.66   +0.47
+id ft100      +0.64    +0.55   | +0.66 [+0.48,+0.80]   +0.51        | +0.54   +0.32
+Notes:
+- The synthetic variants are never in the Yi deck, so fine-tuning never trains them. On them B2 keeps its edge at
+  every budget (within r 0.42-0.47 vs 0.30-0.38).
+- The unseen Yi cards are in the fine-tuning deck, and there the edge is gone by 20 updates.
+
+Test 2 table (zero-shot choices vs ISMCTS-400, two search seeds; zs_scored*.json; agreement = mean match with the
+two searches, [95% bootstrap CI]; self = the two searches agree with each other; chance = mean 1/#options):
+decisions                       n   chance  self | B2                    id                    B2 - id
+unseen card asks or is a source 500  0.27  0.63 | 0.317 [0.283,0.353]   0.333 [0.298,0.372]   -0.016 [-0.047,+0.015]
+  unseen card is the asker       45  0.35  0.40 | 0.322                 0.333                 -0.011
+  unseen, main-phase decision   291  0.19  0.63 | 0.234                 0.259                 -0.026 [-0.072,+0.021]
+seen cards only (control)       500  0.40  0.68 | 0.448 [0.409,0.484]   0.465 [0.428,0.503]   -0.017 [-0.049,+0.018]
+After fine-tuning, on unseen decisions:
+- 20 updates: B2 0.316, id 0.348;
+- 50 updates: B2 0.353, id 0.356;
+- 100 updates: B2 0.353, id 0.338.
+On seen decisions, B2 rises 0.448 -> 0.507 and id stays at 0.465-0.469.
+B2 and id pick the same option on 67% of unseen and 76% of seen decisions.
+
+Policy shift at the root (test 1):
+- Root TV orig -> swap: board swaps 0.03-0.08, hand swaps 0.17-0.24, similar for both nets.
+- P(play the swapped hand card):
+  - unseen: B2 0.102 -> 0.124, id 0.119 -> 0.127;
+  - synth: B2 0.102 -> 0.149, id 0.119 -> 0.120.
+  B2 reacts to the new card's identity in its policy; id hardly does.
+- There is no ground truth for the policy in test 1. Board units are never an option's source at a main-phase
+  root (moves name units as "moved", not as the source), so "P(card)" is 0 for board swaps.
+
+METHOD
+------
+Harness (gate4 extended; nothing under src/ or selfplay/league/ edited)
+- New edit op `swap <obj> <cardkey>` (gate5/rbenv_gate5_ext.cpp, spliced into selfplay/rbenv/rbenv.cpp by
+  gate5/splice.py; backup gate5/rbenv.pre_gate5.cpp.bak).
+  - The object becomes a fresh instance of the card via the engine's own riftbound::becomeCard (what the
+    determinizer uses to rewrite a slot), keeping id, owner, controller, zone and location. On the board,
+    exhausted / stunned / damage are carried over so that only the card changes.
+  - Refused for facedown, token or gear-carrying objects. A board swap must be unit -> unit; a hand card can
+    become any card.
+  - The probe engine's resume then runs Cleanup (auras, Might, deaths), and the variant root is the next
+    main-phase decision of the same player (gate-4 rules).
+  - Result: 0 of 357 swaps refused, and in every post-Cleanup root the object IS the new card.
+- New C API rbenv_advise(handle, env, sims, seed): ISMCTS-<sims>'s answer at an env's pending decision. It is a
+  fresh IsMctsAgent with the live game's engine seed, the same construction as the in-env opponent.
+- rbenv rebuilt with selfplay/rbenv/build.sh. The changes are additive; the old ops and APIs are unchanged.
+Positions (gate5/swap.py collect)
+- The cf_B2 net's own SAMPLED self-play: 120 Rengar-mirror games (seeds 9100001..) and 120 Yi-mirror games
+  (9200001..).
+- Top-level main-phase decisions from turn 2, p = 0.06, at most 2 per game: 187 + 185 candidates, interleaved.
+- Screen: 32 B2-policy playouts; positions with an original win rate outside [0.08, 0.92] are skipped
+  (35 skipped, 61 kept: 29 Rengar, 32 Yi).
+- The synthetic variants are registered in every process (one variant set per process); they do not change the
+  base game.
+Swaps per position: one board target (a random non-facedown, non-token unit, either side) and one hand target
+(a random card in the DECIDER's hand, the only hand the nets see). Each target is swapped once per pool:
+- SEEN: the Rengar main deck (14 units + Sabotage, Punch First, Thrill of the Hunt, Rampage);
+- UNSEEN: Yi-only cards. Units: Lonely Poro, Scuttle Crab, Ruin Runner, Master Yi Tempered, Fiora Peerless.
+  Plus Charm, Defy, Discipline, En Garde, Zhonya's Hourglass, Back Off, Onslaught;
+- SYNTH: never-trained registered variants:
+  - Pit Rookie Might 3 / score 1 / score-if-alone;
+  - Lonely Poro draw 2;
+  - Punch First 4 damage / kill / score 1;
+  - Sabotage-a-unit;
+  - Discipline draw 2;
+  - Defy cost 2.
+The new card is uniform within the pool (a unit pool for board targets, the whole pool for hand targets) and is
+never the old card.
+Ground truth:
+- Every variant played out 256 times by the cf_B2 policy and 256 times by the cf_id policy.
+- Both seats, SAMPLED; both Main Decks reshuffled per seed (gate 4).
+- The same seeds are used for every variant of a position, so effects are paired differences.
+- truth = the mean of the two policies' dwin (a fair reference for both nets). The per-policy truths are reported
+  too.
+- Median 95% half-width per swap: 0.049 (max 0.061).
+- The playout policies are the zero-shot nets themselves. In Yi positions they play Yi cards zero-shot, and the
+  value heads have never seen Yi games.
+Model response:
+- dv = (v(swap) - v(orig)) / 2 at the root, from the decider's perspective;
+- root TV between the two root policies;
+- the probability of options whose source (act[1] / act[2]) is the swapped object.
+Fine-tuned nets' responses were added by rebuilding every variant (swap.py respond; legal lists asserted equal).
+Analysis: gate5/analyze.py (cluster bootstrap over positions, 1000-2000 resamples).
+Test 2 (gate5/zs.py, zs_analyze.py)
+- Yi-mirror games (16 parallel envs, restarted as they end; 23 min) driven by the cf nets (SAMPLED; even envs B2, odd envs id). Decisions with at least 2
+  options are classified:
+  - "unseen": the asking card or some option's source is a Yi-only card (incl. Master Yi legend, Calm Rune);
+  - "seen": every named card is a Rengar-deck card.
+- 500 sampled of each class, each searched twice by ISMCTS-400 (two search seeds). Observations are stored, so
+  every net is scored on identical inputs (greedy argmax).
+Test 3 (gate5/ft.sh, evalq*.sh, sum3.py)
+- Both nets fine-tuned from runs/cf_<R>/latest.pt on the Yi mirror:
+  - selfplay.py --init (fresh optimizer and opponent pool);
+  - --ask-head --ask-opt, 128 envs, seed 5, SAMPLED PPO;
+  - no CF loss, CUDA memory capped at 0.4, expandable_segments.
+- 100 updates each (B2 first, then id: one GPU training at a time). Runs: selfplay/runs/g5ft_B2, g5ft_id.
+- Checkpoints at 20 / 50 / 100 updates were evaluated greedy vs ismcts:sims=200 over 200 games
+  (verify_eval.py --deck yi_rebuild, seed 990001). A second 200-game batch used seed 1990001.
+- Budget 0 = the zero-shot nets: selfplay/yi_eval (seed 990001) + evals/ft0_*_s2 (seed 1990001).
+
+CAVEATS
+-------
+1. ONE training seed per representation. Every B2-vs-id difference here is "this B2 net vs this id net". The
+   zero-shot win-rate gap (+0.09, p = 0.007) is significant over GAMES, not over training runs. Two nets trained
+   identically with different seeds can differ by several points vs ISMCTS (gate 4: 0.905 vs 0.955 at the same
+   budget).
+2. id's unseen embeddings are random-init rows that never got a gradient, so what id does with an unseen card
+   depends on that random draw: its +0.027 bias on unseen swaps is one draw. A fairer id baseline for zero-shot
+   would map every unseen card to one shared trained "unknown card" row (or zero it). This test answers
+   "B2 vs id as built", which is the question asked.
+3. Raw r mixes "the old card left" (shared by the three pools of a target) with "the new card arrived". The
+   within-target and contrast tables isolate the second. That is the card-identity test, and it is where the
+   CIs are widest.
+4. The truth comes from the zero-shot policies:
+   - In Yi positions they misplay Yi cards, so a swap's truth is its value UNDER THESE POLICIES. For example
+     Defy's truth is -0.12: they don't use a counter well.
+   - For the fine-tuned nets (test 3 tracking), the truth is not their own policy's return. The value heads
+     estimate their own policy, so the tracking numbers after fine-tuning are a proxy.
+5. Hand-swap truths are small (unseen:hand mean -0.029, 35 clear). A hand card matters only once played, and many
+   swapped cards are unaffordable in the other deck's runes: Calm cards in a Rengar game, Fury cards in a Yi game.
+   Both nets see "affordable now" in the token, so the comparison is fair, but there is little to track there.
+6. Test 2 is a proxy:
+   - ISMCTS-400 agrees with itself only on 63-68% of these decisions;
+   - it uses a score-difference leaf heuristic and loses to these nets (the nets beat ISMCTS-200 65-95% of the
+     time).
+   Agreement with it is not correctness: B2 fine-tuned to 0.935 vs ISMCTS-200 still agrees with ISMCTS-400 only
+   0.35 on unseen decisions.
+7. Per-card numbers rest on 6-19 swaps each (tables.txt, PER NEW CARD) and are descriptive only.
+8. Only main-phase roots are snapshotted (gate-4 limit). Swaps are judged at the decider's main-phase decision,
+   not at prompts the swapped card would raise.
+9. Resource notes:
+   - Up to 4 CPU playout shards, evals and a GPU fine-tune shared the 16 cores, so wall times vary. This changes
+     no result (playout counts and update counts are fixed).
+   - Each fine-tune ran alone on the GPU (B2, then id), with the memory cap.
+
+4. WHAT WOULD MAKE IT SIGNIFICANT
+-------------------------------
+- Seeds. The decisive missing factor:
+  - Train 3 seeds per representation from scratch on the Rengar mirror, with the same CF recipe as gate 4. That
+    is 150 + 80 updates each, about 25 min per net on this GPU one at a time: 6 nets, about 2.5 h.
+  - Repeat the zero-shot Yi eval for each (400 games, about 15 min with 5 processes).
+  - If the +0.09 gap is real, 3 seeds give a between-seed test. Seed-to-seed spread in gate 4 was about 0.05, so
+    3 vs 3 detects 0.09 with roughly 80% power only if the spread is at most 0.04. Plan on 5 seeds if it is 0.05.
+- Positions for test 1. Now 61 positions; the CI half-width of the unseen B2 - id r difference is about 0.25.
+  - Halving it needs about 4x: roughly 250 positions, about 3.5 h on 12 cores at the current 100 s per position
+    per 4-core shard.
+  - Alternatively, drop the id-policy playouts and use N = 256 from one policy: 2x faster, at the cost of fairness
+    (both per-policy truths gave the same picture here).
+  - Using 2 swaps per pool per target instead of 1 doubles the within-target contrasts for little extra cost per
+    position.
+- Sample efficiency.
+  - The 20-update gap (+0.108, p < 0.001) is significant over games, but it comes from one fine-tune per net,
+    each starting from one Rengar-trained net. Two further checks are needed:
+    - 3 fine-tune seeds per starting net (about 15 min each on the GPU) test the fine-tune noise;
+    - the Rengar-training seeds above test the starting nets.
+  - Also add budgets 5 and 10 (the value-tracking gap closes before 20) and 30 (where the win-rate gap closes).
+- A fairer id control (caveat 2): map unseen keys to a shared trained "other" row. This tells whether B2's edge is
+  "structured knowledge" or just "not random garbage".
+
+NEXT STEPS
+----------
+- Run the seed replication above (the only thing that turns "this B2 net" into "B2").
+- Add the id-with-shared-unknown-row control.
+- Extend swaps to non-main-phase roots (the gate-4 D3 limit) so that unseen reactions (Defy, Charm, En Garde) are
+  judged when they matter.
+- Increase test-1 positions, selecting positions where the swapped card is decisive (e.g. hand swaps only when the
+  new card is affordable this turn).
+
+FILES (research/card_repr/gate5/)
+---------------------------------
+- REPORT.txt: this report.
+- tables.txt, tables_ft.txt, results.json: test 1 (all tables, per card, policy shift; the fine-tuned nets).
+- test3_winrates.json: test 3 win rates.
+- zs_scored.json, zs_scored_ft.json, zs_scored_summary.json: test 2.
+- Raw data:
+  - res_s{0..3}.jsonl: playouts + cf responses;
+  - resp_s{0..3}.jsonl: + fine-tuned and pobj responses;
+  - pos_{rengar,yi,all,extra,extra2}.json: positions and swap plans;
+  - zs_obs.npz: test-2 observations + ISMCTS picks;
+  - evals/: test-3 eval JSON + logs.
+- Code:
+  - rbenv_gate5_ext.cpp, splice.py, build.sh: harness extension;
+  - swap.py: collect / run / respond;
+  - analyze.py;
+  - zs.py, zs_analyze.py;
+  - ft.sh, ft_both.sh, evalq.sh, evalq2.sh, evalq3.sh, sum3.py;
+  - run.sh, run_extra*.sh, resp.sh, an.sh, an2.sh, collect.sh, zs*.sh;
+  - t*.sh: smoke tests.
+- Logs: collect_*.log, run_s*.log, resp_s*.log, zs_collect.log.
+- Checkpoints: selfplay/runs/g5ft_B2, selfplay/runs/g5ft_id (+ .out logs).

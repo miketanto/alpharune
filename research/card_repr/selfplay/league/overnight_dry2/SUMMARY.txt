@@ -1,0 +1,28 @@
+Overnight league summary (Thu Nov 19 22:43:06 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+2026-11-19T22:32:38      0 cf_B2@230                977.2 [  859.4, 1095.1]     966                       0.5    0.35                
+2026-11-19T22:32:38    230 cf_B2@230                977.2 [  859.4, 1095.1]     966                       0.5    0.35                
+2026-11-19T22:36:04     16 dry2_main@16            1019.5 [  869.9, 1169.1]    1048                      0.55    0.45    0.55    0.55
+2026-11-19T22:38:31     20 dry2_main@20            1032.4 [  892.2, 1172.5]    1048                      0.65     0.4     0.5    0.55
+2026-11-19T22:39:44     30 dry2_main@30            1137.6 [ 1001.3, 1273.9]    1138                      0.85     0.6     0.6    0.75
+
+Main Elo slope over the last 4 ratings (refit Elo vs update, weighted LS): +540.5 Elo per 100 updates, 95% CI [-26.1, +1107.1] -> FLAT / not distinguishable from 0
+Start (cf_B2@230): vs ISMCTS-200 , vs cf_B2 0.5, refit Elo 966
+End   (dry2_main@30): vs ISMCTS-200 , vs cf_B2 0.85, refit Elo 1138
+
+Main exploiter: 20 updates, 3 snapshots, 3 resets
+  dry2_exp@6 (6 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2': 0.485})
+  dry2_exp@12 (6 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2': 0.471})
+  dry2_exp@18 (6 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/overnight_dry2': 0.443})
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.505 at update 4 (1184 games since reset)
+  found a weakness (>= 70% vs the main target): no
+  rating games (greedy): main snapshot vs newest exploiter snapshot, main win rate:
+    dry2_main@16 vs dry2_exp@6: 0.55
+    dry2_main@20 vs dry2_exp@12: 0.55
+    dry2_main@30 vs dry2_exp@18: 0.75
+
+Throughput per phase (games/s median): m6:25.9, e4:35.3, m12:25.7, e8:33.2, m18:22.8, e12:40.6, m24:29.3, e16:31.8, m30:22.3, e20:34.8
+  over the run: median 31.8, min 22.3 games/s, 10 phases

@@ -1,0 +1,19 @@
+== 1. seat / first player (net arm)
+first player wins 0.581 ±0.010 (n=10000)
+P1 wins 0.494 ±0.010 (n=10000)
+== 2. mulligan behaviour (net arm, per seat-decision)
+decisions 20000  set aside 0/1/2: [0.282, 0.452, 0.266]
+P(keep) quantiles 10/25/50/75/90: [0.    0.    0.    0.712 0.997]
+policy confidence (max option prob) median 0.981  share >0.9: 0.755
+first vs second player mulligan rate: [0.725, 0.711]
+== 3. does the pre-mulligan value predict the result? (net arm, within first/second player)
+ first: n=10000 corr(v, win)=+0.184  win rate by v quartile: [0.442, 0.584, 0.62, 0.676]  mean v 0.291
+ second: n=10000 corr(v, win)=+0.164  win rate by v quartile: [0.36, 0.376, 0.382, 0.56]  mean v 0.124
+== 4. does the network mulligan beat always-keep? (paired deals)
+ seat mulliganed (any): net-mulligan wr 0.500 vs keep wr 0.469  diff +3.1 pts ±1.2 (n=14357)
+ only this seat mulliganed: net-mulligan wr 0.500 vs keep wr 0.392  diff +10.8 pts ±2.2 (n=4069)
+ seat kept: net-mulligan wr 0.500 vs keep wr 0.578  diff -7.8 pts ±1.8 (n=5643)
+ deals with identical winner net vs keep: 6553 / 10000
+== 5. sampled mulligan (training behaviour) vs greedy network mulligan
+ greedy-mulligan seat wr 0.500 vs sampled-mulligan seat wr 0.500  (n=20000, both seats; 0.5 each by symmetry)
+ sampled arm mulligan rate 0.732

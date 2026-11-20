@@ -1,0 +1,153 @@
+--- a/research/card_repr/selfplay/learner/selfplay.py	2026-11-19 19:22:20.138285800 -0600
++++ b/research/card_repr/selfplay/learner/selfplay.py	2026-11-19 19:26:28.894077400 -0600
+@@ -185,6 +185,8 @@
+     ap.add_argument('--run-name', required=True)
+     ap.add_argument('--resume', action='store_true')
+     ap.add_argument('--max-minutes', type=float, default=0, help='stop after this wall time (0 = no limit)')
++    ap.add_argument('--league', default='', help='league config (selfplay/league/configs/*.json): opponents come from '
++                    'the league registry / sampler instead of --p-self and the in-memory pool')
+     # counterfactual-pair supervision (cf_train.py; gate 4 follow-up). Off unless --cf-data is given.
+     ap.add_argument('--cf-data', default='', help='glob of gate4/cf_gen.py .npz chunks')
+     ap.add_argument('--cf-coef', type=float, default=0.5, help='weight of the CF value regression')
+@@ -220,12 +222,24 @@
+         print('initialised from', args.init, flush=True)
+     start_update = 0
+     pool = []  # list of (update, cpu state dict)
++    ck = {}
+     if args.resume and os.path.exists(os.path.join(out, 'latest.pt')):
+         ck = torch.load(os.path.join(out, 'latest.pt'), map_location=dev)
+         net.load_state_dict(ck['model']); opt.load_state_dict(ck['opt'])
+         start_update = ck['update']; pool = ck.get('pool', [])
+         print('resumed at update', start_update, flush=True)
+ 
++    league = None
++    if args.league:
++        sys.path.insert(0, os.path.join(SP, 'league'))
++        from integration import LeagueOpponents
++        league = LeagueOpponents(args.league, dims, lambda e: Net(dims, vocab, e['repr'], **e['opts']), dev, out,
++                                 args.run_name, args.seed)
++        if ck.get('league'):
++            league.load_state_dict(ck['league'])
++        league.begin_update(start_update + 1)
++        print('league', json.dumps(league.log_row()), flush=True)
++
+     cap = int(args.samples_per_update * 1.5 + args.n_envs * 300)
+     ring = Ring(cap, dims)
+     print(f'ring capacity {cap} decisions, {ring.nbytes / 2**20:.0f} MiB', flush=True)
+@@ -234,6 +248,9 @@
+     rng = np.random.default_rng(args.seed + 17)
+     learner_seat = np.where(np.arange(N) % 2 == 0, 1, 2)
+     opp_self = rng.random(N) < args.p_self   # opponent seat is current policy
++    if league is not None:                   # league: member id per env ('' = self-play)
++        opp_mid = np.array([league.assign(e) or '' for e in range(N)], dtype=object)
++        opp_self = opp_mid == ''
+     pool_id = -1                             # snapshot loaded into pool_net
+     traj = defaultdict(list)                 # (env, seat) -> ring ids
+     ready = []                               # ring ids with adv/ret computed
+@@ -266,7 +283,8 @@
+         mj_cf = open(os.path.join(out, 'cf_metrics.jsonl'), 'a')
+         mj_cf.write(json.dumps({'update': start_update, 'val': ev0, 'train': ev1}) + chr(10)); mj_cf.flush()
+ 
+-    choose_pool()
++    if league is None:
++        choose_pool()
+     for u in range(start_update, args.updates):
+         if args.max_minutes and time.time() - t_start > args.max_minutes * 60:
+             print('time limit reached', flush=True); break
+@@ -281,7 +299,10 @@
+             ch = np.zeros(N, np.int64)
+             if len(rows):
+                 seat = obs['seat'][rows]
+-                mine = (seat == learner_seat[rows]) | opp_self[rows] | (not pool)
++                if league is not None:
++                    mine = (seat == learner_seat[rows]) | opp_self[rows]
++                else:
++                    mine = (seat == learner_seat[rows]) | opp_self[rows] | (not pool)
+                 r_cur, r_pool = rows[mine], rows[~mine]
+                 if len(r_cur):
+                     a, lp, v = act_rows(net, obs, r_cur, dev)
+@@ -289,7 +310,12 @@
+                     ids = ring.put(obs, r_cur, a, lp, v)
+                     for e, s, i in zip(r_cur.tolist(), obs['seat'][r_cur].tolist(), ids.tolist()):
+                         traj[(e, s)].append(i)
+-                if len(r_pool):
++                if len(r_pool) and league is not None:
++                    for mid in set(opp_mid[r_pool].tolist()):
++                        rr = r_pool[opp_mid[r_pool] == mid]
++                        a, _, _ = act_rows(league.net(mid), obs, rr, dev)
++                        ch[rr] = a
++                elif len(r_pool):
+                     a, _, _ = act_rows(pool_net, obs, r_pool, dev)
+                     ch[r_pool] = a
+                 ep['decisions'] += len(r_cur)
+@@ -302,7 +328,7 @@
+                 bad = bool(res.get('error'))
+                 ep['errors'] += bad
+                 ep['draws'] += (win == 0) and not bad
+-                if not opp_self[e] and pool and not bad:
++                if not opp_self[e] and (pool or league is not None) and not bad:
+                     ep['pool_games'] += 1
+                     ep['pool_wins'] += win == learner_seat[e]
+                 for s in (1, 2):
+@@ -318,8 +344,14 @@
+                     ring.adv[ids % cap] = adv
+                     ring.ret[ids % cap] = ret
+                     ready.extend(ids.tolist())
++                if league is not None:   # report before the seat flip below
++                    league.report(e, None if bad else (0.5 if win == 0 else float(win == learner_seat[e])))
+                 learner_seat[e] = 3 - learner_seat[e]
+-                opp_self[e] = rng.random() < args.p_self
++                if league is not None:
++                    opp_mid[e] = league.assign(e) or ''
++                    opp_self[e] = opp_mid[e] == ''
++                else:
++                    opp_self[e] = rng.random() < args.p_self
+         t_collect = time.time() - t0
+         # drop ready rows that were overwritten (should not happen with the ring size above)
+         rid = np.array(ready); ready = []
+@@ -367,15 +399,31 @@
+         upd = u + 1
+ 
+         # ---------------------------------------------------------------- pool / ckpt / eval
+-        if upd % args.pool_every == 0:
+-            pool.append((upd, {k: t.detach().cpu().clone() for k, t in net.state_dict().items()}))
+-            pool[:] = pool[-args.pool_size:]
+-        choose_pool()
++        league_act = None
++        if league is not None:
++            league_act = league.end_update(upd, net, len(rid), lambda p: torch.save(
++                {'model': net.state_dict(), 'update': upd, 'repr': args.repr, 'dims': dims}, p))
++            if league_act['reset']:   # exploiter reset: back to init (or a fresh net) with a fresh optimizer
++                if league_act['init']:
++                    net.load_state_dict(torch.load(league_act['init'], map_location=dev)['model'])
++                else:
++                    net.load_state_dict(Net(dims, vocab, args.repr, ask_head=args.ask_head,
++                                            card_norm=not args.no_card_norm, ask_opt=args.ask_opt,
++                                            opt_cost=not args.no_opt_cost).to(dev).state_dict())
++                opt = torch.optim.Adam(net.parameters(), lr=args.lr, eps=1e-5)
++            league.begin_update(upd + 1)
++        else:
++            if upd % args.pool_every == 0:
++                pool.append((upd, {k: t.detach().cpu().clone() for k, t in net.state_dict().items()}))
++                pool[:] = pool[-args.pool_size:]
++            choose_pool()
+         if upd % args.ckpt_every == 0 or upd == args.updates:
+             torch.save({'model': net.state_dict(), 'update': upd, 'repr': args.repr, 'dims': dims},
+                        os.path.join(out, f'ckpt_{upd:05d}.pt'))
+             torch.save({'model': net.state_dict(), 'opt': opt.state_dict(), 'update': upd, 'pool': pool,
+-                        'repr': args.repr, 'dims': dims}, os.path.join(out, 'latest.pt'))
++                        'repr': args.repr, 'dims': dims,
++                        'league': league.state_dict() if league is not None else None},
++                       os.path.join(out, 'latest.pt'))
+         row = {'update': upd, 'wall_s': round(time.time() - t_start, 1), 'games': int(ep['games']),
+                'decisions': int(ep['decisions']), 'games_per_s': round(ep['games'] / t_collect, 2),
+                'dec_per_s': round(ep['decisions'] / t_collect, 1),
+@@ -387,6 +435,8 @@
+                'explained_var': round(float(ev), 3), 'eval_random_wr': '', 'eval_ismcts_wr': '',
+                'pool_size': len(pool)}
+         extra = {}
++        if league is not None:
++            extra['league'] = {**league.log_row(), **league_act}
+         if cf is not None:
+             extra['cf_train_v'] = round(agg['cf_v'], 4); extra['cf_train_pair'] = round(agg['cf_pair'], 4)
+             if upd % 5 == 0 or upd == args.updates:

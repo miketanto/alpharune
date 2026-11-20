@@ -1,0 +1,10 @@
+{
+ "phase_no": 11,
+ "last_rate_t": 1795149398.6663184,
+ "rated": [
+  "dry2_main@16",
+  "dry2_main@20",
+  "dry2_main@30"
+ ],
+ "fails": 0
+}
