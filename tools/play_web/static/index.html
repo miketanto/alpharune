@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riftbound vs Network</title>
+<link rel="stylesheet" href="/static/play.css">
+</head>
+<body>
+<div id="app">
+  <!-- Setup screen -->
+  <section id="setup" class="screen">
+    <div class="setup-card">
+      <h1>Riftbound <span class="dim">vs</span> Network</h1>
+      <p class="dim">Play a full game against a self-play checkpoint. The network plays greedy (its top choice), on CPU.
+        You see only what your seat may know; rune payments are made automatically for both players.</p>
+      <div class="grid2">
+        <label>Your deck<select id="s-deck"></select></label>
+        <label>Network's deck<select id="s-agent-deck"></select></label>
+        <label class="wide">Checkpoint<select id="s-ckpt"></select></label>
+        <label>Seat<select id="s-seat">
+          <option value="0">Random</option><option value="1">Player 1</option><option value="2">Player 2</option></select></label>
+        <label>Seed <input id="s-seed" placeholder="random" inputmode="numeric"></label>
+      </div>
+      <p class="note" id="s-note">The network was trained on the Rengar mirror: cards outside its training pool are
+        unknown to it, so it plays best with the Rengar deck.</p>
+      <div class="row"><button id="s-start" class="primary">Start game</button>
+        <button id="s-resume" class="ghost hidden">Resume current game</button></div>
+      <div id="s-err" class="err"></div>
+    </div>
+  </section>
+
+  <!-- Game screen -->
+  <section id="game" class="screen hidden">
+    <div id="board">
+      <aside id="left">
+        <div class="score-track" id="opp-track"></div>
+        <div class="side-stack" id="opp-side"></div>
+        <div class="side-stack" id="me-side"></div>
+        <div class="score-track" id="me-track"></div>
+      </aside>
+
+      <main id="center">
+        <div class="player-row opp" id="opp-row">
+          <div class="hand-backs" id="opp-hand"></div>
+          <div class="piles" id="opp-piles"></div>
+        </div>
+        <div class="base opp" id="opp-base"><div class="zone-label">Opponent base</div><div class="cards"></div></div>
+        <div class="runes opp" id="opp-runes"></div>
+        <div id="bfs"></div>
+        <div class="runes me" id="me-runes"></div>
+        <div class="base me" id="me-base"><div class="zone-label">Your base</div><div class="cards"></div></div>
+        <div class="player-row me" id="me-row">
+          <div class="piles" id="me-piles"></div>
+        </div>
+        <div id="hand"></div>
+      </main>
+
+      <aside id="right">
+        <div id="turn-box"></div>
+        <div id="prompt-box"></div>
+        <div id="chain-box"></div>
+        <div id="log-box">
+          <div class="box-head">Log <label class="tiny"><input type="checkbox" id="log-verbose"> all lines</label></div>
+          <div id="log"></div>
+        </div>
+      </aside>
+    </div>
+
+    <div id="zoom" class="hidden"></div>
+    <div id="menu" class="hidden"></div>
+    <div id="toast" class="hidden"></div>
+    <div id="modal" class="hidden"><div class="modal-card"><div class="modal-head"><span id="modal-title"></span>
+      <button class="ghost" id="modal-close">Close</button></div><div id="modal-body"></div></div></div>
+    <div id="gameover" class="hidden"></div>
+  </section>
+</div>
+<script src="/static/play.js"></script>
+</body>
+</html>
