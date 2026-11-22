@@ -163,6 +163,27 @@ inline GameObjectId chooseRune(const GameState& state, PlayerId player,
     return std::find(kinds.begin(), kinds.end(), picked) != kinds.end() ? picked : kinds.front();
 }
 
+/// A ready rune about to be recycled for Power is exhausted for its Energy
+/// first (CR 164.2.a then 164.2.b: both abilities are [Reaction] Adds, so the
+/// payer may use them in that order), and the Energy floats in the pool until
+/// it empties (CR 167). A rune is not an object a player activates in this
+/// engine, so without this the Energy of a ready rune recycled for Power was
+/// lost with no way to keep it. Spending the Energy stays optional. An
+/// exhausted rune gives nothing. Returns whether Energy was added.
+inline bool floatEnergyBeforeRecycling(GameState& state, EventBus& events, PlayerId player,
+                                       GameObjectId rid) {
+    auto& rune = state.getObject(rid);
+    if (rune.is_exhausted) return false;
+    rune.is_exhausted = true;
+    events.emit(ObjectStateChangedEvent{rid, "exhausted"});
+    ++state.player(player).rune_pool.energy;
+    RIFT_TRACE(events, "FLOAT_ENERGY: " + std::string(toString(player)) + " exhausts " +
+                    state.getObject(rid).name.get() + " (id=" + toString(rid) +
+                    ") for [1] before recycling it (pool: " +
+                    std::to_string(state.player(player).rune_pool.energy) + ")");
+    return true;
+}
+
 /// Recycle `rid` from `player`'s base for Power (CR 164.2): the rune as it
 /// was (last_known), the move, its announcement, then the new object (CR
 /// 124.1; a rune carries no attachments).
@@ -184,7 +205,7 @@ inline void recycleRuneForPower(GameState& state, EventBus& events, PlayerId pla
 /// Pay it: all or nothing. Restricted resources go first, then floating ones,
 /// then runes — Energy from the ready runes that cannot pay the Power (so a
 /// rune that can is still there to recycle), Power from exhausted runes before
-/// ready ones. With a `chooser` the payer names each rune instead, among the
+/// ready ones; a ready one floats its Energy first. With a `chooser` the payer names each rune instead, among the
 /// kinds that differ (RuneChooser); the order above is the order of the
 /// options and the choice when nobody is asked.
 inline bool payIn(GameState& state, EventBus& events, PlayerId player, int energy,
@@ -242,6 +263,7 @@ inline bool payIn(GameState& state, EventBus& events, PlayerId player, int energ
         });
         const GameObjectId rid = chooseRune(state, player, runes, true, chooser);
         if (rid == kInvalidId) break;
+        floatEnergyBeforeRecycling(state, events, player, rid);
         recycleRuneForPower(state, events, player, rid);
         --p_need;
         ++paid_p;
@@ -272,9 +294,9 @@ inline bool pay(GameState& state, EventBus& events, PlayerId player, int energy,
 ///   * exhausts a ready rune for its Energy before recycling it: the Energy
 ///     stays in the pool for the cost that follows (CR 164.2.b: a rune may be
 ///     exhausted for Energy and recycled for Power).
-/// `payIn` does neither (it recycles the first rune, ready or not), which is
-/// right when nothing is paid after it and left a spell unpayable here
-/// (plans/09 item 9.VV1). All or nothing.
+/// `payIn` does not do the first (it takes any floating Power and the first
+/// rune), which is right when nothing is paid after it and left a spell
+/// unpayable here (plans/09 item 9.VV1). All or nothing.
 /// With a `chooser` the payer names each point (D9): a rune of any kind, or —
 /// as the option kInvalidId — the floating Power the cost could use, each
 /// offered only if `still_payable` holds after it (tried on a copy of the
@@ -327,14 +349,8 @@ inline bool payAnyPowerAheadOfCost(GameState& state, EventBus& events, PlayerId 
         return n;
     };
     auto recycle = [&](GameObjectId rid, int* exhausted_counter) {
-        auto& ps = state.player(player);
-        auto& rune = state.getObject(rid);
-        if (!rune.is_exhausted) {
-            rune.is_exhausted = true;
-            events.emit(ObjectStateChangedEvent{rid, "exhausted"});
-            ++ps.rune_pool.energy;
-            if (exhausted_counter) ++*exhausted_counter;
-        }
+        if (floatEnergyBeforeRecycling(state, events, player, rid) && exhausted_counter)
+            ++*exhausted_counter;
         recycleRuneForPower(state, events, player, rid);
     };
     // The engine's order of the rune options: runes the cost's Power cannot

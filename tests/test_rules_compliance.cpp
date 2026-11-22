@@ -1531,7 +1531,8 @@ TEST_F(VendettaLastCardsTest, DragonRoost_ADragonMayPayToBePlayedThere) {
     engine_->testHook_executeIntent(*offer); settleLikeTheEngine(*engine_);
     EXPECT_EQ(s().getObject(dragon).battlefieldId().value_or(kInvalidId), BattlefieldId::fromRaw(0));
     EXPECT_EQ(runesInBase(P1), 0) << "both runes recycled for the [A][A]";
-    EXPECT_EQ(s().player(P1).rune_pool.energy, 0);
+    EXPECT_EQ(s().player(P1).rune_pool.energy, 2)
+        << "they were ready: each gave its [1] first (CR 164.2), and the [4] was floating";
 }
 
 TEST_F(VendettaLastCardsTest, SandsweptTomb_DiscountsASpellThatChoosesAFriendlyUnitThere) {

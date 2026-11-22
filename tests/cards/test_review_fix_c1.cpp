@@ -259,7 +259,8 @@ TEST_F(ReviewFixC1Test, HextechAnomaly_IsAReactionAndReadyRunesCanPayX) {
 
     ASSERT_EQ(agent.prompts.size(), 1u);
     EXPECT_EQ(agent.prompts[0].size(), 4u) << "X from 0 to 3";
-    EXPECT_EQ(state.player(P1).rune_pool.energy, 2);
+    EXPECT_EQ(state.player(P1).rune_pool.energy, 4)
+        << "2 added, and [1] from each of the two ready runes recycled (CR 164.2)";
     EXPECT_EQ(state.player(P1).rune_deck.size(), 2u) << "two runes recycled for the [A]";
     EXPECT_EQ(state.player(P1).power_spent_this_turn, 2) << "paid with the engine's accounting";
 }

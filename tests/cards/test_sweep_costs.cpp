@@ -1653,7 +1653,8 @@ TEST_F(SweepCostsTest, FinalizePassSpell_AUnitIsOfferedOnlyIfItsDeflectCanBePaid
     play(again, &agent);
     EXPECT_TRUE(agent.wasOffered(guarded));
     EXPECT_EQ(o(guarded).damage_marked, 4);
-    EXPECT_EQ(state.player(P1).rune_pool.energy, 0);
+    EXPECT_EQ(state.player(P1).rune_pool.energy, 1)
+        << "the ready rune gave its [1] before it was recycled (CR 164.2)";
     EXPECT_EQ(state.player(P1).rune_pool.universal_power, 0);
     EXPECT_FALSE(onBoard(rune)) << "recycled for the [B]";
 }

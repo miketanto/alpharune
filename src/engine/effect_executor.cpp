@@ -3074,6 +3074,7 @@ bool plainPay(GameState& state, EventBus& events, PlayerId player, const PlainCo
         if (p_need <= 0) break;
         auto& r = state.getObject(rid);
         if (!runeMatches(r, cost.domains)) continue;
+        resource::floatEnergyBeforeRecycling(state, events, player, rid);
         // Snapshot, move, announce, then the new object (CR 124.1) — the
         // order of every other way off the board. (This site announced
         // nothing before: "When you recycle a rune" did not hear it.)

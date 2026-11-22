@@ -9825,6 +9825,7 @@ GameEngine::CostPaymentAdvance GameEngine::resolveCostPaymentDecision(
                          (rune.is_exhausted ? "exhausted" : "ready") +
                          ") for power [agent choice]");
         auto base_loc = BaseLocation{cur.player};
+        resource::floatEnergyBeforeRecycling(state_, events_, cur.player, rune_id);
         // Snapshot, move, announce, then the new object (CR 124.1) — the
         // order of every other way off the board.
         snapshotAsItLeaves(rune);
