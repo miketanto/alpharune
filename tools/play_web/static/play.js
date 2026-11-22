@@ -318,14 +318,14 @@ function renderBases() {
 function renderRunes() {
   for (const [id, rel] of [['#opp-runes', 2], ['#me-runes', 1]]) {
     const z = $(id); z.innerHTML = '';
+    // Runes are shown as cards (their art, turned when exhausted) in a row of their own, with a
+    // domain-coloured edge so the colours read at a glance.
     for (const r of F.runes.filter(r => r.ctrl === rel)) {
       const c = cards[r.card];
       const dom = c?.domains?.[0] || 'none';
-      const d = el('div', `rune d-${dom}${r.exhausted ? ' exhausted' : ''}`, dom[0]);
-      d.dataset.id = r.id;
-      hookZoom(d, r);
-      const acts = optsFor(r.id);
-      if (acts.length && !pumping && !busy) { d.classList.add('actionable'); d.onclick = ev => { ev.stopPropagation(); onCardClick(r, acts, ev); }; }
+      const d = cardEl(r, { noStats: true });
+      d.classList.add('rune-card', `d-${dom}`);
+      if (!c) d.appendChild(el('div', 'rune-dom', esc(dom)));
       z.appendChild(d);
     }
   }

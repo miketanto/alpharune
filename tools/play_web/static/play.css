@@ -251,3 +251,18 @@ label.chk { flex-direction: row; align-items: center; gap: 8px; align-self: end;
 .rp-ovr { margin-top: 6px; font-size: 12px; color: var(--gold); }
 .hand-backs.faceup { height: auto; gap: 4px; flex-wrap: wrap; }
 .hand-backs.faceup .card { width: calc(var(--card-w) * .8); height: calc(var(--card-h) * .8); }
+
+/* ---------- layout: narrow battlefields in the middle, card-sized rune rows ---------- */
+:root { --rune-w: calc(var(--card-w) * .78); --rune-h: calc(var(--card-h) * .78); }
+#bfs { grid-auto-columns: minmax(220px, 340px); justify-content: center; align-content: center; }
+.bf { grid-template-rows: auto auto auto; }
+.bf .half { min-height: calc(var(--card-h) + 10px); padding: 4px; }
+.runes { justify-content: center; gap: 6px; min-height: calc(var(--rune-h) + 6px); flex-wrap: nowrap; }
+.runes .card.rune-card { width: var(--rune-w); height: var(--rune-h); background-color: #1c2c48;
+  border: 2px solid var(--dom, #607089); background-image: none; }
+.runes .card.rune-card.has-art { background-size: cover; }
+.runes .card.rune-card.exhausted { transform: rotate(90deg) scale(.86); filter: brightness(.55) saturate(.6); margin: 0 10px; }
+.runes .card.rune-card.d-Fury { --dom: #c8413b; } .runes .card.rune-card.d-Calm { --dom: #3f9b5a; }
+.runes .card.rune-card.d-Mind { --dom: #3a73c8; } .runes .card.rune-card.d-Body { --dom: #d9822b; }
+.runes .card.rune-card.d-Chaos { --dom: #8b4bc7; } .runes .card.rune-card.d-Order { --dom: #c9a227; }
+.rune-card .rune-dom { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #fff; }
