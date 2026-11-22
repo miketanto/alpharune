@@ -28,6 +28,18 @@
         <button id="s-resume" class="ghost hidden">Resume current game</button></div>
       <div id="s-err" class="err"></div>
     </div>
+    <div class="setup-card">
+      <h1>Watch a replay</h1>
+      <p class="dim">Recorded search games (research/card_repr, <code>replay_search.py play</code>): step through every decision,
+        with the search's visit shares and value, from either seat, optionally with both hands face up.</p>
+      <div class="grid2">
+        <label class="wide">Game<select id="r-list"></select></label>
+        <label>Watch as<select id="r-seat"><option value="1">Player 1</option><option value="2">Player 2</option></select></label>
+        <label class="chk"><input type="checkbox" id="r-both" checked> Show both hands</label>
+      </div>
+      <div class="row"><button id="r-watch" class="primary">Watch</button></div>
+      <div id="r-err" class="err"></div>
+    </div>
   </section>
 
   <!-- Game screen -->

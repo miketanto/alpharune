@@ -24,11 +24,13 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.normpath(os.path.join(HERE, '..', '..'))
 sys.path.insert(0, HERE)
 import playweb  # noqa: E402
+import replay  # noqa: E402
 
 STATIC = os.path.join(HERE, 'static')
 DECK_DIR = os.path.join(REPO, 'decks')
 DEFAULT_CKPT = os.path.join(playweb.SELFPLAY, 'runs', 'ov_main', 'league_02080.pt')
 MAX_AGENT_FRAMES = 400
+CATALOG = replay.Catalog(playweb.CARD_REPR, DECK_DIR)
 
 
 def list_decks():
@@ -131,6 +133,7 @@ class Session:
 
 
 S = Session()
+R = {'replay': None}   # the replay being watched (one at a time, like the game)
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -167,6 +170,9 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, dict(decks=list_decks(), checkpoints=list_checkpoints(),
                                         default_checkpoint=os.path.relpath(DEFAULT_CKPT, os.path.join(playweb.SELFPLAY, 'runs')),
                                         default_agent_deck='rengar', has_game=S.game is not None))
+        if u.path == '/api/replays':
+            with S.lock:
+                return self._send(200, {'replays': CATALOG.entries()})
         if u.path == '/api/state':
             with S.lock:
                 if not S.game:
@@ -190,6 +196,19 @@ class Handler(BaseHTTPRequestHandler):
                     frames = S.new(body.get('deck', 'rengar'), body.get('agent_deck', 'rengar'),
                                    body.get('checkpoint') or DEFAULT_CKPT, int(body.get('seat') or 0), body.get('seed'))
                     return self._send(200, {'frames': frames})
+                if u.path == '/api/replay/open':
+                    if R['replay']:
+                        R['replay'].g.close()
+                    R['replay'] = replay.Replay(CATALOG, body['id'], int(body.get('seat') or 1), body.get('both', True))
+                    return self._send(200, {'frames': [R['replay'].frame(log_reset=True)]})
+                if u.path in ('/api/replay/goto', '/api/replay/view'):
+                    rp = R['replay']
+                    if not rp:
+                        return self._send(400, {'error': 'no replay open'})
+                    if u.path == '/api/replay/view':
+                        rp.set_view(body.get('seat'), body.get('both'))
+                        return self._send(200, {'frames': [rp.frame(log_reset=True)]})
+                    return self._send(200, {'frames': [rp.goto(int(body['i']))]})
                 if u.path == '/api/act':
                     if not S.game:
                         return self._send(400, {'error': 'no game'})

@@ -50,6 +50,26 @@ default the Windows checkout's `research/card_repr`), `PLAYWEB_TORCH_THREADS` (d
   says what it did ("Opponent plays Pit Rookie", "moves Kai'Sa → Emperor's Dais").
 * **Log:** engine lines you may read, coloured by player. "all lines" also shows prompts and passes.
 
+## Watching replays
+
+The setup screen also lists every recorded search game under the research tree
+(`research/card_repr/**/declog_seed*.json`, written by `research/card_repr/search/replay_search.py play`).
+**Watch** opens one in the same board view:
+
+* The game is played again in `libplayweb` from its seed and the recorded choice indices (same engine,
+  same rbenv start, autopay). A whole game replays in a few tens of milliseconds, so every position is
+  rebuilt on demand and jumping anywhere is instant. The decks are taken from the log when it names
+  them, otherwise the server finds the pair (`azir`, `rengar`, `diana`, ...) that replays the log to its
+  recorded end, with every decider and the winner matching.
+* **Controls:** the slider, ⏮ « ‹ ▶ › » ⏭ (start, previous turn, previous decision, autoplay, next
+  decision, next turn, end), and the keys ← → (decision), Shift+← → (turn), Page Up / Down (10),
+  Home / End, Space (autoplay). Moves made while a frame loads add up.
+* **View:** watch as either seat; **both hands** shows the other seat's hand face up. Facedown cards
+  stay facedown (each view is still the engine's per-observer view).
+* **Decision panel:** who decides (`search N=64` or `network greedy`), its value estimate, the move it
+  made (outlined on the board), the search's top three options by visit share, and, where the search
+  overrode the network's own top choice, what the network would have played and both Q values.
+
 ## Fair play
 
 Everything the browser receives is built for the human's seat only, in C++, from the engine's own
@@ -74,7 +94,8 @@ decisions are never described to the browser beyond what the log and board show.
 | `playweb.cpp` | C ABI library: one game (`pw_create` / `pw_step` / `pw_status`), the network's observation (`pw_observe`, rbenv layout), the human's view as JSON (`pw_view`). It `#include`s `research/card_repr/selfplay/rbenv/rbenv.cpp`, so the network sees exactly the encoding it was trained on. |
 | `playweb.cmake`, `build.sh` | The `playweb` target, appended to the WSL build copy's CMakeLists like rbenv's, built in `build_pic`. |
 | `playweb.py` | ctypes wrapper and `NetAgent` (checkpoint loading and greedy choice through `league/common.py`'s `load_net` / `to_dev`, read-only). |
-| `server.py` | Stdlib HTTP server: `/api/setup`, `/api/new`, `/api/act`, `/api/state`; after each human answer it plays the network's decisions and returns one frame per decision for the client to animate. Loopback only. |
+| `server.py` | Stdlib HTTP server: `/api/setup`, `/api/new`, `/api/act`, `/api/state`; after each human answer it plays the network's decisions and returns one frame per decision for the client to animate. Replays: `/api/replays`, `/api/replay/open`, `/api/replay/goto`, `/api/replay/view`. Loopback only. |
+| `replay.py` | Recorded search games: finds the decision logs, works out their decks, rebuilds any position and annotates the pending decision from the log. |
 | `static/` | The page (`index.html`, `play.css`, `play.js`), no external assets except card art from the URLs in `CardDef::image_url`. |
 | `smoke_test.py` | Headless full games with checks on every human frame. |
 

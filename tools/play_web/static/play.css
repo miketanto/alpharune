@@ -224,3 +224,30 @@ select, input { background: var(--bg2); border: 1px solid var(--line); border-ra
   #right { border-left: none; }
   :root { --card-w: 58px; --card-h: 81px; --hand-w: 80px; --hand-h: 112px; }
 }
+
+/* ---------- replay ---------- */
+#setup { flex-wrap: wrap; gap: 18px; align-content: center; }
+label.chk { flex-direction: row; align-items: center; gap: 8px; align-self: end; padding-bottom: 8px; }
+.setup-card code { font-size: 11px; color: var(--gold); }
+#prompt-box.replay { background: var(--panel); border-color: var(--line); }
+.rp-head { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.rp-head .t { font-weight: 700; }
+.rp-ctl { display: flex; flex-wrap: wrap; gap: 4px; margin: 8px 0 6px; }
+.rp-ctl button { padding: 4px 8px; min-width: 34px; }
+.rp-ctl button.on { border-color: var(--glow); color: var(--glow); }
+#rp-slider { width: 100%; padding: 0; margin: 4px 0; accent-color: var(--gold); }
+.rp-view { display: flex; gap: 10px; align-items: center; font-size: 12px; color: var(--dim); flex-wrap: wrap; }
+.rp-view label { flex-direction: row; align-items: center; gap: 5px; }
+.rp-view select { padding: 3px 6px; }
+.rp-dec { margin-top: 8px; border-top: 1px solid var(--line); padding-top: 8px; font-size: 13px; }
+.rp-dec .who { font-weight: 700; }
+.rp-dec .who.s1 { color: var(--me); } .rp-dec .who.s2 { color: var(--opp); }
+.rp-dec .dim { color: var(--dim); font-size: 12px; }
+.rp-dec .chose { margin: 6px 0; padding: 6px 8px; background: var(--bg2); border-left: 3px solid var(--gold); border-radius: 4px; }
+.rp-bar { position: relative; margin: 3px 0; padding: 3px 6px; font-size: 12px; border-radius: 4px; background: var(--bg2); overflow: hidden; }
+.rp-bar .fill { position: absolute; inset: 0 auto 0 0; background: rgba(245,207,106,.22); }
+.rp-bar.chosen .fill { background: rgba(124,243,255,.28); }
+.rp-bar span { position: relative; }
+.rp-ovr { margin-top: 6px; font-size: 12px; color: var(--gold); }
+.hand-backs.faceup { height: auto; gap: 4px; flex-wrap: wrap; }
+.hand-backs.faceup .card { width: calc(var(--card-w) * .8); height: calc(var(--card-h) * .8); }

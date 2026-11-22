@@ -18,6 +18,9 @@ let lastActor = 0;         // 1 me / 2 opp, from the last CHOSE line
 let mullSel = new Set();
 let pendingDest = null;    // {objId, opts} while a destination is being picked
 let mySeat = 1;
+let RP = null;             // replay annotation of the frame on screen (null when playing)
+let rpTimer = 0;           // autoplay
+let rpBusy = false;
 
 async function api(path, body) {
   const r = await fetch(path, body === undefined ? {} : { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
@@ -36,6 +39,7 @@ async function initSetup() {
     fill($('#s-ckpt'), s.checkpoints, s.default_checkpoint);
     $('#s-resume').classList.toggle('hidden', !s.has_game);
   } catch (e) { $('#s-err').textContent = 'Setup failed: ' + e.message; }
+  initReplays();
 }
 $('#s-start').onclick = async () => {
   $('#s-err').textContent = '';
@@ -82,20 +86,33 @@ function apply(f) {
   const prev = F;
   Object.assign(cards, f.cards || {});
   mySeat = f.me;
+  RP = f.replay || null;
+  if (RP) {
+    Object.assign(cards, RP.cards || {});
+    f.decision = null;   // a replay is watched, never answered: nothing on the board is clickable
+    if (RP.log_reset) { logLines = []; $('#log').innerHTML = ''; lastActor = 0; }
+  }
   F = f;
   addLog(f.log || []);
   if (!prev || (prev.decision?.kind !== f.decision?.kind)) mullSel.clear();
   pendingDest = null;
-  render(prev, !!f.agent_moved);
+  render(RP && RP.log_reset ? null : prev, !!f.agent_moved || !!RP);
   if (f.agent_moved) agentToast(f.log || []);
-  if (f.game_over) showGameOver();
+  if (RP) markChosen();
+  if (f.game_over && !RP) showGameOver();
 }
+
+// ---------------- labels ----------------
+// Playing: "You" / "Opponent". Watching a replay: the seat and what played it ("P1 · search N=64").
+function seatLabel(seat) { const l = F?.meta?.labels?.[String(seat)]; return `P${seat}` + (l ? ` · ${l}` : ''); }
+function relSeat(rel) { return rel === 1 ? mySeat : 3 - mySeat; }
+function relName(rel) { return RP ? seatLabel(relSeat(rel)) : rel === 1 ? 'you' : 'opponent'; }
 
 // ---------------- log ----------------
 const OPP = () => `P${3 - mySeat}`, ME = () => `P${mySeat}`;
 function prettyLog(msg) {
   let m = msg.replace(/^\[D:[0-9.]+\]\s*/, '');
-  m = m.replace(new RegExp(`\\b${ME()}\\b`, 'g'), 'You').replace(new RegExp(`\\b${OPP()}\\b`, 'g'), 'Opponent');
+  if (!RP) m = m.replace(new RegExp(`\\b${ME()}\\b`, 'g'), 'You').replace(new RegExp(`\\b${OPP()}\\b`, 'g'), 'Opponent');
   m = m.replace(/\s*\(id=\d+,?\s*/g, ' (').replace(/\(\)/g, '').replace(/ \(\s*\)/g, '');
   m = m.replace(/BF#(\d+)/g, (_, i) => bfName(+i));
   m = m.replace(/\s*\(chain_item=\d+(, ability=-?\d+)?(, spell=\d+)?\)/g, '');
@@ -274,8 +291,10 @@ function pileHtml(p, who) {
 function renderRows() {
   const oh = $('#opp-hand'); oh.innerHTML = '';
   const n = F.players.opp.hand_count;
-  for (let i = 0; i < n; i++) oh.appendChild(el('div', 'back'));
-  if (F.opp_known_hand.length) {
+  oh.classList.toggle('faceup', !!F.opp_hand_cards);
+  if (F.opp_hand_cards) for (const o of F.opp_hand_cards) oh.appendChild(cardEl(o, { noStats: true }));
+  else for (let i = 0; i < n; i++) oh.appendChild(el('div', 'back'));
+  if (F.opp_known_hand.length && !F.opp_hand_cards) {
     const k = el('span', 'known-chip', `you know ${F.opp_known_hand.length} of these card${F.opp_known_hand.length > 1 ? 's' : ''} ▸`);
     k.onclick = () => openModal('Cards you know are in the opponent\'s hand', F.opp_known_hand.map(c => ({ id: -1, card: c, name: cards[c]?.name, type: cards[c]?.type })));
     oh.appendChild(k);
@@ -291,6 +310,7 @@ function renderRows() {
 function renderBases() {
   for (const [id, rel] of [['#opp-base', 2], ['#me-base', 1]]) {
     const z = $(id), c = $('.cards', z); c.innerHTML = '';
+    $('.zone-label', z).textContent = RP ? `${seatLabel(relSeat(rel))} base` : rel === 1 ? 'Your base' : 'Opponent base';
     for (const o of F.board.filter(o => o.loc === 'base' && o.ctrl === rel && o.attached_to == null)) c.appendChild(withGear(o));
     z.classList.remove('drop'); z.onclick = null;
   }
@@ -324,7 +344,8 @@ function renderBattlefields() {
     const name = el('span', 'bf-name', esc(bfName(b.slot)));
     if (c) hookZoom(name, { id: -1, card: b.card, name: c.name, type: 'Battlefield' });
     const badges = el('span', 'badges');
-    const ctl = b.controller === 1 ? '<span class="badge me">You control</span>' : b.controller === 2 ? '<span class="badge opp">Opponent controls</span>' : '<span class="badge">Uncontrolled</span>';
+    const ctl = b.controller === 1 ? `<span class="badge me">${RP ? `P${relSeat(1)} controls` : 'You control'}</span>` :
+      b.controller === 2 ? `<span class="badge opp">${RP ? `P${relSeat(2)} controls` : 'Opponent controls'}</span>` : '<span class="badge">Uncontrolled</span>';
     badges.innerHTML = ctl + (b.combat ? '<span class="badge combat">Combat</span>' : b.showdown ? '<span class="badge showdown">Showdown</span>' : '') +
       (b.contested ? '<span class="badge">Contested</span>' : '') + (b.scored_by_me ? '<span class="badge me">Scored</span>' : '');
     mid.append(name, badges);
@@ -351,13 +372,16 @@ const PHASE = { Setup: 'Setup', Mulligan: 'Mulligan', AwakenPhase: 'Awaken', Beg
 function renderTurn() {
   const t = F.turn;
   const mine = t.turn_player === 1;
-  $('#turn-box').innerHTML = `<div class="t1">Turn ${t.number} · <span class="whose ${mine ? 'me' : 'opp'}">${mine ? 'Your turn' : 'Opponent\'s turn'}</span></div>` +
+  const whose = RP ? `${seatLabel(relSeat(t.turn_player))}'s turn` : mine ? 'Your turn' : 'Opponent\'s turn';
+  const tail = RP ? `replay · seed ${F.meta.seed} · ${F.meta.decks.join(' vs ')}` : `you are Player ${F.me} · ${F.meta?.checkpoint || ''}`;
+  $('#turn-box').innerHTML = `<div class="t1">Turn ${t.number} · <span class="whose ${mine ? 'me' : 'opp'}">${esc(whose)}</span></div>` +
     `<div class="dim">${PHASE[t.phase] || t.phase} phase${t.showdown ? ' · showdown' : ''}${t.closed ? ' · chain active' : ''}` +
-    `${t.focus ? ` · focus: ${t.focus === 1 ? 'you' : 'opponent'}` : ''} · you are Player ${F.me} · ${esc(F.meta?.checkpoint || '')}</div>`;
+    `${t.focus ? ` · focus: ${esc(relName(t.focus))}` : ''} · ${esc(tail)}</div>`;
 }
 function renderPrompt() {
   const box = $('#prompt-box'); box.innerHTML = ''; box.className = '';
   if (!F) return;
+  if (RP) return renderReplay(box);
   if (F.game_over) { box.className = 'waiting'; box.innerHTML = `<div class="q">Game over</div><button class="primary" id="again">New game</button>`; $('#again').onclick = showSetup; return; }
   const d = F.decision;
   if (busy || pumping || !d) {
@@ -412,7 +436,7 @@ function renderChain() {
     const th = el('div', 'thumb'); if (cd) th.style.backgroundImage = `url("${cd.img}")`;
     it.appendChild(th);
     const tg = c.targets.length ? ` → ${c.targets.map(name).join(', ')}` : '';
-    it.appendChild(el('div', '', `<div class="ci-t">${esc(cd ? cd.name : 'Hidden')}</div><div class="ci-s">${c.ctrl === 1 ? 'Yours' : 'Opponent\'s'} ${esc(c.kind)}${c.resolving ? ' · resolving' : c.finalized ? '' : ' · pending'}${esc(tg)}</div>`));
+    it.appendChild(el('div', '', `<div class="ci-t">${esc(cd ? cd.name : 'Hidden')}</div><div class="ci-s">${RP ? `P${relSeat(c.ctrl)}'s` : c.ctrl === 1 ? 'Yours' : 'Opponent\'s'} ${esc(c.kind)}${c.resolving ? ' · resolving' : c.finalized ? '' : ' · pending'}${esc(tg)}</div>`));
     if (cd) hookZoom(it, { id: -1, card: c.card, name: cd.name, type: cd.type });
     it.onmouseenter = () => c.targets.forEach(t => document.querySelectorAll(`[data-id="${t}"]`).forEach(e => e.classList.add('targeted')));
     it.onmouseleave = () => document.querySelectorAll('.targeted').forEach(e => e.classList.remove('targeted'));
@@ -483,6 +507,11 @@ function closeMenu() { $('#menu').classList.add('hidden'); clearDrops(); }
 document.addEventListener('click', e => { if (!$('#menu').contains(e.target)) closeMenu(); });
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') { closeMenu(); $('#modal').classList.add('hidden'); }
+  if (RP && !$('#game').classList.contains('hidden') && !/^(INPUT|SELECT|BUTTON)$/.test(document.activeElement?.tagName || '')) {
+    const k = { ArrowRight: e.shiftKey ? 'turn+' : 1, ArrowLeft: e.shiftKey ? 'turn-' : -1, PageDown: 10, PageUp: -10, Home: 'start', End: 'end' }[e.key];
+    if (k != null) { e.preventDefault(); rpStop(); rpStep(k); return; }
+    if (e.key === ' ') { e.preventDefault(); rpToggle(); return; }
+  }
   if ((e.key === ' ' || e.key === 'Enter') && F?.decision && !busy && !pumping && document.activeElement === document.body) {
     const pass = options().find(isPassy); if (pass) { e.preventDefault(); choose(pass); }
   }
@@ -548,3 +577,130 @@ function showGameOver() {
 }
 
 initSetup();
+
+// ---------------- replays ----------------
+// A recorded search game (server replay.py): every frame is the position before decision i, from the
+// watched seat, with the decision's annotation (who decides, what was chosen, the search's visit
+// shares and value). The board is never clickable; arrows / the slider move through the game.
+async function initReplays() {
+  try {
+    const r = await api('/api/replays');
+    const sel = $('#r-list');
+    sel.innerHTML = r.replays.map(e => {
+      const d = e.decks ? e.decks.join(' vs ') : 'decks unknown';
+      const ss = e.search_seat ? `search on P${e.search_seat}` : '';
+      return `<option value="${esc(e.id)}"${e.decks ? '' : ' disabled'}>${esc(e.name)} · seed ${e.seed} · ${esc(d)} · ${ss} · P${e.winner} won, ${e.turns} turns</option>`;
+    }).join('') || '<option disabled>No recorded games found</option>';
+  } catch (e) { $('#r-err').textContent = 'Replays: ' + e.message; }
+}
+$('#r-watch').onclick = async () => {
+  $('#r-err').textContent = '';
+  const id = $('#r-list').value;
+  if (!id) return;
+  $('#r-watch').disabled = true; $('#r-watch').textContent = 'Loading…';
+  try {
+    const j = await api('/api/replay/open', { id, seat: +$('#r-seat').value, both: $('#r-both').checked });
+    rpStop(); resetGame(); showGame(); enqueue(j.frames);
+  } catch (e) { $('#r-err').textContent = e.message; }
+  $('#r-watch').disabled = false; $('#r-watch').textContent = 'Watch';
+};
+
+function rpTarget(k, i) {
+  const n = RP.n, ts = F.meta.turn_starts || [];
+  if (k === 'start') return 0;
+  if (k === 'end') return n;
+  if (k === 'turn+') { const t = ts.find(x => x[0] > i); return t ? t[0] : n; }
+  if (k === 'turn-') { const prev = ts.filter(x => x[0] < i); return prev.length ? prev[prev.length - 1][0] : 0; }
+  return i + k;
+}
+// Moves are queued as a target position: key presses made while a frame is loading add up
+// instead of being dropped, and only the final position is fetched.
+let rpWant = null;
+async function rpGoto(i) {
+  if (!RP) return;
+  rpWant = Math.max(0, Math.min(RP.n, i));
+  if (rpBusy) return;
+  rpBusy = true;
+  try {
+    while (RP && rpWant != null && rpWant !== RP.i) {
+      const want = rpWant;
+      const j = await api('/api/replay/goto', { i: want });
+      apply(j.frames[0]);
+    }
+  } catch (e) { toast(e.message, 'opp'); rpStop(); }
+  rpWant = null;
+  rpBusy = false;
+}
+function rpStep(k) { if (RP) rpGoto(rpTarget(k, rpWant ?? RP.i)); }
+function rpStop() { clearTimeout(rpTimer); rpTimer = 0; if (RP) renderPrompt(); }
+function rpToggle() {
+  if (rpTimer) return rpStop();
+  const tick = async () => {
+    if (!RP || RP.done) return rpStop();
+    await rpGoto(RP.i + 1);
+    if (rpTimer) rpTimer = setTimeout(tick, rpSpeed);
+  };
+  rpTimer = setTimeout(tick, 10);
+  renderPrompt();
+}
+async function rpView(seat, both) {
+  try { const j = await api('/api/replay/view', { seat, both }); resetGame(); apply(j.frames[0]); }
+  catch (e) { toast(e.message, 'opp'); }
+}
+let rpSpeed = 900;
+function renderReplay(box) {
+  box.className = 'replay';
+  const m = F.meta, a = RP;
+  const turn = (m.turn_starts || []).filter(x => x[0] <= a.i).pop();
+  const speeds = [[1800, 'slow'], [900, 'normal'], [400, 'fast'], [120, 'very fast']];
+  box.innerHTML = `<div class="rp-head"><span class="t">Replay</span><span class="dim">decision ${a.i} / ${a.n}${turn ? ` · turn ${turn[1]}` : ''}</span></div>` +
+    `<input type="range" id="rp-slider" min="0" max="${a.n}" value="${a.i}">` +
+    `<div class="rp-ctl">` +
+    `<button data-k="start" title="Start (Home)">⏮</button><button data-k="turn-" title="Previous turn (Shift+Left)">«</button>` +
+    `<button data-k="-1" title="Previous decision (Left)">‹</button>` +
+    `<button id="rp-play" class="${rpTimer ? 'on' : ''}" title="Play / pause (Space)">${rpTimer ? '⏸' : '▶'}</button>` +
+    `<button data-k="1" title="Next decision (Right)">›</button><button data-k="turn+" title="Next turn (Shift+Right)">»</button>` +
+    `<button data-k="end" title="End (End)">⏭</button>` +
+    `<select id="rp-speed" title="Autoplay speed">${speeds.map(([v, t]) => `<option value="${v}"${v === rpSpeed ? ' selected' : ''}>${t}</option>`).join('')}</select>` +
+    `</div>` +
+    `<div class="rp-view"><label>Watch as <select id="rp-seat"><option value="1"${mySeat === 1 ? ' selected' : ''}>${esc(seatLabel(1))}</option>` +
+    `<option value="2"${mySeat === 2 ? ' selected' : ''}>${esc(seatLabel(2))}</option></select></label>` +
+    `<label><input type="checkbox" id="rp-both"${F.opp_hand_cards ? ' checked' : ''}> both hands</label>` +
+    `<button class="ghost" id="rp-exit">Exit</button></div>` +
+    `<div class="rp-dec" id="rp-dec"></div>`;
+  box.querySelectorAll('.rp-ctl [data-k]').forEach(b => b.onclick = () => { rpStop(); const k = b.dataset.k; rpStep(/^-?\d+$/.test(k) ? +k : k); b.blur(); });
+  $('#rp-play').onclick = e => { e.target.blur(); rpToggle(); };
+  $('#rp-speed').onchange = e => { rpSpeed = +e.target.value; e.target.blur(); };
+  $('#rp-slider').onchange = e => { rpStop(); rpGoto(+e.target.value); e.target.blur(); };
+  $('#rp-seat').onchange = e => { rpStop(); rpView(+e.target.value, $('#rp-both').checked); };
+  $('#rp-both').onchange = e => { rpStop(); rpView(mySeat, e.target.checked); };
+  $('#rp-exit').onclick = () => { rpStop(); RP = null; showSetup(); };
+  const dz = $('#rp-dec');
+  if (a.done) {
+    dz.innerHTML = `<div class="who">Game over — ${a.winner ? esc(seatLabel(a.winner)) + ' wins' : 'no winner'}</div>` +
+      `<div class="dim">P${mySeat} ${F.players.me.score} – P${3 - mySeat} ${F.players.opp.score}${F.error ? ' · ' + esc(F.error) : ''}</div>`;
+    return;
+  }
+  const sg = v => (v >= 0 ? '+' : '') + v.toFixed(2);
+  const win = v => `${Math.round((v + 1) * 50)}%`;
+  let h = `<div><span class="who s${a.seat}">${esc(seatLabel(a.seat))}</span> decides <span class="dim">· ${esc(a.kind || '')} · ${a.n_options} options</span></div>` +
+    `<div class="dim">${a.question && a.kind !== 'main phase action' ? esc(a.question) + ' · ' : ''}value ${sg(a.value)} (its win chance ≈ ${win(a.value)})</div>` +
+    `<div class="chose">→ ${esc(optText(a.chosen))}</div>`;
+  if (a.searched) {
+    h += `<div class="dim">search: ${a.visits} visits; top options by visits</div>`;
+    for (const t of a.top) {
+      h += `<div class="rp-bar${t.chosen ? ' chosen' : ''}"><div class="fill" style="width:${(100 * t.share).toFixed(1)}%"></div>` +
+        `<span>${(100 * t.share).toFixed(0)}% · ${esc(optText(t))}</span></div>`;
+    }
+    if (a.override) {
+      h += `<div class="rp-ovr">Search overrode the network: alone it would have played “${esc(optText(a.override))}” ` +
+        `(prior ${(100 * a.override.prior).toFixed(0)}%). Search Q ${sg(a.override.q)} for that vs ${sg(a.q)} for the chosen move.</div>`;
+    }
+  } else h += `<div class="dim">network, greedy: ${(100 * a.chosen.prior).toFixed(0)}% on its pick</div>`;
+  dz.innerHTML = h;
+}
+function markChosen() {
+  document.querySelectorAll('.targeted').forEach(e => e.classList.remove('targeted'));
+  if (!RP || RP.done || !RP.chosen) return;
+  for (const id of RP.chosen.objs) document.querySelectorAll(`[data-id="${id}"]`).forEach(e => e.classList.add('targeted'));
+}
