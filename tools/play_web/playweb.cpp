@@ -449,6 +449,19 @@ void pw_observe(void* p, int32_t* glob, int32_t* tok, uint8_t* tmask, int32_t* a
     *psrc = e.psrc;
 }
 
+// The pending decision's public action history (history.h), kHistLen x kHistF.
+void pw_observe_hist(void* p, int32_t* hist) {
+    using namespace rbe;
+    const Env& e = static_cast<pw::Game*>(p)->h.envs[0];
+    const size_t n = static_cast<size_t>(kHistLen) * kHistF;
+    if (e.need && e.histobs.size() == n) std::memcpy(hist, e.histobs.data(), n * 4);
+    else std::memset(hist, 0, n * 4);
+}
+
+// Search opponent (playweb.py SearchAgent): which seat game i of a search handle (rbs_create) searches.
+// Call before the first rbs_collect; rbs_create alone gives game 0 seat 1.
+void pw_search_seat(void* sh, int i, int seat) { static_cast<rbs::SHandle*>(sh)->games.at(i).search_seat = seat; }
+
 // Apply choice k (index into the engine's legal list) for whoever decides, then run to the
 // next decision that is not answered automatically. 0 ok, -1 bad choice (err).
 int pw_step(void* p, int k, char* err, int errlen) {

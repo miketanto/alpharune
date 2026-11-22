@@ -1,8 +1,13 @@
 # play_web — play Riftbound against a self-play network in the browser
 
-A local web UI where a human plays a full game against a trained checkpoint from
-`research/card_repr/selfplay` (for example `runs/ov_main/league_02080.pt`, a Rengar network).
-The network plays greedy (argmax of its policy), on CPU.
+A local web UI where a human plays a full game against a trained checkpoint: the AlphaZero networks of
+`research/card_repr/az/run_b2` (default: step 9944, Azir) or the older ones in `research/card_repr/selfplay/runs`.
+**Opponent's thinking** picks the network alone (argmax of its policy) or the network with the research search
+(64 or 200 simulations; a few seconds per answer on CPU). The search gets only what its seat may know and samples your
+hidden cards. Every game is saved after each answer to `research/card_repr/human_games` and listed under *Watch a replay*.
+
+The card vocabulary is v2 (every card its own key). `RB_VOCAB=v1` starts the server with the 51-card map the
+`g1` / `g2` / `ov_main` networks were trained with; the AZ networks need v2.
 
 ## Launch
 
@@ -84,8 +89,8 @@ decisions are never described to the browser beyond what the log and board show.
 * Rune payments are made automatically for both players (the first legal rune), as in training.
 * A decision with a single legal option is applied without asking (as rbenv does) — e.g. "End turn"
   when nothing else can be done.
-* The network knows only the cards of its training pool (the Rengar mirror for `ov_main`); with other
-  decks it sees unknown cards as "other" and plays worse.
+* A network knows the cards it was trained with: `az/run_b2` the Azir, Rengar and Diana decks; the older ones 51 cards.
+* Against search, only the first 96 options of one decision can be chosen (the network's action limit).
 
 ## How it is built
 
@@ -97,6 +102,7 @@ decisions are never described to the browser beyond what the log and board show.
 | `server.py` | Stdlib HTTP server: `/api/setup`, `/api/new`, `/api/act`, `/api/state`; after each human answer it plays the network's decisions and returns one frame per decision for the client to animate. Replays: `/api/replays`, `/api/replay/open`, `/api/replay/goto`, `/api/replay/view`. Loopback only. |
 | `replay.py` | Recorded search games: finds the decision logs, works out their decks, rebuilds any position and annotates the pending decision from the log. |
 | `static/` | The page (`index.html`, `play.css`, `play.js`), no external assets except card art from the URLs in `CardDef::image_url`. |
+| `search_test.py` | Headless full games against search (both seats) and the AZ network; the displayed game and the search's copy must encode the same observation at every human decision; saved games must replay. |
 | `smoke_test.py` | Headless full games with checks on every human frame. |
 
 No engine `src/` file is changed. The engine's existing `riftbound --agent1 human` play server

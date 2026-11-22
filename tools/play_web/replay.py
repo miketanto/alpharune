@@ -42,11 +42,15 @@ def _replays_cleanly(deck_p1, deck_p2, seed, game):
             st = g.status()
             if st['done'] or not st['need']:
                 break
+            if k >= len(log) and game.get('done') is False:
+                break
             if k >= len(log) or st['seat'] != int(log[k][11]):
                 return False
             g.step(int(log[k][1]))
             k += 1
         st = g.status()
+        if game.get('done') is False:   # a saved game that was not finished: the log ends at a pending decision
+            return k == len(log)
         return k == len(log) and st['done'] and st['winner'] == int(game.get('winner', st['winner']))
     except ValueError:
         return False
@@ -97,7 +101,7 @@ class Catalog:
             for i, g in enumerate(D.get('games', [])):
                 out.append(dict(id=f'{rel}#{i}', file=rel, slot=i, seed=D['seed'], sims=D.get('sims'),
                                 name=D.get('name') or os.path.basename(os.path.dirname(p)),
-                                search_seat=g.get('search_seat'), winner=g.get('winner'), turns=g.get('turns'),
+                                search_seat=g.get('search_seat'), human_seat=g.get('human_seat'), done=g.get('done', True), winner=g.get('winner'), turns=g.get('turns'),
                                 decisions=len(g.get('declog', [])), decks=decks,
                                 mtime=os.path.getmtime(p)))
         out.sort(key=lambda e: (-e['mtime'], e['file'], e['slot']))
@@ -125,6 +129,9 @@ class Replay:
         ss = int(self.game_rec.get('search_seat') or 0)
         nm = D.get('name') or os.path.basename(os.path.dirname(path))
         self.labels = {ss: f'search N={self.sims}', 3 - ss: 'network greedy'} if ss in (1, 2) else {1: 'P1', 2: 'P2'}
+        self.human = int(self.game_rec.get('human_seat') or 0)
+        if D.get('labels'):
+            self.labels = {int(k): v for k, v in D['labels'].items()}
         self.meta = dict(replay=True, file=rel, slot=int(slot), seed=self.seed, decks=list(decks), name=nm,
                          labels={str(k): v for k, v in self.labels.items()}, search_seat=ss,
                          n=len(self.log), recorded_winner=self.game_rec.get('winner'))
@@ -212,6 +219,7 @@ class Replay:
         text = lambda k: (opts.get(int(k)) or {}).get('text') or (opts.get(int(k)) or {}).get('label') or f'option {int(k)}'
         objs = lambda k: (opts.get(int(k)) or {}).get('objs', [])
         ch, am = int(d[1]), int(d[2])
+        a['human'] = seat == self.human
         a.update(seat=seat, who=self.labels.get(seat, f'P{seat}'), searched=bool(d[0]), value=round(float(d[10]), 3),
                  kind=dec.get('kind'), question=dec.get('question'), n_options=len(opts),
                  chosen=dict(index=ch, text=text(ch), objs=objs(ch), prior=round(float(d[3]), 3)))

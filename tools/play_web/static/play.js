@@ -34,7 +34,7 @@ async function initSetup() {
   try {
     const s = await api('/api/setup');
     const fill = (sel, items, def) => { sel.innerHTML = items.map(i => `<option${i === def ? ' selected' : ''}>${esc(i)}</option>`).join(''); };
-    fill($('#s-deck'), s.decks, 'rengar');
+    fill($('#s-deck'), s.decks, s.default_deck || 'rengar');
     fill($('#s-agent-deck'), s.decks, s.default_agent_deck);
     fill($('#s-ckpt'), s.checkpoints, s.default_checkpoint);
     $('#s-resume').classList.toggle('hidden', !s.has_game);
@@ -46,7 +46,7 @@ $('#s-start').onclick = async () => {
   $('#s-start').disabled = true; $('#s-start').textContent = 'Starting…';
   try {
     const j = await api('/api/new', { deck: $('#s-deck').value, agent_deck: $('#s-agent-deck').value, checkpoint: $('#s-ckpt').value,
-      seat: +$('#s-seat').value, seed: $('#s-seed').value.trim() || null });
+      sims: +$('#s-sims').value, seat: +$('#s-seat').value, seed: $('#s-seed').value.trim() || null });
     resetGame();
     showGame();
     enqueue(j.frames);
@@ -373,7 +373,7 @@ function renderTurn() {
   const t = F.turn;
   const mine = t.turn_player === 1;
   const whose = RP ? `${seatLabel(relSeat(t.turn_player))}'s turn` : mine ? 'Your turn' : 'Opponent\'s turn';
-  const tail = RP ? `replay · seed ${F.meta.seed} · ${F.meta.decks.join(' vs ')}` : `you are Player ${F.me} · ${F.meta?.checkpoint || ''}`;
+  const tail = RP ? `replay · seed ${F.meta.seed} · ${F.meta.decks.join(' vs ')}` : `you are Player ${F.me} · ${F.meta?.checkpoint || ''}${F.meta?.sims ? ` + search ${F.meta.sims}` : ''}`;
   $('#turn-box').innerHTML = `<div class="t1">Turn ${t.number} · <span class="whose ${mine ? 'me' : 'opp'}">${esc(whose)}</span></div>` +
     `<div class="dim">${PHASE[t.phase] || t.phase} phase${t.showdown ? ' · showdown' : ''}${t.closed ? ' · chain active' : ''}` +
     `${t.focus ? ` · focus: ${esc(relName(t.focus))}` : ''} · ${esc(tail)}</div>`;
@@ -588,8 +588,8 @@ async function initReplays() {
     const sel = $('#r-list');
     sel.innerHTML = r.replays.map(e => {
       const d = e.decks ? e.decks.join(' vs ') : 'decks unknown';
-      const ss = e.search_seat ? `search on P${e.search_seat}` : '';
-      return `<option value="${esc(e.id)}"${e.decks ? '' : ' disabled'}>${esc(e.name)} · seed ${e.seed} · ${esc(d)} · ${ss} · P${e.winner} won, ${e.turns} turns</option>`;
+      const ss = e.human_seat ? `you are P${e.human_seat}` : e.search_seat ? `search on P${e.search_seat}` : '';
+      return `<option value="${esc(e.id)}"${e.decks ? '' : ' disabled'}>${esc(e.name)} · seed ${e.seed} · ${esc(d)} · ${ss} · ${e.done ? `P${e.winner} won` : 'unfinished'}, ${e.turns} turns</option>`;
     }).join('') || '<option disabled>No recorded games found</option>';
   } catch (e) { $('#r-err').textContent = 'Replays: ' + e.message; }
 }
@@ -684,7 +684,7 @@ function renderReplay(box) {
   const sg = v => (v >= 0 ? '+' : '') + v.toFixed(2);
   const win = v => `${Math.round((v + 1) * 50)}%`;
   let h = `<div><span class="who s${a.seat}">${esc(seatLabel(a.seat))}</span> decides <span class="dim">· ${esc(a.kind || '')} · ${a.n_options} options</span></div>` +
-    `<div class="dim">${a.question && a.kind !== 'main phase action' ? esc(a.question) + ' · ' : ''}value ${sg(a.value)} (its win chance ≈ ${win(a.value)})</div>` +
+    `<div class="dim">${a.question && a.kind !== 'main phase action' ? esc(a.question) + ' · ' : ''}${a.human ? '' : `value ${sg(a.value)} (its win chance ≈ ${win(a.value)})`}</div>` +
     `<div class="chose">→ ${esc(optText(a.chosen))}</div>`;
   if (a.searched) {
     h += `<div class="dim">search: ${a.visits} visits; top options by visits</div>`;
@@ -696,7 +696,7 @@ function renderReplay(box) {
       h += `<div class="rp-ovr">Search overrode the network: alone it would have played “${esc(optText(a.override))}” ` +
         `(prior ${(100 * a.override.prior).toFixed(0)}%). Search Q ${sg(a.override.q)} for that vs ${sg(a.q)} for the chosen move.</div>`;
     }
-  } else h += `<div class="dim">network, greedy: ${(100 * a.chosen.prior).toFixed(0)}% on its pick</div>`;
+  } else if (!a.human) h += `<div class="dim">network, greedy: ${(100 * a.chosen.prior).toFixed(0)}% on its pick</div>`;
   dz.innerHTML = h;
 }
 function markChosen() {

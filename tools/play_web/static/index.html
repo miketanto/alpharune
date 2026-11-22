@@ -12,18 +12,22 @@
   <section id="setup" class="screen">
     <div class="setup-card">
       <h1>Riftbound <span class="dim">vs</span> Network</h1>
-      <p class="dim">Play a full game against a self-play checkpoint. The network plays greedy (its top choice), on CPU.
-        You see only what your seat may know; rune payments are made automatically for both players.</p>
+      <p class="dim">Play a full game against a trained network, on its own (its top choice) or with search.
+        You see only what your seat may know, and so does it; rune payments are made automatically for both players.
+        Every game is saved and can be watched below.</p>
       <div class="grid2">
         <label>Your deck<select id="s-deck"></select></label>
         <label>Network's deck<select id="s-agent-deck"></select></label>
         <label class="wide">Checkpoint<select id="s-ckpt"></select></label>
+        <label>Opponent's thinking<select id="s-sims">
+          <option value="0">Network only (instant)</option><option value="64" selected>Search, 64 simulations</option>
+          <option value="200">Search, 200 simulations (stronger, slower)</option></select></label>
         <label>Seat<select id="s-seat">
           <option value="0">Random</option><option value="1">Player 1</option><option value="2">Player 2</option></select></label>
         <label>Seed <input id="s-seed" placeholder="random" inputmode="numeric"></label>
       </div>
-      <p class="note" id="s-note">The network was trained on the Rengar mirror: cards outside its training pool are
-        unknown to it, so it plays best with the Rengar deck.</p>
+      <p class="note" id="s-note">az/run_b2 networks are trained on Azir (mirror, vs Rengar, vs Diana) and know every card in those decks.
+        Older ones (g2_main, ov_main) were trained seeing most Azir cards as one "unknown card".</p>
       <div class="row"><button id="s-start" class="primary">Start game</button>
         <button id="s-resume" class="ghost hidden">Resume current game</button></div>
       <div id="s-err" class="err"></div>
