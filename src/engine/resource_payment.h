@@ -184,11 +184,10 @@ inline bool floatEnergyBeforeRecycling(GameState& state, EventBus& events, Playe
     return true;
 }
 
-/// Recycle `rid` from `player`'s base for Power (CR 164.2): the rune as it
-/// was (last_known), the move, its announcement, then the new object (CR
-/// 124.1; a rune carries no attachments).
-inline void recycleRuneForPower(GameState& state, EventBus& events, PlayerId player,
-                                GameObjectId rid) {
+/// Put `rid` from `player`'s base on the bottom of their Rune Deck: the rune
+/// as it was (last_known), the move, its announcement, then the new object
+/// (CR 124.1; a rune carries no attachments).
+inline void recycleRune(GameState& state, EventBus& events, PlayerId player, GameObjectId rid) {
     auto& ps = state.player(player);
     auto& rune = state.getObject(rid);
     snapshotAsItLeaves(rune);
@@ -196,10 +195,54 @@ inline void recycleRuneForPower(GameState& state, EventBus& events, PlayerId pla
     rune.zone = ZoneType::RuneDeck;
     ps.rune_deck.insert(ps.rune_deck.begin(), rid);
     knowledge::runeToBottom(state, rid, knowledge::everyone());   // a public rune (T4)
-    ps.power_spent_this_turn++;
     events.emit(LeftBoardEvent{rid, player, CardType::Rune,
         LocationId{BaseLocation{player}}, ZoneType::RuneDeck, false});
     forgetBoardState(state.getObject(rid), nullptr);
+}
+
+/// Recycle `rid` to pay a point of Power (CR 164.2.b): the Power is spent as
+/// it is added.
+inline void recycleRuneForPower(GameState& state, EventBus& events, PlayerId player,
+                                GameObjectId rid) {
+    state.player(player).power_spent_this_turn++;
+    recycleRune(state, events, player, rid);
+}
+
+/// A basic rune's own two abilities (CR 164.2), used on their own: the index
+/// an activation names (Intent::ability_index).
+inline constexpr int kRuneExhaustAbility = 0;   // "[E]: Add [1]."
+inline constexpr int kRuneRecycleAbility = 1;   // "Recycle this: Add [C]."
+
+/// Use `rid`'s ability `index` for `player`: it Adds at once (CR 430.2). A
+/// ready rune that is recycled gives its Energy first, as in a payment. The
+/// Power floats in the pool and counts as spent when a cost takes it. False
+/// (nothing done) if it cannot be used.
+inline bool useRuneAbility(GameState& state, EventBus& events, PlayerId player,
+                           GameObjectId rid, int index) {
+    if (!state.objectExists(rid)) return false;
+    const auto& rune = state.getObject(rid);
+    if (!rune.isRune() || rune.controller != player || !rune.location.has_value() ||
+        *rune.location != LocationId{BaseLocation{player}}) return false;
+    const std::string name = rune.name.get();
+    if (index == kRuneExhaustAbility) {
+        if (rune.is_exhausted) return false;
+        state.getObject(rid).is_exhausted = true;
+        events.emit(ObjectStateChangedEvent{rid, "exhausted"});
+        ++state.player(player).rune_pool.energy;
+        RIFT_TRACE(events, "FLOAT: " + std::string(toString(player)) + " exhausts " + name +
+                        " (id=" + toString(rid) + ") for [1] Energy");
+        return true;
+    }
+    if (index != kRuneRecycleAbility) return false;
+    const auto domains = rune.domains.get();
+    floatEnergyBeforeRecycling(state, events, player, rid);
+    recycleRune(state, events, player, rid);
+    auto& pool = state.player(player).rune_pool;
+    if (domains.empty() || domains[0] == Domain::Count) ++pool.universal_power;
+    else ++pool.power[static_cast<int>(domains[0])];
+    RIFT_TRACE(events, "FLOAT: " + std::string(toString(player)) + " recycles " + name +
+                    " (id=" + toString(rid) + ") for Power");
+    return true;
 }
 
 /// Pay it: all or nothing. Restricted resources go first, then floating ones,

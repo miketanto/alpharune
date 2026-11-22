@@ -2667,6 +2667,16 @@ bool GameEngine::payAndQueueAbility(const Intent& intent) {
     const PlayerId player = intent.player;
     const GameObjectId source_id = intent.ability_source;
 
+    // A rune's own ability (generateRuneActions): it Adds at once, with no
+    // chain item, and priority and Focus stay (CR 430.2.a).
+    if (state_.getObject(source_id).isRune()) {
+        if (!manualRunes(player)) return false;
+        const size_t on_chain = state_.chain.items.size();
+        last_activation_added_ =
+            resource::useRuneAbility(state_, events_, player, source_id, intent.ability_index);
+        return state_.chain.items.size() > on_chain;   // "When you recycle a rune"
+    }
+
     // Equip (CR 818): "[Cost]: Attach this gear to a unit you control"
     // (818.1.c.2) — an activated ability on the chain (CR 377.3; testing
     // phase D15). The unit is its target (818.1.b.1), named by the intent; the
@@ -5731,6 +5741,7 @@ std::vector<Intent> GameEngine::generateMainPhaseActions(PlayerId player) const 
 
     // Activate abilities on gear/legends/units ([E]: abilities)
     generateActivateAbilityActions(player, actions);
+    generateRuneActions(player, actions, IntentType::ActivateAbility);
 
     // Equip gear to units (CR 818). One gate for every Equip, the same one
     // the execution pays by (canPayEquip): the gear's declared cost after
@@ -5897,6 +5908,7 @@ std::vector<Intent> GameEngine::generateShowdownActions(PlayerId player) const {
     // 813.1.b), a unit's own and those an aura grants it.
     generateActivateAbilityActions(player, actions, AbilityTiming::Action,
                                    IntentType::ActivateActionAbility);
+    generateRuneActions(player, actions, IntentType::ActivateActionAbility);
 
     return actions;
 }
@@ -6039,6 +6051,7 @@ std::vector<Intent> GameEngine::generateClosedStateActions(
     // Thundersong) does not stop abilities: an ability is not a card.
     generateActivateAbilityActions(player, actions, AbilityTiming::Reaction,
                                    IntentType::ActivateReactionAbility);
+    generateRuneActions(player, actions, IntentType::ActivateReactionAbility);
 
     return actions;
 }
@@ -6813,6 +6826,28 @@ void GameEngine::generateActivateAbilityActions(PlayerId player,
             actions.push_back(activate);
         }
     }
+}
+
+// A player's runes' own abilities (setManualRunes; CR 164.2): one action per
+// kind of rune and ability (resource::runeKinds), in the runes' own order.
+// Not part of addReactionsFor: a payment already exhausts and recycles runes.
+void GameEngine::generateRuneActions(PlayerId player, std::vector<Intent>& actions,
+                                     IntentType intent_type) const {
+    if (!manualRunes(player)) return;
+    const auto runes = resource::runesInBase(state_, player);
+    auto offer = [&](GameObjectId rune, int ability) {
+        Intent use;
+        use.type = intent_type;
+        use.player = player;
+        use.ability_source = rune;
+        use.ability_index = ability;
+        actions.push_back(std::move(use));
+    };
+    std::vector<GameObjectId> ready;
+    for (auto id : runes)
+        if (!state_.getObject(id).is_exhausted) ready.push_back(id);
+    for (auto id : resource::runeKinds(state_, ready)) offer(id, resource::kRuneExhaustAbility);
+    for (auto id : resource::runeKinds(state_, runes)) offer(id, resource::kRuneRecycleAbility);
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════

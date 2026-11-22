@@ -170,6 +170,19 @@ public:
     void setMatchFormat(MatchFormat format) { match_format_ = format; }
     MatchFormat matchFormat() const { return match_format_; }
 
+    /// Whether `player` is offered their runes' own abilities (CR 164.2:
+    /// "[Reaction][>] [E]: Add [1]" and "[Reaction][>] Recycle this: Add
+    /// [C]") as actions wherever they may activate a [Reaction] ability, so
+    /// they can float Energy and Power. Off by default: the runes then work
+    /// only inside payments, and a game is as it was without this. May be
+    /// switched at any time; a pending decision keeps the options it has.
+    void setManualRunes(PlayerId player, bool on) {
+        manual_runes_[player == PlayerId::Player2 ? 1 : 0] = on;
+    }
+    bool manualRunes(PlayerId player) const {
+        return manual_runes_[player == PlayerId::Player2 ? 1 : 0];
+    }
+
     /// Inspect what the engine is currently waiting on without advancing.
     /// Throws the engine's exception if the game failed (see applyChoice).
     ///
@@ -397,6 +410,7 @@ private:
     std::mt19937_64 rng_;
     uint64_t id_label_salt_ = 0;   // see setIdLabelSalt
     MatchFormat match_format_ = MatchFormat::BestOf1;   // see setMatchFormat
+    bool manual_runes_[2] = {false, false};             // see setManualRunes
 
     // Connection for the CardRevealedEvent subscriber installed in
     // the constructor. Stored so the destructor can disconnect — if
@@ -761,6 +775,8 @@ private:
     /// [Reaction], CR 813.1.b), Reaction in a Closed State; `intent_type` is
     /// the matching Activate* intent.
     enum class AbilityTiming : uint8_t { Any, Action, Reaction };
+    void generateRuneActions(PlayerId player, std::vector<Intent>& actions,
+                             IntentType intent_type) const;
     void generateActivateAbilityActions(PlayerId player,
                                          std::vector<Intent>& actions,
                                          AbilityTiming timing = AbilityTiming::Any,
