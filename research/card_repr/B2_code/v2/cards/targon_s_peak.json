@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/battlefields/0284_targon_s_peak.cpp:90",
+   "supertype": "default SuperType::None",
+   "domains": "default {}"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "here",
+    "_src": "src/cards/battlefields/0284_targon_s_peak.cpp:23-29"
+   },
+   "effects": [
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "rune",
+      "side": "any",
+      "zone": "board",
+      "count": 2,
+      "filters": [
+       {
+        "f": "exhausted",
+        "v": true,
+        "_src": "src/cards/battlefields/0284_targon_s_peak.cpp:55"
+       }
+      ],
+      "optional": true,
+      "_src": "src/cards/battlefields/0284_targon_s_peak.cpp:52-64"
+     },
+     "after": "end_of_turn",
+     "_src": "src/cards/battlefields/0284_targon_s_peak.cpp:73; delayed src/cards/battlefields/0284_targon_s_peak.cpp:32-38"
+    }
+   ],
+   "_src": "src/cards/battlefields/0284_targon_s_peak.cpp:23-29"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-289-298",
+  "class_file": "src/cards/battlefields/0284_targon_s_peak.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: after=end_of_turn (delayed ability, runes chosen when it fires)",
+   "new term: selector type rune, filter exhausted"
+  ]
+ }
+}

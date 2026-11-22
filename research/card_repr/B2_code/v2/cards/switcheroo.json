@@ -1,0 +1,152 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 2,
+  "power_by_domain": {
+   "chaos": 2
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0466_switcheroo.cpp:99",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0466_switcheroo.cpp:100",
+   "energy": "src/cards/spells/0466_switcheroo.cpp:101",
+   "power": "src/cards/spells/0466_switcheroo.cpp:102",
+   "power_by_domain": "src/cards/spells/0466_switcheroo.cpp:102 x src/cards/spells/0466_switcheroo.cpp:100; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0466_switcheroo.cpp:104"
+  },
+  {
+   "kw": "hidden",
+   "_src": "src/cards/spells/0466_switcheroo.cpp:105"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "battlefield",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0466_switcheroo.cpp:57-60"
+     },
+     "_src": "src/cards/spells/0466_switcheroo.cpp:71"
+    },
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "battlefield",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/spells/0466_switcheroo.cpp:68"
+       },
+       {
+        "f": "at_location_of",
+        "v": "A",
+        "_src": "src/cards/spells/0466_switcheroo.cpp:64-68"
+       }
+      ],
+      "bind": "B",
+      "_src": "src/cards/spells/0466_switcheroo.cpp:61-70"
+     },
+     "_src": "src/cards/spells/0466_switcheroo.cpp:71"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0466_switcheroo.cpp:83"
+     },
+     "amount": {
+      "ref": "might_of:B",
+      "minus": "might_of:A",
+      "_src": "src/cards/spells/0466_switcheroo.cpp:80-83"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0466_switcheroo.cpp:83"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "B",
+      "_src": "src/cards/spells/0466_switcheroo.cpp:84"
+     },
+     "amount": {
+      "ref": "might_of:A",
+      "minus": "might_of:B",
+      "_src": "src/cards/spells/0466_switcheroo.cpp:80-84"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0466_switcheroo.cpp:84"
+    }
+   ],
+   "_src": "src/cards/spells/0466_switcheroo.cpp:54"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-145-221",
+  "class_file": "src/cards/spells/0466_switcheroo.cpp",
+  "source": "engine_code",
+  "flags": [
+   "swap = GiveMight by the difference of the two current Mights (snapshot at resolution); new term: amount field minus",
+   "new term: filter at_location_of (same battlefield as the bound unit)",
+   "played from facedown both units must be at its hidden battlefield (src/cards/spells/0466_switcheroo.cpp:46-53, src/cards/spells/0466_switcheroo.cpp:60); not represented"
+  ]
+ }
+}

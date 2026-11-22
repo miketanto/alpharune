@@ -28,6 +28,13 @@ REPO_WSL = os.path.expanduser('~/riftbound/alpharune')   # WSL build copy
 LIB_PATH = os.path.join(REPO_WSL, 'build_pic', 'librbenv.so')
 SUBJECTS = os.path.join(REPO_WSL, 'research/card_repr/C_engine/out/subjects.txt')
 VOCAB_PATH = os.path.join(HERE, 'vocab.json')
+# Card vocabulary v2 (cards_v2/build_v2.py, 2026-11-21): every registered card has its own key (v1 = the
+# 51 original cards, everything else 'other'). v1 indices are unchanged in v2. RB_VOCAB=v1 for the old map.
+RB_VOCAB = os.environ.get('RB_VOCAB', 'v2')
+if RB_VOCAB == 'v2':
+    _V2 = os.path.normpath(os.path.join(HERE, '..', '..', 'cards_v2'))
+    SUBJECTS = os.path.join(_V2, 'subjects_v2.txt')
+    VOCAB_PATH = os.path.join(_V2, 'vocab_v2.json')
 DECK_DIR = os.path.join(HERE, '..', '..', 'smoke', 'data', 'decks')
 
 _lib = None
@@ -55,6 +62,8 @@ def _load():
     L.rbenv_counters.argtypes = [vp, _I64]; L.rbenv_counters.restype = None
     L.rbenv_verify.argtypes = [vp, _I64]; L.rbenv_verify.restype = None
     L.rbenv_schema_version.argtypes = []; L.rbenv_schema_version.restype = ci
+    L.rbenv_hist_dims.argtypes = [_I32]; L.rbenv_hist_dims.restype = None
+    L.rbenv_observe_hist.argtypes = [vp, _I32]; L.rbenv_observe_hist.restype = None
     _lib = L
     return L
 
@@ -84,7 +93,10 @@ class RBEnv:
             raise RuntimeError(err.value.decode())
         d = np.zeros(6, np.int32)
         L.rbenv_dims(d)
-        self.dims = dict(G=int(d[0]), T=int(d[1]), F=int(d[2]), A=int(d[3]), K=int(d[4]), V=int(d[5]))
+        hd = np.zeros(2, np.int32)
+        L.rbenv_hist_dims(hd)
+        self.dims = dict(G=int(d[0]), T=int(d[1]), F=int(d[2]), A=int(d[3]), K=int(d[4]), V=int(d[5]), H=int(hd[0]),
+                         HF=int(hd[1]))
         self.n_envs = n_envs
         self._h = L.rbenv_create(n_envs, resolve_deck(deck_a).encode(), resolve_deck(deck_b).encode(),
                                  int(seed), 1 if autopay else 0, (opponent or '').encode(), err, 4096)
@@ -101,6 +113,8 @@ class RBEnv:
                  nlegal=np.empty(N, np.int32))
         self._L.rbenv_observe(self._h, o['glob'], o['tok'], o['tok_mask'], o['act'], o['act_mask'],
                               o['need'], o['seat'], o['pk'], o['psrc'], o['nlegal'])
+        o['hist'] = np.empty((N, D['H'], D['HF']), np.int32)   # history.h: public action history
+        self._L.rbenv_observe_hist(self._h, o['hist'])
         for k in ('tok_mask', 'act_mask', 'need'):
             o[k] = o[k].view(np.bool_)
         return o

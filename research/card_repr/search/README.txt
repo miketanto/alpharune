@@ -83,3 +83,28 @@ The search (rbsearch.cpp)
     Leaf value = the net's value for the leaf's decider, sign-flipped to each node's decider;
     terminal = +-1. No rollouts. Options past A = 96 are never searched (the net cannot score them).
   - Move played: most visited root option, ties by the higher prior (so N = 1 = greedy exactly).
+
+E2 search teacher (CEILING_PLAN.md E2; results e2/REPORT.txt)
+--------------------------------------------------------------
+  gen_targets.py   generator process: self-play with the CURRENT main weights (file --weights, reloaded
+                   when it changes), both seats sample from the net; each external decision is searched
+                   with prob --p-search (N=64 PUCT, strict visibility inside the search). Per searched
+                   decision it writes the observation encoded with the TRAINING encoder (loose, as rbenv),
+                   net prior P, root visits N, root Q, v0, visit-weighted root value, outcome z, weights
+                   update, to rolling chunk files <out>/c_<seq>.npz (newest --keep kept).
+                   --holdout N writes N records to <out>/holdout.npz and exits (e2/holdout.npz: league_02080).
+  rbsearch.cpp     seat_mode 2 ("gen"): both seats sample (temperature 1); searched decisions record a
+                   GenRec; the move played there is sampled from the root prior (positions stay on the
+                   net's own distribution). rbs_gen_take(i) returns a finished game's records with z,
+                   rbs_restart(i, seed) refills a finished slot (continuous generation, no stragglers).
+  decision_export.cpp  thread_local g_vis_force overrides g_strict_vis per thread (generator: stored
+                   observation loose, simulations strict). rbenv / training unchanged (default -1).
+  learner/selfplay.py  --search-buf DIR: SearchBuf (newest --search-window records); every PPO minibatch
+                   adds --search-coef * CE(pi', pi_net) on --search-mb buffer records; pi' from
+                   e2/targets.py (--search-target cq = completed-Q improved policy, or visits).
+                   --export-weights PATH --export-every K: the weights the generator reloads.
+                   --search-holdout e2/holdout.npz: CE / KL to fixed targets logged (metrics.jsonl).
+  league/overnight.py  --stop-main-at N, --no-rate, --main-extra (main-only trainer options),
+                   --train-extra (both roles).
+  e2/run_arm.sh A|B N  one arm (fresh league dir league/e2_<arm>, runs e2a_* / e2b_*; arm B also starts
+                   the generator on cores 12-15, buffer in ~/e2buf/e2b). e2/eval_e2.py: head-to-heads.

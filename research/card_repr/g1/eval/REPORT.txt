@@ -1,0 +1,34 @@
+G1 evaluation (Sat Nov 21 01:12:23 2026), greedy, 2000 games per pair (1000 per seat order, same deals), Wilson 95% CIs
+
+  G     runs/g1_main/league_00500.pt (update 500)
+  S_R   runs/e2a_main/league_00480.pt (update 480)  [given (--s-rengar)]
+  S_A   runs/az_main/league_00300.pt (update 300)
+  OV    runs/ov_main/league_02080.pt (update 2080)
+  Gmid  runs/g1_main/league_00250.pt (update 250)
+
+== P1 pilot swap, G ==  (win rate of the pilot on deck X vs each reference; diff = G - specialist; bar -0.03)
+  deck rengar (specialist S_R):
+    vs S_R(rengar)  G 0.387 [0.365,0.408]   S_R 0.500 [0.500,0.500]   diff -0.114 (se 0.011)
+    vs S_A(azir)    G 0.953 [0.943,0.961]   S_R 0.732 [0.712,0.751]   diff +0.221 (se 0.011)
+    pilot-swap diff d_rengar = +0.054  95% CI [+0.039, +0.069]  -> PASS vs -0.03 (CI lower bound also clears it)
+  deck azir (specialist S_A):
+    vs S_R(rengar)  G 0.702 [0.681,0.721]   S_A 0.268 [0.249,0.288]   diff +0.433 (se 0.014)
+    vs S_A(azir)    G 0.505 [0.484,0.527]   S_A 0.500 [0.500,0.500]   diff +0.005 (se 0.011)
+    pilot-swap diff d_azir = +0.220  95% CI [+0.202, +0.237]  -> PASS vs -0.03 (CI lower bound also clears it)
+  mean over decks +0.137 -> PASS; worst deck rengar +0.054
+  forgetting: G Rengar mirror vs ov_main@2080 0.449 (0.4268, 0.4704); Azir mirror vs az_main@300 0.505 (0.4836, 0.5274)
+
+== P1 pilot swap, Gmid ==  (win rate of the pilot on deck X vs each reference; diff = Gmid - specialist; bar -0.03)
+  deck rengar (specialist S_R):
+    vs S_R(rengar)  Gmid 0.374 [0.353,0.396]   S_R 0.500 [0.500,0.500]   diff -0.126 (se 0.011)
+    vs S_A(azir)    Gmid 0.940 [0.928,0.949]   S_R 0.732 [0.712,0.751]   diff +0.207 (se 0.011)
+    pilot-swap diff d_rengar = +0.041  95% CI [+0.026, +0.056]  -> PASS vs -0.03 (CI lower bound also clears it)
+  deck azir (specialist S_A):
+    vs S_R(rengar)  Gmid 0.584 [0.562,0.605]   S_A 0.268 [0.249,0.288]   diff +0.316 (se 0.015)
+    vs S_A(azir)    Gmid 0.333 [0.312,0.353]   S_A 0.500 [0.500,0.500]   diff -0.168 (se 0.011)
+    pilot-swap diff d_azir = +0.074  95% CI [+0.057, +0.092]  -> PASS vs -0.03 (CI lower bound also clears it)
+  mean over decks +0.058 -> PASS; worst deck rengar +0.041
+  forgetting: Gmid Rengar mirror vs ov_main@2080 0.424 (0.403, 0.4463); Azir mirror vs az_main@300 0.333 (0.3122, 0.3535)
+
+context: S_R Rengar mirror vs ov_main@2080 0.555 (0.5331, 0.5767) (what the specialist gained over the init)
+slope midpoint -> final: mean pilot-swap diff +0.058 -> +0.137; rengar +0.041 -> +0.054; azir +0.074 -> +0.220

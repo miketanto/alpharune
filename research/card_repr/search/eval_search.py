@@ -75,6 +75,8 @@ def main():
     ap.add_argument('--seed', type=int, default=990001)
     ap.add_argument('--deck', default='rengar')
     ap.add_argument('--ckpt', default=CKPT)
+    ap.add_argument('--opp-ckpt', default='', help='network of the greedy seat (default: --ckpt)')
+    ap.add_argument('--deck-b', default='', help="the greedy seat's deck; the search seat always plays --deck")
     ap.add_argument('--chunk', type=int, default=2048)
     ap.add_argument('--every', type=float, default=60.0, help='progress print interval (s)')
     ap.add_argument('--out', default='')
@@ -86,12 +88,29 @@ def main():
     if dev == 'cuda':
         torch.cuda.set_per_process_memory_fraction(0.4)
     torch.set_num_threads(2)
-    S = rbsearch.Search(a.games, a.deck, a.seed, sims=a.sims, leaves=a.leaves, threads=a.threads, cpuct=a.cpuct,
+    # --deck-b: matchups (deck, deck_b) for even games (search seat 1) and (deck_b, deck) for odd (search seat 2)
+    da, db = ([a.deck, a.deck_b], [a.deck_b, a.deck]) if a.deck_b else (a.deck, None)
+    S = rbsearch.Search(a.games, da, a.seed, sims=a.sims, leaves=a.leaves, threads=a.threads, cpuct=a.cpuct,
                         fpu_red=a.fpu, vl=a.vl, perfect=a.perfect, seat_mode='balanced' if a.sims > 0 else 'none',
-                        strict=not a.loose, deck_model=a.deck_model,
+                        strict=not a.loose, deck_model=a.deck_model, deck_b=db,
                         opponent=a.opponent or None)
     net = rbsearch.load_net(a.ckpt, S.dims, dev)
     ev = rbsearch.Evaluator(net, dev, S.dims['A'], a.chunk)
+    ev_opp = rbsearch.Evaluator(rbsearch.load_net(a.opp_ckpt, S.dims, dev), dev, S.dims['A'], a.chunk) if a.opp_ckpt else None
+
+    def evaluate(rows, B):
+        if ev_opp is None:
+            return ev(rows, B)
+        # greedy-seat rows (kind 0 at the non-search seat; game i searches on seat 1 if i is even) -> opponent net;
+        # leaf rows, including the opponent's decisions inside the searcher's simulations, -> search net
+        opp = (rows['leaf'] == 0) & (rows['seat'] != np.where(rows['game'] % 2 == 0, 1, 2))
+        logp = np.full((B, S.dims['A']), -1e9, np.float32); v = np.zeros(B, np.float32)
+        for m, e in ((~opp, ev), (opp, ev_opp)):
+            idx = np.nonzero(m)[0]
+            if len(idx):
+                sub = {k: x[idx] for k, x in rows.items()}
+                lp, vv = e(sub, len(idx)); logp[idx] = lp; v[idx] = vv
+        return logp, v
     t0 = time.time()
     last = t0
     t_c = t_r = t_n = t_f = 0.0
@@ -101,7 +120,7 @@ def main():
         if B == 0:
             break
         s = time.time(); rows = S.rows(B); t_r += time.time() - s
-        s = time.time(); logp, v = ev(rows, B); t_n += time.time() - s
+        s = time.time(); logp, v = evaluate(rows, B); t_n += time.time() - s
         s = time.time(); S.feed(logp, v); t_f += time.time() - s
         rounds += 1
         rows_total += B
@@ -113,7 +132,7 @@ def main():
     secs = time.time() - t0
     res = S.results()
     st = S.stats()
-    out = dict(ckpt=a.ckpt, sims=a.sims, leaves=a.leaves, cpuct=a.cpuct, fpu=a.fpu, vl=a.vl, perfect=a.perfect, deck_model=a.deck_model, opponent=a.opponent or 'greedy net',
+    out = dict(ckpt=a.ckpt, opp_ckpt=a.opp_ckpt or a.ckpt, deck_b=a.deck_b or a.deck, sims=a.sims, leaves=a.leaves, cpuct=a.cpuct, fpu=a.fpu, vl=a.vl, perfect=a.perfect, deck_model=a.deck_model, opponent=a.opponent or 'greedy net',
                strict_vis=not a.loose, seed=a.seed, deck=a.deck, **summarize(res, a.sims),
                secs=round(secs, 1), games_per_hour=round(len(res) / secs * 3600, 1), rounds=rounds,
                mean_batch=round(rows_total / max(1, rounds), 1),

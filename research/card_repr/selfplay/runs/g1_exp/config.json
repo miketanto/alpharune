@@ -1,0 +1,60 @@
+{
+ "repr": "B2",
+ "matchups": "rengar:rengar,rengar:azir,azir:rengar,azir:azir",
+ "init": "",
+ "ask_head": true,
+ "ask_opt": true,
+ "no_opt_cost": false,
+ "no_card_norm": false,
+ "n_envs": 256,
+ "updates": 240,
+ "samples_per_update": 16384,
+ "epochs": 3,
+ "minibatch": 2048,
+ "lr": 0.0003,
+ "clip": 0.2,
+ "lam": 0.95,
+ "vf_coef": 0.5,
+ "ent_coef": 0.01,
+ "max_grad_norm": 0.5,
+ "eval_every": 0,
+ "ckpt_every": 1000000,
+ "seed": 1024,
+ "threads": 2,
+ "run_name": "g1_exp",
+ "resume": true,
+ "max_minutes": 30.0,
+ "gpu_mem_frac": 0.4,
+ "league": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g1/exp.json",
+ "matchup_list": [
+  [
+   "rengar",
+   "rengar"
+  ],
+  [
+   "rengar",
+   "azir"
+  ],
+  [
+   "azir",
+   "rengar"
+  ],
+  [
+   "azir",
+   "azir"
+  ]
+ ],
+ "dims": {
+  "G": 72,
+  "T": 96,
+  "F": 24,
+  "A": 96,
+  "K": 61,
+  "V": 80
+ },
+ "vocab_src": "rbenv/vocab.json",
+ "device": "cuda",
+ "params": 209475,
+ "missing_repr_keys": [],
+ "trainer": "g1/selfplay_g1.py"
+}

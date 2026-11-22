@@ -1,0 +1,77 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "chaos"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0712_vex_apathetic.cpp:56",
+   "supertype": "src/cards/units/0712_vex_apathetic.cpp:57",
+   "domains": "src/cards/units/0712_vex_apathetic.cpp:58",
+   "energy": "src/cards/units/0712_vex_apathetic.cpp:60",
+   "power": "default 0",
+   "might": "src/cards/units/0712_vex_apathetic.cpp:61"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "deflect",
+   "_src": "src/cards/units/0712_vex_apathetic.cpp:64; value src/cards/units/0712_vex_apathetic.cpp:63",
+   "value": 1
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_unit",
+    "subject": "opponent",
+    "_src": "src/cards/units/0712_vex_apathetic.cpp:24; src/engine/trigger_manager.cpp:589-593",
+    "condition": [
+     {
+      "c": "self_at_battlefield",
+      "v": true,
+      "_src": "src/cards/units/0712_vex_apathetic.cpp:29-32"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "Stun",
+     "target": {
+      "type": "ref",
+      "ref": "subject",
+      "_src": "src/cards/units/0712_vex_apathetic.cpp:34-35"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0712_vex_apathetic.cpp:41; src/engine/effect_executor.cpp:1732"
+    },
+    {
+     "verb": "CantMove",
+     "target": {
+      "type": "ref",
+      "ref": "subject",
+      "_src": "src/cards/units/0712_vex_apathetic.cpp:42"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0712_vex_apathetic.cpp:42"
+    }
+   ],
+   "_src": "src/cards/units/0712_vex_apathetic.cpp:24; src/engine/trigger_manager.cpp:589-593"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-150-219",
+  "class_file": "src/cards/units/0712_vex_apathetic.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: trigger subject opponent",
+   "new term: condition self_at_battlefield",
+   "new term: verb CantMove (cant_move_this_turn: no Standard Move, no effect move by its controller)"
+  ]
+ }
+}

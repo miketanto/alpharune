@@ -14,6 +14,8 @@
 
 #include <cstring>
 #include <memory>
+#include <mutex>
+#include <set>
 
 namespace rbe {
 using namespace riftbound;
@@ -40,12 +42,23 @@ bool g_inited = false;
 struct Counters { long trunc_tok = 0, trunc_act = 0, trunc_list = 0, unk_key = 0, ext = 0, auto_ = 0;
                   long trig_opts = 0, trig_mapped = 0, trig_amb = 0; };   // v4: TriggerOrder mapping
 
+// RBENV_LOG_UNK=1: print each unknown card key once (stderr), to find keys the vocabulary lacks.
+std::mutex g_unk_mu;
+std::set<std::string> g_unk_seen;
 int vocabOf(const std::string& k, Counters& c) {
     auto it = g_vocab.find(k);
     if (it != g_vocab.end()) return it->second;
     ++c.unk_key;
+    static const bool log = std::getenv("RBENV_LOG_UNK") != nullptr;
+    if (log) {
+        std::lock_guard<std::mutex> lk(g_unk_mu);
+        if (g_unk_seen.insert(k).second) std::fprintf(stderr, "[rbenv] unknown card key: %s\n", k.c_str());
+    }
     return g_vocab_other;
 }
+}  // namespace rbe
+#include "research/card_repr/selfplay/rbenv/history.h"
+namespace rbe {
 
 struct Result { int env; int64_t game_seed; int winner; int length; int n_ext; int turns; std::string error;
                 int var = -1; int64_t po_seed = 0; };   // gate 4 playouts
@@ -65,6 +78,8 @@ struct Env {
     PlayerId dec = PlayerId::None;
     std::vector<int32_t> hist;   // gate 4: every applied choice index since game start (replay)
     std::vector<int64_t> tok_obj; // gate 4: object id per token (-1 chain / pile)
+    std::vector<HistEv> hev;      // history.h: public action history (external decisions, both seats)
+    std::vector<int32_t> histobs; // history.h: the decider's encoded history at the pending decision
     int var = -1; int64_t po_seed = 0; bool idle = false;   // gate 4 playout job
 };
 
@@ -73,7 +88,9 @@ void applyTracked(Env& e, const StepResult& sr, PlayerId dec, int k) {
     if (k >= 0 && k < static_cast<int>(sr.legal.size()))
         noteChoice(e.mtrack[static_cast<int>(dec) % 3], sr.prompt, sr.legal[k]);
     e.hist.push_back(k);
+    HistPending hp = histBegin(e.engine->state(), sr, dec, k);   // before: sr is the engine's current step
     e.engine->applyChoice(k);
+    histEnd(e.engine->state(), hp, e.hev);
 }
 
 struct Po;   // gate 4 playout state (end of file)
@@ -246,11 +263,14 @@ void encode(Handle& h, Env& e, const StepResult& sr, PlayerId dec) {
     e.dec = dec;
     e.pk = static_cast<int>(p.kind);
     e.n_legal = na;
+    e.histobs.resize(kHistLen * kHistF);
+    encodeHist(e.engine->state(), e.hev, dec, h.c, e.histobs.data());
 }
 
 void startGame(Handle& h, Env& e) {
     if (h.po) { poStart(h, e); return; }
     e.hist.clear();
+    e.hev.clear();
     e.game_seed = h.next_seed++;
     const uint64_t es = engineSeedOf(static_cast<uint64_t>(e.game_seed));
     e.engine.reset();
@@ -432,6 +452,19 @@ void rbenv_observe(void* p, int32_t* glob, int32_t* tok, uint8_t* tmask, int32_t
         std::memcpy(tmask + i * T, e.tmask.data(), T);
         std::memcpy(act + static_cast<size_t>(i) * A * K, e.act.data(), A * K * 4);
         std::memcpy(amask + i * A, e.amask.data(), A);
+    }
+}
+
+// history.h: dims {kHistLen, kHistF}; the pending decision's history per env (zeros without one).
+void rbenv_hist_dims(int32_t* out) { out[0] = rbe::kHistLen; out[1] = rbe::kHistF; }
+void rbenv_observe_hist(void* p, int32_t* hist) {
+    using namespace rbe;
+    auto& h = *static_cast<Handle*>(p);
+    const size_t n1 = static_cast<size_t>(kHistLen) * kHistF;
+    for (int i = 0; i < h.n; ++i) {
+        const Env& e = h.envs[i];
+        if (e.need && e.histobs.size() == n1) std::memcpy(hist + i * n1, e.histobs.data(), n1 * 4);
+        else std::memset(hist + i * n1, 0, n1 * 4);
     }
 }
 
@@ -911,6 +944,7 @@ void poStart(Handle& h, Env& e) {
     e.length = 0; e.n_ext = 0; e.need = false;
     for (auto& t : e.mtrack) t = MoveTrack{};
     e.hist.clear();
+    e.hev.clear();
     if (po.jobs.empty()) { e.idle = true; e.var = -1; return; }
     e.idle = false;
     const auto job = po.jobs.front();

@@ -1,0 +1,81 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0625_eclipse.cpp:40",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0625_eclipse.cpp:41",
+   "energy": "src/cards/spells/0625_eclipse.cpp:42",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0625_eclipse.cpp:45"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0625_eclipse.cpp:26-28"
+     },
+     "amount": {
+      "n": -4,
+      "_src": "src/cards/spells/0625_eclipse.cpp:21"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0625_eclipse.cpp:20-21"
+    },
+    {
+     "verb": "LookAt",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "deck_top",
+      "count": 1,
+      "bind": "P",
+      "_src": "src/cards/spells/0625_eclipse.cpp:24"
+     },
+     "_src": "src/cards/spells/0625_eclipse.cpp:24; src/engine/effect_executor.cpp:2755-2790"
+    },
+    {
+     "verb": "Recycle",
+     "target": {
+      "type": "ref",
+      "ref": "P",
+      "_src": "src/cards/spells/0625_eclipse.cpp:24"
+     },
+     "optional": true,
+     "_src": "src/cards/spells/0625_eclipse.cpp:24; src/engine/effect_executor.cpp:2797-2830"
+    }
+   ],
+   "_src": "src/cards/spells/0625_eclipse.cpp:19"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-063-219",
+  "class_file": "src/cards/spells/0625_eclipse.cpp",
+  "source": "engine_code",
+  "flags": [
+   "Predict (executor.predict(you, 1)) written as LookAt top card of your deck + may Recycle it; new term: zone deck_top",
+   "Predict happens even if the unit target became illegal (src/cards/spells/0625_eclipse.cpp:22-23)"
+  ]
+ }
+}

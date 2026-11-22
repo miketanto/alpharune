@@ -1,0 +1,119 @@
+2026-11-20 22:17:41 === overnight_g1.py start; deadline Sat Nov 21 10:17:00 2026; init /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/ov_main/league_02080.pt (ov_main@2080); args {'cmd': 'run', 'deadline': '10:17', 'out': 'league/g1', 'tag': 'g1', 'matchups': 'rengar:rengar,rengar:azir,azir:rengar,azir:azir', 'main_updates': 40, 'exp_updates': 20, 'stop_main_at': 500, 'snapshot_every': 50, 'exp_max_updates': 60, 'p_osfp': 0.8, 'osfp_period': 163840, 'n_slots': 1, 'n_envs': 256, 'samples_per_update': 16384, 'gpu_mem_frac': 0.4, 'train_cores': '0-11', 'phase_max_min': 30, 'max_ckpts': 30, 'min_ram_mb': 1024, 'min_disk_gb': 5, 'extra_members': '', 'train_extra': '', 'cpu': False, 'nice': 0}
+2026-11-20 22:17:43 phase main: g1_main updates 0->40 (max 30.0 min)
+2026-11-20 22:26:55 phase main done rc=0 updates 0->40 in 552s (13.8 s/update), games/s median 38.4 min 26.8
+2026-11-20 22:26:55   per-matchup wr vs pool, main 0->40: azir_v_azir 0.715 (n=754, dec=170518); azir_v_rengar 0.019 (n=1082, dec=165964); rengar_v_azir 0.998 (n=1030, dec=169212); rengar_v_rengar 0.598 (n=831, dec=170255)
+2026-11-20 22:26:55 exploiter target = main @40
+2026-11-20 22:26:55 phase exp: g1_exp updates 0->20 (max 30.0 min)
+2026-11-20 22:32:01 phase exp done rc=0 updates 0->20 in 305s (15.3 s/update), games/s median 44.2 min 31.1
+2026-11-20 22:32:01   per-matchup wr vs pool, exp 0->20: azir_v_azir 0.222 (n=1161, dec=80300); azir_v_rengar 0.003 (n=1475, dec=78328); rengar_v_azir 0.985 (n=1481, dec=92702); rengar_v_rengar 0.55 (n=1231, dec=86254)
+2026-11-20 22:32:01 phase main: g1_main updates 40->80 (max 30.0 min)
+2026-11-20 22:40:30 phase main done rc=0 updates 40->80 in 510s (12.7 s/update), games/s median 38.6 min 28.4
+2026-11-20 22:40:30   per-matchup wr vs pool, main 40->80: azir_v_azir 0.914 (n=804, dec=173643); azir_v_rengar 0.089 (n=948, dec=174294); rengar_v_azir 0.998 (n=995, dec=159009); rengar_v_rengar 0.692 (n=812, dec=168176)
+2026-11-20 22:40:30 exploiter target = main @80
+2026-11-20 22:40:30 phase exp: g1_exp updates 20->40 (max 30.0 min)
+2026-11-20 22:45:28 phase exp done rc=0 updates 20->40 in 298s (14.9 s/update), games/s median 41.1 min 30.2
+2026-11-20 22:45:28   per-matchup wr vs pool, exp 20->40: azir_v_azir 0.186 (n=1109, dec=79696); azir_v_rengar 0.014 (n=1365, dec=83397); rengar_v_azir 0.947 (n=1363, dec=88022); rengar_v_rengar 0.552 (n=1248, dec=87346)
+2026-11-20 22:45:28 phase main: g1_main updates 80->120 (max 30.0 min)
+2026-11-20 22:54:05 phase main done rc=0 updates 80->120 in 516s (12.9 s/update), games/s median 35.9 min 26.0
+2026-11-20 22:54:05   per-matchup wr vs pool, main 80->120: azir_v_azir 0.774 (n=760, dec=171075); azir_v_rengar 0.16 (n=907, dec=181385); rengar_v_azir 0.982 (n=907, dec=156097); rengar_v_rengar 0.638 (n=889, dec=166924)
+2026-11-20 22:54:05 exploiter target = main @120
+2026-11-20 22:54:05 phase exp: g1_exp updates 40->60 (max 30.0 min)
+2026-11-20 22:58:49 phase exp done rc=0 updates 40->60 in 284s (14.2 s/update), games/s median 40.4 min 29.4
+2026-11-20 22:58:49   per-matchup wr vs pool, exp 40->60: azir_v_azir 0.176 (n=1038, dec=82407); azir_v_rengar 0.023 (n=1312, dec=86536); rengar_v_azir 0.885 (n=1313, dec=83226); rengar_v_rengar 0.54 (n=1249, dec=86091)
+2026-11-20 22:58:49 phase main: g1_main updates 120->160 (max 30.0 min)
+2026-11-20 23:07:16 phase main done rc=0 updates 120->160 in 507s (12.7 s/update), games/s median 34.5 min 24.3
+2026-11-20 23:07:16   per-matchup wr vs pool, main 120->160: azir_v_azir 0.85 (n=728, dec=170627); azir_v_rengar 0.184 (n=824, dec=185067); rengar_v_azir 0.983 (n=814, dec=155258); rengar_v_rengar 0.542 (n=841, dec=165003)
+2026-11-20 23:07:16 exploiter target = main @160
+2026-11-20 23:07:16 phase exp: g1_exp updates 60->80 (max 30.0 min)
+2026-11-20 23:11:52 phase exp done rc=0 updates 60->80 in 276s (13.8 s/update), games/s median 43.8 min 30.4
+2026-11-20 23:11:52   per-matchup wr vs pool, exp 60->80: azir_v_azir 0.011 (n=1516, dec=73468); azir_v_rengar 0.003 (n=1409, dec=74251); rengar_v_azir 0.752 (n=1393, dec=96554); rengar_v_rengar 0.586 (n=1351, dec=92746)
+2026-11-20 23:11:52 phase main: g1_main updates 160->200 (max 30.0 min)
+2026-11-20 23:20:22 phase main done rc=0 updates 160->200 in 510s (12.8 s/update), games/s median 33.6 min 25.4
+2026-11-20 23:20:22   per-matchup wr vs pool, main 160->200: azir_v_azir 0.837 (n=724, dec=172488); azir_v_rengar 0.31 (n=798, dec=188773); rengar_v_azir 0.95 (n=812, dec=151185); rengar_v_rengar 0.565 (n=872, dec=165245)
+2026-11-20 23:20:22 exploiter target = main @200
+2026-11-20 23:20:22 phase exp: g1_exp updates 80->100 (max 30.0 min)
+2026-11-20 23:24:53 phase exp done rc=0 updates 80->100 in 270s (13.5 s/update), games/s median 43.5 min 28.6
+2026-11-20 23:24:53   per-matchup wr vs pool, exp 80->100: azir_v_azir 0.017 (n=1358, dec=76046); azir_v_rengar 0.001 (n=1381, dec=73532); rengar_v_azir 0.749 (n=1371, dec=95109); rengar_v_rengar 0.551 (n=1297, dec=91284)
+2026-11-20 23:24:53 phase main: g1_main updates 200->240 (max 30.0 min)
+2026-11-20 23:33:39 phase main done rc=0 updates 200->240 in 526s (13.2 s/update), games/s median 32.3 min 23.6
+2026-11-20 23:33:39   per-matchup wr vs pool, main 200->240: azir_v_azir 0.865 (n=727, dec=172422); azir_v_rengar 0.35 (n=796, dec=188380); rengar_v_azir 0.96 (n=852, dec=150746); rengar_v_rengar 0.531 (n=864, dec=165191)
+2026-11-20 23:33:39 exploiter target = main @240
+2026-11-20 23:33:39 phase exp: g1_exp updates 100->120 (max 30.0 min)
+2026-11-20 23:38:04 phase exp done rc=0 updates 100->120 in 265s (13.3 s/update), games/s median 44.0 min 30.0
+2026-11-20 23:38:04   per-matchup wr vs pool, exp 100->120: azir_v_azir 0.016 (n=1470, dec=73918); azir_v_rengar 0.003 (n=1426, dec=68112); rengar_v_azir 0.724 (n=1410, dec=100009); rengar_v_rengar 0.543 (n=1350, dec=93907)
+2026-11-20 23:38:05 phase main: g1_main updates 240->280 (max 30.0 min)
+2026-11-20 23:47:22 phase main done rc=0 updates 240->280 in 557s (13.9 s/update), games/s median 31.0 min 23.2
+2026-11-20 23:47:22   per-matchup wr vs pool, main 240->280: azir_v_azir 0.89 (n=671, dec=173321); azir_v_rengar 0.441 (n=739, dec=191622); rengar_v_azir 0.96 (n=770, dec=147881); rengar_v_rengar 0.606 (n=835, dec=164040)
+2026-11-20 23:47:22 exploiter target = main @280
+2026-11-20 23:47:22 phase exp: g1_exp updates 120->140 (max 30.0 min)
+2026-11-20 23:52:10 phase exp done rc=0 updates 120->140 in 288s (14.4 s/update), games/s median 43.3 min 32.2
+2026-11-20 23:52:10   per-matchup wr vs pool, exp 120->140: azir_v_azir 0.004 (n=1593, dec=74552); azir_v_rengar 0.001 (n=1406, dec=72458); rengar_v_azir 0.508 (n=1392, dec=95460); rengar_v_rengar 0.574 (n=1344, dec=94844)
+2026-11-20 23:52:10 phase main: g1_main updates 280->320 (max 30.0 min)
+2026-11-21 00:02:19 phase main done rc=0 updates 280->320 in 609s (15.2 s/update), games/s median 26.7 min 14.2
+2026-11-21 00:02:19   per-matchup wr vs pool, main 280->320: azir_v_azir 0.784 (n=634, dec=172043); azir_v_rengar 0.408 (n=752, dec=191424); rengar_v_azir 0.919 (n=737, dec=148665); rengar_v_rengar 0.495 (n=804, dec=166177)
+2026-11-21 00:02:20 exploiter target = main @320
+2026-11-21 00:02:20 phase exp: g1_exp updates 140->160 (max 30.0 min)
+2026-11-21 00:07:16 phase exp done rc=0 updates 140->160 in 296s (14.8 s/update), games/s median 38.1 min 20.2
+2026-11-21 00:07:16   per-matchup wr vs pool, exp 140->160: azir_v_azir 0.003 (n=1547, dec=72702); azir_v_rengar 0.001 (n=1435, dec=67213); rengar_v_azir 0.587 (n=1413, dec=101721); rengar_v_rengar 0.5 (n=1381, dec=96386)
+2026-11-21 00:07:16 phase main: g1_main updates 320->360 (max 30.0 min)
+2026-11-21 00:17:24 phase main done rc=0 updates 320->360 in 608s (15.2 s/update), games/s median 26.4 min 19.3
+2026-11-21 00:17:24   per-matchup wr vs pool, main 320->360: azir_v_azir 0.91 (n=601, dec=180132); azir_v_rengar 0.423 (n=777, dec=191027); rengar_v_azir 0.942 (n=806, dec=146882); rengar_v_rengar 0.53 (n=861, dec=159864)
+2026-11-21 00:17:25 exploiter target = main @360
+2026-11-21 00:17:25 phase exp: g1_exp updates 160->180 (max 30.0 min)
+2026-11-21 00:22:06 phase exp done rc=0 updates 160->180 in 282s (14.1 s/update), games/s median 38.9 min 26.6
+2026-11-21 00:22:06   per-matchup wr vs pool, exp 160->180: azir_v_azir 0.002 (n=1590, dec=70983); azir_v_rengar 0.001 (n=1507, dec=62569); rengar_v_azir 0.67 (n=1495, dec=105863); rengar_v_rengar 0.515 (n=1435, dec=96673)
+2026-11-21 00:22:06 phase main: g1_main updates 360->400 (max 30.0 min)
+2026-11-21 00:32:01 phase main done rc=0 updates 360->400 in 595s (14.9 s/update), games/s median 26.8 min 19.0
+2026-11-21 00:32:01   per-matchup wr vs pool, main 360->400: azir_v_azir 0.876 (n=644, dec=175852); azir_v_rengar 0.391 (n=768, dec=193486); rengar_v_azir 0.938 (n=792, dec=148053); rengar_v_rengar 0.501 (n=881, dec=161565)
+2026-11-21 00:32:02 exploiter target = main @400
+2026-11-21 00:32:02 phase exp: g1_exp updates 180->200 (max 30.0 min)
+2026-11-21 00:37:06 phase exp done rc=0 updates 180->200 in 304s (15.2 s/update), games/s median 38.3 min 27.0
+2026-11-21 00:37:06   per-matchup wr vs pool, exp 180->200: azir_v_azir 0.003 (n=1529, dec=73876); azir_v_rengar 0.0 (n=1423, dec=71165); rengar_v_azir 0.462 (n=1410, dec=95717); rengar_v_rengar 0.535 (n=1411, dec=96638)
+2026-11-21 00:37:06 phase main: g1_main updates 400->440 (max 30.0 min)
+2026-11-21 00:47:23 phase main done rc=0 updates 400->440 in 617s (15.4 s/update), games/s median 25.5 min 18.1
+2026-11-21 00:47:23   per-matchup wr vs pool, main 400->440: azir_v_azir 0.778 (n=585, dec=174090); azir_v_rengar 0.376 (n=758, dec=191192); rengar_v_azir 0.872 (n=752, dec=149436); rengar_v_rengar 0.477 (n=872, dec=164456)
+2026-11-21 00:47:23 exploiter target = main @440
+2026-11-21 00:47:23 phase exp: g1_exp updates 200->220 (max 30.0 min)
+2026-11-21 00:52:11 phase exp done rc=0 updates 200->220 in 287s (14.4 s/update), games/s median 37.1 min 24.5
+2026-11-21 00:52:11   per-matchup wr vs pool, exp 200->220: azir_v_azir 0.005 (n=1464, dec=72985); azir_v_rengar 0.001 (n=1412, dec=67932); rengar_v_azir 0.563 (n=1390, dec=100594); rengar_v_rengar 0.551 (n=1370, dec=96656)
+2026-11-21 00:52:11 phase main: g1_main updates 440->480 (max 30.0 min)
+2026-11-21 01:02:28 phase main done rc=0 updates 440->480 in 617s (15.4 s/update), games/s median 24.5 min 20.6
+2026-11-21 01:02:28   per-matchup wr vs pool, main 440->480: azir_v_azir 0.801 (n=594, dec=174649); azir_v_rengar 0.405 (n=750, dec=188736); rengar_v_azir 0.877 (n=783, dec=149075); rengar_v_rengar 0.54 (n=833, dec=166186)
+2026-11-21 01:02:28 exploiter target = main @480
+2026-11-21 01:02:28 phase exp: g1_exp updates 220->240 (max 30.0 min)
+2026-11-21 01:07:13 phase exp done rc=0 updates 220->240 in 285s (14.2 s/update), games/s median 39.1 min 25.3
+2026-11-21 01:07:13   per-matchup wr vs pool, exp 220->240: azir_v_azir 0.003 (n=1607, dec=69813); azir_v_rengar 0.001 (n=1485, dec=60051); rengar_v_azir 0.632 (n=1464, dec=109338); rengar_v_rengar 0.54 (n=1403, dec=97240)
+2026-11-21 01:07:13 phase main: g1_main updates 480->500 (max 30.0 min)
+2026-11-21 01:12:20 phase main done rc=0 updates 480->500 in 308s (15.4 s/update), games/s median 24.7 min 21.5
+2026-11-21 01:12:20   per-matchup wr vs pool, main 480->500: azir_v_azir 0.866 (n=291, dec=92098); azir_v_rengar 0.395 (n=375, dec=97355); rengar_v_azir 0.904 (n=364, dec=75861); rengar_v_rengar 0.488 (n=418, dec=82003)
+2026-11-21 01:12:20 exploiter target = main @500
+2026-11-21 01:12:21 main reached 500 updates: stopping
+2026-11-21 01:12:21 SUMMARY written:
+G1 league summary (Sat Nov 21 01:12:21 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g1
+
+main (g1_main): 500 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           0.745 (n=  954)        0.023 (n= 1325)        0.998 (n= 1284)        0.604 (n= 1043)    0.576
+   51-100          0.860 (n=  960)        0.120 (n= 1158)        0.990 (n= 1172)        0.692 (n= 1034)    0.657
+  101-150          0.825 (n=  947)        0.168 (n= 1074)        0.984 (n= 1104)        0.564 (n= 1090)    0.631
+  151-200          0.846 (n=  909)        0.298 (n= 1002)        0.957 (n=  998)        0.570 (n= 1078)    0.661
+  201-250          0.863 (n=  886)        0.381 (n=  970)        0.960 (n= 1032)        0.554 (n= 1072)    0.687
+  251-300          0.861 (n=  837)        0.411 (n=  941)        0.940 (n=  952)        0.566 (n= 1055)    0.687
+  301-350          0.853 (n=  757)        0.412 (n=  956)        0.937 (n=  958)        0.503 (n= 1023)    0.664
+  351-400          0.881 (n=  797)        0.404 (n=  965)        0.938 (n= 1015)        0.506 (n= 1095)    0.671
+  401-450          0.780 (n=  753)        0.384 (n=  963)        0.876 (n=  968)        0.490 (n= 1097)    0.620
+  451-500          0.831 (n=  717)        0.399 (n=  920)        0.885 (n=  931)        0.519 (n= 1026)    0.645
+
+exp (g1_exp): 240 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           0.192 (n= 2801)        0.009 (n= 3507)        0.951 (n= 3508)        0.549 (n= 3107)    0.434
+   51-100          0.044 (n= 3381)        0.008 (n= 3435)        0.776 (n= 3413)        0.563 (n= 3269)    0.346
+  101-150          0.009 (n= 3823)        0.002 (n= 3542)        0.605 (n= 3497)        0.545 (n= 3379)    0.281
+  151-200          0.002 (n= 3906)        0.001 (n= 3655)        0.578 (n= 3623)        0.522 (n= 3542)    0.268
+  201-250          0.004 (n= 3071)        0.001 (n= 2897)        0.598 (n= 2854)        0.545 (n= 2773)    0.279
+
+Throughput per phase: e140:14.4s/u,43.3g/s, m320:15.2s/u,26.7g/s, e160:14.8s/u,38.1g/s, m360:15.2s/u,26.4g/s, e180:14.1s/u,38.9g/s, m400:14.9s/u,26.8g/s, e200:15.2s/u,38.3g/s, m440:15.4s/u,25.5g/s, e220:14.4s/u,37.1g/s, m480:15.4s/u,24.5g/s, e240:14.2s/u,39.1g/s, m500:15.4s/u,24.7g/s
+Evaluation: bash g1/eval_g1.sh (pilot swap, forgetting; see g1/README.txt).
+
+2026-11-21 01:12:21 === overnight_g1.py done

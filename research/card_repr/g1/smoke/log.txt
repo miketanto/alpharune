@@ -1,0 +1,29 @@
+2026-11-20 19:14:09 === overnight_g1.py start; deadline Fri Nov 20 19:34:00 2026; init /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/ov_main/league_02080.pt (ov_main@2080); args {'cmd': 'run', 'deadline': '19:34', 'out': 'league/g1_smoke', 'tag': 'g1smoke', 'matchups': 'rengar:rengar,rengar:azir,azir:rengar,azir:azir', 'main_updates': 2, 'exp_updates': 2, 'stop_main_at': 3, 'snapshot_every': 2, 'exp_max_updates': 2, 'p_osfp': 0.8, 'osfp_period': 163840, 'n_slots': 1, 'n_envs': 16, 'samples_per_update': 384, 'gpu_mem_frac': 0.4, 'train_cores': '0-15', 'phase_max_min': 8.0, 'max_ckpts': 30, 'min_ram_mb': 1024, 'min_disk_gb': 5, 'extra_members': '', 'train_extra': '', 'cpu': True, 'nice': 15}
+2026-11-20 19:14:11 phase main: g1smoke_main updates 0->2 (max 8.0 min)
+2026-11-20 19:14:22 phase main done rc=0 updates 0->2 in 10s (5.1 s/update), games/s median 9.6 min 6.6
+2026-11-20 19:14:22   per-matchup wr vs pool, main 0->2: azir_v_azir 1.0 (n=2, dec=420); azir_v_rengar 0.0 (n=2, dec=423); rengar_v_azir 1.0 (n=2, dec=505); rengar_v_rengar 0.5 (n=2, dec=390)
+2026-11-20 19:14:22 exploiter target = main @2
+2026-11-20 19:14:22 phase exp: g1smoke_exp updates 0->2 (max 8.0 min)
+2026-11-20 19:14:32 phase exp done rc=0 updates 0->2 in 10s (5.2 s/update), games/s median 10.6 min 5.9
+2026-11-20 19:14:33   per-matchup wr vs pool, exp 0->2: azir_v_azir 0.5 (n=2, dec=321); azir_v_rengar 0.0 (n=4, dec=344); rengar_v_azir 1.0 (n=4, dec=298); rengar_v_rengar 1.0 (n=4, dec=337)
+2026-11-20 19:14:33 phase main: g1smoke_main updates 2->3 (max 8.0 min)
+2026-11-20 19:14:40 phase main done rc=0 updates 2->3 in 8s (7.6 s/update), games/s median 6.2 min 6.2
+2026-11-20 19:14:40   per-matchup wr vs pool, main 2->3: azir_v_azir  (n=0, dec=213); azir_v_rengar 0.0 (n=2, dec=269); rengar_v_azir 1.0 (n=2, dec=274); rengar_v_rengar  (n=0, dec=292)
+2026-11-20 19:14:40 exploiter target = main @3
+2026-11-20 19:14:40 main reached 3 updates: stopping
+2026-11-20 19:14:40 SUMMARY written:
+G1 league summary (Fri Nov 20 19:14:40 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g1_smoke
+
+main (g1smoke_main): 3 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           1.000 (n=    2)        0.000 (n=    4)        1.000 (n=    4)        0.500 (n=    2)    0.583
+
+exp (g1smoke_exp): 2 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           0.500 (n=    2)        0.000 (n=    4)        1.000 (n=    4)        1.000 (n=    4)    0.643
+
+Throughput per phase: m2:5.1s/u,9.6g/s, e2:5.2s/u,10.6g/s, m3:7.6s/u,6.2g/s
+Evaluation: bash g1/eval_g1.sh (pilot swap, forgetting; see g1/README.txt).
+
+2026-11-20 19:14:40 === overnight_g1.py done

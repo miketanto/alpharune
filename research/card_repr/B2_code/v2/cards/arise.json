@@ -1,0 +1,88 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "calm",
+   "order"
+  ],
+  "energy": 6,
+  "power": 1,
+  "power_by_domain": {
+   "calm": 1,
+   "order": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0513_arise.cpp:93",
+   "supertype": "src/cards/spells/0513_arise.cpp:94",
+   "domains": "src/cards/spells/0513_arise.cpp:95",
+   "energy": "src/cards/spells/0513_arise.cpp:97",
+   "power": "src/cards/spells/0513_arise.cpp:98",
+   "power_by_domain": "src/cards/spells/0513_arise.cpp:98 x src/cards/spells/0513_arise.cpp:95; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base_or_controlled_battlefield",
+      "count": 1,
+      "bind": "T",
+      "_src": "src/cards/spells/0513_arise.cpp:44-55"
+     },
+     "amount": {
+      "n": 1,
+      "per": "equipment_controlled",
+      "_src": "src/cards/spells/0513_arise.cpp:37-42"
+     },
+     "token": {
+      "type": "unit",
+      "might": 2,
+      "tag": "shurima",
+      "name": "sand_soldier",
+      "_src": "src/cards/spells/0513_arise.cpp:48-50"
+     },
+     "_src": "src/cards/spells/0513_arise.cpp:46-55"
+    },
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 2,
+      "filters": [
+       {
+        "f": "bound",
+        "v": "T",
+        "_src": "src/cards/spells/0513_arise.cpp:59-61"
+       }
+      ],
+      "optional": true,
+      "_src": "src/cards/spells/0513_arise.cpp:67-76"
+     },
+     "_src": "src/cards/spells/0513_arise.cpp:79-80; reflexive src/cards/spells/0513_arise.cpp:61, src/cards/spells/0513_arise.cpp:65-81"
+    }
+   ],
+   "_src": "src/cards/spells/0513_arise.cpp:31"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-198-221",
+  "class_file": "src/cards/spells/0513_arise.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: equipment_controlled (amount per: friendly gear tagged Equipment, counted once at resolution)",
+   "new term: bound (filter: one of the objects bound earlier, here the tokens made)",
+   "new term: base_or_controlled_battlefield (zone; each token's location chosen one by one)"
+  ]
+ }
+}

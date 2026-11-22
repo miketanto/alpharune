@@ -1,0 +1,23 @@
+{
+ "games": 40,
+ "errors": 0,
+ "leak": {
+  "dec_main": 2024,
+  "dec_other": 4128,
+  "worlds_main": 16192,
+  "worlds_other": 33024,
+  "mismatch_main": 0,
+  "mismatch_other": 0,
+  "worlds_differ": 49216,
+  "check_problems": 0,
+  "build_fail": 0,
+  "opp_hidden_compared": 1612272,
+  "opp_hidden_redrawn": 1605412,
+  "control_opp_view_differs": 49216
+ },
+ "first_mismatch": "",
+ "secs": 5.9,
+ "worlds_per_decision": 8,
+ "strict_vis": true,
+ "deck_model": "pool"
+}

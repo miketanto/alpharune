@@ -1,0 +1,120 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0484_deathgrip.cpp:65",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0484_deathgrip.cpp:66",
+   "energy": "src/cards/spells/0484_deathgrip.cpp:67",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0484_deathgrip.cpp:69"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0484_deathgrip.cpp:20-23"
+     },
+     "_src": "src/cards/spells/0484_deathgrip.cpp:42"
+    },
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/spells/0484_deathgrip.cpp:35"
+       }
+      ],
+      "bind": "B",
+      "optional": true,
+      "_src": "src/cards/spells/0484_deathgrip.cpp:29-38"
+     },
+     "_src": "src/cards/spells/0484_deathgrip.cpp:43"
+    },
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0484_deathgrip.cpp:47"
+     },
+     "_src": "src/cards/spells/0484_deathgrip.cpp:47"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "ref",
+      "ref": "B",
+      "_src": "src/cards/spells/0484_deathgrip.cpp:50"
+     },
+     "amount": {
+      "ref": "might_of:A",
+      "_src": "src/cards/spells/0484_deathgrip.cpp:46"
+     },
+     "duration": "turn",
+     "condition": [
+      {
+       "c": "died",
+       "v": "A",
+       "_src": "src/cards/spells/0484_deathgrip.cpp:48-49"
+      }
+     ],
+     "_src": "src/cards/spells/0484_deathgrip.cpp:50"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/spells/0484_deathgrip.cpp:52"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0484_deathgrip.cpp:52"
+     },
+     "_src": "src/cards/spells/0484_deathgrip.cpp:52"
+    }
+   ],
+   "_src": "src/cards/spells/0484_deathgrip.cpp:39"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-163-221",
+  "class_file": "src/cards/spells/0484_deathgrip.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: died (condition: the bound unit actually left the board)",
+   "Might is read before the kill (last-known); playable with a single friendly unit (then no pump)"
+  ]
+ }
+}

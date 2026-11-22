@@ -1,0 +1,188 @@
+{
+ "repr": "B2",
+ "matchups": "rengar:rengar,rengar:azir,rengar:diana,rengar:kaisa,rengar:yi_rebuild,rengar:kennen,azir:rengar,azir:azir,azir:diana,azir:kaisa,azir:yi_rebuild,azir:kennen,diana:rengar,diana:azir,diana:diana,diana:kaisa,diana:yi_rebuild,diana:kennen,kaisa:rengar,kaisa:azir,kaisa:diana,kaisa:kaisa,kaisa:yi_rebuild,kaisa:kennen,yi_rebuild:rengar,yi_rebuild:azir,yi_rebuild:diana,yi_rebuild:kaisa,yi_rebuild:yi_rebuild,yi_rebuild:kennen,kennen:rengar,kennen:azir,kennen:diana,kennen:kaisa,kennen:yi_rebuild,kennen:kennen",
+ "init": "",
+ "ask_head": true,
+ "ask_opt": true,
+ "no_opt_cost": false,
+ "no_card_norm": false,
+ "n_envs": 288,
+ "updates": 1000,
+ "samples_per_update": 16384,
+ "epochs": 3,
+ "minibatch": 2048,
+ "lr": 0.0003,
+ "clip": 0.2,
+ "lam": 0.95,
+ "vf_coef": 0.5,
+ "ent_coef": 0.01,
+ "max_grad_norm": 0.5,
+ "eval_every": 0,
+ "ckpt_every": 1000000,
+ "seed": 1049,
+ "threads": 2,
+ "run_name": "g2_main",
+ "resume": true,
+ "max_minutes": 30.0,
+ "gpu_mem_frac": 0.4,
+ "league": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g2/main.json",
+ "matchup_list": [
+  [
+   "rengar",
+   "rengar"
+  ],
+  [
+   "rengar",
+   "azir"
+  ],
+  [
+   "rengar",
+   "diana"
+  ],
+  [
+   "rengar",
+   "kaisa"
+  ],
+  [
+   "rengar",
+   "yi_rebuild"
+  ],
+  [
+   "rengar",
+   "kennen"
+  ],
+  [
+   "azir",
+   "rengar"
+  ],
+  [
+   "azir",
+   "azir"
+  ],
+  [
+   "azir",
+   "diana"
+  ],
+  [
+   "azir",
+   "kaisa"
+  ],
+  [
+   "azir",
+   "yi_rebuild"
+  ],
+  [
+   "azir",
+   "kennen"
+  ],
+  [
+   "diana",
+   "rengar"
+  ],
+  [
+   "diana",
+   "azir"
+  ],
+  [
+   "diana",
+   "diana"
+  ],
+  [
+   "diana",
+   "kaisa"
+  ],
+  [
+   "diana",
+   "yi_rebuild"
+  ],
+  [
+   "diana",
+   "kennen"
+  ],
+  [
+   "kaisa",
+   "rengar"
+  ],
+  [
+   "kaisa",
+   "azir"
+  ],
+  [
+   "kaisa",
+   "diana"
+  ],
+  [
+   "kaisa",
+   "kaisa"
+  ],
+  [
+   "kaisa",
+   "yi_rebuild"
+  ],
+  [
+   "kaisa",
+   "kennen"
+  ],
+  [
+   "yi_rebuild",
+   "rengar"
+  ],
+  [
+   "yi_rebuild",
+   "azir"
+  ],
+  [
+   "yi_rebuild",
+   "diana"
+  ],
+  [
+   "yi_rebuild",
+   "kaisa"
+  ],
+  [
+   "yi_rebuild",
+   "yi_rebuild"
+  ],
+  [
+   "yi_rebuild",
+   "kennen"
+  ],
+  [
+   "kennen",
+   "rengar"
+  ],
+  [
+   "kennen",
+   "azir"
+  ],
+  [
+   "kennen",
+   "diana"
+  ],
+  [
+   "kennen",
+   "kaisa"
+  ],
+  [
+   "kennen",
+   "yi_rebuild"
+  ],
+  [
+   "kennen",
+   "kennen"
+  ]
+ ],
+ "dims": {
+  "G": 72,
+  "T": 96,
+  "F": 24,
+  "A": 96,
+  "K": 61,
+  "V": 80
+ },
+ "vocab_src": "rbenv/vocab.json",
+ "device": "cuda",
+ "params": 209475,
+ "missing_repr_keys": [],
+ "trainer": "g1/selfplay_g1.py"
+}

@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0103_ravenbloom_student.cpp:40",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0103_ravenbloom_student.cpp:41",
+   "energy": "src/cards/units/0103_ravenbloom_student.cpp:43",
+   "power": "default 0",
+   "might": "src/cards/units/0103_ravenbloom_student.cpp:44"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_spell",
+    "subject": "you",
+    "_src": "src/cards/units/0103_ravenbloom_student.cpp:23"
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0103_ravenbloom_student.cpp:26"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0103_ravenbloom_student.cpp:26"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0103_ravenbloom_student.cpp:25-26"
+    }
+   ],
+   "_src": "src/cards/units/0103_ravenbloom_student.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-103-298",
+  "class_file": "src/cards/units/0103_ravenbloom_student.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event play_spell"
+  ]
+ }
+}

@@ -1,0 +1,88 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0482_b_f_sword.cpp:30",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0482_b_f_sword.cpp:31",
+   "energy": "src/cards/gear/0482_b_f_sword.cpp:33",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "equip",
+   "_src": "src/cards/gear/0482_b_f_sword.cpp:36"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "main",
+   "cost": {
+    "power": 1,
+    "power_domain": "order",
+    "_src": "src/cards/gear/0482_b_f_sword.cpp:17; src/cards/gear/equip_base.h:24-27"
+   },
+   "effects": [
+    {
+     "verb": "Attach",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:5745-5757; src/cards/card.cpp:1316-1317"
+     },
+     "_src": "src/engine/effect_executor.cpp:1617-1640"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:2673-2710, 5735-5760 (main phase only); unattached only src/cards/card.cpp:1318-1322"
+  },
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "equipped_with_self",
+        "v": true,
+        "_src": "src/engine/effect_executor.cpp:1636"
+       }
+      ],
+      "_src": "src/engine/effect_executor.cpp:1636"
+     },
+     "amount": {
+      "n": 3,
+      "_src": "src/cards/gear/0482_b_f_sword.cpp:34"
+     },
+     "duration": "while",
+     "_src": "src/cards/gear/0482_b_f_sword.cpp:34; src/engine/effect_executor.cpp:1636"
+    }
+   ],
+   "_src": "src/cards/gear/0482_b_f_sword.cpp:34"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-161-221",
+  "class_file": "src/cards/gear/0482_b_f_sword.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+   "new term: equipped_with_self (filter: the unit this gear is attached to)"
+  ]
+ }
+}

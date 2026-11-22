@@ -1,0 +1,275 @@
+game seed 9101   P1 = G2 (greedy)   P2 = G1 (greedy)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P1[NET] Mull: Moonfall
+        net: pick 39.1% | alt: Mull: Traveling Merchant Moonfall 19.9% | v +0.10
+~ P1 brings Abandoned Hall
+~ P2 brings Targon's Peak
+~ P1 opening hand: Traveling Merchant, Moonfall, Eclipse, Hard Bargain
+~ P2 opening hand: Switcheroo, Gust, Ride the Wind, Stupefy
+~ P1 set aside Moonfall
+~ P1 drew replacement Star-Crossed
+  P2[NET] Keep hand
+        net: pick 90.9% | alt: Mull: Switcheroo Ride the Wind 7.1% | v +0.01
+
+=== TURN 0 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 100.0% | alt: Play Traveling Merchant(2M) -> Base 0.0% | v -0.08
+  P1[NET] Play Traveling Merchant(2M) -> Base
+        net: pick 100.0% | alt: End Turn 0.0% | v -0.09
+    ~ play Traveling Merchant (Unit, 2E)
+
+=== TURN 1 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 95.0% | alt: Play Diana, Lunari(3M) -> Base 5.0% | v +0.27
+  P2[NET] Play Diana, Lunari(3M) -> Base
+        net: pick 100.0% | alt: End Turn 0.0% | v +0.24
+    ~ play Diana, Lunari (Unit, 3E)
+
+=== TURN 2 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 100.0% | alt: Move Traveling Merchant -> Abandoned Hall 0.0% | v +0.05
+  P1[NET] Move Traveling Merchant -> Abandoned Hall
+        net: pick 45.2% | alt: Play Diana, Lunari(3M) -> Base 32.4% | v +0.03
+    ~ move Traveling Merchant -> Abandoned Hall
+  P1[NET] Pass Priority
+        net: pick 100.0% | alt: Play Eclipse[S] @ Traveling Merchant 0.0% | v +0.09
+  P1[NET] Choose: Smoke Screen@Hand
+        net: pick 38.7% | alt: Choose: Hard Bargain@Hand 36.8% | v +0.09
+  P1[NET] Pass Focus
+        net: pick 100.0% | alt: Play Eclipse[S] @ Diana, Lunari 0.0% | v +0.11
+    ~ P1 conquers Abandoned Hall
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 0
+  P1[NET] Play Ravenbloom Student(2M) -> Base
+        net: pick 69.1% | alt: Play Diana, Lunari(3M) -> Base 30.4% | v +0.03
+    ~ play Ravenbloom Student (Unit, 2E)
+
+=== TURN 3 (P2, NET)   score P1 1 - P2 0 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 100.0% | alt: Play Sprite Fountain[G] -> Base 0.0% | v +0.45
+  P2[NET] Play Sprite Fountain[G] -> Base
+        net: pick 89.8% | alt: Play Gust[S] 7.8% | v +0.39
+    ~ play Sprite Fountain (Gear, 2E)
+  P2[NET] Pass Priority
+        net: pick 97.2% | alt: Play Gust[S] 1.4% | v +0.24
+  P2[NET] Play Gust[S]
+        net: pick 80.3% | alt: Play Stupefy[S] @ Traveling Merchant 7.3% | v +0.33
+    ~ spell Gust targets=[]
+  P2[NET] Pass Priority
+        net: pick 99.3% | alt: Play Stupefy[S] @ Traveling Merchant 0.7% | v +0.37
+  P1[NET] Pass Priority
+        net: pick 99.1% | alt: Play Hard Bargain[S] 0.9% | v +0.36
+    ~ effect: bounce Traveling Merchant to hand
+  P2[NET] Move Sprite -> Targon's Peak
+        net: pick 31.8% | alt: Move Diana, Lunari -> Targon's Peak 25.9% | v +0.00
+  P2[NET] Move no more units
+        net: pick 99.6% | alt: Choose: Diana, Lunari@Base 0.4% | v -0.04
+    ~ move Sprite -> Targon's Peak
+  P2[NET] Pass Focus
+        net: pick 100.0% | alt: Play Stupefy[S] @ Ravenbloom Student 0.0% | v +0.06
+    ~ P2 conquers Targon's Peak
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 1
+  P2[NET] Pass Priority
+        net: pick 99.9% | alt: Play Stupefy[S] @ Ravenbloom Student 0.1% | v +0.29
+  P2[NET] Move Diana, Lunari -> Abandoned Hall
+        net: pick 98.1% | alt: Play Stupefy[S] @ Ravenbloom Student 1.0% | v +0.17
+    ~ move Diana, Lunari -> Abandoned Hall
+  P2[NET] Yes — Diana Lunari: pay [1] to Predict + reveal?
+        net: pick 99.2% | alt: No — Diana Lunari: pay [1] to Predict + reveal? 0.8% | v +0.03
+  P2[NET] Pass Priority
+        net: pick 99.9% | alt: Play Stupefy[S] @ Ravenbloom Student 0.1% | v +0.16
+  P2[NET] Keep it
+        net: pick 92.7% | alt: Choose: Vex, Apathetic@Deck 7.3% | v +0.03
+  P2[NET] Pass Focus
+        net: pick 100.0% | alt: Play Stupefy[S] @ Ravenbloom Student 0.0% | v +0.11
+    ~ P2 conquers Abandoned Hall
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P2[NET] End Turn
+        net: pick 95.8% | alt: Play Stupefy[S] @ Ravenbloom Student 3.8% | v +0.10
+  P2[NET] Choose: Mind Rune@Base
+        net: pick 32.6% | alt: Choose: Mind Rune@Base 32.6% | v +0.18
+  P2[NET] Choose: Mind Rune@Base
+        net: pick 51.5% | alt: Choose: Chaos Rune@Base 16.9% | v +0.30
+  P2[NET] Pass Priority
+        net: pick 99.9% | alt: Play Stupefy[S] @ Ravenbloom Student 0.1% | v +0.15
+
+=== TURN 4 (P1, ISMCTS)   score P1 1 - P2 2 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 100.0% | alt: Play Traveling Merchant(2M) -> Base 0.0% | v +0.45
+  P1[NET] Play Traveling Merchant(2M) -> Base
+        net: pick 44.0% | alt: Play Tideturner(2M) -> Base 44.0% | v +0.43
+    ~ play Traveling Merchant (Unit, 2E)
+  P1[NET] Play Tideturner(2M) -> Base
+        net: pick 71.5% | alt: Move Ravenbloom Student -> Targon's Peak 13.1% | v +0.44
+    ~ play Tideturner (Unit, 2E)
+  P1[NET] Move Ravenbloom Student -> Targon's Peak
+        net: pick 90.9% | alt: Move Ravenbloom Student -> Abandoned Hall 9.0% | v +0.13
+    ~ move Ravenbloom Student -> Targon's Peak
+  P1[NET] Play Eclipse[S] @ Sprite
+        net: pick 94.1% | alt: Play Eclipse[S] @ Diana, Lunari 3.4% | v +0.21
+    ~ spell Eclipse targets=[Sprite(id=109)]
+  P2[NET] Play Stupefy[S] @ Ravenbloom Student
+        net: pick 95.4% | alt: Pass Priority 3.4% | v +0.44
+    ~ spell Stupefy targets=[Ravenbloom Student(id=15)]
+    ~ effect: give Ravenbloom Student -1 [M] this turn (min 1)
+  P2[NET] Yes — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 93.9% | alt: No — Abandoned Hall: give a unit here +1 [M] this turn? 6.1% | v +0.59
+    ~ effect: give Diana, Lunari 1 [M] this turn
+    ~ effect: give Sprite -4 [M] this turn
+  P1[NET] Choose: Flash@Deck
+        net: pick 99.1% | alt: Keep it 0.9% | v -0.01
+  P1[NET] Order — Abandoned Hall (Eclipse)
+        net: pick 51.8% | alt: Order — Ravenbloom Student (Eclipse) 48.2% | v -0.06
+    ~ effect: give Ravenbloom Student 1 [M] this turn
+    ~ COMBAT at Targon's Peak: P1 attacks [Ravenbloom Student(2M)]  vs  P2 defends [Sprite(0M)]
+    ~ KILL Sprite (0M, dmg=2)
+    ~ P1 conquers Targon's Peak
+    ~ SCORE P1 +1 (Conquer)   -> P1 2 - P2 2
+  P1[NET] Choose: Mind Rune@Base
+        net: pick 16.7% | alt: Choose: Mind Rune@Base 16.7% | v +0.39
+  P1[NET] Choose: Mind Rune@Base
+        net: pick 20.0% | alt: Choose: Chaos Rune@Base 20.0% | v +0.29
+
+=== TURN 5 (P2, NET)   score P1 2 - P2 2 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 98.8% | alt: Pass Priority 1.2% | v -0.69
+    ~ effect: kill Sprite Fountain
+    ~ SCORE P2 +1 (Hold Abandoned Hall)   -> P1 2 - P2 3
+  P2[NET] Play Vex, Apathetic(4M) -> Base
+        net: pick 91.1% | alt: Move Sprite -> Targon's Peak 5.2% | v +0.25
+    ~ play Vex, Apathetic (Unit, 4E)
+  P2[NET] Move Sprite -> Targon's Peak
+        net: pick 95.2% | alt: Move Diana, Lunari -> Base 3.0% | v -0.04
+    ~ move Sprite -> Targon's Peak
+  P2[NET] Pass Focus
+        net: pick 68.3% | alt: Play Switcheroo[S] 26.9% | v -0.17
+    ~ COMBAT at Targon's Peak: P2 attacks [Sprite(3M)]  vs  P1 defends [Ravenbloom Student(2M)]
+    ~ KILL Ravenbloom Student (2M, dmg=3)
+    ~ P2 conquers Targon's Peak
+    ~ SCORE P2 +1 (Conquer)   -> P1 2 - P2 4
+  P2[NET] Move Diana, Lunari -> Base
+        net: pick 94.4% | alt: End Turn 5.5% | v -0.01
+    ~ move Diana, Lunari -> Base(P2)
+  P2[NET] End Turn
+        net: pick 97.5% | alt: Hide Switcheroo[S] @ Targon's Peak 2.5% | v -0.01
+  P2[NET] Choose: Chaos Rune@Base
+        net: pick 16.6% | alt: Choose: Chaos Rune@Base 16.6% | v +0.02
+  P2[NET] Choose: Chaos Rune@Base
+        net: pick 19.0% | alt: Choose: Chaos Rune@Base 19.0% | v -0.07
+
+=== TURN 6 (P1, ISMCTS)   score P1 2 - P2 4 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 89.7% | alt: Play Hwei, Brooding Painter(5M) -> Base 10.3% | v -0.22
+  P1[NET] Play Hwei, Brooding Painter(5M) -> Base
+        net: pick 99.9% | alt: Play Diana, Lunari(3M) -> Base 0.1% | v -0.26
+    ~ play Hwei, Brooding Painter (Unit, 5E)
+  P1[NET] Play Diana, Lunari(3M) -> Base
+        net: pick 73.8% | alt: Move Tideturner -> Targon's Peak 12.0% | v -0.06
+    ~ play Diana, Lunari (Unit, 3E)
+  P1[NET] Move Tideturner -> Targon's Peak
+        net: pick 44.0% | alt: Move Traveling Merchant -> Targon's Peak 44.0% | v -0.18
+  P1[NET] Move no more units
+        net: pick 62.2% | alt: Choose: Traveling Merchant@Base 37.8% | v -0.22
+    ~ move Tideturner -> Targon's Peak
+  P2[NET] Play Eclipse[S] @ Tideturner
+        net: pick 93.5% | alt: Play Eclipse[S] @ Traveling Merchant 1.5% | v +0.64
+    ~ spell Eclipse targets=[Tideturner(id=23)]
+    ~ effect: give Tideturner -4 [M] this turn
+  P2[NET] Keep it
+        net: pick 87.0% | alt: Choose: Moonfall@Deck 13.0% | v +0.58
+    ~ COMBAT at Targon's Peak: P1 attacks [Tideturner(0M)]  vs  P2 defends [Sprite(3M)]
+    ~ KILL Tideturner (0M, dmg=3)
+  P1[NET] Move Traveling Merchant -> Abandoned Hall
+        net: pick 70.4% | alt: Move Traveling Merchant -> Targon's Peak 29.6% | v -0.35
+    ~ move Traveling Merchant -> Abandoned Hall
+  P1[NET] Choose: Hard Bargain@Hand
+        net: pick 95.8% | alt: Choose: Star-Crossed@Hand 2.1% | v -0.35
+  P1[NET] Pass Focus
+        net: pick 92.4% | alt: Play Stupefy[S] @ Sprite 7.6% | v -0.41
+    ~ P1 conquers Abandoned Hall
+    ~ SCORE P1 +1 (Conquer)   -> P1 3 - P2 4
+
+=== TURN 7 (P2, NET)   score P1 3 - P2 4 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 99.9% | alt: Pass Priority 0.1% | v +0.47
+    ~ effect: kill Sprite
+  P2[NET] Move Vex, Apathetic -> Abandoned Hall
+        net: pick 71.8% | alt: Move Diana, Lunari -> Abandoned Hall 21.7% | v +0.68
+  P2[NET] Move no more units
+        net: pick 99.8% | alt: Choose: Diana, Lunari@Base 0.2% | v +0.66
+    ~ move Vex, Apathetic -> Abandoned Hall
+  P2[NET] Pass Focus
+        net: pick 88.3% | alt: Play Switcheroo[S] 6.9% | v +0.74
+    ~ COMBAT at Abandoned Hall: P2 attacks [Vex, Apathetic(4M)]  vs  P1 defends [Traveling Merchant(2M)]
+    ~ KILL Traveling Merchant (2M, dmg=4)
+    ~ P2 conquers Abandoned Hall
+    ~ SCORE P2 +1 (Conquer)   -> P1 3 - P2 5
+  P2[NET] Play Moonfall[S]
+        net: pick 30.1% | alt: Play Moonfall[S] 30.1% | v +0.78
+    ~ spell Moonfall targets=[]
+  P2[NET] Yes — Moonfall: move an enemy unit to that battlefield?
+        net: pick 93.3% | alt: No — Moonfall: move an enemy unit to that battlefield? 6.7% | v +0.74
+  P2[NET] Choose: Hwei, Brooding Painter@Base
+        net: pick 76.7% | alt: Choose: Diana, Lunari@Base 23.3% | v +0.75
+    ~ effect: give Hwei, Brooding Painter -2 [M] this turn
+  P2[NET] Yes — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 64.6% | alt: No — Abandoned Hall: give a unit here +1 [M] this turn? 35.4% | v +0.66
+    ~ effect: give Vex, Apathetic 1 [M] this turn
+  P1[NET] Choose: Sprite Fountain@Hand
+        net: pick 97.1% | alt: Choose: Star-Crossed@Hand 1.1% | v -0.09
+  P1[NET] Choose: Mind Rune@Base
+        net: pick 14.2% | alt: Choose: Chaos Rune@Base 14.2% | v +0.33
+  P1[NET] Choose: Chaos Rune@Base
+        net: pick 16.6% | alt: Choose: Chaos Rune@Base 16.6% | v +0.24
+  P1[NET] Play Stupefy[S] @ Vex, Apathetic
+        net: pick 100.0% | alt: Play Stupefy[S] @ Diana, Lunari 0.0% | v -0.59
+    ~ spell Stupefy targets=[Vex, Apathetic(id=93)]
+    ~ effect: give Vex, Apathetic -1 [M] this turn (min 1)
+  P1[NET] Yes — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 99.9% | alt: No — Abandoned Hall: give a unit here +1 [M] this turn? 0.1% | v -0.27
+    ~ effect: give Hwei, Brooding Painter 1 [M] this turn
+  P2[NET] Play Switcheroo[S]
+        net: pick 62.0% | alt: Play Moonfall[S] 19.7% | v +0.42
+    ~ spell Switcheroo targets=[]
+  P2[NET] Choose: Hwei, Brooding Painter@BF
+        net: pick 70.1% | alt: Choose: Vex, Apathetic@BF 29.9% | v +0.40
+  P2[NET] No — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 84.7% | alt: Yes — Abandoned Hall: give a unit here +1 [M] this turn? 15.3% | v +0.20
+  P2[NET] Play Moonfall[S]
+        net: pick 41.1% | alt: Pass Focus 33.3% | v +0.06
+    ~ spell Moonfall targets=[]
+  P2[NET] Yes — Moonfall: move an enemy unit to that battlefield?
+        net: pick 82.3% | alt: No — Moonfall: move an enemy unit to that battlefield? 17.7% | v +0.01
+    ~ effect: give Diana, Lunari -2 [M] this turn
+    ~ effect: give Hwei, Brooding Painter -2 [M] this turn
+  P2[NET] No — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 93.9% | alt: Yes — Abandoned Hall: give a unit here +1 [M] this turn? 6.1% | v +0.34
+    ~ COMBAT at Abandoned Hall: P1 attacks [Diana, Lunari(1M), Hwei, Brooding Painter(2M)]  vs  P2 defends [Vex, Apathetic(4M)]
+  P2[NET] Assign Damage: Diana, Lunari(1), Hwei, Brooding Painter(3)
+        net: pick 50.0% | alt: Assign Damage: Hwei, Brooding Painter(2), Diana, Lunari(2) 50.0% | v +0.21
+    ~ KILL Diana, Lunari (1M, dmg=1)
+    ~ KILL Hwei, Brooding Painter (2M, dmg=3)
+  P2[NET] Move Diana, Lunari -> Targon's Peak
+        net: pick 91.9% | alt: End Turn 7.6% | v +0.57
+    ~ move Diana, Lunari -> Targon's Peak
+    ~ P2 conquers Targon's Peak
+    ~ SCORE P2 +1 (Conquer)   -> P1 3 - P2 6
+  P2[NET] Choose: Chaos Rune@Base
+        net: pick 16.2% | alt: Choose: Mind Rune@Base 16.2% | v +0.17
+  P2[NET] Choose: Mind Rune@Base
+        net: pick 19.0% | alt: Choose: Chaos Rune@Base 19.0% | v +0.04
+
+=== TURN 8 (P1, ISMCTS)   score P1 3 - P2 6 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 97.8% | alt: Play Eclipse[S] @ Vex, Apathetic 1.8% | v -0.89
+  P1[NET] Play Eclipse[S] @ Vex, Apathetic
+        net: pick 83.3% | alt: Play Eclipse[S] @ Diana, Lunari 16.7% | v -0.91
+    ~ spell Eclipse targets=[Vex, Apathetic(id=93)]
+    ~ effect: give Vex, Apathetic -4 [M] this turn
+  P1[NET] Choose: Hard Bargain@Deck
+        net: pick 91.2% | alt: Keep it 8.8% | v -0.74
+
+=== TURN 9 (P2, NET)   score P1 3 - P2 6 ===
+
+GAME OVER: winner P2 (NET) score 3-8, 9 turns, 230 decisions -- P2 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

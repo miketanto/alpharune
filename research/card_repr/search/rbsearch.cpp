@@ -107,14 +107,16 @@ struct ObsBuf {
     std::vector<int32_t> glob, tok, act;
     std::vector<uint8_t> tmask, amask;
     std::vector<int64_t> tok_obj;
+    std::vector<int32_t> hist;              // history.h, kHistLen x kHistF
     int psrc = -1, pk = 0, nlegal = 0, seat = 0;
-    ObsBuf() : glob(G), tok(T * F), act(A * K), tmask(T), amask(A), tok_obj(T) {}
+    ObsBuf() : glob(G), tok(T * F), act(A * K), tmask(T), amask(A), tok_obj(T), hist(kHistLen * kHistF) {}
 };
 
 void encodeTo(ObsBuf& b, const GameEngine& eng, const MoveTrack* mt, const StepResult& sr, PlayerId dec,
-              Counters& c) {
+              Counters& c, const std::vector<HistEv>& hv) {
     ObsOut o{b.glob.data(), b.tok.data(), b.act.data(), b.tmask.data(), b.amask.data(), b.tok_obj.data()};
     encodeRaw(eng.state(), &eng, mt, sr, dec, c, o);
+    encodeHist(eng.state(), hv, dec, c, b.hist.data());
     b.psrc = o.psrc;
     b.pk = static_cast<int>(sr.prompt.kind);
     b.nlegal = static_cast<int>(sr.legal.size());
@@ -136,6 +138,7 @@ bool sameObs(const ObsBuf& a, const ObsBuf& b, std::string* why) {
     ok = cmp("tmask", a.tmask, b.tmask) && ok;
     ok = cmp("act", a.act, b.act) && ok;
     ok = cmp("amask", a.amask, b.amask) && ok;
+    ok = cmp("hist", a.hist, b.hist) && ok;
     if (a.psrc != b.psrc || a.pk != b.pk || a.nlegal != b.nlegal) {
         ok = false;
         if (why && why->empty()) *why = "meta";
@@ -181,6 +184,31 @@ struct Cfg {
     bool perfect = false;
     int deck_model = 0;   // 0 legend pool (WorldSampler, honest default); 1 public decklist (redrawFromDecklist)
     int max_depth = 4000;
+    // E2 generator mode (seat_mode 2, search/gen_targets.py): both seats are the network and SAMPLE
+    // their moves from its policy (temperature 1); each external decision is searched with
+    // probability p_search, the search's root statistics are recorded as a training target
+    // (GenRec), and the move played is still sampled from the network's root prior (positions
+    // stay on the network's own sampled-play distribution).
+    bool gen = false;
+    float p_search = 1.f;
+    // AlphaZero mode (az/, 2026-11-21; needs gen): the move played is the SEARCH's (visit-proportional for
+    // the first az_temp_moves external decisions of the game, then the most visited), Dirichlet noise
+    // (dir_alpha, dir_eps) on the root prior of full searches; playout cap randomisation: a decision gets
+    // a full search (sims, recorded as a training target) with probability p_full, else sims_fast
+    // simulations, not recorded.
+    bool az = false;
+    int az_temp_moves = 30, sims_fast = 16;
+    float dir_alpha = 0.3f, dir_eps = 0.25f, p_full = 1.f;
+};
+
+// E2: one searched decision. obs = the live decision encoded for the decider with the
+// training encoder (loose visibility, as rbenv); P / N / Q per live option index (< A):
+// net prior, root visits, mean value (decider's view; -2 = unvisited / not offered).
+struct GenRec {
+    ObsBuf obs;
+    std::vector<float> P, N, Q;
+    float v0 = 0.f, vs = 0.f;   // net value at the root; visit-weighted root value
+    int seat = 0;
 };
 
 struct SHandle;
@@ -214,12 +242,21 @@ struct Game {
     int winner = 0, turns = 0, n_search = 0, n_greedy = 0;
     std::string err;
     std::unique_ptr<AgentInterface> opp;   // C++ agent on the non-search seat (opponent spec), else greedy net
+    // E2 generator mode
+    std::mt19937_64 grng;
+    std::vector<GenRec> recs;
+    int cur_sims = 0;            // this decision's simulation budget
+    bool cur_record = false;     // this decision's search is a training target
+    int mu = 0;                  // matchup (deck pair) of this slot
 };
 
 struct SHandle {
     Cfg cfg;
     DeckSubmission da, db;
     std::string deck_a_path, deck_b_path, opp_spec;
+    // matchups: slot i plays pair i % size (deck_a / deck_b given as '|'-separated lists of equal length)
+    std::vector<std::string> pa, pb;
+    std::vector<DeckSubmission> das, dbs;
     std::vector<Game> games;
     std::unique_ptr<Pool> pool;
     std::unique_ptr<WorldSampler> sampler;
@@ -247,11 +284,11 @@ void advanceReal(SHandle& h, Game& g) {
         e.engine = std::make_unique<GameEngine>(*g_db, *e.bus, *g_reg);
         const uint64_t es = engineSeedOf(static_cast<uint64_t>(g.seed));
         if (!h.opp_spec.empty() && g.search_seat != 0) {
-            GameSpec gs; gs.deck_a = h.deck_a_path; gs.deck_b = h.deck_b_path; gs.seed = static_cast<uint64_t>(g.seed);
+            GameSpec gs; gs.deck_a = h.pa[g.mu]; gs.deck_b = h.pb[g.mu]; gs.seed = static_cast<uint64_t>(g.seed);
             IsMctsAgent* m = nullptr;
             g.opp = makeAgent(h.opp_spec, gs, es, g.search_seat == 1 ? 1 : 0, &m);   // seat index of the opponent
         }
-        e.engine->beginGame(h.da, h.db, es);
+        e.engine->beginGame(h.das[g.mu], h.dbs[g.mu], es);
         g.started = true;
     }
     while (true) {
@@ -295,11 +332,30 @@ void advanceReal(SHandle& h, Game& g) {
             ++g.n_greedy;
             continue;
         }
-        if (h.cfg.sims > 0 && seat == g.search_seat) {
+        bool do_search = h.cfg.sims > 0 && seat == g.search_seat;
+        g.cur_sims = h.cfg.sims;
+        g.cur_record = h.cfg.gen;
+        if (h.cfg.gen)
+            do_search = h.cfg.sims > 0 &&
+                        std::uniform_real_distribution<float>(0.f, 1.f)(g.grng) < h.cfg.p_search;
+        if (h.cfg.az) {
+            do_search = h.cfg.sims > 0;
+            g.cur_record = std::uniform_real_distribution<float>(0.f, 1.f)(g.grng) < h.cfg.p_full;
+            g.cur_sims = g.cur_record ? h.cfg.sims : std::max(1, h.cfg.sims_fast);
+        }
+        if (do_search) {
             g.mode = Game::Search;
             ++g.n_search;
             ++g.st.searches;
             searchInit(h, g);
+            if (h.cfg.gen && g.cur_record) {   // the stored observation: training encoder (loose), live state
+                GenRec r;
+                riftbound::probe::dx::g_vis_force = 0;
+                encodeTo(r.obs, *e.engine, &e.mtrack[static_cast<int>(dec) % 3], sr, dec, g.c, e.hev);
+                riftbound::probe::dx::g_vis_force = -1;
+                r.seat = seat;
+                g.recs.push_back(std::move(r));
+            }
         } else {
             g.mode = Game::Greedy;
             ++g.n_greedy;
@@ -418,7 +474,7 @@ SWorld buildWorld(SHandle& h, Game& g, PlayerId observer, bool perfect, uint64_t
         w.eng->resumeFromSnapshot(g.snap.st, g.snap.rng, g.snap.step);
         from = g.snap.hist_len;
     } else {
-        w.eng->beginGame(h.da, h.db, engineSeedOf(static_cast<uint64_t>(g.seed)));
+        w.eng->beginGame(h.das[g.mu], h.dbs[g.mu], engineSeedOf(static_cast<uint64_t>(g.seed)));
     }
     for (size_t k = from; k < g.e.hist.size(); ++k) {
         if (w.eng->currentStep().kind != StepKind::NeedDecision) throw std::runtime_error("world replay: game over");
@@ -438,7 +494,7 @@ SWorld buildWorld(SHandle& h, Game& g, PlayerId observer, bool perfect, uint64_t
                 if (h.cfg.deck_model == 1) rd = redrawSlots(s, observer);
                 h.sampler->sample(s, observer, d);
                 if (h.cfg.deck_model == 1) {
-                    const DeckSubmission& dl = observer == PlayerId::Player1 ? h.db : h.da;
+                    const DeckSubmission& dl = observer == PlayerId::Player1 ? h.dbs[g.mu] : h.das[g.mu];
                     if (!redrawFromDecklist(s, observer, dl, rd, d)) ++g.st.dl_fallback;
                 }
             },
@@ -512,6 +568,7 @@ SimOut simulate(SHandle& h, Game& g) {
         const auto t0 = Clock::now();
         GameEngine& eng = *w.eng;
         MoveTrack mt[3] = {g.e.mtrack[0], g.e.mtrack[1], g.e.mtrack[2]};
+        std::vector<HistEv> hv = g.e.hev;   // history.h: the live history + this simulation's path
         // root: world options -> live indices
         {
             const StepResult& sr = eng.currentStep();
@@ -527,7 +584,7 @@ SimOut simulate(SHandle& h, Game& g) {
                 g.st.ns_descend += nsSince(t0);
                 const auto t1 = Clock::now();
                 if (static_cast<int>(g.bufs.size()) <= g.nrows) g.bufs.emplace_back();
-                encodeTo(g.bufs[g.nrows], eng, &mt[static_cast<int>(g.root_player) % 3], sr, g.root_player, g.c);
+                encodeTo(g.bufs[g.nrows], eng, &mt[static_cast<int>(g.root_player) % 3], sr, g.root_player, g.c, hv);
                 g.st.ns_encode += nsSince(t1);
                 Leaf lf;
                 lf.node = &g.root; lf.sign = 1; lf.keys = std::move(keys); lf.nopt = nopt;
@@ -540,7 +597,9 @@ SimOut simulate(SHandle& h, Game& g) {
             addVirtual(cfg, g.root, keys[j]);
             path.push_back({&g.root, keys[j], 1});
             noteChoice(mt[static_cast<int>(g.root_player) % 3], sr.prompt, sr.legal[j]);
+            HistPending hp = histBegin(eng.state(), sr, g.root_player, j);
             eng.applyChoice(j);
+            histEnd(eng.state(), hp, hv);
         }
         for (int depth = 0;; ++depth) {
             // auto-advance
@@ -584,7 +643,7 @@ SimOut simulate(SHandle& h, Game& g) {
                 g.st.ns_descend += nsSince(t0);
                 const auto t1 = Clock::now();
                 if (static_cast<int>(g.bufs.size()) <= g.nrows) g.bufs.emplace_back();
-                encodeTo(g.bufs[g.nrows], eng, &mt[static_cast<int>(dec) % 3], sr, dec, g.c);
+                encodeTo(g.bufs[g.nrows], eng, &mt[static_cast<int>(dec) % 3], sr, dec, g.c, hv);
                 g.st.ns_encode += nsSince(t1);
                 g.st.depth_sum += static_cast<int64_t>(path.size());
                 Leaf lf;
@@ -597,7 +656,9 @@ SimOut simulate(SHandle& h, Game& g) {
             addVirtual(cfg, nd, ids[j]);
             path.push_back({&nd, ids[j], sign});
             noteChoice(mt[static_cast<int>(dec) % 3], sr.prompt, sr.legal[j]);
+            HistPending hp = histBegin(eng.state(), sr, dec, j);
             eng.applyChoice(j);
+            histEnd(eng.state(), hp, hv);
         }
     } catch (const std::exception& ex) {
         revertPath(cfg, path);
@@ -632,14 +693,67 @@ void collectGame(SHandle& h, Game& g) {
             if (g.mode == Game::Greedy) {
                 if (g.bufs.empty()) g.bufs.emplace_back();
                 encodeTo(g.bufs[0], *g.e.engine, &g.e.mtrack[static_cast<int>(g.dec) % 3], g.e.engine->currentStep(),
-                         g.dec, g.c);
+                         g.dec, g.c, g.e.hev);
                 g.nrows = 1;
                 return;
             }
             // Search
-            if (g.issued >= h.cfg.sims) {
-                const int k = bestRoot(g);
-                if (k < 0) { ++g.st.fallbacks; g.mode = Game::Greedy; continue; }   // root never expanded
+            if (g.issued >= g.cur_sims) {
+                int k = bestRoot(g);
+                if (k < 0) {   // root never expanded
+                    ++g.st.fallbacks; g.mode = Game::Greedy;
+                    if (h.cfg.gen && g.cur_record && !g.recs.empty()) g.recs.pop_back();
+                    continue;
+                }
+                if (h.cfg.az) {   // AlphaZero: record (full searches) and play the search's move
+                    if (g.cur_record && !g.recs.empty()) {
+                        GenRec& r = g.recs.back();
+                        r.P.assign(A, 0.f); r.N.assign(A, 0.f); r.Q.assign(A, -2.f);
+                        float tw = 0.f, tn = 0.f;
+                        for (const auto& [i, c] : g.root.ch) {
+                            if (i < 0 || i >= A) continue;
+                            r.P[i] = std::max(0.f, c.P); r.N[i] = static_cast<float>(c.N);
+                            if (c.N > 0) { r.Q[i] = c.W / static_cast<float>(c.N); tw += c.W; tn += static_cast<float>(c.N); }
+                        }
+                        r.v0 = g.root.v0; r.vs = tn > 0.f ? tw / tn : g.root.v0;
+                    }
+                    if (g.decision_no <= h.cfg.az_temp_moves) {   // visit-proportional
+                        std::vector<std::pair<int, int>> vis;
+                        float tot = 0.f;
+                        for (const auto& [i, c] : g.root.ch)
+                            if (i >= 0 && i < A && c.P >= 0.f && c.N > 0) { vis.push_back({i, c.N}); tot += static_cast<float>(c.N); }
+                        std::sort(vis.begin(), vis.end());
+                        if (tot > 0.f) {
+                            float u = std::uniform_real_distribution<float>(0.f, tot)(g.grng);
+                            for (const auto& [i, n] : vis) { k = i; u -= static_cast<float>(n); if (u <= 0.f) break; }
+                        }
+                    }
+                    applyReal(g, k);
+                    continue;
+                }
+                if (h.cfg.gen) {
+                    GenRec& r = g.recs.back();
+                    r.P.assign(A, 0.f); r.N.assign(A, 0.f); r.Q.assign(A, -2.f);
+                    float tw = 0.f, tn = 0.f;
+                    for (const auto& [i, c] : g.root.ch) {
+                        if (i < 0 || i >= A) continue;
+                        r.P[i] = std::max(0.f, c.P); r.N[i] = static_cast<float>(c.N);
+                        if (c.N > 0) { r.Q[i] = c.W / static_cast<float>(c.N); tw += c.W; tn += static_cast<float>(c.N); }
+                    }
+                    r.v0 = g.root.v0; r.vs = tn > 0.f ? tw / tn : g.root.v0;
+                    // move: sampled from the network's prior (not the search's choice)
+                    float tot = 0.f;
+                    for (int i = 0; i < A; ++i) tot += r.P[i];
+                    if (tot > 0.f) {
+                        float u = std::uniform_real_distribution<float>(0.f, tot)(g.grng);
+                        int pick = -1;
+                        for (int i = 0; i < A; ++i) { if (r.P[i] <= 0.f) continue; pick = i; u -= r.P[i]; if (u <= 0.f) break; }
+                        if (pick >= 0) k = pick;
+                    }
+                    if (k != bestRoot(g)) ++g.st.changed;
+                    applyReal(g, k);
+                    continue;
+                }
                 {
                     int am = -1; float ap = -1.f;   // the network's argmax at the root
                     for (const auto& [i, c] : g.root.ch) if (c.P > ap || (c.P == ap && i < am)) { ap = c.P; am = i; }
@@ -665,7 +779,7 @@ void collectGame(SHandle& h, Game& g) {
             }
             const int target = g.root.expanded ? h.cfg.leaves : 1;
             int tries = 0;
-            while (g.nrows < target && g.issued < h.cfg.sims && tries < 4 * target) {
+            while (g.nrows < target && g.issued < g.cur_sims && tries < 4 * target) {
                 ++tries;
                 const SimOut r = simulate(h, g);
                 ++g.issued;
@@ -690,6 +804,15 @@ void feedGame(SHandle& h, Game& g, const float* logp, const float* v) {
             const int nopt = std::min(static_cast<int>(g.live.size()), A);
             int best = 0;
             for (int j = 1; j < nopt; ++j) if (logp[j] > logp[best]) best = j;
+            if (h.cfg.gen) {   // E2 generator: sample (temperature 1), as the training actors
+                float tot = 0.f;
+                for (int j = 0; j < nopt; ++j) tot += std::exp(logp[j]);
+                float u = std::uniform_real_distribution<float>(0.f, tot)(g.grng);
+                for (int j = 0; j < nopt; ++j) { best = j; u -= std::exp(logp[j]); if (u <= 0.f) break; }
+                applyReal(g, best);
+                g.leaves.clear(); g.nrows = 0;
+                return;
+            }
             {
                 std::array<float, 18> d{};
                 d.fill(-1.f);
@@ -708,6 +831,18 @@ void feedGame(SHandle& h, Game& g, const float* logp, const float* v) {
                     if (c.P < 0.f) c.P = std::exp(lp[j]);
                 }
                 const float vl = v[r];
+                if (h.cfg.az && g.cur_record && lf.node == &g.root && !lf.node->expanded && h.cfg.dir_eps > 0.f) {
+                    std::gamma_distribution<float> gam(h.cfg.dir_alpha, 1.f);
+                    std::vector<float> d(lf.nopt, 0.f);
+                    float ds = 0.f;
+                    for (int j = 0; j < lf.nopt; ++j) if (lf.keys[j] >= 0) { d[j] = gam(g.grng); ds += d[j]; }
+                    if (ds > 0.f)
+                        for (int j = 0; j < lf.nopt; ++j) {
+                            if (lf.keys[j] < 0) continue;
+                            Child& c = lf.node->ch[lf.keys[j]];
+                            c.P = (1.f - h.cfg.dir_eps) * c.P + h.cfg.dir_eps * d[j] / ds;
+                        }
+                }
                 if (!lf.node->expanded) { lf.node->expanded = true; lf.node->v0 = vl; }
                 backup(h.cfg, lf.path, static_cast<float>(lf.sign) * vl);
                 ++g.st.sims;
@@ -743,18 +878,42 @@ void* rbs_create(int n_games, const char* deck_a, const char* deck_b, int64_t se
         h->cfg.cpuct = cfg_f[0];
         h->cfg.fpu_red = cfg_f[1];
         h->cfg.vl = cfg_f[2];
+        h->cfg.gen = seat_mode == 2;
+        h->cfg.p_search = cfg_f[3];
+        // az (cfg_i[6..8], cfg_f[4..6]); callers pass arrays of 12 (rbsearch.py)
+        h->cfg.az = cfg_i[6] != 0 && h->cfg.gen;
+        h->cfg.az_temp_moves = cfg_i[7];
+        h->cfg.sims_fast = cfg_i[8];
+        h->cfg.dir_alpha = cfg_f[4]; h->cfg.dir_eps = cfg_f[5]; h->cfg.p_full = cfg_f[6];
         h->deck_a_path = deck_a; h->deck_b_path = deck_b; h->opp_spec = opponent ? opponent : "";
-        h->da = DeckValidator::loadFromDeckList(deck_a, *g_db);
-        h->db = DeckValidator::loadFromDeckList(deck_b, *g_db);
+        auto split = [](const std::string& x) {
+            std::vector<std::string> out;
+            std::string cur;
+            for (char ch : x + "|") {
+                if (ch == '|') { if (!cur.empty()) out.push_back(cur); cur.clear(); }
+                else cur += ch;
+            }
+            return out;
+        };
+        h->pa = split(deck_a); h->pb = split(deck_b);
+        if (h->pa.empty() || h->pa.size() != h->pb.size()) throw std::runtime_error("deck lists: equal non-empty '|' lists");
+        for (size_t m = 0; m < h->pa.size(); ++m) {
+            h->das.push_back(DeckValidator::loadFromDeckList(h->pa[m], *g_db));
+            h->dbs.push_back(DeckValidator::loadFromDeckList(h->pb[m], *g_db));
+        }
+        h->da = h->das[0]; h->db = h->dbs[0];
         h->sampler = std::make_unique<WorldSampler>(*g_db);
         h->games.resize(n_games);
         for (int i = 0; i < n_games; ++i) {
             Game& g = h->games[i];
             g.idx = i;
+            g.mu = i % static_cast<int>(h->pa.size());
             g.seed = seed + i / 2;
             g.search_seat = seat_mode == 0 ? (i % 2 == 0 ? 1 : 2) : 0;
             g.e.idx = i;
             g.e.game_seed = g.seed;
+            if (h->cfg.gen) { g.seed = seed + i; g.e.game_seed = g.seed; }
+            g.grng.seed(mix64(static_cast<uint64_t>(g.seed) * 2654435761ull + 12345ull));
         }
         h->pool = std::make_unique<Pool>(threads);
         return h.release();
@@ -798,6 +957,19 @@ void rbs_rows(void* p, int32_t* glob, int32_t* tok, uint8_t* tmask, int32_t* act
             m[0] = b.pk; m[1] = b.psrc; m[2] = b.nlegal; m[3] = b.seat; m[4] = i;
             m[5] = g.mode == Game::Search ? 1 : 0;
         }
+    };
+    h.pool->run(static_cast<int>(h.games.size()), f);
+}
+
+// history.h: the rows' histories (rows, kHistLen, kHistF), same row order as rbs_rows.
+void rbs_rows_hist(void* p, int32_t* hist) {
+    using namespace rbs;
+    auto& h = *static_cast<SHandle*>(p);
+    const size_t n1 = static_cast<size_t>(kHistLen) * kHistF;
+    std::function<void(int)> f = [&](int i) {
+        const Game& g = h.games[i];
+        for (int r = 0; r < g.nrows; ++r)
+            std::memcpy(hist + static_cast<size_t>(h.offs[i] + r) * n1, g.bufs[r].hist.data(), n1 * 4);
     };
     h.pool->run(static_cast<int>(h.games.size()), f);
 }
@@ -858,6 +1030,53 @@ void rbs_stats(void* p, int64_t* out) {
     }
 }
 
+// E2 generator: copies and clears the records of game i (only once it is Done, so the outcome z
+// is known; returns 0 otherwise). meta per record: pk, psrc, nlegal, seat. fl per record (3A + 3):
+// P[A], N[A], Q[A], v0, vs, z (decider's view: +1 win, -1 loss, 0 draw / error).
+int rbs_gen_take(void* p, int i, int cap, int32_t* glob, int32_t* tok, uint8_t* tmask, int32_t* act, uint8_t* amask,
+                 int32_t* meta, float* fl, int32_t* hist) {
+    using namespace rbs;
+    auto& g = static_cast<SHandle*>(p)->games.at(i);
+    if (g.mode != Game::Done) return 0;
+    const int n = std::min(cap, static_cast<int>(g.recs.size()));
+    for (int r = 0; r < n; ++r) {
+        const GenRec& x = g.recs[r];
+        std::memcpy(glob + static_cast<size_t>(r) * G, x.obs.glob.data(), G * 4);
+        std::memcpy(tok + static_cast<size_t>(r) * T * F, x.obs.tok.data(), T * F * 4);
+        std::memcpy(tmask + static_cast<size_t>(r) * T, x.obs.tmask.data(), T);
+        std::memcpy(act + static_cast<size_t>(r) * A * K, x.obs.act.data(), A * K * 4);
+        std::memcpy(amask + static_cast<size_t>(r) * A, x.obs.amask.data(), A);
+        if (hist) std::memcpy(hist + static_cast<size_t>(r) * kHistLen * kHistF, x.obs.hist.data(), kHistLen * kHistF * 4);
+        int32_t* m = meta + r * 4;
+        m[0] = x.obs.pk; m[1] = x.obs.psrc; m[2] = x.obs.nlegal; m[3] = x.seat;
+        float* f = fl + static_cast<size_t>(r) * (3 * A + 3);
+        std::memcpy(f, x.P.data(), A * 4);
+        std::memcpy(f + A, x.N.data(), A * 4);
+        std::memcpy(f + 2 * A, x.Q.data(), A * 4);
+        f[3 * A] = x.v0; f[3 * A + 1] = x.vs;
+        f[3 * A + 2] = (!g.err.empty() || g.winner == 0) ? 0.f : (g.winner == x.seat ? 1.f : -1.f);
+    }
+    g.recs.clear();
+    return n;
+}
+
+// E2 generator: replaces game slot i (must be Done) by a fresh game with seed `seed`.
+int rbs_restart(void* p, int i, int64_t seed) {
+    using namespace rbs;
+    auto& h = *static_cast<SHandle*>(p);
+    Game& old = h.games.at(i);
+    if (old.mode != Game::Done) return -1;
+    old.e.engine.reset();      // engine before its event bus
+    old.e.bus.reset();
+    Game g;
+    g.idx = i; g.seed = seed; g.search_seat = 0;
+    g.mu = old.mu;
+    g.e.idx = i; g.e.game_seed = seed;
+    g.grng.seed(mix64(static_cast<uint64_t>(seed) * 2654435761ull + 12345ull));
+    h.games[i] = std::move(g);
+    return 0;
+}
+
 // M0 leak test, at every game now waiting at a real decision (after a collect, before feed):
 // `worlds` worlds per decision; each must encode byte-identically to the truth for the decider.
 // out (adds): 0 decisions main-phase  1 decisions other  2 worlds main  3 worlds other
@@ -882,9 +1101,9 @@ void rbs_leaktest(void* p, int worlds, int64_t* out, char* msg, int cap) {
         const bool main = sr.prompt.kind == PromptKind::MainPhase;
         ObsBuf ref, got, ref_opp, got_opp;
         Counters cc;
-        encodeTo(ref, truth, &g.e.mtrack[static_cast<int>(dec) % 3], sr, dec, cc);
+        encodeTo(ref, truth, &g.e.mtrack[static_cast<int>(dec) % 3], sr, dec, cc, g.e.hev);
         int64_t loc[12] = {0};
-        encodeTo(ref_opp, truth, &g.e.mtrack[static_cast<int>(opp) % 3], sr, opp, cc);
+        encodeTo(ref_opp, truth, &g.e.mtrack[static_cast<int>(opp) % 3], sr, opp, cc, g.e.hev);
         loc[main ? 0 : 1]++;
         std::mt19937_64 rng(mix64(static_cast<uint64_t>(g.seed) * 31 + static_cast<uint64_t>(g.decision_no)));
         std::string why;
@@ -894,7 +1113,7 @@ void rbs_leaktest(void* p, int worlds, int64_t* out, char* msg, int cap) {
             try {
                 const uint64_t ds = rng(), es = rng();
                 SWorld wd = buildWorld(h, g, dec, false, ds, es);
-                encodeTo(got, *wd.eng, &g.e.mtrack[static_cast<int>(dec) % 3], wd.eng->currentStep(), dec, cc);
+                encodeTo(got, *wd.eng, &g.e.mtrack[static_cast<int>(dec) % 3], wd.eng->currentStep(), dec, cc, g.e.hev);
                 std::string wy;
                 if (!sameObs(ref, got, &wy)) {
                     loc[main ? 4 : 5]++;
@@ -950,7 +1169,7 @@ void rbs_leaktest(void* p, int worlds, int64_t* out, char* msg, int cap) {
                 }
                 if (differ) loc[6]++;
                 loc[7] += static_cast<int64_t>(h.sampler->check(a, b, dec).size());
-                encodeTo(got_opp, *wd.eng, &g.e.mtrack[static_cast<int>(opp) % 3], wd.eng->currentStep(), opp, cc);
+                encodeTo(got_opp, *wd.eng, &g.e.mtrack[static_cast<int>(opp) % 3], wd.eng->currentStep(), opp, cc, g.e.hev);
                 if (!sameObs(ref_opp, got_opp, nullptr)) loc[11]++;
             } catch (const std::exception& ex) {
                 loc[8]++;

@@ -1,0 +1,79 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1
+  },
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0461_fizz_trickster.cpp:81",
+   "supertype": "src/cards/units/0461_fizz_trickster.cpp:82",
+   "domains": "src/cards/units/0461_fizz_trickster.cpp:83",
+   "energy": "src/cards/units/0461_fizz_trickster.cpp:85",
+   "power": "src/cards/units/0461_fizz_trickster.cpp:86",
+   "power_by_domain": "src/cards/units/0461_fizz_trickster.cpp:86 x src/cards/units/0461_fizz_trickster.cpp:83; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0461_fizz_trickster.cpp:87"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0461_fizz_trickster.cpp:19"
+   },
+   "effects": [
+    {
+     "verb": "PlayIgnoringCost",
+     "target": {
+      "type": "spell",
+      "side": "friendly",
+      "zone": "trash",
+      "count": 1,
+      "filters": [
+       {
+        "f": "energy_cost_le",
+        "v": 3,
+        "_src": "src/cards/units/0461_fizz_trickster.cpp:34"
+       }
+      ],
+      "bind": "A",
+      "_src": "src/cards/units/0461_fizz_trickster.cpp:27-39"
+     },
+     "optional": true,
+     "resource": "energy",
+     "_src": "src/cards/units/0461_fizz_trickster.cpp:53; may src/cards/units/0461_fizz_trickster.cpp:40-45; energy only src/cards/units/0461_fizz_trickster.cpp:24"
+    },
+    {
+     "verb": "Recycle",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/units/0461_fizz_trickster.cpp:52"
+     },
+     "after": "leave_chain",
+     "_src": "src/cards/units/0461_fizz_trickster.cpp:52-62"
+    }
+   ],
+   "_src": "src/cards/units/0461_fizz_trickster.cpp:19"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-140-221",
+  "class_file": "src/cards/units/0461_fizz_trickster.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: zone trash",
+   "PlayIgnoringCost resource=energy: only the Energy cost is ignored, the Power cost is paid (playPayingCost with ignore_energy)",
+   "new term: after=leave_chain"
+  ]
+ }
+}

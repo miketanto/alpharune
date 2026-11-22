@@ -1,0 +1,54 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/battlefields/0761_abandoned_hall.cpp:61",
+   "supertype": "default SuperType::None",
+   "domains": "default {}"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_spell",
+    "subject": "any_player",
+    "_src": "src/cards/battlefields/0761_abandoned_hall.cpp:19; src/engine/trigger_manager.cpp:846-857"
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "here",
+      "count": 1,
+      "_src": "src/cards/battlefields/0761_abandoned_hall.cpp:27-36"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/battlefields/0761_abandoned_hall.cpp:46"
+     },
+     "duration": "turn",
+     "optional": true,
+     "_src": "src/cards/battlefields/0761_abandoned_hall.cpp:46; may src/cards/battlefields/0761_abandoned_hall.cpp:37-41"
+    }
+   ],
+   "_src": "src/cards/battlefields/0761_abandoned_hall.cpp:19; src/engine/trigger_manager.cpp:846-857"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-205-219",
+  "class_file": "src/cards/battlefields/0761_abandoned_hall.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event play_spell, subject any_player (the player who played the spell controls the ability; 'friendly' is relative to them)"
+  ]
+ }
+}

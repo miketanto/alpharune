@@ -76,7 +76,11 @@ CLASSES = {
 KW_MAP = {"Accelerate": "accelerate", "Action": "action", "Ambush": "ambush",
           "Assault": "assault", "Deathknell": "deathknell", "Deflect": "deflect",
           "Ganking": "ganking", "Hidden": "hidden", "Hunt": "hunt", "Legion": "legion",
-          "Level": "level", "Reaction": "reaction", "Flow": "flow"}
+          "Level": "level", "Reaction": "reaction", "Flow": "flow",
+          # B2 v2 (2026-11-21): keywords of the Azir / Diana lists
+          "Equip": "equip", "Temporary": "temporary", "Tank": "tank", "Shield": "shield", "Vision": "vision",
+          "Weaponmaster": "weaponmaster", "Quick-Draw": "quick_draw", "QuickDraw": "quick_draw", "Repeat": "repeat",
+          "Empower": "empower", "Deathknell2": "deathknell"}
 TYPE_MAP = {"Unit": "unit", "Spell": "spell", "Gear": "gear", "Rune": "rune",
             "Battlefield": "battlefield", "Legend": "legend"}
 

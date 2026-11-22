@@ -26,3 +26,11 @@ selfplay/runs/*/latest.pt
 selfplay/viz/replays/*.html
 gate3/*.npz
 selfplay/viz/replays*/*.html
+# AZ run: replay buffer, smoke buffers, rendered replays and videos (regenerate with az/ scripts)
+az/buf/
+az/buf_*/
+az/smoke*/
+az/replay*/*.html
+*.mp4
+e2/*.npz
+search/out/replay/*.html

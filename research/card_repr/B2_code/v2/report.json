@@ -1,0 +1,1167 @@
+{
+ "built": [
+  "abandoned_hall",
+  "acceptable_losses",
+  "arise",
+  "ashe_focused",
+  "azir_sovereign",
+  "b_f_sword",
+  "brutalizer",
+  "chaos_rune",
+  "deathgrip",
+  "decree_of_insight",
+  "decree_of_unity",
+  "diana_lunari",
+  "doran_s_shield",
+  "eclipse",
+  "emperor_of_the_sands",
+  "eye_of_the_herald",
+  "fizz_trickster",
+  "flash",
+  "guards",
+  "gust",
+  "hall_of_legends",
+  "hand_hammer",
+  "hard_bargain",
+  "hidden_blade",
+  "hwei_brooding_painter",
+  "mind_rune",
+  "moonfall",
+  "order_rune",
+  "ravenbloom_student",
+  "rebuke",
+  "ride_the_wind",
+  "salvage",
+  "scorn_of_the_moon",
+  "singularity",
+  "smoke_screen",
+  "soul_sword",
+  "sprite_fountain",
+  "star_crossed",
+  "stupefy",
+  "switcheroo",
+  "tail_cloaked_matriarch",
+  "targon_s_peak",
+  "tideturner",
+  "traveling_merchant",
+  "trifarian_war_camp",
+  "turn_to_dust",
+  "up_from_the_deep",
+  "vex_apathetic"
+ ],
+ "missing": [],
+ "problems": [],
+ "cards": {
+  "emperor_of_the_sands": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "CreateToken",
+    "GiveKeyword"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken"
+    ],
+    "in_graph": [
+     "CreateToken",
+     "GiveKeyword"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "GiveKeyword"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: token_name (filter; the aura matches the token's name, the class says its tag Shurima is not used)",
+    "new term: equipment_played_this_turn_ge (condition; 'use only if')",
+    "keyword weaponmaster is granted, not printed"
+   ]
+  },
+  "azir_sovereign": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "EnterReady",
+    "Move"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Move"
+    ],
+    "in_graph": [
+     "EnterReady",
+     "Move"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: attack (trigger event; TriggerType::WhenIAttack, attack only)",
+    "new term: is_token (selector filter)",
+    "no effect if the unit is not at a battlefield (my_bf empty)"
+   ]
+  },
+  "hidden_blade": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "Draw",
+    "Kill"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Draw",
+     "Kill"
+    ],
+    "in_graph": [
+     "Draw",
+     "Kill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: controller_of (player filter: who controlled the killed unit as it died; nobody draws if the death was replaced by a banish)",
+    "the card's own name contains the keyword word 'hidden' (keyword expansion, unavoidable name-check hit)"
+   ]
+  },
+  "doran_s_shield": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Attach",
+    "GiveKeyword",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Attach",
+     "GiveKeyword",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach",
+     "GiveKeyword"
+    ]
+   },
+   "n_abilities": 3,
+   "flags": [
+    "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+    "new term: equipped_with_self (filter: the unit this gear is attached to)"
+   ]
+  },
+  "brutalizer": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Attach",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "Attach",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach"
+    ]
+   },
+   "n_abilities": 3,
+   "flags": [
+    "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+    "new term: equipped_with_self (filter: the unit this gear is attached to)",
+    "new term: attached_this_turn (condition: this gear became attached to its current unit this turn, by Equip or any other effect; tracked per bearer change)"
+   ]
+  },
+  "eye_of_the_herald": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Attach",
+    "CreateToken"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken"
+    ],
+    "in_graph": [
+     "Attach",
+     "CreateToken"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+    "new term: equipped_with_self (filter: the unit this gear is attached to)",
+    "new term: trigger event 'move' (TriggerType::WhenIMove, any move, not only to a battlefield)",
+    "new term: trigger subject 'equipped_unit' (the trigger fires on the unit this gear is attached to)",
+    "token zone 'here' = the equipped unit's location; nothing if it has left the board (code)"
+   ]
+  },
+  "guards": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "CreateToken",
+    "Ready"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken",
+     "Ready"
+    ],
+    "in_graph": [
+     "CreateToken",
+     "Ready"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: base_or_controlled_battlefield (zone: where a unit may be played; only the hidden battlefield when played from facedown, CR 811.1.d.5)",
+    "effect-level cost: the [C] of the reflexive 'then you may pay to ready it'"
+   ]
+  },
+  "b_f_sword": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Attach",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Attach",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+    "new term: equipped_with_self (filter: the unit this gear is attached to)"
+   ]
+  },
+  "arise": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "CreateToken",
+    "Ready"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken",
+     "Ready"
+    ],
+    "in_graph": [
+     "CreateToken",
+     "Ready"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: equipment_controlled (amount per: friendly gear tagged Equipment, counted once at resolution)",
+    "new term: bound (filter: one of the objects bound earlier, here the tokens made)",
+    "new term: base_or_controlled_battlefield (zone; each token's location chosen one by one)"
+   ]
+  },
+  "soul_sword": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Attach",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Attach",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach"
+    ]
+   },
+   "n_abilities": 3,
+   "flags": [
+    "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+    "new term: equipped_with_self (filter: the unit this gear is attached to)",
+    "text '[Level 3]' is not a CardDef keyword: only the xp_ge 3 condition from applyPassiveAura is represented"
+   ]
+  },
+  "deathgrip": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "ChooseTarget",
+    "Draw",
+    "GiveMight",
+    "Kill"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Draw",
+     "GiveMight",
+     "Kill"
+    ],
+    "in_graph": [
+     "ChooseTarget",
+     "Draw",
+     "GiveMight",
+     "Kill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "ChooseTarget"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: died (condition: the bound unit actually left the board)",
+    "Might is read before the kill (last-known); playable with a single friendly unit (then no pump)"
+   ]
+  },
+  "hand_hammer": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Attach",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "Attach",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach"
+    ]
+   },
+   "n_abilities": 3,
+   "flags": [
+    "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+    "new term: equipped_with_self (filter: the unit this gear is attached to)",
+    "new term: other_friendly_units_here_eq (filter: exactly N other friendly units at the unit's location)"
+   ]
+  },
+  "trifarian_war_camp": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "hall_of_legends": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "Ready"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Ready"
+    ],
+    "in_graph": [
+     "Ready"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: legend (selector type and zone: your legend)",
+    "the [1] is offered even when the legend is already ready (class comment)"
+   ]
+  },
+  "order_rune": {
+   "builder": "graphs_runes.py",
+   "verbs": [
+    "AddEnergy",
+    "AddPower"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "AddEnergy",
+     "AddPower"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": []
+  },
+  "salvage": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "Draw",
+    "Kill"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Draw",
+     "Kill"
+    ],
+    "in_graph": [
+     "Draw",
+     "Kill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "ashe_focused": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "Banish",
+    "Bounce",
+    "Reveal"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Banish"
+    ],
+    "in_graph": [
+     "Banish",
+     "Bounce",
+     "Reveal"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Bounce",
+     "Reveal"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: hold (event of a delayed effect: the opponent's next hold)",
+    "the delayed return outlives the unit (DelayedAbility kUntilFired, source-independent)",
+    "return is from banishment to the owner's hand (deck::putInHand, not an executor call); written as Bounce dest owner_hand"
+   ]
+  },
+  "decree_of_unity": {
+   "builder": "graphs_azir_a.py",
+   "verbs": [
+    "Kill"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Kill"
+    ],
+    "in_graph": [
+     "Kill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "scorn_of_the_moon": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "AddEnergy"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "AddEnergy"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: restriction=showdown_only (energy goes to RunePool::showdown_energy)"
+   ]
+  },
+  "diana_lunari": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "Draw",
+    "LookAt",
+    "Recycle",
+    "Reveal"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Draw",
+     "LookAt",
+     "Recycle",
+     "Reveal"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Draw",
+     "LookAt",
+     "Recycle",
+     "Reveal"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event showdown_begin (subject here = the unit's battlefield)",
+    "new term: zone deck_top",
+    "new term: condition revealed_card_type",
+    "Predict expressed as LookAt + optional Recycle of the top card"
+   ]
+  },
+  "stupefy": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Draw",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Draw",
+     "GiveMight"
+    ],
+    "in_graph": [
+     "Draw",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: minimum (GiveMight extra: Might not reduced below N)"
+   ]
+  },
+  "ravenbloom_student": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event play_spell"
+   ]
+  },
+  "traveling_merchant": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "Discard",
+    "Draw"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Discard",
+     "Draw"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Discard",
+     "Draw"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event move",
+    "new term: verb Discard"
+   ]
+  },
+  "tideturner": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "ChooseTarget",
+    "Move"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "ChooseTarget",
+     "Move"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "ChooseTarget",
+     "Move"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: dest location_of:A (swap: self to A's location, A to self's original location)"
+   ]
+  },
+  "moonfall": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "ChooseTarget",
+    "GiveMight",
+    "Move"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight",
+     "Move"
+    ],
+    "in_graph": [
+     "ChooseTarget",
+     "GiveMight",
+     "Move"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "ChooseTarget"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: selector type 'battlefield' (a chosen location, bound as L)",
+    "new term: filter at_chosen_battlefield; dest chosen_battlefield (the bound L)",
+    "the -2 applies to enemy units at L whether or not a unit was moved (src/cards/spells/0755_moonfall.cpp:66)"
+   ]
+  },
+  "gust": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "Bounce"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Bounce"
+    ],
+    "in_graph": [
+     "Bounce"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "might_le reads current Might (obj.current_might), not printed Might"
+   ]
+  },
+  "ride_the_wind": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "Move",
+    "Ready"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Move",
+     "Ready"
+    ],
+    "in_graph": [
+     "Move",
+     "Ready"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "hard_bargain": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "Counter",
+    "Repeat"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Counter"
+    ],
+    "in_graph": [
+     "Counter",
+     "Repeat"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Repeat"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: verb Repeat (Repeat [2]: optional additional cost, the spell's effect is executed again with its own choices; engine-charged, CR 820)",
+    "new term: condition target_controller_pays_energy (the countered spell's controller may pay [2] to prevent it; auto-countered when it cannot pay)"
+   ]
+  },
+  "eclipse": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "GiveMight",
+    "LookAt",
+    "Recycle"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "GiveMight",
+     "LookAt",
+     "Recycle"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "LookAt",
+     "Recycle"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "Predict (executor.predict(you, 1)) written as LookAt top card of your deck + may Recycle it; new term: zone deck_top",
+    "Predict happens even if the unit target became illegal (src/cards/spells/0625_eclipse.cpp:22-23)"
+   ]
+  },
+  "sprite_fountain": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "CreateToken"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken"
+    ],
+    "in_graph": [
+     "CreateToken"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": [
+    "[Temporary] on the gear (kill at the start of its controller's Beginning Phase, trigger_manager.cpp:520-545) is engine-implemented and kept as keyword only: extract.build_class has no expansion for it",
+    "token extras keywords/enter_ready (createToken arg5 / arg7=true) are B2 schema extensions"
+   ]
+  },
+  "star_crossed": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "Bounce"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Bounce"
+    ],
+    "in_graph": [
+     "Bounce"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "smoke_screen": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: minimum (GiveMight extra: Might not reduced below N)"
+   ]
+  },
+  "rebuke": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Bounce"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Bounce"
+    ],
+    "in_graph": [
+     "Bounce"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "acceptable_losses": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "Kill"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Kill"
+    ],
+    "in_graph": [
+     "Kill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "each player chooses one of their own gear (not a target: Deflect / can't-be-chosen do not apply); new value chooser=controller for the opponent's pick",
+    "both gear die at the same time (DeathBatch, src/cards/spells/0179_acceptable_losses.cpp:47)"
+   ]
+  },
+  "flash": {
+   "builder": "graphs_gear_b.py",
+   "verbs": [
+    "Move"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Move"
+    ],
+    "in_graph": [
+     "Move"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: at_base (filter: the unit is in its controller's base)"
+   ]
+  },
+  "switcheroo": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "ChooseTarget",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "ChooseTarget",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "ChooseTarget"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "swap = GiveMight by the difference of the two current Mights (snapshot at resolution); new term: amount field minus",
+    "new term: filter at_location_of (same battlefield as the bound unit)",
+    "played from facedown both units must be at its hidden battlefield (src/cards/spells/0466_switcheroo.cpp:46-53, src/cards/spells/0466_switcheroo.cpp:60); not represented"
+   ]
+  },
+  "hwei_brooding_painter": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "Discard",
+    "Draw",
+    "GiveMight",
+    "Ready"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Draw",
+     "GiveMight",
+     "Ready"
+    ],
+    "in_graph": [
+     "Discard",
+     "Draw",
+     "GiveMight",
+     "Ready"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Discard"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event move",
+    "new term: verb Discard",
+    "new term: condition discarded_card_type",
+    "new term: selector type rune, filter exhausted",
+    "the type-based part is a reflexive trigger (own chain item) folded into the ability"
+   ]
+  },
+  "vex_apathetic": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "CantMove",
+    "Stun"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Stun"
+    ],
+    "in_graph": [
+     "CantMove",
+     "Stun"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "CantMove"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: trigger subject opponent",
+    "new term: condition self_at_battlefield",
+    "new term: verb CantMove (cant_move_this_turn: no Standard Move, no effect move by its controller)"
+   ]
+  },
+  "fizz_trickster": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "PlayIgnoringCost",
+    "Recycle"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Recycle"
+    ],
+    "in_graph": [
+     "PlayIgnoringCost",
+     "Recycle"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "PlayIgnoringCost"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: zone trash",
+    "PlayIgnoringCost resource=energy: only the Energy cost is ignored, the Power cost is paid (playPayingCost with ignore_energy)",
+    "new term: after=leave_chain"
+   ]
+  },
+  "targon_s_peak": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "Ready"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Ready"
+    ],
+    "in_graph": [
+     "Ready"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: after=end_of_turn (delayed ability, runes chosen when it fires)",
+    "new term: selector type rune, filter exhausted"
+   ]
+  },
+  "abandoned_hall": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event play_spell, subject any_player (the player who played the spell controls the ability; 'friendly' is relative to them)"
+   ]
+  },
+  "chaos_rune": {
+   "builder": "graphs_runes.py",
+   "verbs": [
+    "AddEnergy",
+    "AddPower"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "AddEnergy",
+     "AddPower"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": []
+  },
+  "mind_rune": {
+   "builder": "graphs_runes.py",
+   "verbs": [
+    "AddEnergy",
+    "AddPower"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "AddEnergy",
+     "AddPower"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": []
+  },
+  "turn_to_dust": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "GiveKeyword"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "GiveKeyword"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "GiveKeyword"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "permanent grant (no duration): the gear keeps Temporary until its controller's Beginning Phase kills it (engine sweep, src/cards/spells/0632_turn_to_dust.cpp:18-21); Temporary's kill is not expanded"
+   ]
+  },
+  "decree_of_insight": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "GiveMight",
+    "IgnoreCost"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "GiveMight",
+     "IgnoreCost"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "IgnoreCost"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: verb IgnoreCost (keyword deflect: Deflect's additional cost is not paid when this spell chooses a unit)"
+   ]
+  },
+  "singularity": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "DealDamage"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "DealDamage"
+    ],
+    "in_graph": [
+     "DealDamage"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "up_from_the_deep": {
+   "builder": "graphs_spells_d.py",
+   "verbs": [
+    "Banish",
+    "CreateToken"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken"
+    ],
+    "in_graph": [
+     "Banish",
+     "CreateToken"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: dest base_or_controlled_battlefield (each token's location chosen by you as it is played: your base or a battlefield you control)",
+    "token unit (1 Might, tag bilgewater) has no standalone token graph here"
+   ]
+  },
+  "tail_cloaked_matriarch": {
+   "builder": "graphs_diana_c.py",
+   "verbs": [
+    "Empower",
+    "PlayIgnoringCost"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "PlayIgnoringCost"
+    ],
+    "in_graph": [
+     "Empower",
+     "PlayIgnoringCost"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Empower"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: verb Empower, condition empowered, event become_empowered",
+    "new term: zone trash",
+    "[Empower] cost is class-declared (empowerSpec) and not expanded by extract; written here as an activated ability"
+   ]
+  }
+ }
+}

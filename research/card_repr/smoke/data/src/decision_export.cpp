@@ -288,9 +288,14 @@ inline void noteChoice(MoveTrack& t, const Prompt& p, const Intent& chosen) {
 // (WorldSampler places such a card at a random slot). With g_strict_vis such a card is "hidden",
 // so every world sampled for the observer encodes identically to the truth (search/m0.py leak).
 inline bool g_strict_vis = false;
+// E2 search-teacher generator (search/gen_targets.py): per-thread override of g_strict_vis
+// (-1 = use g_strict_vis, 0 = loose, 1 = strict), so the generator can encode the stored
+// training observation loose (as rbenv) while its simulations stay strict.
+inline thread_local int g_vis_force = -1;
 inline bool visibleTo(const GameState& s, GameObjectId id, PlayerId me) {
     const bool v = knowledge::identityVisible(s, id, me);
-    if (!v || !g_strict_vis || !s.objectExists(id)) return v;
+    const bool strict = g_vis_force >= 0 ? g_vis_force != 0 : g_strict_vis;
+    if (!v || !strict || !s.objectExists(id)) return v;
     const GameObject& o = s.getObject(id);
     if (o.owner == me) return true;
     const ZoneType z = o.zone;

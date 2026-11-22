@@ -24,7 +24,8 @@ def play(a):
     dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     if dev == 'cuda':
         torch.cuda.set_per_process_memory_fraction(0.4)
-    S = rbsearch.Search(2, 'rengar', a.seed, sims=a.sims, leaves=4, threads=4, seat_mode='balanced', strict=True)
+    S = rbsearch.Search(2, a.deck, a.seed, sims=a.sims, leaves=4, threads=a.threads, seat_mode='balanced', strict=True,
+                        deck_b=a.deck_b or a.deck)
     L = S.L
     L.rbs_declog.argtypes = [ctypes.c_void_p, ctypes.c_int, np.ctypeslib.ndpointer(np.float32, flags='C'), ctypes.c_int]
     L.rbs_declog.restype = ctypes.c_int
@@ -43,7 +44,7 @@ def play(a):
         print(f'slot {i}: search seat {r["search_seat"]}, winner P{r["winner"]}, turns {r["turns"]}, '
               f'{n} decisions, searched {r["n_search"]}', flush=True)
     os.makedirs(a.out, exist_ok=True)
-    json.dump(dict(seed=a.seed, sims=a.sims, games=out), open(os.path.join(a.out, f'declog_seed{a.seed}.json'), 'w'))
+    json.dump(dict(seed=a.seed, sims=a.sims, deck=a.deck, deck_b=a.deck_b or a.deck, name=a.name or os.path.basename(a.ckpt), ckpt=a.ckpt, games=out), open(os.path.join(a.out, f'declog_seed{a.seed}.json'), 'w'))
 
 
 def viz(a):
@@ -53,8 +54,9 @@ def viz(a):
     g = next(x for x in D['games'] if x['search_seat'] == a.search_seat)
     log = g['declog']
     N = D['sims']
-    lab = {a.search_seat: f'search N={N} (net league_02080)', 3 - a.search_seat: 'network greedy (league_02080)'}
-    env = RBEnv(1, 'rengar', 'rengar', a.seed, autopay=True, opponent=None, viz_dir=os.path.abspath(a.out),
+    nm = a.name or os.path.basename(a.ckpt)
+    lab = {a.search_seat: f'search N={N} ({nm})', 3 - a.search_seat: f'network greedy ({nm})'}
+    env = RBEnv(1, a.deck, a.deck_b or a.deck, a.seed, autopay=True, opponent=None, viz_dir=os.path.abspath(a.out),
                 opp_seat=0, labels=(lab[1], lab[2]))
     k = 0
     overrides = []
@@ -108,6 +110,10 @@ def main():
     ap.add_argument('--search-seat', type=int, default=1)
     ap.add_argument('--ckpt', default=CKPT)
     ap.add_argument('--out', default=os.path.join(HERE, 'out', 'replay'))
+    ap.add_argument('--deck', default='rengar', help='seat-1 deck')
+    ap.add_argument('--deck-b', default=None, help='seat-2 deck (default: --deck)')
+    ap.add_argument('--threads', type=int, default=4)
+    ap.add_argument('--name', default='', help='network label in the replay')
     a = ap.parse_args()
     play(a) if a.mode == 'play' else viz(a)
 

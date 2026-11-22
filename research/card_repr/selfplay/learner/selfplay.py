@@ -44,6 +44,8 @@ def to_dev(obs, rows, dev):
     A = int(am.any(0).nonzero()[0].max()) + 1 if am.any() else 1
     b = dict(glob=obs['glob'][rows], tok=obs['tok'][rows, :T], tok_mask=tm[:, :T],
              act=obs['act'][rows, :A], act_mask=am[:, :A], pk=obs['pk'][rows], psrc=obs['psrc'][rows])
+    if 'hist' in obs:   # rbenv history.h (nets without a history block ignore it)
+        b['hist'] = obs['hist'][rows]
     return {k: torch.from_numpy(np.ascontiguousarray(v)).to(dev, non_blocking=True) for k, v in b.items()}
 
 
@@ -66,9 +68,9 @@ class Ring:
         G, T, Fd, A, K = (int(dims[k]) for k in ('G', 'T', 'F', 'A', 'K'))
         self.cap = cap
         self.glob = np.zeros((cap, G), np.int16)
-        self.tok = np.zeros((cap, T, Fd), np.int8)   # int8: values clipped to [-128, 127]
+        self.tok = np.zeros((cap, T, Fd), np.int16)   # int16: card keys reach ~980 with vocab v2 (int8 clipped them)
         self.tok_mask = np.zeros((cap, T), bool)
-        self.act = np.zeros((cap, A, K), np.int8)
+        self.act = np.zeros((cap, A, K), np.int16)
         self.act_mask = np.zeros((cap, A), bool)
         self.pk = np.zeros(cap, np.int16)
         self.psrc = np.zeros(cap, np.int16)
@@ -106,6 +108,86 @@ class Ring:
             b[k] = b[k].long()
         ex = {k: torch.from_numpy(getattr(self, k)[idx]).to(dev) for k in ('a', 'logp', 'v', 'adv', 'ret')}
         return b, ex
+
+
+class SearchBuf:
+    """E2 search-teacher targets (search/gen_targets.py chunks; e2/REPORT.txt). Rolling in-memory window of
+    the newest `cap` records; new chunk files are picked up by refresh(). Targets from e2/targets.py."""
+
+    def __init__(self, path, cap, dims, kind, c_scale):
+        sys.path.insert(0, os.path.join(SP, '..', 'e2'))
+        from targets import policy_target
+        self.policy_target, self.kind, self.c_scale = policy_target, kind, c_scale
+        self.path, self.cap = path, cap
+        G, T, Fd, A, K = (int(dims[k]) for k in ('G', 'T', 'F', 'A', 'K'))
+        self.glob = np.zeros((cap, G), np.int16)
+        self.tok = np.zeros((cap, T, Fd), np.int16)
+        self.tok_mask = np.zeros((cap, T), bool)
+        self.act = np.zeros((cap, A, K), np.int16)
+        self.act_mask = np.zeros((cap, A), bool)
+        self.pk = np.zeros(cap, np.int16)
+        self.psrc = np.zeros(cap, np.int16)
+        self.pi = np.zeros((cap, A), np.float32)
+        self.wupd = np.zeros(cap, np.int32)
+        self.head = 0
+        self.last_seq = 0
+
+    @staticmethod
+    def load_file(f):
+        z = np.load(f)
+        return {k: z[k] for k in z.files}
+
+    def targets(self, d):
+        return self.policy_target(d['P'], d['N'], d['Q'], d['v0'], d['act_mask'], self.kind, c_scale=self.c_scale)
+
+    def refresh(self):
+        import glob as _g
+        new = 0
+        for f in sorted(_g.glob(os.path.join(self.path, 'c_*.npz'))):
+            seq = int(os.path.basename(f)[2:9])
+            if seq <= self.last_seq:
+                continue
+            try:
+                d = self.load_file(f)
+            except Exception:
+                break           # being written / just removed: next update
+            self.last_seq = seq
+            n = len(d['z'])
+            idx = (self.head + np.arange(n)) % self.cap
+            for k in ('glob', 'tok', 'tok_mask', 'act', 'act_mask', 'pk', 'psrc', 'wupd'):
+                getattr(self, k)[idx] = d[k]
+            self.pi[idx] = self.targets(d)
+            self.head += n
+            new += n
+        return new
+
+    def size(self):
+        return min(self.head, self.cap)
+
+    def batch_idx(self, n, rng):
+        return rng.integers(0, self.size(), n)
+
+    @staticmethod
+    def to_batch(src, idx, dev):
+        obs = {k: src[k][idx] for k in OBS_KEYS}
+        b = to_dev(obs, np.arange(len(idx)), dev)
+        for k in ('glob', 'tok', 'act', 'pk', 'psrc'):
+            b[k] = b[k].long()
+        A_ = b['act_mask'].shape[1]
+        pi = torch.from_numpy(np.ascontiguousarray(src['pi'][idx][:, :A_])).float().to(dev)
+        return b, pi
+
+    def batch(self, idx, dev):
+        return self.to_batch({k: getattr(self, k) for k in OBS_KEYS + ('pi',)}, idx, dev)
+
+
+def search_ce(net, b, pi):
+    """Cross-entropy -sum pi' log pi_net over the legal options, and its KL part (CE - H(pi'))."""
+    logp, _ = net(b)
+    lp = logp.masked_fill(~b['act_mask'], 0)
+    ce = -(pi * lp).sum(-1).mean()
+    h = -(pi * torch.log(pi.clamp(min=1e-9))).sum(-1).mean()
+    return ce, ce - h
 
 
 def gae(v, r, lam):
@@ -194,6 +276,20 @@ def main():
     ap.add_argument('--cf-pair-coef', type=float, default=1.0, help='weight of the CF pairwise (dv vs dwin) term')
     ap.add_argument('--cf-pos', type=int, default=16, help='CF positions (with all their variants) per PPO minibatch')
     ap.add_argument('--cf-val-frac', type=float, default=0.1)
+    # E2 search teacher (CEILING_PLAN.md E2; search/gen_targets.py writes the buffer). Off unless --search-buf.
+    ap.add_argument('--search-buf', default='', help='directory of generator chunks c_*.npz')
+    ap.add_argument('--search-coef', type=float, default=1.0, help='lambda of the CE(pi_search, pi_net) loss')
+    ap.add_argument('--search-mb', type=int, default=256, help='search records per PPO minibatch')
+    ap.add_argument('--search-window', type=int, default=20000, help='newest records kept / sampled')
+    ap.add_argument('--search-target', default='cq', choices=['cq', 'visits'], help='e2/targets.py')
+    ap.add_argument('--search-cscale', type=float, default=0.1, help='c_scale of the cq target')
+    ap.add_argument('--search-min', type=int, default=1024, help='no CE loss until the buffer holds this many')
+    ap.add_argument('--export-weights', default='', help='write the current weights here every --export-every '
+                    'updates (atomically; the generator reloads them)')
+    ap.add_argument('--export-every', type=int, default=5)
+    ap.add_argument('--search-holdout', default='', help='fixed generator records (e2/holdout.npz): CE / KL of '
+                    'the policy toward their targets, logged every --eval-holdout-every updates (both arms)')
+    ap.add_argument('--eval-holdout-every', type=int, default=10)
     args = ap.parse_args()
 
     torch.set_num_threads(args.threads)
@@ -286,6 +382,38 @@ def main():
         mj_cf = open(os.path.join(out, 'cf_metrics.jsonl'), 'a')
         mj_cf.write(json.dumps({'update': start_update, 'val': ev0, 'train': ev1}) + chr(10)); mj_cf.flush()
 
+    sbuf = None
+    srng = np.random.default_rng(args.seed + 99)
+    if args.search_buf:
+        sbuf = SearchBuf(args.search_buf, args.search_window, dims, args.search_target, args.search_cscale)
+        print('search buffer', args.search_buf, 'records', sbuf.refresh(), flush=True)
+    hold = None
+    if args.search_holdout:
+        sys.path.insert(0, os.path.join(SP, '..', 'e2'))
+        from targets import policy_target
+        hd = SearchBuf.load_file(args.search_holdout)
+        hold = {k: hd[k] for k in OBS_KEYS}
+        hold['pi'] = policy_target(hd['P'], hd['N'], hd['Q'], hd['v0'], hd['act_mask'], args.search_target,
+                                   c_scale=args.search_cscale)
+
+    def holdout_eval():
+        net.eval()
+        tot = defaultdict(float)
+        n = len(hold['pi'])
+        with torch.no_grad():
+            for i in range(0, n, 512):
+                idx = np.arange(i, min(n, i + 512))
+                b, pi = SearchBuf.to_batch(hold, idx, dev)
+                ce, kl = search_ce(net, b, pi)
+                tot['ce'] += ce.item() * len(idx); tot['kl'] += kl.item() * len(idx)
+        net.train()
+        return {k: round(v / n, 5) for k, v in tot.items()}
+
+    def export(upd):
+        tmp = args.export_weights + '.tmp'
+        torch.save({'model': net.state_dict(), 'update': upd, 'repr': args.repr, 'dims': dims}, tmp)
+        os.replace(tmp, args.export_weights)
+
     if league is None:
         choose_pool()
     for u in range(start_update, args.updates):
@@ -362,6 +490,8 @@ def main():
         ep['lost_rows'] = int((~ok).sum()); rid = rid[ok]
 
         # ---------------------------------------------------------------- PPO update
+        s_new = sbuf.refresh() if sbuf is not None else 0
+        use_search = sbuf is not None and sbuf.size() >= args.search_min
         net.train()
         adv_all = ring.adv[rid % cap]
         am, asd = float(adv_all.mean()), float(adv_all.std() + 1e-8)
@@ -382,6 +512,11 @@ def main():
                 p = logp.exp()
                 ent = -(p * logp.masked_fill(~b['act_mask'], 0)).sum(-1).mean()
                 loss = pl + args.vf_coef * vl - args.ent_coef * ent
+                if use_search:
+                    sb, spi = sbuf.batch(sbuf.batch_idx(args.search_mb, srng), dev)
+                    sce, skl = search_ce(net, sb, spi)
+                    loss = loss + args.search_coef * sce
+                    agg['search_ce'] += sce.item(); agg['search_kl'] += skl.item()
                 if cf is not None:
                     cfv, cfp = cf.loss(net, args.cf_pos, dev)
                     loss = loss + args.cf_coef * cfv + args.cf_pair_coef * cfp
@@ -438,6 +573,14 @@ def main():
                'explained_var': round(float(ev), 3), 'eval_random_wr': '', 'eval_ismcts_wr': '',
                'pool_size': len(pool)}
         extra = {}
+        if sbuf is not None:
+            extra['search'] = dict(new=int(s_new), size=sbuf.size(), used=bool(use_search),
+                                   ce=round(agg['search_ce'], 5), kl=round(agg['search_kl'], 5),
+                                   age=round(float(upd - 1 - sbuf.wupd[:sbuf.size()].mean()), 1) if sbuf.size() else None)
+        if hold is not None and (upd % args.eval_holdout_every == 0 or upd == args.updates or u == start_update):
+            extra['holdout'] = holdout_eval()
+        if args.export_weights and (upd % args.export_every == 0 or upd == args.updates):
+            export(upd)
         if league is not None:
             extra['league'] = {**league.log_row(), **league_act}
         if cf is not None:

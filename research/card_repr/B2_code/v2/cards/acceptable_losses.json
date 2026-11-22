@@ -1,0 +1,66 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0179_acceptable_losses.cpp:62",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0179_acceptable_losses.cpp:63",
+   "energy": "src/cards/spells/0179_acceptable_losses.cpp:64",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0179_acceptable_losses.cpp:66"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "gear",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0179_acceptable_losses.cpp:25-34"
+     },
+     "_src": "src/cards/spells/0179_acceptable_losses.cpp:46-49"
+    },
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "gear",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "chooser": "controller",
+      "_src": "src/cards/spells/0179_acceptable_losses.cpp:30; src/cards/spells/0179_acceptable_losses.cpp:37-38"
+     },
+     "_src": "src/cards/spells/0179_acceptable_losses.cpp:46-49"
+    }
+   ],
+   "_src": "src/cards/spells/0179_acceptable_losses.cpp:24"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-179-298",
+  "class_file": "src/cards/spells/0179_acceptable_losses.cpp",
+  "source": "engine_code",
+  "flags": [
+   "each player chooses one of their own gear (not a target: Deflect / can't-be-chosen do not apply); new value chooser=controller for the opponent's pick",
+   "both gear die at the same time (DeathBatch, src/cards/spells/0179_acceptable_losses.cpp:47)"
+  ]
+ }
+}

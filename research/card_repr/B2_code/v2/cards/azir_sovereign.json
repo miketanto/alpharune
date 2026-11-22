@@ -1,0 +1,106 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "order"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0497_azir_sovereign.cpp:81",
+   "supertype": "src/cards/units/0497_azir_sovereign.cpp:82",
+   "domains": "src/cards/units/0497_azir_sovereign.cpp:83",
+   "energy": "src/cards/units/0497_azir_sovereign.cpp:85",
+   "power": "default 0",
+   "might": "src/cards/units/0497_azir_sovereign.cpp:86"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "accelerate",
+   "_src": "src/cards/units/0497_azir_sovereign.cpp:88"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "energy": 1,
+    "power": 1,
+    "power_domain": "card",
+    "optional": true,
+    "additional": true,
+    "_src": "src/engine/game_engine.cpp:2380-2382"
+   },
+   "effects": [
+    {
+     "verb": "EnterReady",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:4885"
+     },
+     "_src": "src/engine/game_engine.cpp:4885"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:2302-2318 (accelerateAvailable); src/engine/game_engine.cpp:2380-2382 ([1] + one Power of the card's Domain); src/engine/game_engine.cpp:4885 (enters ready)"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "attack",
+    "subject": "self",
+    "_src": "src/cards/units/0497_azir_sovereign.cpp:22"
+   },
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": "n",
+      "filters": [
+       {
+        "f": "is_token",
+        "v": true,
+        "_src": "src/cards/units/0497_azir_sovereign.cpp:34"
+       },
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/units/0497_azir_sovereign.cpp:32"
+       },
+       {
+        "f": "at_self_location",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/units/0497_azir_sovereign.cpp:35"
+       }
+      ],
+      "optional": true,
+      "_src": "src/cards/units/0497_azir_sovereign.cpp:31-40; any number src/cards/units/0497_azir_sovereign.cpp:53-55"
+     },
+     "optional": true,
+     "dest": "self_location",
+     "_src": "src/cards/units/0497_azir_sovereign.cpp:63; may src/cards/units/0497_azir_sovereign.cpp:47-51; dest src/cards/units/0497_azir_sovereign.cpp:28-30"
+    }
+   ],
+   "_src": "src/cards/units/0497_azir_sovereign.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-177-221",
+  "class_file": "src/cards/units/0497_azir_sovereign.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: attack (trigger event; TriggerType::WhenIAttack, attack only)",
+   "new term: is_token (selector filter)",
+   "no effect if the unit is not at a battlefield (my_bf empty)"
+  ]
+ }
+}

@@ -1,0 +1,56 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 2,
+  "power_by_domain": {
+   "chaos": 2
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0172_rebuke.cpp:45",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0172_rebuke.cpp:46",
+   "energy": "src/cards/spells/0172_rebuke.cpp:47",
+   "power": "src/cards/spells/0172_rebuke.cpp:48",
+   "power_by_domain": "src/cards/spells/0172_rebuke.cpp:48 x src/cards/spells/0172_rebuke.cpp:46; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0172_rebuke.cpp:49"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "Bounce",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "battlefield",
+      "count": 1,
+      "_src": "src/cards/spells/0172_rebuke.cpp:18-21"
+     },
+     "dest": "owner_hand",
+     "_src": "src/cards/spells/0172_rebuke.cpp:32; owner's hand src/engine/effect_executor.cpp:1166-1215"
+    }
+   ],
+   "_src": "src/cards/spells/0172_rebuke.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-172-298",
+  "class_file": "src/cards/spells/0172_rebuke.cpp",
+  "source": "engine_code",
+  "flags": []
+ }
+}

@@ -1,0 +1,6603 @@
+{
+ "alpha_strike": {
+  "ids": [
+   751
+  ],
+  "name": "Alpha Strike",
+  "type": "spell"
+ },
+ "back_off": {
+  "ids": [
+   604
+  ],
+  "name": "Back Off",
+  "type": "spell"
+ },
+ "body_rune": {
+  "ids": [
+   126
+  ],
+  "name": "Body Rune",
+  "type": "rune"
+ },
+ "brittle_steel": {
+  "ids": [
+   790
+  ],
+  "name": "Brittle Steel",
+  "type": "spell"
+ },
+ "calm_rune": {
+  "ids": [
+   42
+  ],
+  "name": "Calm Rune",
+  "type": "rune"
+ },
+ "charm": {
+  "ids": [
+   43
+  ],
+  "name": "Charm",
+  "type": "spell"
+ },
+ "darius_trifarian": {
+  "ids": [
+   27
+  ],
+  "name": "Darius, Trifarian",
+  "type": "unit"
+ },
+ "decisive_strike": {
+  "ids": [
+   322
+  ],
+  "name": "Decisive Strike",
+  "type": "spell"
+ },
+ "decree_of_focus": {
+  "ids": [
+   827
+  ],
+  "name": "Decree of Focus",
+  "type": "spell"
+ },
+ "decree_of_strength": {
+  "ids": [
+   872
+  ],
+  "name": "Decree of Strength",
+  "type": "spell"
+ },
+ "defy": {
+  "ids": [
+   45
+  ],
+  "name": "Defy",
+  "type": "spell"
+ },
+ "disarming_rake": {
+  "ids": [
+   355
+  ],
+  "name": "Disarming Rake",
+  "type": "unit"
+ },
+ "discipline": {
+  "ids": [
+   58
+  ],
+  "name": "Discipline",
+  "type": "spell"
+ },
+ "emperor_s_dais": {
+  "ids": [
+   521
+  ],
+  "name": "Emperor's Dais",
+  "type": "battlefield"
+ },
+ "en_garde": {
+  "ids": [
+   46
+  ],
+  "name": "En Garde",
+  "type": "spell"
+ },
+ "ferrous_forerunner": {
+  "ids": [
+   344
+  ],
+  "name": "Ferrous Forerunner",
+  "type": "unit"
+ },
+ "fiora_peerless": {
+  "ids": [
+   432
+  ],
+  "name": "Fiora, Peerless",
+  "type": "unit"
+ },
+ "first_mate": {
+  "ids": [
+   132
+  ],
+  "name": "First Mate",
+  "type": "unit"
+ },
+ "fury_rune": {
+  "ids": [
+   7
+  ],
+  "name": "Fury Rune",
+  "type": "rune"
+ },
+ "grim_apothecary": {
+  "ids": [
+   583
+  ],
+  "name": "Grim Apothecary",
+  "type": "unit"
+ },
+ "inferna": {
+  "ids": [
+   560
+  ],
+  "name": "Inferna",
+  "type": "unit"
+ },
+ "irresistible_faefolk": {
+  "ids": [
+   674
+  ],
+  "name": "Irresistible Faefolk",
+  "type": "unit"
+ },
+ "kai_sa_survivor": {
+  "ids": [
+   39
+  ],
+  "name": "Kai'Sa, Survivor",
+  "type": "unit"
+ },
+ "kinkou_initiate": {
+  "ids": [
+   659
+  ],
+  "name": "Kinkou Initiate",
+  "type": "unit"
+ },
+ "lonely_poro": {
+  "ids": [
+   359,
+   777
+  ],
+  "name": "Lonely Poro",
+  "type": "unit"
+ },
+ "loyal_poro": {
+  "ids": [
+   718
+  ],
+  "name": "Loyal Poro",
+  "type": "unit"
+ },
+ "machine_evangel": {
+  "ids": [
+   239
+  ],
+  "name": "Machine Evangel",
+  "type": "unit"
+ },
+ "master_yi_tempered": {
+  "ids": [
+   675
+  ],
+  "name": "Master Yi, Tempered",
+  "type": "unit"
+ },
+ "master_yi_wuju_bladesman": {
+  "ids": [
+   317
+  ],
+  "name": "Wuju Bladesman - Starter",
+  "type": "legend"
+ },
+ "moonlight_affliction": {
+  "ids": [
+   628
+  ],
+  "name": "Moonlight Affliction",
+  "type": "spell"
+ },
+ "nidalee_cat_form": {
+  "ids": [
+   676
+  ],
+  "name": "Nidalee, Cat Form",
+  "type": "unit"
+ },
+ "not_so_fast": {
+  "ids": [
+   368
+  ],
+  "name": "Not So Fast",
+  "type": "spell"
+ },
+ "noxian_demolitionist": {
+  "ids": [
+   867
+  ],
+  "name": "Noxian Demolitionist",
+  "type": "unit"
+ },
+ "noxus_hopeful": {
+  "ids": [
+   12
+  ],
+  "name": "Noxus Hopeful",
+  "type": "unit"
+ },
+ "onslaught": {
+  "ids": [
+   868
+  ],
+  "name": "Onslaught",
+  "type": "spell"
+ },
+ "pakaa_cub": {
+  "ids": [
+   135
+  ],
+  "name": "Pakaa Cub",
+  "type": "unit"
+ },
+ "pit_rookie": {
+  "ids": [
+   136
+  ],
+  "name": "Pit Rookie",
+  "type": "unit"
+ },
+ "primal_strength": {
+  "ids": [
+   154
+  ],
+  "name": "Primal Strength",
+  "type": "spell"
+ },
+ "punch_first": {
+  "ids": [
+   419
+  ],
+  "name": "Punch First",
+  "type": "spell"
+ },
+ "pyke_dockside_butcher": {
+  "ids": [
+   590
+  ],
+  "name": "Pyke, Dockside Butcher",
+  "type": "unit"
+ },
+ "rampage": {
+  "ids": [
+   870
+  ],
+  "name": "Rampage",
+  "type": "spell"
+ },
+ "rengar_pridestalker": {
+  "ids": [
+   744
+  ],
+  "name": "Pridestalker",
+  "type": "legend"
+ },
+ "rengar_trophy_hunter": {
+  "ids": [
+   682
+  ],
+  "name": "Rengar, Trophy Hunter",
+  "type": "unit"
+ },
+ "ruin_runner": {
+  "ids": [
+   427
+  ],
+  "name": "Ruin Runner",
+  "type": "unit"
+ },
+ "sabotage": {
+  "ids": [
+   156
+  ],
+  "name": "Sabotage",
+  "type": "spell"
+ },
+ "scuttle_crab": {
+  "ids": [
+   615
+  ],
+  "name": "Scuttle Crab",
+  "type": "unit"
+ },
+ "seat_of_power": {
+  "ids": [
+   531
+  ],
+  "name": "Seat of Power",
+  "type": "battlefield"
+ },
+ "star_spring": {
+  "ids": [
+   771
+  ],
+  "name": "Star Spring",
+  "type": "battlefield"
+ },
+ "thrill_of_the_hunt": {
+  "ids": [
+   745
+  ],
+  "name": "Thrill of the Hunt",
+  "type": "spell"
+ },
+ "zhonya_s_hourglass": {
+  "ids": [
+   77
+  ],
+  "name": "Zhonya's Hourglass",
+  "type": "gear"
+ },
+ "blazing_scorcher": {
+  "ids": [
+   1
+  ],
+  "name": "Blazing Scorcher",
+  "type": "unit"
+ },
+ "brazen_buccaneer": {
+  "ids": [
+   2
+  ],
+  "name": "Brazen Buccaneer",
+  "type": "unit"
+ },
+ "chemtech_enforcer": {
+  "ids": [
+   3
+  ],
+  "name": "Chemtech Enforcer",
+  "type": "unit"
+ },
+ "cleave": {
+  "ids": [
+   4
+  ],
+  "name": "Cleave",
+  "type": "spell"
+ },
+ "disintegrate": {
+  "ids": [
+   5
+  ],
+  "name": "Disintegrate",
+  "type": "spell"
+ },
+ "flame_chompers": {
+  "ids": [
+   6
+  ],
+  "name": "Flame Chompers",
+  "type": "unit"
+ },
+ "get_excited": {
+  "ids": [
+   8
+  ],
+  "name": "Get Excited!",
+  "type": "spell"
+ },
+ "hextech_ray": {
+  "ids": [
+   9
+  ],
+  "name": "Hextech Ray",
+  "type": "spell"
+ },
+ "legion_rearguard": {
+  "ids": [
+   10
+  ],
+  "name": "Legion Rearguard",
+  "type": "unit"
+ },
+ "magma_wurm": {
+  "ids": [
+   11
+  ],
+  "name": "Magma Wurm",
+  "type": "unit"
+ },
+ "pouty_poro": {
+  "ids": [
+   13
+  ],
+  "name": "Pouty Poro",
+  "type": "unit"
+ },
+ "sky_splitter": {
+  "ids": [
+   14
+  ],
+  "name": "Sky Splitter",
+  "type": "spell"
+ },
+ "captain_farron": {
+  "ids": [
+   15
+  ],
+  "name": "Captain Farron",
+  "type": "unit"
+ },
+ "dangerous_duo": {
+  "ids": [
+   16
+  ],
+  "name": "Dangerous Duo",
+  "type": "unit"
+ },
+ "iron_ballista": {
+  "ids": [
+   17
+  ],
+  "name": "Iron Ballista",
+  "type": "gear"
+ },
+ "noxus_saboteur": {
+  "ids": [
+   18
+  ],
+  "name": "Noxus Saboteur",
+  "type": "unit"
+ },
+ "raging_soul": {
+  "ids": [
+   19
+  ],
+  "name": "Raging Soul",
+  "type": "unit"
+ },
+ "scrapyard_champion": {
+  "ids": [
+   20
+  ],
+  "name": "Scrapyard Champion",
+  "type": "unit"
+ },
+ "sun_disc": {
+  "ids": [
+   21
+  ],
+  "name": "Sun Disc",
+  "type": "gear"
+ },
+ "thermo_beam": {
+  "ids": [
+   22
+  ],
+  "name": "Thermo Beam",
+  "type": "spell"
+ },
+ "unlicensed_armory": {
+  "ids": [
+   23
+  ],
+  "name": "Unlicensed Armory",
+  "type": "gear"
+ },
+ "void_seeker": {
+  "ids": [
+   24
+  ],
+  "name": "Void Seeker",
+  "type": "spell"
+ },
+ "blind_fury": {
+  "ids": [
+   25
+  ],
+  "name": "Blind Fury",
+  "type": "spell"
+ },
+ "brynhir_thundersong": {
+  "ids": [
+   26
+  ],
+  "name": "Brynhir Thundersong",
+  "type": "unit"
+ },
+ "draven_showboat": {
+  "ids": [
+   28
+  ],
+  "name": "Draven, Showboat",
+  "type": "unit"
+ },
+ "falling_star": {
+  "ids": [
+   29
+  ],
+  "name": "Falling Star",
+  "type": "spell"
+ },
+ "jinx_demolitionist": {
+  "ids": [
+   30
+  ],
+  "name": "Jinx, Demolitionist",
+  "type": "unit"
+ },
+ "raging_firebrand": {
+  "ids": [
+   31
+  ],
+  "name": "Raging Firebrand",
+  "type": "unit"
+ },
+ "ravenborn_tome": {
+  "ids": [
+   32
+  ],
+  "name": "Ravenborn Tome",
+  "type": "gear"
+ },
+ "shakedown": {
+  "ids": [
+   33
+  ],
+  "name": "Shakedown",
+  "type": "spell"
+ },
+ "tryndamere_barbarian": {
+  "ids": [
+   34
+  ],
+  "name": "Tryndamere, Barbarian",
+  "type": "unit"
+ },
+ "vayne_hunter": {
+  "ids": [
+   35,
+   537
+  ],
+  "name": "Vayne, Hunter",
+  "type": "unit"
+ },
+ "vi_destructive": {
+  "ids": [
+   36
+  ],
+  "name": "Vi, Destructive",
+  "type": "unit"
+ },
+ "immortal_phoenix": {
+  "ids": [
+   37
+  ],
+  "name": "Immortal Phoenix",
+  "type": "unit"
+ },
+ "kadregrin_the_infernal": {
+  "ids": [
+   38
+  ],
+  "name": "Kadregrin the Infernal",
+  "type": "unit"
+ },
+ "seal_of_rage": {
+  "ids": [
+   40,
+   536
+  ],
+  "name": "Seal of Rage",
+  "type": "gear"
+ },
+ "volibear_furious": {
+  "ids": [
+   41
+  ],
+  "name": "Volibear, Furious",
+  "type": "unit"
+ },
+ "clockwork_keeper": {
+  "ids": [
+   44
+  ],
+  "name": "Clockwork Keeper",
+  "type": "unit"
+ },
+ "find_your_center": {
+  "ids": [
+   47
+  ],
+  "name": "Find Your Center",
+  "type": "spell"
+ },
+ "meditation": {
+  "ids": [
+   48
+  ],
+  "name": "Meditation",
+  "type": "spell"
+ },
+ "playful_phantom": {
+  "ids": [
+   49
+  ],
+  "name": "Playful Phantom",
+  "type": "unit"
+ },
+ "rune_prison": {
+  "ids": [
+   50
+  ],
+  "name": "Rune Prison",
+  "type": "spell"
+ },
+ "solari_shieldbearer": {
+  "ids": [
+   51
+  ],
+  "name": "Solari Shieldbearer",
+  "type": "unit"
+ },
+ "stalwart_poro": {
+  "ids": [
+   52
+  ],
+  "name": "Stalwart Poro",
+  "type": "unit"
+ },
+ "stand_united": {
+  "ids": [
+   53
+  ],
+  "name": "Stand United",
+  "type": "spell"
+ },
+ "sunlit_guardian": {
+  "ids": [
+   54
+  ],
+  "name": "Sunlit Guardian",
+  "type": "unit"
+ },
+ "wielder_of_water": {
+  "ids": [
+   55
+  ],
+  "name": "Wielder of Water",
+  "type": "unit"
+ },
+ "adaptatron": {
+  "ids": [
+   56
+  ],
+  "name": "Adaptatron",
+  "type": "unit"
+ },
+ "block": {
+  "ids": [
+   57
+  ],
+  "name": "Block",
+  "type": "spell"
+ },
+ "eclipse_herald": {
+  "ids": [
+   59
+  ],
+  "name": "Eclipse Herald",
+  "type": "unit"
+ },
+ "mask_of_foresight": {
+  "ids": [
+   60
+  ],
+  "name": "Mask of Foresight",
+  "type": "gear"
+ },
+ "poro_herder": {
+  "ids": [
+   61
+  ],
+  "name": "Poro Herder",
+  "type": "unit"
+ },
+ "reinforce": {
+  "ids": [
+   62
+  ],
+  "name": "Reinforce",
+  "type": "spell"
+ },
+ "spirit_s_refuge": {
+  "ids": [
+   63
+  ],
+  "name": "Spirit's Refuge",
+  "type": "gear"
+ },
+ "wind_wall": {
+  "ids": [
+   64
+  ],
+  "name": "Wind Wall",
+  "type": "spell"
+ },
+ "wizened_elder": {
+  "ids": [
+   65
+  ],
+  "name": "Wizened Elder",
+  "type": "unit"
+ },
+ "ahri_alluring": {
+  "ids": [
+   66
+  ],
+  "name": "Ahri, Alluring",
+  "type": "unit"
+ },
+ "blitzcrank_impassive": {
+  "ids": [
+   67
+  ],
+  "name": "Blitzcrank, Impassive",
+  "type": "unit"
+ },
+ "caitlyn_patrolling": {
+  "ids": [
+   68
+  ],
+  "name": "Caitlyn, Patrolling",
+  "type": "unit"
+ },
+ "last_stand": {
+  "ids": [
+   69
+  ],
+  "name": "Last Stand",
+  "type": "spell"
+ },
+ "mageseeker_warden": {
+  "ids": [
+   70
+  ],
+  "name": "Mageseeker Warden",
+  "type": "unit"
+ },
+ "party_favors": {
+  "ids": [
+   71
+  ],
+  "name": "Party Favors",
+  "type": "spell"
+ },
+ "solari_shrine": {
+  "ids": [
+   72
+  ],
+  "name": "Solari Shrine",
+  "type": "gear"
+ },
+ "sona_harmonious": {
+  "ids": [
+   73
+  ],
+  "name": "Sona, Harmonious",
+  "type": "unit"
+ },
+ "taric_protector": {
+  "ids": [
+   74
+  ],
+  "name": "Taric, Protector",
+  "type": "unit"
+ },
+ "tasty_faefolk": {
+  "ids": [
+   75
+  ],
+  "name": "Tasty Faefolk",
+  "type": "unit"
+ },
+ "yasuo_remorseful": {
+  "ids": [
+   76
+  ],
+  "name": "Yasuo, Remorseful",
+  "type": "unit"
+ },
+ "lee_sin_ascetic": {
+  "ids": [
+   78
+  ],
+  "name": "Lee Sin, Ascetic",
+  "type": "unit"
+ },
+ "leona_zealot": {
+  "ids": [
+   79
+  ],
+  "name": "Leona, Zealot",
+  "type": "unit"
+ },
+ "mystic_reversal": {
+  "ids": [
+   80
+  ],
+  "name": "Mystic Reversal",
+  "type": "spell"
+ },
+ "seal_of_focus": {
+  "ids": [
+   81,
+   538
+  ],
+  "name": "Seal of Focus",
+  "type": "gear"
+ },
+ "whiteflame_protector": {
+  "ids": [
+   82
+  ],
+  "name": "Whiteflame Protector",
+  "type": "unit"
+ },
+ "consult_the_past": {
+  "ids": [
+   83
+  ],
+  "name": "Consult the Past",
+  "type": "spell"
+ },
+ "eager_apprentice": {
+  "ids": [
+   84
+  ],
+  "name": "Eager Apprentice",
+  "type": "unit"
+ },
+ "falling_comet": {
+  "ids": [
+   85
+  ],
+  "name": "Falling Comet",
+  "type": "spell"
+ },
+ "jeweled_colossus": {
+  "ids": [
+   86
+  ],
+  "name": "Jeweled Colossus",
+  "type": "unit"
+ },
+ "lecturing_yordle": {
+  "ids": [
+   87
+  ],
+  "name": "Lecturing Yordle",
+  "type": "unit"
+ },
+ "mega_mech": {
+  "ids": [
+   88
+  ],
+  "name": "Mega-Mech",
+  "type": "unit"
+ },
+ "mind_rune": {
+  "ids": [
+   89
+  ],
+  "name": "Mind Rune",
+  "type": "rune"
+ },
+ "orb_of_regret": {
+  "ids": [
+   90
+  ],
+  "name": "Orb of Regret",
+  "type": "gear"
+ },
+ "pit_crew": {
+  "ids": [
+   91
+  ],
+  "name": "Pit Crew",
+  "type": "unit"
+ },
+ "riptide_rex": {
+  "ids": [
+   92
+  ],
+  "name": "Riptide Rex",
+  "type": "unit"
+ },
+ "smoke_screen": {
+  "ids": [
+   93
+  ],
+  "name": "Smoke Screen",
+  "type": "spell"
+ },
+ "sprite_call": {
+  "ids": [
+   94
+  ],
+  "name": "Sprite Call",
+  "type": "spell"
+ },
+ "stupefy": {
+  "ids": [
+   95
+  ],
+  "name": "Stupefy",
+  "type": "spell"
+ },
+ "watchful_sentry": {
+  "ids": [
+   96
+  ],
+  "name": "Watchful Sentry",
+  "type": "unit"
+ },
+ "blastcone_fae": {
+  "ids": [
+   97
+  ],
+  "name": "Blastcone Fae",
+  "type": "unit"
+ },
+ "energy_conduit": {
+  "ids": [
+   98
+  ],
+  "name": "Energy Conduit",
+  "type": "gear"
+ },
+ "garbage_grabber": {
+  "ids": [
+   99
+  ],
+  "name": "Garbage Grabber",
+  "type": "gear"
+ },
+ "gemcraft_seer": {
+  "ids": [
+   100
+  ],
+  "name": "Gemcraft Seer",
+  "type": "unit"
+ },
+ "mushroom_pouch": {
+  "ids": [
+   101
+  ],
+  "name": "Mushroom Pouch",
+  "type": "gear"
+ },
+ "portal_rescue": {
+  "ids": [
+   102
+  ],
+  "name": "Portal Rescue",
+  "type": "spell"
+ },
+ "ravenbloom_student": {
+  "ids": [
+   103
+  ],
+  "name": "Ravenbloom Student",
+  "type": "unit"
+ },
+ "retreat": {
+  "ids": [
+   104
+  ],
+  "name": "Retreat",
+  "type": "spell"
+ },
+ "singularity": {
+  "ids": [
+   105
+  ],
+  "name": "Singularity",
+  "type": "spell"
+ },
+ "sprite_mother": {
+  "ids": [
+   106
+  ],
+  "name": "Sprite Mother",
+  "type": "unit"
+ },
+ "ava_achiever": {
+  "ids": [
+   107
+  ],
+  "name": "Ava Achiever",
+  "type": "unit"
+ },
+ "convergent_mutation": {
+  "ids": [
+   108
+  ],
+  "name": "Convergent Mutation",
+  "type": "spell"
+ },
+ "dr_mundo_expert": {
+  "ids": [
+   109
+  ],
+  "name": "Dr. Mundo, Expert",
+  "type": "unit"
+ },
+ "ekko_recurrent": {
+  "ids": [
+   110
+  ],
+  "name": "Ekko, Recurrent",
+  "type": "unit"
+ },
+ "heimerdinger_inventor": {
+  "ids": [
+   111
+  ],
+  "name": "Heimerdinger, Inventor",
+  "type": "unit"
+ },
+ "kai_sa_evolutionary": {
+  "ids": [
+   112
+  ],
+  "name": "Kai'Sa, Evolutionary",
+  "type": "unit"
+ },
+ "malzahar_fanatic": {
+  "ids": [
+   113
+  ],
+  "name": "Malzahar, Fanatic",
+  "type": "unit"
+ },
+ "progress_day": {
+  "ids": [
+   114
+  ],
+  "name": "Progress Day",
+  "type": "spell"
+ },
+ "promising_future": {
+  "ids": [
+   115
+  ],
+  "name": "Promising Future",
+  "type": "spell"
+ },
+ "thousand_tailed_watcher": {
+  "ids": [
+   116
+  ],
+  "name": "Thousand-Tailed Watcher",
+  "type": "unit"
+ },
+ "viktor_innovator": {
+  "ids": [
+   117
+  ],
+  "name": "Viktor, Innovator",
+  "type": "unit"
+ },
+ "wraith_of_echoes": {
+  "ids": [
+   118
+  ],
+  "name": "Wraith of Echoes",
+  "type": "unit"
+ },
+ "ahri_inquisitive": {
+  "ids": [
+   119,
+   539
+  ],
+  "name": "Ahri, Inquisitive",
+  "type": "unit"
+ },
+ "seal_of_insight": {
+  "ids": [
+   120,
+   541
+  ],
+  "name": "Seal of Insight",
+  "type": "gear"
+ },
+ "teemo_strategist": {
+  "ids": [
+   121
+  ],
+  "name": "Teemo, Strategist",
+  "type": "unit"
+ },
+ "time_warp": {
+  "ids": [
+   122
+  ],
+  "name": "Time Warp",
+  "type": "spell"
+ },
+ "unchecked_power": {
+  "ids": [
+   123
+  ],
+  "name": "Unchecked Power",
+  "type": "spell"
+ },
+ "arena_bar": {
+  "ids": [
+   124
+  ],
+  "name": "Arena Bar",
+  "type": "gear"
+ },
+ "bilgewater_bully": {
+  "ids": [
+   125
+  ],
+  "name": "Bilgewater Bully",
+  "type": "unit"
+ },
+ "cannon_barrage": {
+  "ids": [
+   127
+  ],
+  "name": "Cannon Barrage",
+  "type": "spell"
+ },
+ "challenge": {
+  "ids": [
+   128
+  ],
+  "name": "Challenge",
+  "type": "spell"
+ },
+ "confront": {
+  "ids": [
+   129
+  ],
+  "name": "Confront",
+  "type": "spell"
+ },
+ "crackshot_corsair": {
+  "ids": [
+   130
+  ],
+  "name": "Crackshot Corsair",
+  "type": "unit"
+ },
+ "dune_drake": {
+  "ids": [
+   131
+  ],
+  "name": "Dune Drake",
+  "type": "unit"
+ },
+ "flurry_of_blades": {
+  "ids": [
+   133
+  ],
+  "name": "Flurry of Blades",
+  "type": "spell"
+ },
+ "mobilize": {
+  "ids": [
+   134
+  ],
+  "name": "Mobilize",
+  "type": "spell"
+ },
+ "stormclaw_ursine": {
+  "ids": [
+   137
+  ],
+  "name": "Stormclaw Ursine",
+  "type": "unit"
+ },
+ "catalyst_of_aeons": {
+  "ids": [
+   138
+  ],
+  "name": "Catalyst of Aeons",
+  "type": "spell"
+ },
+ "cithria_of_cloudfield": {
+  "ids": [
+   139
+  ],
+  "name": "Cithria of Cloudfield",
+  "type": "unit"
+ },
+ "herald_of_scales": {
+  "ids": [
+   140
+  ],
+  "name": "Herald of Scales",
+  "type": "unit"
+ },
+ "kinkou_monk": {
+  "ids": [
+   141
+  ],
+  "name": "Kinkou Monk",
+  "type": "unit"
+ },
+ "mountain_drake": {
+  "ids": [
+   142
+  ],
+  "name": "Mountain Drake",
+  "type": "unit"
+ },
+ "pirate_s_haven": {
+  "ids": [
+   143
+  ],
+  "name": "Pirate's Haven",
+  "type": "gear"
+ },
+ "spoils_of_war": {
+  "ids": [
+   144
+  ],
+  "name": "Spoils of War",
+  "type": "spell"
+ },
+ "unyielding_spirit": {
+  "ids": [
+   145
+  ],
+  "name": "Unyielding Spirit",
+  "type": "spell"
+ },
+ "wallop": {
+  "ids": [
+   146
+  ],
+  "name": "Wallop",
+  "type": "spell"
+ },
+ "wildclaw_shaman": {
+  "ids": [
+   147
+  ],
+  "name": "Wildclaw Shaman",
+  "type": "unit"
+ },
+ "anivia_primal": {
+  "ids": [
+   148
+  ],
+  "name": "Anivia, Primal",
+  "type": "unit"
+ },
+ "carnivorous_snapvine": {
+  "ids": [
+   149
+  ],
+  "name": "Carnivorous Snapvine",
+  "type": "unit"
+ },
+ "kraken_hunter": {
+  "ids": [
+   150
+  ],
+  "name": "Kraken Hunter",
+  "type": "unit"
+ },
+ "lee_sin_centered": {
+  "ids": [
+   151
+  ],
+  "name": "Lee Sin, Centered",
+  "type": "unit"
+ },
+ "mistfall": {
+  "ids": [
+   152
+  ],
+  "name": "Mistfall",
+  "type": "gear"
+ },
+ "overt_operation": {
+  "ids": [
+   153
+  ],
+  "name": "Overt Operation",
+  "type": "spell"
+ },
+ "qiyana_victorious": {
+  "ids": [
+   155
+  ],
+  "name": "Qiyana, Victorious",
+  "type": "unit"
+ },
+ "udyr_wildman": {
+  "ids": [
+   157
+  ],
+  "name": "Udyr, Wildman",
+  "type": "unit"
+ },
+ "volibear_imposing": {
+  "ids": [
+   158
+  ],
+  "name": "Volibear, Imposing",
+  "type": "unit"
+ },
+ "warwick_hunter": {
+  "ids": [
+   159
+  ],
+  "name": "Warwick, Hunter",
+  "type": "unit"
+ },
+ "dazzling_aurora": {
+  "ids": [
+   160
+  ],
+  "name": "Dazzling Aurora",
+  "type": "gear"
+ },
+ "deadbloom_predator": {
+  "ids": [
+   161
+  ],
+  "name": "Deadbloom Predator",
+  "type": "unit"
+ },
+ "miss_fortune_captain": {
+  "ids": [
+   162
+  ],
+  "name": "Miss Fortune, Captain",
+  "type": "unit"
+ },
+ "seal_of_strength": {
+  "ids": [
+   163,
+   542
+  ],
+  "name": "Seal of Strength",
+  "type": "gear"
+ },
+ "sett_brawler": {
+  "ids": [
+   164,
+   543
+  ],
+  "name": "Sett, Brawler",
+  "type": "unit"
+ },
+ "cemetery_attendant": {
+  "ids": [
+   165
+  ],
+  "name": "Cemetery Attendant",
+  "type": "unit"
+ },
+ "chaos_rune": {
+  "ids": [
+   166
+  ],
+  "name": "Chaos Rune",
+  "type": "rune"
+ },
+ "ember_monk": {
+  "ids": [
+   167
+  ],
+  "name": "Ember Monk",
+  "type": "unit"
+ },
+ "fight_or_flight": {
+  "ids": [
+   168
+  ],
+  "name": "Fight or Flight",
+  "type": "spell"
+ },
+ "gust": {
+  "ids": [
+   169
+  ],
+  "name": "Gust",
+  "type": "spell"
+ },
+ "morbid_return": {
+  "ids": [
+   170
+  ],
+  "name": "Morbid Return",
+  "type": "spell"
+ },
+ "mystic_poro": {
+  "ids": [
+   171
+  ],
+  "name": "Mystic Poro",
+  "type": "unit"
+ },
+ "rebuke": {
+  "ids": [
+   172
+  ],
+  "name": "Rebuke",
+  "type": "spell"
+ },
+ "ride_the_wind": {
+  "ids": [
+   173
+  ],
+  "name": "Ride the Wind",
+  "type": "spell"
+ },
+ "sai_scout": {
+  "ids": [
+   174
+  ],
+  "name": "Sai Scout",
+  "type": "unit"
+ },
+ "shipyard_skulker": {
+  "ids": [
+   175
+  ],
+  "name": "Shipyard Skulker",
+  "type": "unit"
+ },
+ "sneaky_deckhand": {
+  "ids": [
+   176
+  ],
+  "name": "Sneaky Deckhand",
+  "type": "unit"
+ },
+ "stealthy_pursuer": {
+  "ids": [
+   177
+  ],
+  "name": "Stealthy Pursuer",
+  "type": "unit"
+ },
+ "undercover_agent": {
+  "ids": [
+   178
+  ],
+  "name": "Undercover Agent",
+  "type": "unit"
+ },
+ "acceptable_losses": {
+  "ids": [
+   179
+  ],
+  "name": "Acceptable Losses",
+  "type": "spell"
+ },
+ "fading_memories": {
+  "ids": [
+   180
+  ],
+  "name": "Fading Memories",
+  "type": "spell"
+ },
+ "pack_of_wonders": {
+  "ids": [
+   181
+  ],
+  "name": "Pack of Wonders",
+  "type": "gear"
+ },
+ "scrapheap": {
+  "ids": [
+   182
+  ],
+  "name": "Scrapheap",
+  "type": "gear"
+ },
+ "stacked_deck": {
+  "ids": [
+   183
+  ],
+  "name": "Stacked Deck",
+  "type": "spell"
+ },
+ "the_syren": {
+  "ids": [
+   184
+  ],
+  "name": "The Syren",
+  "type": "gear"
+ },
+ "traveling_merchant": {
+  "ids": [
+   185
+  ],
+  "name": "Traveling Merchant",
+  "type": "unit"
+ },
+ "treasure_trove": {
+  "ids": [
+   186
+  ],
+  "name": "Treasure Trove",
+  "type": "gear"
+ },
+ "whirlwind": {
+  "ids": [
+   187
+  ],
+  "name": "Whirlwind",
+  "type": "spell"
+ },
+ "zaunite_bouncer": {
+  "ids": [
+   188
+  ],
+  "name": "Zaunite Bouncer",
+  "type": "unit"
+ },
+ "kayn_unleashed": {
+  "ids": [
+   189
+  ],
+  "name": "Kayn, Unleashed",
+  "type": "unit"
+ },
+ "kog_maw_caustic": {
+  "ids": [
+   190
+  ],
+  "name": "Kog'Maw, Caustic",
+  "type": "unit"
+ },
+ "maddened_marauder": {
+  "ids": [
+   191
+  ],
+  "name": "Maddened Marauder",
+  "type": "unit"
+ },
+ "mindsplitter": {
+  "ids": [
+   192
+  ],
+  "name": "Mindsplitter",
+  "type": "unit"
+ },
+ "miss_fortune_buccaneer": {
+  "ids": [
+   193
+  ],
+  "name": "Miss Fortune, Buccaneer",
+  "type": "unit"
+ },
+ "nocturne_horrifying": {
+  "ids": [
+   194
+  ],
+  "name": "Nocturne, Horrifying",
+  "type": "unit"
+ },
+ "rhasa_the_sunderer": {
+  "ids": [
+   195
+  ],
+  "name": "Rhasa the Sunderer",
+  "type": "unit"
+ },
+ "soulgorger": {
+  "ids": [
+   196
+  ],
+  "name": "Soulgorger",
+  "type": "unit"
+ },
+ "teemo_scout": {
+  "ids": [
+   197
+  ],
+  "name": "Teemo, Scout",
+  "type": "unit"
+ },
+ "the_harrowing": {
+  "ids": [
+   198
+  ],
+  "name": "The Harrowing",
+  "type": "spell"
+ },
+ "tideturner": {
+  "ids": [
+   199
+  ],
+  "name": "Tideturner",
+  "type": "unit"
+ },
+ "twisted_fate_gambler": {
+  "ids": [
+   200
+  ],
+  "name": "Twisted Fate, Gambler",
+  "type": "unit"
+ },
+ "invert_timelines": {
+  "ids": [
+   201
+  ],
+  "name": "Invert Timelines",
+  "type": "spell"
+ },
+ "jinx_rebel": {
+  "ids": [
+   202
+  ],
+  "name": "Jinx, Rebel",
+  "type": "unit"
+ },
+ "possession": {
+  "ids": [
+   203
+  ],
+  "name": "Possession",
+  "type": "spell"
+ },
+ "seal_of_discord": {
+  "ids": [
+   204,
+   545
+  ],
+  "name": "Seal of Discord",
+  "type": "gear"
+ },
+ "yasuo_windrider": {
+  "ids": [
+   205,
+   546
+  ],
+  "name": "Yasuo, Windrider",
+  "type": "unit"
+ },
+ "back_to_back": {
+  "ids": [
+   206
+  ],
+  "name": "Back to Back",
+  "type": "spell"
+ },
+ "call_to_glory": {
+  "ids": [
+   207
+  ],
+  "name": "Call to Glory",
+  "type": "spell"
+ },
+ "cruel_patron": {
+  "ids": [
+   208
+  ],
+  "name": "Cruel Patron",
+  "type": "unit"
+ },
+ "cull_the_weak": {
+  "ids": [
+   209
+  ],
+  "name": "Cull the Weak",
+  "type": "spell"
+ },
+ "daring_poro": {
+  "ids": [
+   210
+  ],
+  "name": "Daring Poro",
+  "type": "unit"
+ },
+ "faithful_manufactor": {
+  "ids": [
+   211
+  ],
+  "name": "Faithful Manufactor",
+  "type": "unit"
+ },
+ "forge_of_the_future": {
+  "ids": [
+   212
+  ],
+  "name": "Forge of the Future",
+  "type": "gear"
+ },
+ "hidden_blade": {
+  "ids": [
+   213
+  ],
+  "name": "Hidden Blade",
+  "type": "spell"
+ },
+ "order_rune": {
+  "ids": [
+   214
+  ],
+  "name": "Order Rune",
+  "type": "rune"
+ },
+ "petty_officer": {
+  "ids": [
+   215
+  ],
+  "name": "Petty Officer",
+  "type": "unit"
+ },
+ "soaring_scout": {
+  "ids": [
+   216
+  ],
+  "name": "Soaring Scout",
+  "type": "unit"
+ },
+ "trifarian_gloryseeker": {
+  "ids": [
+   217
+  ],
+  "name": "Trifarian Gloryseeker",
+  "type": "unit"
+ },
+ "vanguard_captain": {
+  "ids": [
+   218
+  ],
+  "name": "Vanguard Captain",
+  "type": "unit"
+ },
+ "vanguard_sergeant": {
+  "ids": [
+   219
+  ],
+  "name": "Vanguard Sergeant",
+  "type": "unit"
+ },
+ "facebreaker": {
+  "ids": [
+   220
+  ],
+  "name": "Facebreaker",
+  "type": "spell"
+ },
+ "imperial_decree": {
+  "ids": [
+   221
+  ],
+  "name": "Imperial Decree",
+  "type": "spell"
+ },
+ "noxian_drummer": {
+  "ids": [
+   222
+  ],
+  "name": "Noxian Drummer",
+  "type": "unit"
+ },
+ "peak_guardian": {
+  "ids": [
+   223
+  ],
+  "name": "Peak Guardian",
+  "type": "unit"
+ },
+ "salvage": {
+  "ids": [
+   224
+  ],
+  "name": "Salvage",
+  "type": "spell"
+ },
+ "solari_chief": {
+  "ids": [
+   225
+  ],
+  "name": "Solari Chief",
+  "type": "unit"
+ },
+ "spectral_matron": {
+  "ids": [
+   226
+  ],
+  "name": "Spectral Matron",
+  "type": "unit"
+ },
+ "symbol_of_the_solari": {
+  "ids": [
+   227
+  ],
+  "name": "Symbol of the Solari",
+  "type": "gear"
+ },
+ "vanguard_helm": {
+  "ids": [
+   228
+  ],
+  "name": "Vanguard Helm",
+  "type": "gear"
+ },
+ "vengeance": {
+  "ids": [
+   229
+  ],
+  "name": "Vengeance",
+  "type": "spell"
+ },
+ "albus_ferros": {
+  "ids": [
+   230
+  ],
+  "name": "Albus Ferros",
+  "type": "unit"
+ },
+ "commander_ledros": {
+  "ids": [
+   231
+  ],
+  "name": "Commander Ledros",
+  "type": "unit"
+ },
+ "fiora_victorious": {
+  "ids": [
+   232
+  ],
+  "name": "Fiora, Victorious",
+  "type": "unit"
+ },
+ "grand_strategem": {
+  "ids": [
+   233
+  ],
+  "name": "Grand Strategem",
+  "type": "spell"
+ },
+ "harnessed_dragon": {
+  "ids": [
+   234
+  ],
+  "name": "Harnessed Dragon",
+  "type": "unit"
+ },
+ "karma_channeler": {
+  "ids": [
+   235,
+   548
+  ],
+  "name": "Karma, Channeler",
+  "type": "unit"
+ },
+ "karthus_eternal": {
+  "ids": [
+   236
+  ],
+  "name": "Karthus, Eternal",
+  "type": "unit"
+ },
+ "king_s_edict": {
+  "ids": [
+   237
+  ],
+  "name": "King's Edict",
+  "type": "spell"
+ },
+ "leona_determined": {
+  "ids": [
+   238
+  ],
+  "name": "Leona, Determined",
+  "type": "unit"
+ },
+ "sett_kingpin": {
+  "ids": [
+   240
+  ],
+  "name": "Sett, Kingpin",
+  "type": "unit"
+ },
+ "shen_kinkou": {
+  "ids": [
+   241
+  ],
+  "name": "Shen, Kinkou",
+  "type": "unit"
+ },
+ "baited_hook": {
+  "ids": [
+   242
+  ],
+  "name": "Baited Hook",
+  "type": "gear"
+ },
+ "darius_executioner": {
+  "ids": [
+   243,
+   547
+  ],
+  "name": "Darius, Executioner",
+  "type": "unit"
+ },
+ "divine_judgment": {
+  "ids": [
+   244
+  ],
+  "name": "Divine Judgment",
+  "type": "spell"
+ },
+ "seal_of_unity": {
+  "ids": [
+   245,
+   549
+  ],
+  "name": "Seal of Unity",
+  "type": "gear"
+ },
+ "viktor_leader": {
+  "ids": [
+   246
+  ],
+  "name": "Viktor, Leader",
+  "type": "unit"
+ },
+ "icathian_rain": {
+  "ids": [
+   247
+  ],
+  "name": "Icathian Rain",
+  "type": "spell"
+ },
+ "stormbringer": {
+  "ids": [
+   248
+  ],
+  "name": "Stormbringer",
+  "type": "spell"
+ },
+ "loose_cannon": {
+  "ids": [
+   249
+  ],
+  "name": "Loose Cannon",
+  "type": "legend"
+ },
+ "super_mega_death_rocket": {
+  "ids": [
+   250
+  ],
+  "name": "Super Mega Death Rocket!",
+  "type": "spell"
+ },
+ "noxian_guillotine": {
+  "ids": [
+   251
+  ],
+  "name": "Noxian Guillotine",
+  "type": "spell"
+ },
+ "nine_tailed_fox": {
+  "ids": [
+   252
+  ],
+  "name": "Nine-Tailed Fox",
+  "type": "legend"
+ },
+ "fox_fire": {
+  "ids": [
+   253
+  ],
+  "name": "Fox-Fire",
+  "type": "spell"
+ },
+ "blind_monk": {
+  "ids": [
+   254
+  ],
+  "name": "Blind Monk",
+  "type": "legend"
+ },
+ "dragon_s_rage": {
+  "ids": [
+   255
+  ],
+  "name": "Dragon's Rage",
+  "type": "spell"
+ },
+ "unforgiven": {
+  "ids": [
+   256
+  ],
+  "name": "Unforgiven",
+  "type": "legend"
+ },
+ "last_breath": {
+  "ids": [
+   257
+  ],
+  "name": "Last Breath",
+  "type": "spell"
+ },
+ "zenith_blade": {
+  "ids": [
+   258
+  ],
+  "name": "Zenith Blade",
+  "type": "spell"
+ },
+ "swift_scout": {
+  "ids": [
+   259
+  ],
+  "name": "Swift Scout",
+  "type": "legend"
+ },
+ "guerilla_warfare": {
+  "ids": [
+   260
+  ],
+  "name": "Guerilla Warfare",
+  "type": "spell"
+ },
+ "siphon_power": {
+  "ids": [
+   261
+  ],
+  "name": "Siphon Power",
+  "type": "spell"
+ },
+ "bounty_hunter": {
+  "ids": [
+   262
+  ],
+  "name": "Bounty Hunter",
+  "type": "legend"
+ },
+ "bullet_time": {
+  "ids": [
+   263
+  ],
+  "name": "Bullet Time",
+  "type": "spell"
+ },
+ "the_boss": {
+  "ids": [
+   264
+  ],
+  "name": "The Boss",
+  "type": "legend"
+ },
+ "showstopper": {
+  "ids": [
+   265
+  ],
+  "name": "Showstopper",
+  "type": "spell"
+ },
+ "recruit_de": {
+  "ids": [
+   266
+  ],
+  "name": "Recruit (DE)",
+  "type": "unit"
+ },
+ "recruit_nx": {
+  "ids": [
+   267
+  ],
+  "name": "Recruit (NX)",
+  "type": "unit"
+ },
+ "recruit_zn": {
+  "ids": [
+   268
+  ],
+  "name": "Recruit (ZN)",
+  "type": "unit"
+ },
+ "sprite": {
+  "ids": [
+   269
+  ],
+  "name": "Sprite",
+  "type": "unit"
+ },
+ "altar_to_unity": {
+  "ids": [
+   270
+  ],
+  "name": "Altar to Unity",
+  "type": "battlefield"
+ },
+ "aspirant_s_climb": {
+  "ids": [
+   271
+  ],
+  "name": "Aspirant's Climb",
+  "type": "battlefield"
+ },
+ "back_alley_bar": {
+  "ids": [
+   272
+  ],
+  "name": "Back-Alley Bar",
+  "type": "battlefield"
+ },
+ "bandle_tree": {
+  "ids": [
+   273
+  ],
+  "name": "Bandle Tree",
+  "type": "battlefield"
+ },
+ "fortified_position": {
+  "ids": [
+   274
+  ],
+  "name": "Fortified Position",
+  "type": "battlefield"
+ },
+ "grove_of_the_god_willow": {
+  "ids": [
+   275
+  ],
+  "name": "Grove of the God-Willow",
+  "type": "battlefield"
+ },
+ "hallowed_tomb": {
+  "ids": [
+   276
+  ],
+  "name": "Hallowed Tomb",
+  "type": "battlefield"
+ },
+ "monastery_of_hirana": {
+  "ids": [
+   277
+  ],
+  "name": "Monastery of Hirana",
+  "type": "battlefield"
+ },
+ "navori_fighting_pit": {
+  "ids": [
+   278
+  ],
+  "name": "Navori Fighting Pit",
+  "type": "battlefield"
+ },
+ "obelisk_of_power": {
+  "ids": [
+   279
+  ],
+  "name": "Obelisk of Power",
+  "type": "battlefield"
+ },
+ "reaver_s_row": {
+  "ids": [
+   280
+  ],
+  "name": "Reaver's Row",
+  "type": "battlefield"
+ },
+ "reckoner_s_arena": {
+  "ids": [
+   281
+  ],
+  "name": "Reckoner's Arena",
+  "type": "battlefield"
+ },
+ "sigil_of_the_storm": {
+  "ids": [
+   282
+  ],
+  "name": "Sigil of the Storm",
+  "type": "battlefield"
+ },
+ "startipped_peak": {
+  "ids": [
+   283
+  ],
+  "name": "Startipped Peak",
+  "type": "battlefield"
+ },
+ "targon_s_peak": {
+  "ids": [
+   284
+  ],
+  "name": "Targon's Peak",
+  "type": "battlefield"
+ },
+ "the_arena_s_greatest": {
+  "ids": [
+   285
+  ],
+  "name": "The Arena's Greatest",
+  "type": "battlefield"
+ },
+ "the_candlelit_sanctum": {
+  "ids": [
+   286
+  ],
+  "name": "The Candlelit Sanctum",
+  "type": "battlefield"
+ },
+ "the_dreaming_tree": {
+  "ids": [
+   287
+  ],
+  "name": "The Dreaming Tree",
+  "type": "battlefield"
+ },
+ "the_grand_plaza": {
+  "ids": [
+   288
+  ],
+  "name": "The Grand Plaza",
+  "type": "battlefield"
+ },
+ "trifarian_war_camp": {
+  "ids": [
+   289
+  ],
+  "name": "Trifarian War Camp",
+  "type": "battlefield"
+ },
+ "vilemaw_s_lair": {
+  "ids": [
+   290
+  ],
+  "name": "Vilemaw's Lair",
+  "type": "battlefield"
+ },
+ "void_gate": {
+  "ids": [
+   291
+  ],
+  "name": "Void Gate",
+  "type": "battlefield"
+ },
+ "windswept_hillock": {
+  "ids": [
+   292
+  ],
+  "name": "Windswept Hillock",
+  "type": "battlefield"
+ },
+ "zaun_warrens": {
+  "ids": [
+   293
+  ],
+  "name": "Zaun Warrens",
+  "type": "battlefield"
+ },
+ "daughter_of_the_void": {
+  "ids": [
+   294
+  ],
+  "name": "Daughter of the Void",
+  "type": "legend"
+ },
+ "relentless_storm": {
+  "ids": [
+   295
+  ],
+  "name": "Relentless Storm",
+  "type": "legend"
+ },
+ "hand_of_noxus": {
+  "ids": [
+   296
+  ],
+  "name": "Hand of Noxus",
+  "type": "legend"
+ },
+ "radiant_dawn": {
+  "ids": [
+   297
+  ],
+  "name": "Radiant Dawn",
+  "type": "legend"
+ },
+ "herald_of_the_arcane": {
+  "ids": [
+   298
+  ],
+  "name": "Herald of the Arcane",
+  "type": "legend"
+ },
+ "annie_fiery": {
+  "ids": [
+   299
+  ],
+  "name": "Annie, Fiery",
+  "type": "unit"
+ },
+ "firestorm": {
+  "ids": [
+   300
+  ],
+  "name": "Firestorm",
+  "type": "spell"
+ },
+ "incinerate": {
+  "ids": [
+   301
+  ],
+  "name": "Incinerate",
+  "type": "spell"
+ },
+ "yi_meditative": {
+  "ids": [
+   302
+  ],
+  "name": "Yi, Meditative",
+  "type": "unit"
+ },
+ "zephyr_sage": {
+  "ids": [
+   303
+  ],
+  "name": "Zephyr Sage",
+  "type": "unit"
+ },
+ "lux_illuminated": {
+  "ids": [
+   304
+  ],
+  "name": "Lux, Illuminated",
+  "type": "unit"
+ },
+ "garen_rugged": {
+  "ids": [
+   305
+  ],
+  "name": "Garen, Rugged",
+  "type": "unit"
+ },
+ "gentlemen_s_duel": {
+  "ids": [
+   306
+  ],
+  "name": "Gentlemen's Duel",
+  "type": "spell"
+ },
+ "yi_honed": {
+  "ids": [
+   307
+  ],
+  "name": "Yi, Honed",
+  "type": "unit"
+ },
+ "annie_stubborn": {
+  "ids": [
+   308
+  ],
+  "name": "Annie, Stubborn",
+  "type": "unit"
+ },
+ "flash": {
+  "ids": [
+   309
+  ],
+  "name": "Flash",
+  "type": "spell"
+ },
+ "blast_of_power": {
+  "ids": [
+   310
+  ],
+  "name": "Blast of Power",
+  "type": "spell"
+ },
+ "garen_commander": {
+  "ids": [
+   311
+  ],
+  "name": "Garen, Commander",
+  "type": "unit"
+ },
+ "lux_crownguard": {
+  "ids": [
+   312
+  ],
+  "name": "Lux, Crownguard",
+  "type": "unit"
+ },
+ "recruit_the_vanguard": {
+  "ids": [
+   313
+  ],
+  "name": "Recruit the Vanguard",
+  "type": "spell"
+ },
+ "vanguard_attendant": {
+  "ids": [
+   314
+  ],
+  "name": "Vanguard Attendant",
+  "type": "unit"
+ },
+ "dark_child_starter": {
+  "ids": [
+   315
+  ],
+  "name": "Dark Child - Starter",
+  "type": "legend"
+ },
+ "tibbers": {
+  "ids": [
+   316
+  ],
+  "name": "Tibbers",
+  "type": "unit"
+ },
+ "highlander": {
+  "ids": [
+   318
+  ],
+  "name": "Highlander",
+  "type": "spell"
+ },
+ "lady_of_luminosity_starter": {
+  "ids": [
+   319
+  ],
+  "name": "Lady of Luminosity - Starter",
+  "type": "legend"
+ },
+ "final_spark": {
+  "ids": [
+   320
+  ],
+  "name": "Final Spark",
+  "type": "spell"
+ },
+ "might_of_demacia_starter": {
+  "ids": [
+   321
+  ],
+  "name": "Might of Demacia - Starter",
+  "type": "legend"
+ },
+ "against_the_odds": {
+  "ids": [
+   323
+  ],
+  "name": "Against the Odds",
+  "type": "spell"
+ },
+ "armed_assailant": {
+  "ids": [
+   324
+  ],
+  "name": "Armed Assailant",
+  "type": "unit"
+ },
+ "blood_rush": {
+  "ids": [
+   325
+  ],
+  "name": "Blood Rush",
+  "type": "spell"
+ },
+ "gold": {
+  "ids": [
+   326
+  ],
+  "name": "Gold",
+  "type": "gear"
+ },
+ "bushwhack": {
+  "ids": [
+   327
+  ],
+  "name": "Bushwhack",
+  "type": "spell"
+ },
+ "detonate": {
+  "ids": [
+   328
+  ],
+  "name": "Detonate",
+  "type": "spell"
+ },
+ "eager_drakehound": {
+  "ids": [
+   329
+  ],
+  "name": "Eager Drakehound",
+  "type": "unit"
+ },
+ "gem_jammer": {
+  "ids": [
+   330
+  ],
+  "name": "Gem Jammer",
+  "type": "unit"
+ },
+ "sentinel_adept": {
+  "ids": [
+   331
+  ],
+  "name": "Sentinel Adept",
+  "type": "unit"
+ },
+ "serrated_dirk": {
+  "ids": [
+   332
+  ],
+  "name": "Serrated Dirk",
+  "type": "gear"
+ },
+ "void_drone": {
+  "ids": [
+   333
+  ],
+  "name": "Void Drone",
+  "type": "unit"
+ },
+ "angle_shot": {
+  "ids": [
+   334
+  ],
+  "name": "Angle Shot",
+  "type": "spell"
+ },
+ "battering_ram": {
+  "ids": [
+   335
+  ],
+  "name": "Battering Ram",
+  "type": "unit"
+ },
+ "blast_corps_cadet": {
+  "ids": [
+   336
+  ],
+  "name": "Blast Corps Cadet",
+  "type": "unit"
+ },
+ "minotaur_reckoner": {
+  "ids": [
+   337
+  ],
+  "name": "Minotaur Reckoner",
+  "type": "unit"
+ },
+ "perched_grimwyrm": {
+  "ids": [
+   338
+  ],
+  "name": "Perched Grimwyrm",
+  "type": "unit"
+ },
+ "recurve_bow": {
+  "ids": [
+   339
+  ],
+  "name": "Recurve Bow",
+  "type": "gear"
+ },
+ "sudden_storm": {
+  "ids": [
+   340
+  ],
+  "name": "Sudden Storm",
+  "type": "spell"
+ },
+ "void_hatchling": {
+  "ids": [
+   341
+  ],
+  "name": "Void Hatchling",
+  "type": "unit"
+ },
+ "assembly_rig": {
+  "ids": [
+   342
+  ],
+  "name": "Assembly Rig",
+  "type": "gear"
+ },
+ "draven_vanquisher": {
+  "ids": [
+   343
+  ],
+  "name": "Draven, Vanquisher",
+  "type": "unit"
+ },
+ "long_sword": {
+  "ids": [
+   345
+  ],
+  "name": "Long Sword",
+  "type": "gear"
+ },
+ "piercing_light": {
+  "ids": [
+   346
+  ],
+  "name": "Piercing Light",
+  "type": "spell"
+ },
+ "rell_magnetic": {
+  "ids": [
+   347
+  ],
+  "name": "Rell, Magnetic",
+  "type": "unit"
+ },
+ "rengar_pouncing": {
+  "ids": [
+   348
+  ],
+  "name": "Rengar, Pouncing",
+  "type": "unit"
+ },
+ "rumble_hotheaded": {
+  "ids": [
+   349
+  ],
+  "name": "Rumble, Hotheaded",
+  "type": "unit"
+ },
+ "dunebreaker": {
+  "ids": [
+   350
+  ],
+  "name": "Dunebreaker",
+  "type": "unit"
+ },
+ "lucian_gunslinger": {
+  "ids": [
+   351
+  ],
+  "name": "Lucian, Gunslinger",
+  "type": "unit"
+ },
+ "rek_sai_breacher": {
+  "ids": [
+   352
+  ],
+  "name": "Rek'Sai, Breacher",
+  "type": "unit"
+ },
+ "skyfall_of_areion": {
+  "ids": [
+   353
+  ],
+  "name": "Skyfall of Areion",
+  "type": "gear"
+ },
+ "desert_s_call": {
+  "ids": [
+   354
+  ],
+  "name": "Desert's Call",
+  "type": "spell"
+ },
+ "doran_s_shield": {
+  "ids": [
+   356
+  ],
+  "name": "Doran's Shield",
+  "type": "gear"
+ },
+ "feral_strength": {
+  "ids": [
+   357
+  ],
+  "name": "Feral Strength",
+  "type": "spell"
+ },
+ "guardian_of_the_passage": {
+  "ids": [
+   358
+  ],
+  "name": "Guardian of the Passage",
+  "type": "unit"
+ },
+ "navori_scout": {
+  "ids": [
+   360
+  ],
+  "name": "Navori Scout",
+  "type": "unit"
+ },
+ "ribbon_dancer": {
+  "ids": [
+   361
+  ],
+  "name": "Ribbon Dancer",
+  "type": "unit"
+ },
+ "royal_entourage": {
+  "ids": [
+   362
+  ],
+  "name": "Royal Entourage",
+  "type": "unit"
+ },
+ "thwonk": {
+  "ids": [
+   363
+  ],
+  "name": "Thwonk!",
+  "type": "spell"
+ },
+ "apprentice_smith": {
+  "ids": [
+   364
+  ],
+  "name": "Apprentice Smith",
+  "type": "unit"
+ },
+ "brutalizer": {
+  "ids": [
+   365
+  ],
+  "name": "Brutalizer",
+  "type": "gear"
+ },
+ "emperor_s_divide": {
+  "ids": [
+   366
+  ],
+  "name": "Emperor's Divide",
+  "type": "spell"
+ },
+ "legion_quartermaster": {
+  "ids": [
+   367
+  ],
+  "name": "Legion Quartermaster",
+  "type": "unit"
+ },
+ "poro_snax": {
+  "ids": [
+   369
+  ],
+  "name": "Poro Snax",
+  "type": "gear"
+ },
+ "simian_ancestor": {
+  "ids": [
+   370
+  ],
+  "name": "Simian Ancestor",
+  "type": "unit"
+ },
+ "stellacorn_herder": {
+  "ids": [
+   371
+  ],
+  "name": "Stellacorn Herder",
+  "type": "unit"
+ },
+ "aphelios_exalted": {
+  "ids": [
+   372
+  ],
+  "name": "Aphelios, Exalted",
+  "type": "unit"
+ },
+ "azir_ascendant": {
+  "ids": [
+   373
+  ],
+  "name": "Azir, Ascendant",
+  "type": "unit"
+ },
+ "guardian_angel": {
+  "ids": [
+   374
+  ],
+  "name": "Guardian Angel",
+  "type": "gear"
+ },
+ "heart_of_dark_ice": {
+  "ids": [
+   375
+  ],
+  "name": "Heart of Dark Ice",
+  "type": "gear"
+ },
+ "janna_savior": {
+  "ids": [
+   376
+  ],
+  "name": "Janna, Savior",
+  "type": "unit"
+ },
+ "jax_unmatched": {
+  "ids": [
+   377
+  ],
+  "name": "Jax, Unmatched",
+  "type": "unit"
+ },
+ "needlessly_large_yordle": {
+  "ids": [
+   378
+  ],
+  "name": "Needlessly Large Yordle",
+  "type": "unit"
+ },
+ "sterak_s_gage": {
+  "ids": [
+   379
+  ],
+  "name": "Sterak's Gage",
+  "type": "gear"
+ },
+ "irelia_fervent": {
+  "ids": [
+   380
+  ],
+  "name": "Irelia, Fervent",
+  "type": "unit"
+ },
+ "ornn_blacksmith": {
+  "ids": [
+   381
+  ],
+  "name": "Ornn, Blacksmith",
+  "type": "unit"
+ },
+ "svellsongur": {
+  "ids": [
+   382
+  ],
+  "name": "Svellsongur",
+  "type": "gear"
+ },
+ "tianna_crownguard": {
+  "ids": [
+   383
+  ],
+  "name": "Tianna Crownguard",
+  "type": "unit"
+ },
+ "aspiring_engineer": {
+  "ids": [
+   384
+  ],
+  "name": "Aspiring Engineer",
+  "type": "unit"
+ },
+ "bubble_bot": {
+  "ids": [
+   385
+  ],
+  "name": "Bubble Bot",
+  "type": "unit"
+ },
+ "chemtech_cask": {
+  "ids": [
+   386
+  ],
+  "name": "Chemtech Cask",
+  "type": "gear"
+ },
+ "cloth_armor": {
+  "ids": [
+   387
+  ],
+  "name": "Cloth Armor",
+  "type": "gear"
+ },
+ "forecaster": {
+  "ids": [
+   388
+  ],
+  "name": "Forecaster",
+  "type": "unit"
+ },
+ "frigid_touch": {
+  "ids": [
+   389
+  ],
+  "name": "Frigid Touch",
+  "type": "spell"
+ },
+ "frostcoat_cub": {
+  "ids": [
+   390
+  ],
+  "name": "Frostcoat Cub",
+  "type": "unit"
+ },
+ "gearhead": {
+  "ids": [
+   391
+  ],
+  "name": "Gearhead",
+  "type": "unit"
+ },
+ "plundering_poro": {
+  "ids": [
+   392,
+   778
+  ],
+  "name": "Plundering Poro",
+  "type": "unit"
+ },
+ "wages_of_pain": {
+  "ids": [
+   393
+  ],
+  "name": "Wages of Pain",
+  "type": "spell"
+ },
+ "breakneck_mech": {
+  "ids": [
+   394
+  ],
+  "name": "Breakneck Mech",
+  "type": "unit"
+ },
+ "dropboarder": {
+  "ids": [
+   395
+  ],
+  "name": "Dropboarder",
+  "type": "unit"
+ },
+ "experimental_hexplate": {
+  "ids": [
+   396
+  ],
+  "name": "Experimental Hexplate",
+  "type": "gear"
+ },
+ "pickpocket": {
+  "ids": [
+   397
+  ],
+  "name": "Pickpocket",
+  "type": "unit"
+ },
+ "prize_of_progress": {
+  "ids": [
+   398
+  ],
+  "name": "Prize of Progress",
+  "type": "unit"
+ },
+ "production_surge": {
+  "ids": [
+   399
+  ],
+  "name": "Production Surge",
+  "type": "spell"
+ },
+ "rocket_barrage": {
+  "ids": [
+   400
+  ],
+  "name": "Rocket Barrage",
+  "type": "spell"
+ },
+ "temporal_portal": {
+  "ids": [
+   401
+  ],
+  "name": "Temporal Portal",
+  "type": "gear"
+ },
+ "bellows_breath": {
+  "ids": [
+   402
+  ],
+  "name": "Bellows Breath",
+  "type": "spell"
+ },
+ "card_sharp": {
+  "ids": [
+   403
+  ],
+  "name": "Card Sharp",
+  "type": "unit"
+ },
+ "ezreal_dashing": {
+  "ids": [
+   404
+  ],
+  "name": "Ezreal, Dashing",
+  "type": "unit"
+ },
+ "hextech_anomaly": {
+  "ids": [
+   405
+  ],
+  "name": "Hextech Anomaly",
+  "type": "gear"
+ },
+ "jayce_man_of_progress": {
+  "ids": [
+   406
+  ],
+  "name": "Jayce, Man of Progress",
+  "type": "unit"
+ },
+ "ornn_forge_god": {
+  "ids": [
+   407
+  ],
+  "name": "Ornn, Forge God",
+  "type": "unit"
+ },
+ "world_atlas": {
+  "ids": [
+   408
+  ],
+  "name": "World Atlas",
+  "type": "gear"
+ },
+ "premonition": {
+  "ids": [
+   409
+  ],
+  "name": "Premonition",
+  "type": "spell"
+ },
+ "renata_glasc_mastermind": {
+  "ids": [
+   410
+  ],
+  "name": "Renata Glasc, Mastermind",
+  "type": "unit"
+ },
+ "rumble_scrapper": {
+  "ids": [
+   411
+  ],
+  "name": "Rumble, Scrapper",
+  "type": "unit"
+ },
+ "the_zero_drive": {
+  "ids": [
+   412
+  ],
+  "name": "The Zero Drive",
+  "type": "gear"
+ },
+ "buhru_captain": {
+  "ids": [
+   413
+  ],
+  "name": "Buhru Captain",
+  "type": "unit"
+ },
+ "combat_chef": {
+  "ids": [
+   414
+  ],
+  "name": "Combat Chef",
+  "type": "unit"
+ },
+ "dauntless_vanguard": {
+  "ids": [
+   415
+  ],
+  "name": "Dauntless Vanguard",
+  "type": "unit"
+ },
+ "direwing": {
+  "ids": [
+   416
+  ],
+  "name": "Direwing",
+  "type": "unit"
+ },
+ "doran_s_blade": {
+  "ids": [
+   417
+  ],
+  "name": "Doran's Blade",
+  "type": "gear"
+ },
+ "laurent_bladekeeper": {
+  "ids": [
+   418
+  ],
+  "name": "Laurent Bladekeeper",
+  "type": "unit"
+ },
+ "sea_monkey": {
+  "ids": [
+   420
+  ],
+  "name": "Sea Monkey",
+  "type": "unit"
+ },
+ "veteran_poro": {
+  "ids": [
+   421
+  ],
+  "name": "Veteran Poro",
+  "type": "unit"
+ },
+ "yordle_explorer": {
+  "ids": [
+   422
+  ],
+  "name": "Yordle Explorer",
+  "type": "unit"
+ },
+ "fae_dragon": {
+  "ids": [
+   423
+  ],
+  "name": "Fae Dragon",
+  "type": "unit"
+ },
+ "hexdrinker": {
+  "ids": [
+   424
+  ],
+  "name": "Hexdrinker",
+  "type": "gear"
+ },
+ "jaull_fish": {
+  "ids": [
+   425
+  ],
+  "name": "Jaull-Fish",
+  "type": "unit"
+ },
+ "petricite_monument": {
+  "ids": [
+   426
+  ],
+  "name": "Petricite Monument",
+  "type": "gear"
+ },
+ "show_of_strength": {
+  "ids": [
+   428
+  ],
+  "name": "Show of Strength",
+  "type": "spell"
+ },
+ "strike_down": {
+  "ids": [
+   429
+  ],
+  "name": "Strike Down",
+  "type": "spell"
+ },
+ "warmog_s_armor": {
+  "ids": [
+   430
+  ],
+  "name": "Warmog's Armor",
+  "type": "gear"
+ },
+ "akshan_mischievous": {
+  "ids": [
+   431
+  ],
+  "name": "Akshan, Mischievous",
+  "type": "unit"
+ },
+ "here_to_help": {
+  "ids": [
+   433
+  ],
+  "name": "Here to Help",
+  "type": "spell"
+ },
+ "kato_the_arm": {
+  "ids": [
+   434
+  ],
+  "name": "Kato the Arm",
+  "type": "unit"
+ },
+ "lucian_merciless": {
+  "ids": [
+   435
+  ],
+  "name": "Lucian, Merciless",
+  "type": "unit"
+ },
+ "marching_orders": {
+  "ids": [
+   436
+  ],
+  "name": "Marching Orders",
+  "type": "spell"
+ },
+ "trinity_force": {
+  "ids": [
+   437
+  ],
+  "name": "Trinity Force",
+  "type": "gear"
+ },
+ "ancient_henge": {
+  "ids": [
+   438
+  ],
+  "name": "Ancient Henge",
+  "type": "gear"
+ },
+ "boneshiver": {
+  "ids": [
+   439
+  ],
+  "name": "Boneshiver",
+  "type": "gear"
+ },
+ "jax_unrelenting": {
+  "ids": [
+   440
+  ],
+  "name": "Jax, Unrelenting",
+  "type": "unit"
+ },
+ "sivir_ambitious": {
+  "ids": [
+   441
+  ],
+  "name": "Sivir, Ambitious",
+  "type": "unit"
+ },
+ "black_market_broker": {
+  "ids": [
+   442
+  ],
+  "name": "Black Market Broker",
+  "type": "unit"
+ },
+ "called_shot": {
+  "ids": [
+   443
+  ],
+  "name": "Called Shot",
+  "type": "spell"
+ },
+ "corrupt_enforcer": {
+  "ids": [
+   444
+  ],
+  "name": "Corrupt Enforcer",
+  "type": "unit"
+ },
+ "doran_s_ring": {
+  "ids": [
+   445
+  ],
+  "name": "Doran's Ring",
+  "type": "gear"
+ },
+ "fae_porter": {
+  "ids": [
+   446
+  ],
+  "name": "Fae Porter",
+  "type": "unit"
+ },
+ "loyal_pup": {
+  "ids": [
+   447
+  ],
+  "name": "Loyal Pup",
+  "type": "unit"
+ },
+ "master_bingwen": {
+  "ids": [
+   448
+  ],
+  "name": "Master Bingwen",
+  "type": "unit"
+ },
+ "overzealous_fan": {
+  "ids": [
+   449
+  ],
+  "name": "Overzealous Fan",
+  "type": "unit"
+ },
+ "temptation": {
+  "ids": [
+   450
+  ],
+  "name": "Temptation",
+  "type": "spell"
+ },
+ "treasure_hunter": {
+  "ids": [
+   451
+  ],
+  "name": "Treasure Hunter",
+  "type": "unit"
+ },
+ "ancient_warmonger": {
+  "ids": [
+   452
+  ],
+  "name": "Ancient Warmonger",
+  "type": "unit"
+ },
+ "beast_below": {
+  "ids": [
+   453
+  ],
+  "name": "Beast Below",
+  "type": "unit"
+ },
+ "boots_of_swiftness": {
+  "ids": [
+   454
+  ],
+  "name": "Boots of Swiftness",
+  "type": "gear"
+ },
+ "cull": {
+  "ids": [
+   455
+  ],
+  "name": "Cull",
+  "type": "gear"
+ },
+ "factory_recall": {
+  "ids": [
+   456
+  ],
+  "name": "Factory Recall",
+  "type": "spell"
+ },
+ "hard_bargain": {
+  "ids": [
+   457
+  ],
+  "name": "Hard Bargain",
+  "type": "spell"
+ },
+ "harpoon_squad": {
+  "ids": [
+   458
+  ],
+  "name": "Harpoon Squad",
+  "type": "unit"
+ },
+ "windsinger": {
+  "ids": [
+   459
+  ],
+  "name": "Windsinger",
+  "type": "unit"
+ },
+ "edge_of_night": {
+  "ids": [
+   460
+  ],
+  "name": "Edge of Night",
+  "type": "gear"
+ },
+ "fizz_trickster": {
+  "ids": [
+   461
+  ],
+  "name": "Fizz, Trickster",
+  "type": "unit"
+ },
+ "irelia_graceful": {
+  "ids": [
+   462
+  ],
+  "name": "Irelia, Graceful",
+  "type": "unit"
+ },
+ "jae_medarda": {
+  "ids": [
+   463
+  ],
+  "name": "Jae Medarda",
+  "type": "unit"
+ },
+ "sivir_mercenary": {
+  "ids": [
+   464
+  ],
+  "name": "Sivir, Mercenary",
+  "type": "unit"
+ },
+ "spirit_wheel": {
+  "ids": [
+   465
+  ],
+  "name": "Spirit Wheel",
+  "type": "gear"
+ },
+ "switcheroo": {
+  "ids": [
+   466
+  ],
+  "name": "Switcheroo",
+  "type": "spell"
+ },
+ "vex_cheerless": {
+  "ids": [
+   467
+  ],
+  "name": "Vex, Cheerless",
+  "type": "unit"
+ },
+ "downwell": {
+  "ids": [
+   468
+  ],
+  "name": "Downwell",
+  "type": "spell"
+ },
+ "draven_audacious": {
+  "ids": [
+   469
+  ],
+  "name": "Draven, Audacious",
+  "type": "unit"
+ },
+ "ezreal_prodigy": {
+  "ids": [
+   470
+  ],
+  "name": "Ezreal, Prodigy",
+  "type": "unit"
+ },
+ "last_rites": {
+  "ids": [
+   471
+  ],
+  "name": "Last Rites",
+  "type": "gear"
+ },
+ "bonds_of_strength": {
+  "ids": [
+   472
+  ],
+  "name": "Bonds of Strength",
+  "type": "spell"
+ },
+ "eminent_benefactor": {
+  "ids": [
+   473
+  ],
+  "name": "Eminent Benefactor",
+  "type": "unit"
+ },
+ "eye_of_the_herald": {
+  "ids": [
+   474
+  ],
+  "name": "Eye of the Herald",
+  "type": "gear"
+ },
+ "guards": {
+  "ids": [
+   475
+  ],
+  "name": "Guards!",
+  "type": "spell"
+ },
+ "honest_broker": {
+  "ids": [
+   476
+  ],
+  "name": "Honest Broker",
+  "type": "unit"
+ },
+ "laurent_duelist": {
+  "ids": [
+   477
+  ],
+  "name": "Laurent Duelist",
+  "type": "unit"
+ },
+ "royal_guard": {
+  "ids": [
+   478
+  ],
+  "name": "Royal Guard",
+  "type": "unit"
+ },
+ "sandshifter": {
+  "ids": [
+   479
+  ],
+  "name": "Sandshifter",
+  "type": "unit"
+ },
+ "trusty_ramhound": {
+  "ids": [
+   480
+  ],
+  "name": "Trusty Ramhound",
+  "type": "unit"
+ },
+ "zaun_punk": {
+  "ids": [
+   481
+  ],
+  "name": "Zaun Punk",
+  "type": "unit"
+ },
+ "b_f_sword": {
+  "ids": [
+   482
+  ],
+  "name": "B.F. Sword",
+  "type": "gear"
+ },
+ "blood_money": {
+  "ids": [
+   483
+  ],
+  "name": "Blood Money",
+  "type": "spell"
+ },
+ "deathgrip": {
+  "ids": [
+   484
+  ],
+  "name": "Deathgrip",
+  "type": "spell"
+ },
+ "drag_under": {
+  "ids": [
+   485
+  ],
+  "name": "Drag Under",
+  "type": "spell"
+ },
+ "glasc_mixologist": {
+  "ids": [
+   486
+  ],
+  "name": "Glasc Mixologist",
+  "type": "unit"
+ },
+ "rally_the_troops": {
+  "ids": [
+   487
+  ],
+  "name": "Rally the Troops",
+  "type": "spell"
+ },
+ "unsung_hero": {
+  "ids": [
+   488
+  ],
+  "name": "Unsung Hero",
+  "type": "unit"
+ },
+ "vanguard_armory": {
+  "ids": [
+   489
+  ],
+  "name": "Vanguard Armory",
+  "type": "gear"
+ },
+ "altar_of_memories": {
+  "ids": [
+   490
+  ],
+  "name": "Altar of Memories",
+  "type": "gear"
+ },
+ "rek_sai_swarm_queen": {
+  "ids": [
+   491
+  ],
+  "name": "Rek'Sai, Swarm Queen",
+  "type": "unit"
+ },
+ "renata_glasc_industrialist": {
+  "ids": [
+   492
+  ],
+  "name": "Renata Glasc, Industrialist",
+  "type": "unit"
+ },
+ "sacred_shears": {
+  "ids": [
+   493
+  ],
+  "name": "Sacred Shears",
+  "type": "gear"
+ },
+ "trove_golem": {
+  "ids": [
+   494
+  ],
+  "name": "Trove Golem",
+  "type": "unit"
+ },
+ "undertitan": {
+  "ids": [
+   495
+  ],
+  "name": "Undertitan",
+  "type": "unit"
+ },
+ "xin_zhao_vigilant": {
+  "ids": [
+   496
+  ],
+  "name": "Xin Zhao, Vigilant",
+  "type": "unit"
+ },
+ "azir_sovereign": {
+  "ids": [
+   497
+  ],
+  "name": "Azir, Sovereign",
+  "type": "unit"
+ },
+ "blade_of_the_ruined_king": {
+  "ids": [
+   498
+  ],
+  "name": "Blade of the Ruined King",
+  "type": "gear"
+ },
+ "corina_veraza": {
+  "ids": [
+   499
+  ],
+  "name": "Corina Veraza",
+  "type": "unit"
+ },
+ "fiora_worthy": {
+  "ids": [
+   500
+  ],
+  "name": "Fiora, Worthy",
+  "type": "unit"
+ },
+ "danger_zone": {
+  "ids": [
+   501
+  ],
+  "name": "Danger Zone",
+  "type": "spell"
+ },
+ "purifier": {
+  "ids": [
+   502
+  ],
+  "name": "Purifier",
+  "type": "legend"
+ },
+ "relentless_pursuit": {
+  "ids": [
+   503
+  ],
+  "name": "Relentless Pursuit",
+  "type": "spell"
+ },
+ "spinning_axe": {
+  "ids": [
+   504
+  ],
+  "name": "Spinning Axe",
+  "type": "gear"
+ },
+ "void_rush": {
+  "ids": [
+   505
+  ],
+  "name": "Void Rush",
+  "type": "spell"
+ },
+ "fire_below_the_mountain": {
+  "ids": [
+   506
+  ],
+  "name": "Fire Below the Mountain",
+  "type": "legend"
+ },
+ "forgefire_cape": {
+  "ids": [
+   507
+  ],
+  "name": "Forgefire Cape",
+  "type": "gear"
+ },
+ "rabadon_s_deathcrown": {
+  "ids": [
+   508
+  ],
+  "name": "Rabadon's Deathcrown",
+  "type": "gear"
+ },
+ "shurelya_s_requiem": {
+  "ids": [
+   509
+  ],
+  "name": "Shurelya's Requiem",
+  "type": "gear"
+ },
+ "counter_strike": {
+  "ids": [
+   510
+  ],
+  "name": "Counter Strike",
+  "type": "spell"
+ },
+ "defiant_dance": {
+  "ids": [
+   511
+  ],
+  "name": "Defiant Dance",
+  "type": "spell"
+ },
+ "emperor_of_the_sands": {
+  "ids": [
+   512
+  ],
+  "name": "Emperor of the Sands",
+  "type": "legend"
+ },
+ "arise": {
+  "ids": [
+   513
+  ],
+  "name": "Arise!",
+  "type": "spell"
+ },
+ "prodigal_explorer": {
+  "ids": [
+   514
+  ],
+  "name": "Prodigal Explorer",
+  "type": "legend"
+ },
+ "arcane_shift": {
+  "ids": [
+   515
+  ],
+  "name": "Arcane Shift",
+  "type": "spell"
+ },
+ "hostile_takeover": {
+  "ids": [
+   516
+  ],
+  "name": "Hostile Takeover",
+  "type": "spell"
+ },
+ "battle_mistress": {
+  "ids": [
+   517
+  ],
+  "name": "Battle Mistress",
+  "type": "legend"
+ },
+ "on_the_hunt": {
+  "ids": [
+   518
+  ],
+  "name": "On the Hunt",
+  "type": "spell"
+ },
+ "grand_duelist": {
+  "ids": [
+   519
+  ],
+  "name": "Grand Duelist",
+  "type": "legend"
+ },
+ "riposte": {
+  "ids": [
+   520
+  ],
+  "name": "Riposte",
+  "type": "spell"
+ },
+ "forge_of_the_fluft": {
+  "ids": [
+   522
+  ],
+  "name": "Forge of the Fluft",
+  "type": "battlefield"
+ },
+ "forgotten_monument": {
+  "ids": [
+   523
+  ],
+  "name": "Forgotten Monument",
+  "type": "battlefield"
+ },
+ "hall_of_legends": {
+  "ids": [
+   524
+  ],
+  "name": "Hall of Legends",
+  "type": "battlefield"
+ },
+ "marai_spire": {
+  "ids": [
+   525
+  ],
+  "name": "Marai Spire",
+  "type": "battlefield"
+ },
+ "minefield": {
+  "ids": [
+   526
+  ],
+  "name": "Minefield",
+  "type": "battlefield"
+ },
+ "ornn_s_forge": {
+  "ids": [
+   527
+  ],
+  "name": "Ornn's Forge",
+  "type": "battlefield"
+ },
+ "power_nexus": {
+  "ids": [
+   528
+  ],
+  "name": "Power Nexus",
+  "type": "battlefield"
+ },
+ "ravenbloom_conservatory": {
+  "ids": [
+   529
+  ],
+  "name": "Ravenbloom Conservatory",
+  "type": "battlefield"
+ },
+ "rockfall_path": {
+  "ids": [
+   530
+  ],
+  "name": "Rockfall Path",
+  "type": "battlefield"
+ },
+ "sunken_temple": {
+  "ids": [
+   532
+  ],
+  "name": "Sunken Temple",
+  "type": "battlefield"
+ },
+ "the_papertree": {
+  "ids": [
+   533
+  ],
+  "name": "The Papertree",
+  "type": "battlefield"
+ },
+ "treasure_hoard": {
+  "ids": [
+   534
+  ],
+  "name": "Treasure Hoard",
+  "type": "battlefield"
+ },
+ "veiled_temple": {
+  "ids": [
+   535
+  ],
+  "name": "Veiled Temple",
+  "type": "battlefield"
+ },
+ "bard_mercurial": {
+  "ids": [
+   540
+  ],
+  "name": "Bard, Mercurial",
+  "type": "unit"
+ },
+ "yone_blademaster": {
+  "ids": [
+   544
+  ],
+  "name": "Yone, Blademaster",
+  "type": "unit"
+ },
+ "soraka_wanderer": {
+  "ids": [
+   550
+  ],
+  "name": "Soraka, Wanderer",
+  "type": "unit"
+ },
+ "mechanized_menace": {
+  "ids": [
+   551
+  ],
+  "name": "Mechanized Menace",
+  "type": "legend"
+ },
+ "glorious_executioner": {
+  "ids": [
+   552
+  ],
+  "name": "Glorious Executioner",
+  "type": "legend"
+ },
+ "void_burrower": {
+  "ids": [
+   553
+  ],
+  "name": "Void Burrower",
+  "type": "legend"
+ },
+ "grandmaster_at_arms": {
+  "ids": [
+   554
+  ],
+  "name": "Grandmaster at Arms",
+  "type": "legend"
+ },
+ "blade_dancer": {
+  "ids": [
+   555
+  ],
+  "name": "Blade Dancer",
+  "type": "legend"
+ },
+ "chem_baroness": {
+  "ids": [
+   556
+  ],
+  "name": "Chem-Baroness",
+  "type": "legend"
+ },
+ "arena_kingpin": {
+  "ids": [
+   557
+  ],
+  "name": "Arena Kingpin",
+  "type": "unit"
+ },
+ "baron_pit": {
+  "ids": [
+   558
+  ],
+  "name": "Baron Pit",
+  "type": "battlefield"
+ },
+ "bird": {
+  "ids": [
+   559
+  ],
+  "name": "Bird",
+  "type": "unit"
+ },
+ "brush": {
+  "ids": [
+   561
+  ],
+  "name": "Brush",
+  "type": "battlefield"
+ },
+ "mischievous_marai": {
+  "ids": [
+   562
+  ],
+  "name": "Mischievous Marai",
+  "type": "unit"
+ },
+ "prepared_neophyte": {
+  "ids": [
+   563
+  ],
+  "name": "Prepared Neophyte",
+  "type": "unit"
+ },
+ "gold__564": {
+  "ids": [
+   564
+  ],
+  "name": "Gold",
+  "type": "gear"
+ },
+ "revna_the_lorekeeper": {
+  "ids": [
+   565
+  ],
+  "name": "Revna the Lorekeeper",
+  "type": "unit"
+ },
+ "reflection": {
+  "ids": [
+   566
+  ],
+  "name": "Reflection",
+  "type": "unit"
+ },
+ "sharkling": {
+  "ids": [
+   567
+  ],
+  "name": "Sharkling",
+  "type": "unit"
+ },
+ "smite": {
+  "ids": [
+   568
+  ],
+  "name": "Smite",
+  "type": "spell"
+ },
+ "sprite__569": {
+  "ids": [
+   569
+  ],
+  "name": "Sprite",
+  "type": "unit"
+ },
+ "towering_pairofant": {
+  "ids": [
+   570
+  ],
+  "name": "Towering Pairofant",
+  "type": "unit"
+ },
+ "upstage_comedy": {
+  "ids": [
+   571
+  ],
+  "name": "Upstage Comedy",
+  "type": "spell"
+ },
+ "vault_breaker": {
+  "ids": [
+   572
+  ],
+  "name": "Vault Breaker",
+  "type": "spell"
+ },
+ "fresh_beans": {
+  "ids": [
+   573
+  ],
+  "name": "Fresh Beans",
+  "type": "gear"
+ },
+ "lord_broadmane": {
+  "ids": [
+   574
+  ],
+  "name": "Lord Broadmane",
+  "type": "unit"
+ },
+ "lotus_trap": {
+  "ids": [
+   575
+  ],
+  "name": "Lotus Trap",
+  "type": "spell"
+ },
+ "monster_harpoon": {
+  "ids": [
+   576
+  ],
+  "name": "Monster Harpoon",
+  "type": "spell"
+ },
+ "right_of_conquest": {
+  "ids": [
+   577
+  ],
+  "name": "Right of Conquest",
+  "type": "spell"
+ },
+ "scorchclaw": {
+  "ids": [
+   578
+  ],
+  "name": "Scorchclaw",
+  "type": "unit"
+ },
+ "square_up": {
+  "ids": [
+   579
+  ],
+  "name": "Square Up",
+  "type": "spell"
+ },
+ "yeti_brawler": {
+  "ids": [
+   580
+  ],
+  "name": "Yeti Brawler",
+  "type": "unit"
+ },
+ "blighted_battleaxe": {
+  "ids": [
+   581
+  ],
+  "name": "Blighted Battleaxe",
+  "type": "gear"
+ },
+ "dancing_grenade": {
+  "ids": [
+   582
+  ],
+  "name": "Dancing Grenade",
+  "type": "spell"
+ },
+ "jhin_murderous_artist": {
+  "ids": [
+   584
+  ],
+  "name": "Jhin, Murderous Artist",
+  "type": "unit"
+ },
+ "katarina_reckless": {
+  "ids": [
+   585
+  ],
+  "name": "Katarina, Reckless",
+  "type": "unit"
+ },
+ "rengar_unseen": {
+  "ids": [
+   586
+  ],
+  "name": "Rengar, Unseen",
+  "type": "unit"
+ },
+ "undying_legion": {
+  "ids": [
+   587
+  ],
+  "name": "Undying Legion",
+  "type": "unit"
+ },
+ "xerath_freed": {
+  "ids": [
+   588
+  ],
+  "name": "Xerath, Freed",
+  "type": "unit"
+ },
+ "inviolus_vox": {
+  "ids": [
+   589
+  ],
+  "name": "Inviolus Vox",
+  "type": "unit"
+ },
+ "red_brambleback": {
+  "ids": [
+   591
+  ],
+  "name": "Red Brambleback",
+  "type": "unit"
+ },
+ "vi_hotheaded": {
+  "ids": [
+   592
+  ],
+  "name": "Vi, Hotheaded",
+  "type": "unit"
+ },
+ "combat_experience": {
+  "ids": [
+   593
+  ],
+  "name": "Combat Experience",
+  "type": "spell"
+ },
+ "double_trouble": {
+  "ids": [
+   594
+  ],
+  "name": "Double Trouble",
+  "type": "spell"
+ },
+ "frisky_hunter": {
+  "ids": [
+   595
+  ],
+  "name": "Frisky Hunter",
+  "type": "unit"
+ },
+ "herald_of_spring": {
+  "ids": [
+   596
+  ],
+  "name": "Herald of Spring",
+  "type": "unit"
+ },
+ "monch": {
+  "ids": [
+   597
+  ],
+  "name": "Monch",
+  "type": "unit"
+ },
+ "mutated_mouser": {
+  "ids": [
+   598
+  ],
+  "name": "Mutated Mouser",
+  "type": "unit"
+ },
+ "shadow_watcher": {
+  "ids": [
+   599
+  ],
+  "name": "Shadow Watcher",
+  "type": "unit"
+ },
+ "skyward_strike": {
+  "ids": [
+   600
+  ],
+  "name": "Skyward Strike",
+  "type": "spell"
+ },
+ "soul_sword": {
+  "ids": [
+   601
+  ],
+  "name": "Soul Sword",
+  "type": "gear"
+ },
+ "wuju_apprentice": {
+  "ids": [
+   602
+  ],
+  "name": "Wuju Apprentice",
+  "type": "unit"
+ },
+ "allay_eager_admirer": {
+  "ids": [
+   603
+  ],
+  "name": "Allay, Eager Admirer",
+  "type": "unit"
+ },
+ "enthusiastic_promoter": {
+  "ids": [
+   605
+  ],
+  "name": "Enthusiastic Promoter",
+  "type": "unit"
+ },
+ "flurry_of_feathers": {
+  "ids": [
+   606
+  ],
+  "name": "Flurry of Feathers",
+  "type": "spell"
+ },
+ "forgotten_signpost": {
+  "ids": [
+   607
+  ],
+  "name": "Forgotten Signpost",
+  "type": "gear"
+ },
+ "friendship": {
+  "ids": [
+   608
+  ],
+  "name": "Friendship",
+  "type": "spell"
+ },
+ "mosstomper": {
+  "ids": [
+   609
+  ],
+  "name": "Mosstomper",
+  "type": "unit"
+ },
+ "trevor_snoozebottom": {
+  "ids": [
+   610
+  ],
+  "name": "Trevor Snoozebottom",
+  "type": "unit"
+ },
+ "honeyfruit": {
+  "ids": [
+   611
+  ],
+  "name": "Honeyfruit",
+  "type": "gear"
+ },
+ "iascylla": {
+  "ids": [
+   612
+  ],
+  "name": "Iascylla",
+  "type": "unit"
+ },
+ "ivern_nurturer": {
+  "ids": [
+   613
+  ],
+  "name": "Ivern, Nurturer",
+  "type": "unit"
+ },
+ "nami_headstrong": {
+  "ids": [
+   614
+  ],
+  "name": "Nami, Headstrong",
+  "type": "unit"
+ },
+ "tricksy_tentacles": {
+  "ids": [
+   616
+  ],
+  "name": "Tricksy Tentacles",
+  "type": "spell"
+ },
+ "vex_mocking": {
+  "ids": [
+   617
+  ],
+  "name": "Vex, Mocking",
+  "type": "unit"
+ },
+ "yuumi_magical_cat": {
+  "ids": [
+   618
+  ],
+  "name": "Yuumi, Magical Cat",
+  "type": "unit"
+ },
+ "alpha_wildclaw": {
+  "ids": [
+   619
+  ],
+  "name": "Alpha Wildclaw",
+  "type": "unit"
+ },
+ "lillia_protector_of_dreams": {
+  "ids": [
+   620
+  ],
+  "name": "Lillia, Protector of Dreams",
+  "type": "unit"
+ },
+ "master_yi_unstoppable": {
+  "ids": [
+   621
+  ],
+  "name": "Master Yi, Unstoppable",
+  "type": "unit"
+ },
+ "vilemaw": {
+  "ids": [
+   622
+  ],
+  "name": "Vilemaw",
+  "type": "unit"
+ },
+ "downstage_dramatics": {
+  "ids": [
+   623
+  ],
+  "name": "Downstage Dramatics",
+  "type": "spell"
+ },
+ "dramatic_visionary": {
+  "ids": [
+   624
+  ],
+  "name": "Dramatic Visionary",
+  "type": "unit"
+ },
+ "eclipse": {
+  "ids": [
+   625
+  ],
+  "name": "Eclipse",
+  "type": "spell"
+ },
+ "fate_weaver": {
+  "ids": [
+   626
+  ],
+  "name": "Fate Weaver",
+  "type": "unit"
+ },
+ "icevale_archer": {
+  "ids": [
+   627
+  ],
+  "name": "Icevale Archer",
+  "type": "unit"
+ },
+ "ruined_rex": {
+  "ids": [
+   629
+  ],
+  "name": "Ruined Rex",
+  "type": "unit"
+ },
+ "spectral_centaur": {
+  "ids": [
+   630
+  ],
+  "name": "Spectral Centaur",
+  "type": "unit"
+ },
+ "sprite_burst": {
+  "ids": [
+   631
+  ],
+  "name": "Sprite Burst",
+  "type": "spell"
+ },
+ "turn_to_dust": {
+  "ids": [
+   632
+  ],
+  "name": "Turn to Dust",
+  "type": "spell"
+ },
+ "chakram_dancer": {
+  "ids": [
+   633
+  ],
+  "name": "Chakram Dancer",
+  "type": "unit"
+ },
+ "crescent_strike": {
+  "ids": [
+   634
+  ],
+  "name": "Crescent Strike",
+  "type": "spell"
+ },
+ "deadly_flourish": {
+  "ids": [
+   635
+  ],
+  "name": "Deadly Flourish",
+  "type": "spell"
+ },
+ "frigid_jewel": {
+  "ids": [
+   636
+  ],
+  "name": "Frigid Jewel",
+  "type": "gear"
+ },
+ "gustwalker": {
+  "ids": [
+   637
+  ],
+  "name": "Gustwalker",
+  "type": "unit"
+ },
+ "petal_pixie": {
+  "ids": [
+   638
+  ],
+  "name": "Petal Pixie",
+  "type": "unit"
+ },
+ "soul_shepherd": {
+  "ids": [
+   639
+  ],
+  "name": "Soul Shepherd",
+  "type": "unit"
+ },
+ "sprite_fountain": {
+  "ids": [
+   640
+  ],
+  "name": "Sprite Fountain",
+  "type": "gear"
+ },
+ "diana_lunari": {
+  "ids": [
+   641
+  ],
+  "name": "Diana, Lunari",
+  "type": "unit"
+ },
+ "hwei_brooding_painter": {
+  "ids": [
+   642
+  ],
+  "name": "Hwei, Brooding Painter",
+  "type": "unit"
+ },
+ "keeper_of_masks": {
+  "ids": [
+   643
+  ],
+  "name": "Keeper of Masks",
+  "type": "unit"
+ },
+ "lillia_fae_fawn": {
+  "ids": [
+   644
+  ],
+  "name": "Lillia, Fae Fawn",
+  "type": "unit"
+ },
+ "smoke_and_mirrors": {
+  "ids": [
+   645
+  ],
+  "name": "Smoke and Mirrors",
+  "type": "spell"
+ },
+ "sprite_queen": {
+  "ids": [
+   646
+  ],
+  "name": "Sprite Queen",
+  "type": "unit"
+ },
+ "sumpworks_map": {
+  "ids": [
+   647
+  ],
+  "name": "Sumpworks Map",
+  "type": "gear"
+ },
+ "zilean_time_mage": {
+  "ids": [
+   648
+  ],
+  "name": "Zilean, Time Mage",
+  "type": "unit"
+ },
+ "blue_sentinel": {
+  "ids": [
+   649
+  ],
+  "name": "Blue Sentinel",
+  "type": "unit"
+ },
+ "gutter_palace": {
+  "ids": [
+   650
+  ],
+  "name": "Gutter Palace",
+  "type": "gear"
+ },
+ "jhin_meticulous_killer": {
+  "ids": [
+   651
+  ],
+  "name": "Jhin, Meticulous Killer",
+  "type": "unit"
+ },
+ "leblanc_everywhere_at_once": {
+  "ids": [
+   652
+  ],
+  "name": "LeBlanc, Everywhere at Once",
+  "type": "unit"
+ },
+ "concentrate": {
+  "ids": [
+   653
+  ],
+  "name": "Concentrate",
+  "type": "spell"
+ },
+ "demacian_diplomat": {
+  "ids": [
+   654
+  ],
+  "name": "Demacian Diplomat",
+  "type": "unit"
+ },
+ "dragonsoul_sage": {
+  "ids": [
+   655
+  ],
+  "name": "Dragonsoul Sage",
+  "type": "unit"
+ },
+ "gemhand_hunter": {
+  "ids": [
+   656
+  ],
+  "name": "Gemhand Hunter",
+  "type": "unit"
+ },
+ "grim_resolve": {
+  "ids": [
+   657
+  ],
+  "name": "Grim Resolve",
+  "type": "spell"
+ },
+ "hunter_s_machete": {
+  "ids": [
+   658
+  ],
+  "name": "Hunter's Machete",
+  "type": "gear"
+ },
+ "targonian_visionary": {
+  "ids": [
+   660
+  ],
+  "name": "Targonian Visionary",
+  "type": "unit"
+ },
+ "towering_combatant": {
+  "ids": [
+   661
+  ],
+  "name": "Towering Combatant",
+  "type": "unit"
+ },
+ "voracious_gromp": {
+  "ids": [
+   662
+  ],
+  "name": "Voracious Gromp",
+  "type": "unit"
+ },
+ "call_to_battle": {
+  "ids": [
+   663
+  ],
+  "name": "Call to Battle",
+  "type": "spell"
+ },
+ "crowd_favorite": {
+  "ids": [
+   664
+  ],
+  "name": "Crowd Favorite",
+  "type": "unit"
+ },
+ "disposal_order": {
+  "ids": [
+   665
+  ],
+  "name": "Disposal Order",
+  "type": "spell"
+ },
+ "gentle_gemdragon": {
+  "ids": [
+   666
+  ],
+  "name": "Gentle Gemdragon",
+  "type": "unit"
+ },
+ "imposing_challenger": {
+  "ids": [
+   667
+  ],
+  "name": "Imposing Challenger",
+  "type": "unit"
+ },
+ "repulse": {
+  "ids": [
+   668
+  ],
+  "name": "Repulse",
+  "type": "spell"
+ },
+ "stare_down": {
+  "ids": [
+   669
+  ],
+  "name": "Stare Down",
+  "type": "spell"
+ },
+ "wily_newtfish": {
+  "ids": [
+   670
+  ],
+  "name": "Wily Newtfish",
+  "type": "unit"
+ },
+ "blood_rose": {
+  "ids": [
+   671
+  ],
+  "name": "Blood Rose",
+  "type": "gear"
+ },
+ "clash_of_giants": {
+  "ids": [
+   672
+  ],
+  "name": "Clash of Giants",
+  "type": "spell"
+ },
+ "determined_sentry": {
+  "ids": [
+   673
+  ],
+  "name": "Determined Sentry",
+  "type": "unit"
+ },
+ "nilah_joyful_ascetic": {
+  "ids": [
+   677
+  ],
+  "name": "Nilah, Joyful Ascetic",
+  "type": "unit"
+ },
+ "poppy_paragon": {
+  "ids": [
+   678
+  ],
+  "name": "Poppy, Paragon",
+  "type": "unit"
+ },
+ "arachnoid_horror": {
+  "ids": [
+   679
+  ],
+  "name": "Arachnoid Horror",
+  "type": "unit"
+ },
+ "elder_dragon": {
+  "ids": [
+   680
+  ],
+  "name": "Elder Dragon",
+  "type": "unit"
+ },
+ "kha_zix_evolving_hunter": {
+  "ids": [
+   681
+  ],
+  "name": "Kha'Zix, Evolving Hunter",
+  "type": "unit"
+ },
+ "bewitching_spirit": {
+  "ids": [
+   683
+  ],
+  "name": "Bewitching Spirit",
+  "type": "unit"
+ },
+ "crescent_guardian": {
+  "ids": [
+   684
+  ],
+  "name": "Crescent Guardian",
+  "type": "unit"
+ },
+ "evershade_stalker": {
+  "ids": [
+   685
+  ],
+  "name": "Evershade Stalker",
+  "type": "unit"
+ },
+ "isolate": {
+  "ids": [
+   686
+  ],
+  "name": "Isolate",
+  "type": "spell"
+ },
+ "lunar_boon": {
+  "ids": [
+   687
+  ],
+  "name": "Lunar Boon",
+  "type": "spell"
+ },
+ "megatusk": {
+  "ids": [
+   688
+  ],
+  "name": "Megatusk",
+  "type": "unit"
+ },
+ "mister_root": {
+  "ids": [
+   689
+  ],
+  "name": "Mister Root",
+  "type": "unit"
+ },
+ "star_crossed": {
+  "ids": [
+   690
+  ],
+  "name": "Star-Crossed",
+  "type": "spell"
+ },
+ "vicious_snapjaws": {
+  "ids": [
+   691
+  ],
+  "name": "Vicious Snapjaws",
+  "type": "unit"
+ },
+ "walking_roost": {
+  "ids": [
+   692
+  ],
+  "name": "Walking Roost",
+  "type": "unit"
+ },
+ "abandon": {
+  "ids": [
+   693
+  ],
+  "name": "Abandon",
+  "type": "spell"
+ },
+ "angler_beast": {
+  "ids": [
+   694
+  ],
+  "name": "Angler Beast",
+  "type": "unit"
+ },
+ "blast_cone": {
+  "ids": [
+   695
+  ],
+  "name": "Blast Cone",
+  "type": "gear"
+ },
+ "existential_dread": {
+  "ids": [
+   696
+  ],
+  "name": "Existential Dread",
+  "type": "spell"
+ },
+ "insightful_investigator": {
+  "ids": [
+   697
+  ],
+  "name": "Insightful Investigator",
+  "type": "unit"
+ },
+ "scryer_s_bloom": {
+  "ids": [
+   698
+  ],
+  "name": "Scryer's Bloom",
+  "type": "gear"
+ },
+ "sinister_poro": {
+  "ids": [
+   699
+  ],
+  "name": "Sinister Poro",
+  "type": "unit"
+ },
+ "the_list": {
+  "ids": [
+   700
+  ],
+  "name": "The List",
+  "type": "gear"
+ },
+ "bone_skewer": {
+  "ids": [
+   701
+  ],
+  "name": "Bone Skewer",
+  "type": "spell"
+ },
+ "conscription": {
+  "ids": [
+   702
+  ],
+  "name": "Conscription",
+  "type": "spell"
+ },
+ "evelynn_entrancing": {
+  "ids": [
+   703
+  ],
+  "name": "Evelynn, Entrancing",
+  "type": "unit"
+ },
+ "heedless_resurrection": {
+  "ids": [
+   704
+  ],
+  "name": "Heedless Resurrection",
+  "type": "spell"
+ },
+ "kha_zix_mutating_horror": {
+  "ids": [
+   705
+  ],
+  "name": "Kha'Zix, Mutating Horror",
+  "type": "unit"
+ },
+ "maduli_the_gatekeeper": {
+  "ids": [
+   706
+  ],
+  "name": "Maduli the Gatekeeper",
+  "type": "unit"
+ },
+ "pyke_returned": {
+  "ids": [
+   707
+  ],
+  "name": "Pyke, Returned",
+  "type": "unit"
+ },
+ "syndra_transcendent": {
+  "ids": [
+   708
+  ],
+  "name": "Syndra, Transcendent",
+  "type": "unit"
+ },
+ "baron_nashor": {
+  "ids": [
+   709
+  ],
+  "name": "Baron Nashor",
+  "type": "unit"
+ },
+ "cursed_sarcophagus": {
+  "ids": [
+   710
+  ],
+  "name": "Cursed Sarcophagus",
+  "type": "gear"
+ },
+ "diana_no_longer_human": {
+  "ids": [
+   711
+  ],
+  "name": "Diana, No Longer Human",
+  "type": "unit"
+ },
+ "vex_apathetic": {
+  "ids": [
+   712
+  ],
+  "name": "Vex, Apathetic",
+  "type": "unit"
+ },
+ "bandle_soldier": {
+  "ids": [
+   713
+  ],
+  "name": "Bandle Soldier",
+  "type": "unit"
+ },
+ "black_rose_dignitary": {
+  "ids": [
+   714
+  ],
+  "name": "Black Rose Dignitary",
+  "type": "unit"
+ },
+ "carrion_dredger": {
+  "ids": [
+   715
+  ],
+  "name": "Carrion Dredger",
+  "type": "unit"
+ },
+ "crimson_pigeons": {
+  "ids": [
+   716
+  ],
+  "name": "Crimson Pigeons",
+  "type": "unit"
+ },
+ "heroic_charge": {
+  "ids": [
+   717
+  ],
+  "name": "Heroic Charge",
+  "type": "spell"
+ },
+ "scrutinizing_sergeant": {
+  "ids": [
+   719
+  ],
+  "name": "Scrutinizing Sergeant",
+  "type": "unit"
+ },
+ "shepherd_s_heirloom": {
+  "ids": [
+   720
+  ],
+  "name": "Shepherd's Heirloom",
+  "type": "gear"
+ },
+ "soul_harvest": {
+  "ids": [
+   721
+  ],
+  "name": "Soul Harvest",
+  "type": "spell"
+ },
+ "ultrasoft_poro": {
+  "ids": [
+   722
+  ],
+  "name": "Ultrasoft Poro",
+  "type": "unit"
+ },
+ "divining_shells": {
+  "ids": [
+   723
+  ],
+  "name": "Divining Shells",
+  "type": "gear"
+ },
+ "enthralling_protector": {
+  "ids": [
+   724
+  ],
+  "name": "Enthralling Protector",
+  "type": "unit"
+ },
+ "mageseeker_investigator": {
+  "ids": [
+   725
+  ],
+  "name": "Mageseeker Investigator",
+  "type": "unit"
+ },
+ "safety_inspector": {
+  "ids": [
+   726
+  ],
+  "name": "Safety Inspector",
+  "type": "unit"
+ },
+ "shadow_s_call": {
+  "ids": [
+   727
+  ],
+  "name": "Shadow's Call",
+  "type": "spell"
+ },
+ "stalking_wolf": {
+  "ids": [
+   728
+  ],
+  "name": "Stalking Wolf",
+  "type": "unit"
+ },
+ "starhound": {
+  "ids": [
+   729
+  ],
+  "name": "Starhound",
+  "type": "unit"
+ },
+ "undying_loyalty": {
+  "ids": [
+   730
+  ],
+  "name": "Undying Loyalty",
+  "type": "spell"
+ },
+ "ashe_focused": {
+  "ids": [
+   731
+  ],
+  "name": "Ashe, Focused",
+  "type": "unit"
+ },
+ "atakhan": {
+  "ids": [
+   732
+  ],
+  "name": "Atakhan",
+  "type": "unit"
+ },
+ "galio_indefatigable": {
+  "ids": [
+   733
+  ],
+  "name": "Galio, Indefatigable",
+  "type": "unit"
+ },
+ "leblanc_fragmented": {
+  "ids": [
+   734
+  ],
+  "name": "LeBlanc, Fragmented",
+  "type": "unit"
+ },
+ "sacrifice": {
+  "ids": [
+   735
+  ],
+  "name": "Sacrifice",
+  "type": "spell"
+ },
+ "shard_of_undoing": {
+  "ids": [
+   736
+  ],
+  "name": "Shard of Undoing",
+  "type": "gear"
+ },
+ "tactical_retreat": {
+  "ids": [
+   737
+  ],
+  "name": "Tactical Retreat",
+  "type": "spell"
+ },
+ "vi_peacekeeper": {
+  "ids": [
+   738
+  ],
+  "name": "Vi, Peacekeeper",
+  "type": "unit"
+ },
+ "ivern_friend_to_all": {
+  "ids": [
+   739
+  ],
+  "name": "Ivern, Friend to All",
+  "type": "unit"
+ },
+ "poppy_defender_of_the_meek": {
+  "ids": [
+   740
+  ],
+  "name": "Poppy, Defender of the Meek",
+  "type": "unit"
+ },
+ "rift_herald": {
+  "ids": [
+   741
+  ],
+  "name": "Rift Herald",
+  "type": "unit"
+ },
+ "the_ruination": {
+  "ids": [
+   742
+  ],
+  "name": "The Ruination",
+  "type": "spell"
+ },
+ "curtain_call": {
+  "ids": [
+   743
+  ],
+  "name": "Curtain Call",
+  "type": "spell"
+ },
+ "bloodharbor_ripper": {
+  "ids": [
+   746
+  ],
+  "name": "Bloodharbor Ripper",
+  "type": "legend"
+ },
+ "death_from_below": {
+  "ids": [
+   747
+  ],
+  "name": "Death from Below",
+  "type": "spell"
+ },
+ "hextech_gauntlets": {
+  "ids": [
+   748
+  ],
+  "name": "Hextech Gauntlets",
+  "type": "gear"
+ },
+ "bashful_bloom": {
+  "ids": [
+   749
+  ],
+  "name": "Bashful Bloom",
+  "type": "legend"
+ },
+ "lilting_lullaby": {
+  "ids": [
+   750
+  ],
+  "name": "Lilting Lullaby",
+  "type": "spell"
+ },
+ "shadow": {
+  "ids": [
+   752
+  ],
+  "name": "Shadow",
+  "type": "unit"
+ },
+ "green_father": {
+  "ids": [
+   753
+  ],
+  "name": "Green Father",
+  "type": "legend"
+ },
+ "daisy": {
+  "ids": [
+   754
+  ],
+  "name": "Daisy!",
+  "type": "unit"
+ },
+ "moonfall": {
+  "ids": [
+   755
+  ],
+  "name": "Moonfall",
+  "type": "spell"
+ },
+ "deceiver": {
+  "ids": [
+   756
+  ],
+  "name": "Deceiver",
+  "type": "legend"
+ },
+ "mirror_image": {
+  "ids": [
+   757
+  ],
+  "name": "Mirror Image",
+  "type": "spell"
+ },
+ "void_assault": {
+  "ids": [
+   758
+  ],
+  "name": "Void Assault",
+  "type": "spell"
+ },
+ "keeper_of_the_hammer": {
+  "ids": [
+   759
+  ],
+  "name": "Keeper of the Hammer",
+  "type": "legend"
+ },
+ "keeper_s_verdict": {
+  "ids": [
+   760
+  ],
+  "name": "Keeper's Verdict",
+  "type": "spell"
+ },
+ "abandoned_hall": {
+  "ids": [
+   761
+  ],
+  "name": "Abandoned Hall",
+  "type": "battlefield"
+ },
+ "altar_of_blood": {
+  "ids": [
+   762
+  ],
+  "name": "Altar of Blood",
+  "type": "battlefield"
+ },
+ "amateur_recital": {
+  "ids": [
+   763
+  ],
+  "name": "Amateur Recital",
+  "type": "battlefield"
+ },
+ "black_flame_altar": {
+  "ids": [
+   764
+  ],
+  "name": "Black Flame Altar",
+  "type": "battlefield"
+ },
+ "dusk_rose_lab": {
+  "ids": [
+   765
+  ],
+  "name": "Dusk Rose Lab",
+  "type": "battlefield"
+ },
+ "forbidding_waste": {
+  "ids": [
+   766
+  ],
+  "name": "Forbidding Waste",
+  "type": "battlefield"
+ },
+ "forgotten_library": {
+  "ids": [
+   767
+  ],
+  "name": "Forgotten Library",
+  "type": "battlefield"
+ },
+ "frozen_fortress": {
+  "ids": [
+   768
+  ],
+  "name": "Frozen Fortress",
+  "type": "battlefield"
+ },
+ "gardens_of_becoming": {
+  "ids": [
+   769
+  ],
+  "name": "Gardens of Becoming",
+  "type": "battlefield"
+ },
+ "ripper_s_bay": {
+  "ids": [
+   770
+  ],
+  "name": "Ripper's Bay",
+  "type": "battlefield"
+ },
+ "the_academy": {
+  "ids": [
+   772
+  ],
+  "name": "The Academy",
+  "type": "battlefield"
+ },
+ "trapping_grounds": {
+  "ids": [
+   773
+  ],
+  "name": "Trapping Grounds",
+  "type": "battlefield"
+ },
+ "valley_of_idols": {
+  "ids": [
+   774
+  ],
+  "name": "Valley of Idols",
+  "type": "battlefield"
+ },
+ "vaults_of_helia": {
+  "ids": [
+   775
+  ],
+  "name": "Vaults of Helia",
+  "type": "battlefield"
+ },
+ "pouty_poro__776": {
+  "ids": [
+   776
+  ],
+  "name": "Pouty Poro",
+  "type": "unit"
+ },
+ "veteran_poro__779": {
+  "ids": [
+   779
+  ],
+  "name": "Veteran Poro",
+  "type": "unit"
+ },
+ "mystic_poro__780": {
+  "ids": [
+   780
+  ],
+  "name": "Mystic Poro",
+  "type": "unit"
+ },
+ "daring_poro__781": {
+  "ids": [
+   781
+  ],
+  "name": "Daring Poro",
+  "type": "unit"
+ },
+ "virtuoso": {
+  "ids": [
+   782
+  ],
+  "name": "Virtuoso",
+  "type": "legend"
+ },
+ "piltover_enforcer": {
+  "ids": [
+   783
+  ],
+  "name": "Piltover Enforcer",
+  "type": "legend"
+ },
+ "wuju_master": {
+  "ids": [
+   784
+  ],
+  "name": "Wuju Master",
+  "type": "legend"
+ },
+ "gloomist": {
+  "ids": [
+   785
+  ],
+  "name": "Gloomist",
+  "type": "legend"
+ },
+ "scorn_of_the_moon": {
+  "ids": [
+   786
+  ],
+  "name": "Scorn of the Moon",
+  "type": "legend"
+ },
+ "voidreaver": {
+  "ids": [
+   787
+  ],
+  "name": "Voidreaver",
+  "type": "legend"
+ },
+ "baccai_sandspinner": {
+  "ids": [
+   788
+  ],
+  "name": "Baccai Sandspinner",
+  "type": "unit"
+ },
+ "blade_twirler": {
+  "ids": [
+   789
+  ],
+  "name": "Blade Twirler",
+  "type": "unit"
+ },
+ "dune_surfer": {
+  "ids": [
+   791
+  ],
+  "name": "Dune Surfer",
+  "type": "unit"
+ },
+ "forsaken_baccai": {
+  "ids": [
+   792
+  ],
+  "name": "Forsaken Baccai",
+  "type": "unit"
+ },
+ "oasis_raider": {
+  "ids": [
+   793
+  ],
+  "name": "Oasis Raider",
+  "type": "unit"
+ },
+ "punching_poro": {
+  "ids": [
+   794
+  ],
+  "name": "Punching Poro",
+  "type": "unit"
+ },
+ "ruthless_strike": {
+  "ids": [
+   795
+  ],
+  "name": "Ruthless Strike",
+  "type": "spell"
+ },
+ "baccai_reaper": {
+  "ids": [
+   796
+  ],
+  "name": "Baccai Reaper",
+  "type": "unit"
+ },
+ "consuming_curse": {
+  "ids": [
+   797
+  ],
+  "name": "Consuming Curse",
+  "type": "spell"
+ },
+ "pendulum_blade": {
+  "ids": [
+   798
+  ],
+  "name": "Pendulum Blade",
+  "type": "gear"
+ },
+ "perfect_execution": {
+  "ids": [
+   799
+  ],
+  "name": "Perfect Execution",
+  "type": "spell"
+ },
+ "shadow_assassin": {
+  "ids": [
+   800
+  ],
+  "name": "Shadow Assassin",
+  "type": "unit"
+ },
+ "shadow_fiend": {
+  "ids": [
+   801
+  ],
+  "name": "Shadow Fiend",
+  "type": "unit"
+ },
+ "decree_of_rage": {
+  "ids": [
+   802
+  ],
+  "name": "Decree of Rage",
+  "type": "spell"
+ },
+ "eclipse_dragon": {
+  "ids": [
+   803
+  ],
+  "name": "Eclipse Dragon",
+  "type": "unit"
+ },
+ "morgana_vindictive": {
+  "ids": [
+   804
+  ],
+  "name": "Morgana, Vindictive",
+  "type": "unit"
+ },
+ "rage_amplifier": {
+  "ids": [
+   805
+  ],
+  "name": "Rage Amplifier",
+  "type": "gear"
+ },
+ "renekton_rage_fueled": {
+  "ids": [
+   806
+  ],
+  "name": "Renekton, Rage Fueled",
+  "type": "unit"
+ },
+ "twilight_reveler": {
+  "ids": [
+   807
+  ],
+  "name": "Twilight Reveler",
+  "type": "unit"
+ },
+ "akali_deadly_weapon": {
+  "ids": [
+   808
+  ],
+  "name": "Akali, Deadly Weapon",
+  "type": "unit"
+ },
+ "endless_riches": {
+  "ids": [
+   809
+  ],
+  "name": "Endless Riches",
+  "type": "gear"
+ },
+ "zed_from_the_shadows": {
+  "ids": [
+   810
+  ],
+  "name": "Zed, From the Shadows",
+  "type": "unit"
+ },
+ "affectionate_poro": {
+  "ids": [
+   811
+  ],
+  "name": "Affectionate Poro",
+  "type": "unit"
+ },
+ "esteemed_hierophant": {
+  "ids": [
+   812
+  ],
+  "name": "Esteemed Hierophant",
+  "type": "unit"
+ },
+ "field_musicians": {
+  "ids": [
+   813
+  ],
+  "name": "Field Musicians",
+  "type": "unit"
+ },
+ "hand_hammer": {
+  "ids": [
+   814
+  ],
+  "name": "Hand Hammer",
+  "type": "gear"
+ },
+ "mournful_witness": {
+  "ids": [
+   815
+  ],
+  "name": "Mournful Witness",
+  "type": "unit"
+ },
+ "ol_poro": {
+  "ids": [
+   816
+  ],
+  "name": "Ol' Poro",
+  "type": "unit"
+ },
+ "serene_ascetic": {
+  "ids": [
+   817
+  ],
+  "name": "Serene Ascetic",
+  "type": "unit"
+ },
+ "twilight_shroud": {
+  "ids": [
+   818
+  ],
+  "name": "Twilight Shroud",
+  "type": "spell"
+ },
+ "frostcoat_mother": {
+  "ids": [
+   819
+  ],
+  "name": "Frostcoat Mother",
+  "type": "unit"
+ },
+ "pakaa_protector": {
+  "ids": [
+   820
+  ],
+  "name": "Pakaa Protector",
+  "type": "unit"
+ },
+ "resonating_strike": {
+  "ids": [
+   821
+  ],
+  "name": "Resonating Strike",
+  "type": "spell"
+ },
+ "sanction": {
+  "ids": [
+   822
+  ],
+  "name": "Sanction",
+  "type": "spell"
+ },
+ "sandstone_chimera": {
+  "ids": [
+   823
+  ],
+  "name": "Sandstone Chimera",
+  "type": "unit"
+ },
+ "tomb_raider_barbara": {
+  "ids": [
+   824
+  ],
+  "name": "Tomb-Raider Barbara",
+  "type": "unit"
+ },
+ "akali_silent": {
+  "ids": [
+   825
+  ],
+  "name": "Akali, Silent",
+  "type": "unit"
+ },
+ "crumbling_sands": {
+  "ids": [
+   826
+  ],
+  "name": "Crumbling Sands",
+  "type": "spell"
+ },
+ "riven_shattered": {
+  "ids": [
+   828
+  ],
+  "name": "Riven, Shattered",
+  "type": "unit"
+ },
+ "shen_scourge_of_shadows": {
+  "ids": [
+   829
+  ],
+  "name": "Shen, Scourge of Shadows",
+  "type": "unit"
+ },
+ "steel_paws": {
+  "ids": [
+   830
+  ],
+  "name": "Steel Paws",
+  "type": "unit"
+ },
+ "astral_heron": {
+  "ids": [
+   831
+  ],
+  "name": "Astral Heron",
+  "type": "unit"
+ },
+ "helm_of_suppression": {
+  "ids": [
+   832
+  ],
+  "name": "Helm of Suppression",
+  "type": "gear"
+ },
+ "nasus_ascended": {
+  "ids": [
+   833
+  ],
+  "name": "Nasus, Ascended",
+  "type": "unit"
+ },
+ "apprentice_mage": {
+  "ids": [
+   834
+  ],
+  "name": "Apprentice Mage",
+  "type": "unit"
+ },
+ "cloud_drake": {
+  "ids": [
+   835
+  ],
+  "name": "Cloud Drake",
+  "type": "unit"
+ },
+ "dredge_up": {
+  "ids": [
+   836
+  ],
+  "name": "Dredge Up",
+  "type": "spell"
+ },
+ "grumpy_rockbear": {
+  "ids": [
+   837
+  ],
+  "name": "Grumpy Rockbear",
+  "type": "unit"
+ },
+ "iterative_design": {
+  "ids": [
+   838
+  ],
+  "name": "Iterative Design",
+  "type": "spell"
+ },
+ "mesmerize": {
+  "ids": [
+   839
+  ],
+  "name": "Mesmerize",
+  "type": "spell"
+ },
+ "otterpus": {
+  "ids": [
+   840
+  ],
+  "name": "Otterpus",
+  "type": "unit"
+ },
+ "questionable_tome": {
+  "ids": [
+   841
+  ],
+  "name": "Questionable Tome",
+  "type": "gear"
+ },
+ "applied_researchers": {
+  "ids": [
+   842
+  ],
+  "name": "Applied Researchers",
+  "type": "unit"
+ },
+ "clairvoyance": {
+  "ids": [
+   843
+  ],
+  "name": "Clairvoyance",
+  "type": "spell"
+ },
+ "covert_informant": {
+  "ids": [
+   844
+  ],
+  "name": "Covert Informant",
+  "type": "unit"
+ },
+ "patched_porobot": {
+  "ids": [
+   845
+  ],
+  "name": "Patched Porobot",
+  "type": "unit"
+ },
+ "shock_blast": {
+  "ids": [
+   846
+  ],
+  "name": "Shock Blast",
+  "type": "spell"
+ },
+ "sky_crusier": {
+  "ids": [
+   847
+  ],
+  "name": "Sky Crusier",
+  "type": "unit"
+ },
+ "decree_of_insight": {
+  "ids": [
+   848
+  ],
+  "name": "Decree of Insight",
+  "type": "spell"
+ },
+ "hextech_formula": {
+  "ids": [
+   849
+  ],
+  "name": "Hextech Formula",
+  "type": "gear"
+ },
+ "nasus_guardian_of_knowledge": {
+  "ids": [
+   850
+  ],
+  "name": "Nasus, Guardian of Knowledge",
+  "type": "unit"
+ },
+ "plaza_guardian": {
+  "ids": [
+   851
+  ],
+  "name": "Plaza Guardian",
+  "type": "unit"
+ },
+ "swain_visionary": {
+  "ids": [
+   852
+  ],
+  "name": "Swain, Visionary",
+  "type": "unit"
+ },
+ "temporal_breach": {
+  "ids": [
+   853
+  ],
+  "name": "Temporal Breach",
+  "type": "spell"
+ },
+ "bottled_constellation": {
+  "ids": [
+   854
+  ],
+  "name": "Bottled Constellation",
+  "type": "gear"
+ },
+ "jayce_brilliant_inventor": {
+  "ids": [
+   855
+  ],
+  "name": "Jayce, Brilliant Inventor",
+  "type": "unit"
+ },
+ "mel_newly_awakened": {
+  "ids": [
+   856
+  ],
+  "name": "Mel, Newly Awakened",
+  "type": "unit"
+ },
+ "brutal_hunter": {
+  "ids": [
+   857
+  ],
+  "name": "Brutal Hunter",
+  "type": "unit"
+ },
+ "fretful_feline": {
+  "ids": [
+   858
+  ],
+  "name": "Fretful Feline",
+  "type": "unit"
+ },
+ "guttural_roar": {
+  "ids": [
+   859
+  ],
+  "name": "Guttural Roar",
+  "type": "spell"
+ },
+ "jagged_cutlass": {
+  "ids": [
+   860
+  ],
+  "name": "Jagged Cutlass",
+  "type": "gear"
+ },
+ "legion_marauder": {
+  "ids": [
+   861
+  ],
+  "name": "Legion Marauder",
+  "type": "unit"
+ },
+ "platewyrm_egg": {
+  "ids": [
+   862
+  ],
+  "name": "Platewyrm Egg",
+  "type": "gear"
+ },
+ "repair_specialist": {
+  "ids": [
+   863
+  ],
+  "name": "Repair Specialist",
+  "type": "unit"
+ },
+ "tools_of_empire": {
+  "ids": [
+   864
+  ],
+  "name": "Tools of Empire",
+  "type": "gear"
+ },
+ "baccai_witherclaw": {
+  "ids": [
+   865
+  ],
+  "name": "Baccai Witherclaw",
+  "type": "unit"
+ },
+ "dame_the_despoiler": {
+  "ids": [
+   866
+  ],
+  "name": "Dame the Despoiler",
+  "type": "unit"
+ },
+ "profiteer": {
+  "ids": [
+   869
+  ],
+  "name": "Profiteer",
+  "type": "unit"
+ },
+ "ambessa_the_wolf": {
+  "ids": [
+   871
+  ],
+  "name": "Ambessa, The Wolf",
+  "type": "unit"
+ },
+ "gangplank_naval": {
+  "ids": [
+   873
+  ],
+  "name": "Gangplank, Naval",
+  "type": "unit"
+ },
+ "hextech_disc": {
+  "ids": [
+   874
+  ],
+  "name": "Hextech Disc",
+  "type": "gear"
+ },
+ "jayce_hammer_in_hand": {
+  "ids": [
+   875
+  ],
+  "name": "Jayce, Hammer in Hand",
+  "type": "unit"
+ },
+ "wild_claw": {
+  "ids": [
+   876
+  ],
+  "name": "Wild Claw",
+  "type": "spell"
+ },
+ "cataclysmic_duel": {
+  "ids": [
+   877
+  ],
+  "name": "Cataclysmic Duel",
+  "type": "spell"
+ },
+ "corrupted_dragon": {
+  "ids": [
+   878
+  ],
+  "name": "Corrupted Dragon",
+  "type": "unit"
+ },
+ "renekton_brute": {
+  "ids": [
+   879
+  ],
+  "name": "Renekton, Brute",
+  "type": "unit"
+ },
+ "kinkou_lifeblade": {
+  "ids": [
+   880
+  ],
+  "name": "Kinkou Lifeblade",
+  "type": "unit"
+ },
+ "mask_mother": {
+  "ids": [
+   881
+  ],
+  "name": "Mask Mother",
+  "type": "unit"
+ },
+ "shadow_order_disciple": {
+  "ids": [
+   882
+  ],
+  "name": "Shadow Order Disciple",
+  "type": "unit"
+ },
+ "shadowblade_lurker": {
+  "ids": [
+   883
+  ],
+  "name": "Shadowblade Lurker",
+  "type": "unit"
+ },
+ "spiderling": {
+  "ids": [
+   884
+  ],
+  "name": "Spiderling",
+  "type": "unit"
+ },
+ "stargazer": {
+  "ids": [
+   885
+  ],
+  "name": "Stargazer",
+  "type": "unit"
+ },
+ "tornado_warrior": {
+  "ids": [
+   886
+  ],
+  "name": "Tornado Warrior",
+  "type": "unit"
+ },
+ "up_from_the_deep": {
+  "ids": [
+   887
+  ],
+  "name": "Up from the Deep",
+  "type": "spell"
+ },
+ "gust_monk": {
+  "ids": [
+   888
+  ],
+  "name": "Gust Monk",
+  "type": "unit"
+ },
+ "ravenbloom_prefect": {
+  "ids": [
+   889
+  ],
+  "name": "Ravenbloom Prefect",
+  "type": "unit"
+ },
+ "shadows_of_the_past": {
+  "ids": [
+   890
+  ],
+  "name": "Shadows of the Past",
+  "type": "spell"
+ },
+ "tail_cloaked_matriarch": {
+  "ids": [
+   891
+  ],
+  "name": "Tail-Cloaked Matriarch",
+  "type": "unit"
+ },
+ "twilight_step": {
+  "ids": [
+   892
+  ],
+  "name": "Twilight Step",
+  "type": "spell"
+ },
+ "wind_and_ghosts": {
+  "ids": [
+   893
+  ],
+  "name": "Wind and Ghosts",
+  "type": "spell"
+ },
+ "decree_of_discord": {
+  "ids": [
+   894
+  ],
+  "name": "Decree of Discord",
+  "type": "spell"
+ },
+ "forgotten_relic": {
+  "ids": [
+   895
+  ],
+  "name": "Forgotten Relic",
+  "type": "gear"
+ },
+ "illaoi_prophet_of_the_great_kraken": {
+  "ids": [
+   896
+  ],
+  "name": "Illaoi, Prophet of the Great Kraken",
+  "type": "unit"
+ },
+ "mel_defiant_soul": {
+  "ids": [
+   897
+  ],
+  "name": "Mel, Defiant Soul",
+  "type": "unit"
+ },
+ "minah_swiftfoot": {
+  "ids": [
+   898
+  ],
+  "name": "Minah Swiftfoot",
+  "type": "unit"
+ },
+ "zed_without_a_sound": {
+  "ids": [
+   899
+  ],
+  "name": "Zed, Without a Sound",
+  "type": "unit"
+ },
+ "kennen_storm_of_shuriken": {
+  "ids": [
+   900
+  ],
+  "name": "Kennen, Storm of Shuriken",
+  "type": "unit"
+ },
+ "kharox": {
+  "ids": [
+   901
+  ],
+  "name": "Kharox",
+  "type": "unit"
+ },
+ "ocean_drake": {
+  "ids": [
+   902
+  ],
+  "name": "Ocean Drake",
+  "type": "unit"
+ },
+ "dragon_form": {
+  "ids": [
+   903
+  ],
+  "name": "Dragon Form",
+  "type": "spell"
+ },
+ "disciple_of_shen": {
+  "ids": [
+   904
+  ],
+  "name": "Disciple of Shen",
+  "type": "unit"
+ },
+ "horns_of_the_dragon": {
+  "ids": [
+   905
+  ],
+  "name": "Horns of the Dragon",
+  "type": "unit"
+ },
+ "keeper_of_law": {
+  "ids": [
+   906
+  ],
+  "name": "Keeper of Law",
+  "type": "unit"
+ },
+ "masa_crashing_thunder": {
+  "ids": [
+   907
+  ],
+  "name": "Masa, Crashing Thunder",
+  "type": "unit"
+ },
+ "reluctant_leader": {
+  "ids": [
+   908
+  ],
+  "name": "Reluctant Leader",
+  "type": "unit"
+ },
+ "solari_sunhawk": {
+  "ids": [
+   909
+  ],
+  "name": "Solari Sunhawk",
+  "type": "unit"
+ },
+ "soulspinner": {
+  "ids": [
+   910
+  ],
+  "name": "Soulspinner",
+  "type": "unit"
+ },
+ "escaped_grayback": {
+  "ids": [
+   911
+  ],
+  "name": "Escaped Grayback",
+  "type": "unit"
+ },
+ "hungry_wolf": {
+  "ids": [
+   912
+  ],
+  "name": "Hungry Wolf",
+  "type": "unit"
+ },
+ "ki_barrier": {
+  "ids": [
+   913
+  ],
+  "name": "Ki Barrier",
+  "type": "spell"
+ },
+ "lacerate": {
+  "ids": [
+   914
+  ],
+  "name": "Lacerate",
+  "type": "spell"
+ },
+ "noxian_emissary": {
+  "ids": [
+   915
+  ],
+  "name": "Noxian Emissary",
+  "type": "unit"
+ },
+ "sacred_protector": {
+  "ids": [
+   916
+  ],
+  "name": "Sacred Protector",
+  "type": "unit"
+ },
+ "aurok_general": {
+  "ids": [
+   917
+  ],
+  "name": "Aurok General",
+  "type": "unit"
+ },
+ "decree_of_unity": {
+  "ids": [
+   918
+  ],
+  "name": "Decree of Unity",
+  "type": "spell"
+ },
+ "fallen_feline": {
+  "ids": [
+   919
+  ],
+  "name": "Fallen Feline",
+  "type": "unit"
+ },
+ "glowstone": {
+  "ids": [
+   920
+  ],
+  "name": "Glowstone",
+  "type": "gear"
+ },
+ "kayle_justified": {
+  "ids": [
+   921
+  ],
+  "name": "Kayle, Justified",
+  "type": "unit"
+ },
+ "kennen_keeper_of_balance": {
+  "ids": [
+   922
+  ],
+  "name": "Kennen, Keeper of Balance",
+  "type": "unit"
+ },
+ "ambessa_respected_and_feared": {
+  "ids": [
+   923
+  ],
+  "name": "Ambessa, Respected and Feared",
+  "type": "unit"
+ },
+ "shady_spectacles": {
+  "ids": [
+   924
+  ],
+  "name": "Shady Spectacles",
+  "type": "gear"
+ },
+ "shen_leader_of_the_kinkou_order": {
+  "ids": [
+   925
+  ],
+  "name": "Shen, Leader of the Kinkou Order",
+  "type": "unit"
+ },
+ "rogue_assassin": {
+  "ids": [
+   926
+  ],
+  "name": "Rogue Assassin",
+  "type": "legend"
+ },
+ "shuriken_flip": {
+  "ids": [
+   927
+  ],
+  "name": "Shuriken Flip",
+  "type": "spell"
+ },
+ "butcher_of_the_sands": {
+  "ids": [
+   928
+  ],
+  "name": "Butcher of the Sands",
+  "type": "legend"
+ },
+ "dominus": {
+  "ids": [
+   929
+  ],
+  "name": "Dominus",
+  "type": "spell"
+ },
+ "master_of_shadows": {
+  "ids": [
+   930
+  ],
+  "name": "Master of Shadows",
+  "type": "legend"
+ },
+ "death_mark": {
+  "ids": [
+   931
+  ],
+  "name": "Death Mark",
+  "type": "spell"
+ },
+ "curator_of_the_sands": {
+  "ids": [
+   932
+  ],
+  "name": "Curator of the Sands",
+  "type": "legend"
+ },
+ "siphoning_strike": {
+  "ids": [
+   933
+  ],
+  "name": "Siphoning Strike",
+  "type": "spell"
+ },
+ "eye_of_twilight": {
+  "ids": [
+   934
+  ],
+  "name": "Eye of Twilight",
+  "type": "legend"
+ },
+ "shadow_dash": {
+  "ids": [
+   935
+  ],
+  "name": "Shadow Dash",
+  "type": "spell"
+ },
+ "defender_of_tomorrow": {
+  "ids": [
+   936
+  ],
+  "name": "Defender of Tomorrow",
+  "type": "legend"
+ },
+ "acceleration_gate": {
+  "ids": [
+   937
+  ],
+  "name": "Acceleration Gate",
+  "type": "spell"
+ },
+ "soul_s_reflection": {
+  "ids": [
+   938
+  ],
+  "name": "Soul's Reflection",
+  "type": "legend"
+ },
+ "rebuttal": {
+  "ids": [
+   939
+  ],
+  "name": "Rebuttal",
+  "type": "spell"
+ },
+ "matriarch_of_war": {
+  "ids": [
+   940
+  ],
+  "name": "Matriarch of War",
+  "type": "legend"
+ },
+ "public_execution": {
+  "ids": [
+   941
+  ],
+  "name": "Public Execution",
+  "type": "spell"
+ },
+ "heart_of_the_tempest": {
+  "ids": [
+   942
+  ],
+  "name": "Heart of the Tempest",
+  "type": "legend"
+ },
+ "lightning_rush": {
+  "ids": [
+   943
+  ],
+  "name": "Lightning Rush",
+  "type": "spell"
+ },
+ "dragon_roost": {
+  "ids": [
+   944
+  ],
+  "name": "Dragon Roost",
+  "type": "battlefield"
+ },
+ "heisho_shell_of_the_world": {
+  "ids": [
+   945
+  ],
+  "name": "Heisho, Shell of the World",
+  "type": "battlefield"
+ },
+ "kinkou_temple": {
+  "ids": [
+   946
+  ],
+  "name": "Kinkou Temple",
+  "type": "battlefield"
+ },
+ "mystic_vortex": {
+  "ids": [
+   947
+  ],
+  "name": "Mystic Vortex",
+  "type": "battlefield"
+ },
+ "piltovan_forge": {
+  "ids": [
+   948
+  ],
+  "name": "Piltovan Forge",
+  "type": "battlefield"
+ },
+ "protective_sands": {
+  "ids": [
+   949
+  ],
+  "name": "Protective Sands",
+  "type": "battlefield"
+ },
+ "risen_altar": {
+  "ids": [
+   950
+  ],
+  "name": "Risen Altar",
+  "type": "battlefield"
+ },
+ "sandswept_tomb": {
+  "ids": [
+   951
+  ],
+  "name": "Sandswept Tomb",
+  "type": "battlefield"
+ },
+ "shadow_temple": {
+  "ids": [
+   952
+  ],
+  "name": "Shadow Temple",
+  "type": "battlefield"
+ },
+ "threshold_of_the_gray": {
+  "ids": [
+   953
+  ],
+  "name": "Threshold of the Gray",
+  "type": "battlefield"
+ },
+ "recruit": {
+  "ids": [
+   954
+  ],
+  "name": "Recruit",
+  "type": "unit"
+ },
+ "shadow_clone": {
+  "ids": [
+   955
+  ],
+  "name": "Shadow Clone",
+  "type": "unit"
+ }
+}

@@ -1,0 +1,17 @@
+Overnight league summary (Fri Nov 20 22:11:47 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+
+Main Elo slope: fewer than 3 rated main snapshots (0), no slope.
+
+Main exploiter: 220 updates, 3 snapshots, 3 resets
+  e2a_exp@60 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A': 0.507})
+  e2a_exp@120 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A': 0.475})
+  e2a_exp@180 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A': 0.462})
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.511 at update 18 (4302 games since reset)
+  found a weakness (>= 70% vs the main target): no
+
+Throughput per phase (games/s median): e120:47.0, m280:37.1, e140:47.9, m320:39.1, e160:46.4, m360:37.3, e180:45.8, m400:36.5, e200:45.8, m440:36.0, e220:47.1, m480:36.5
+  over the run: median 44.5, min 36.0 games/s, 23 phases

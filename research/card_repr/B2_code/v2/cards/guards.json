@@ -1,0 +1,116 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0475_guards.cpp:119",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0475_guards.cpp:120",
+   "energy": "src/cards/spells/0475_guards.cpp:121",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "hidden",
+   "_src": "src/cards/spells/0475_guards.cpp:122"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base_or_controlled_battlefield",
+      "count": 1,
+      "bind": "T",
+      "_src": "src/cards/spells/0475_guards.cpp:31-48"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0475_guards.cpp:59"
+     },
+     "token": {
+      "type": "unit",
+      "might": 2,
+      "tag": "shurima",
+      "name": "sand_soldier",
+      "_src": "src/cards/spells/0475_guards.cpp:59-61"
+     },
+     "_src": "src/cards/spells/0475_guards.cpp:59-61"
+    },
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "ref",
+      "ref": "T",
+      "_src": "src/cards/spells/0475_guards.cpp:79-80"
+     },
+     "optional": true,
+     "cost": {
+      "power": 1,
+      "power_domain": "order",
+      "optional": true,
+      "_src": "src/cards/spells/0475_guards.cpp:94-100"
+     },
+     "_src": "src/cards/spells/0475_guards.cpp:105; reflexive src/cards/spells/0475_guards.cpp:79-80, src/cards/spells/0475_guards.cpp:85-107"
+    }
+   ],
+   "_src": "src/cards/spells/0475_guards.cpp:27"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-154-221",
+  "class_file": "src/cards/spells/0475_guards.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: base_or_controlled_battlefield (zone: where a unit may be played; only the hidden battlefield when played from facedown, CR 811.1.d.5)",
+   "effect-level cost: the [C] of the reflexive 'then you may pay to ready it'"
+  ]
+ }
+}

@@ -1,0 +1,94 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0474_eye_of_the_herald.cpp:42",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0474_eye_of_the_herald.cpp:43",
+   "energy": "src/cards/gear/0474_eye_of_the_herald.cpp:45",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "equip",
+   "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:46"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "main",
+   "cost": {
+    "power": 1,
+    "power_domain": "order",
+    "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:17; src/cards/gear/equip_base.h:24-27"
+   },
+   "effects": [
+    {
+     "verb": "Attach",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:5745-5757; src/cards/card.cpp:1316-1317"
+     },
+     "_src": "src/engine/effect_executor.cpp:1617-1640"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:2673-2710, 5735-5760 (main phase only); unattached only src/cards/card.cpp:1318-1322"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "move",
+    "subject": "equipped_unit",
+    "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:19-21; src/engine/trigger_manager.cpp:223-245"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "here",
+      "count": 1,
+      "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:25-26"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:28"
+     },
+     "token": {
+      "type": "unit",
+      "might": 1,
+      "tag": "recruit",
+      "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:28-29"
+     },
+     "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:28-29"
+    }
+   ],
+   "_src": "src/cards/gear/0474_eye_of_the_herald.cpp:19-21; src/engine/trigger_manager.cpp:223-245"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-153-221",
+  "class_file": "src/cards/gear/0474_eye_of_the_herald.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+   "new term: equipped_with_self (filter: the unit this gear is attached to)",
+   "new term: trigger event 'move' (TriggerType::WhenIMove, any move, not only to a battlefield)",
+   "new term: trigger subject 'equipped_unit' (the trigger fires on the unit this gear is attached to)",
+   "token zone 'here' = the equipped unit's location; nothing if it has left the board (code)"
+  ]
+ }
+}

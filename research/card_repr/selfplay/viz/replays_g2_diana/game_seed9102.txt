@@ -1,0 +1,315 @@
+game seed 9102   P1 = G2 (greedy)   P2 = G1 (greedy)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[NET] Keep hand
+        net: pick 94.9% | alt: Mull: Star-Crossed Sprite Fountain 3.1% | v +0.38
+~ P1 brings Abandoned Hall
+~ P2 brings Seat of Power
+~ P1 opening hand: Vex, Apathetic, Vex, Apathetic, Star-Crossed, Sprite Fountain
+~ P2 opening hand: Star-Crossed, Stupefy, Sprite Fountain, Gust
+  P1[NET] Mull: Star-Crossed Sprite Fountain
+        net: pick 97.2% | alt: Mull: Star-Crossed 1.7% | v -0.18
+~ P1 set aside Star-Crossed
+~ P1 set aside Sprite Fountain
+~ P1 drew replacement Ride the Wind
+~ P1 drew replacement Fizz, Trickster
+
+=== TURN 0 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 99.3% | alt: End Turn 0.7% | v +0.33
+  P2[NET] End Turn
+        net: pick 100.0% | alt: Play Sprite Fountain[G] -> Base 0.0% | v +0.29
+
+=== TURN 1 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 100.0% | alt: Play Diana, Lunari(3M) -> Base 0.0% | v -0.18
+  P1[NET] Play Diana, Lunari(3M) -> Base
+        net: pick 98.6% | alt: Play Tideturner(2M) -> Base 1.2% | v -0.20
+    ~ play Diana, Lunari (Unit, 3E)
+
+=== TURN 2 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Diana, Lunari(3M) -> Base
+        net: pick 84.6% | alt: Activate Scorn of the Moon 15.3% | v +0.35
+    ~ play Diana, Lunari (Unit, 3E)
+  P2[NET] Activate Scorn of the Moon
+        net: pick 100.0% | alt: End Turn 0.0% | v -0.09
+  P2[NET] End Turn
+        net: pick 99.9% | alt: Play Stupefy[S] @ Diana, Lunari 0.1% | v -0.16
+
+=== TURN 3 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 99.9% | alt: Play Vex, Apathetic(4M) -> Base 0.0% | v +0.07
+  P1[NET] Play Vex, Apathetic(4M) -> Base
+        net: pick 49.9% | alt: Play Vex, Apathetic(4M) -> Base 49.9% | v +0.07
+    ~ play Vex, Apathetic (Unit, 4E)
+  P1[NET] Move Diana, Lunari -> Abandoned Hall
+        net: pick 82.8% | alt: Move Diana, Lunari -> Seat of Power 17.2% | v +0.16
+    ~ move Diana, Lunari -> Abandoned Hall
+  P1[NET] Yes — Diana Lunari: pay [1] to Predict + reveal?
+        net: pick 100.0% | alt: No — Diana Lunari: pay [1] to Predict + reveal? 0.0% | v +0.24
+  P2[NET] Play Stupefy[S] @ Diana, Lunari
+        net: pick 72.9% | alt: Play Gust[S] 13.3% | v +0.11
+    ~ spell Stupefy targets=[Diana, Lunari(id=2)]
+    ~ effect: give Diana, Lunari -1 [M] this turn (min 1)
+  P1[NET] Choose: Eclipse@Deck
+        net: pick 98.1% | alt: Keep it 1.9% | v +0.35
+    ~ P1 conquers Abandoned Hall
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 0
+  P1[NET] Hide Switcheroo[S] @ Abandoned Hall
+        net: pick 72.1% | alt: Hide Tideturner(2M) @ Abandoned Hall 20.4% | v +0.34
+    ~ hide Switcheroo at Abandoned Hall by P1
+
+=== TURN 4 (P2, NET)   score P1 1 - P2 0 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 99.9% | alt: Play Fizz, Trickster(3M) -> Base 0.0% | v +0.19
+  P2[NET] Play Fizz, Trickster(3M) -> Base
+        net: pick 66.1% | alt: Play Sprite Fountain[G] -> Base 24.8% | v +0.12
+    ~ play Fizz, Trickster (Unit, 3E)
+  P2[NET] Play Sprite Fountain[G] -> Base
+        net: pick 64.6% | alt: Move Diana, Lunari -> Abandoned Hall 24.7% | v -0.04
+    ~ play Sprite Fountain (Gear, 2E)
+  P2[NET] Pass Priority
+        net: pick 99.2% | alt: Play Gust[S] 0.4% | v -0.30
+  P2[NET] Move Sprite -> Seat of Power
+        net: pick 21.2% | alt: Play Gust[S] 18.7% | v -0.19
+  P2[NET] Move no more units
+        net: pick 99.5% | alt: Choose: Diana, Lunari@Base 0.5% | v -0.22
+    ~ move Sprite -> Seat of Power
+  P2[NET] Pass Focus
+        net: pick 99.8% | alt: Play Gust[S] 0.1% | v -0.25
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 1
+  P2[NET] Pass Priority
+        net: pick 99.0% | alt: Play Gust[S] 0.5% | v -0.23
+  P2[NET] Move Diana, Lunari -> Abandoned Hall
+        net: pick 62.9% | alt: Play Gust[S] 17.2% | v -0.31
+    ~ move Diana, Lunari -> Abandoned Hall
+  P2[NET] Yes — Diana Lunari: pay [1] to Predict + reveal?
+        net: pick 99.2% | alt: No — Diana Lunari: pay [1] to Predict + reveal? 0.8% | v -0.25
+  P1[NET] Yes — Diana Lunari: pay [1] to Predict + reveal?
+        net: pick 90.3% | alt: No — Diana Lunari: pay [1] to Predict + reveal? 9.7% | v +0.55
+  P1[NET] Pass Priority
+        net: pick 99.9% | alt: Play Switcheroo[S] 0.1% | v +0.55
+  P2[NET] Pass Priority
+        net: pick 75.9% | alt: Play Gust[S] 12.0% | v -0.21
+  P1[NET] Choose: Traveling Merchant@Deck
+        net: pick 76.3% | alt: Keep it 23.7% | v +0.55
+  P2[NET] Pass Priority
+        net: pick 78.8% | alt: Play Gust[S] 10.6% | v -0.40
+  P1[NET] Pass Priority
+        net: pick 99.9% | alt: Play Switcheroo[S] 0.1% | v +0.65
+  P2[NET] Keep it
+        net: pick 99.6% | alt: Choose: Stupefy@Deck 0.4% | v -0.44
+  P2[NET] Play Stupefy[S] @ Diana, Lunari
+        net: pick 97.8% | alt: Play Gust[S] 0.8% | v -0.38
+    ~ spell Stupefy targets=[Diana, Lunari(id=2)]
+  P1[NET] Play Switcheroo[S]
+        net: pick 92.1% | alt: Pass Priority 7.9% | v +0.60
+  P1[NET] Choose: Diana, Lunari@BF
+        net: pick 92.1% | alt: Choose: Diana, Lunari@BF 7.9% | v +0.52
+  P1[NET] Yes — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 100.0% | alt: No — Abandoned Hall: give a unit here +1 [M] this turn? 0.0% | v +0.33
+    ~ effect: give Diana, Lunari 1 [M] this turn
+    ~ effect: give Diana, Lunari -1 [M] this turn (min 1)
+  P2[NET] No — Abandoned Hall: give a unit here +1 [M] this turn?
+        net: pick 100.0% | alt: Yes — Abandoned Hall: give a unit here +1 [M] this turn? 0.0% | v -0.07
+    ~ COMBAT at Abandoned Hall: P2 attacks [Diana, Lunari(3M)]  vs  P1 defends [Diana, Lunari(3M)]
+    ~ KILL Diana, Lunari (3M, dmg=3)
+    ~ KILL Diana, Lunari (3M, dmg=3)
+
+=== TURN 5 (P1, ISMCTS)   score P1 1 - P2 1 ===
+  P1[NET] Activate Scorn of the Moon
+        net: pick 98.9% | alt: Play Vex, Apathetic(4M) -> Base 1.1% | v +0.23
+  P1[NET] Play Vex, Apathetic(4M) -> Base
+        net: pick 99.7% | alt: Play Fizz, Trickster(3M) -> Base 0.2% | v +0.22
+    ~ play Vex, Apathetic (Unit, 4E)
+  P1[NET] Play Tideturner(2M) -> Base
+        net: pick 83.1% | alt: Move Vex, Apathetic -> Seat of Power 16.0% | v +0.36
+    ~ play Tideturner (Unit, 2E)
+  P1[NET] Move Vex, Apathetic -> Seat of Power
+        net: pick 91.1% | alt: Move Vex, Apathetic -> Abandoned Hall 8.9% | v +0.37
+    ~ move Vex, Apathetic -> Seat of Power
+    ~ COMBAT at Seat of Power: P1 attacks [Vex, Apathetic(4M)]  vs  P2 defends [Sprite(3M)]
+    ~ KILL Sprite (3M, dmg=4)
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 2 - P2 1
+
+=== TURN 6 (P2, NET)   score P1 2 - P2 1 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 99.9% | alt: Pass Priority 0.1% | v -0.42
+  P2[NET] Pass Priority
+        net: pick 100.0% | alt: Play Star-Crossed[S] 0.0% | v -0.47
+    ~ effect: kill Sprite Fountain
+  P2[NET] Pass Priority
+        net: pick 100.0% | alt: Play Star-Crossed[S] 0.0% | v -0.49
+  P2[NET] Pass Priority
+        net: pick 100.0% | alt: Play Star-Crossed[S] 0.0% | v -0.42
+    ~ effect: stun Sprite
+  P2[NET] Play Traveling Merchant(2M) -> Base
+        net: pick 99.2% | alt: Play Hwei, Brooding Painter(5M) -> Base 0.8% | v +0.12
+    ~ play Traveling Merchant (Unit, 2E)
+  P2[NET] Pass Priority
+        net: pick 100.0% | alt: Play Star-Crossed[S] 0.0% | v -0.04
+    ~ effect: stun Traveling Merchant
+  P2[NET] Move Fizz, Trickster -> Seat of Power
+        net: pick 81.2% | alt: Play Ride the Wind[S] 9.6% | v -0.04
+    ~ move Fizz, Trickster -> Seat of Power
+  P2[NET] Play Gust[S]
+        net: pick 43.2% | alt: Play Gust[S] 43.2% | v -0.23
+    ~ spell Gust targets=[]
+  P2[NET] Pass Priority
+        net: pick 86.3% | alt: Play Gust[S] 13.6% | v -0.18
+    ~ effect: bounce Fizz, Trickster to hand
+  P2[NET] Pass Focus
+        net: pick 52.2% | alt: Play Smoke Screen[S] @ Vex, Apathetic 38.8% | v -0.54
+  P2[NET] Play Fizz, Trickster(3M) -> Base
+        net: pick 99.9% | alt: End Turn 0.0% | v -0.56
+    ~ play Fizz, Trickster (Unit, 3E)
+    ~ effect: stun Fizz, Trickster
+
+=== TURN 7 (P1, ISMCTS)   score P1 2 - P2 1 ===
+    ~ SCORE P1 +1 (Hold Seat of Power)   -> P1 3 - P2 1
+  P1[NET] Play Hwei, Brooding Painter(5M) -> Base
+        net: pick 82.5% | alt: Activate Scorn of the Moon 12.9% | v +0.84
+    ~ play Hwei, Brooding Painter (Unit, 5E)
+  P1[NET] Activate Scorn of the Moon
+        net: pick 91.6% | alt: Play Fizz, Trickster(3M) -> Base 6.3% | v +0.86
+  P1[NET] Play Fizz, Trickster(3M) -> Base
+        net: pick 71.6% | alt: Move Vex, Apathetic -> Abandoned Hall 19.6% | v +0.87
+    ~ play Fizz, Trickster (Unit, 3E)
+  P1[NET] Move Vex, Apathetic -> Abandoned Hall
+        net: pick 72.2% | alt: Move Tideturner -> Abandoned Hall 27.0% | v +0.84
+  P1[NET] Move no more units
+        net: pick 82.8% | alt: Choose: Tideturner@Base 17.2% | v +0.84
+    ~ move Vex, Apathetic -> Abandoned Hall
+    ~ P1 conquers Abandoned Hall
+    ~ SCORE P1 +1 (Conquer)   -> P1 4 - P2 1
+  P1[NET] Move Vex, Apathetic -> Base
+        net: pick 38.5% | alt: Move Tideturner -> Abandoned Hall 36.3% | v +0.83
+    ~ move Vex, Apathetic -> Base(P1)
+  P1[NET] Move Tideturner -> Seat of Power
+        net: pick 88.7% | alt: Move Tideturner -> Abandoned Hall 8.5% | v +0.83
+    ~ move Tideturner -> Seat of Power
+
+=== TURN 8 (P2, NET)   score P1 4 - P2 1 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 99.8% | alt: Pass Priority 0.2% | v -0.73
+  P2[NET] Pass Priority
+        net: pick 97.4% | alt: Play Gust[S] 2.6% | v -0.76
+    ~ effect: kill Sprite
+  P2[NET] Play Traveling Merchant(2M) -> Base
+        net: pick 98.5% | alt: Play Hwei, Brooding Painter(5M) -> Base 1.3% | v -0.65
+    ~ play Traveling Merchant (Unit, 2E)
+  P2[NET] Pass Priority
+        net: pick 98.2% | alt: Play Gust[S] 1.8% | v -0.69
+    ~ effect: stun Traveling Merchant
+  P2[NET] Play Hwei, Brooding Painter(5M) -> Base
+        net: pick 70.7% | alt: Play Gust[S] 27.9% | v -0.69
+    ~ play Hwei, Brooding Painter (Unit, 5E)
+    ~ effect: stun Hwei, Brooding Painter
+  P2[NET] Move Fizz, Trickster -> Seat of Power
+        net: pick 55.7% | alt: Move Fizz, Trickster -> Abandoned Hall 28.7% | v -0.89
+  P2[NET] Move no more units
+        net: pick 100.0% | alt: Choose: Traveling Merchant@Base 0.0% | v -0.88
+    ~ move Fizz, Trickster -> Seat of Power
+    ~ COMBAT at Seat of Power: P2 attacks [Fizz, Trickster(3M)]  vs  P1 defends [Tideturner(2M)]
+    ~ KILL Tideturner (2M, dmg=3)
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 4 - P2 2
+  P2[NET] Move Traveling Merchant -> Abandoned Hall
+        net: pick 87.8% | alt: End Turn 12.1% | v -0.92
+    ~ move Traveling Merchant -> Abandoned Hall
+  P2[NET] Choose: Smoke Screen@Hand
+        net: pick 40.2% | alt: Choose: Ride the Wind@Hand 40.2% | v -0.87
+    ~ COMBAT at Abandoned Hall: P2 attacks [Traveling Merchant(2M)]  vs  P1 defends [Vex, Apathetic(4M)]
+    ~ KILL Traveling Merchant (2M, dmg=4)
+
+=== TURN 9 (P1, ISMCTS)   score P1 4 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Abandoned Hall)   -> P1 5 - P2 2
+  P1[NET] Play Ravenbloom Student(2M) -> Base
+        net: pick 51.8% | alt: Move Hwei, Brooding Painter -> Seat of Power 20.4% | v +0.92
+    ~ play Ravenbloom Student (Unit, 2E)
+  P1[NET] Move Hwei, Brooding Painter -> Seat of Power
+        net: pick 42.5% | alt: Activate Scorn of the Moon 27.6% | v +0.92
+  P1[NET] Choose: Vex, Apathetic@Base
+        net: pick 69.0% | alt: Move no more units 16.7% | v +0.91
+  P1[NET] Choose: Fizz, Trickster@Base
+        net: pick 65.0% | alt: Move no more units 35.0% | v +0.91
+    ~ move Hwei, Brooding Painter -> Seat of Power
+    ~ move Vex, Apathetic -> Seat of Power
+    ~ move Fizz, Trickster -> Seat of Power
+  P1[NET] Pass Priority
+        net: pick 66.4% | alt: Activate Scorn of the Moon 33.5% | v +0.93
+  P1[NET] Choose: Traveling Merchant@Hand
+        net: pick 94.6% | alt: Choose: Ride the Wind@Hand 3.4% | v +0.94
+  P1[NET] Pass Priority
+        net: pick 65.3% | alt: Activate Scorn of the Moon 34.6% | v +0.93
+    ~ effect: give Hwei, Brooding Painter 3 [M] this turn
+  P1[NET] Pass Focus
+        net: pick 95.4% | alt: Activate Scorn of the Moon 4.5% | v +0.91
+    ~ COMBAT at Seat of Power: P1 attacks [Fizz, Trickster(3M), Hwei, Brooding Painter(8M), Vex, Apathetic(4M)]  vs  P2 defends [Fizz, Trickster(3M)]
+  P2[NET] Assign Damage: Fizz, Trickster(3)
+        net: pick 99.1% | alt: Assign Damage: Vex, Apathetic(3) 0.9% | v -0.98
+    ~ KILL Fizz, Trickster (3M, dmg=3)
+    ~ KILL Fizz, Trickster (3M, dmg=15)
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 6 - P2 2
+  P1[NET] Pass Priority
+        net: pick 91.5% | alt: Activate Scorn of the Moon 8.5% | v +0.84
+  P1[NET] Play Hwei, Brooding Painter(5M) -> Base
+        net: pick 65.5% | alt: Move Vex, Apathetic -> Base 14.9% | v +0.89
+    ~ play Hwei, Brooding Painter (Unit, 5E)
+  P1[NET] Move Vex, Apathetic -> Base
+        net: pick 68.1% | alt: Activate Scorn of the Moon 27.4% | v +0.91
+    ~ move Vex, Apathetic -> Base(P1)
+  P1[NET] Activate Scorn of the Moon
+        net: pick 89.7% | alt: End Turn 10.3% | v +0.92
+
+=== TURN 10 (P2, NET)   score P1 6 - P2 2 ===
+  P2[NET] Activate Scorn of the Moon
+        net: pick 99.7% | alt: Play Star-Crossed[S] 0.1% | v -0.81
+  P2[NET] Play Star-Crossed[S]
+        net: pick 22.4% | alt: Play Star-Crossed[S] 22.4% | v -0.82
+    ~ spell Star-Crossed targets=[]
+  P2[NET] Choose: Hwei, Brooding Painter@Base
+        net: pick 96.4% | alt: Choose: Traveling Merchant@Base 3.6% | v -0.85
+  P2[NET] Choose: Hwei, Brooding Painter@BF
+        net: pick 74.4% | alt: Choose: Vex, Apathetic@BF 20.7% | v -0.88
+  P2[NET] Pass Priority
+        net: pick 97.1% | alt: Play Star-Crossed[S] 2.9% | v -0.86
+    ~ effect: bounce Hwei, Brooding Painter to hand
+    ~ effect: bounce Hwei, Brooding Painter to hand
+  P2[NET] Play Hwei, Brooding Painter(5M) -> Base
+        net: pick 92.8% | alt: Play Star-Crossed[S] 2.9% | v -0.94
+    ~ play Hwei, Brooding Painter (Unit, 5E)
+    ~ effect: stun Hwei, Brooding Painter
+  P2[NET] Move Traveling Merchant -> Seat of Power
+        net: pick 70.8% | alt: End Turn 28.5% | v -0.99
+    ~ move Traveling Merchant -> Seat of Power
+  P2[NET] Choose: Ride the Wind@Hand
+        net: pick 41.8% | alt: Choose: Ride the Wind@Hand 41.8% | v -1.00
+  P2[NET] Play Gust[S]
+        net: pick 99.6% | alt: Pass Focus 0.4% | v -0.99
+    ~ spell Gust targets=[]
+    ~ effect: bounce Traveling Merchant to hand
+
+=== TURN 11 (P1, ISMCTS)   score P1 6 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Seat of Power)   -> P1 7 - P2 2
+  P1[NET] Move Hwei, Brooding Painter -> Abandoned Hall
+        net: pick 51.5% | alt: Play Hwei, Brooding Painter(5M) -> Base 14.5% | v +0.99
+  P1[NET] Move no more units
+        net: pick 87.8% | alt: Choose: Vex, Apathetic@Base 12.0% | v +0.99
+    ~ move Hwei, Brooding Painter -> Abandoned Hall
+  P1[NET] Activate Scorn of the Moon
+        net: pick 46.3% | alt: Pass Priority 30.4% | v +0.99
+  P1[NET] Pass Priority
+        net: pick 63.5% | alt: Play Star-Crossed[S] 20.1% | v +0.99
+  P1[NET] Choose: Hard Bargain@Hand
+        net: pick 30.3% | alt: Choose: Eclipse@Hand 21.1% | v +0.99
+  P1[NET] Pass Priority
+        net: pick 63.3% | alt: Play Star-Crossed[S] 20.3% | v +0.99
+  P1[NET] Pass Focus
+        net: pick 46.5% | alt: Play Rebuke[S] 10.4% | v +0.99
+
+GAME OVER: winner P1 (ISMCTS) score 8-2, 11 turns, 254 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

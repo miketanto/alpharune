@@ -1,0 +1,60 @@
+2026-11-20 17:12:27 === overnight.py start; deadline Sat Nov 21 03:12:00 2026; training stops Sat Nov 21 02:47:00 2026; args {'cmd': 'run', 'deadline': '03:12', 'out': 'league/e2_B', 'tag': 'e2b', 'member': '', 'main_updates': 40, 'exp_updates': 20, 'snapshot_every': 50, 'exp_max_updates': 60, 'p_osfp': 0.8, 'osfp_period': 163840, 'n_slots': 1, 'n_envs': 256, 'samples_per_update': 16384, 'gpu_mem_frac': 0.4, 'train_cores': '0-11', 'phase_max_min': 30, 'rate_every_min': 45, 'first_rate_min': 45, 'rate_games': 100, 'rate_procs': 4, 'no_ismcts': True, 'final_rate_min': 25, 'max_ckpts': 30, 'min_ram_mb': 1024, 'min_disk_gb': 5, 'min_gps': 40, 'slope_points': 5, 'stop_main_at': 500, 'no_rate': True, 'main_extra': '--search-buf /home/miketanto/e2buf/e2b --search-coef 1.0 --search-mb 256 --search-window 20000 --search-target cq --export-weights /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/e2b_main/gen_weights.pt --export-every 5', 'train_extra': '--search-holdout /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/e2/holdout.npz --eval-holdout-every 10'}
+2026-11-20 17:12:29 phase main: e2b_main updates 0->40 (max 30.0 min)
+2026-11-20 17:19:15 phase main done rc=0 updates 0->40 in 406s (10.2 s/update), games/s median 34.9 min 24.3  WARN below 40 games/s
+2026-11-20 17:19:15 exploiter target = main @40
+2026-11-20 17:19:15 phase exp: e2b_exp updates 0->20 (max 30.0 min)
+2026-11-20 17:22:58 phase exp done rc=0 updates 0->20 in 223s (11.1 s/update), games/s median 39.5 min 26.2  WARN below 40 games/s
+2026-11-20 17:22:58 phase main: e2b_main updates 40->80 (max 30.0 min)
+2026-11-20 17:29:46 phase main done rc=0 updates 40->80 in 407s (10.2 s/update), games/s median 34.2 min 26.6  WARN below 40 games/s
+2026-11-20 17:29:46 exploiter target = main @80
+2026-11-20 17:29:46 phase exp: e2b_exp updates 20->40 (max 30.0 min)
+2026-11-20 17:33:30 phase exp done rc=0 updates 20->40 in 224s (11.2 s/update), games/s median 39.1 min 27.4  WARN below 40 games/s
+2026-11-20 17:33:30 phase main: e2b_main updates 80->120 (max 30.0 min)
+2026-11-20 17:40:25 phase main done rc=0 updates 80->120 in 415s (10.4 s/update), games/s median 33.4 min 25.7  WARN below 40 games/s
+2026-11-20 17:40:25 exploiter target = main @120
+2026-11-20 17:40:25 phase exp: e2b_exp updates 40->60 (max 30.0 min)
+2026-11-20 17:44:11 phase exp done rc=0 updates 40->60 in 226s (11.3 s/update), games/s median 38.2 min 26.7  WARN below 40 games/s
+2026-11-20 17:44:11 phase main: e2b_main updates 120->160 (max 30.0 min)
+2026-11-20 17:51:10 phase main done rc=0 updates 120->160 in 418s (10.5 s/update), games/s median 32.1 min 23.6  WARN below 40 games/s
+2026-11-20 17:51:10 exploiter target = main @160
+2026-11-20 17:51:10 phase exp: e2b_exp updates 60->80 (max 30.0 min)
+2026-11-20 17:54:53 phase exp done rc=0 updates 60->80 in 223s (11.1 s/update), games/s median 38.4 min 27.2  WARN below 40 games/s
+2026-11-20 17:54:53 phase main: e2b_main updates 160->200 (max 30.0 min)
+2026-11-20 18:02:01 phase main done rc=0 updates 160->200 in 428s (10.7 s/update), games/s median 31.6 min 22.8  WARN below 40 games/s
+2026-11-20 18:02:01 exploiter target = main @200
+2026-11-20 18:02:01 phase exp: e2b_exp updates 80->100 (max 30.0 min)
+2026-11-20 18:05:43 phase exp done rc=0 updates 80->100 in 222s (11.1 s/update), games/s median 38.0 min 27.9  WARN below 40 games/s
+2026-11-20 18:05:43 phase main: e2b_main updates 200->240 (max 30.0 min)
+2026-11-20 18:12:50 phase main done rc=0 updates 200->240 in 427s (10.7 s/update), games/s median 30.3 min 22.1  WARN below 40 games/s
+2026-11-20 18:12:50 exploiter target = main @240
+2026-11-20 18:12:50 phase exp: e2b_exp updates 100->120 (max 30.0 min)
+2026-11-20 18:16:35 phase exp done rc=0 updates 100->120 in 225s (11.2 s/update), games/s median 37.8 min 27.0  WARN below 40 games/s
+2026-11-20 18:16:35 phase main: e2b_main updates 240->280 (max 30.0 min)
+2026-11-20 18:23:50 phase main done rc=0 updates 240->280 in 435s (10.9 s/update), games/s median 30.4 min 22.4  WARN below 40 games/s
+2026-11-20 18:23:50 exploiter target = main @280
+2026-11-20 18:23:50 phase exp: e2b_exp updates 120->140 (max 30.0 min)
+2026-11-20 18:27:34 phase exp done rc=0 updates 120->140 in 223s (11.2 s/update), games/s median 37.5 min 26.7  WARN below 40 games/s
+2026-11-20 18:27:34 phase main: e2b_main updates 280->320 (max 30.0 min)
+2026-11-20 18:34:53 phase main done rc=0 updates 280->320 in 439s (11.0 s/update), games/s median 29.6 min 22.7  WARN below 40 games/s
+2026-11-20 18:34:53 exploiter target = main @320
+2026-11-20 18:34:53 phase exp: e2b_exp updates 140->160 (max 30.0 min)
+2026-11-20 18:38:36 phase exp done rc=0 updates 140->160 in 223s (11.2 s/update), games/s median 38.4 min 27.6  WARN below 40 games/s
+2026-11-20 18:38:36 phase main: e2b_main updates 320->360 (max 30.0 min)
+2026-11-20 18:45:52 phase main done rc=0 updates 320->360 in 436s (10.9 s/update), games/s median 29.9 min 23.2  WARN below 40 games/s
+2026-11-20 18:45:52 exploiter target = main @360
+2026-11-20 18:45:52 phase exp: e2b_exp updates 160->180 (max 30.0 min)
+2026-11-20 18:49:35 phase exp done rc=0 updates 160->180 in 223s (11.1 s/update), games/s median 37.9 min 27.1  WARN below 40 games/s
+2026-11-20 18:49:35 phase main: e2b_main updates 360->400 (max 30.0 min)
+2026-11-20 18:57:03 phase main done rc=0 updates 360->400 in 448s (11.2 s/update), games/s median 28.8 min 21.9  WARN below 40 games/s
+2026-11-20 18:57:03 exploiter target = main @400
+2026-11-20 18:57:03 phase exp: e2b_exp updates 180->200 (max 30.0 min)
+2026-11-20 19:00:47 phase exp done rc=0 updates 180->200 in 223s (11.2 s/update), games/s median 37.7 min 27.2  WARN below 40 games/s
+2026-11-20 19:00:47 phase main: e2b_main updates 400->440 (max 30.0 min)
+2026-11-20 19:08:24 phase main done rc=0 updates 400->440 in 457s (11.4 s/update), games/s median 28.6 min 23.4  WARN below 40 games/s
+2026-11-20 19:08:24 exploiter target = main @440
+2026-11-20 19:08:24 phase exp: e2b_exp updates 200->220 (max 30.0 min)
+2026-11-20 19:12:09 phase exp done rc=0 updates 200->220 in 225s (11.2 s/update), games/s median 37.6 min 26.5  WARN below 40 games/s
+2026-11-20 19:12:09 phase main: e2b_main updates 440->480 (max 30.0 min)
+2026-11-20 19:19:59 phase main done rc=0 updates 440->480 in 470s (11.8 s/update), games/s median 27.7 min 21.4  WARN below 40 games/s
+2026-11-20 19:19:59 exploiter target = main @480
+2026-11-20 19:20:00 phase exp: e2b_exp updates 220->240 (max 30.0 min)

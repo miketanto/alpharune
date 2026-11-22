@@ -1,0 +1,249 @@
+{
+ "players": {
+  "G": {
+   "path": "runs/g1smoke_main/league_00002.pt",
+   "update": 2
+  },
+  "S_R": {
+   "path": "runs/ov_main/league_02080.pt",
+   "update": 2080
+  },
+  "S_A": {
+   "path": "runs/az_main/league_00300.pt",
+   "update": 300
+  },
+  "OV": {
+   "path": "runs/ov_main/league_02080.pt",
+   "update": 2080
+  },
+  "Gmid": {
+   "path": "runs/g1smoke_exp/league_00002.pt",
+   "update": 2
+  }
+ },
+ "s_rengar_choice": "FALLBACK: runs/e2a_main missing, using ov_main@2080 (no added updates: the comparison is NOT budget-matched)",
+ "games_per_pair": 16,
+ "p1": {
+  "G": {
+   "rengar": {
+    "cells": [
+     {
+      "ref": "S_R(rengar)",
+      "G": 0.375,
+      "G_ci": [
+       0.1848,
+       0.6136
+      ],
+      "S": 0.5,
+      "S_ci": [
+       0.5,
+       0.5
+      ],
+      "diff": -0.125,
+      "diff_se": 0.1094
+     },
+     {
+      "ref": "S_A(azir)",
+      "G": 0.75,
+      "G_ci": [
+       0.505,
+       0.8982
+      ],
+      "S": 0.6875,
+      "S_ci": [
+       0.444,
+       0.8584
+      ],
+      "diff": 0.0625,
+      "diff_se": 0.1457
+     }
+    ],
+    "diff": -0.0312,
+    "ci": [
+     -0.2098,
+     0.1473
+    ],
+    "pass_point": false,
+    "pass_ci_lo": false
+   },
+   "azir": {
+    "cells": [
+     {
+      "ref": "S_R(rengar)",
+      "G": 0.0,
+      "G_ci": [
+       0.0,
+       0.1936
+      ],
+      "S": 0.3125,
+      "S_ci": [
+       0.1416,
+       0.556
+      ],
+      "diff": -0.3125,
+      "diff_se": 0.1167
+     },
+     {
+      "ref": "S_A(azir)",
+      "G": 0.0,
+      "G_ci": [
+       0.0,
+       0.1936
+      ],
+      "S": 0.5,
+      "S_ci": [
+       0.5,
+       0.5
+      ],
+      "diff": -0.5,
+      "diff_se": 0.0494
+     }
+    ],
+    "diff": -0.4062,
+    "ci": [
+     -0.5304,
+     -0.2821
+    ],
+    "pass_point": false,
+    "pass_ci_lo": false
+   },
+   "mean_diff": -0.2187,
+   "worst": {
+    "deck": "azir",
+    "diff": -0.4062
+   },
+   "pass": false
+  },
+  "Gmid": {
+   "rengar": {
+    "cells": [
+     {
+      "ref": "S_R(rengar)",
+      "G": 0.3125,
+      "G_ci": [
+       0.1416,
+       0.556
+      ],
+      "S": 0.5,
+      "S_ci": [
+       0.5,
+       0.5
+      ],
+      "diff": -0.1875,
+      "diff_se": 0.1057
+     },
+     {
+      "ref": "S_A(azir)",
+      "G": 0.8125,
+      "G_ci": [
+       0.5699,
+       0.9341
+      ],
+      "S": 0.6875,
+      "S_ci": [
+       0.444,
+       0.8584
+      ],
+      "diff": 0.125,
+      "diff_se": 0.1407
+     }
+    ],
+    "diff": -0.0312,
+    "ci": [
+     -0.2037,
+     0.1412
+    ],
+    "pass_point": false,
+    "pass_ci_lo": false
+   },
+   "azir": {
+    "cells": [
+     {
+      "ref": "S_R(rengar)",
+      "G": 0.0,
+      "G_ci": [
+       0.0,
+       0.1936
+      ],
+      "S": 0.3125,
+      "S_ci": [
+       0.1416,
+       0.556
+      ],
+      "diff": -0.3125,
+      "diff_se": 0.1167
+     },
+     {
+      "ref": "S_A(azir)",
+      "G": 0.0,
+      "G_ci": [
+       0.0,
+       0.1936
+      ],
+      "S": 0.5,
+      "S_ci": [
+       0.5,
+       0.5
+      ],
+      "diff": -0.5,
+      "diff_se": 0.0494
+     }
+    ],
+    "diff": -0.4062,
+    "ci": [
+     -0.5304,
+     -0.2821
+    ],
+    "pass_point": false,
+    "pass_ci_lo": false
+   },
+   "mean_diff": -0.2187,
+   "worst": {
+    "deck": "azir",
+    "diff": -0.4062
+   },
+   "pass": false
+  }
+ },
+ "forgetting": {
+  "G": {
+   "rengar_mirror_vs_ov_main@2080": {
+    "wr": 0.375,
+    "ci": [
+     0.1848,
+     0.6136
+    ]
+   },
+   "azir_mirror_vs_az_main@300": {
+    "wr": 0.0,
+    "ci": [
+     0.0,
+     0.1936
+    ]
+   }
+  },
+  "Gmid": {
+   "rengar_mirror_vs_ov_main@2080": {
+    "wr": 0.3125,
+    "ci": [
+     0.1416,
+     0.556
+    ]
+   },
+   "azir_mirror_vs_az_main@300": {
+    "wr": 0.0,
+    "ci": [
+     0.0,
+     0.1936
+    ]
+   }
+  }
+ },
+ "context_S_R_vs_OV": {
+  "wr": 0.5,
+  "ci": [
+   0.5,
+   0.5
+  ]
+ }
+}

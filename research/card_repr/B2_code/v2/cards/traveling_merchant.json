@@ -1,0 +1,73 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0185_traveling_merchant.cpp:35",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0185_traveling_merchant.cpp:36",
+   "energy": "src/cards/units/0185_traveling_merchant.cpp:38",
+   "power": "default 0",
+   "might": "src/cards/units/0185_traveling_merchant.cpp:39"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "move",
+    "subject": "self",
+    "_src": "src/cards/units/0185_traveling_merchant.cpp:23"
+   },
+   "effects": [
+    {
+     "verb": "Discard",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "_src": "src/cards/units/0185_traveling_merchant.cpp:20"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0185_traveling_merchant.cpp:20"
+     },
+     "_src": "src/cards/units/0185_traveling_merchant.cpp:20"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0185_traveling_merchant.cpp:21"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0185_traveling_merchant.cpp:21"
+     },
+     "_src": "src/cards/units/0185_traveling_merchant.cpp:21"
+    }
+   ],
+   "_src": "src/cards/units/0185_traveling_merchant.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-185-298",
+  "class_file": "src/cards/units/0185_traveling_merchant.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event move",
+   "new term: verb Discard"
+  ]
+ }
+}

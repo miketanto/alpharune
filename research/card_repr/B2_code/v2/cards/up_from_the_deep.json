@@ -1,0 +1,89 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0887_up_from_the_deep.cpp:45",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0887_up_from_the_deep.cpp:46",
+   "energy": "src/cards/spells/0887_up_from_the_deep.cpp:47",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "flow",
+   "_src": "src/cards/spells/0887_up_from_the_deep.cpp:49"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 3,
+    "_src": "src/cards/spells/0887_up_from_the_deep.cpp:33"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:8388"
+     },
+     "after": "resolve",
+     "_src": "src/engine/game_engine.cpp:8388"
+    }
+   ],
+   "_src": "src/cards/spells/0887_up_from_the_deep.cpp:33; src/engine/game_engine.cpp:8382-8392 (trash replay grant, banish_after)"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0887_up_from_the_deep.cpp:29-30; src/cards/card_helpers.h:1378-1406"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/spells/0887_up_from_the_deep.cpp:30"
+     },
+     "token": {
+      "type": "unit",
+      "might": 1,
+      "tag": "bilgewater",
+      "_src": "src/cards/spells/0887_up_from_the_deep.cpp:25-27"
+     },
+     "dest": "base_or_controlled_battlefield",
+     "_src": "src/cards/spells/0887_up_from_the_deep.cpp:24-30; src/cards/card_helpers.h:1466-1496"
+    }
+   ],
+   "_src": "src/cards/spells/0887_up_from_the_deep.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-100-166",
+  "class_file": "src/cards/spells/0887_up_from_the_deep.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: dest base_or_controlled_battlefield (each token's location chosen by you as it is played: your base or a battlefield you control)",
+   "token unit (1 Might, tag bilgewater) has no standalone token graph here"
+  ]
+ }
+}

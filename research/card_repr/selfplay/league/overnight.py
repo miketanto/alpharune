@@ -224,6 +224,10 @@ def train_phase(a, P, log, which, n_upd, max_min, seed):
     cmd += ['--deck', os.path.normpath(os.path.join(SP, '..', '..', '..', 'decks', os.environ.get('RB_DECK', 'rengar') + '.txt'))]
     if cur == 0:
         cmd += ['--init', INIT]
+    if which == 'main' and a.main_extra:          # E2: e.g. the search-teacher options (main agent only)
+        cmd += a.main_extra.split()
+    if a.train_extra:                             # both roles (e.g. --search-holdout)
+        cmd += a.train_extra.split()
     env = dict(os.environ, PYTORCH_CUDA_ALLOC_CONF='expandable_segments:True', LEAGUE_MODEL='live')
     lp = os.path.join(P['out'], f'train_{which}.log')
     log(f'phase {which}: {run} updates {cur}->{target} (max {max_min:.1f} min)')
@@ -604,7 +608,7 @@ def run(a):
     st['last_rate_t'] = time.time() - a.rate_every_min * 60 + a.first_rate_min * 60
 
     # baseline / start rating right away (cf_B2 = the main agent at update 0)
-    if not any(r['member'] == BASE_B2 for r in read_csv(P['tl'])):
+    if not a.no_rate and not any(r['member'] == BASE_B2 for r in read_csv(P['tl'])):
         rate_p = STATE['rate'] = start_rating(a, P, log, BASE_B2); rate_member = BASE_B2
 
     while not STATE['stop'] and time.time() < stop_train:
@@ -615,7 +619,7 @@ def run(a):
                 if rate_p.returncode != 0:
                     log('ERROR rating cycle failed; tail of rate.log:\n' + tail(os.path.join(P['out'], 'rate.log'), 15))
                 rate_p = STATE['rate'] = None
-            if rate_p is None and time.time() - st['last_rate_t'] >= a.rate_every_min * 60:
+            if not a.no_rate and rate_p is None and time.time() - st['last_rate_t'] >= a.rate_every_min * 60:
                 m = newest_main_snapshot(P)
                 if m and m not in st['rated']:
                     rate_p = STATE['rate'] = start_rating(a, P, log, m); rate_member = m
@@ -635,6 +639,13 @@ def run(a):
                     jsave(P['state'], st); continue
                 copy_target(P, log)
             n_upd = a.main_updates if which == 'main' else a.exp_updates
+            if a.stop_main_at:                    # E2: a fixed number of main updates
+                left_main = a.stop_main_at - run_latest_update(P['main_run'])
+                if left_main <= 0:
+                    log(f'main reached {a.stop_main_at} updates: stopping')
+                    break
+                if which == 'main':
+                    n_upd = min(n_upd, left_main)
             left = (stop_train - time.time()) / 60
             if left < 1.0:
                 break
@@ -649,7 +660,7 @@ def run(a):
             time.sleep(30)
 
     # ---- final rating of the newest main snapshot (bounded by the deadline), then the summary
-    if not STATE['stop']:
+    if not STATE['stop'] and not a.no_rate:
         if rate_p is not None and rate_p.poll() is None:
             log(f'waiting for the running rating cycle ({rate_member})')
             while rate_p.poll() is None and time.time() < deadline - 60:
@@ -701,6 +712,11 @@ def main():
     ap.add_argument('--min-disk-gb', type=float, default=5)
     ap.add_argument('--min-gps', type=float, default=40)
     ap.add_argument('--slope-points', type=int, default=5)
+    # E2 (research/card_repr/e2): fixed-length arms
+    ap.add_argument('--stop-main-at', type=int, default=0, help='stop once the main agent has this many updates')
+    ap.add_argument('--no-rate', action='store_true', help='no rating cycles at all')
+    ap.add_argument('--main-extra', default='', help='extra selfplay.py options for the main agent only')
+    ap.add_argument('--train-extra', default='', help='extra selfplay.py options for both roles')
     a = ap.parse_args()
     if a.cmd == 'run':
         run(a)

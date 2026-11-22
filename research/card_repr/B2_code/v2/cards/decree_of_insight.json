@@ -1,0 +1,83 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0848_decree_of_insight.cpp:56",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0848_decree_of_insight.cpp:57",
+   "energy": "src/cards/spells/0848_decree_of_insight.cpp:58",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0848_decree_of_insight.cpp:60"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "IgnoreCost",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "_src": "src/cards/spells/0848_decree_of_insight.cpp:24"
+     },
+     "keyword": "deflect",
+     "_src": "src/cards/spells/0848_decree_of_insight.cpp:18-24"
+    }
+   ],
+   "_src": "src/cards/spells/0848_decree_of_insight.cpp:24"
+  },
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "domain",
+        "v": "body",
+        "_src": "src/cards/spells/0848_decree_of_insight.cpp:35"
+       }
+      ],
+      "_src": "src/cards/spells/0848_decree_of_insight.cpp:28-37"
+     },
+     "amount": {
+      "n": -5,
+      "_src": "src/cards/spells/0848_decree_of_insight.cpp:43"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0848_decree_of_insight.cpp:43"
+    }
+   ],
+   "_src": "src/cards/spells/0848_decree_of_insight.cpp:39"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-061-166",
+  "class_file": "src/cards/spells/0848_decree_of_insight.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: verb IgnoreCost (keyword deflect: Deflect's additional cost is not paid when this spell chooses a unit)"
+  ]
+ }
+}

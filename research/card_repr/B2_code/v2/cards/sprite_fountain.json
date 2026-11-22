@@ -1,0 +1,116 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "mind": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0640_sprite_fountain.cpp:44",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0640_sprite_fountain.cpp:45",
+   "energy": "src/cards/gear/0640_sprite_fountain.cpp:46",
+   "power": "src/cards/gear/0640_sprite_fountain.cpp:47",
+   "power_by_domain": "src/cards/gear/0640_sprite_fountain.cpp:47 x src/cards/gear/0640_sprite_fountain.cpp:45; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "deathknell",
+   "_src": "src/cards/gear/0640_sprite_fountain.cpp:49"
+  },
+  {
+   "kw": "temporary",
+   "_src": "src/cards/gear/0640_sprite_fountain.cpp:50"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/gear/0640_sprite_fountain.cpp:19-20"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1,
+      "_src": "src/cards/gear/0640_sprite_fountain.cpp:29"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/gear/0640_sprite_fountain.cpp:27"
+     },
+     "token": {
+      "type": "unit",
+      "might": 3,
+      "tag": "fae",
+      "keywords": [
+       "temporary"
+      ],
+      "enter_ready": true,
+      "_src": "src/cards/gear/0640_sprite_fountain.cpp:26-30"
+     },
+     "_src": "src/cards/gear/0640_sprite_fountain.cpp:27-30"
+    }
+   ],
+   "_src": "src/cards/gear/0640_sprite_fountain.cpp:19-20"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "die",
+    "subject": "self",
+    "_src": "src/cards/gear/0640_sprite_fountain.cpp:19-20"
+   },
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1,
+      "_src": "src/cards/gear/0640_sprite_fountain.cpp:29"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/gear/0640_sprite_fountain.cpp:27"
+     },
+     "token": {
+      "type": "unit",
+      "might": 3,
+      "tag": "fae",
+      "keywords": [
+       "temporary"
+      ],
+      "enter_ready": true,
+      "_src": "src/cards/gear/0640_sprite_fountain.cpp:26-30"
+     },
+     "_src": "src/cards/gear/0640_sprite_fountain.cpp:27-30"
+    }
+   ],
+   "_src": "src/cards/gear/0640_sprite_fountain.cpp:19-20"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-078-219",
+  "class_file": "src/cards/gear/0640_sprite_fountain.cpp",
+  "source": "engine_code",
+  "flags": [
+   "[Temporary] on the gear (kill at the start of its controller's Beginning Phase, trigger_manager.cpp:520-545) is engine-implemented and kept as keyword only: extract.build_class has no expansion for it",
+   "token extras keywords/enter_ready (createToken arg5 / arg7=true) are B2 schema extensions"
+  ]
+ }
+}

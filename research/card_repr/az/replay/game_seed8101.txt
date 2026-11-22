@@ -1,0 +1,516 @@
+game seed 8101   P1 = search N=200 (AZ+B2 @1900)   P2 = network greedy (AZ+B2 @1900)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P2[NET] Mull: Sabotage
+        net: pick 34.1% | v +0.49
+~ P1 brings Seat of Power
+~ P2 brings Seat of Power
+~ P1 opening hand: Eye of the Herald, Guards!, B.F. Sword, Brutalizer
+~ P2 opening hand: Sabotage, Pit Rookie, Noxus Hopeful, Ferrous Forerunner
+~ P2 set aside Sabotage
+~ P2 drew replacement Kai'Sa, Survivor
+  P1[NET] Keep hand
+        net: pick 38.7% | alt: Mull: Guards! 11.6% | v -0.33
+
+=== TURN 0 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Pit Rookie(2M) -> Base
+        net: pick 71.1% | v +0.62
+    ~ play Pit Rookie (Unit, 2E)
+  P2[NET] Order — Pridestalker (Pit Rookie)
+        net: pick 62.1% | v +0.68
+    ~ effect: give Pit Rookie 1 [M] this turn
+
+=== TURN 1 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Play Eye of the Herald[G] -> Base
+        net: pick 34.7% | alt: Play Brutalizer[G] -> Base 34.7% | v -0.19
+    ~ play Eye of the Herald (Gear, 1E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 90.5% | alt: End Turn 3.5% | v -0.28
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 80.9% | alt: No — Weaponmaster: equip an Equipment to me? 19.1% | v -0.13
+
+=== TURN 2 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 29.3% | v +0.34
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: Pit Rookie@Base
+        net: pick 40.4% | v +0.51
+    ~ effect: give Pit Rookie 1 [M] this turn
+  P2[NET] Move Pit Rookie -> Seat of Power (P1's)
+        net: pick 43.7% | v +0.39
+    ~ move Pit Rookie -> Seat of Power
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 0 - P2 1
+
+=== TURN 3 (P1, ISMCTS)   score P1 0 - P2 1 ===
+  P1[NET] Play B.F. Sword[G] -> Base
+        net: pick 39.2% | alt: Play B.F. Sword[G] -> Base 35.2% | v +0.07
+    ~ play B.F. Sword (Gear, 4E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 53.3% | alt: Activate B.F. Sword @ Sand Soldier 39.2% | v +0.22
+  P1[NET] No — Weaponmaster: equip an Equipment to me?
+        net: pick 55.3% | alt: Yes — Weaponmaster: equip an Equipment to me? 44.7% | v +0.23
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 77.4% | alt: Move Sand Soldier -> Seat of Power (P1's) 13.1% | v +0.29
+  P1[NET] Move Sand Soldier -> Seat of Power (P1's)
+        net: pick 96.0% | alt: Move Sand Soldier -> Seat of Power (P2's) 3.5% | v +0.19
+    ~ move Sand Soldier -> Seat of Power
+    ~ COMBAT at Seat of Power: P1 attacks [Recruit(1M), Sand Soldier(5M)]  vs  P2 defends [Pit Rookie(2M)]
+  P2[NET] Assign Damage: Recruit(1), Sand Soldier(1)
+        net: pick 66.4% | v +0.41
+    ~ KILL Recruit (1M, dmg=1)
+    ~ KILL Pit Rookie (2M, dmg=6)
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 1
+  P1[NET] Hide Guards![S] @ Seat of Power (P1's)
+        net: pick 62.3% | alt: End Turn 37.7% | v +0.28
+    ~ hide Guards! at Seat of Power by P1
+
+=== TURN 4 (P2, NET)   score P1 1 - P2 1 ===
+  P2[NET] Play Ferrous Forerunner(6M) -> Base
+        net: pick 45.7% | v +0.09
+    ~ play Ferrous Forerunner (Unit, 6E)
+  P2[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 56.3% | v +0.08
+  P1[NET] Pass Priority
+        net: pick 84.4% | alt: Play Guards![S] 15.6% | v +0.01
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P2[NET] Move Kai'Sa, Survivor -> Seat of Power (P2's)
+        net: pick 54.7% | v +0.08
+    ~ move Kai'Sa, Survivor -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 91.0% | alt: Play Guards![S] 9.0% | v +0.14
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P2[NET] Order — Kai'Sa, Survivor
+        net: pick 55.8% | v +0.47
+  P1[NET] Pass Priority
+        net: pick 90.5% | alt: Play Guards![S] 9.5% | v -0.10
+  P1[NET] Pass Priority
+        net: pick 84.4% | alt: Play Guards![S] 15.6% | v +0.00
+
+=== TURN 5 (P1, ISMCTS)   score P1 1 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Seat of Power)   -> P1 2 - P2 2
+  P1[NET] Play B.F. Sword[G] -> Base
+        net: pick 57.3% | alt: Play Hand Hammer[G] -> Base 17.6% | v -0.03
+    ~ play B.F. Sword (Gear, 4E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 75.9% | alt: Activate B.F. Sword @ Sand Soldier 16.6% | v -0.01
+  P1[NET] Pass Priority
+        net: pick 93.5% | alt: Play Guards![S] 6.5% | v +0.09
+  P1[NET] No — Weaponmaster: equip an Equipment to me?
+        net: pick 67.8% | alt: Yes — Weaponmaster: equip an Equipment to me? 32.2% | v +0.16
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 84.9% | alt: Activate B.F. Sword @ Sand Soldier 4.5% | v +0.18
+  P1[NET] Pass Priority
+        net: pick 87.4% | alt: Play Guards![S] 12.6% | v +0.16
+  P1[NET] Move Sand Soldier -> Seat of Power (P2's)
+        net: pick 86.9% | alt: Move Sand Soldier -> Base 8.0% | v +0.16
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 91.0% | alt: Play Guards![S] 9.0% | v +0.33
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(5M)]  vs  P2 defends [Kai'Sa, Survivor(4M)]
+    ~ KILL Kai'Sa, Survivor (4M, dmg=5)
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 3 - P2 2
+  P1[NET] Pass Priority
+        net: pick 89.9% | alt: Play Guards![S] 10.1% | v +0.41
+  P1[NET] Move Sand Soldier -> Base
+        net: pick 25.6% | alt: End Turn 25.1% | v +0.54
+    ~ move Sand Soldier -> Base(P1)
+  P1[NET] Pass Priority
+        net: pick 80.4% | alt: Play Guards![S] 19.6% | v +0.56
+  P1[NET] End Turn
+        net: pick 61.8% | alt: Hide Hidden Blade[S] @ Seat of Power (P2's) 19.6% | v +0.16
+
+=== TURN 6 (P2, NET)   score P1 3 - P2 2 ===
+  P2[NET] Play Kinkou Initiate(3M) -> Base
+        net: pick 27.2% | v -0.04
+    ~ play Kinkou Initiate (Unit, 3E)
+  P2[NET] Order — Pridestalker (Kinkou Initiate)
+        net: pick 55.9% | v +0.09
+  P2[NET] Choose: Ferrous Forerunner@Base
+        net: pick 30.4% | v -0.13
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] Move Ferrous Forerunner -> Seat of Power (P2's)
+        net: pick 29.7% | v -0.19
+    ~ move Ferrous Forerunner -> Seat of Power
+  P2[NET] Pass Focus
+        net: pick 68.0% | v -0.16
+    ~ COMBAT at Seat of Power: P2 attacks [Ferrous Forerunner(7M)]  vs  P1 defends [Sand Soldier(5M)]
+    ~ KILL Sand Soldier (5M, dmg=7)
+    ~ effect: unattach B.F. Sword
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 3 - P2 3
+  P2[NET] Pass Priority
+        net: pick 83.5% | v -0.06
+  P2[NET] Play Noxus Hopeful(4M) -> Base
+        net: pick 24.1% | v +0.27
+    ~ play Noxus Hopeful (Unit, 4E)
+  P2[NET] Choose: Ferrous Forerunner@BF
+        net: pick 19.5% | v +0.18
+    ~ effect: give Ferrous Forerunner 1 [M] this turn
+  P2[NET] Play Noxus Hopeful(4M) -> Base
+        net: pick 41.0% | v +0.14
+    ~ play Noxus Hopeful (Unit, 4E)
+  P2[NET] Choose: Noxus Hopeful@Base
+        net: pick 16.3% | v +0.33
+    ~ effect: give Noxus Hopeful 1 [M] this turn
+
+=== TURN 7 (P1, ISMCTS)   score P1 3 - P2 3 ===
+  P1[NET] Play Brutalizer[G] -> Base
+        net: pick 22.1% | alt: Play Hand Hammer[G] -> Base 16.1% | v +0.28
+    ~ play Brutalizer (Gear, 2E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 39.2% | alt: Activate Brutalizer @ Sand Soldier 9.5% | v +0.21
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 83.9% | alt: No — Weaponmaster: equip an Equipment to me? 16.1% | v +0.28
+  P1[NET] Choose: Brutalizer@Base
+        net: pick 51.8% | alt: Choose: B.F. Sword@Base 30.7% | v +0.41
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 40.7% | alt: Move Sand Soldier -> Seat of Power (P1's) 16.6% | v +0.17
+  P1[NET] Move Sand Soldier -> Seat of Power (P2's)
+        net: pick 81.9% | alt: Play Hand Hammer[G] -> Base 6.0% | v +0.16
+  P1[NET] Move no more units
+        net: pick 88.9% | alt: Choose: Recruit@Base 6.0% | v +0.19
+    ~ move Sand Soldier -> Seat of Power
+    ~ COMBAT at Seat of Power: P1 attacks [Recruit(1M), Sand Soldier(8M)]  vs  P2 defends [Ferrous Forerunner(6M)]
+  P2[NET] Assign Damage: Recruit(1), Sand Soldier(5)
+        net: pick 55.7% | v +0.32
+    ~ KILL Recruit (1M, dmg=1)
+    ~ KILL Ferrous Forerunner (6M, dmg=9)
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 15.3% | v -0.16
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 15.6% | v -0.10
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 4 - P2 3
+  P1[NET] Move Sand Soldier -> Seat of Power (P1's)
+        net: pick 29.1% | alt: Hide Back Off[S] @ Seat of Power (P2's) 21.6% | v +0.50
+  P1[NET] Move no more units
+        net: pick 85.4% | alt: Choose: Recruit@Base 14.6% | v +0.50
+    ~ move Sand Soldier -> Seat of Power
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 5 - P2 3
+  P1[NET] End Turn
+        net: pick 21.1% | alt: Play Brutalizer[G] -> Base 11.6% | v +0.37
+
+=== TURN 8 (P2, NET)   score P1 5 - P2 3 ===
+  P2[NET] Play First Mate(3M) -> Base
+        net: pick 12.6% | v -0.37
+    ~ play First Mate (Unit, 3E)
+  P2[NET] Order — Pridestalker (First Mate)
+        net: pick 63.0% | v -0.35
+  P2[NET] Choose: Noxus Hopeful@Base
+        net: pick 18.4% | v -0.59
+  P2[NET] Choose: Sand Soldier@BF
+        net: pick 24.6% | v -0.58
+  P2[NET] Pass Priority
+        net: pick 71.0% | v -0.60
+  P2[NET] Pass Priority
+        net: pick 74.1% | v -0.71
+    ~ effect: give Noxus Hopeful 1 [M] this turn
+  P2[NET] Move Noxus Hopeful -> Seat of Power (P2's)
+        net: pick 15.2% | v -0.61
+  P2[NET] Move no more units
+        net: pick 48.1% | v -0.59
+    ~ move Noxus Hopeful -> Seat of Power
+  P2[NET] Play Nidalee, Cat Form(4M) -> Seat of Power (P2's)
+        net: pick 70.9% | v -0.64
+    ~ play Nidalee, Cat Form (Unit, 3E)
+  P2[NET] Choose: Nidalee, Cat Form@BF
+        net: pick 62.9% | v -0.30
+    ~ effect: give Nidalee, Cat Form 1 [M] this turn
+  P2[NET] Pass Focus
+        net: pick 65.7% | v -0.17
+    ~ COMBAT at Seat of Power: P2 attacks [Nidalee, Cat Form(5M), Noxus Hopeful(5M)]  vs  P1 defends [Sand Soldier(8M)]
+  P1[NET] Assign Damage: Nidalee, Cat Form(5), Noxus Hopeful(3)
+        net: pick 62.3% | alt: Assign Damage: Noxus Hopeful(5), Nidalee, Cat Form(3) 37.7% | v +0.11
+    ~ KILL Nidalee, Cat Form (5M, dmg=5)
+    ~ KILL Sand Soldier (8M, dmg=10)
+    ~ effect: unattach Eye of the Herald
+    ~ effect: unattach B.F. Sword
+    ~ effect: unattach B.F. Sword
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 5 - P2 4
+  P2[NET] Move Noxus Hopeful -> Seat of Power (P1's)
+        net: pick 21.4% | v +0.04
+  P2[NET] Move no more units
+        net: pick 32.4% | v +0.11
+    ~ move Noxus Hopeful -> Seat of Power
+  P2[NET] Pass Focus
+        net: pick 93.2% | v +0.07
+    ~ COMBAT at Seat of Power: P2 attacks [Noxus Hopeful(4M)]  vs  P1 defends [Sand Soldier(2M)]
+    ~ KILL Sand Soldier (2M, dmg=4)
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 5 - P2 5
+  P2[NET] Play Irresistible Faefolk(1M) -> Base
+        net: pick 19.2% | v -0.03
+    ~ play Irresistible Faefolk (Unit, 2E)
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 14.5% | v +0.06
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[NET] Move Mech -> Seat of Power (P1's)
+        net: pick 14.7% | v -0.15
+  P2[NET] Move no more units
+        net: pick 45.5% | v +0.30
+    ~ move Mech -> Seat of Power
+  P2[NET] Move Mech -> Seat of Power (P1's)
+        net: pick 20.1% | v +0.20
+  P2[NET] Move no more units
+        net: pick 71.3% | v +0.15
+    ~ move Mech -> Seat of Power
+  P2[NET] End Turn
+        net: pick 28.7% | v +0.39
+
+=== TURN 9 (P1, ISMCTS)   score P1 5 - P2 5 ===
+  P1[NET] Play Brutalizer[G] -> Base
+        net: pick 24.1% | alt: Play Hand Hammer[G] -> Base 13.1% | v -0.20
+    ~ play Brutalizer (Gear, 2E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 31.7% | alt: Activate Brutalizer @ Sand Soldier 22.6% | v -0.13
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 75.4% | alt: No — Weaponmaster: equip an Equipment to me? 24.6% | v -0.14
+  P1[NET] Choose: B.F. Sword@Base
+        net: pick 28.1% | alt: Choose: B.F. Sword@Base 21.1% | v +0.03
+  P1[NET] Activate Brutalizer @ Sand Soldier
+        net: pick 50.8% | alt: Activate B.F. Sword @ Sand Soldier 12.6% | v -0.28
+  P1[NET] Activate B.F. Sword @ Recruit
+        net: pick 40.2% | alt: Move Sand Soldier -> Seat of Power (P2's) 10.1% | v -0.01
+  P1[NET] Move Sand Soldier -> Seat of Power (P2's)
+        net: pick 55.3% | alt: Play Hand Hammer[G] -> Base 13.6% | v +0.17
+  P1[NET] Move no more units
+        net: pick 89.9% | alt: Choose: Recruit@Base 10.1% | v +0.20
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 81.9% | alt: Play Back Off[S] 18.1% | v -0.07
+  P2[NET] Play Punch First[S]
+        net: pick 59.3% | v +0.61
+    ~ spell Punch First targets=[]
+  P2[NET] Choose: Noxus Hopeful@BF
+        net: pick 65.5% | v +0.49
+    ~ effect: give Noxus Hopeful 5 [M] this turn
+  P1[NET] Play Back Off[S]
+        net: pick 92.5% | alt: Pass Focus 7.5% | v +0.15
+    ~ spell Back Off targets=[]
+  P1[NET] Choose: Noxus Hopeful@BF
+        net: pick 95.0% | alt: Choose: Noxus Hopeful@BF 1.0% | v +0.25
+    ~ effect: stun Noxus Hopeful
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(6M)]  vs  P2 defends [Noxus Hopeful(9M,STUNNED)]
+  P1[NET] Move Recruit -> Seat of Power (P2's)
+        net: pick 42.2% | alt: End Turn 30.2% | v -0.56
+    ~ move Recruit -> Seat of Power
+    ~ COMBAT at Seat of Power: P1 attacks [Recruit(4M)]  vs  P2 defends [Noxus Hopeful(9M,STUNNED)]
+
+=== TURN 10 (P2, NET)   score P1 5 - P2 5 ===
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 5 - P2 6
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 5 - P2 7
+  P2[NET] Play Kai'Sa, Survivor(4M) -> Base
+        net: pick 13.7% | v +0.16
+    ~ play Kai'Sa, Survivor (Unit, 4E)
+  P2[NET] Choose: =0
+        net: pick 57.5% | v +0.12
+  P2[NET] Choose: Kinkou Initiate@Base
+        net: pick 14.2% | v +0.12
+  P2[NET] Pass Priority
+        net: pick 82.4% | v -0.05
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P2[NET] Move Irresistible Faefolk -> Seat of Power (P2's)
+        net: pick 11.5% | v -0.10
+  P2[NET] Move no more units
+        net: pick 48.4% | v +0.22
+    ~ move Irresistible Faefolk -> Seat of Power
+  P2[NET] No — Irresistible Faefolk: move an enemy unit to my battlefield?
+        net: pick 61.7% | v -0.09
+  P2[NET] Move Noxus Hopeful -> Base
+        net: pick 12.5% | v -0.07
+  P2[NET] Move no more units
+        net: pick 29.4% | v +0.14
+    ~ move Noxus Hopeful -> Base(P2)
+  P2[NET] Move Noxus Hopeful -> Base
+        net: pick 12.6% | v -0.12
+  P2[NET] Choose: Mech@BF
+        net: pick 33.4% | v +0.18
+  P2[NET] Move no more units
+        net: pick 50.3% | v +0.10
+    ~ move Noxus Hopeful -> Base(P2)
+    ~ move Mech -> Base(P2)
+  P2[NET] Move Mech -> Base
+        net: pick 17.0% | v +0.03
+    ~ move Mech -> Base(P2)
+  P2[NET] Move Kinkou Initiate -> Seat of Power (P1's)
+        net: pick 33.5% | v +0.28
+  P2[NET] Move no more units
+        net: pick 53.0% | v +0.35
+    ~ move Kinkou Initiate -> Seat of Power
+  P2[NET] Pass Focus
+        net: pick 81.6% | v +0.68
+  P2[NET] Move First Mate -> Seat of Power (P2's)
+        net: pick 28.6% | v +0.01
+    ~ move First Mate -> Seat of Power
+  P2[NET] End Turn
+        net: pick 50.2% | v +0.08
+
+=== TURN 11 (P1, ISMCTS)   score P1 5 - P2 7 ===
+  P1[NET] Move Sand Soldier -> Seat of Power (P2's)
+        net: pick 36.7% | alt: Play Azir, Sovereign(4M) -> Base 30.2% | v -0.09
+  P1[NET] Move no more units
+        net: pick 95.0% | alt: Choose: Sand Soldier@Base 3.0% | v +0.09
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 97.0% | alt: Play Hidden Blade[S] 3.0% | v +0.34
+  P2[NET] Play Thrill of the Hunt[S]
+        net: pick 56.1% | v +0.41
+    ~ spell Thrill of the Hunt targets=[]
+  P2[NET] Choose: Kinkou Initiate@BF
+        net: pick 29.5% | v +0.36
+  P2[NET] Seat of Power
+        net: pick 60.2% | v +0.22
+    ~ effect: banish Kinkou Initiate
+    ~ thrill: Kinkou Initiate played to Seat of Power, ignoring cost
+  P2[NET] Order — Pridestalker (Kinkou Initiate)
+        net: pick 56.4% | v +0.60
+  P2[NET] Choose: Kinkou Initiate@BF
+        net: pick 27.1% | v +0.54
+    ~ effect: give Kinkou Initiate 1 [M] this turn
+  P1[NET] Pass Focus
+        net: pick 82.4% | alt: Play Hidden Blade[S] 17.6% | v -0.46
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(5M)]  vs  P2 defends [First Mate(3M), Irresistible Faefolk(1M), Kinkou Initiate(4M)]
+  P1[NET] Assign Damage: Kinkou Initiate(4), Irresistible Faefolk(1)
+        net: pick 28.6% | alt: Assign Damage: Kinkou Initiate(4), First Mate(1) 28.1% | v -0.30
+    ~ KILL Sand Soldier (5M, dmg=8)
+    ~ effect: unattach B.F. Sword
+    ~ KILL Kinkou Initiate (4M, dmg=4)
+    ~ KILL Irresistible Faefolk (1M, dmg=1)
+  P1[NET] Play Eye of the Herald[G] -> Base
+        net: pick 16.1% | alt: Play Azir, Sovereign(4M) -> Base 15.6% | v -0.56
+    ~ play Eye of the Herald (Gear, 1E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 23.1% | alt: Play Soul Sword[G] -> Base 14.6% | v -0.65
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 69.8% | alt: No — Weaponmaster: equip an Equipment to me? 30.2% | v -0.70
+  P1[NET] Choose: Eye of the Herald@Base
+        net: pick 26.1% | alt: Choose: Eye of the Herald@Base 25.1% | v -0.64
+  P1[NET] Move Sand Soldier -> Seat of Power (P2's)
+        net: pick 19.1% | alt: Play Soul Sword[G] -> Base 15.6% | v -0.62
+  P1[NET] Move no more units
+        net: pick 88.9% | alt: Choose: Recruit@Base 11.1% | v -0.57
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 92.5% | alt: Play Hidden Blade[S] 7.5% | v -0.56
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(4M)]  vs  P2 defends [First Mate(3M)]
+    ~ KILL First Mate (3M, dmg=4)
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 6 - P2 7
+  P1[NET] Play Soul Sword[G] -> Base
+        net: pick 26.1% | alt: Play Azir, Sovereign(4M) -> Base 11.6% | v -0.55
+    ~ play Soul Sword (Gear, 1E)
+  P1[NET] Activate B.F. Sword @ Recruit
+        net: pick 22.1% | alt: Play Azir, Sovereign(4M) -> Seat of Power (P2's) 11.6% | v -0.56
+  P1[NET] Play Hand Hammer[G] -> Base
+        net: pick 17.6% | alt: Activate Eye of the Herald @ Sand Soldier 14.1% | v -0.68
+    ~ play Hand Hammer (Gear, 2E)
+  P1[NET] Hide Guards![S] @ Seat of Power (P2's)
+        net: pick 18.1% | alt: Hide Hidden Blade[S] @ Seat of Power (P2's) 12.6% | v -0.63
+    ~ hide Guards! at Seat of Power by P1
+  P1[NET] Move Recruit -> Seat of Power (P1's)
+        net: pick 44.7% | alt: Activate Hand Hammer @ Recruit 11.1% | v -0.35
+    ~ move Recruit -> Seat of Power
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 7 - P2 7
+  P1[NET] Hide Hidden Blade[S] @ Seat of Power (P1's)
+        net: pick 92.5% | alt: End Turn 1.5% | v -0.65
+    ~ hide Hidden Blade at Seat of Power by P1
+  P1[NET] End Turn
+        net: pick 33.7% | alt: Activate Hand Hammer @ Sand Soldier 33.2% | v -0.46
+
+=== TURN 12 (P2, NET)   score P1 7 - P2 7 ===
+  P2[NET] Play Sabotage[S]
+        net: pick 9.5% | v +0.21
+    ~ spell Sabotage targets=[]
+  P2[NET] Pass Priority
+        net: pick 74.5% | v -0.02
+  P1[NET] Pass Priority
+        net: pick 83.9% | alt: Play En Garde[S] @ Sand Soldier 5.0% | v -0.28
+    ~ sabotage: revealed Hand Hammer to P2
+    ~ sabotage: revealed En Garde to P2
+  P2[NET] Choose: Hand Hammer@Hand
+        net: pick 58.5% | v +0.10
+    ~ sabotage: recycling Hand Hammer to bottom of P1's deck
+  P2[NET] Play Sabotage[S]
+        net: pick 9.5% | v -0.19
+    ~ spell Sabotage targets=[]
+  P2[NET] Pass Priority
+        net: pick 72.5% | v -0.17
+  P1[NET] Pass Priority
+        net: pick 72.4% | alt: Play En Garde[S] @ Sand Soldier 12.1% | v +0.13
+    ~ sabotage: revealed En Garde to P2
+    ~ sabotage: recycling En Garde to bottom of P1's deck
+  P2[NET] Move Noxus Hopeful -> Seat of Power (P1's)
+        net: pick 9.2% | v -0.15
+  P2[NET] Move no more units
+        net: pick 25.3% | v -0.18
+    ~ move Noxus Hopeful -> Seat of Power
+  P2[NET] Pass Focus
+        net: pick 43.7% | v -0.10
+  P1[NET] Pass Focus
+        net: pick 88.4% | alt: Play Hidden Blade[S] @ Noxus Hopeful 7.0% | v +0.56
+    ~ COMBAT at Seat of Power: P2 attacks [Noxus Hopeful(4M)]  vs  P1 defends [Recruit(7M)]
+    ~ KILL Noxus Hopeful (4M, dmg=7)
+  P2[NET] Play Rengar, Trophy Hunter(6M) -> Seat of Power (P1's)
+        net: pick 11.0% | v -0.74
+    ~ play Rengar, Trophy Hunter (Unit, 5E)
+  P2[NET] Choose: Kai'Sa, Survivor@Base
+        net: pick 22.7% | v -0.75
+  P1[NET] Pass Priority
+        net: pick 47.2% | alt: Play Guards![S] 31.7% | v +0.49
+    ~ effect: give Kai'Sa, Survivor 1 [M] this turn
+  P1[NET] Play Hidden Blade[S] @ Rengar, Trophy Hunter
+        net: pick 42.7% | alt: Play Guards![S] 42.7% | v +0.83
+  P1[NET] Play Guards![S]
+        net: pick 68.8% | alt: Pass Priority 31.2% | v +0.74
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 79.4% | alt: No — Weaponmaster: equip an Equipment to me? 20.6% | v +0.78
+  P1[NET] Choose: Hand Hammer@Base
+        net: pick 50.3% | alt: Choose: Brutalizer@BF 12.1% | v +0.82
+    ~ effect: kill Rengar, Trophy Hunter
+  P2[NET] Move Kai'Sa, Survivor -> Seat of Power (P2's)
+        net: pick 28.7% | v -0.64
+  P2[NET] Move no more units
+        net: pick 43.7% | v -0.61
+    ~ move Kai'Sa, Survivor -> Seat of Power
+    ~ COMBAT at Seat of Power: P2 attacks [Kai'Sa, Survivor(5M)]  vs  P1 defends [Sand Soldier(4M), Sand Soldier(5M)]
+  P2[NET] Assign Damage: Sand Soldier(5)
+        net: pick 57.6% | v -0.94
+    ~ KILL Kai'Sa, Survivor (5M, dmg=9)
+    ~ KILL Sand Soldier (5M, dmg=5)
+    ~ effect: unattach Hand Hammer
+  P2[NET] Move Noxus Hopeful -> Seat of Power (P2's)
+        net: pick 32.0% | v -0.78
+  P2[NET] Move no more units
+        net: pick 44.9% | v -0.85
+    ~ move Noxus Hopeful -> Seat of Power
+    ~ COMBAT at Seat of Power: P2 attacks [Noxus Hopeful(4M)]  vs  P1 defends [Sand Soldier(4M)]
+    ~ KILL Noxus Hopeful (4M, dmg=4)
+    ~ KILL Sand Soldier (4M, dmg=4)
+    ~ effect: unattach Brutalizer
+    ~ effect: unattach Brutalizer
+  P2[NET] Move Mech -> Seat of Power (P2's)
+        net: pick 46.7% | v -0.77
+  P2[NET] Move no more units
+        net: pick 51.4% | v -0.83
+    ~ move Mech -> Seat of Power
+    ~ P2 conquers Seat of Power
+  P2[NET] Hide Pakaa Cub(3M) @ Seat of Power (P2's)
+        net: pick 67.4% | v -0.92
+    ~ hide Pakaa Cub at Seat of Power by P2
+  P2[NET] Move Mech -> Seat of Power (P2's)
+        net: pick 46.4% | v -0.92
+    ~ move Mech -> Seat of Power
+
+=== TURN 13 (P1, ISMCTS)   score P1 7 - P2 7 ===
+
+GAME OVER: winner P1 (ISMCTS) score 8-7, 13 turns, 404 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

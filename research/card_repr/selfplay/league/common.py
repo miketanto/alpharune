@@ -33,7 +33,7 @@ def pin_cores(cores=EVAL_CORES):
 
 
 def import_model():
-    if os.environ.get('LEAGUE_MODEL', 'snapshot') == 'live':
+    if os.environ.get('LEAGUE_MODEL', 'live') == 'live':
         sys.path.insert(0, LEARNER)
         import model as m
     else:
@@ -103,7 +103,7 @@ def inspect_checkpoint(path):
                 dims={k: int(v) for k, v in dims.items()} if dims else None, schema=schema, opts=detect_opts(sd))
 
 
-def load_net(path, dims, rep=None, device='cpu'):
+def load_net(path, dims, rep=None, device='cpu', b2=None):
     """Build model.Net with options detected from the checkpoint and load it (eval mode)."""
     import torch
     m = import_model()
@@ -113,8 +113,10 @@ def load_net(path, dims, rep=None, device='cpu'):
         sd = state_dict_of(ck)
         if rep is None and isinstance(ck, dict):
             rep = ck.get('repr')
+        if b2 is None:   # the B2 vector file the checkpoint was trained with (absent = v1)
+            b2 = ck.get('b2', 'v1') if isinstance(ck, dict) else 'v1'
     rep = rep or 'id'
-    net = m.Net(dims, m.load_vocab()[0], rep, **detect_opts(sd)).to(device)
+    net = m.Net(dims, m.load_vocab()[0], rep, b2=b2, **detect_opts(sd)).to(device)
     if sd is not None:
         net.load_state_dict(sd)
     net.eval()
@@ -130,6 +132,8 @@ def to_dev(obs, rows, dev):
     A = int(am.any(0).nonzero()[0].max()) + 1 if am.any() else 1
     b = dict(glob=obs['glob'][rows], tok=obs['tok'][rows, :T], tok_mask=tm[:, :T],
              act=obs['act'][rows, :A], act_mask=am[:, :A], pk=obs['pk'][rows], psrc=obs['psrc'][rows])
+    if 'hist' in obs:   # rbenv history.h (nets without a history block ignore it)
+        b['hist'] = obs['hist'][rows]
     return {k: torch.from_numpy(np.ascontiguousarray(v)).to(dev) for k, v in b.items()}
 
 

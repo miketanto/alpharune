@@ -1,0 +1,634 @@
+game seed 9101   P1 = search N=64 (AZ step 9944)   P2 = network greedy (AZ step 9944)
+Legend: "P1[NET]" = a network decision, "P2[ISMCTS]" = a teacher decision. "net:" lines: the pick,
+        its probability, the most likely other option, and the value estimate v (-1..+1; win ~ (v+1)/2).
+        "~" lines are engine events. BF names: P1 brings the first battlefield, P2 the second.
+  P1[NET] Keep hand
+        net: pick 22.2% | alt: Mull: Hidden Blade 9.5% | v +0.24
+~ P1 brings Seat of Power
+~ P2 brings Trifarian War Camp
+~ P1 opening hand: Hidden Blade, Brutalizer, B.F. Sword, Guards!
+~ P2 opening hand: Back Off, Eye of the Herald, Guards!, Defy
+  P2[NET] Mull: Back Off Defy
+        net: pick 13.8% | v -0.22
+~ P2 set aside Back Off
+~ P2 set aside Defy
+~ P2 drew replacement Brutalizer
+~ P2 drew replacement Arise!
+
+=== TURN 0 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] End Turn
+        net: pick 57.1% | alt: Play Brutalizer[G] -> Base 42.9% | v +0.29
+
+=== TURN 1 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play Eye of the Herald[G] -> Base
+        net: pick 47.8% | v -0.01
+    ~ play Eye of the Herald (Gear, 1E)
+  P2[NET] Activate Emperor of the Sands
+        net: pick 75.6% | v -0.09
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 63.7% | v +0.09
+
+=== TURN 2 (P1, ISMCTS)   score P1 0 - P2 0 ===
+  P1[NET] Play Brutalizer[G] -> Base
+        net: pick 50.8% | alt: Play B.F. Sword[G] -> Base 17.5% | v +0.34
+    ~ play Brutalizer (Gear, 2E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 95.2% | alt: End Turn 4.8% | v +0.22
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 61.9% | alt: No — Weaponmaster: equip an Equipment to me? 38.1% | v +0.40
+
+=== TURN 3 (P2, NET)   score P1 0 - P2 0 ===
+  P2[NET] Play B.F. Sword[G] -> Base
+        net: pick 29.6% | v +0.25
+    ~ play B.F. Sword (Gear, 4E)
+  P2[NET] Activate Emperor of the Sands
+        net: pick 40.8% | v +0.22
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 59.5% | v +0.36
+  P2[NET] Choose: B.F. Sword@Base
+        net: pick 58.2% | v +0.23
+  P2[NET] Move Sand Soldier -> Seat of Power
+        net: pick 46.3% | v +0.34
+    ~ move Sand Soldier -> Seat of Power
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 0 - P2 1
+  P2[NET] End Turn
+        net: pick 51.5% | v +0.46
+
+=== TURN 4 (P1, ISMCTS)   score P1 0 - P2 1 ===
+  P1[NET] Play B.F. Sword[G] -> Base
+        net: pick 47.6% | alt: Play Soul Sword[G] -> Base 33.3% | v +0.08
+    ~ play B.F. Sword (Gear, 4E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 36.5% | alt: Play Soul Sword[G] -> Base 25.4% | v +0.24
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 57.1% | alt: No — Weaponmaster: equip an Equipment to me? 42.9% | v +0.31
+  P1[NET] Choose: Brutalizer@Base
+        net: pick 50.8% | alt: Choose: B.F. Sword@Base 49.2% | v +0.19
+    ~ effect: unattach Brutalizer
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 34.9% | alt: Play Soul Sword[G] -> Base 25.4% | v +0.16
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 58.7% | alt: Play Soul Sword[G] -> Base 30.2% | v +0.44
+    ~ move Sand Soldier -> Seat of Power
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(5M)]  vs  P2 defends [Recruit(1M), Sand Soldier(2M)]
+  P1[NET] Assign Damage: Recruit(1), Sand Soldier(4)
+        net: pick 57.1% | alt: Assign Damage: Sand Soldier(2), Recruit(3) 42.9% | v +0.34
+    ~ KILL Recruit (1M, dmg=1)
+    ~ KILL Sand Soldier (2M, dmg=4)
+    ~ effect: unattach Eye of the Herald
+    ~ P1 conquers Seat of Power
+    ~ SCORE P1 +1 (Conquer)   -> P1 1 - P2 1
+  P1[NET] Hide Guards![S] @ Seat of Power
+        net: pick 30.2% | alt: Hide Hidden Blade[S] @ Seat of Power 30.2% | v +0.57
+    ~ hide Guards! at Seat of Power by P1
+  P1[NET] Play Soul Sword[G] -> Base
+        net: pick 50.8% | alt: End Turn 49.2% | v +0.47
+    ~ play Soul Sword (Gear, 1E)
+  P1[NET] Activate Soul Sword @ Sand Soldier
+        net: pick 39.7% | alt: End Turn 31.7% | v +0.34
+
+=== TURN 5 (P2, NET)   score P1 1 - P2 1 ===
+  P2[NET] Play Brutalizer[G] -> Base
+        net: pick 19.9% | v +0.31
+    ~ play Brutalizer (Gear, 2E)
+  P2[NET] Activate Emperor of the Sands
+        net: pick 42.7% | v +0.34
+  P2[NET] Pass Priority
+        net: pick 91.5% | v +0.48
+  P1[NET] Pass Priority
+        net: pick 74.6% | alt: Play Guards![S] 25.4% | v +0.31
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 62.8% | v +0.49
+  P2[NET] Choose: Brutalizer@Base
+        net: pick 37.6% | v +0.46
+  P2[NET] Pass Priority
+        net: pick 84.3% | v +0.49
+  P1[NET] Pass Priority
+        net: pick 69.8% | alt: Play Guards![S] 30.2% | v +0.20
+  P2[NET] Move Sand Soldier -> Trifarian War Camp
+        net: pick 19.9% | v +0.53
+    ~ move Sand Soldier -> Trifarian War Camp
+  P2[NET] Pass Focus
+        net: pick 81.2% | v +0.43
+  P1[NET] Pass Focus
+        net: pick 52.4% | alt: Play Guards![S] 47.6% | v +0.07
+    ~ P2 conquers Trifarian War Camp
+    ~ SCORE P2 +1 (Conquer)   -> P1 1 - P2 2
+  P2[NET] Play Azir, Sovereign(4M) -> Trifarian War Camp
+        net: pick 20.1% | v +0.44
+    ~ play Azir, Sovereign (Unit, 4E)
+  P2[NET] End Turn
+        net: pick 29.5% | v +0.39
+
+=== TURN 6 (P1, ISMCTS)   score P1 1 - P2 2 ===
+    ~ SCORE P1 +1 (Hold Seat of Power)   -> P1 2 - P2 2
+  P1[NET] Play Azir, Sovereign(4M) -> Base
+        net: pick 49.2% | alt: Play Azir, Sovereign(4M) -> Seat of Power 11.1% | v -0.37
+    ~ play Azir, Sovereign (Unit, 4E)
+  P1[NET] End Turn
+        net: pick 49.2% | alt: Move Sand Soldier -> Seat of Power 28.6% | v -0.40
+
+=== TURN 7 (P2, NET)   score P1 2 - P2 2 ===
+    ~ SCORE P2 +1 (Hold Trifarian War Camp)   -> P1 2 - P2 3
+  P2[NET] Play Arise![S]
+        net: pick 18.3% | v +0.43
+    ~ spell Arise! targets=[]
+  P2[NET] Pass Priority
+        net: pick 71.7% | v +0.09
+  P1[NET] Pass Priority
+        net: pick 73.0% | alt: Play Guards![S] 27.0% | v -0.23
+  P2[NET] Arise!: play a Sand Soldier: Base
+        net: pick 53.5% | v +0.10
+  P2[NET] Arise!: play a Sand Soldier: Base
+        net: pick 53.5% | v -0.02
+  P2[NET] Arise!: play a Sand Soldier: Base
+        net: pick 52.5% | v +0.09
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 57.6% | v +0.04
+  P2[NET] Choose: Eye of the Herald@Base
+        net: pick 37.5% | v +0.06
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 57.5% | v +0.09
+  P2[NET] Choose: Eye of the Herald@Base
+        net: pick 37.7% | v -0.03
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 57.5% | v -0.09
+  P2[NET] Choose: Eye of the Herald@Base
+        net: pick 37.7% | v -0.03
+  P2[NET] Choose: Sand Soldier@Base
+        net: pick 27.1% | v +0.01
+  P2[NET] Choose: Sand Soldier@Base
+        net: pick 37.2% | v -0.07
+  P2[NET] Pass Priority
+        net: pick 40.8% | v +0.15
+  P1[NET] Pass Priority
+        net: pick 77.8% | alt: Play Guards![S] 22.2% | v -0.25
+  P2[NET] Pass Priority
+        net: pick 41.2% | v +0.02
+  P1[NET] Pass Priority
+        net: pick 87.3% | alt: Play Guards![S] 12.7% | v -0.29
+  P2[NET] Pass Priority
+        net: pick 40.0% | v +0.27
+  P1[NET] Pass Priority
+        net: pick 90.5% | alt: Play Guards![S] 9.5% | v -0.27
+    ~ effect: unattach Eye of the Herald
+  P2[NET] Pass Priority
+        net: pick 39.8% | v +0.36
+  P1[NET] Pass Priority
+        net: pick 92.1% | alt: Play Guards![S] 7.9% | v -0.29
+    ~ effect: unattach Eye of the Herald
+  P2[NET] End Turn
+        net: pick 21.1% | v +0.18
+
+=== TURN 8 (P1, ISMCTS)   score P1 2 - P2 3 ===
+    ~ SCORE P1 +1 (Hold Seat of Power)   -> P1 3 - P2 3
+  P1[NET] Play Doran's Shield[G] -> Base
+        net: pick 25.4% | alt: Move Azir, Sovereign -> Trifarian War Camp 25.4% | v +0.27
+    ~ play Doran's Shield (Gear, 1E)
+  P1[NET] Activate Emperor of the Sands
+        net: pick 30.2% | alt: Move Azir, Sovereign -> Trifarian War Camp 20.6% | v +0.17
+  P1[NET] Pass Priority
+        net: pick 74.6% | alt: Play Discipline[S] 14.3% | v +0.25
+  P2[NET] Pass Priority
+        net: pick 33.7% | v +0.32
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 50.8% | alt: No — Weaponmaster: equip an Equipment to me? 49.2% | v +0.05
+  P1[NET] Choose: Brutalizer@Base
+        net: pick 31.7% | alt: Choose: Doran's Shield@Base 28.6% | v +0.22
+  P1[NET] Pass Priority
+        net: pick 73.0% | alt: Play Discipline[S] 14.3% | v +0.34
+  P2[NET] Pass Priority
+        net: pick 39.0% | v +0.36
+    ~ effect: unattach Brutalizer
+  P1[NET] Move Azir, Sovereign -> Trifarian War Camp
+        net: pick 23.8% | alt: Move Sand Soldier -> Trifarian War Camp 20.6% | v +0.20
+  P1[NET] Move no more units
+        net: pick 55.6% | alt: Choose: Sand Soldier@Base 44.4% | v +0.12
+    ~ move Azir, Sovereign -> Trifarian War Camp
+  P1[NET] Yes — Azir, Sovereign: move token units here?
+        net: pick 58.7% | alt: No — Azir, Sovereign: move token units here? 41.3% | v +0.14
+  P1[NET] Choose: Sand Soldier@BF
+        net: pick 36.5% | alt: Choose: Sand Soldier@Base 33.3% | v +0.03
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 58.7% | alt: None — Azir, Sovereign: move a token unit here 23.8% | v +0.02
+  P1[NET] None — Azir, Sovereign: move a token unit here
+        net: pick 57.1% | alt: Choose: Sand Soldier@Base 42.9% | v -0.07
+  P1[NET] Pass Priority
+        net: pick 57.1% | alt: Play Discipline[S] 27.0% | v -0.10
+  P2[NET] Pass Priority
+        net: pick 33.2% | v +0.59
+  P1[NET] Pass Focus
+        net: pick 66.7% | alt: Play Discipline[S] 28.6% | v +0.04
+  P2[NET] Play Deathgrip[S] @ Sand Soldier
+        net: pick 6.5% | v +0.60
+    ~ spell Deathgrip targets=[Sand Soldier(id=111),Azir, Sovereign(id=55)]
+  P1[NET] Pass Priority
+        net: pick 73.0% | alt: Play Discipline[S] 27.0% | v +0.17
+    ~ effect: kill Sand Soldier
+    ~ effect: unattach B.F. Sword
+    ~ effect: give Azir, Sovereign 6 [M] this turn
+  P1[NET] Pass Focus
+        net: pick 71.4% | alt: Play Discipline[S] 22.2% | v +0.24
+    ~ COMBAT at Trifarian War Camp: P1 attacks [Azir, Sovereign(5M), Sand Soldier(6M), Sand Soldier(7M)]  vs  P2 defends [Azir, Sovereign(11M)]
+  P2[NET] Assign Damage: Azir, Sovereign(5), Sand Soldier(6)
+        net: pick 23.6% | v +0.50
+    ~ KILL Azir, Sovereign (5M, dmg=5)
+    ~ KILL Azir, Sovereign (11M, dmg=18)
+    ~ P1 conquers Trifarian War Camp
+    ~ SCORE P1 +1 (Conquer)   -> P1 4 - P2 3
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 28.6% | alt: Play Discipline[S] 20.6% | v +0.52
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Play Discipline[S]
+        net: pick 57.1% | alt: Pass Focus 38.1% | v +0.53
+    ~ spell Discipline targets=[]
+  P1[NET] Choose: Sand Soldier@BF
+        net: pick 23.8% | alt: Choose: Sand Soldier@Base 20.6% | v +0.45
+    ~ effect: give Sand Soldier 2 [M] this turn
+  P1[NET] Pass Focus
+        net: pick 60.3% | alt: Play Back Off[S] 33.3% | v +0.71
+  P1[NET] Play Back Off[S]
+        net: pick 15.9% | alt: Move Sand Soldier -> Base 12.7% | v +0.65
+    ~ spell Back Off targets=[]
+  P1[NET] Choose: Sand Soldier@BF
+        net: pick 23.8% | alt: Choose: Sand Soldier@Base 22.2% | v +0.64
+    ~ effect: stun Sand Soldier
+  P1[NET] Hide Back Off[S] @ Trifarian War Camp
+        net: pick 17.5% | alt: Activate Doran's Shield @ Sand Soldier 15.9% | v +0.51
+    ~ hide Back Off at Trifarian War Camp by P1
+  P1[NET] Hide Hidden Blade[S] @ Seat of Power
+        net: pick 44.4% | alt: End Turn 14.3% | v +0.04
+    ~ hide Hidden Blade at Seat of Power by P1
+  P1[NET] End Turn
+        net: pick 46.0% | alt: Activate Doran's Shield @ Sand Soldier 20.6% | v -0.10
+
+=== TURN 9 (P2, NET)   score P1 4 - P2 3 ===
+  P2[NET] Play Arise![S]
+        net: pick 32.4% | v +0.55
+    ~ spell Arise! targets=[]
+  P1[NET] Pass Priority
+        net: pick 88.9% | alt: Play Hidden Blade[S] @ Sand Soldier 6.3% | v +0.23
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 57.6% | v +0.45
+  P2[NET] Choose: B.F. Sword@Base
+        net: pick 37.1% | v +0.53
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 58.0% | v +0.56
+  P2[NET] Choose: B.F. Sword@Base
+        net: pick 37.1% | v +0.51
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 57.6% | v +0.46
+  P2[NET] Choose: B.F. Sword@Base
+        net: pick 37.0% | v +0.64
+  P2[NET] Choose: Sand Soldier@Base
+        net: pick 28.3% | v +0.66
+  P2[NET] Choose: Sand Soldier@Base
+        net: pick 39.5% | v +0.61
+  P1[NET] Pass Priority
+        net: pick 77.8% | alt: Play Hidden Blade[S] @ Sand Soldier 14.3% | v +0.15
+  P1[NET] Pass Priority
+        net: pick 77.8% | alt: Play Hidden Blade[S] @ Sand Soldier 12.7% | v +0.22
+  P1[NET] Pass Priority
+        net: pick 87.3% | alt: Play Hidden Blade[S] @ Sand Soldier 4.8% | v +0.35
+    ~ effect: unattach B.F. Sword
+  P1[NET] Pass Priority
+        net: pick 85.7% | alt: Play Hidden Blade[S] @ Sand Soldier 6.3% | v +0.32
+    ~ effect: unattach B.F. Sword
+  P2[NET] Move Sand Soldier -> Seat of Power
+        net: pick 12.9% | v +0.50
+  P2[NET] Move no more units
+        net: pick 31.1% | v +0.55
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Play Hidden Blade[S] @ Sand Soldier
+        net: pick 52.4% | alt: Pass Focus 23.8% | v +0.09
+  P1[NET] Pass Priority
+        net: pick 95.2% | alt: Play Back Off[S] @ Sand Soldier 3.2% | v -0.18
+    ~ effect: kill Sand Soldier
+    ~ effect: unattach B.F. Sword
+  P1[NET] Pass Focus
+        net: pick 93.7% | alt: Play Back Off[S] @ Sand Soldier 3.2% | v +0.06
+  P2[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 9.0% | v +0.62
+  P1[NET] Pass Priority
+        net: pick 96.8% | alt: Play Back Off[S] @ Sand Soldier 1.6% | v +0.26
+  P2[NET] Move Sand Soldier -> Seat of Power
+        net: pick 14.7% | v +0.64
+  P2[NET] Move no more units
+        net: pick 39.7% | v +0.70
+    ~ move Sand Soldier -> Seat of Power
+  P1[NET] Pass Focus
+        net: pick 85.7% | alt: Play Back Off[S] @ Sand Soldier 7.9% | v -0.21
+    ~ COMBAT at Seat of Power: P2 attacks [Sand Soldier(6M)]  vs  P1 defends [Sand Soldier(2M)]
+    ~ KILL Sand Soldier (2M, dmg=6)
+    ~ P2 conquers Seat of Power
+    ~ SCORE P2 +1 (Conquer)   -> P1 4 - P2 4
+  P1[NET] Pass Priority
+        net: pick 88.9% | alt: Play Back Off[S] @ Sand Soldier 6.3% | v -0.54
+  P2[NET] End Turn
+        net: pick 10.4% | v +0.48
+
+=== TURN 10 (P1, ISMCTS)   score P1 4 - P2 4 ===
+    ~ SCORE P1 +1 (Hold Trifarian War Camp)   -> P1 5 - P2 4
+  P1[NET] Play Arise![S]
+        net: pick 42.9% | alt: Play Arise![S] 28.6% | v +0.57
+    ~ spell Arise! targets=[]
+  P1[NET] Pass Priority
+        net: pick 96.8% | alt: Play Back Off[S] @ Sand Soldier 1.6% | v -0.11
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 50.8% | alt: Arise!: play a Sand Soldier: Base 49.2% | v +0.20
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 50.8% | alt: Arise!: play a Sand Soldier: Base 49.2% | v +0.40
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 50.8% | alt: Arise!: play a Sand Soldier: Base 49.2% | v +0.64
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 54.0% | alt: Arise!: play a Sand Soldier: Base 46.0% | v +0.61
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 55.6% | alt: No — Weaponmaster: equip an Equipment to me? 44.4% | v +0.51
+  P1[NET] Choose: Brutalizer@BF
+        net: pick 31.7% | alt: Choose: Soul Sword@BF 27.0% | v +0.61
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 60.3% | alt: No — Weaponmaster: equip an Equipment to me? 39.7% | v +0.47
+  P1[NET] Choose: Brutalizer@BF
+        net: pick 28.6% | alt: Choose: Doran's Shield@Base 27.0% | v +0.58
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 58.7% | alt: No — Weaponmaster: equip an Equipment to me? 41.3% | v +0.58
+  P1[NET] Choose: B.F. Sword@BF
+        net: pick 28.6% | alt: Choose: Doran's Shield@Base 25.4% | v +0.64
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 55.6% | alt: No — Weaponmaster: equip an Equipment to me? 44.4% | v +0.59
+  P1[NET] Choose: Brutalizer@BF
+        net: pick 28.6% | alt: Choose: Doran's Shield@Base 27.0% | v +0.63
+  P1[NET] Choose: Sand Soldier@BF
+        net: pick 22.2% | alt: Choose: Sand Soldier@BF 22.2% | v +0.59
+  P1[NET] None — Arise!: ready a Sand Soldier (up to two)
+        net: pick 33.3% | alt: Choose: Sand Soldier@BF 33.3% | v +0.49
+  P1[NET] Pass Priority
+        net: pick 60.3% | alt: Play Back Off[S] @ Sand Soldier 9.5% | v +0.56
+  P1[NET] Pass Priority
+        net: pick 73.0% | alt: Play Back Off[S] @ Sand Soldier 6.3% | v +0.50
+    ~ effect: unattach Brutalizer
+  P1[NET] Pass Priority
+        net: pick 71.4% | alt: Play Back Off[S] @ Sand Soldier 7.9% | v +0.46
+    ~ effect: unattach B.F. Sword
+  P1[NET] Pass Priority
+        net: pick 82.5% | alt: Play Back Off[S] @ Sand Soldier 4.8% | v +0.45
+    ~ effect: unattach Brutalizer
+  P1[NET] Pass Priority
+        net: pick 63.5% | alt: Play Back Off[S] @ Sand Soldier 11.1% | v +0.48
+    ~ effect: unattach Brutalizer
+  P1[NET] End Turn
+        net: pick 25.4% | alt: Move Sand Soldier -> Base 17.5% | v +0.42
+
+=== TURN 11 (P2, NET)   score P1 5 - P2 4 ===
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 5 - P2 5
+  P2[NET] Play Brutalizer[G] -> Base
+        net: pick 9.9% | v -0.21
+    ~ play Brutalizer (Gear, 2E)
+  P2[NET] Activate Emperor of the Sands
+        net: pick 31.0% | v -0.02
+  P1[NET] Pass Priority
+        net: pick 71.4% | alt: Play Back Off[S] @ Sand Soldier 7.9% | v +0.45
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 53.3% | v +0.14
+  P2[NET] Choose: Brutalizer@BF
+        net: pick 28.4% | v +0.30
+  P1[NET] Pass Priority
+        net: pick 77.8% | alt: Play Back Off[S] @ Sand Soldier 6.3% | v +0.47
+    ~ effect: unattach Brutalizer
+  P2[NET] End Turn
+        net: pick 7.7% | v +0.38
+
+=== TURN 12 (P1, ISMCTS)   score P1 5 - P2 5 ===
+    ~ SCORE P1 +1 (Hold Trifarian War Camp)   -> P1 6 - P2 5
+  P1[NET] Play Arise![S]
+        net: pick 19.0% | alt: Play Arise![S] 11.1% | v +0.88
+    ~ spell Arise! targets=[]
+  P1[NET] Pass Priority
+        net: pick 54.0% | alt: Play Back Off[S] @ Sand Soldier 15.9% | v +0.59
+  P1[NET] Arise!: play a Sand Soldier: Base
+        net: pick 50.8% | alt: Arise!: play a Sand Soldier: Trifarian War Camp 49.2% | v +0.79
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 50.8% | alt: Arise!: play a Sand Soldier: Base 49.2% | v +0.75
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 57.1% | alt: Arise!: play a Sand Soldier: Base 42.9% | v +0.78
+  P1[NET] Arise!: play a Sand Soldier: Trifarian War Camp
+        net: pick 52.4% | alt: Arise!: play a Sand Soldier: Base 47.6% | v +0.81
+  P1[NET] No — Weaponmaster: equip an Equipment to me?
+        net: pick 50.8% | alt: Yes — Weaponmaster: equip an Equipment to me? 49.2% | v +0.75
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 54.0% | alt: No — Weaponmaster: equip an Equipment to me? 46.0% | v +0.78
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 28.6% | alt: Choose: Brutalizer@BF 25.4% | v +0.70
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 52.4% | alt: No — Weaponmaster: equip an Equipment to me? 47.6% | v +0.77
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 33.3% | alt: Choose: Brutalizer@BF 27.0% | v +0.79
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 54.0% | alt: No — Weaponmaster: equip an Equipment to me? 46.0% | v +0.81
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 31.7% | alt: Choose: B.F. Sword@BF 25.4% | v +0.68
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 41.3% | alt: Choose: Sand Soldier@BF 20.6% | v +0.65
+  P1[NET] None — Arise!: ready a Sand Soldier (up to two)
+        net: pick 33.3% | alt: Choose: Sand Soldier@BF 31.7% | v +0.69
+  P1[NET] Pass Priority
+        net: pick 46.0% | alt: Play Back Off[S] @ Sand Soldier 14.3% | v +0.83
+  P1[NET] Pass Priority
+        net: pick 60.3% | alt: Play Back Off[S] @ Sand Soldier 9.5% | v +0.78
+  P1[NET] Pass Priority
+        net: pick 50.8% | alt: Play Back Off[S] @ Sand Soldier 7.9% | v +0.82
+  P1[NET] Pass Priority
+        net: pick 66.7% | alt: Play Back Off[S] @ Sand Soldier 6.3% | v +0.81
+  P1[NET] Move Sand Soldier -> Base
+        net: pick 17.5% | alt: End Turn 14.3% | v +0.79
+  P1[NET] Choose: Sand Soldier@BF
+        net: pick 20.6% | alt: Move no more units 19.0% | v +0.81
+  P1[NET] Move no more units
+        net: pick 25.4% | alt: Choose: Sand Soldier@BF 23.8% | v +0.84
+    ~ move Sand Soldier -> Base(P1)
+    ~ move Sand Soldier -> Base(P1)
+  P1[NET] End Turn
+        net: pick 42.9% | alt: Move Sand Soldier -> Trifarian War Camp 14.3% | v +0.80
+
+=== TURN 13 (P2, NET)   score P1 6 - P2 5 ===
+    ~ SCORE P2 +1 (Hold Seat of Power)   -> P1 6 - P2 6
+  P2[NET] Activate Brutalizer @ Sand Soldier
+        net: pick 7.6% | v -0.69
+  P1[NET] Pass Priority
+        net: pick 79.4% | alt: Play Back Off[S] @ Sand Soldier 4.8% | v +0.87
+  P2[NET] Move Sand Soldier -> Trifarian War Camp
+        net: pick 10.8% | v -0.62
+  P2[NET] Move no more units
+        net: pick 25.7% | v -0.68
+    ~ move Sand Soldier -> Trifarian War Camp
+  P1[NET] Pass Focus
+        net: pick 84.1% | alt: Play Back Off[S] @ Sand Soldier 4.8% | v +0.75
+    ~ COMBAT at Trifarian War Camp: P2 attacks [Sand Soldier(7M)]  vs  P1 defends [Sand Soldier(3M), Sand Soldier(3M), Sand Soldier(3M), Sand Soldier(4M), Sand Soldier(4M), Sand Soldier(4M), Sand Soldier(6M)]
+  P2[NET] Assign Damage: Sand Soldier(4), Sand Soldier(3)
+        net: pick 19.7% | v -0.40
+    ~ KILL Sand Soldier (7M, dmg=27)
+    ~ effect: unattach Brutalizer
+    ~ effect: unattach Brutalizer
+    ~ KILL Sand Soldier (3M, dmg=3)
+    ~ KILL Sand Soldier (4M, dmg=4)
+    ~ effect: unattach Doran's Shield
+  P2[NET] Activate Brutalizer @ Sand Soldier
+        net: pick 5.4% | v -0.59
+  P1[NET] Pass Priority
+        net: pick 66.7% | alt: Play Back Off[S] @ Sand Soldier 11.1% | v +0.87
+  P2[NET] Activate Brutalizer @ Sand Soldier
+        net: pick 10.3% | v -0.59
+  P1[NET] Pass Priority
+        net: pick 74.6% | alt: Play Back Off[S] @ Sand Soldier 7.9% | v +0.91
+  P2[NET] Move Sand Soldier -> Trifarian War Camp
+        net: pick 15.9% | v -0.49
+  P2[NET] Move no more units
+        net: pick 42.2% | v -0.41
+    ~ move Sand Soldier -> Trifarian War Camp
+  P1[NET] Pass Priority
+        net: pick 49.2% | alt: Play Back Off[S] @ Sand Soldier 34.9% | v +0.78
+  P1[NET] Pass Focus
+        net: pick 46.0% | alt: Play Back Off[S] @ Sand Soldier 38.1% | v +0.74
+    ~ COMBAT at Trifarian War Camp: P2 attacks [Recruit(2M), Sand Soldier(9M)]  vs  P1 defends [Sand Soldier(3M), Sand Soldier(3M), Sand Soldier(4M), Sand Soldier(4M), Sand Soldier(6M)]
+  P2[NET] Assign Damage: Sand Soldier(4), Sand Soldier(4), Sand Soldier(3)
+        net: pick 5.2% | v -0.39
+  P1[NET] Assign Damage: Recruit(2), Sand Soldier(18)
+        net: pick 54.0% | alt: Assign Damage: Sand Soldier(9), Recruit(11) 46.0% | v +0.83
+    ~ KILL Recruit (2M, dmg=2)
+    ~ KILL Sand Soldier (9M, dmg=18)
+    ~ effect: unattach Eye of the Herald
+    ~ effect: unattach Brutalizer
+    ~ effect: unattach Brutalizer
+    ~ KILL Sand Soldier (3M, dmg=3)
+    ~ KILL Sand Soldier (4M, dmg=4)
+    ~ effect: unattach Brutalizer
+    ~ KILL Sand Soldier (4M, dmg=4)
+    ~ effect: unattach Soul Sword
+  P2[NET] Activate Brutalizer @ Sand Soldier
+        net: pick 4.3% | v -0.19
+  P1[NET] Pass Priority
+        net: pick 90.5% | alt: Play Back Off[S] @ Sand Soldier 6.3% | v +0.81
+  P2[NET] Move Sand Soldier -> Trifarian War Camp
+        net: pick 10.1% | v +0.10
+  P2[NET] Move no more units
+        net: pick 40.6% | v +0.09
+    ~ move Sand Soldier -> Trifarian War Camp
+  P1[NET] Play Back Off[S] @ Sand Soldier
+        net: pick 81.0% | alt: Pass Focus 12.7% | v +0.73
+  P1[NET] Pass Priority
+        net: pick 98.4% | alt: Play Defy[S] 1.6% | v +0.28
+  P2[NET] Play Defy[S]
+        net: pick 54.2% | v -0.45
+    ~ spell Defy targets=[]
+  P1[NET] Pass Priority
+        net: pick 65.1% | alt: Play Defy[S] 34.9% | v +0.33
+    ~ COMBAT at Trifarian War Camp: P2 attacks [Sand Soldier(6M)]  vs  P1 defends [Sand Soldier(3M), Sand Soldier(6M)]
+  P2[NET] Assign Damage: Sand Soldier(6)
+        net: pick 58.3% | v -0.18
+    ~ KILL Sand Soldier (6M, dmg=9)
+    ~ effect: unattach Brutalizer
+    ~ KILL Sand Soldier (6M, dmg=6)
+    ~ effect: unattach B.F. Sword
+  P2[NET] Play Doran's Shield[G] -> Base
+        net: pick 9.2% | v +0.17
+    ~ play Doran's Shield (Gear, 1E)
+  P2[NET] Activate Emperor of the Sands
+        net: pick 16.4% | v -0.06
+  P2[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 50.6% | v -0.12
+  P2[NET] Choose: Doran's Shield@Base
+        net: pick 23.3% | v -0.22
+  P2[NET] Hide Guards![S] @ Seat of Power
+        net: pick 6.3% | v -0.03
+    ~ hide Guards! at Seat of Power by P2
+  P2[NET] Play Doran's Shield[G] -> Base
+        net: pick 7.3% | v -0.08
+    ~ play Doran's Shield (Gear, 1E)
+  P2[NET] Play Doran's Shield[G] -> Base
+        net: pick 5.8% | v +0.03
+    ~ play Doran's Shield (Gear, 1E)
+  P2[NET] Activate Brutalizer @ Sand Soldier
+        net: pick 4.5% | v -0.05
+  P2[NET] Move Sand Soldier -> Trifarian War Camp
+        net: pick 13.5% | v -0.16
+  P2[NET] Move no more units
+        net: pick 47.7% | v -0.11
+    ~ move Sand Soldier -> Trifarian War Camp
+    ~ COMBAT at Trifarian War Camp: P2 attacks [Sand Soldier(6M)]  vs  P1 defends [Sand Soldier(3M)]
+    ~ KILL Sand Soldier (3M, dmg=6)
+    ~ P2 conquers Trifarian War Camp
+    ~ SCORE P2 +1 (Conquer)   -> P1 6 - P2 7
+  P2[NET] Hide Guards![S] @ Trifarian War Camp
+        net: pick 36.9% | v -0.39
+    ~ hide Guards! at Trifarian War Camp by P2
+  P2[NET] End Turn
+        net: pick 12.6% | v -0.36
+
+=== TURN 14 (P1, ISMCTS)   score P1 6 - P2 7 ===
+  P1[NET] Play Arise![S]
+        net: pick 96.8% | alt: Play B.F. Sword[G] -> Base 1.6% | v -0.24
+    ~ spell Arise! targets=[]
+  P2[NET] Pass Priority
+        net: pick 66.6% | v -0.72
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 85.7% | alt: No — Weaponmaster: equip an Equipment to me? 14.3% | v -0.70
+  P1[NET] Choose: Doran's Shield@Base
+        net: pick 38.1% | alt: Choose: B.F. Sword@Base 36.5% | v -0.76
+  P1[NET] Yes — Weaponmaster: equip an Equipment to me?
+        net: pick 79.4% | alt: No — Weaponmaster: equip an Equipment to me? 20.6% | v -0.71
+  P1[NET] Choose: Brutalizer@Base
+        net: pick 58.7% | alt: Choose: Soul Sword@Base 20.6% | v -0.74
+  P1[NET] No — Weaponmaster: equip an Equipment to me?
+        net: pick 57.1% | alt: Yes — Weaponmaster: equip an Equipment to me? 42.9% | v -0.70
+  P1[NET] No — Weaponmaster: equip an Equipment to me?
+        net: pick 65.1% | alt: Yes — Weaponmaster: equip an Equipment to me? 34.9% | v -0.69
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 36.5% | alt: Choose: Sand Soldier@Base 25.4% | v -0.69
+  P1[NET] Choose: Sand Soldier@Base
+        net: pick 39.7% | alt: Choose: Sand Soldier@Base 27.0% | v -0.70
+  P2[NET] Pass Priority
+        net: pick 69.4% | v -0.66
+  P2[NET] Pass Priority
+        net: pick 78.6% | v -0.75
+  P2[NET] Pass Priority
+        net: pick 80.6% | v -0.67
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 25.4% | alt: Activate B.F. Sword @ Sand Soldier 23.8% | v -0.74
+  P2[NET] Pass Priority
+        net: pick 81.9% | v -0.67
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 47.6% | alt: Activate Soul Sword @ Sand Soldier 47.6% | v -0.80
+  P1[NET] Move no more units
+        net: pick 74.6% | alt: Choose: Sand Soldier@Base 11.1% | v -0.80
+    ~ move Sand Soldier -> Seat of Power
+  P2[NET] Pass Focus
+        net: pick 63.1% | v -0.42
+    ~ COMBAT at Seat of Power: P1 attacks [Sand Soldier(5M)]  vs  P2 defends [Sand Soldier(5M)]
+    ~ KILL Sand Soldier (5M, dmg=5)
+    ~ effect: unattach B.F. Sword
+    ~ KILL Sand Soldier (5M, dmg=5)
+    ~ effect: unattach B.F. Sword
+  P1[NET] Activate B.F. Sword @ Sand Soldier
+        net: pick 30.2% | alt: Activate B.F. Sword @ Sand Soldier 28.6% | v -0.12
+  P2[NET] Pass Priority
+        net: pick 80.8% | v -0.19
+  P1[NET] Move Sand Soldier -> Trifarian War Camp
+        net: pick 63.5% | alt: Activate Soul Sword @ Sand Soldier 27.0% | v -0.22
+  P1[NET] Move no more units
+        net: pick 65.1% | alt: Choose: Sand Soldier@Base 15.9% | v -0.31
+    ~ move Sand Soldier -> Trifarian War Camp
+  P2[NET] Pass Focus
+        net: pick 55.7% | v -0.64
+    ~ COMBAT at Trifarian War Camp: P1 attacks [Sand Soldier(7M)]  vs  P2 defends [Sand Soldier(4M)]
+    ~ KILL Sand Soldier (4M, dmg=7)
+    ~ effect: unattach Brutalizer
+    ~ P1 conquers Trifarian War Camp
+    ~ SCORE P1 +1 (Conquer)   -> P1 7 - P2 7
+  P1[NET] Move Sand Soldier -> Seat of Power
+        net: pick 19.0% | alt: Move Sand Soldier -> Seat of Power 17.5% | v +0.87
+  P1[NET] Move no more units
+        net: pick 50.8% | alt: Choose: Sand Soldier@Base 25.4% | v +0.89
+    ~ move Sand Soldier -> Seat of Power
+
+GAME OVER: winner P1 (ISMCTS) score 8-7, 14 turns, 425 decisions -- P1 reached 8 points  (from summary.tsv; the final scoring lines are not in the replay)

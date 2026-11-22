@@ -1,0 +1,33 @@
+E2: does a search teacher help PPO? (2026-11-20)
+
+Setup
+  Both arms start from ov_main@2080 (Rengar mirror league) and run 480 main updates.
+  Arm A: plain PPO league (control).
+  Arm B: same, plus a CE loss toward rbsearch PUCT targets (64 sims, cq target, coef 1.0).
+  Arm B stopped at 480 of 500 when WSL went down at 19:20; arm A was run to 480 for equal compute.
+  Evaluation: 2,000 greedy games per pair, seat-balanced, Wilson 95% CI (e2/h2h.jsonl).
+
+Results (win rate of the first net)
+  B480 vs A480   0.483 [0.461, 0.505]
+  B480 vs base   0.519 [0.498, 0.541]
+  A480 vs base   0.548 [0.526, 0.570]
+  B250 vs A250   0.506 [0.484, 0.528]
+  B250 vs base   0.515 [0.494, 0.537]
+  A250 vs base   0.528 [0.506, 0.550]
+
+Verdict: FAIL.
+  Pass needed B >= 55% vs A with the CI above 52%, and B gaining more over base than A.
+  B is level with A at 250 and slightly behind at 480 (CI upper bound 50.5%).
+  Over base, A gained +4.8 points and B +1.9.
+
+Cost
+  Arm B main phases: about 10.5-11.8 s/update, plus a search generator process.
+  Arm A main phases: about 8.7 s/update.
+
+Likely reasons (not tested)
+  64-sim PUCT guided by the network's own value is barely stronger than the policy itself,
+  so the target adds noise rather than signal; the coef 1.0 CE may also pull against the PPO update.
+
+Decision
+  Leave the search teacher out of the G1-G3 recipe. Revisit only with a stronger target
+  (more sims, ISMCTS-backed values) or a smaller coefficient.

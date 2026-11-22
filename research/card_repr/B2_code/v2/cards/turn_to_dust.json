@@ -1,0 +1,49 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0632_turn_to_dust.cpp:44",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0632_turn_to_dust.cpp:45",
+   "energy": "src/cards/spells/0632_turn_to_dust.cpp:46",
+   "power": "default 0"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "GiveKeyword",
+     "target": {
+      "type": "gear",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0632_turn_to_dust.cpp:30-32"
+     },
+     "keyword": "temporary",
+     "_src": "src/cards/spells/0632_turn_to_dust.cpp:26-27"
+    }
+   ],
+   "_src": "src/cards/spells/0632_turn_to_dust.cpp:22"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-070-219",
+  "class_file": "src/cards/spells/0632_turn_to_dust.cpp",
+  "source": "engine_code",
+  "flags": [
+   "permanent grant (no duration): the gear keeps Temporary until its controller's Beginning Phase kills it (engine sweep, src/cards/spells/0632_turn_to_dust.cpp:18-21); Temporary's kill is not expanded"
+  ]
+ }
+}

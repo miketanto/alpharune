@@ -1,0 +1,113 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "chaos",
+   "mind"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1,
+   "mind": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0755_moonfall.cpp:107",
+   "supertype": "src/cards/spells/0755_moonfall.cpp:108",
+   "domains": "src/cards/spells/0755_moonfall.cpp:109",
+   "energy": "src/cards/spells/0755_moonfall.cpp:111",
+   "power": "src/cards/spells/0755_moonfall.cpp:112",
+   "power_by_domain": "src/cards/spells/0755_moonfall.cpp:112 x src/cards/spells/0755_moonfall.cpp:109; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0755_moonfall.cpp:114"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "battlefield",
+      "side": "any",
+      "zone": "battlefield",
+      "count": 1,
+      "filters": [
+       {
+        "f": "has_friendly_units",
+        "v": true,
+        "_src": "src/cards/spells/0755_moonfall.cpp:30-39"
+       }
+      ],
+      "bind": "L",
+      "_src": "src/cards/spells/0755_moonfall.cpp:30-43"
+     },
+     "_src": "src/cards/spells/0755_moonfall.cpp:53-56"
+    },
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "at_chosen_battlefield",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/spells/0755_moonfall.cpp:62-63"
+       }
+      ],
+      "_src": "src/cards/spells/0755_moonfall.cpp:59-65; src/cards/card_helpers.h:712-717"
+     },
+     "optional": true,
+     "dest": "chosen_battlefield",
+     "_src": "src/cards/spells/0755_moonfall.cpp:83; may src/cards/spells/0755_moonfall.cpp:70-79; src/engine/effect_executor.cpp:1697"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "enemy",
+      "zone": "board",
+      "count": "all",
+      "filters": [
+       {
+        "f": "at_chosen_battlefield",
+        "v": true,
+        "_src": "src/cards/spells/0755_moonfall.cpp:90-91"
+       }
+      ],
+      "_src": "src/cards/spells/0755_moonfall.cpp:87-92"
+     },
+     "amount": {
+      "n": -2,
+      "_src": "src/cards/spells/0755_moonfall.cpp:93"
+     },
+     "duration": "turn",
+     "_src": "src/cards/spells/0755_moonfall.cpp:93"
+    }
+   ],
+   "_src": "src/cards/spells/0755_moonfall.cpp:45"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-198-219",
+  "class_file": "src/cards/spells/0755_moonfall.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: selector type 'battlefield' (a chosen location, bound as L)",
+   "new term: filter at_chosen_battlefield; dest chosen_battlefield (the bound L)",
+   "the -2 applies to enemy units at L whether or not a unit was moved (src/cards/spells/0755_moonfall.cpp:66)"
+  ]
+ }
+}

@@ -1,0 +1,106 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 4,
+  "power": 0,
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0891_tail_cloaked_matriarch.cpp:63",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0891_tail_cloaked_matriarch.cpp:64",
+   "energy": "src/cards/units/0891_tail_cloaked_matriarch.cpp:66",
+   "power": "default 0",
+   "might": "src/cards/units/0891_tail_cloaked_matriarch.cpp:67"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "empower",
+   "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:69"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "main",
+   "cost": {
+    "energy": 2,
+    "power": 1,
+    "power_domain": "chaos",
+    "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:21"
+   },
+   "condition": [
+    {
+     "c": "empowered",
+     "v": true,
+     "neg": true,
+     "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:21; src/cards/card.cpp:1272"
+    }
+   ],
+   "effects": [
+    {
+     "verb": "Empower",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:21"
+     },
+     "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:21"
+    }
+   ],
+   "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:20-21"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "become_empowered",
+    "subject": "self",
+    "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:25"
+   },
+   "effects": [
+    {
+     "verb": "PlayIgnoringCost",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "trash",
+      "count": 1,
+      "filters": [
+       {
+        "f": "energy_cost_le",
+        "v": 3,
+        "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:33"
+       },
+       {
+        "f": "power_cost_le",
+        "v": 1,
+        "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:33"
+       }
+      ],
+      "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:26-36"
+     },
+     "optional": true,
+     "dest": "base",
+     "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:47-48; may src/cards/units/0891_tail_cloaked_matriarch.cpp:38-42"
+    }
+   ],
+   "_src": "src/cards/units/0891_tail_cloaked_matriarch.cpp:25"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-104-166",
+  "class_file": "src/cards/units/0891_tail_cloaked_matriarch.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: verb Empower, condition empowered, event become_empowered",
+   "new term: zone trash",
+   "[Empower] cost is class-declared (empowerSpec) and not expanded by extract; written here as an activated ability"
+  ]
+ }
+}

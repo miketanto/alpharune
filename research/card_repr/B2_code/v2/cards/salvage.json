@@ -1,0 +1,72 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "order": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0224_salvage.cpp:49",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0224_salvage.cpp:50",
+   "energy": "src/cards/spells/0224_salvage.cpp:51",
+   "power": "src/cards/spells/0224_salvage.cpp:52",
+   "power_by_domain": "src/cards/spells/0224_salvage.cpp:52 x src/cards/spells/0224_salvage.cpp:50; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0224_salvage.cpp:54"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "gear",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "optional": true,
+      "_src": "src/cards/spells/0224_salvage.cpp:24-37"
+     },
+     "optional": true,
+     "_src": "src/cards/spells/0224_salvage.cpp:19-20"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/spells/0224_salvage.cpp:21"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0224_salvage.cpp:21"
+     },
+     "_src": "src/cards/spells/0224_salvage.cpp:21"
+    }
+   ],
+   "_src": "src/cards/spells/0224_salvage.cpp:18"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-224-298",
+  "class_file": "src/cards/spells/0224_salvage.cpp",
+  "source": "engine_code",
+  "flags": []
+ }
+}

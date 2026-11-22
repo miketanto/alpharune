@@ -1,0 +1,13 @@
+time,phase,run,from,to,cell,pool_games,wr_vs_pool,decisions
+2026-11-20T19:14:22,main,g1smoke_main,0,2,azir_v_azir,2,1.0,420
+2026-11-20T19:14:22,main,g1smoke_main,0,2,azir_v_rengar,2,0.0,423
+2026-11-20T19:14:22,main,g1smoke_main,0,2,rengar_v_azir,2,1.0,505
+2026-11-20T19:14:22,main,g1smoke_main,0,2,rengar_v_rengar,2,0.5,390
+2026-11-20T19:14:32,exp,g1smoke_exp,0,2,azir_v_azir,2,0.5,321
+2026-11-20T19:14:32,exp,g1smoke_exp,0,2,azir_v_rengar,4,0.0,344
+2026-11-20T19:14:32,exp,g1smoke_exp,0,2,rengar_v_azir,4,1.0,298
+2026-11-20T19:14:33,exp,g1smoke_exp,0,2,rengar_v_rengar,4,1.0,337
+2026-11-20T19:14:40,main,g1smoke_main,2,3,azir_v_azir,0,,213
+2026-11-20T19:14:40,main,g1smoke_main,2,3,azir_v_rengar,2,0.0,269
+2026-11-20T19:14:40,main,g1smoke_main,2,3,rengar_v_azir,2,1.0,274
+2026-11-20T19:14:40,main,g1smoke_main,2,3,rengar_v_rengar,0,,292

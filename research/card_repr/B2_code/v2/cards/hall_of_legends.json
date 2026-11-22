@@ -1,0 +1,54 @@
+{
+ "stats": {
+  "type": "battlefield",
+  "supertype": null,
+  "domains": [],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/battlefields/0524_hall_of_legends.cpp:58",
+   "supertype": "default SuperType::None",
+   "domains": "default {}"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "here",
+    "_src": "src/cards/battlefields/0524_hall_of_legends.cpp:19"
+   },
+   "effects": [
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "legend",
+      "side": "friendly",
+      "zone": "legend",
+      "count": 1,
+      "_src": "src/cards/battlefields/0524_hall_of_legends.cpp:41-42"
+     },
+     "_src": "src/cards/battlefields/0524_hall_of_legends.cpp:43"
+    }
+   ],
+   "_src": "src/cards/battlefields/0524_hall_of_legends.cpp:19",
+   "cost": {
+    "energy": 1,
+    "optional": true,
+    "_src": "src/cards/battlefields/0524_hall_of_legends.cpp:34-39"
+   }
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-210-221",
+  "class_file": "src/cards/battlefields/0524_hall_of_legends.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: legend (selector type and zone: your legend)",
+   "the [1] is offered even when the legend is already ready (class comment)"
+  ]
+ }
+}

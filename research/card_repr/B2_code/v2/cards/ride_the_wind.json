@@ -1,0 +1,66 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0173_ride_the_wind.cpp:68",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0173_ride_the_wind.cpp:69",
+   "energy": "src/cards/spells/0173_ride_the_wind.cpp:70",
+   "power": "src/cards/spells/0173_ride_the_wind.cpp:71",
+   "power_by_domain": "src/cards/spells/0173_ride_the_wind.cpp:71 x src/cards/spells/0173_ride_the_wind.cpp:69; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "action",
+   "_src": "src/cards/spells/0173_ride_the_wind.cpp:72"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "action",
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0173_ride_the_wind.cpp:28-36"
+     },
+     "dest": "base_or_other_battlefield",
+     "_src": "src/cards/spells/0173_ride_the_wind.cpp:52; dest src/cards/spells/0173_ride_the_wind.cpp:45, src/cards/card_helpers.h:1520-1529"
+    },
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0173_ride_the_wind.cpp:53"
+     },
+     "_src": "src/cards/spells/0173_ride_the_wind.cpp:53"
+    }
+   ],
+   "_src": "src/cards/spells/0173_ride_the_wind.cpp:33"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-173-298",
+  "class_file": "src/cards/spells/0173_ride_the_wind.cpp",
+  "source": "engine_code",
+  "flags": []
+ }
+}

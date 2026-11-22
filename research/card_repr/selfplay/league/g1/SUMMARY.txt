@@ -1,0 +1,26 @@
+G1 league summary (Sat Nov 21 01:12:21 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g1
+
+main (g1_main): 500 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           0.745 (n=  954)        0.023 (n= 1325)        0.998 (n= 1284)        0.604 (n= 1043)    0.576
+   51-100          0.860 (n=  960)        0.120 (n= 1158)        0.990 (n= 1172)        0.692 (n= 1034)    0.657
+  101-150          0.825 (n=  947)        0.168 (n= 1074)        0.984 (n= 1104)        0.564 (n= 1090)    0.631
+  151-200          0.846 (n=  909)        0.298 (n= 1002)        0.957 (n=  998)        0.570 (n= 1078)    0.661
+  201-250          0.863 (n=  886)        0.381 (n=  970)        0.960 (n= 1032)        0.554 (n= 1072)    0.687
+  251-300          0.861 (n=  837)        0.411 (n=  941)        0.940 (n=  952)        0.566 (n= 1055)    0.687
+  301-350          0.853 (n=  757)        0.412 (n=  956)        0.937 (n=  958)        0.503 (n= 1023)    0.664
+  351-400          0.881 (n=  797)        0.404 (n=  965)        0.938 (n= 1015)        0.506 (n= 1095)    0.671
+  401-450          0.780 (n=  753)        0.384 (n=  963)        0.876 (n=  968)        0.490 (n= 1097)    0.620
+  451-500          0.831 (n=  717)        0.399 (n=  920)        0.885 (n=  931)        0.519 (n= 1026)    0.645
+
+exp (g1_exp): 240 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           0.192 (n= 2801)        0.009 (n= 3507)        0.951 (n= 3508)        0.549 (n= 3107)    0.434
+   51-100          0.044 (n= 3381)        0.008 (n= 3435)        0.776 (n= 3413)        0.563 (n= 3269)    0.346
+  101-150          0.009 (n= 3823)        0.002 (n= 3542)        0.605 (n= 3497)        0.545 (n= 3379)    0.281
+  151-200          0.002 (n= 3906)        0.001 (n= 3655)        0.578 (n= 3623)        0.522 (n= 3542)    0.268
+  201-250          0.004 (n= 3071)        0.001 (n= 2897)        0.598 (n= 2854)        0.545 (n= 2773)    0.279
+
+Throughput per phase: e140:14.4s/u,43.3g/s, m320:15.2s/u,26.7g/s, e160:14.8s/u,38.1g/s, m360:15.2s/u,26.4g/s, e180:14.1s/u,38.9g/s, m400:14.9s/u,26.8g/s, e200:15.2s/u,38.3g/s, m440:15.4s/u,25.5g/s, e220:14.4s/u,37.1g/s, m480:15.4s/u,24.5g/s, e240:14.2s/u,39.1g/s, m500:15.4s/u,24.7g/s
+Evaluation: bash g1/eval_g1.sh (pilot swap, forgetting; see g1/README.txt).

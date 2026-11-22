@@ -1,0 +1,22 @@
+{
+ "_doc": "G1 main exploiter: only vs the frozen main copy exp_target.pt, on the same mixed matchups; resets to the init.",
+ "role_rules": {
+  "role": "main-exploiter",
+  "init": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/runs/g1_main/league_00500.pt",
+  "win_threshold": 0.7,
+  "min_games": 200,
+  "max_updates": 60,
+  "reset_prob": 1.0,
+  "target_refresh": 10,
+  "target": "main"
+ },
+ "opponents": {
+  "kind": "role",
+  "role": "main-exploiter"
+ },
+ "target_ckpt": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g2/exp_target.pt",
+ "n_slots": 1,
+ "resample": "game",
+ "registry": "/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g2/registry.json",
+ "seed_members": []
+}

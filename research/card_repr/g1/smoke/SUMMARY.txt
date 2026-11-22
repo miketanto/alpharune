@@ -1,0 +1,13 @@
+G1 league summary (Fri Nov 20 19:14:40 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/g1_smoke
+
+main (g1smoke_main): 3 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           1.000 (n=    2)        0.000 (n=    4)        1.000 (n=    4)        0.500 (n=    2)    0.583
+
+exp (g1smoke_exp): 2 updates. Learner win rate vs the pool (league opponents, sampled play) per matchup cell "<learner deck>_v_<opponent deck>", per block of 50 updates:
+    updates            azir_v_azir          azir_v_rengar          rengar_v_azir        rengar_v_rengar      all
+    1-50           0.500 (n=    2)        0.000 (n=    4)        1.000 (n=    4)        1.000 (n=    4)    0.643
+
+Throughput per phase: m2:5.1s/u,9.6g/s, e2:5.2s/u,10.6g/s, m3:7.6s/u,6.2g/s
+Evaluation: bash g1/eval_g1.sh (pilot swap, forgetting; see g1/README.txt).

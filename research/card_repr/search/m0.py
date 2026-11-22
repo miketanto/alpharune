@@ -25,7 +25,7 @@ def leak(a):
     dev = 'cuda' if torch.cuda.is_available() else 'cpu'
     if dev == 'cuda':
         torch.cuda.set_per_process_memory_fraction(0.4)
-    S = rbsearch.Search(a.games, a.deck, a.seed, sims=0, leaves=1, threads=a.threads, seat_mode='none',
+    S = rbsearch.Search(a.games, a.deck, a.seed, sims=0, leaves=1, threads=a.threads, seat_mode='none', deck_b=a.deck_b,
                         strict=not a.loose, deck_model=a.deck_model)
     net = rbsearch.load_net(a.ckpt, S.dims, dev)
     ev = rbsearch.Evaluator(net, dev, S.dims['A'])
@@ -102,6 +102,7 @@ def main():
     ap.add_argument('--perfect', action='store_true')
     ap.add_argument('--seed', type=int, default=770001)
     ap.add_argument('--deck', default='rengar')
+    ap.add_argument('--deck-b', default=None)
     ap.add_argument('--ckpt', default=CKPT)
     ap.add_argument('--loose', action='store_true', help='encoder without strict visibility (the training default)')
     ap.add_argument('--deck-model', default='pool', choices=['pool', 'decklist'])

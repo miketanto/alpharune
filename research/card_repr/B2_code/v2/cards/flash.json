@@ -1,0 +1,63 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0309_flash.cpp:104",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0309_flash.cpp:105",
+   "energy": "src/cards/spells/0309_flash.cpp:106",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0309_flash.cpp:107"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Move",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 2,
+      "filters": [
+       {
+        "f": "at_base",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/spells/0309_flash.cpp:22-25; src/cards/spells/0309_flash.cpp:40-44"
+       }
+      ],
+      "optional": true,
+      "_src": "src/cards/spells/0309_flash.cpp:66-75 (up to 2, none allowed src/cards/spells/0309_flash.cpp:70-72)"
+     },
+     "dest": "base",
+     "_src": "src/cards/spells/0309_flash.cpp:84-87"
+    }
+   ],
+   "_src": "src/cards/spells/0309_flash.cpp:32"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogs-011-024",
+  "class_file": "src/cards/spells/0309_flash.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: at_base (filter: the unit is in its controller's base)"
+  ]
+ }
+}

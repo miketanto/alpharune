@@ -1,0 +1,129 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0199_tideturner.cpp:62",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0199_tideturner.cpp:63",
+   "energy": "src/cards/units/0199_tideturner.cpp:65",
+   "power": "default 0",
+   "might": "src/cards/units/0199_tideturner.cpp:66"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "hidden",
+   "_src": "src/cards/units/0199_tideturner.cpp:68"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0199_tideturner.cpp:23"
+   },
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "other",
+        "v": true,
+        "_src": "src/cards/units/0199_tideturner.cpp:32"
+       },
+       {
+        "f": "at_self_location",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/units/0199_tideturner.cpp:33"
+       }
+      ],
+      "bind": "A",
+      "_src": "src/cards/units/0199_tideturner.cpp:27-38"
+     },
+     "optional": true,
+     "_src": "src/cards/units/0199_tideturner.cpp:42; may src/cards/units/0199_tideturner.cpp:39-40"
+    },
+    {
+     "verb": "Move",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0199_tideturner.cpp:47"
+     },
+     "dest": "location_of:A",
+     "_src": "src/cards/units/0199_tideturner.cpp:45-47"
+    },
+    {
+     "verb": "Move",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/units/0199_tideturner.cpp:48"
+     },
+     "dest": "self_location",
+     "_src": "src/cards/units/0199_tideturner.cpp:45-48"
+    }
+   ],
+   "_src": "src/cards/units/0199_tideturner.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-199-298",
+  "class_file": "src/cards/units/0199_tideturner.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: dest location_of:A (swap: self to A's location, A to self's original location)"
+  ]
+ }
+}

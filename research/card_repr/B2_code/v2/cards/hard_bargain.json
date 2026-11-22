@@ -1,0 +1,89 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0457_hard_bargain.cpp:106",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0457_hard_bargain.cpp:107",
+   "energy": "src/cards/spells/0457_hard_bargain.cpp:108",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0457_hard_bargain.cpp:110"
+  },
+  {
+   "kw": "repeat",
+   "_src": "src/cards/spells/0457_hard_bargain.cpp:111"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "additional_cost",
+   "cost": {
+    "energy": 2,
+    "optional": true,
+    "additional": true,
+    "_src": "src/cards/spells/0457_hard_bargain.cpp:19-21"
+   },
+   "effects": [
+    {
+     "verb": "Repeat",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0457_hard_bargain.cpp:19-21"
+     },
+     "_src": "src/cards/spells/0457_hard_bargain.cpp:18-21; src/engine/game_engine.cpp:4383-4387"
+    }
+   ],
+   "_src": "src/cards/spells/0457_hard_bargain.cpp:18-21"
+  },
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "Counter",
+     "target": {
+      "type": "spell",
+      "side": "any",
+      "zone": "chain",
+      "count": 1,
+      "_src": "src/cards/spells/0457_hard_bargain.cpp:31-39"
+     },
+     "condition": [
+      {
+       "c": "target_controller_pays_energy",
+       "v": 2,
+       "neg": true,
+       "_src": "src/cards/spells/0457_hard_bargain.cpp:56-93"
+      }
+     ],
+     "_src": "src/cards/spells/0457_hard_bargain.cpp:59; src/cards/spells/0457_hard_bargain.cpp:93; src/cards/card_helpers.h:395"
+    }
+   ],
+   "_src": "src/cards/spells/0457_hard_bargain.cpp:37"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-136-221",
+  "class_file": "src/cards/spells/0457_hard_bargain.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: verb Repeat (Repeat [2]: optional additional cost, the spell's effect is executed again with its own choices; engine-charged, CR 820)",
+   "new term: condition target_controller_pays_energy (the countered spell's controller may pay [2] to prevent it; auto-countered when it cannot pay)"
+  ]
+ }
+}

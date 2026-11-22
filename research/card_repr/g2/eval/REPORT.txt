@@ -1,0 +1,21 @@
+G2 evaluation (Sat Nov 21 09:52:51 2026), greedy. G2 = g2_main@1000 (Rengar, Azir, Diana, Kai'Sa, Master Yi, Kennen), G1 = g1_main@500, S_R = e2a_main@480, S_A = az_main@300.
+Net pairs: 2000 games, both seat orders, same deals; win rate of the first player. ISMCTS: 1000 games, network always seat 1.
+
+  G2 vs G1 | rengar mirror                   0.358 [0.337, 0.379]  n=2000 err=0
+  G2 vs G1 | azir mirror                     0.517 [0.496, 0.539]  n=2000 err=0
+  G2(rengar) vs G1(azir)                     0.640 [0.619, 0.661]  n=2000 err=0
+  G2(azir) vs G1(rengar)                     0.301 [0.281, 0.322]  n=2000 err=0
+  G2 vs S_R | rengar mirror                  0.277 [0.258, 0.297]  n=2000 err=0
+  G2 vs S_A | azir mirror                    0.534 [0.513, 0.556]  n=2000 err=0
+  G2 vs G1 | diana mirror                    0.918 [0.905, 0.929]  n=2000 err=0
+  G2 vs G1 | kaisa mirror                    0.837 [0.820, 0.853]  n=2000 err=0
+  G2 vs G1 | yi_rebuild mirror               0.811 [0.793, 0.828]  n=2000 err=0
+  G2 vs G1 | kennen mirror                   0.922 [0.910, 0.933]  n=2000 err=0
+  G2 vs ismcts:sims=100 | diana mirror       0.989 [0.980, 0.994]  n=1000 err=0
+  G1 vs ismcts:sims=100 | diana mirror       0.812 [0.787, 0.835]  n=1000 err=0
+  G2 vs ismcts:sims=100 | kaisa mirror       0.988 [0.979, 0.993]  n=1000 err=0
+  G1 vs ismcts:sims=100 | kaisa mirror       0.938 [0.921, 0.951]  n=1000 err=0
+  G2 vs ismcts:sims=100 | yi_rebuild mirror  0.980 [0.969, 0.987]  n=1000 err=0
+  G1 vs ismcts:sims=100 | yi_rebuild mirror  0.882 [0.861, 0.900]  n=1000 err=0
+  G2 vs ismcts:sims=100 | kennen mirror      0.980 [0.969, 0.987]  n=1000 err=0
+  G1 vs ismcts:sims=100 | kennen mirror      0.676 [0.646, 0.704]  n=1000 err=0

@@ -30,9 +30,21 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 CR = os.path.normpath(os.path.join(HERE, '..', '..'))   # research/card_repr
 REPRS_PT = os.path.join(CR, 'smoke', 'train', 'packed', 'reprs.pt')
 VOCAB_JSON = os.path.join(CR, 'selfplay', 'rbenv', 'vocab.json')
+# Card vocabulary v2 (cards_v2/build_v2.py): every registered card has a key; v1 indices unchanged.
+# Must match rbenv.py (same RB_VOCAB switch, default v2).
+if os.environ.get('RB_VOCAB', 'v2') == 'v2':
+    VOCAB_JSON = os.path.join(CR, 'cards_v2', 'vocab_v2.json')
+TEXT_V2 = os.path.join(CR, 'cards_v2', 'text_v2.json')
 CARDS_JSON = os.path.join(CR, 'cards.json')
 REPR_SRC = {'B2': os.path.join(CR, 'B2_code', 'out', 'vectors.json'),
             'B': os.path.join(CR, 'B_graph', 'out', 'vectors.json')}
+# B2 v2 (B2_code/extract_v2.py, 2026-11-21): the 51 v1 graphs unchanged + hand-written graphs for the Azir /
+# Rengar / Diana lists' other cards. Opt-in (RB_B2=v2): a net trained with v1 sees those cards as the 'other'
+# row + text; switching gives them a B2 vector (and the ordinary special row), which changes their embedding.
+B2_SRC = {'v1': REPR_SRC['B2'], 'v2': os.path.join(CR, 'B2_code', 'out', 'vectors_v2.json')}
+B2_DEFAULT = os.environ.get('RB_B2', 'v1')   # a net built without an explicit b2= uses this
+if B2_DEFAULT == 'v2':
+    REPR_SRC['B2'] = B2_SRC['v2']
 
 
 def load_vocab():
@@ -50,11 +62,17 @@ def load_vocab():
     return ['<pad>', 'hidden'] + keys, 'cards.json (fallback)'
 
 
-def special_index(vocab):
-    """0 = ordinary card, else a learned row shared by every condition."""
+def special_index(vocab, covered=None):
+    """0 = ordinary card, else a learned row shared by every condition.
+    covered (v2): the keys the frozen card table R has a vector for. A real card outside it gets the
+    'other' row (5), so a v2 vocabulary reproduces exactly what the v1 encoding gave such a card (it was
+    the 'other' key); W_txt / E_res (zero at init) then tell those cards apart."""
     out = []
     for k in vocab:
-        if k in ('<pad>', 'pad'):
+        if covered is not None and k not in covered and not (
+                k in ('<pad>', 'pad', 'hidden', 'keyword_ability', 'none') or k.startswith(('token:', 'other'))):
+            out.append(5)
+        elif k in ('<pad>', 'pad'):
             out.append(1)
         elif k == 'hidden':
             out.append(2)
@@ -69,7 +87,7 @@ def special_index(vocab):
     return torch.tensor(out, dtype=torch.long)
 
 
-def card_table(repr_name, vocab, seed=777):
+def card_table(repr_name, vocab, seed=777, src=None):
     """Returns (table [V, d_in], trainable, missing keys). B2/B from their source vectors.json."""
     V = len(vocab)
     if repr_name == 'id':
@@ -80,7 +98,7 @@ def card_table(repr_name, vocab, seed=777):
     # B2 / B from the SOURCE vectors.json (not the gitignored packed file), with smoke/train/reprs.py's
     # pipeline: center on the 51 base cards, scale mean base norm to 1, fixed Gaussian projection
     # (seed 1234) to 256 dims. Covers every vocab key the source has (incl. the score variants).
-    src_path = REPR_SRC[repr_name]
+    src_path = src or REPR_SRC[repr_name]
     raw = json.load(open(src_path))['vectors']
     cj = json.load(open(CARDS_JSON, encoding='utf-8'))
     base_keys = [c['key'] for c in cj['cards']]
@@ -99,6 +117,32 @@ def card_table(repr_name, vocab, seed=777):
     return tab, False, missing
 
 
+def text_table(vocab):
+    """v2: [V, 768] text vectors (cards_v2/text_v2.json, A_text pipeline on the current CardDef text, unit
+    norm); zero rows for keys with none (pad, hidden, tokens, other, synthetic variants)."""
+    if not os.path.exists(TEXT_V2):
+        return None
+    raw = json.load(open(TEXT_V2))['vectors']
+    dim = len(next(iter(raw.values())))
+    tab = torch.zeros(len(vocab), dim)
+    for i, k in enumerate(vocab):
+        if k in raw:
+            tab[i] = torch.tensor(raw[k], dtype=torch.float32)
+    return tab
+
+
+# Buffers rebuilt from the vocabulary at construction: never taken from a checkpoint (a v1 checkpoint's
+# 80-row tables would not fit a v2 vocabulary; their content is deterministic anyway).
+VOCAB_BUFFERS = ('R', 'special_idx', 'R_txt')
+# Parameters a pre-v2 checkpoint does not have; they start at zero, so loading such a checkpoint
+# reproduces it exactly.
+V2_PARAMS = ('W_txt.weight', 'E_res.weight')
+# History block (rbenv history.h, PLAYTEST_PLAN.md step 1): parameters named H_*, absent from older
+# checkpoints; its output projection starts at zero, so such a checkpoint loads and computes as before.
+HIST_PREFIX = 'H_'
+N_HIST_NUM = 18 + 1 + 1 + 16 + 2   # value one-hot (-2..15), slog nref, slog runes, turns-ago one-hot, tp, sd
+
+
 def onehot_clip(x, lo, hi):
     return F.one_hot((x.clamp(lo, hi) - lo), hi - lo + 1).float()
 
@@ -110,7 +154,7 @@ def slog(x):
 
 class Net(nn.Module):
     def __init__(self, dims, vocab, repr_name='id', ask_head=False, card_norm=True, ask_opt=False, opt_cost=None,
-                 opt_refs=None):
+                 opt_refs=None, hist=None, b2=None):
         super().__init__()
         # ask_opt (gate 3, 2026-11-19; needs ask_head): the ask head's bilinear term also multiplies the
         # option's OWN features (intent kind, value v, decline flag, destination, move-consequence fields,
@@ -132,14 +176,18 @@ class Net(nn.Module):
         self.G, self.T, self.F, self.A, self.K = (int(dims[k]) for k in ('G', 'T', 'F', 'A', 'K'))
         V = len(vocab)
         self.repr_name = repr_name
-        tab, trainable, missing = card_table(repr_name, vocab)
+        # b2: which B2 vector file ('v1' / 'v2'; None = B2_DEFAULT). Checkpoints record it ('b2'); a checkpoint
+        # without it is v1 (everything trained before 2026-11-21 evening).
+        self.b2 = b2 or B2_DEFAULT
+        tab, trainable, missing = card_table(repr_name, vocab, src=B2_SRC.get(self.b2) if repr_name == 'B2' else None)
         self.missing_keys = missing
         if repr_name == 'id':
             self.E_card = nn.Embedding(V, D)
         else:
             self.register_buffer('R', tab)  # frozen
             self.W_card = nn.Linear(tab.shape[1], D, bias=False)
-        self.register_buffer('special_idx', special_index(vocab))
+        covered = None if tab is None else {k for i, k in enumerate(vocab) if bool(tab[i].abs().sum() > 0)}
+        self.register_buffer('special_idx', special_index(vocab, covered))
         self.E_special = nn.Embedding(6, D)
         nf = self.F - 2
         if card_norm:
@@ -189,6 +237,67 @@ class Net(nn.Module):
         if self.opt_refs:
             self.W_ci = nn.Linear(D, D)
             self.W_mg = nn.Linear(D + 1, D)
+        # card vocabulary v2 (2026-11-21): every card has its own key. Two extra terms of the card embedding,
+        # both ZERO at init (so a pre-v2 checkpoint computes exactly what it did, the new cards starting as
+        # the 'other' row): W_txt, a projection of the card's text vector (cards_v2/text_v2.json; transfers
+        # to cards never trained on), and E_res, a learned per-card residual (identity of trained cards).
+        txt = text_table(vocab) if repr_name != 'id' else None
+        self.card_v2 = txt is not None
+        if self.card_v2:
+            self.register_buffer('R_txt', txt)
+            self.W_txt = nn.Linear(txt.shape[1], D, bias=False)
+            nn.init.zeros_(self.W_txt.weight)
+            self.E_res = nn.Embedding(V, D)
+            nn.init.zeros_(self.E_res.weight)
+        # history (2026-11-21): the last H public actions (rbenv history.h, 16 fields each, newest first) as
+        # tokens: one self-attention layer over them, then the board tokens + global token cross-attend to
+        # them; the cross-attention's output projection H_out is ZERO at init (identical to a net without it).
+        self.has_hist = ('H' in dims) if hist is None else bool(hist and 'H' in dims)
+        if self.has_hist:
+            self.H_type = nn.Embedding(64, D)
+            self.H_pk = nn.Embedding(48, D)
+            self.H_actor = nn.Embedding(3, D)
+            self.H_own_a = nn.Embedding(3, D)
+            self.H_own_b = nn.Embedding(3, D)
+            self.H_card_a = nn.Linear(D, D, bias=False)
+            self.H_card_b = nn.Linear(D, D, bias=False)
+            self.H_dst = nn.Embedding(10, D)
+            self.H_age = nn.Embedding(int(dims['H']), D)
+            self.H_num = nn.Linear(N_HIST_NUM, D)
+            hl = nn.TransformerEncoderLayer(D, 4, 2 * D, dropout=0.0, batch_first=True, norm_first=True)
+            self.H_enc = nn.TransformerEncoder(hl, 1, enable_nested_tensor=False)
+            self.H_ln_q = nn.LayerNorm(D)
+            self.H_ln_kv = nn.LayerNorm(D)
+            self.H_xattn = nn.MultiheadAttention(D, 4, batch_first=True)
+            self.H_out = nn.Linear(D, D)
+            nn.init.zeros_(self.H_out.weight)
+            nn.init.zeros_(self.H_out.bias)
+
+    def hist_tokens(self, hist):
+        """[B, H, 16] -> (events [B, H, D], valid [B, H])."""
+        h = hist.long()
+        valid = h[..., 0] > 0
+        ka, kb = h[..., 4], h[..., 6]
+        ca = self.H_card_a(self.card_emb(ka)) * (ka > 0).float()[..., None]
+        cb = self.H_card_b(self.card_emb(kb)) * (kb > 0).float()[..., None]
+        num = torch.cat([onehot_clip(h[..., 9], -2, 15), slog(h[..., 10:11]), slog(h[..., 11:12]),
+                         onehot_clip(h[..., 12], 0, 15), h[..., 13:15].clamp(0, 1).float()], -1)
+        x = (self.H_type(h[..., 2].clamp(0, 63)) + self.H_pk(h[..., 3].clamp(0, 47)) + self.H_actor(h[..., 1].clamp(0, 2))
+             + self.H_own_a(h[..., 5].clamp(0, 2)) + self.H_own_b(h[..., 7].clamp(0, 2)) + ca + cb
+             + self.H_dst((h[..., 8] + 1).clamp(0, 9)) + self.H_age(h[..., 15].clamp(0, self.H_age.num_embeddings - 1))
+             + self.H_num(num))
+        return x * valid.float()[..., None], valid
+
+    def load_state_dict(self, sd, strict=True):
+        """Vocabulary-derived buffers are rebuilt, not loaded; the v2 card terms may be absent (zero)."""
+        sd = {k: v for k, v in sd.items() if k not in VOCAB_BUFFERS}
+        res = super().load_state_dict(sd, strict=False)
+        if strict:
+            miss = [k for k in res.missing_keys
+                    if k not in VOCAB_BUFFERS and k not in V2_PARAMS and not k.startswith(HIST_PREFIX)]
+            if miss or res.unexpected_keys:
+                raise RuntimeError(f'load_state_dict: missing {miss}, unexpected {res.unexpected_keys}')
+        return res
 
     def card_emb(self, key):
         key = key.clamp(0, self.special_idx.shape[0] - 1)
@@ -196,6 +305,8 @@ class Net(nn.Module):
             x = self.E_card(key)
         else:
             x = self.W_card(self.R)[key]
+        if getattr(self, 'card_v2', False):
+            x = x + self.W_txt(self.R_txt)[key] + self.E_res(key)
         x = x + self.E_special(self.special_idx[key])
         if self.card_norm:
             x = self.card_ln(x) * self.card_scale
@@ -223,7 +334,17 @@ class Net(nn.Module):
         h = torch.cat([xg[:, None, :], x], 1)
         mt = b['tok_mask'].bool()
         pad = torch.cat([torch.zeros(Bn, 1, dtype=torch.bool, device=mt.device), ~mt], 1)  # CUDA fix
-        h = self.ln(self.enc(h, src_key_padding_mask=pad))
+        h = self.enc(h, src_key_padding_mask=pad)
+        if getattr(self, 'has_hist', False) and 'hist' in b:
+            he, hv = self.hist_tokens(b['hist'])
+            any_ev = hv.any(1)
+            kpm = ~hv
+            kpm[:, 0] = False                     # a row with no events attends to one zero slot (no NaN)
+            he = self.H_enc(he, src_key_padding_mask=kpm)
+            kv = self.H_ln_kv(he)
+            a, _ = self.H_xattn(self.H_ln_q(h), kv, kv, key_padding_mask=kpm, need_weights=False)
+            h = h + self.H_out(a) * any_ev.float()[:, None, None]
+        h = self.ln(h)
         hg, ht = h[:, 0], h[:, 1:]
         value = torch.tanh(self.val(hg)).squeeze(-1)
 

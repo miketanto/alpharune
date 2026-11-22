@@ -1,0 +1,107 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "mind"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0641_diana_lunari.cpp:78",
+   "supertype": "src/cards/units/0641_diana_lunari.cpp:79",
+   "domains": "src/cards/units/0641_diana_lunari.cpp:80",
+   "energy": "src/cards/units/0641_diana_lunari.cpp:82",
+   "power": "default 0",
+   "might": "src/cards/units/0641_diana_lunari.cpp:83"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "showdown_begin",
+    "subject": "here",
+    "_src": "src/cards/units/0641_diana_lunari.cpp:21; src/engine/trigger_manager.cpp:2070-2081"
+   },
+   "effects": [
+    {
+     "verb": "LookAt",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "deck_top",
+      "count": 1,
+      "_src": "src/cards/units/0641_diana_lunari.cpp:40"
+     },
+     "_src": "src/cards/units/0641_diana_lunari.cpp:40; src/engine/effect_executor.cpp:2755-2790 (predict: private look)"
+    },
+    {
+     "verb": "Recycle",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "deck_top",
+      "count": 1,
+      "_src": "src/cards/units/0641_diana_lunari.cpp:40"
+     },
+     "optional": true,
+     "_src": "src/cards/units/0641_diana_lunari.cpp:40; src/engine/effect_executor.cpp:2796-2800 (predict: may recycle)"
+    },
+    {
+     "verb": "Reveal",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "deck_top",
+      "count": 1,
+      "bind": "R",
+      "_src": "src/cards/units/0641_diana_lunari.cpp:48"
+     },
+     "_src": "src/cards/units/0641_diana_lunari.cpp:45-58"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0641_diana_lunari.cpp:60"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0641_diana_lunari.cpp:60"
+     },
+     "condition": [
+      {
+       "c": "revealed_card_type",
+       "v": "spell",
+       "_src": "src/cards/units/0641_diana_lunari.cpp:59"
+      }
+     ],
+     "_src": "src/cards/units/0641_diana_lunari.cpp:59-60"
+    }
+   ],
+   "_src": "src/cards/units/0641_diana_lunari.cpp:21; src/engine/trigger_manager.cpp:2070-2081",
+   "cost": {
+    "energy": 1,
+    "optional": true,
+    "_src": "src/cards/units/0641_diana_lunari.cpp:27-36"
+   }
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-079-219",
+  "class_file": "src/cards/units/0641_diana_lunari.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event showdown_begin (subject here = the unit's battlefield)",
+   "new term: zone deck_top",
+   "new term: condition revealed_card_type",
+   "Predict expressed as LookAt + optional Recycle of the top card"
+  ]
+ }
+}

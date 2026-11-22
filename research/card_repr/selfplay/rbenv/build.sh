@@ -9,7 +9,7 @@ mkdir -p $DST/research/card_repr/search $DST/research/card_repr/C_engine/out $DS
 cp $SRC/C_engine/card_probe.cpp $DST/research/card_repr/C_engine/
 cp $SRC/C_engine/out/subjects.txt $DST/research/card_repr/C_engine/out/
 cp $SRC/smoke/data/src/decision_export.cpp $SRC/smoke/data/src/decision_export.cmake $DST/research/card_repr/smoke/data/src/
-cp $SRC/selfplay/rbenv/rbenv.cpp $SRC/selfplay/rbenv/rbenv.cmake $DST/research/card_repr/selfplay/rbenv/
+cp $SRC/selfplay/rbenv/rbenv.cpp $SRC/selfplay/rbenv/rbenv.cmake $SRC/selfplay/rbenv/history.h $DST/research/card_repr/selfplay/rbenv/
 cp $SRC/search/rbsearch.cpp $DST/research/card_repr/search/
 grep -q selfplay/rbenv/rbenv.cmake $DST/CMakeLists.txt || echo 'include(research/card_repr/selfplay/rbenv/rbenv.cmake)' >> $DST/CMakeLists.txt
 cd $DST

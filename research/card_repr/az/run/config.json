@@ -1,0 +1,31 @@
+{
+ "init": "../selfplay/runs/g2_main/league_01000.pt",
+ "buf": "buf",
+ "run": "run",
+ "batch": 1024,
+ "lr": 0.0002,
+ "wd": 0.0001,
+ "vf": 1.0,
+ "reuse": 4.0,
+ "window": 200000,
+ "min_records": 30000,
+ "export_every": 100,
+ "ckpt_every": 1000,
+ "log_every": 50,
+ "max_hours": 8.0,
+ "max_steps": 0,
+ "gpu_mem_frac": 0.45,
+ "seed": 1,
+ "dims": {
+  "G": 72,
+  "T": 96,
+  "F": 24,
+  "A": 96,
+  "K": 61,
+  "V": 979,
+  "H": 48,
+  "HF": 16
+ },
+ "start": "../selfplay/runs/g2_main/league_01000.pt",
+ "start_step": 0
+}

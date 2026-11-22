@@ -1,0 +1,578 @@
+[
+ {
+  "key": "emperor_of_the_sands",
+  "deck": "azir",
+  "card_id": 512,
+  "def_id": "sfd-197-221",
+  "file": "src/cards/legends/0512_emperor_of_the_sands.cpp",
+  "type": "legend",
+  "name": "Emperor of the Sands",
+  "all_ids": [
+   512
+  ]
+ },
+ {
+  "key": "azir_sovereign",
+  "deck": "azir",
+  "card_id": 497,
+  "def_id": "sfd-177-221",
+  "file": "src/cards/units/0497_azir_sovereign.cpp",
+  "type": "unit",
+  "name": "Azir, Sovereign",
+  "all_ids": [
+   497
+  ]
+ },
+ {
+  "key": "hidden_blade",
+  "deck": "azir",
+  "card_id": 213,
+  "def_id": "ogn-213-298",
+  "file": "src/cards/spells/0213_hidden_blade.cpp",
+  "type": "spell",
+  "name": "Hidden Blade",
+  "all_ids": [
+   213
+  ]
+ },
+ {
+  "key": "doran_s_shield",
+  "deck": "azir",
+  "card_id": 356,
+  "def_id": "sfd-033-221",
+  "file": "src/cards/gear/0356_doran_s_shield.cpp",
+  "type": "gear",
+  "name": "Doran's Shield",
+  "all_ids": [
+   356
+  ]
+ },
+ {
+  "key": "brutalizer",
+  "deck": "azir",
+  "card_id": 365,
+  "def_id": "sfd-042-221",
+  "file": "src/cards/gear/0365_brutalizer.cpp",
+  "type": "gear",
+  "name": "Brutalizer",
+  "all_ids": [
+   365
+  ]
+ },
+ {
+  "key": "eye_of_the_herald",
+  "deck": "azir",
+  "card_id": 474,
+  "def_id": "sfd-153-221",
+  "file": "src/cards/gear/0474_eye_of_the_herald.cpp",
+  "type": "gear",
+  "name": "Eye of the Herald",
+  "all_ids": [
+   474
+  ]
+ },
+ {
+  "key": "guards",
+  "deck": "azir",
+  "card_id": 475,
+  "def_id": "sfd-154-221",
+  "file": "src/cards/spells/0475_guards.cpp",
+  "type": "spell",
+  "name": "Guards!",
+  "all_ids": [
+   475
+  ]
+ },
+ {
+  "key": "b_f_sword",
+  "deck": "azir",
+  "card_id": 482,
+  "def_id": "sfd-161-221",
+  "file": "src/cards/gear/0482_b_f_sword.cpp",
+  "type": "gear",
+  "name": "B.F. Sword",
+  "all_ids": [
+   482
+  ]
+ },
+ {
+  "key": "arise",
+  "deck": "azir",
+  "card_id": 513,
+  "def_id": "sfd-198-221",
+  "file": "src/cards/spells/0513_arise.cpp",
+  "type": "spell",
+  "name": "Arise!",
+  "all_ids": [
+   513
+  ]
+ },
+ {
+  "key": "soul_sword",
+  "deck": "azir",
+  "card_id": 601,
+  "def_id": "unl-039-219",
+  "file": "src/cards/gear/0601_soul_sword.cpp",
+  "type": "gear",
+  "name": "Soul Sword",
+  "all_ids": [
+   601
+  ]
+ },
+ {
+  "key": "deathgrip",
+  "deck": "azir",
+  "card_id": 484,
+  "def_id": "sfd-163-221",
+  "file": "src/cards/spells/0484_deathgrip.cpp",
+  "type": "spell",
+  "name": "Deathgrip",
+  "all_ids": [
+   484
+  ]
+ },
+ {
+  "key": "hand_hammer",
+  "deck": "azir",
+  "card_id": 814,
+  "def_id": "ven-027-166",
+  "file": "src/cards/gear/0814_hand_hammer.cpp",
+  "type": "gear",
+  "name": "Hand Hammer",
+  "all_ids": [
+   814
+  ]
+ },
+ {
+  "key": "trifarian_war_camp",
+  "deck": "azir",
+  "card_id": 289,
+  "def_id": "ogn-294-298",
+  "file": "src/cards/battlefields/0289_trifarian_war_camp.cpp",
+  "type": "battlefield",
+  "name": "Trifarian War Camp",
+  "all_ids": [
+   289
+  ]
+ },
+ {
+  "key": "hall_of_legends",
+  "deck": "azir",
+  "card_id": 524,
+  "def_id": "sfd-210-221",
+  "file": "src/cards/battlefields/0524_hall_of_legends.cpp",
+  "type": "battlefield",
+  "name": "Hall of Legends",
+  "all_ids": [
+   524
+  ]
+ },
+ {
+  "key": "order_rune",
+  "deck": "azir",
+  "card_id": 214,
+  "def_id": "ogn-214-298",
+  "file": "src/cards/runes/0214_order_rune.cpp",
+  "type": "rune",
+  "name": "Order Rune",
+  "all_ids": [
+   214
+  ]
+ },
+ {
+  "key": "salvage",
+  "deck": "azir",
+  "card_id": 224,
+  "def_id": "ogn-224-298",
+  "file": "src/cards/spells/0224_salvage.cpp",
+  "type": "spell",
+  "name": "Salvage",
+  "all_ids": [
+   224
+  ]
+ },
+ {
+  "key": "ashe_focused",
+  "deck": "azir",
+  "card_id": 731,
+  "def_id": "unl-169-219",
+  "file": "src/cards/units/0731_ashe_focused.cpp",
+  "type": "unit",
+  "name": "Ashe, Focused",
+  "all_ids": [
+   731
+  ]
+ },
+ {
+  "key": "decree_of_unity",
+  "deck": "azir",
+  "card_id": 918,
+  "def_id": "ven-131-166",
+  "file": "src/cards/spells/0918_decree_of_unity.cpp",
+  "type": "spell",
+  "name": "Decree of Unity",
+  "all_ids": [
+   918
+  ]
+ },
+ {
+  "key": "scorn_of_the_moon",
+  "deck": "diana",
+  "card_id": 786,
+  "def_id": "unl-234-219",
+  "file": "src/cards/legends/0786_scorn_of_the_moon.cpp",
+  "type": "legend",
+  "name": "Scorn of the Moon",
+  "all_ids": [
+   786
+  ]
+ },
+ {
+  "key": "diana_lunari",
+  "deck": "diana",
+  "card_id": 641,
+  "def_id": "unl-079-219",
+  "file": "src/cards/units/0641_diana_lunari.cpp",
+  "type": "unit",
+  "name": "Diana, Lunari",
+  "all_ids": [
+   641
+  ]
+ },
+ {
+  "key": "stupefy",
+  "deck": "diana",
+  "card_id": 95,
+  "def_id": "ogn-095-298",
+  "file": "src/cards/spells/0095_stupefy.cpp",
+  "type": "spell",
+  "name": "Stupefy",
+  "all_ids": [
+   95
+  ]
+ },
+ {
+  "key": "ravenbloom_student",
+  "deck": "diana",
+  "card_id": 103,
+  "def_id": "ogn-103-298",
+  "file": "src/cards/units/0103_ravenbloom_student.cpp",
+  "type": "unit",
+  "name": "Ravenbloom Student",
+  "all_ids": [
+   103
+  ]
+ },
+ {
+  "key": "traveling_merchant",
+  "deck": "diana",
+  "card_id": 185,
+  "def_id": "ogn-185-298",
+  "file": "src/cards/units/0185_traveling_merchant.cpp",
+  "type": "unit",
+  "name": "Traveling Merchant",
+  "all_ids": [
+   185
+  ]
+ },
+ {
+  "key": "tideturner",
+  "deck": "diana",
+  "card_id": 199,
+  "def_id": "ogn-199-298",
+  "file": "src/cards/units/0199_tideturner.cpp",
+  "type": "unit",
+  "name": "Tideturner",
+  "all_ids": [
+   199
+  ]
+ },
+ {
+  "key": "moonfall",
+  "deck": "diana",
+  "card_id": 755,
+  "def_id": "unl-198-219",
+  "file": "src/cards/spells/0755_moonfall.cpp",
+  "type": "spell",
+  "name": "Moonfall",
+  "all_ids": [
+   755
+  ]
+ },
+ {
+  "key": "gust",
+  "deck": "diana",
+  "card_id": 169,
+  "def_id": "ogn-169-298",
+  "file": "src/cards/spells/0169_gust.cpp",
+  "type": "spell",
+  "name": "Gust",
+  "all_ids": [
+   169
+  ]
+ },
+ {
+  "key": "ride_the_wind",
+  "deck": "diana",
+  "card_id": 173,
+  "def_id": "ogn-173-298",
+  "file": "src/cards/spells/0173_ride_the_wind.cpp",
+  "type": "spell",
+  "name": "Ride the Wind",
+  "all_ids": [
+   173
+  ]
+ },
+ {
+  "key": "hard_bargain",
+  "deck": "diana",
+  "card_id": 457,
+  "def_id": "sfd-136-221",
+  "file": "src/cards/spells/0457_hard_bargain.cpp",
+  "type": "spell",
+  "name": "Hard Bargain",
+  "all_ids": [
+   457
+  ]
+ },
+ {
+  "key": "eclipse",
+  "deck": "diana",
+  "card_id": 625,
+  "def_id": "unl-063-219",
+  "file": "src/cards/spells/0625_eclipse.cpp",
+  "type": "spell",
+  "name": "Eclipse",
+  "all_ids": [
+   625
+  ]
+ },
+ {
+  "key": "sprite_fountain",
+  "deck": "diana",
+  "card_id": 640,
+  "def_id": "unl-078-219",
+  "file": "src/cards/gear/0640_sprite_fountain.cpp",
+  "type": "gear",
+  "name": "Sprite Fountain",
+  "all_ids": [
+   640
+  ]
+ },
+ {
+  "key": "star_crossed",
+  "deck": "diana",
+  "card_id": 690,
+  "def_id": "unl-128-219",
+  "file": "src/cards/spells/0690_star_crossed.cpp",
+  "type": "spell",
+  "name": "Star-Crossed",
+  "all_ids": [
+   690
+  ]
+ },
+ {
+  "key": "smoke_screen",
+  "deck": "diana",
+  "card_id": 93,
+  "def_id": "ogn-093-298",
+  "file": "src/cards/spells/0093_smoke_screen.cpp",
+  "type": "spell",
+  "name": "Smoke Screen",
+  "all_ids": [
+   93
+  ]
+ },
+ {
+  "key": "rebuke",
+  "deck": "diana",
+  "card_id": 172,
+  "def_id": "ogn-172-298",
+  "file": "src/cards/spells/0172_rebuke.cpp",
+  "type": "spell",
+  "name": "Rebuke",
+  "all_ids": [
+   172
+  ]
+ },
+ {
+  "key": "acceptable_losses",
+  "deck": "diana",
+  "card_id": 179,
+  "def_id": "ogn-179-298",
+  "file": "src/cards/spells/0179_acceptable_losses.cpp",
+  "type": "spell",
+  "name": "Acceptable Losses",
+  "all_ids": [
+   179
+  ]
+ },
+ {
+  "key": "flash",
+  "deck": "diana",
+  "card_id": 309,
+  "def_id": "ogs-011-024",
+  "file": "src/cards/spells/0309_flash.cpp",
+  "type": "spell",
+  "name": "Flash",
+  "all_ids": [
+   309
+  ]
+ },
+ {
+  "key": "switcheroo",
+  "deck": "diana",
+  "card_id": 466,
+  "def_id": "sfd-145-221",
+  "file": "src/cards/spells/0466_switcheroo.cpp",
+  "type": "spell",
+  "name": "Switcheroo",
+  "all_ids": [
+   466
+  ]
+ },
+ {
+  "key": "hwei_brooding_painter",
+  "deck": "diana",
+  "card_id": 642,
+  "def_id": "unl-080-219",
+  "file": "src/cards/units/0642_hwei_brooding_painter.cpp",
+  "type": "unit",
+  "name": "Hwei, Brooding Painter",
+  "all_ids": [
+   642
+  ]
+ },
+ {
+  "key": "vex_apathetic",
+  "deck": "diana",
+  "card_id": 712,
+  "def_id": "unl-150-219",
+  "file": "src/cards/units/0712_vex_apathetic.cpp",
+  "type": "unit",
+  "name": "Vex, Apathetic",
+  "all_ids": [
+   712
+  ]
+ },
+ {
+  "key": "fizz_trickster",
+  "deck": "diana",
+  "card_id": 461,
+  "def_id": "sfd-140-221",
+  "file": "src/cards/units/0461_fizz_trickster.cpp",
+  "type": "unit",
+  "name": "Fizz, Trickster",
+  "all_ids": [
+   461
+  ]
+ },
+ {
+  "key": "targon_s_peak",
+  "deck": "diana",
+  "card_id": 284,
+  "def_id": "ogn-289-298",
+  "file": "src/cards/battlefields/0284_targon_s_peak.cpp",
+  "type": "battlefield",
+  "name": "Targon's Peak",
+  "all_ids": [
+   284
+  ]
+ },
+ {
+  "key": "abandoned_hall",
+  "deck": "diana",
+  "card_id": 761,
+  "def_id": "unl-205-219",
+  "file": "src/cards/battlefields/0761_abandoned_hall.cpp",
+  "type": "battlefield",
+  "name": "Abandoned Hall",
+  "all_ids": [
+   761
+  ]
+ },
+ {
+  "key": "chaos_rune",
+  "deck": "diana",
+  "card_id": 166,
+  "def_id": "ogn-166-298",
+  "file": "src/cards/runes/0166_chaos_rune.cpp",
+  "type": "rune",
+  "name": "Chaos Rune",
+  "all_ids": [
+   166
+  ]
+ },
+ {
+  "key": "mind_rune",
+  "deck": "diana",
+  "card_id": 89,
+  "def_id": "ogn-089-298",
+  "file": "src/cards/runes/0089_mind_rune.cpp",
+  "type": "rune",
+  "name": "Mind Rune",
+  "all_ids": [
+   89
+  ]
+ },
+ {
+  "key": "turn_to_dust",
+  "deck": "diana",
+  "card_id": 632,
+  "def_id": "unl-070-219",
+  "file": "src/cards/spells/0632_turn_to_dust.cpp",
+  "type": "spell",
+  "name": "Turn to Dust",
+  "all_ids": [
+   632
+  ]
+ },
+ {
+  "key": "decree_of_insight",
+  "deck": "diana",
+  "card_id": 848,
+  "def_id": "ven-061-166",
+  "file": "src/cards/spells/0848_decree_of_insight.cpp",
+  "type": "spell",
+  "name": "Decree of Insight",
+  "all_ids": [
+   848
+  ]
+ },
+ {
+  "key": "singularity",
+  "deck": "diana",
+  "card_id": 105,
+  "def_id": "ogn-105-298",
+  "file": "src/cards/spells/0105_singularity.cpp",
+  "type": "spell",
+  "name": "Singularity",
+  "all_ids": [
+   105
+  ]
+ },
+ {
+  "key": "up_from_the_deep",
+  "deck": "diana",
+  "card_id": 887,
+  "def_id": "ven-100-166",
+  "file": "src/cards/spells/0887_up_from_the_deep.cpp",
+  "type": "spell",
+  "name": "Up from the Deep",
+  "all_ids": [
+   887
+  ]
+ },
+ {
+  "key": "tail_cloaked_matriarch",
+  "deck": "diana",
+  "card_id": 891,
+  "def_id": "ven-104-166",
+  "file": "src/cards/units/0891_tail_cloaked_matriarch.cpp",
+  "type": "unit",
+  "name": "Tail-Cloaked Matriarch",
+  "all_ids": [
+   891
+  ]
+ }
+]

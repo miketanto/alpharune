@@ -1,0 +1,80 @@
+2026-11-20 20:29:01 === overnight.py start; deadline Sat Nov 21 06:29:00 2026; training stops Sat Nov 21 06:04:00 2026; args {'cmd': 'run', 'deadline': '06:29', 'out': 'league/e2_A', 'tag': 'e2a', 'member': '', 'main_updates': 40, 'exp_updates': 20, 'snapshot_every': 50, 'exp_max_updates': 60, 'p_osfp': 0.8, 'osfp_period': 163840, 'n_slots': 1, 'n_envs': 256, 'samples_per_update': 16384, 'gpu_mem_frac': 0.4, 'train_cores': '0-11', 'phase_max_min': 30, 'rate_every_min': 45, 'first_rate_min': 45, 'rate_games': 100, 'rate_procs': 4, 'no_ismcts': True, 'final_rate_min': 25, 'max_ckpts': 30, 'min_ram_mb': 1024, 'min_disk_gb': 5, 'min_gps': 40, 'slope_points': 5, 'stop_main_at': 480, 'no_rate': True, 'main_extra': '', 'train_extra': '--search-holdout /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/e2/holdout.npz --eval-holdout-every 10'}
+2026-11-20 20:29:05 phase main: e2a_main updates 0->40 (max 30.0 min)
+2026-11-20 20:34:25 phase main done rc=0 updates 0->40 in 320s (8.0 s/update), games/s median 44.5 min 27.4
+2026-11-20 20:34:25 exploiter target = main @40
+2026-11-20 20:34:25 phase exp: e2a_exp updates 0->20 (max 30.0 min)
+2026-11-20 20:37:33 phase exp done rc=0 updates 0->20 in 187s (9.4 s/update), games/s median 46.8 min 33.2
+2026-11-20 20:37:33 phase main: e2a_main updates 40->80 (max 30.0 min)
+2026-11-20 20:42:56 phase main done rc=0 updates 40->80 in 324s (8.1 s/update), games/s median 42.8 min 31.0
+2026-11-20 20:42:56 exploiter target = main @80
+2026-11-20 20:42:56 phase exp: e2a_exp updates 20->40 (max 30.0 min)
+2026-11-20 20:46:08 phase exp done rc=0 updates 20->40 in 192s (9.6 s/update), games/s median 46.2 min 33.2
+2026-11-20 20:46:08 phase main: e2a_main updates 80->120 (max 30.0 min)
+2026-11-20 20:51:37 phase main done rc=0 updates 80->120 in 329s (8.2 s/update), games/s median 41.0 min 30.8
+2026-11-20 20:51:37 exploiter target = main @120
+2026-11-20 20:51:37 phase exp: e2a_exp updates 40->60 (max 30.0 min)
+2026-11-20 20:54:48 phase exp done rc=0 updates 40->60 in 191s (9.5 s/update), games/s median 47.0 min 32.3
+2026-11-20 20:54:48 phase main: e2a_main updates 120->160 (max 30.0 min)
+2026-11-20 21:00:24 phase main done rc=0 updates 120->160 in 336s (8.4 s/update), games/s median 39.3 min 27.2  WARN below 40 games/s
+2026-11-20 21:00:24 exploiter target = main @160
+2026-11-20 21:00:24 phase exp: e2a_exp updates 60->80 (max 30.0 min)
+2026-11-20 21:03:34 phase exp done rc=0 updates 60->80 in 191s (9.5 s/update), games/s median 46.4 min 32.9
+2026-11-20 21:03:35 phase main: e2a_main updates 160->200 (max 30.0 min)
+2026-11-20 21:09:12 phase main done rc=0 updates 160->200 in 338s (8.4 s/update), games/s median 37.8 min 27.6  WARN below 40 games/s
+2026-11-20 21:09:12 exploiter target = main @200
+2026-11-20 21:09:12 phase exp: e2a_exp updates 80->100 (max 30.0 min)
+2026-11-20 21:12:24 phase exp done rc=0 updates 80->100 in 191s (9.6 s/update), games/s median 46.9 min 31.8
+2026-11-20 21:12:24 phase main: e2a_main updates 200->240 (max 30.0 min)
+2026-11-20 21:17:54 phase main done rc=0 updates 200->240 in 330s (8.3 s/update), games/s median 39.8 min 27.4  WARN below 40 games/s
+2026-11-20 21:17:54 exploiter target = main @240
+2026-11-20 21:17:54 phase exp: e2a_exp updates 100->120 (max 30.0 min)
+2026-11-20 21:21:07 phase exp done rc=0 updates 100->120 in 192s (9.6 s/update), games/s median 47.0 min 32.2
+2026-11-20 21:21:07 phase main: e2a_main updates 240->280 (max 30.0 min)
+2026-11-20 21:26:48 phase main done rc=0 updates 240->280 in 341s (8.5 s/update), games/s median 37.1 min 27.6  WARN below 40 games/s
+2026-11-20 21:26:48 exploiter target = main @280
+2026-11-20 21:26:48 phase exp: e2a_exp updates 120->140 (max 30.0 min)
+2026-11-20 21:29:58 phase exp done rc=0 updates 120->140 in 190s (9.5 s/update), games/s median 47.9 min 32.1
+2026-11-20 21:29:58 phase main: e2a_main updates 280->320 (max 30.0 min)
+2026-11-20 21:35:33 phase main done rc=0 updates 280->320 in 335s (8.4 s/update), games/s median 39.1 min 28.1  WARN below 40 games/s
+2026-11-20 21:35:33 exploiter target = main @320
+2026-11-20 21:35:34 phase exp: e2a_exp updates 140->160 (max 30.0 min)
+2026-11-20 21:38:50 phase exp done rc=0 updates 140->160 in 197s (9.8 s/update), games/s median 46.4 min 31.8
+2026-11-20 21:38:50 phase main: e2a_main updates 320->360 (max 30.0 min)
+2026-11-20 21:44:40 phase main done rc=0 updates 320->360 in 349s (8.7 s/update), games/s median 37.3 min 27.8  WARN below 40 games/s
+2026-11-20 21:44:40 exploiter target = main @360
+2026-11-20 21:44:40 phase exp: e2a_exp updates 160->180 (max 30.0 min)
+2026-11-20 21:47:55 phase exp done rc=0 updates 160->180 in 195s (9.8 s/update), games/s median 45.8 min 33.1
+2026-11-20 21:47:55 phase main: e2a_main updates 360->400 (max 30.0 min)
+2026-11-20 21:53:46 phase main done rc=0 updates 360->400 in 351s (8.8 s/update), games/s median 36.5 min 26.8  WARN below 40 games/s
+2026-11-20 21:53:46 exploiter target = main @400
+2026-11-20 21:53:46 phase exp: e2a_exp updates 180->200 (max 30.0 min)
+2026-11-20 21:56:56 phase exp done rc=0 updates 180->200 in 190s (9.5 s/update), games/s median 45.8 min 31.6
+2026-11-20 21:56:56 phase main: e2a_main updates 400->440 (max 30.0 min)
+2026-11-20 22:02:49 phase main done rc=0 updates 400->440 in 352s (8.8 s/update), games/s median 36.0 min 27.6  WARN below 40 games/s
+2026-11-20 22:02:49 exploiter target = main @440
+2026-11-20 22:02:49 phase exp: e2a_exp updates 200->220 (max 30.0 min)
+2026-11-20 22:05:58 phase exp done rc=0 updates 200->220 in 189s (9.5 s/update), games/s median 47.1 min 32.5
+2026-11-20 22:05:59 phase main: e2a_main updates 440->480 (max 30.0 min)
+2026-11-20 22:11:47 phase main done rc=0 updates 440->480 in 348s (8.7 s/update), games/s median 36.5 min 28.2  WARN below 40 games/s
+2026-11-20 22:11:47 exploiter target = main @480
+2026-11-20 22:11:47 main reached 480 updates: stopping
+2026-11-20 22:11:47 SUMMARY written:
+Overnight league summary (Fri Nov 20 22:11:47 2026)
+out: /mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A
+
+Elo over time (Elo/CI as recorded at the time; "refit" = final fit over all results, same scale as ratings_demo.txt, random-player = 0)
+time                update member                     Elo            95% CI   refit vsISM200 vsISM100 vs_cfB2 vs_cfid vs_prev vs_expl
+
+Main Elo slope: fewer than 3 rated main snapshots (0), no slope.
+
+Main exploiter: 220 updates, 3 snapshots, 3 resets
+  e2a_exp@60 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A': 0.507})
+  e2a_exp@120 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A': 0.475})
+  e2a_exp@180 (60 updates since reset; wr since reset {'target:/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr/selfplay/league/e2_A': 0.462})
+  best training win rate vs the frozen main target (sampled play, >= 100 games since reset): 0.511 at update 18 (4302 games since reset)
+  found a weakness (>= 70% vs the main target): no
+
+Throughput per phase (games/s median): e120:47.0, m280:37.1, e140:47.9, m320:39.1, e160:46.4, m360:37.3, e180:45.8, m400:36.5, e200:45.8, m440:36.0, e220:47.1, m480:36.5
+  over the run: median 44.5, min 36.0 games/s, 23 phases
+
+2026-11-20 22:11:47 === overnight.py done

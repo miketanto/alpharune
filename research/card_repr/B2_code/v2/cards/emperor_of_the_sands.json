@@ -1,0 +1,98 @@
+{
+ "stats": {
+  "type": "legend",
+  "supertype": null,
+  "domains": [
+   "calm",
+   "order"
+  ],
+  "energy": null,
+  "power": null,
+  "might": null,
+  "_src": {
+   "type": "src/cards/legends/0512_emperor_of_the_sands.cpp:71",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/legends/0512_emperor_of_the_sands.cpp:72"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveKeyword",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": "all",
+      "filters": [
+       {
+        "f": "token_name",
+        "v": "sand_soldier",
+        "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:35-37"
+       }
+      ],
+      "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:35-37"
+     },
+     "duration": "while",
+     "keyword": "weaponmaster",
+     "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:38-41"
+    }
+   ],
+   "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:19-30"
+  },
+  {
+   "kind": "activated",
+   "timing": "main",
+   "cost": {
+    "energy": 1,
+    "exhaust": true,
+    "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:45-48"
+   },
+   "condition": [
+    {
+     "c": "equipment_played_this_turn_ge",
+     "v": 1,
+     "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:50-52"
+    }
+   ],
+   "effects": [
+    {
+     "verb": "CreateToken",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "base",
+      "count": 1,
+      "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:54"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:56"
+     },
+     "token": {
+      "type": "unit",
+      "might": 2,
+      "tag": "shurima",
+      "name": "sand_soldier",
+      "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:56-57"
+     },
+     "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:56-57"
+    }
+   ],
+   "_src": "src/cards/legends/0512_emperor_of_the_sands.cpp:45-59; timing src/engine/game_engine.cpp:6664-6671 (no is_action/is_reaction -> main)"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-197-221",
+  "class_file": "src/cards/legends/0512_emperor_of_the_sands.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: token_name (filter; the aura matches the token's name, the class says its tag Shurima is not used)",
+   "new term: equipment_played_this_turn_ge (condition; 'use only if')",
+   "keyword weaponmaster is granted, not printed"
+  ]
+ }
+}

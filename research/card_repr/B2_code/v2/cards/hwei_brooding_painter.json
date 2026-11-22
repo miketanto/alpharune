@@ -1,0 +1,152 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "mind"
+  ],
+  "energy": 5,
+  "power": 1,
+  "power_by_domain": {
+   "mind": 1
+  },
+  "might": 5,
+  "_src": {
+   "type": "src/cards/units/0642_hwei_brooding_painter.cpp:135",
+   "supertype": "src/cards/units/0642_hwei_brooding_painter.cpp:136",
+   "domains": "src/cards/units/0642_hwei_brooding_painter.cpp:137",
+   "energy": "src/cards/units/0642_hwei_brooding_painter.cpp:139",
+   "power": "src/cards/units/0642_hwei_brooding_painter.cpp:140",
+   "power_by_domain": "src/cards/units/0642_hwei_brooding_painter.cpp:140 x src/cards/units/0642_hwei_brooding_painter.cpp:137; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0642_hwei_brooding_painter.cpp:141"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "move",
+    "subject": "self",
+    "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:18; reflexive src/cards/units/0642_hwei_brooding_painter.cpp:62-64, src/cards/units/0642_hwei_brooding_painter.cpp:74-123"
+   },
+   "effects": [
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:39"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:39"
+     },
+     "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:39"
+    },
+    {
+     "verb": "Discard",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "bind": "D",
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:24-34"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:48-55"
+     },
+     "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:42-55"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:113"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:113"
+     },
+     "condition": [
+      {
+       "c": "discarded_card_type",
+       "v": "spell",
+       "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:62-64"
+      }
+     ],
+     "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:112-113"
+    },
+    {
+     "verb": "Ready",
+     "target": {
+      "type": "rune",
+      "side": "any",
+      "zone": "board",
+      "count": 2,
+      "filters": [
+       {
+        "f": "exhausted",
+        "v": true,
+        "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:88"
+       }
+      ],
+      "optional": true,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:85-94"
+     },
+     "condition": [
+      {
+       "c": "discarded_card_type",
+       "v": "gear",
+       "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:62-64"
+      }
+     ],
+     "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:78-106"
+    },
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:119"
+     },
+     "amount": {
+      "n": 3,
+      "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:119"
+     },
+     "duration": "turn",
+     "condition": [
+      {
+       "c": "discarded_card_type",
+       "v": "unit",
+       "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:62-64"
+      }
+     ],
+     "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:115-119"
+    }
+   ],
+   "_src": "src/cards/units/0642_hwei_brooding_painter.cpp:18; reflexive src/cards/units/0642_hwei_brooding_painter.cpp:62-64, src/cards/units/0642_hwei_brooding_painter.cpp:74-123"
+  }
+ ],
+ "_meta": {
+  "def_id": "unl-080-219",
+  "class_file": "src/cards/units/0642_hwei_brooding_painter.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event move",
+   "new term: verb Discard",
+   "new term: condition discarded_card_type",
+   "new term: selector type rune, filter exhausted",
+   "the type-based part is a reflexive trigger (own chain item) folded into the ability"
+  ]
+ }
+}

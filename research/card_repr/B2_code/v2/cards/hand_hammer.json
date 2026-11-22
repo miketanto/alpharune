@@ -1,0 +1,123 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "calm"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0814_hand_hammer.cpp:43",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0814_hand_hammer.cpp:44",
+   "energy": "src/cards/gear/0814_hand_hammer.cpp:46",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "equip",
+   "_src": "src/cards/gear/0814_hand_hammer.cpp:49"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "main",
+   "cost": {
+    "power": 1,
+    "power_domain": "calm",
+    "_src": "src/cards/gear/0814_hand_hammer.cpp:18; src/cards/gear/equip_base.h:24-27"
+   },
+   "effects": [
+    {
+     "verb": "Attach",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:5745-5757; src/cards/card.cpp:1316-1317"
+     },
+     "_src": "src/engine/effect_executor.cpp:1617-1640"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:2673-2710, 5735-5760 (main phase only); unattached only src/cards/card.cpp:1318-1322"
+  },
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "equipped_with_self",
+        "v": true,
+        "_src": "src/engine/effect_executor.cpp:1636"
+       }
+      ],
+      "_src": "src/engine/effect_executor.cpp:1636"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/gear/0814_hand_hammer.cpp:47"
+     },
+     "duration": "while",
+     "_src": "src/cards/gear/0814_hand_hammer.cpp:47; src/engine/effect_executor.cpp:1636"
+    }
+   ],
+   "_src": "src/cards/gear/0814_hand_hammer.cpp:47"
+  },
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "battlefield",
+      "count": 1,
+      "filters": [
+       {
+        "f": "equipped_with_self",
+        "v": true,
+        "_src": "src/cards/gear/0814_hand_hammer.cpp:25-27"
+       },
+       {
+        "f": "other_friendly_units_here_eq",
+        "v": 1,
+        "_src": "src/cards/gear/0814_hand_hammer.cpp:28"
+       }
+      ],
+      "_src": "src/cards/gear/0814_hand_hammer.cpp:25-27"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/gear/0814_hand_hammer.cpp:29"
+     },
+     "duration": "while",
+     "_src": "src/cards/gear/0814_hand_hammer.cpp:29"
+    }
+   ],
+   "_src": "src/cards/gear/0814_hand_hammer.cpp:23-31"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-027-166",
+  "class_file": "src/cards/gear/0814_hand_hammer.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: Attach (verb: attach this gear to the target unit; EffectExecutor::attachGear)",
+   "new term: equipped_with_self (filter: the unit this gear is attached to)",
+   "new term: other_friendly_units_here_eq (filter: exactly N other friendly units at the unit's location)"
+  ]
+ }
+}

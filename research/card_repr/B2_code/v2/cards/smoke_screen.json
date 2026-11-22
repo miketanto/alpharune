@@ -1,0 +1,63 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "mind"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "mind": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0093_smoke_screen.cpp:35",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0093_smoke_screen.cpp:36",
+   "energy": "src/cards/spells/0093_smoke_screen.cpp:37",
+   "power": "src/cards/spells/0093_smoke_screen.cpp:38",
+   "power_by_domain": "src/cards/spells/0093_smoke_screen.cpp:38 x src/cards/spells/0093_smoke_screen.cpp:36; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "reaction",
+   "_src": "src/cards/spells/0093_smoke_screen.cpp:39"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "spell",
+   "timing": "reaction",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/spells/0093_smoke_screen.cpp:21-23"
+     },
+     "amount": {
+      "n": -4,
+      "_src": "src/cards/spells/0093_smoke_screen.cpp:19"
+     },
+     "duration": "turn",
+     "minimum": 1,
+     "_src": "src/cards/spells/0093_smoke_screen.cpp:18-19; minimum src/engine/effect_executor.cpp:1245-1254"
+    }
+   ],
+   "_src": "src/cards/spells/0093_smoke_screen.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-093-298",
+  "class_file": "src/cards/spells/0093_smoke_screen.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: minimum (GiveMight extra: Might not reduced below N)"
+  ]
+ }
+}
