@@ -29,10 +29,10 @@ def find_logs(root):
     return out
 
 
-def _replays_cleanly(deck_p1, deck_p2, seed, game):
+def _replays_cleanly(deck_p1, deck_p2, seed, game, D):
     """Does the log replay to its recorded end (every decider matches, same winner, every choice used)?"""
     try:
-        g = playweb.Game(deck_p1, deck_p2, 1, seed)
+        g = playweb.Game(deck_p1, deck_p2, int(game.get('human_seat') or 1), seed, bool(D.get('manual_runes')))
     except RuntimeError:
         return False
     log = game['declog']
@@ -83,7 +83,7 @@ class Catalog:
             if not (os.path.isfile(self.deck_path(a)) and os.path.isfile(self.deck_path(b))):
                 continue
             # slot layout of replay_search.py: the deck pair is (deck, deck_b) for every slot
-            if _replays_cleanly(self.deck_path(a), self.deck_path(b), D['seed'], g0):
+            if _replays_cleanly(self.deck_path(a), self.deck_path(b), D['seed'], g0, D):
                 found = (a, b)
                 break
         self._decks[path] = found
@@ -97,6 +97,8 @@ class Catalog:
             except (OSError, ValueError):
                 continue
             decks = self.decks_of(p, D)
+            if decks is None and D.get('engine', 'base') != playweb.engine_tag():
+                continue   # another engine's game: it does not replay here
             rel = os.path.relpath(p, self.root)
             for i, g in enumerate(D.get('games', [])):
                 out.append(dict(id=f'{rel}#{i}', file=rel, slot=i, seed=D['seed'], sims=D.get('sims'),
@@ -130,6 +132,7 @@ class Replay:
         nm = D.get('name') or os.path.basename(os.path.dirname(path))
         self.labels = {ss: f'search N={self.sims}', 3 - ss: 'network greedy'} if ss in (1, 2) else {1: 'P1', 2: 'P2'}
         self.human = int(self.game_rec.get('human_seat') or 0)
+        self.manual = bool(D.get('manual_runes'))
         if D.get('labels'):
             self.labels = {int(k): v for k, v in D['labels'].items()}
         self.meta = dict(replay=True, file=rel, slot=int(slot), seed=self.seed, decks=list(decks), name=nm,
@@ -145,7 +148,7 @@ class Replay:
     def _restart(self):
         if self.g:
             self.g.close()
-        self.g = playweb.Game(self.p1, self.p2, self.seat, self.seed)
+        self.g = playweb.Game(self.p1, self.p2, self.human or self.seat, self.seed, self.manual)
         self.i = 0
         self.log_next = 0
 

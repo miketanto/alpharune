@@ -37,6 +37,7 @@ async function initSetup() {
     fill($('#s-deck'), s.decks, s.default_deck || 'rengar');
     fill($('#s-agent-deck'), s.decks, s.default_agent_deck);
     fill($('#s-ckpt'), s.checkpoints, s.default_checkpoint);
+    if (!s.manual_runes) { $('#s-manual').checked = false; $('#s-manual').disabled = true; $('#s-askrunes').disabled = true; }
     $('#s-resume').classList.toggle('hidden', !s.has_game);
   } catch (e) { $('#s-err').textContent = 'Setup failed: ' + e.message; }
   initReplays();
@@ -46,7 +47,7 @@ $('#s-start').onclick = async () => {
   $('#s-start').disabled = true; $('#s-start').textContent = 'Starting…';
   try {
     const j = await api('/api/new', { deck: $('#s-deck').value, agent_deck: $('#s-agent-deck').value, checkpoint: $('#s-ckpt').value,
-      sims: +$('#s-sims').value, seat: +$('#s-seat').value, seed: $('#s-seed').value.trim() || null });
+      manual: $('#s-manual').checked, ask_runes: $('#s-askrunes').checked, sims: +$('#s-sims').value, seat: +$('#s-seat').value, seed: $('#s-seed').value.trim() || null });
     resetGame();
     showGame();
     enqueue(j.frames);
@@ -186,6 +187,11 @@ const VERB = { PlayCard: 'Play', PlayReaction: 'Play', PlayActionCard: 'Play', S
   ActivateReactionAbility: 'Activate', ActivateActionAbility: 'Activate', HideCard: 'Hide', PassPriority: 'Pass', PassFocus: 'Pass focus',
   EndTurn: 'End turn', MulliganDecision: 'Mulligan' };
 function optText(o) {
+  if (isRuneAbility(o)) {
+    const r = runeById(o.objs[0]), c = cards[r.card], dom = c?.domains?.[0] || '';
+    return /ability 1\b/.test(o.text || '') ? `Exhaust ${c?.name || 'rune'}: float 1 Energy`
+      : `Recycle ${c?.name || 'rune'}: float 1 ${dom} Power${r.exhausted ? '' : ' (and its 1 Energy)'}`;
+  }
   let t = o.text || o.label || '';
   t = t.replace(/^([A-Z][A-Za-z]+) /, (m, w) => (VERB[w] ? VERB[w] + ' ' : m));
   t = t.replace(/\bbattlefield (\d+)\b/g, (_, i) => bfName(+i));
@@ -193,7 +199,16 @@ function optText(o) {
   return t.charAt(0).toUpperCase() + t.slice(1);
 }
 function options() { return F?.decision?.options || []; }
-function optsFor(id) { return options().filter(o => o.objs.includes(id)); }
+// A rune's own abilities are offered once per kind of rune (same card, ready or not): every rune of the kind answers.
+const runeById = id => F?.runes?.find(r => r.id === id);
+function isRuneAbility(o) { return /^Activate/.test(o.type) && o.objs.length === 1 && !!runeById(o.objs[0]); }
+function optsFor(id) {
+  const exact = options().filter(o => o.objs.includes(id));
+  if (exact.length) return exact;
+  const r = runeById(id);
+  if (!r || r.ctrl !== 1) return exact;
+  return options().filter(o => { if (!isRuneAbility(o)) return false; const q = runeById(o.objs[0]); return q.ctrl === 1 && q.card === r.card && !!q.exhausted === !!r.exhausted; });
+}
 function choose(o) {
   if (busy || pumping) return;
   closeMenu();

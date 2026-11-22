@@ -15,4 +15,9 @@ target_link_libraries(playweb PRIVATE
     absl::algorithm absl::flags absl::flags_parse absl::flat_hash_map
     absl::optional absl::random_random absl::str_format absl::strings absl::time
 )
+# An engine whose players can use their runes' own abilities (GameEngine::setManualRunes).
+file(STRINGS ${CMAKE_CURRENT_SOURCE_DIR}/src/engine/game_engine.h _pw_manual REGEX "void setManualRunes")
+if(_pw_manual)
+  target_compile_definitions(playweb PRIVATE RB_MANUAL_RUNES)
+endif()
 target_include_directories(playweb PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${CMAKE_CURRENT_SOURCE_DIR}/src ${open_spiel_SOURCE_DIR})

@@ -48,6 +48,10 @@ default the Windows checkout's `research/card_repr`), `PLAYWEB_TORCH_THREADS` (d
   battlefields it can go to glow too, and clicking one does it. Buttons in the question box answer
   everything that names no card (End turn, Pass, Yes / No, modes, values). **All options** lists every
   legal answer in words, as a fallback. Space or Enter passes / ends the turn.
+* **Runes** (engines with `GameEngine::setManualRunes`; *Tap runes myself* on the setup screen): click a rune to exhaust it for
+  floating Energy or recycle it for floating Power, whenever you may act. Floating resources are spent first, so this also
+  chooses which runes pay. The network never taps runes itself; a ready rune either player recycles in a payment floats its
+  Energy. Priority windows where you could only tap runes are passed for you unless you tick the other box.
 * **Targets** glow on the board; click one. **Mulligan:** click up to two hand cards, then confirm.
 * **Card zoom:** hover any card (board, hand, chain, battlefield name, an option) for the full card
   and its live Might, damage and keywords.

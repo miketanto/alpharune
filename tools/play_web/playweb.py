@@ -47,6 +47,8 @@ def lib():
     L.pw_observe_hist.argtypes = [vp, _I32]; L.pw_observe_hist.restype = None
     L.pw_search_seat.argtypes = [vp, ci, ci]; L.pw_search_seat.restype = None
     L.rbenv_hist_dims.argtypes = [_I32]; L.rbenv_hist_dims.restype = None
+    L.pw_set_manual_runes.argtypes = [ci]; L.pw_set_manual_runes.restype = None
+    L.pw_has_manual_runes.argtypes = []; L.pw_has_manual_runes.restype = ci
     L.pw_step.argtypes = [vp, ci, cp, ci]; L.pw_step.restype = ci
     L.pw_view.argtypes = [vp, ci, cl, cp, ci]; L.pw_view.restype = ci
     err = ctypes.create_string_buffer(4096)
@@ -66,11 +68,17 @@ def dims():
     return _dims
 
 
+def engine_tag():
+    """Which engine rules the library plays by: saved games replay only on the same one."""
+    return 'float1' if lib().pw_has_manual_runes() else 'base'
+
+
 class Game:
     """One game. Seat numbers are the engine's (1 = Player1, 2 = Player2)."""
 
-    def __init__(self, deck_p1, deck_p2, human_seat, seed):
+    def __init__(self, deck_p1, deck_p2, human_seat, seed, manual_runes=False):
         L = lib()
+        L.pw_set_manual_runes(1 if manual_runes else 0)
         err = ctypes.create_string_buffer(4096)
         self._h = L.pw_create(deck_p1.encode(), deck_p2.encode(), int(human_seat), int(seed), err, 4096)
         if not self._h:
@@ -155,8 +163,9 @@ class SearchAgent:
     search samples the human's hidden cards from what its seat knows; it is never given them.
     """
 
-    def __init__(self, ckpt, deck_p1, deck_p2, seed, seat, sims):
+    def __init__(self, ckpt, deck_p1, deck_p2, seed, seat, sims, manual_runes=False):
         import torch
+        self.manual_runes = manual_runes
         torch.set_num_threads(int(os.environ.get('PLAYWEB_TORCH_THREADS', '2')))
         for p in (os.path.join(CARD_REPR, 'search'), os.path.join(SELFPLAY, 'rbenv')):
             if p not in sys.path:
@@ -166,6 +175,7 @@ class SearchAgent:
         rbenv.LIB_PATH, rbenv.SUBJECTS, rbenv.VOCAB_PATH = LIB_PATH, SUBJECTS, VOCAB_PATH   # the one library of this process
         import rbsearch
         self.S = rbsearch.Search(1, deck_p1, seed, sims=sims, leaves=4, threads=1, seat_mode='balanced', deck_b=deck_p2)
+        lib().pw_set_manual_runes(1 if manual_runes else 0)
         lib().pw_search_seat(self.S.h, 0, seat)
         self.seat, self.sims, self.ckpt = seat, sims, ckpt
         self.A = self.S.dims['A']

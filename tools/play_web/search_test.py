@@ -27,7 +27,8 @@ bad = 0
 for seat, deck, adeck, n in ((1, 'azir', 'azir', sims), (2, 'rengar', 'azir', sims), (1, 'azir', 'azir', 0)):
     S = server.Session()
     t0 = time.time()
-    S.new(deck, adeck, server.DEFAULT_CKPT, seat, 424200 + seat, n)
+    S.new(deck, adeck, server.DEFAULT_CKPT, seat, 424200 + seat, n, manual=True)
+    taps = 0
     k, slow, same = 0, 0.0, 0
     while True:
         st = S.game.status()
@@ -40,6 +41,9 @@ for seat, deck, adeck, n in ((1, 'azir', 'azir', sims), (2, 'rengar', 'azir', si
                     bad += 1
                     print('DIFFERENT', key, 'at decision', len(S.rows))
             same += 1
+        v = S.game.view(seat, 1 << 40)
+        runes = {r['id'] for r in v['runes']}
+        taps += any(o['type'].startswith('Activate') and o['objs'] and o['objs'][0] in runes for o in v['decision']['options'])
         t = time.time()
         S.act(rng.randrange(min(st['nlegal'], 96)))
         slow = max(slow, time.time() - t)
@@ -47,7 +51,7 @@ for seat, deck, adeck, n in ((1, 'azir', 'azir', sims), (2, 'rengar', 'azir', si
     st = S.game.status()
     err = S.game.view(seat, 1 << 40)['error']
     print(f'you P{seat} {deck} vs {adeck} sims {n}: winner P{st["winner"]}, {k} human decisions, {len(S.rows)} in all, '
-          f'{time.time() - t0:.0f}s, slowest answer {slow:.1f}s, encodings compared {same}, error {err!r}')
+          f'{time.time() - t0:.0f}s, slowest answer {slow:.1f}s, encodings compared {same}, decisions offering runes {taps}, error {err!r}')
     if err:
         bad += 1
     if S.search:

@@ -75,7 +75,7 @@ class Session:
     def agent_seat(self):
         return 3 - self.human
 
-    def new(self, deck, agent_deck, ckpt, seat, seed, sims=0):
+    def new(self, deck, agent_deck, ckpt, seat, seed, sims=0, manual=False, ask_runes=False):
         runs = os.path.join(playweb.SELFPLAY, 'runs')
         ck = ckpt if os.path.isabs(ckpt) else os.path.join(runs, ckpt)
         if not os.path.isfile(ck):
@@ -99,15 +99,18 @@ class Session:
         if self.game:
             self.game.close()
             self.game = None
-        self.game = playweb.Game(p1, p2, seat, seed)
+        manual = bool(manual) and playweb.engine_tag() != 'base'
+        self.manual, self.ask_runes = manual, bool(ask_runes)
+        self.game = playweb.Game(p1, p2, seat, seed, manual)
         self.human = seat
         self.log_next = 0
         playweb.lib().rbs_set_strict_vis(0)   # the encoder of the network's training (a search turns the strict one on)
         if sims:
-            self.search = playweb.SearchAgent(ck, p1, p2, seed, 3 - seat, sims)
+            self.search = playweb.SearchAgent(ck, p1, p2, seed, 3 - seat, sims, manual)
         self.rows = []
         self.started = time.strftime('%Y%m%d_%H%M%S')
-        self.meta = dict(deck=deck, agent_deck=agent_deck, checkpoint=os.path.relpath(ck, runs), seat=seat, seed=seed, sims=sims)
+        self.meta = dict(deck=deck, agent_deck=agent_deck, checkpoint=os.path.relpath(ck, runs), seat=seat, seed=seed, sims=sims,
+                         manual_runes=manual)
         return self.run_agent()
 
     def frame(self):
@@ -117,6 +120,36 @@ class Session:
         return v
 
     def run_agent(self):
+        """The network's moves until the human has a real decision (see only_runes) or the game ends."""
+        frames = self.play_network()
+        while not self.ask_runes:
+            k = self.only_runes()
+            if k is None:
+                break
+            self.apply_human(k)
+            frames = frames[:-1] + self.play_network()
+            frames = frames[-MAX_AGENT_FRAMES:]
+        self.save()
+        return frames
+
+    def only_runes(self):
+        """The pass option, when the human is asked outside the Main Phase and could otherwise only use runes."""
+        if not self.manual:
+            return None
+        st = self.game.status()
+        if st['done'] or not st['need'] or st['seat'] != self.human:
+            return None
+        v = self.game.view(self.human, 1 << 40)
+        d = v.get('decision') or {}
+        if d.get('kind') not in ('priority', 'focus', 'chain priority', 'showdown focus'):
+            return None
+        runes = {r['id'] for r in v['runes']}
+        rest = [o for o in d['options'] if not (o['type'].startswith('Activate') and o['objs'] and o['objs'][0] in runes)]
+        if len(rest) == 1 and rest[0]['type'] in ('PassPriority', 'PassFocus'):
+            return rest[0]['index']
+        return None
+
+    def play_network(self):
         """Play the network's decisions until the human is asked or the game ends. Returns the
         frames the human sees along the way (one after each network decision), then the
         current one."""
@@ -138,7 +171,6 @@ class Session:
             if len(frames) < MAX_AGENT_FRAMES:
                 frames.append(f)
         frames.append(self.frame())
-        self.save()
         return frames
 
     def run_search(self):
@@ -160,7 +192,6 @@ class Session:
         if not st['done'] and (not A.waiting or st['seat'] != self.human or st['nlegal'] != A._nl):
             raise RuntimeError('the search harness and the displayed game disagree about the pending decision')
         frames.append(self.frame())
-        self.save()
         return frames
 
     def save(self):
@@ -174,6 +205,7 @@ class Session:
         decks = (m['deck'], m['agent_deck']) if me == 1 else (m['agent_deck'], m['deck'])
         net = os.path.splitext(os.path.basename(m['checkpoint']))[0]
         rec = dict(seed=m['seed'], sims=m['sims'], deck=decks[0], deck_b=decks[1], ckpt=m['checkpoint'], human_seat=me,
+                   engine=playweb.engine_tag(), manual_runes=self.manual,
                    name=f'you vs {os.path.basename(os.path.dirname(m["checkpoint"]))}/{net}',
                    labels={str(me): 'you', str(3 - me): f'{net} ' + (f'search N={m["sims"]}' if m['sims'] else 'greedy')},
                    games=[dict(search_seat=3 - me, human_seat=me, winner=st['winner'], done=st['done'],
@@ -182,16 +214,19 @@ class Session:
             json.dump(rec, f)
         os.replace(p + '.tmp', p)
 
+    def apply_human(self, index):
+        if self.search:
+            self.search.human(index)
+        self.rows.append([0, index, index, 0, 0, 0, 0, 0, 0, 0, 0, self.human] + [-1, 0] * 3)
+        self.game.step(index)
+
     def act(self, index):
         st = self.game.status()
         if st['done'] or not st['need'] or st['seat'] != self.human:
             raise ValueError('it is not your decision')
         if not (0 <= index < st['nlegal']):
             raise ValueError('bad option')
-        if self.search:
-            self.search.human(index)
-        self.rows.append([0, index, index, 0, 0, 0, 0, 0, 0, 0, 0, self.human] + [-1, 0] * 3)
-        self.game.step(index)
+        self.apply_human(index)
         first = self.frame()
         return [first] + self.run_agent()
 
@@ -233,7 +268,7 @@ class Handler(BaseHTTPRequestHandler):
         if u.path == '/api/setup':
             return self._send(200, dict(decks=list_decks(), checkpoints=list_checkpoints(),
                                         default_checkpoint=os.path.relpath(DEFAULT_CKPT, os.path.join(playweb.SELFPLAY, 'runs')),
-                                        default_agent_deck='azir', default_deck='azir', has_game=S.game is not None))
+                                        default_agent_deck='azir', default_deck='azir', has_game=S.game is not None, manual_runes=playweb.engine_tag() != 'base'))
         if u.path == '/api/replays':
             with S.lock:
                 return self._send(200, {'replays': CATALOG.entries()})
@@ -259,7 +294,8 @@ class Handler(BaseHTTPRequestHandler):
                 if u.path == '/api/new':
                     frames = S.new(body.get('deck', 'rengar'), body.get('agent_deck', 'rengar'),
                                    body.get('checkpoint') or DEFAULT_CKPT, int(body.get('seat') or 0), body.get('seed'),
-                                   max(0, min(800, int(body.get('sims') or 0))))
+                                   max(0, min(800, int(body.get('sims') or 0))),
+                                   body.get('manual', True), body.get('ask_runes', False))
                     return self._send(200, {'frames': frames})
                 if u.path == '/api/replay/open':
                     if R['replay']:

@@ -50,6 +50,9 @@ struct Game {
 
 int seatOf(PlayerId p) { return p == PlayerId::Player1 ? 1 : p == PlayerId::Player2 ? 2 : 0; }
 
+// Games created from now on offer the human seat its runes' own abilities (pw_set_manual_runes).
+bool g_manual = false;
+
 // rbe::startGame without the restart machinery, and with the log listener attached
 // before the game begins (so the setup lines are kept).
 void start(Game& g, int64_t seed) {
@@ -66,6 +69,9 @@ void start(Game& g, int64_t seed) {
         g.log.push_back(LogLine{g.seq++, static_cast<int>(ev.level), ev.message,
                                 ev.visibleTo(PlayerId::Player1), ev.visibleTo(PlayerId::Player2)});
     });
+#ifdef RB_MANUAL_RUNES
+    if (g_manual) e.engine->setManualRunes(g.human, true);
+#endif
     e.engine->beginGame(g.h.da, g.h.db, es);
 }
 
@@ -460,7 +466,21 @@ void pw_observe_hist(void* p, int32_t* hist) {
 
 // Search opponent (playweb.py SearchAgent): which seat game i of a search handle (rbs_create) searches.
 // Call before the first rbs_collect; rbs_create alone gives game 0 seat 1.
-void pw_search_seat(void* sh, int i, int seat) { static_cast<rbs::SHandle*>(sh)->games.at(i).search_seat = seat; }
+void pw_search_seat(void* sh, int i, int seat) {
+    auto& g = static_cast<rbs::SHandle*>(sh)->games.at(i);
+    g.search_seat = seat;
+    if (pw::g_manual) g.manual_seat = 3 - seat;
+}
+
+// 1 if this library's engine can offer the runes' own abilities; pw_set_manual_runes: for the games created after it.
+int pw_has_manual_runes() {
+#ifdef RB_MANUAL_RUNES
+    return 1;
+#else
+    return 0;
+#endif
+}
+void pw_set_manual_runes(int on) { pw::g_manual = on != 0; }
 
 // Apply choice k (index into the engine's legal list) for whoever decides, then run to the
 // next decision that is not answered automatically. 0 ok, -1 bad choice (err).
