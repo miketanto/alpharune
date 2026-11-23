@@ -91,16 +91,22 @@ inline void histRefPost(const GameState& s, GameObjectId id, HRef& r) {
     if (r.pub.empty() && r.vis[1] && r.vis[2]) r.pub = cardKey(o.card_def_id, &o);
 }
 
-// Recorded decisions: >= 2 options and not a rune payment (what rbenv / the search hand to an agent).
+// Recorded decisions: >= 2 options and not a rune payment (what rbenv / the search hand to an agent). A rune's own
+// ability (runes as actions) is neither recorded nor counted as an option: what it leaves (pool, runes) is in the
+// observation, and the 48 events stay the moves they are without taps.
 // Judged here, so every path that applies choices (live game, replays, simulations) records the same.
 inline bool histWorthy(const StepResult& sr) {
     const bool rune = sr.prompt.kind == PromptKind::RuneForEnergy || sr.prompt.kind == PromptKind::RuneForPower;
     return sr.legal.size() >= 2 && !rune;
 }
+inline bool histMove(const GameState& s, const StepResult& sr, int k) {
+    if (isRuneAbility(s, sr.legal[k])) return false;
+    return soleOption(s, sr.legal) < 0;   // not the only option beside runes
+}
 
 inline HistPending histBegin(const GameState& s, const StepResult& sr, PlayerId dec, int k) {
     HistPending h;
-    if (!histWorthy(sr) || k < 0 || k >= static_cast<int>(sr.legal.size())) return h;
+    if (!histWorthy(sr) || k < 0 || k >= static_cast<int>(sr.legal.size()) || !histMove(s, sr, k)) return h;
     const Intent& in = sr.legal[k];
     HistEv& e = h.ev;
     e.actor = pidx(dec);

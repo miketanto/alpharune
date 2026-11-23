@@ -1,0 +1,7 @@
+games 72 search wins 55
+  SEARCH no facedown   : took 0.299 of 485 winning-looking attack chances; won 0.924 of 105 winning-looking attacks
+  SEARCH facedown there: took 0.206 of 398 winning-looking attack chances; won 0.535 of 43 winning-looking attacks
+  SEARCH attacks with less Might than the defenders: 0.299 of 261
+  greedy no facedown   : took 0.312 of 417 winning-looking attack chances; won 0.889 of 81 winning-looking attacks
+  greedy facedown there: took 0.218 of 444 winning-looking attack chances; won 0.182 of 44 winning-looking attacks
+  greedy attacks with less Might than the defenders: 0.399 of 301

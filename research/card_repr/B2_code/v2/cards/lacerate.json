@@ -1,0 +1,117 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": null,
+  "domains": [
+   "order"
+  ],
+  "energy": 2,
+  "power": 1,
+  "power_by_domain": {
+   "order": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0914_lacerate.cpp:57",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/spells/0914_lacerate.cpp:58",
+   "energy": "src/cards/spells/0914_lacerate.cpp:59",
+   "power": "src/cards/spells/0914_lacerate.cpp:60",
+   "power_by_domain": "src/cards/spells/0914_lacerate.cpp:60 x src/cards/spells/0914_lacerate.cpp:58; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "flow",
+   "_src": "src/cards/spells/0914_lacerate.cpp:62"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 4,
+    "_src": "src/cards/spells/0914_lacerate.cpp:44-45",
+    "power": 2,
+    "power_domain": "card"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:8388"
+     },
+     "after": "resolve",
+     "_src": "src/engine/game_engine.cpp:8388"
+    }
+   ],
+   "_src": "src/cards/spells/0914_lacerate.cpp:44-45; src/engine/game_engine.cpp:8382-8392 (trash replay grant, banish_after)"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "ChooseTarget",
+     "target": {
+      "type": "unit",
+      "side": "any",
+      "zone": "board",
+      "count": 1,
+      "bind": "A",
+      "_src": "src/cards/spells/0914_lacerate.cpp:25-32"
+     },
+     "_src": "src/cards/spells/0914_lacerate.cpp:32"
+    },
+    {
+     "verb": "Disempower",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0914_lacerate.cpp:35"
+     },
+     "condition": [
+      {
+       "c": "empowered",
+       "v": "A",
+       "_src": "src/cards/spells/0914_lacerate.cpp:34"
+      }
+     ],
+     "_src": "src/cards/spells/0914_lacerate.cpp:34-36"
+    },
+    {
+     "verb": "Kill",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/spells/0914_lacerate.cpp:42"
+     },
+     "condition": [
+      {
+       "c": "might_le",
+       "v": 3,
+       "_src": "src/cards/spells/0914_lacerate.cpp:41"
+      }
+     ],
+     "_src": "src/cards/spells/0914_lacerate.cpp:39-42"
+    }
+   ],
+   "_src": "src/cards/spells/0914_lacerate.cpp:29"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-127-166",
+  "class_file": "src/cards/spells/0914_lacerate.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: verb Disempower",
+   "the Might check reads Might after the disempower (continuous effects recomputed, src/cards/spells/0914_lacerate.cpp:36-40)"
+  ]
+ }
+}

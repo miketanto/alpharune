@@ -24,7 +24,7 @@ import os
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-REPO_WSL = os.path.expanduser('~/riftbound/alpharune')   # WSL build copy
+REPO_WSL = os.path.expanduser(os.environ.get('RB_WSL_COPY', '~/riftbound/alpharune'))   # WSL build copy
 LIB_PATH = os.path.join(REPO_WSL, 'build_pic', 'librbenv.so')
 SUBJECTS = os.path.join(REPO_WSL, 'research/card_repr/C_engine/out/subjects.txt')
 VOCAB_PATH = os.path.join(HERE, 'vocab.json')
@@ -63,6 +63,8 @@ def _load():
     L.rbenv_verify.argtypes = [vp, _I64]; L.rbenv_verify.restype = None
     L.rbenv_schema_version.argtypes = []; L.rbenv_schema_version.restype = ci
     L.rbenv_hist_dims.argtypes = [_I32]; L.rbenv_hist_dims.restype = None
+    if hasattr(L, 'rbenv_set_runes'):
+        L.rbenv_set_runes.argtypes = [ci]; L.rbenv_set_runes.restype = ci
     L.rbenv_observe_hist.argtypes = [vp, _I32]; L.rbenv_observe_hist.restype = None
     _lib = L
     return L
@@ -84,7 +86,8 @@ def load_vocab():
 
 
 class RBEnv:
-    def __init__(self, n_envs, deck_a, deck_b, seed, variant=None, autopay=True, opponent=None):
+    def __init__(self, n_envs, deck_a, deck_b, seed, variant=None, autopay=True, opponent=None, runes=0):
+        """runes: seats (mask 1 | 2) that may tap their own runes (az/TAPS.md)."""
         L = _load()
         err = ctypes.create_string_buffer(4096)
         if isinstance(variant, (list, tuple)):
@@ -98,6 +101,10 @@ class RBEnv:
         self.dims = dict(G=int(d[0]), T=int(d[1]), F=int(d[2]), A=int(d[3]), K=int(d[4]), V=int(d[5]), H=int(hd[0]),
                          HF=int(hd[1]))
         self.n_envs = n_envs
+        if runes and not hasattr(L, 'rbenv_set_runes'):
+            raise RuntimeError('this librbenv has no rune taps')
+        if hasattr(L, 'rbenv_set_runes') and L.rbenv_set_runes(int(runes)) != 0:
+            raise RuntimeError("this librbenv's engine has no rune taps (build it from the float branch)")
         self._h = L.rbenv_create(n_envs, resolve_deck(deck_a).encode(), resolve_deck(deck_b).encode(),
                                  int(seed), 1 if autopay else 0, (opponent or '').encode(), err, 4096)
         if not self._h:

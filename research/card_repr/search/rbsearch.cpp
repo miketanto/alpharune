@@ -199,6 +199,10 @@ struct Cfg {
     bool az = false;
     int az_temp_moves = 30, sims_fast = 16;
     float dir_alpha = 0.3f, dir_eps = 0.25f, p_full = 1.f;
+    // Runes as actions (az/TAPS.md): which seats are networks that may tap: 0 none, 1 both, 2 the search seat,
+    // 3 the other seat.
+    int runes = 0;
+    float dir_tap = 1.f;   // a tap's share of the root noise, relative to a move's (the noise becomes visits, visits the target)
 };
 
 // E2: one searched decision. obs = the live decision encoded for the decider with the
@@ -237,9 +241,18 @@ struct Game {
     // argmax, p_choice, p_argmax, n_choice, n_argmax, n_total, q_choice, q_argmax, net value (decider),
     // decider seat, then the top 3 by visits: index, N (x3). -1 = not applicable.
     std::vector<std::array<float, 18>> dlog;
+    // Per dlog entry: every option of the decision, (live index, prior, visits, mean value for the decider; -2 =
+    // unvisited). A searched decision: its root; a greedy one: the network's policy, visits 0 (rbs_root).
+    std::vector<std::vector<std::array<float, 4>>> droot;
     Counters c;
     Stats st;
     int winner = 0, turns = 0, n_search = 0, n_greedy = 0;
+    // Seats (mask 1 | 2) offered their runes' own abilities (GameEngine::setManualRunes; needs RB_MANUAL_RUNES).
+    // tap_seat: those that are networks (Cfg::runes): offered inside the search's worlds too, and asked nothing
+    // when taps are the only alternative to one move. The others (a human opponent, tools/play_web) are asked
+    // everything in the live game and have no taps in the worlds.
+    int manual_seat = 0, tap_seat = 0;
+    int64_t taps[4] = {0, 0, 0, 0};   // live: exhaust, recycle, external decisions offering a tap, external decisions
     std::string err;
     std::unique_ptr<AgentInterface> opp;   // C++ agent on the non-search seat (opponent spec), else greedy net
     // E2 generator mode
@@ -288,6 +301,11 @@ void advanceReal(SHandle& h, Game& g) {
             IsMctsAgent* m = nullptr;
             g.opp = makeAgent(h.opp_spec, gs, es, g.search_seat == 1 ? 1 : 0, &m);   // seat index of the opponent
         }
+        if (h.cfg.runes == 1) g.tap_seat = 3;
+        else if (h.cfg.runes == 2) g.tap_seat = g.search_seat;
+        else if (h.cfg.runes == 3) g.tap_seat = g.search_seat ? 3 - g.search_seat : 0;
+        g.manual_seat |= g.tap_seat;
+        manualRunes(*e.engine, g.manual_seat, true);
         e.engine->beginGame(h.das[g.mu], h.dbs[g.mu], es);
         g.started = true;
     }
@@ -311,12 +329,11 @@ void advanceReal(SHandle& h, Game& g) {
             g.snap.have = true;
             g.st.ns_snap += nsSince(t0);
         }
-        const int n = static_cast<int>(sr.legal.size());
-        const bool rune = sr.prompt.kind == PromptKind::RuneForEnergy || sr.prompt.kind == PromptKind::RuneForPower;
         const PlayerId dec = deciderOf(e.engine->state(), sr.legal, sr.prompt);
-        if (n <= 1 || rune) {
+        const int only = autoOption(e.engine->state(), sr, true, seatIn(g.tap_seat, dec));
+        if (only >= 0) {
             ++e.length;
-            applyTracked(e, sr, dec, 0);
+            applyTracked(e, sr, dec, only);
             continue;
         }
         g.dec = dec;
@@ -368,6 +385,14 @@ void advanceReal(SHandle& h, Game& g) {
 void applyReal(Game& g, int k) {
     Env& e = g.e;
     ++e.length; ++e.n_ext;
+    ++g.taps[3];
+    if (g.tap_seat) {
+        const StepResult& sr = e.engine->currentStep();
+        const GameState& s = e.engine->state();
+        for (const auto& i : sr.legal) if (isRuneAbility(s, i)) { ++g.taps[2]; break; }
+        if (k >= 0 && k < static_cast<int>(sr.legal.size()) && isRuneAbility(s, sr.legal[k]))
+            ++g.taps[sr.legal[k].ability_index == 0 ? 0 : 1];
+    }
     applyTracked(e, e.engine->currentStep(), g.dec, k);
     g.mode = Game::Idle;
 }
@@ -470,6 +495,7 @@ SWorld buildWorld(SHandle& h, Game& g, PlayerId observer, bool perfect, uint64_t
     w.bus = std::make_unique<EventBus>();
     w.eng = std::make_unique<GameEngine>(*g_db, *w.bus, *g_reg);
     size_t from = 0;
+    manualRunes(*w.eng, g.manual_seat, true);
     if (g.snap.have) {
         w.eng->resumeFromSnapshot(g.snap.st, g.snap.rng, g.snap.step);
         from = g.snap.hist_len;
@@ -484,6 +510,7 @@ SWorld buildWorld(SHandle& h, Game& g, PlayerId observer, bool perfect, uint64_t
     if (w.eng->currentStep().kind != StepKind::NeedDecision ||
         w.eng->currentStep().legal.size() != g.live.size())
         throw std::runtime_error("world replay: not at the live decision");
+    manualRunes(*w.eng, g.manual_seat & ~g.tap_seat, false);
     g.st.ns_build += nsSince(t0);
     if (!perfect) {
         const auto t1 = Clock::now();
@@ -606,14 +633,11 @@ SimOut simulate(SHandle& h, Game& g) {
             while (true) {
                 const StepResult& sr = eng.currentStep();
                 if (sr.kind == StepKind::Done) break;
-                const bool rune = sr.prompt.kind == PromptKind::RuneForEnergy || sr.prompt.kind == PromptKind::RuneForPower;
-                if (sr.legal.size() <= 1 || rune) {
-                    const PlayerId d = deciderOf(eng.state(), sr.legal, sr.prompt);
-                    noteChoice(mt[static_cast<int>(d) % 3], sr.prompt, sr.legal[0]);
-                    eng.applyChoice(0);
-                    continue;
-                }
-                break;
+                const PlayerId d = deciderOf(eng.state(), sr.legal, sr.prompt);
+                const int only = autoOption(eng.state(), sr, true, seatIn(g.tap_seat, d));
+                if (only < 0) break;
+                noteChoice(mt[static_cast<int>(d) % 3], sr.prompt, sr.legal[only]);
+                eng.applyChoice(only);
             }
             const StepResult& sr = eng.currentStep();
             if (sr.kind == StepKind::Done) {
@@ -773,6 +797,14 @@ void collectGame(SHandle& h, Game& g) {
                     for (int t = 0; t < 3 && t < static_cast<int>(byN.size()); ++t) {
                         d[12 + 2 * t] = byN[t].second; d[13 + 2 * t] = byN[t].first; }
                     g.dlog.push_back(d);
+                    {
+                        std::vector<std::array<float, 4>> rt;
+                        for (const auto& [i, c] : g.root.ch)
+                            if (i >= 0 && c.P >= 0.f)
+                                rt.push_back({static_cast<float>(i), c.P, static_cast<float>(c.N), c.N ? c.W / c.N : -2.f});
+                        std::sort(rt.begin(), rt.end());
+                        g.droot.push_back(std::move(rt));
+                    }
                 }
                 applyReal(g, k);
                 continue;
@@ -819,6 +851,9 @@ void feedGame(SHandle& h, Game& g, const float* logp, const float* v) {
                 d[0] = 0; d[1] = best; d[2] = best; d[3] = std::exp(logp[best]); d[4] = d[3];
                 d[10] = v[0]; d[11] = static_cast<float>(static_cast<int>(g.dec));
                 g.dlog.push_back(d);
+                std::vector<std::array<float, 4>> rt;
+                for (int j = 0; j < nopt; ++j) rt.push_back({static_cast<float>(j), std::exp(logp[j]), 0.f, -2.f});
+                g.droot.push_back(std::move(rt));
             }
             applyReal(g, best);
         } else if (g.mode == Game::Search) {
@@ -835,7 +870,11 @@ void feedGame(SHandle& h, Game& g, const float* logp, const float* v) {
                     std::gamma_distribution<float> gam(h.cfg.dir_alpha, 1.f);
                     std::vector<float> d(lf.nopt, 0.f);
                     float ds = 0.f;
-                    for (int j = 0; j < lf.nopt; ++j) if (lf.keys[j] >= 0) { d[j] = gam(g.grng); ds += d[j]; }
+                    for (int j = 0; j < lf.nopt; ++j) if (lf.keys[j] >= 0) {
+                        d[j] = gam(g.grng);
+                        if (g.tap_seat && j < static_cast<int>(g.live.size()) && isRuneAbility(g.e.engine->state(), g.live[j])) d[j] *= h.cfg.dir_tap;
+                        ds += d[j];
+                    }
                     if (ds > 0.f)
                         for (int j = 0; j < lf.nopt; ++j) {
                             if (lf.keys[j] < 0) continue;
@@ -884,7 +923,12 @@ void* rbs_create(int n_games, const char* deck_a, const char* deck_b, int64_t se
         h->cfg.az = cfg_i[6] != 0 && h->cfg.gen;
         h->cfg.az_temp_moves = cfg_i[7];
         h->cfg.sims_fast = cfg_i[8];
+        h->cfg.runes = cfg_i[9];
+#ifndef RB_MANUAL_RUNES
+        if (h->cfg.runes) throw std::runtime_error("this engine has no manual runes");
+#endif
         h->cfg.dir_alpha = cfg_f[4]; h->cfg.dir_eps = cfg_f[5]; h->cfg.p_full = cfg_f[6];
+        if (cfg_f[7] > 0.f) h->cfg.dir_tap = cfg_f[7];
         h->deck_a_path = deck_a; h->deck_b_path = deck_b; h->opp_spec = opponent ? opponent : "";
         auto split = [](const std::string& x) {
             std::vector<std::string> out;
@@ -1002,6 +1046,17 @@ void rbs_results(void* p, int64_t* out) {
 }
 
 // Decision log of game i (18 floats per external decision, see Game::dlog); returns the count.
+// Every option of game i's decision d (an index into its decision log): live index, prior, visits, mean value for
+// the decider (-2 unvisited), 4 floats each; returns how many (-1: no such decision).
+int rbs_root(void* p, int i, int d, float* out, int cap) {
+    const auto& g = static_cast<rbs::SHandle*>(p)->games.at(i);
+    if (d < 0 || d >= static_cast<int>(g.droot.size())) return -1;
+    const auto& rt = g.droot[d];
+    const int n = static_cast<int>(rt.size());
+    for (int r = 0; r < n && r < cap; ++r) for (int k = 0; k < 4; ++k) out[r * 4 + k] = rt[r][k];
+    return n;
+}
+
 int rbs_declog(void* p, int i, float* out, int cap) {
     const auto& g = static_cast<rbs::SHandle*>(p)->games.at(i);
     const int n = static_cast<int>(g.dlog.size());
@@ -1028,6 +1083,17 @@ void rbs_stats(void* p, int64_t* out) {
                                s.changed, s.dl_fallback};
         for (int k = 0; k < 22; ++k) out[k] += v[k];
     }
+}
+
+// Runes as actions, summed over the games in their slots: taps to exhaust, to recycle, external decisions that
+// offered a tap, external decisions.
+void rbs_taps(void* p, int64_t* out) {
+    const auto& h = *static_cast<rbs::SHandle*>(p);
+    for (int k = 0; k < 4; ++k) { out[k] = 0; for (const auto& g : h.games) out[k] += g.taps[k]; }
+}
+void rbs_taps_game(void* p, int i, int64_t* out) {
+    const auto& g = static_cast<rbs::SHandle*>(p)->games.at(i);
+    for (int k = 0; k < 4; ++k) out[k] = g.taps[k];
 }
 
 // E2 generator: copies and clears the records of game i (only once it is Done, so the outcome z

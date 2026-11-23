@@ -1,0 +1,116 @@
+{
+ "stats": {
+  "type": "spell",
+  "supertype": "signature",
+  "domains": [
+   "chaos",
+   "order"
+  ],
+  "energy": 1,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/spells/0943_lightning_rush.cpp:103",
+   "supertype": "src/cards/spells/0943_lightning_rush.cpp:104",
+   "domains": "src/cards/spells/0943_lightning_rush.cpp:105",
+   "energy": "src/cards/spells/0943_lightning_rush.cpp:107",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "flow",
+   "_src": "src/cards/spells/0943_lightning_rush.cpp:109"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_trash",
+   "timing": "same",
+   "cost": {
+    "energy": 2,
+    "_src": "src/cards/spells/0943_lightning_rush.cpp:90-91",
+    "power": 1,
+    "power_domain": "card"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:8388"
+     },
+     "after": "resolve",
+     "_src": "src/engine/game_engine.cpp:8388"
+    }
+   ],
+   "_src": "src/cards/spells/0943_lightning_rush.cpp:90-91; src/engine/game_engine.cpp:8382-8392 (trash replay grant, banish_after)"
+  },
+  {
+   "kind": "spell",
+   "timing": "main",
+   "effects": [
+    {
+     "verb": "LookAt",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "deck_top",
+      "count": 3,
+      "bind": "L",
+      "_src": "src/cards/spells/0943_lightning_rush.cpp:29-38"
+     },
+     "_src": "src/cards/spells/0943_lightning_rush.cpp:34-38"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "deck_top",
+      "count": 1,
+      "filters": [
+       {
+        "f": "in",
+        "v": "L",
+        "_src": "src/cards/spells/0943_lightning_rush.cpp:50-51"
+       }
+      ],
+      "optional": true,
+      "_src": "src/cards/spells/0943_lightning_rush.cpp:49-55"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/spells/0943_lightning_rush.cpp:77-78"
+     },
+     "_src": "src/cards/spells/0943_lightning_rush.cpp:61-78"
+    },
+    {
+     "verb": "Mill",
+     "target": {
+      "type": "ref",
+      "ref": "L",
+      "_src": "src/cards/spells/0943_lightning_rush.cpp:79-88"
+     },
+     "dest": "trash",
+     "_src": "src/cards/spells/0943_lightning_rush.cpp:79-88"
+    }
+   ],
+   "_src": "src/cards/spells/0943_lightning_rush.cpp:23"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-156-166",
+  "class_file": "src/cards/spells/0943_lightning_rush.cpp",
+  "source": "engine_code",
+  "flags": [
+   "draws a chosen card among the 3 looked at (drawHeldCard: counts as a draw); the rest go from the deck to the trash (written as Mill: not a Burn, per the code comment)",
+   "new term: verb Mill, filter in (bound set)",
+   "Flow's Power is of ANY Domain (flow(2, 1, Fury, any_domain=true)); flow_mode writes power_domain card"
+  ]
+ }
+}

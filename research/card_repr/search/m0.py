@@ -26,7 +26,7 @@ def leak(a):
     if dev == 'cuda':
         torch.cuda.set_per_process_memory_fraction(0.4)
     S = rbsearch.Search(a.games, a.deck, a.seed, sims=0, leaves=1, threads=a.threads, seat_mode='none', deck_b=a.deck_b,
-                        strict=not a.loose, deck_model=a.deck_model)
+                        strict=not a.loose, deck_model=a.deck_model, runes=a.runes)
     net = rbsearch.load_net(a.ckpt, S.dims, dev)
     ev = rbsearch.Evaluator(net, dev, S.dims['A'])
     acc, first = None, ''
@@ -47,7 +47,7 @@ def leak(a):
     res = S.results()
     out = dict(games=len(res), errors=sum(1 for r in res if r['error']), leak=acc, first_mismatch=first,
                secs=round(time.time() - t0, 1), worlds_per_decision=a.worlds, strict_vis=not a.loose,
-               deck_model=a.deck_model)
+               deck_model=a.deck_model, runes=a.runes, taps=S.taps() if a.runes else None)
     print(json.dumps(out), flush=True)
     if a.out:
         json.dump(out, open(a.out, 'w'), indent=1)
@@ -105,6 +105,7 @@ def main():
     ap.add_argument('--deck-b', default=None)
     ap.add_argument('--ckpt', default=CKPT)
     ap.add_argument('--loose', action='store_true', help='encoder without strict visibility (the training default)')
+    ap.add_argument('--runes', type=int, default=0, help='network seats that may tap runes: 0 none, 1 both')
     ap.add_argument('--deck-model', default='pool', choices=['pool', 'decklist'])
     ap.add_argument('--out', default='')
     a = ap.parse_args()

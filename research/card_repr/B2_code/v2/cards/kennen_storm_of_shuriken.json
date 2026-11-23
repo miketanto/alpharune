@@ -1,0 +1,88 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1
+  },
+  "might": 4,
+  "_src": {
+   "type": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:66",
+   "supertype": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:67",
+   "domains": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:68",
+   "energy": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:70",
+   "power": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:71",
+   "power_by_domain": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:71 x src/cards/units/0900_kennen_storm_of_shuriken.cpp:68; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:72"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:19-24"
+   },
+   "effects": [
+    {
+     "verb": "Burn",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:30"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:30"
+     },
+     "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:30"
+    }
+   ],
+   "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:19-24"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer",
+    "subject": "self",
+    "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:20-24"
+   },
+   "effects": [
+    {
+     "verb": "GiveKeyword",
+     "target": {
+      "type": "spell",
+      "side": "friendly",
+      "zone": "trash",
+      "count": 1,
+      "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:37-44"
+     },
+     "duration": "turn",
+     "keyword": "flow",
+     "value": "own_cost",
+     "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:50-51; src/engine/game_engine.cpp (Flow generator reads __flow_granted_turn)"
+    }
+   ],
+   "_src": "src/cards/units/0900_kennen_storm_of_shuriken.cpp:20-24"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-113-166",
+  "class_file": "src/cards/units/0900_kennen_storm_of_shuriken.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: verb Burn (top N of your Main Deck to your trash; EffectExecutor::burn, CR 441)",
+   "new term: zone trash",
+   "GiveKeyword flow value own_cost: the spell may be played from the trash this turn for its printed cost, then banished"
+  ]
+ }
+}

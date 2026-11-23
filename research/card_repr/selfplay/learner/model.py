@@ -140,6 +140,10 @@ V2_PARAMS = ('W_txt.weight', 'E_res.weight')
 # History block (rbenv history.h, PLAYTEST_PLAN.md step 1): parameters named H_*, absent from older
 # checkpoints; its output projection starts at zero, so such a checkpoint loads and computes as before.
 HIST_PREFIX = 'H_'
+# Rune taps (az/TAPS.md): a learned logit offset for an option that is a rune's own ability (0 exhaust, 1 recycle).
+# Absent from checkpoints trained without taps, which then start at TAP_INIT; no effect when no tap is offered.
+TAP_PARAMS = ('tap_bias',)
+TAP_INIT = float(os.environ.get('RB_TAP_INIT', '-3.0'))
 N_HIST_NUM = 18 + 1 + 1 + 16 + 2   # value one-hot (-2..15), slog nref, slog runes, turns-ago one-hot, tp, sd
 
 
@@ -189,6 +193,8 @@ class Net(nn.Module):
         covered = None if tab is None else {k for i, k in enumerate(vocab) if bool(tab[i].abs().sum() > 0)}
         self.register_buffer('special_idx', special_index(vocab, covered))
         self.E_special = nn.Embedding(6, D)
+        self.register_buffer('is_rune', torch.tensor([k.endswith('_rune') for k in vocab]), persistent=False)
+        self.tap_bias = nn.Parameter(torch.full((2,), TAP_INIT))
         nf = self.F - 2
         if card_norm:
             self.card_ln = nn.LayerNorm(D)
@@ -294,7 +300,7 @@ class Net(nn.Module):
         res = super().load_state_dict(sd, strict=False)
         if strict:
             miss = [k for k in res.missing_keys
-                    if k not in VOCAB_BUFFERS and k not in V2_PARAMS and not k.startswith(HIST_PREFIX)]
+                    if k not in VOCAB_BUFFERS and k not in V2_PARAMS and k not in TAP_PARAMS and not k.startswith(HIST_PREFIX)]
             if miss or res.unexpected_keys:
                 raise RuntimeError(f'load_state_dict: missing {miss}, unexpected {res.unexpected_keys}')
         return res
@@ -397,5 +403,10 @@ class Net(nn.Module):
             if self.ask_opt:
                 ha = ha + self.W_ctx(hg)[:, None, :] * self.W_ctx_opt(h_opt)
         ma = b['act_mask'].bool()
-        logits = self.pol(ha).squeeze(-1).masked_fill(~ma, -1e9)
+        logits = self.pol(ha).squeeze(-1)
+        src = act[..., 2]                                        # the ability's source: a rune = a tap
+        on = (src >= 0) & (src < T)
+        key = torch.gather(tok[..., 1], 1, src.clamp(0, T - 1)).clamp(0, self.is_rune.shape[0] - 1)
+        logits = logits + self.tap_bias[act[..., 3].clamp(0, 1)] * (on & self.is_rune[key]).float()
+        logits = logits.masked_fill(~ma, -1e9)
         return F.log_softmax(logits, -1), value

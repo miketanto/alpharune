@@ -1,0 +1,127 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0471_last_rites.cpp:100",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0471_last_rites.cpp:101",
+   "energy": "src/cards/gear/0471_last_rites.cpp:103",
+   "power": "default 0"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "equip",
+   "_src": "src/cards/gear/0471_last_rites.cpp:106"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "main",
+   "cost": {
+    "power": 1,
+    "power_domain": "chaos",
+    "other": [
+     {
+      "verb": "Recycle",
+      "target": {
+       "type": "card",
+       "side": "friendly",
+       "zone": "trash",
+       "count": 2,
+       "_src": "src/cards/gear/0471_last_rites.cpp:28-45"
+      },
+      "_src": "src/cards/gear/0471_last_rites.cpp:32-48"
+     }
+    ],
+    "_src": "src/cards/gear/0471_last_rites.cpp:24-31"
+   },
+   "effects": [
+    {
+     "verb": "Attach",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/engine/game_engine.cpp:5745-5757"
+     },
+     "_src": "src/engine/effect_executor.cpp:1617-1640"
+    }
+   ],
+   "_src": "src/cards/gear/0471_last_rites.cpp:19-50"
+  },
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "filters": [
+       {
+        "f": "equipped_with_self",
+        "v": true,
+        "_src": "src/cards/gear/0471_last_rites.cpp:56"
+       }
+      ],
+      "_src": "src/cards/gear/0471_last_rites.cpp:56"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/gear/0471_last_rites.cpp:104"
+     },
+     "duration": "while",
+     "_src": "src/cards/gear/0471_last_rites.cpp:104; src/engine/effect_executor.cpp:1636"
+    }
+   ],
+   "_src": "src/cards/gear/0471_last_rites.cpp:104"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "conquer_or_hold",
+    "subject": "equipped_unit",
+    "_src": "src/cards/gear/0471_last_rites.cpp:52-57; src/engine/trigger_manager.cpp:223-245"
+   },
+   "effects": [
+    {
+     "verb": "PlayPayingCost",
+     "target": {
+      "type": "unit",
+      "side": "friendly",
+      "zone": "trash",
+      "count": 1,
+      "_src": "src/cards/gear/0471_last_rites.cpp:59-73"
+     },
+     "optional": true,
+     "dest": "base_or_controlled_battlefield",
+     "_src": "src/cards/gear/0471_last_rites.cpp:80-87; may src/cards/gear/0471_last_rites.cpp:69-70"
+    }
+   ],
+   "_src": "src/cards/gear/0471_last_rites.cpp:52-57; src/engine/trigger_manager.cpp:223-245"
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-150-221",
+  "class_file": "src/cards/gear/0471_last_rites.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: Attach (verb), equipped_with_self (filter)",
+   "new term: zone trash",
+   "new term: verb PlayPayingCost (play a card from a zone, its cost paid)",
+   "Equip cost: [P] Chaos and recycle 2 cards from your trash (Recycle as cost.other)"
+  ]
+ }
+}

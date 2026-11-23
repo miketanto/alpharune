@@ -440,6 +440,9 @@ public:
         int rec = 0, rec_dom = -1;
         auto recycle = [&](R& x) {
             x.gone = true; ++rec;
+#ifdef RB_MANUAL_RUNES
+            if (!x.ex) ++rp.energy;   // a ready rune recycled for Power floats its Energy (floatEnergyBeforeRecycling)
+#endif
             if (rec_dom < 0) for (int d = 0; d < 6; ++d) if (x.dm & (1u << d)) { rec_dom = d; break; }
         };
         auto poolEnergy = [&](int need) {

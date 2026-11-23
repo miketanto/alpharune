@@ -1,0 +1,59 @@
+{
+ "stats": {
+  "type": "gear",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 0,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1
+  },
+  "might": null,
+  "_src": {
+   "type": "src/cards/gear/0204_seal_of_discord.cpp:41",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/gear/0204_seal_of_discord.cpp:42",
+   "energy": "default 0",
+   "power": "src/cards/gear/0204_seal_of_discord.cpp:43",
+   "power_by_domain": "src/cards/gear/0204_seal_of_discord.cpp:43 x src/cards/gear/0204_seal_of_discord.cpp:42; src/engine/game_engine.cpp:9109"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "activated",
+   "timing": "reaction",
+   "cost": {
+    "exhaust": true,
+    "_src": "src/cards/gear/0204_seal_of_discord.cpp:22"
+   },
+   "effects": [
+    {
+     "verb": "AddPower",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/gear/0204_seal_of_discord.cpp:27"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/gear/0204_seal_of_discord.cpp:27"
+     },
+     "domain": "chaos",
+     "_src": "src/cards/gear/0204_seal_of_discord.cpp:25-27"
+    }
+   ],
+   "_src": "src/cards/gear/0204_seal_of_discord.cpp:17-29; add (no chain) src/cards/gear/0204_seal_of_discord.cpp:18-20"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-204-298",
+  "class_file": "src/cards/gear/0204_seal_of_discord.cpp",
+  "source": "engine_code",
+  "flags": []
+ }
+}

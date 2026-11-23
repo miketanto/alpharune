@@ -40,3 +40,17 @@ Known gaps (from the flags; none would be fixed by more vocabulary alone)
 Use: RB_B2=v2 (selfplay/learner/model.py) reads vectors_v2.json; default is v1.
 Switching changes how a v1-trained net sees these 48 cards: a B2 vector plus the ordinary special row,
 instead of the 'other' row. Use it for a new run, or continue a checkpoint and let training adapt.
+
+Kennen list (2026-11-22): graphs_kennen_e.py, 15 cards (13 of decks/kennen.txt's main deck, legend and
+battlefields, plus Ravenbloom Prefect and Lacerate from its sideboard). v2_cards.json now lists 63 cards.
+- 63 built, 0 problems; the 233 earlier vectors are bit-identical.
+- New terms: verbs Burn, Disempower, Mill, PlayPayingCost; event play_not_from_hand (you), play_gear
+  (opponent); condition played_from_facedown, self_on_board; amount per card_in_your_trash; selector type
+  permanent; ReduceCost resource optional_additional_cost; GiveKeyword flow value own_cost.
+- Nearest neighbours: Minefield / Shadow Temple (Burn), Seal of Discord / Chaos Rune (adds Chaos Power),
+  Zaun Warrens / Traveling Merchant (discard 1, draw 1), Carrion Dredger / Machine Evangel (token on death).
+  Nearest-neighbour cosine median 0.63, max 0.74.
+- The verb check is weak here: most of these cards' executor calls (burn, empower, disempower,
+  addFloatingPower, drawHeldCard, playPayingCost) are not in vocab_src.EXECUTOR, so it cannot miss them.
+- A net built with RB_B2=v2 now gives these cards a B2 vector and the ordinary special row (before: the
+  'other' row + text). Checkpoints trained earlier (run_b2) see Kennen cards differently from now on.

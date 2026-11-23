@@ -1,0 +1,107 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": "champion",
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1
+  },
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0470_ezreal_prodigy.cpp:73",
+   "supertype": "src/cards/units/0470_ezreal_prodigy.cpp:74",
+   "domains": "src/cards/units/0470_ezreal_prodigy.cpp:75",
+   "energy": "src/cards/units/0470_ezreal_prodigy.cpp:77",
+   "power": "src/cards/units/0470_ezreal_prodigy.cpp:78",
+   "power_by_domain": "src/cards/units/0470_ezreal_prodigy.cpp:78 x src/cards/units/0470_ezreal_prodigy.cpp:75; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0470_ezreal_prodigy.cpp:79"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0470_ezreal_prodigy.cpp:23-25"
+   },
+   "effects": [
+    {
+     "verb": "Discard",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "_src": "src/cards/units/0470_ezreal_prodigy.cpp:37-47"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0470_ezreal_prodigy.cpp:54"
+     },
+     "_src": "src/cards/units/0470_ezreal_prodigy.cpp:52-55"
+    },
+    {
+     "verb": "Draw",
+     "target": {
+      "type": "player",
+      "side": "friendly",
+      "zone": "player",
+      "count": 1,
+      "_src": "src/cards/units/0470_ezreal_prodigy.cpp:56"
+     },
+     "amount": {
+      "n": 2,
+      "_src": "src/cards/units/0470_ezreal_prodigy.cpp:56"
+     },
+     "_src": "src/cards/units/0470_ezreal_prodigy.cpp:56"
+    }
+   ],
+   "_src": "src/cards/units/0470_ezreal_prodigy.cpp:23-25"
+  },
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "ReduceCost",
+     "target": {
+      "type": "card",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "_src": "src/cards/units/0470_ezreal_prodigy.cpp:17-19"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0470_ezreal_prodigy.cpp:21"
+     },
+     "resource": "optional_additional_cost",
+     "_src": "src/cards/units/0470_ezreal_prodigy.cpp:20-22"
+    }
+   ],
+   "_src": "src/cards/units/0470_ezreal_prodigy.cpp:17-22",
+   "condition": [
+    {
+     "c": "self_on_board",
+     "v": true,
+     "_src": "src/cards/units/0470_ezreal_prodigy.cpp:21"
+    }
+   ]
+  }
+ ],
+ "_meta": {
+  "def_id": "sfd-149-221",
+  "class_file": "src/cards/units/0470_ezreal_prodigy.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: verb Discard",
+   "new term: ReduceCost resource optional_additional_cost (Accelerate, Repeat, 'you may pay as an additional cost': [1] or [A] less)",
+   "new term: condition self_on_board"
+  ]
+ }
+}

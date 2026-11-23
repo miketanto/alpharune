@@ -1,0 +1,80 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 2,
+  "power": 0,
+  "might": 2,
+  "_src": {
+   "type": "src/cards/units/0882_shadow_order_disciple.cpp:52",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0882_shadow_order_disciple.cpp:53",
+   "energy": "src/cards/units/0882_shadow_order_disciple.cpp:55",
+   "power": "default 0",
+   "might": "src/cards/units/0882_shadow_order_disciple.cpp:56"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "move",
+    "subject": "self",
+    "_src": "src/cards/units/0882_shadow_order_disciple.cpp:20-21"
+   },
+   "effects": [
+    {
+     "verb": "GiveMight",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "board",
+      "count": 1,
+      "_src": "src/cards/units/0882_shadow_order_disciple.cpp:38"
+     },
+     "amount": {
+      "n": 1,
+      "_src": "src/cards/units/0882_shadow_order_disciple.cpp:38"
+     },
+     "duration": "turn",
+     "_src": "src/cards/units/0882_shadow_order_disciple.cpp:38"
+    }
+   ],
+   "_src": "src/cards/units/0882_shadow_order_disciple.cpp:20-21",
+   "cost": {
+    "optional": true,
+    "other": [
+     {
+      "verb": "Burn",
+      "target": {
+       "type": "player",
+       "side": "friendly",
+       "zone": "player",
+       "count": 1,
+       "_src": "src/cards/units/0882_shadow_order_disciple.cpp:34"
+      },
+      "amount": {
+       "n": 1,
+       "_src": "src/cards/units/0882_shadow_order_disciple.cpp:34"
+      },
+      "_src": "src/cards/units/0882_shadow_order_disciple.cpp:34"
+     }
+    ],
+    "_src": "src/cards/units/0882_shadow_order_disciple.cpp:31-35"
+   }
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-095-166",
+  "class_file": "src/cards/units/0882_shadow_order_disciple.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event move",
+   "new term: verb Burn (top N of your Main Deck to your trash; EffectExecutor::burn, CR 441) (here as the trigger's optional cost)"
+  ]
+ }
+}

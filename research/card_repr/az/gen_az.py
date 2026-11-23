@@ -60,9 +60,11 @@ def main():
     ap.add_argument('--temp-moves', type=int, default=30)
     ap.add_argument('--dir-alpha', type=float, default=0.3)
     ap.add_argument('--dir-eps', type=float, default=0.25)
+    ap.add_argument('--dir-tap', type=float, default=0.1, help="a rune tap's share of the root noise relative to a move's")
     ap.add_argument('--leaves', type=int, default=4)
     ap.add_argument('--cpuct', type=float, default=2.0)
     ap.add_argument('--threads', type=int, default=14)
+    ap.add_argument('--runes', type=int, default=0, help='1: both seats may tap their runes (TAPS.md; needs RB_WSL_COPY = a float-engine copy)')
     ap.add_argument('--seed', type=int, default=9_000_000)
     ap.add_argument('--chunk', type=int, default=1024)
     ap.add_argument('--keep', type=int, default=400)
@@ -83,7 +85,7 @@ def main():
     S = rbsearch.Search(a.games, [m[0] for m in mus], a.seed, deck_b=[m[1] for m in mus], sims=a.sims,
                         leaves=a.leaves, threads=a.threads, cpuct=a.cpuct, seat_mode='gen', strict=True, az=True,
                         az_temp_moves=a.temp_moves, sims_fast=a.sims_fast, dir_alpha=a.dir_alpha,
-                        dir_eps=a.dir_eps, p_full=a.p_full)
+                        dir_eps=a.dir_eps, p_full=a.p_full, runes=a.runes, dir_tap=a.dir_tap)
 
     def load():
         while True:
@@ -105,6 +107,7 @@ def main():
     pend, npend = [], 0
     t0 = tlog = time.time()
     tot_rec = tot_games = reloads = errs = 0
+    taps = np.zeros(4, np.int64)   # finished games: exhaust, recycle, decisions offering a tap, decisions
     wins = {}   # (seat-1 deck, seat-2 deck) -> [seat-1 wins, games]
     lg = open(os.path.join(a.out, 'gen_log.jsonl'), 'a')
     while True:
@@ -129,6 +132,8 @@ def main():
                     rec['deck'] = np.where(rec['seat'] == 1, names.index(mu[0]), names.index(mu[1])).astype(np.int8)
                     pend.append(rec); npend += len(rec['z'])
             tot_games += 1
+            if a.runes:
+                taps += S.taps(g)
             S.restart(g, next_seed); next_seed += 1
         while npend >= a.chunk:
             d = pack(pend)
@@ -156,7 +161,7 @@ def main():
         if now - tlog > a.log_every:
             row = dict(t=round(now - t0), wupd=wupd, reloads=reloads, records=tot_rec, games=tot_games, errors=errs,
                        rec_per_s=round(tot_rec / (now - t0), 1), games_per_h=round(3600 * tot_games / (now - t0)),
-                       batch=B, chunk_seq=seq, seat1_wr={k: round(w[0] / w[1], 3) for k, w in wins.items() if w[1]})
+                       batch=B, chunk_seq=seq, taps_per_game=[round(float(x) / max(1, tot_games), 2) for x in taps] if a.runes else None, seat1_wr={k: round(w[0] / w[1], 3) for k, w in wins.items() if w[1]})
             lg.write(json.dumps(row) + '\n'); lg.flush()
             print(json.dumps(row), flush=True)
             tlog = now

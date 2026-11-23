@@ -1,0 +1,327 @@
+
+=== TURN 0 (P2) score P1 0 - P2 0 | runes ready P1 0 P2 0
+  P1 hand ['Soul Sword', 'Soul Sword', 'Back Off', 'Hand Hammer']
+  P2 hand ['Hidden Blade', "Doran's Shield", 'Brutalizer', 'B.F. Sword']
+  bf0[ctl 0] [] facedown []
+  bf1[ctl 0] [] facedown []
+  base P1 []  base P2 []
+#  0 P2 G2  [mulligan] runes 0/0 v(P1) -0.50 CHOSE (50%) set aside your Brutalizer in hand and your Hidden Blade in hand   <<  50% set aside your Brutalizer in hand and your Hidden Blade in h | 47% set aside your Hidden Blade in hand
+#  1 P1 YOU [mulligan] runes 0/0 v(P1) +0.11 CHOSE (12%) keep the hand   <<  70% set aside your Back Off in hand and your Hand Hammer in hand | 12% keep the hand | 5% set aside your Back Off in hand and your Soul Sword in hand | 5% set aside your Back Off in hand and your Soul Sword in hand
+#  2 P2 G2  [main phase action] runes 0/2 v(P1) -0.56 CHOSE (33%) PlayCard your Doran's Shield in hand to your base   <<  33% PlayCard your Doran's Shield in hand to your base | 33% PlayCard your Soul Sword in hand to your base | 33% PlayCard your Soul Sword in hand to your base
+#  3 P2 G2  [main phase action] runes 0/1 v(P1) -0.57 CHOSE (100%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  100% ActivateAbility your Emperor of the Sands in the Legend Zone
+#  4 P2 G2  [may] runes 0/0 v(P1) -0.56 CHOSE (100%) Yes — Weaponmaster: equip an Equipment to me?   <<  100% Yes — Weaponmaster: equip an Equipment to me?
+
+=== TURN 1 (P1) score P1 0 - P2 0 | runes ready P1 3 P2 0
+  P1 hand ['B.F. Sword', 'Soul Sword', 'Soul Sword', 'Back Off', 'Hand Hammer']
+  P2 hand ['B.F. Sword', 'Arise!', 'Soul Sword', 'Soul Sword']
+  bf0[ctl 0] [] facedown []
+  bf1[ctl 0] [] facedown []
+  base P1 []  base P2 ['Sand Soldier3x']
+#  5 P1 YOU [main phase action] runes 3/0 v(P1) -0.29 CHOSE (0%) PlayCard your Hand Hammer in hand to your base   <<  50% PlayCard your Soul Sword in hand to your base | 50% PlayCard your Soul Sword in hand to your base
+#  6 P1 YOU [main phase action] runes 1/0 v(P1) -0.29 CHOSE (100%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  100% ActivateAbility your Emperor of the Sands in the Legend Zone
+#  7 P1 YOU [may] runes 0/0 v(P1) -0.24 CHOSE (100%) Yes — Weaponmaster: equip an Equipment to me?   <<  100% Yes — Weaponmaster: equip an Equipment to me?
+
+=== TURN 2 (P2) score P1 0 - P2 0 | runes ready P1 0 P2 4
+  P1 hand ['B.F. Sword', 'Soul Sword', 'Soul Sword', 'Back Off']
+  P2 hand ['B.F. Sword', 'Deathgrip', 'Arise!', 'Soul Sword', 'Soul Sword']
+  bf0[ctl 0] [] facedown []
+  bf1[ctl 0] [] facedown []
+  base P1 ['Sand Soldier3x']  base P2 ['Sand Soldier3']
+#  8 P2 G2  [main phase action] runes 0/4 v(P1) -0.34 CHOSE (50%) PlayCard your Soul Sword in hand to your base   <<  50% PlayCard your Soul Sword in hand to your base | 50% PlayCard your Soul Sword in hand to your base
+#  9 P2 G2  [main phase action] runes 0/3 v(P1) -0.29 CHOSE (100%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  100% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 10 P2 G2  [priority] runes 0/2 v(P1) -0.32 CHOSE (100%) pass priority   <<  100% pass priority
+# 11 P2 G2  [may] runes 0/2 v(P1) -0.34 CHOSE (100%) Yes — Weaponmaster: equip an Equipment to me?   <<  100% Yes — Weaponmaster: equip an Equipment to me?
+# 12 P2 G2  [target] runes 0/2 v(P1) -0.33 CHOSE (100%) your Soul Sword at your base   <<  100% your Soul Sword at your base
+# 13 P2 G2  [priority] runes 0/2 v(P1) -0.36 CHOSE (100%) pass priority   <<  100% pass priority
+# 14 P2 G2  [main phase action] runes 0/2 v(P1) -0.36 CHOSE (75%) move your Sand Soldier token at your base to battlefield 0   <<  75% move your Sand Soldier token at your base to battlefield 0 | 24% move your Sand Soldier token at your base to battlefield 1
+# 15 P2 G2  [focus] runes 0/2 v(P1) -0.28 CHOSE (100%) pass focus   <<  100% pass focus
+# 16 P2 G2  [priority] runes 0/2 v(P1) -0.35 CHOSE (100%) pass priority   <<  100% pass priority
+# 17 P2 G2  [main phase action] runes 0/2 v(P1) -0.26 CHOSE (91%) PlayCard your Soul Sword in hand to your base   <<  91% PlayCard your Soul Sword in hand to your base | 9% end the turn
+# 18 P2 G2  [main phase action] runes 0/1 v(P1) -0.30 CHOSE (100%) end the turn   <<  100% end the turn
+
+=== TURN 3 (P1) score P1 0 - P2 1 | runes ready P1 5 P2 1
+  P1 hand ['B.F. Sword', 'Arise!', 'Soul Sword', 'Soul Sword', 'Back Off']
+  P2 hand ['B.F. Sword', 'Deathgrip', 'Arise!']
+  bf0[ctl 2] ['P2:Sand Soldier3x'] facedown []
+  bf1[ctl 0] [] facedown []
+  base P1 ['Sand Soldier3']  base P2 ['Sand Soldier3x']
+# 19 P1 YOU [main phase action] runes 5/1 v(P1) -0.07 CHOSE (25%) PlayCard your B.F. Sword in hand to your base   <<  37% PlayCard your Soul Sword in hand to your base | 37% PlayCard your Soul Sword in hand to your base | 25% PlayCard your B.F. Sword in hand to your base
+# 20 P1 YOU [main phase action] runes 1/1 v(P1) -0.16 CHOSE (100%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  100% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 21 P1 YOU [may] runes 0/1 v(P1) -0.14 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+# 22 P1 YOU [target] runes 0/1 v(P1) -0.12 CHOSE (100%) your B.F. Sword at your base   <<  100% your B.F. Sword at your base
+# 23 P1 YOU [main phase action] runes 0/1 v(P1) -0.08 CHOSE (0%) end the turn   <<  73% move your Sand Soldier token at your base to battlefield 1 | 27% move your Sand Soldier token at your base to battlefield 0
+
+=== TURN 4 (P2) score P1 0 - P2 2 | runes ready P1 0 P2 6
+  P1 hand ['Arise!', 'Soul Sword', 'Soul Sword', 'Back Off']
+  P2 hand ['B.F. Sword', 'Deathgrip', 'Arise!', 'Back Off']
+  bf0[ctl 2] ['P2:Sand Soldier3'] facedown []
+  bf1[ctl 0] [] facedown []
+  base P1 ['Sand Soldier3', 'Sand Soldier5x']  base P2 ['Sand Soldier3']
+# 24 P2 G2  [main phase action] runes 0/6 v(P1) -0.46 CHOSE (91%) PlayCard your B.F. Sword in hand to your base   <<  91% PlayCard your B.F. Sword in hand to your base | 9% move your Sand Soldier token at your base to battlefield 1
+# 25 P2 G2  [main phase action] runes 0/2 v(P1) -0.49 CHOSE (99%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  99% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 26 P2 G2  [may] runes 0/1 v(P1) -0.54 CHOSE (100%) Yes — Weaponmaster: equip an Equipment to me?   <<  100% Yes — Weaponmaster: equip an Equipment to me?
+# 27 P2 G2  [target] runes 0/1 v(P1) -0.54 CHOSE (60%) your Soul Sword at your base   <<  60% your Soul Sword at your base | 40% your B.F. Sword at your base
+# 28 P2 G2  [main phase action] runes 0/1 v(P1) -0.57 CHOSE (100%) move your Sand Soldier token at your base to battlefield 1   <<  100% move your Sand Soldier token at your base to battlefield 1
+# 29 P2 G2  [main phase action] runes 0/1 v(P1) -0.66 CHOSE (50%) end the turn   <<  50% end the turn | 22% move your Sand Soldier token at battlefield 0 to your base | 17% hide your Back Off in hand at battlefield 0 | 9% hide your Back Off in hand at battlefield 1
+
+=== TURN 5 (P1) score P1 0 - P2 3 | runes ready P1 7 P2 1
+  P1 hand ['Discipline', 'Arise!', 'Soul Sword', 'Soul Sword', 'Back Off']
+  P2 hand ['B.F. Sword', 'Deathgrip', 'Arise!', 'Back Off']
+  bf0[ctl 2] ['P2:Sand Soldier3'] facedown []
+  bf1[ctl 2] ['P2:Sand Soldier3x'] facedown []
+  base P1 ['Sand Soldier3', 'Sand Soldier5']  base P2 ['Sand Soldier3x']
+# 30 P1 YOU [main phase action] runes 7/1 v(P1) -0.28 CHOSE (50%) PlayCard your Soul Sword in hand to your base   <<  50% PlayCard your Soul Sword in hand to your base | 50% PlayCard your Soul Sword in hand to your base
+# 31 P1 YOU [main phase action] runes 6/1 v(P1) -0.28 CHOSE (0%) ActivateAbility your Soul Sword at your base ability 1 targeting your Sand    <<  99% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 32 P1 YOU [priority] runes 6/1 v(P1) -0.33 CHOSE (100%) pass priority   <<  100% pass priority
+# 33 P1 YOU [main phase action] runes 6/1 v(P1) -0.41 CHOSE (0%) move your Sand Soldier token at your base to battlefield 1   <<  99% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 34 P1 YOU [move another unit] runes 6/1 v(P1) -0.41 CHOSE (98%) Move no more units   <<  98% Move no more units | 2% your Sand Soldier token at your base
+# 35 P1 YOU [focus] runes 6/1 v(P1) -0.50 CHOSE (0%) pass focus   <<  88% PlayActionCard your Discipline in hand | 12% PlayActionCard your Back Off in hand
+# 36 P1 YOU [priority] runes 6/1 v(P1) -0.21 CHOSE (100%) pass priority   <<  100% pass priority
+# 37 P1 YOU [main phase action] runes 6/1 v(P1) -0.24 CHOSE (0%) move your Sand Soldier token at your base to battlefield 0   <<  79% ActivateAbility your Emperor of the Sands in the Legend Zone | 21% PlayCard your Soul Sword in hand to your base
+# 38 P1 YOU [focus] runes 6/1 v(P1) -0.30 CHOSE (90%) pass focus   <<  90% pass focus | 9% PlayActionCard your Discipline in hand
+# 39 P1 YOU [priority] runes 6/1 v(P1) -0.03 CHOSE (100%) pass priority   <<  100% pass priority
+# 40 P1 YOU [main phase action] runes 6/1 v(P1) -0.01 CHOSE (56%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  56% ActivateAbility your Emperor of the Sands in the Legend Zone | 44% PlayCard your Soul Sword in hand to your base
+# 41 P1 YOU [priority] runes 5/1 v(P1) +0.11 CHOSE (100%) pass priority   <<  100% pass priority
+# 42 P1 YOU [may] runes 5/1 v(P1) +0.20 CHOSE (100%) Yes — Weaponmaster: equip an Equipment to me?   <<  100% Yes — Weaponmaster: equip an Equipment to me?
+# 43 P1 YOU [target] runes 5/1 v(P1) +0.21 CHOSE (14%) your Hand Hammer at battlefield 1   <<  75% your Soul Sword at battlefield 1 | 14% your Hand Hammer at battlefield 1 | 10% your B.F. Sword at battlefield 0
+# 44 P1 YOU [priority] runes 5/1 v(P1) +0.23 CHOSE (100%) pass priority   <<  100% pass priority
+# 45 P1 YOU [main phase action] runes 5/1 v(P1) +0.11 CHOSE (0%) end the turn   <<  100% PlayCard your Soul Sword in hand to your base
+
+=== TURN 6 (P2) score P1 2 - P2 3 | runes ready P1 5 P2 8
+  P1 hand ['Discipline', 'Discipline', 'Arise!', 'Soul Sword', 'Back Off']
+  P2 hand ['Guards!', 'B.F. Sword', 'Deathgrip', 'Arise!', 'Back Off']
+  bf0[ctl 1] ['P1:Sand Soldier5x'] facedown []
+  bf1[ctl 1] ['P1:Sand Soldier3x'] facedown []
+  base P1 ['Sand Soldier3x']  base P2 ['Sand Soldier3']
+# 46 P2 G2  [main phase action] runes 5/8 v(P1) -0.45 CHOSE (99%) PlayCard your B.F. Sword in hand to your base   <<  99% PlayCard your B.F. Sword in hand to your base
+# 47 P2 G2  [main phase action] runes 5/4 v(P1) -0.42 CHOSE (100%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  100% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 48 P2 G2  [priority] runes 5/3 v(P1) -0.51 CHOSE (100%) pass priority   <<  100% pass priority
+# 49 P1 YOU [priority] runes 5/3 v(P1) +0.25 CHOSE (99%) pass priority   <<  99% pass priority
+# 50 P2 G2  [may] runes 5/3 v(P1) -0.49 CHOSE (100%) Yes — Weaponmaster: equip an Equipment to me?   <<  100% Yes — Weaponmaster: equip an Equipment to me?
+# 51 P2 G2  [target] runes 5/3 v(P1) -0.51 CHOSE (33%) your B.F. Sword at your base   <<  33% your B.F. Sword at your base | 33% your Soul Sword at your base | 33% your Doran's Shield at your base | 2% your B.F. Sword at your base
+# 52 P2 G2  [priority] runes 5/3 v(P1) -0.53 CHOSE (100%) pass priority   <<  100% pass priority
+# 53 P1 YOU [priority] runes 5/3 v(P1) +0.14 CHOSE (99%) pass priority   <<  99% pass priority
+# 54 P2 G2  [main phase action] runes 5/3 v(P1) -0.51 CHOSE (71%) ActivateAbility your B.F. Sword at your base ability 1 targeting your Sand    <<  71% ActivateAbility your B.F. Sword at your base ability 1 targe | 9% move your Sand Soldier token at your base to battlefield 0 | 9% PlayCard your Guards! in hand | 3% move your Sand Soldier token at your base to battlefield 1
+# 55 P2 G2  [priority] runes 5/3 v(P1) -0.48 CHOSE (100%) pass priority   <<  100% pass priority
+# 56 P1 YOU [priority] runes 5/3 v(P1) +0.05 CHOSE (100%) pass priority   <<  100% pass priority
+# 57 P2 G2  [main phase action] runes 5/3 v(P1) -0.51 CHOSE (48%) move your Sand Soldier token at your base to battlefield 0   <<  48% move your Sand Soldier token at your base to battlefield 0 | 23% move your Sand Soldier token at your base to battlefield 1 | 21% PlayCard your Guards! in hand | 6% PlayCard your Back Off in hand
+# 58 P2 G2  [focus] runes 5/3 v(P1) -0.42 CHOSE (87%) PlayActionCard your Back Off in hand   <<  87% PlayActionCard your Back Off in hand | 13% pass focus
+# 59 P2 G2  [target] runes 5/3 v(P1) -0.47 CHOSE (100%) the opponent's Sand Soldier token (exhausted) at battlefield 0   <<  100% the opponent's Sand Soldier token (exhausted) at battlefield
+# 60 P1 YOU [priority] runes 5/0 v(P1) +0.25 CHOSE (88%) pass priority   <<  88% pass priority | 6% PlayReaction your Discipline in hand | 6% PlayReaction your Discipline in hand
+# 61 P1 YOU [focus] runes 5/0 v(P1) +0.13 CHOSE (14%) PlayActionCard your Back Off in hand   <<  43% PlayActionCard your Discipline in hand | 43% PlayActionCard your Discipline in hand | 14% PlayActionCard your Back Off in hand
+# 62 P1 YOU [target] runes 5/0 v(P1) +0.19 CHOSE (100%) the opponent's Sand Soldier token (exhausted) at battlefield 0   <<  100% the opponent's Sand Soldier token (exhausted) at battlefield
+# 63 P1 YOU [priority] runes 2/0 v(P1) +0.27 CHOSE (98%) pass priority   <<  98% pass priority
+# 64 P1 YOU [focus] runes 2/0 v(P1) +0.20 CHOSE (1%) pass focus   <<  50% PlayActionCard your Discipline in hand | 50% PlayActionCard your Discipline in hand
+# 65 P2 G2  [main phase action] runes 2/0 v(P1) -0.23 CHOSE (100%) end the turn   <<  100% end the turn
+
+=== TURN 7 (P1) score P1 4 - P2 3 | runes ready P1 8 P2 0
+  P1 hand ['En Garde', 'Discipline', 'Discipline', 'Guards!', 'Arise!', 'Soul Sword']
+  P2 hand ['Guards!', 'Deathgrip', 'Arise!', 'Back Off']
+  bf0[ctl 1] ['P1:Sand Soldier5'] facedown []
+  bf1[ctl 1] ['P1:Sand Soldier3'] facedown []
+  base P1 ['Sand Soldier3']  base P2 ['Sand Soldier5x', 'Sand Soldier6x']
+# 66 P1 YOU [main phase action] runes 8/0 v(P1) +0.29 CHOSE (0%) move your Sand Soldier token at battlefield 1 to your base   <<  100% PlayCard your Soul Sword in hand to your base
+# 67 P1 YOU [move another unit] runes 8/0 v(P1) +0.23 CHOSE (99%) Move no more units   <<  99% Move no more units
+# 68 P1 YOU [main phase action] runes 8/0 v(P1) +0.29 CHOSE (0%) move your Sand Soldier token at battlefield 0 to your base   <<  98% PlayCard your Soul Sword in hand to your base | 2% move your Sand Soldier token at your base to battlefield 1
+# 69 P1 YOU [main phase action] runes 8/0 v(P1) +0.26 CHOSE (93%) PlayCard your Soul Sword in hand to your base   <<  93% PlayCard your Soul Sword in hand to your base | 3% move your Sand Soldier token at your base to battlefield 0 | 2% move your Sand Soldier token at your base to battlefield 1
+# 70 P1 YOU [main phase action] runes 7/0 v(P1) +0.18 CHOSE (98%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  98% ActivateAbility your Emperor of the Sands in the Legend Zone
+# 71 P1 YOU [priority] runes 6/0 v(P1) +0.28 CHOSE (100%) pass priority   <<  100% pass priority
+# 72 P1 YOU [may] runes 6/0 v(P1) +0.33 CHOSE (98%) Yes — Weaponmaster: equip an Equipment to me?   <<  98% Yes — Weaponmaster: equip an Equipment to me? | 2% No — Weaponmaster: equip an Equipment to me?
+# 73 P1 YOU [target] runes 6/0 v(P1) +0.36 CHOSE (100%) your Soul Sword at your base   <<  100% your Soul Sword at your base
+# 74 P1 YOU [priority] runes 6/0 v(P1) +0.38 CHOSE (100%) pass priority   <<  100% pass priority
+# 75 P1 YOU [main phase action] runes 6/0 v(P1) +0.35 CHOSE (10%) PlayCard your Arise! in hand   <<  51% move your Sand Soldier token at your base to battlefield 0 | 39% move your Sand Soldier token at your base to battlefield 1 | 10% PlayCard your Arise! in hand
+# 76 P1 YOU [may] runes 0/0 v(P1) +0.40 CHOSE (3%) No — Weaponmaster: equip an Equipment to me?   <<  97% Yes — Weaponmaster: equip an Equipment to me? | 3% No — Weaponmaster: equip an Equipment to me?
+# 77 P1 YOU [may] runes 0/0 v(P1) +0.38 CHOSE (3%) No — Weaponmaster: equip an Equipment to me?   <<  97% Yes — Weaponmaster: equip an Equipment to me? | 3% No — Weaponmaster: equip an Equipment to me?
+# 78 P1 YOU [may] runes 0/0 v(P1) +0.36 CHOSE (3%) No — Weaponmaster: equip an Equipment to me?   <<  97% Yes — Weaponmaster: equip an Equipment to me? | 3% No — Weaponmaster: equip an Equipment to me?
+# 79 P1 YOU [may] runes 0/0 v(P1) +0.34 CHOSE (2%) No — Weaponmaster: equip an Equipment to me?   <<  98% Yes — Weaponmaster: equip an Equipment to me?
+# 80 P1 YOU [choose] runes 0/0 v(P1) +0.31 CHOSE (25%) your Sand Soldier token (exhausted) at your base   <<  25% your Sand Soldier token (exhausted) at your base | 25% your Sand Soldier token (exhausted) at your base | 25% your Sand Soldier token (exhausted) at your base | 25% your Sand Soldier token (exhausted) at your base
+# 81 P1 YOU [choose] runes 0/0 v(P1) +0.31 CHOSE (33%) your Sand Soldier token (exhausted) at your base   <<  33% your Sand Soldier token (exhausted) at your base | 33% your Sand Soldier token (exhausted) at your base | 33% your Sand Soldier token (exhausted) at your base
+# 82 P1 YOU [main phase action] runes 0/0 v(P1) +0.33 CHOSE (0%) end the turn   <<  35% move your Sand Soldier token at your base to battlefield 0 | 24% move your Sand Soldier token at your base to battlefield 1 | 12% move your Sand Soldier token at your base to battlefield 0 | 12% move your Sand Soldier token at your base to battlefield 0
+
+=== TURN 8 (P2) score P1 4 - P2 3 | runes ready P1 0 P2 9
+  P1 hand ['En Garde', 'Discipline', 'Discipline', 'Guards!']
+  P2 hand ['En Garde', 'Guards!', 'Deathgrip', 'Arise!', 'Back Off']
+  bf0[ctl 0] [] facedown []
+  bf1[ctl 0] [] facedown []
+  base P1 ['Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2x', 'Sand Soldier2x', 'Sand Soldier3', 'Sand Soldier3x', 'Sand Soldier3x', 'Sand Soldier5x']  base P2 ['Sand Soldier5', 'Sand Soldier6']
+# 83 P2 G2  [main phase action] runes 0/9 v(P1) +0.24 CHOSE (90%) PlayCard your Arise! in hand   <<  90% PlayCard your Arise! in hand | 3% move your Sand Soldier token at your base to battlefield 1 | 3% move your Sand Soldier token at your base to battlefield 0
+# 84 P2 G2  [priority] runes 0/3 v(P1) +0.45 CHOSE (99%) pass priority   <<  99% pass priority
+# 85 P2 G2  [may] runes 0/3 v(P1) +0.12 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+# 86 P2 G2  [target] runes 0/3 v(P1) +0.12 CHOSE (50%) your Soul Sword at your base   <<  50% your Soul Sword at your base | 50% your Doran's Shield at your base
+# 87 P2 G2  [may] runes 0/3 v(P1) +0.12 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+# 88 P2 G2  [target] runes 0/3 v(P1) +0.11 CHOSE (50%) your Soul Sword at your base   <<  50% your Soul Sword at your base | 50% your Doran's Shield at your base
+# 89 P2 G2  [may] runes 0/3 v(P1) +0.12 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+# 90 P2 G2  [target] runes 0/3 v(P1) +0.11 CHOSE (49%) your Soul Sword at your base   <<  49% your Soul Sword at your base | 49% your Doran's Shield at your base
+# 91 P2 G2  [may] runes 0/3 v(P1) +0.11 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+# 92 P2 G2  [target] runes 0/3 v(P1) +0.10 CHOSE (49%) your Soul Sword at your base   <<  49% your Soul Sword at your base | 49% your Doran's Shield at your base
+# 93 P2 G2  [may] runes 0/3 v(P1) +0.11 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+# 94 P2 G2  [target] runes 0/3 v(P1) +0.09 CHOSE (49%) your Soul Sword at your base   <<  49% your Soul Sword at your base | 49% your Doran's Shield at your base
+# 95 P2 G2  [choose] runes 0/3 v(P1) +0.11 CHOSE (20%) your Sand Soldier token (exhausted) at your base   <<  20% your Sand Soldier token (exhausted) at your base | 20% your Sand Soldier token (exhausted) at your base | 20% your Sand Soldier token (exhausted) at your base | 20% your Sand Soldier token (exhausted) at your base
+# 96 P2 G2  [choose] runes 0/3 v(P1) +0.11 CHOSE (25%) your Sand Soldier token (exhausted) at your base   <<  25% your Sand Soldier token (exhausted) at your base | 25% your Sand Soldier token (exhausted) at your base | 25% your Sand Soldier token (exhausted) at your base | 25% your Sand Soldier token (exhausted) at your base
+# 97 P2 G2  [priority] runes 0/3 v(P1) +0.09 CHOSE (99%) pass priority   <<  99% pass priority
+# 98 P2 G2  [priority] runes 0/3 v(P1) +0.05 CHOSE (98%) pass priority   <<  98% pass priority
+# 99 P2 G2  [priority] runes 0/3 v(P1) +0.05 CHOSE (97%) pass priority   <<  97% pass priority
+#100 P2 G2  [priority] runes 0/3 v(P1) +0.08 CHOSE (97%) pass priority   <<  97% pass priority
+#101 P2 G2  [priority] runes 0/3 v(P1) +0.11 CHOSE (95%) pass priority   <<  95% pass priority
+#102 P2 G2  [priority] runes 0/3 v(P1) +0.13 CHOSE (94%) pass priority   <<  94% pass priority
+#103 P2 G2  [main phase action] runes 0/3 v(P1) +0.18 CHOSE (35%) move your Sand Soldier token at your base to battlefield 0   <<  35% move your Sand Soldier token at your base to battlefield 0 | 21% move your Sand Soldier token at your base to battlefield 1 | 15% move your Sand Soldier token at your base to battlefield 0 | 9% move your Sand Soldier token at your base to battlefield 0
+#104 P2 G2  [move another unit] runes 0/3 v(P1) +0.20 CHOSE (97%) Move no more units   <<  97% Move no more units
+#105 P2 G2  [focus] runes 0/3 v(P1) +0.28 CHOSE (100%) pass focus   <<  100% pass focus
+#106 P2 G2  [priority] runes 0/3 v(P1) +0.16 CHOSE (96%) pass priority   <<  96% pass priority
+#107 P2 G2  [main phase action] runes 0/3 v(P1) +0.19 CHOSE (48%) move your Sand Soldier token at your base to battlefield 1   <<  48% move your Sand Soldier token at your base to battlefield 1 | 32% move your Sand Soldier token at your base to battlefield 1 | 18% move your Sand Soldier token at your base to battlefield 1
+#108 P2 G2  [move another unit] runes 0/3 v(P1) +0.21 CHOSE (91%) Move no more units   <<  91% Move no more units | 8% your Sand Soldier token at your base
+#109 P2 G2  [focus] runes 0/3 v(P1) +0.25 CHOSE (100%) pass focus   <<  100% pass focus
+#110 P2 G2  [priority] runes 0/3 v(P1) +0.20 CHOSE (99%) pass priority   <<  99% pass priority
+#111 P2 G2  [main phase action] runes 0/3 v(P1) +0.18 CHOSE (98%) PlayCard your Eye of the Herald in hand to your base   <<  98% PlayCard your Eye of the Herald in hand to your base
+#112 P2 G2  [main phase action] runes 0/2 v(P1) +0.25 CHOSE (62%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  62% ActivateAbility your Emperor of the Sands in the Legend Zone | 31% hide your Guards! in hand at battlefield 1 | 7% hide your Guards! in hand at battlefield 0
+#113 P2 G2  [priority] runes 0/1 v(P1) +0.26 CHOSE (99%) pass priority   <<  99% pass priority
+#114 P2 G2  [may] runes 0/1 v(P1) +0.22 CHOSE (96%) Yes — Weaponmaster: equip an Equipment to me?   <<  96% Yes — Weaponmaster: equip an Equipment to me? | 4% No — Weaponmaster: equip an Equipment to me?
+#115 P2 G2  [target] runes 0/1 v(P1) +0.16 CHOSE (62%) your Doran's Shield at your base   <<  62% your Doran's Shield at your base | 35% your Eye of the Herald at your base
+#116 P2 G2  [priority] runes 0/1 v(P1) +0.18 CHOSE (99%) pass priority   <<  99% pass priority
+#117 P2 G2  [main phase action] runes 0/1 v(P1) +0.20 CHOSE (79%) hide your Guards! in hand at battlefield 1   <<  79% hide your Guards! in hand at battlefield 1 | 17% hide your Guards! in hand at battlefield 0 | 3% hide your Back Off in hand at battlefield 1
+#118 P2 G2  [main phase action] runes 0/1 v(P1) +0.16 CHOSE (94%) hide your Back Off in hand at battlefield 0   <<  94% hide your Back Off in hand at battlefield 0
+#119 P2 G2  [main phase action] runes 0/1 v(P1) +0.13 CHOSE (35%) ActivateAbility your Eye of the Herald at your base ability 1 targeting you   <<  35% ActivateAbility your Eye of the Herald at your base ability  | 29% ActivateAbility your Eye of the Herald at your base ability  | 23% end the turn | 3% move your Sand Soldier token at your base to battlefield 1
+#120 P2 G2  [priority] runes 0/1 v(P1) +0.13 CHOSE (99%) pass priority   <<  99% pass priority
+#121 P2 G2  [main phase action] runes 0/1 v(P1) +0.18 CHOSE (71%) end the turn   <<  71% end the turn | 10% move your Sand Soldier token at your base to battlefield 1 | 5% move your Sand Soldier token at your base to battlefield 1 | 5% move your Sand Soldier token at your base to battlefield 0
+
+=== TURN 9 (P1) score P1 4 - P2 5 | runes ready P1 9 P2 1
+  P1 hand ['En Garde', 'Discipline', 'Discipline', 'Hidden Blade', 'Guards!']
+  P2 hand ['En Garde', 'Deathgrip']
+  bf0[ctl 2] ['P2:Sand Soldier5x'] facedown ['P2']
+  bf1[ctl 2] ['P2:Sand Soldier6x'] facedown ['P2']
+  base P1 ['Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2', 'Sand Soldier3', 'Sand Soldier3', 'Sand Soldier3', 'Sand Soldier5']  base P2 ['Sand Soldier2', 'Sand Soldier2x', 'Sand Soldier2x', 'Sand Soldier2x', 'Sand Soldier3', 'Sand Soldier3x']
+#122 P1 YOU [main phase action] runes 9/1 v(P1) -0.02 CHOSE (3%) move your Sand Soldier token at your base to battlefield 1   <<  37% PlayCard your Discipline in hand | 37% PlayCard your Discipline in hand | 4% move your Sand Soldier token at your base to battlefield 0 | 3% PlayCard your Guards! in hand
+#123 P1 YOU [move another unit] runes 9/1 v(P1) -0.06 CHOSE (1%) your Sand Soldier token at your base   <<  96% Move no more units
+#124 P1 YOU [move another unit] runes 9/1 v(P1) -0.06 CHOSE (89%) Move no more units   <<  89% Move no more units | 4% your Sand Soldier token at your base | 4% your Sand Soldier token at your base
+#125 P1 YOU [focus] runes 9/1 v(P1) +0.08 CHOSE (1%) pass focus   <<  43% PlayActionCard your Discipline in hand | 43% PlayActionCard your Discipline in hand | 6% PlayActionCard your En Garde in hand targeting your Sand Sol | 6% PlayActionCard your En Garde in hand targeting your Sand Sol
+#126 P2 G2  [focus] runes 9/1 v(P1) -0.21 CHOSE (51%) PlayActionCard your En Garde in hand targeting your Sand Soldier token (exh   <<  51% PlayActionCard your En Garde in hand targeting your Sand Sol | 48% PlayActionCard your Guards! face down
+#127 P2 G2  [priority] runes 9/0 v(P1) -0.32 CHOSE (100%) pass priority   <<  100% pass priority
+#128 P1 YOU [priority] runes 9/0 v(P1) +0.07 CHOSE (85%) pass priority   <<  85% pass priority | 6% PlayReaction your Discipline in hand | 6% PlayReaction your Discipline in hand
+#129 P1 YOU [focus] runes 9/0 v(P1) +0.05 CHOSE (0%) pass focus   <<  47% PlayActionCard your Discipline in hand | 47% PlayActionCard your Discipline in hand | 3% PlayActionCard your En Garde in hand targeting your Sand Sol | 3% PlayActionCard your En Garde in hand targeting your Sand Sol
+#130 P2 G2  [focus] runes 9/0 v(P1) -0.24 CHOSE (66%) PlayActionCard your Guards! face down   <<  66% PlayActionCard your Guards! face down | 34% pass focus
+#131 P2 G2  [priority] runes 9/0 v(P1) -0.17 CHOSE (100%) pass priority   <<  100% pass priority
+#132 P1 YOU [priority] runes 9/0 v(P1) +0.16 CHOSE (78%) pass priority   <<  78% pass priority | 10% PlayReaction your Discipline in hand | 10% PlayReaction your Discipline in hand
+#133 P2 G2  [may] runes 9/0 v(P1) -0.14 CHOSE (99%) Yes — Weaponmaster: equip an Equipment to me?   <<  99% Yes — Weaponmaster: equip an Equipment to me?
+#134 P2 G2  [target] runes 9/0 v(P1) -0.23 CHOSE (34%) your Eye of the Herald at your base   <<  34% your Eye of the Herald at your base | 33% your Soul Sword at your base | 31% your Doran's Shield at your base
+#135 P2 G2  [may] runes 9/0 v(P1) -0.18 CHOSE (93%) No — Guards!: pay [Y] to ready the Sand Soldier?   <<  93% No — Guards!: pay [Y] to ready the Sand Soldier? | 7% Yes — Guards!: pay [Y] to ready the Sand Soldier?
+#136 P2 G2  [priority] runes 9/0 v(P1) -0.19 CHOSE (100%) pass priority   <<  100% pass priority
+#137 P1 YOU [priority] runes 9/0 v(P1) +0.10 CHOSE (94%) pass priority   <<  94% pass priority | 3% PlayReaction your Discipline in hand | 3% PlayReaction your Discipline in hand
+#138 P1 YOU [focus] runes 9/0 v(P1) +0.17 CHOSE (49%) PlayActionCard your Discipline in hand   <<  49% PlayActionCard your Discipline in hand | 49% PlayActionCard your Discipline in hand
+#139 P1 YOU [target] runes 9/0 v(P1) +0.19 CHOSE (50%) your Sand Soldier token (exhausted) at battlefield 1   <<  50% your Sand Soldier token (exhausted) at battlefield 1 | 50% your Sand Soldier token (exhausted) at battlefield 1
+#140 P1 YOU [priority] runes 7/0 v(P1) +0.13 CHOSE (99%) pass priority   <<  99% pass priority
+#141 P2 G2  [priority] runes 7/0 v(P1) -0.26 CHOSE (100%) pass priority   <<  100% pass priority
+#142 P2 G2  [focus] runes 7/0 v(P1) -0.14 CHOSE (100%) pass focus   <<  100% pass focus
+#143 P1 YOU [focus] runes 7/0 v(P1) +0.13 CHOSE (0%) pass focus   <<  94% PlayActionCard your Discipline in hand | 3% PlayActionCard your En Garde in hand targeting your Sand Sol | 3% PlayActionCard your En Garde in hand targeting your Sand Sol
+#144 P1 YOU [combat damage] runes 7/0 v(P1) +0.14 CHOSE (50%) assign combat damage: 4 to the opponent's Sand Soldier token (exhausted) at   <<  50% assign combat damage: 10 to the opponent's Sand Soldier toke | 50% assign combat damage: 4 to the opponent's Sand Soldier token
+#145 P2 G2  [combat damage] runes 7/0 v(P1) -0.04 CHOSE (50%) assign combat damage: 3 to the opponent's Sand Soldier token (exhausted) at   <<  50% assign combat damage: 3 to the opponent's Sand Soldier token | 50% assign combat damage: 5 to the opponent's Sand Soldier token
+#146 P1 YOU [priority] runes 7/0 v(P1) +0.19 CHOSE (93%) pass priority   <<  93% pass priority | 3% PlayReaction your Discipline in hand
+#147 P2 G2  [priority] runes 7/0 v(P1) +0.29 CHOSE (100%) pass priority   <<  100% pass priority
+#148 P1 YOU [main phase action] runes 7/0 v(P1) +0.14 CHOSE (0%) move your Sand Soldier token at your base to battlefield 1   <<  99% PlayCard your Doran's Shield in hand to your base
+#149 P1 YOU [move another unit] runes 7/0 v(P1) +0.09 CHOSE (50%) Move no more units   <<  50% Move no more units | 20% your Sand Soldier token at your base | 8% your Sand Soldier token at your base | 8% your Sand Soldier token at your base
+#150 P1 YOU [main phase action] runes 7/0 v(P1) +0.15 CHOSE (0%) ActivateAbility your B.F. Sword at your base ability 1 targeting your Sand    <<  99% PlayCard your Doran's Shield in hand to your base
+#151 P1 YOU [priority] runes 6/0 v(P1) +0.12 CHOSE (96%) pass priority   <<  96% pass priority | 3% PlayReaction your Discipline in hand
+#152 P2 G2  [priority] runes 6/0 v(P1) +0.11 CHOSE (100%) pass priority   <<  100% pass priority
+#153 P1 YOU [main phase action] runes 6/0 v(P1) +0.25 CHOSE (0%) move your Sand Soldier token at your base to battlefield 0   <<  99% PlayCard your Doran's Shield in hand to your base
+#154 P1 YOU [move another unit] runes 6/0 v(P1) +0.22 CHOSE (18%) Move no more units   <<  20% your Sand Soldier token at your base | 20% your Sand Soldier token at your base | 20% your Sand Soldier token at your base | 20% your Sand Soldier token at your base
+#155 P1 YOU [focus] runes 6/0 v(P1) +0.25 CHOSE (6%) pass focus   <<  67% PlayActionCard your Discipline in hand | 22% PlayActionCard your En Garde in hand targeting your Sand Sol | 6% pass focus
+#156 P2 G2  [focus] runes 6/0 v(P1) +0.13 CHOSE (100%) PlayActionCard your Back Off face down targeting the opponent's Sand Soldie   <<  100% PlayActionCard your Back Off face down targeting the opponen
+#157 P1 YOU [priority] runes 6/0 v(P1) +0.39 CHOSE (74%) pass priority   <<  74% pass priority | 13% PlayReaction your Discipline in hand | 6% PlayReaction your En Garde in hand targeting your Sand Soldi
+#158 P1 YOU [focus] runes 6/0 v(P1) +0.31 CHOSE (0%) pass focus   <<  96% PlayActionCard your Discipline in hand | 2% PlayActionCard your En Garde in hand targeting your Sand Sol
+#159 P1 YOU [main phase action] runes 6/0 v(P1) +0.38 CHOSE (0%) PlayCard your Azir, Sovereign in the Champion Zone to your base   <<  99% PlayCard your Doran's Shield in hand to your base
+#160 P1 YOU [accelerate] runes 6/0 v(P1) +0.46 CHOSE (76%) yes   <<  76% yes | 24% no
+#161 P1 YOU [main phase action] runes 1/0 v(P1) +0.25 CHOSE (8%) PlayCard your Doran's Shield in hand to your base   <<  88% hide your Guards! in hand at battlefield 1 | 8% PlayCard your Doran's Shield in hand to your base | 4% hide your Hidden Blade in hand at battlefield 1
+#162 P1 YOU [main phase action] runes 0/0 v(P1) +0.20 CHOSE (0%) ActivateAbility your Doran's Shield at your base ability 1 targeting your S   <<  47% ActivateAbility your Doran's Shield at your base ability 1 t | 38% hide your Guards! in hand at battlefield 1 | 4% hide your Hidden Blade in hand at battlefield 1 | 3% ActivateAbility your Doran's Shield at your base ability 1 t
+#163 P1 YOU [main phase action] runes 0/0 v(P1) +0.05 CHOSE (0%) move your Azir, Sovereign at your base to battlefield 0   <<  88% hide your Guards! in hand at battlefield 1 | 12% hide your Hidden Blade in hand at battlefield 1
+#164 P1 YOU [move another unit] runes 0/0 v(P1) +0.07 CHOSE (16%) Move no more units   <<  21% your Sand Soldier token at your base | 21% your Sand Soldier token at your base | 21% your Sand Soldier token at your base | 21% your Sand Soldier token at your base
+#165 P1 YOU [may] runes 0/0 v(P1) +0.07 CHOSE (63%) Yes — Azir, Sovereign: move token units here?   <<  63% Yes — Azir, Sovereign: move token units here? | 37% No — Azir, Sovereign: move token units here?
+#166 P1 YOU [target] runes 0/0 v(P1) +0.14 CHOSE (0%) your Sand Soldier token at your base   <<  97% your Sand Soldier token (exhausted) at your base | 3% your Sand Soldier token (exhausted) at battlefield 1
+#167 P1 YOU [target] runes 0/0 v(P1) +0.14 CHOSE (97%) your Sand Soldier token (exhausted) at your base   <<  97% your Sand Soldier token (exhausted) at your base | 3% your Sand Soldier token (exhausted) at battlefield 1
+#168 P1 YOU [target] runes 0/0 v(P1) +0.14 CHOSE (2%) None — Azir, Sovereign: move a token unit here   <<  98% your Sand Soldier token (exhausted) at battlefield 1
+#169 P1 YOU [main phase action] runes 0/0 v(P1) +0.37 CHOSE (11%) hide your Hidden Blade in hand at battlefield 1   <<  57% hide your Guards! in hand at battlefield 1 | 28% hide your Guards! in hand at battlefield 0 | 11% hide your Hidden Blade in hand at battlefield 1 | 3% hide your Hidden Blade in hand at battlefield 0
+#170 P1 YOU [main phase action] runes 0/0 v(P1) +0.53 CHOSE (100%) hide your Guards! in hand at battlefield 0   <<  100% hide your Guards! in hand at battlefield 0
+#171 P1 YOU [main phase action] runes 0/0 v(P1) +0.61 CHOSE (47%) end the turn   <<  47% end the turn | 10% move your Sand Soldier token at your base to battlefield 1 | 10% move your Sand Soldier token at your base to battlefield 1 | 10% move your Sand Soldier token at your base to battlefield 1
+
+=== TURN 10 (P2) score P1 6 - P2 5 | runes ready P1 0 P2 7
+  P1 hand ['En Garde', 'Discipline', 'Eye of the Herald']
+  P2 hand ['Discipline', 'Deathgrip']
+  bf0[ctl 1] ['P1:Sand Soldier2', 'P1:Sand Soldier7x', 'P1:Azir, Sovereign4x'] facedown ['P1']
+  bf1[ctl 1] ['P1:Sand Soldier3x', 'P1:Sand Soldier5x'] facedown ['P1']
+  base P1 ['Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2']  base P2 ['Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2', 'Sand Soldier3', 'Sand Soldier3']
+#172 P2 G2  [main phase action] runes 0/7 v(P1) +0.56 CHOSE (84%) PlayCard your Discipline in hand   <<  84% PlayCard your Discipline in hand | 7% PlayCard your Azir, Sovereign in the Champion Zone to your b
+#173 P2 G2  [target] runes 0/7 v(P1) +0.57 CHOSE (49%) your Sand Soldier token at your base   <<  49% your Sand Soldier token at your base | 49% your Sand Soldier token at your base
+#174 P2 G2  [priority] runes 0/5 v(P1) +0.52 CHOSE (100%) pass priority   <<  100% pass priority
+#175 P1 YOU [priority] runes 0/5 v(P1) +0.77 CHOSE (87%) pass priority   <<  87% pass priority | 13% PlayReaction your Guards! face down
+#176 P2 G2  [main phase action] runes 0/5 v(P1) +0.59 CHOSE (69%) PlayCard your Eye of the Herald in hand to your base   <<  69% PlayCard your Eye of the Herald in hand to your base | 11% PlayCard your Azir, Sovereign in the Champion Zone to your b | 2% move your Sand Soldier token at your base to battlefield 1
+#177 P2 G2  [main phase action] runes 0/4 v(P1) +0.59 CHOSE (75%) ActivateAbility your Emperor of the Sands in the Legend Zone ability 1   <<  75% ActivateAbility your Emperor of the Sands in the Legend Zone | 7% PlayCard your Azir, Sovereign in the Champion Zone to your b
+#178 P2 G2  [priority] runes 0/3 v(P1) +0.63 CHOSE (100%) pass priority   <<  100% pass priority
+#179 P1 YOU [priority] runes 0/3 v(P1) +0.77 CHOSE (92%) pass priority   <<  92% pass priority | 8% PlayReaction your Guards! face down
+#180 P2 G2  [may] runes 0/3 v(P1) +0.64 CHOSE (98%) Yes — Weaponmaster: equip an Equipment to me?   <<  98% Yes — Weaponmaster: equip an Equipment to me? | 2% No — Weaponmaster: equip an Equipment to me?
+#181 P2 G2  [target] runes 0/3 v(P1) +0.62 CHOSE (21%) your Eye of the Herald at your base   <<  21% your Eye of the Herald at your base | 20% your B.F. Sword at your base | 20% your B.F. Sword at your base | 20% your Soul Sword at your base
+#182 P2 G2  [priority] runes 0/3 v(P1) +0.61 CHOSE (100%) pass priority   <<  100% pass priority
+#183 P1 YOU [priority] runes 0/3 v(P1) +0.72 CHOSE (93%) pass priority   <<  93% pass priority | 7% PlayReaction your Guards! face down
+#184 P2 G2  [main phase action] runes 0/3 v(P1) +0.64 CHOSE (29%) move your Sand Soldier token at your base to battlefield 1   <<  29% move your Sand Soldier token at your base to battlefield 1 | 6% move your Sand Soldier token at your base to battlefield 0 | 5% ActivateAbility your B.F. Sword at your base ability 1 targe | 5% ActivateAbility your Eye of the Herald at your base ability 
+#185 P2 G2  [move another unit] runes 0/3 v(P1) +0.65 CHOSE (58%) your Sand Soldier token at your base   <<  58% your Sand Soldier token at your base | 36% Move no more units
+#186 P2 G2  [move another unit] runes 0/3 v(P1) +0.65 CHOSE (79%) Move no more units   <<  79% Move no more units | 5% your Sand Soldier token at your base | 5% your Sand Soldier token at your base | 5% your Sand Soldier token at your base
+#187 P2 G2  [focus] runes 0/3 v(P1) +0.71 CHOSE (23%) pass focus   <<  23% pass focus | 20% PlayActionCard your Deathgrip in hand targeting your Sand So | 20% PlayActionCard your Deathgrip in hand targeting your Sand So | 3% PlayActionCard your Deathgrip in hand targeting your Sand So
+#188 P1 YOU [focus] runes 0/3 v(P1) +0.83 CHOSE (99%) PlayActionCard your Hidden Blade face down targeting the opponent's Sand So   <<  99% PlayActionCard your Hidden Blade face down targeting the opp
+#189 P1 YOU [priority] runes 0/3 v(P1) +0.80 CHOSE (98%) pass priority   <<  98% pass priority
+#190 P2 G2  [priority] runes 0/3 v(P1) +0.72 CHOSE (100%) pass priority   <<  100% pass priority
+#191 P2 G2  [focus] runes 0/3 v(P1) +0.77 CHOSE (88%) PlayActionCard your En Garde in hand targeting your Sand Soldier token (exh   <<  88% PlayActionCard your En Garde in hand targeting your Sand Sol | 2% PlayActionCard your En Garde in hand targeting your Sand Sol | 2% PlayActionCard your En Garde in hand targeting your Sand Sol | 2% PlayActionCard your En Garde in hand targeting your Sand Sol
+#192 P2 G2  [priority] runes 0/2 v(P1) +0.68 CHOSE (100%) pass priority   <<  100% pass priority
+#193 P1 YOU [priority] runes 0/2 v(P1) +0.83 CHOSE (87%) pass priority   <<  87% pass priority | 13% PlayReaction your Guards! face down
+#194 P1 YOU [focus] runes 0/2 v(P1) +0.86 CHOSE (73%) pass focus   <<  73% pass focus | 27% PlayActionCard your Guards! face down
+#195 P2 G2  [focus] runes 0/2 v(P1) +0.78 CHOSE (63%) pass focus   <<  63% pass focus | 3% PlayActionCard your Deathgrip in hand targeting your Sand So | 3% PlayActionCard your Deathgrip in hand targeting your Sand So | 3% PlayActionCard your Deathgrip in hand targeting your Sand So
+#196 P2 G2  [combat damage] runes 0/2 v(P1) +0.79 CHOSE (58%) assign combat damage: 5 to the opponent's Sand Soldier token (exhausted) at   <<  58% assign combat damage: 5 to the opponent's Sand Soldier token | 42% assign combat damage: 2 to the opponent's Sand Soldier token
+#197 P2 G2  [main phase action] runes 0/2 v(P1) +0.73 CHOSE (4%) ActivateAbility your Eye of the Herald at your base ability 1 targeting you   <<  4% ActivateAbility your Eye of the Herald at your base ability  | 4% ActivateAbility your Eye of the Herald at your base ability  | 4% ActivateAbility your Soul Sword at your base ability 1 targe | 4% ActivateAbility your B.F. Sword at your base ability 1 targe
+#198 P2 G2  [priority] runes 0/2 v(P1) +0.71 CHOSE (100%) pass priority   <<  100% pass priority
+#199 P1 YOU [priority] runes 0/2 v(P1) +0.76 CHOSE (92%) pass priority   <<  92% pass priority | 8% PlayReaction your Guards! face down
+#200 P2 G2  [main phase action] runes 0/2 v(P1) +0.79 CHOSE (7%) ActivateAbility your Soul Sword at your base ability 1 targeting your Sand    <<  7% ActivateAbility your Soul Sword at your base ability 1 targe | 7% ActivateAbility your Soul Sword at your base ability 1 targe | 7% ActivateAbility your B.F. Sword at your base ability 1 targe | 7% ActivateAbility your Doran's Shield at your base ability 1 t
+#201 P2 G2  [priority] runes 0/2 v(P1) +0.76 CHOSE (100%) pass priority   <<  100% pass priority
+#202 P1 YOU [priority] runes 0/2 v(P1) +0.79 CHOSE (94%) pass priority   <<  94% pass priority | 6% PlayReaction your Guards! face down
+#203 P2 G2  [main phase action] runes 0/2 v(P1) +0.81 CHOSE (8%) ActivateAbility your Doran's Shield at your base ability 1 targeting your S   <<  8% ActivateAbility your Doran's Shield at your base ability 1 t | 8% ActivateAbility your B.F. Sword at your base ability 1 targe | 8% ActivateAbility your Soul Sword at your base ability 1 targe | 8% ActivateAbility your B.F. Sword at your base ability 1 targe
+#204 P2 G2  [priority] runes 0/2 v(P1) +0.79 CHOSE (100%) pass priority   <<  100% pass priority
+#205 P1 YOU [priority] runes 0/2 v(P1) +0.84 CHOSE (93%) pass priority   <<  93% pass priority | 7% PlayReaction your Guards! face down
+#206 P2 G2  [main phase action] runes 0/2 v(P1) +0.84 CHOSE (19%) move your Sand Soldier token at your base to battlefield 1   <<  19% move your Sand Soldier token at your base to battlefield 1 | 15% ActivateAbility your B.F. Sword at your base ability 1 targe | 15% ActivateAbility your B.F. Sword at your base ability 1 targe | 15% ActivateAbility your Soul Sword at your base ability 1 targe
+#207 P2 G2  [move another unit] runes 0/2 v(P1) +0.84 CHOSE (66%) Move no more units   <<  66% Move no more units | 11% your Sand Soldier token at your base | 11% your Sand Soldier token at your base | 11% your Sand Soldier token at your base
+#208 P2 G2  [priority] runes 0/2 v(P1) +0.77 CHOSE (100%) pass priority   <<  100% pass priority
+#209 P1 YOU [priority] runes 0/2 v(P1) +0.85 CHOSE (96%) pass priority   <<  96% pass priority | 4% PlayReaction your Guards! face down
+#210 P2 G2  [focus] runes 0/2 v(P1) +0.82 CHOSE (52%) pass focus   <<  52% pass focus | 12% PlayActionCard your Deathgrip in hand targeting your Recruit | 12% PlayActionCard your Deathgrip in hand targeting your Sand So | 3% PlayActionCard your Deathgrip in hand targeting your Sand So
+#211 P1 YOU [focus] runes 0/2 v(P1) +0.89 CHOSE (2%) pass focus   <<  98% PlayActionCard your Guards! face down | 2% pass focus
+#212 P2 G2  [priority] runes 0/2 v(P1) +0.71 CHOSE (100%) pass priority   <<  100% pass priority
+#213 P1 YOU [priority] runes 0/2 v(P1) +0.74 CHOSE (97%) pass priority   <<  97% pass priority | 3% PlayReaction your Guards! face down
+#214 P2 G2  [main phase action] runes 0/2 v(P1) +0.74 CHOSE (10%) ActivateAbility your B.F. Sword at your base ability 1 targeting your Sand    <<  10% ActivateAbility your Soul Sword at your base ability 1 targe | 10% ActivateAbility your B.F. Sword at your base ability 1 targe | 10% ActivateAbility your B.F. Sword at your base ability 1 targe | 10% ActivateAbility your B.F. Sword at your base ability 1 targe
+#215 P2 G2  [priority] runes 0/2 v(P1) +0.74 CHOSE (100%) pass priority   <<  100% pass priority
+#216 P1 YOU [priority] runes 0/2 v(P1) +0.81 CHOSE (96%) pass priority   <<  96% pass priority | 4% PlayReaction your Guards! face down
+#217 P2 G2  [main phase action] runes 0/2 v(P1) +0.70 CHOSE (28%) ActivateAbility your Soul Sword at your base ability 1 targeting your Sand    <<  28% ActivateAbility your Soul Sword at your base ability 1 targe | 28% ActivateAbility your Soul Sword at your base ability 1 targe | 24% ActivateAbility your Soul Sword at your base ability 1 targe | 12% move your Sand Soldier token at your base to battlefield 0
+#218 P2 G2  [priority] runes 0/2 v(P1) +0.71 CHOSE (100%) pass priority   <<  100% pass priority
+#219 P1 YOU [priority] runes 0/2 v(P1) +0.78 CHOSE (98%) pass priority   <<  98% pass priority | 2% PlayReaction your Guards! face down
+#220 P2 G2  [main phase action] runes 0/2 v(P1) +0.73 CHOSE (67%) move your Sand Soldier token at your base to battlefield 0   <<  67% move your Sand Soldier token at your base to battlefield 0 | 17% move your Sand Soldier token at your base to battlefield 0 | 4% move your Sand Soldier token at your base to battlefield 0 | 3% move your Sand Soldier token at your base to battlefield 1
+#221 P2 G2  [move another unit] runes 0/2 v(P1) +0.73 CHOSE (87%) your Sand Soldier token at your base   <<  87% your Sand Soldier token at your base | 13% your Sand Soldier token at your base
+#222 P2 G2  [move another unit] runes 0/2 v(P1) +0.73 CHOSE (96%) your Sand Soldier token at your base   <<  96% your Sand Soldier token at your base | 4% Move no more units
+#223 P2 G2  [focus] runes 0/2 v(P1) +0.83 CHOSE (15%) pass focus   <<  15% pass focus | 14% PlayActionCard your Deathgrip in hand targeting your Sand So | 14% PlayActionCard your Deathgrip in hand targeting your Sand So | 12% PlayActionCard your Deathgrip in hand targeting your Sand So
+#224 P1 YOU [focus] runes 0/2 v(P1) +0.93 CHOSE (13%) pass focus   <<  87% PlayActionCard your Guards! face down | 13% pass focus
+#225 P2 G2  [combat damage] runes 0/2 v(P1) +0.90 CHOSE (75%) assign combat damage: 3 to the opponent's Azir, Sovereign (exhausted) at ba   <<  75% assign combat damage: 3 to the opponent's Azir, Sovereign (e | 25% assign combat damage: 1 to the opponent's Azir, Sovereign (e
+#226 P1 YOU [combat damage] runes 0/2 v(P1) +0.93 CHOSE (33%) assign combat damage: 3 to the opponent's Sand Soldier token (exhausted) at   <<  33% assign combat damage: 3 to the opponent's Sand Soldier token | 33% assign combat damage: 2 to the opponent's Sand Soldier token | 33% assign combat damage: 2 to the opponent's Sand Soldier token
+#227 P2 G2  [main phase action] runes 0/2 v(P1) +0.91 CHOSE (77%) ActivateAbility your Soul Sword at your base ability 1 targeting your Recru   <<  77% ActivateAbility your Soul Sword at your base ability 1 targe | 18% ActivateAbility your Soul Sword at your base ability 1 targe | 3% end the turn
+#228 P1 YOU [priority] runes 0/1 v(P1) +0.98 CHOSE (83%) pass priority   <<  83% pass priority | 17% PlayReaction your Guards! face down
+
+=== TURN 11 (P1) score P1 7 - P2 6 | runes ready P1 6 P2 1
+  P1 hand ['En Garde', 'Discipline', 'Eye of the Herald', 'Guards!']
+  P2 hand ['Deathgrip', 'Arise!']
+  bf0[ctl 1] ['P1:Sand Soldier2', 'P1:Azir, Sovereign4'] facedown ['P1']
+  bf1[ctl 2] ['P2:Recruit2x', 'P2:Sand Soldier4x'] facedown []
+  base P1 ['Sand Soldier2', 'Sand Soldier2', 'Sand Soldier2']  base P2 ['Sand Soldier2x']
+#229 P1 YOU [main phase action] runes 6/1 v(P1) +0.97 CHOSE (4%) ActivateAbility your B.F. Sword at your base ability 1 targeting your Sand    <<  4% PlayCard your Discipline in hand | 4% ActivateAbility your B.F. Sword at your base ability 1 targe | 4% ActivateAbility your B.F. Sword at your base ability 1 targe | 4% ActivateAbility your Soul Sword at your base ability 1 targe
+#230 P1 YOU [priority] runes 5/1 v(P1) +0.97 CHOSE (36%) pass priority   <<  39% PlayReaction your Discipline in hand | 36% pass priority | 10% PlayReaction your Guards! face down | 4% PlayReaction your En Garde in hand targeting your Sand Soldi
+#231 P1 YOU [main phase action] runes 5/1 v(P1) +0.98 CHOSE (4%) ActivateAbility your Hand Hammer at your base ability 1 targeting your Sand   <<  7% move your Sand Soldier token at your base to battlefield 1 | 6% ActivateAbility your Soul Sword at your base ability 1 targe | 6% ActivateAbility your Soul Sword at your base ability 1 targe | 6% ActivateAbility your Hand Hammer at your base ability 1 targ
+#232 P1 YOU [priority] runes 4/1 v(P1) +0.98 CHOSE (26%) pass priority   <<  36% PlayReaction your Discipline in hand | 26% pass priority | 10% PlayReaction your Guards! face down | 9% PlayReaction your En Garde in hand targeting your Sand Soldi
+#233 P1 YOU [main phase action] runes 4/1 v(P1) +0.98 CHOSE (4%) ActivateAbility your Doran's Shield at your base ability 1 targeting your S   <<  9% move your Sand Soldier token at your base to battlefield 1 | 9% ActivateAbility your Doran's Shield at your base ability 1 t | 9% ActivateAbility your Soul Sword at your base ability 1 targe | 9% ActivateAbility your Soul Sword at your base ability 1 targe
+#234 P1 YOU [priority] runes 3/1 v(P1) +0.98 CHOSE (29%) pass priority   <<  35% PlayReaction your Discipline in hand | 29% pass priority | 10% PlayReaction your Guards! face down | 8% PlayReaction your En Garde in hand targeting your Sand Soldi
+#235 P1 YOU [main phase action] runes 3/1 v(P1) +0.99 CHOSE (12%) ActivateAbility your Soul Sword at your base ability 1 targeting your Sand    <<  15% move your Sand Soldier token at your base to battlefield 1 | 12% ActivateAbility your Soul Sword at your base ability 1 targe | 12% ActivateAbility your Soul Sword at your base ability 1 targe | 7% ActivateAbility your Soul Sword at your base ability 1 targe
+#236 P1 YOU [priority] runes 2/1 v(P1) +0.98 CHOSE (29%) pass priority   <<  36% PlayReaction your Discipline in hand | 29% pass priority | 9% PlayReaction your En Garde in hand targeting your Sand Soldi | 9% PlayReaction your Guards! face down
+#237 P1 YOU [main phase action] runes 2/1 v(P1) +0.99 CHOSE (27%) move your Sand Soldier token at your base to battlefield 1   <<  27% move your Sand Soldier token at your base to battlefield 1 | 19% ActivateAbility your Soul Sword at your base ability 1 targe | 11% ActivateAbility your Soul Sword at your base ability 1 targe | 10% move your Sand Soldier token at your base to battlefield 1
+#238 P1 YOU [move another unit] runes 2/1 v(P1) +0.99 CHOSE (55%) your Sand Soldier token at your base   <<  55% your Sand Soldier token at your base | 26% your Sand Soldier token at your base | 19% Move no more units
+#239 P1 YOU [move another unit] runes 2/1 v(P1) +0.99 CHOSE (65%) your Sand Soldier token at your base   <<  65% your Sand Soldier token at your base | 35% Move no more units
+#240 P1 YOU [focus] runes 2/1 v(P1) +1.00 CHOSE (5%) pass focus   <<  66% PlayActionCard your Discipline in hand | 7% PlayActionCard your En Garde in hand targeting your Sand Sol | 6% PlayActionCard your En Garde in hand targeting your Sand Sol | 6% PlayActionCard your En Garde in hand targeting your Sand Sol
+#241 P2 G2  [combat damage] runes 2/1 v(P1) +0.95 CHOSE (95%) assign combat damage: 2 to the opponent's Sand Soldier token (exhausted) at   <<  95% assign combat damage: 2 to the opponent's Sand Soldier token | 5% assign combat damage: 2 to the opponent's Sand Soldier token
+{'done': True, 'winner': 1, 'need': False, 'seat': 0, 'nlegal': 0, 'pk': 0}

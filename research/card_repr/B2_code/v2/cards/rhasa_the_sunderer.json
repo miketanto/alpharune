@@ -1,0 +1,58 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 10,
+  "power": 1,
+  "power_by_domain": {
+   "chaos": 1
+  },
+  "might": 6,
+  "_src": {
+   "type": "src/cards/units/0195_rhasa_the_sunderer.cpp:32",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0195_rhasa_the_sunderer.cpp:33",
+   "energy": "src/cards/units/0195_rhasa_the_sunderer.cpp:35",
+   "power": "src/cards/units/0195_rhasa_the_sunderer.cpp:36",
+   "power_by_domain": "src/cards/units/0195_rhasa_the_sunderer.cpp:36 x src/cards/units/0195_rhasa_the_sunderer.cpp:33; src/engine/game_engine.cpp:9109",
+   "might": "src/cards/units/0195_rhasa_the_sunderer.cpp:37"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "static",
+   "effects": [
+    {
+     "verb": "ReduceCost",
+     "target": {
+      "type": "self",
+      "side": "friendly",
+      "zone": "hand",
+      "count": 1,
+      "_src": "src/cards/units/0195_rhasa_the_sunderer.cpp:18"
+     },
+     "amount": {
+      "n": 1,
+      "per": "card_in_your_trash",
+      "_src": "src/cards/units/0195_rhasa_the_sunderer.cpp:19"
+     },
+     "resource": "energy",
+     "_src": "src/cards/units/0195_rhasa_the_sunderer.cpp:17-19"
+    }
+   ],
+   "_src": "src/cards/units/0195_rhasa_the_sunderer.cpp:17"
+  }
+ ],
+ "_meta": {
+  "def_id": "ogn-195-298",
+  "class_file": "src/cards/units/0195_rhasa_the_sunderer.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: amount per card_in_your_trash"
+  ]
+ }
+}

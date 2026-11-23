@@ -1,0 +1,69 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0889_ravenbloom_prefect.cpp:67",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0889_ravenbloom_prefect.cpp:68",
+   "energy": "src/cards/units/0889_ravenbloom_prefect.cpp:70",
+   "power": "default 0",
+   "might": "src/cards/units/0889_ravenbloom_prefect.cpp:71"
+  }
+ },
+ "keywords": [],
+ "abilities": [
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play_gear",
+    "subject": "opponent",
+    "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:20-22"
+   },
+   "effects": [
+    {
+     "verb": "Banish",
+     "target": {
+      "type": "ref",
+      "ref": "subject",
+      "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:24-25"
+     },
+     "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:45-53"
+    }
+   ],
+   "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:20-22",
+   "cost": {
+    "optional": true,
+    "other": [
+     {
+      "verb": "Banish",
+      "target": {
+       "type": "self",
+       "side": "friendly",
+       "zone": "board",
+       "count": 1,
+       "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:42"
+      },
+      "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:41-42"
+     }
+    ],
+    "_src": "src/cards/units/0889_ravenbloom_prefect.cpp:38-43"
+   }
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-102-166",
+  "class_file": "src/cards/units/0889_ravenbloom_prefect.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: event play_gear (subject opponent)",
+   "the played gear is banished even while still on the chain (its permanent item removed, src/cards/units/0889_ravenbloom_prefect.cpp:47-52)"
+  ]
+ }
+}

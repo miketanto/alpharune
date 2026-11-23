@@ -1,0 +1,9 @@
+== 2026-11-23 05:20:29 run_kennen: last ../az/run_kennen/az_010292.pt, midpoint ../az/run_kennen/az_006000.pt
+kennen_run_kennen_az_010292_greedy.json az_010292.pt sims 0 runes 0 win 0.9075 [0.875, 0.932] errors 0 taps/game -
+kennen_run_kennen_az_010292_s64_r0.json az_010292.pt sims 64 runes 0 win 0.9525 [0.927, 0.969] errors 0 taps/game -
+kennen_run_kennen_az_010292_s64_r2.json az_010292.pt sims 64 runes 2 win 0.955 [0.93, 0.971] errors 0 taps/game [0.07, 0.0]
+kennen_run_kennen_az_006000_greedy.json az_006000.pt sims 0 runes 0 win 0.9425 [0.915, 0.961] errors 0 taps/game -
+kennen_run_kennen_az_006000_s64_r0.json az_006000.pt sims 64 runes 0 win 0.965 [0.942, 0.979] errors 0 taps/game -
+kennen_run_kennen_az_006000_s64_r2.json az_006000.pt sims 64 runes 2 win 0.9775 [0.958, 0.988] errors 0 taps/game [0.07, 0.0]
+kennen_run_kennen_start_s64_r0.json az_009944.pt sims 64 runes 0 win 0.7475 [0.703, 0.788] errors 0 taps/game -
+== 2026-11-23 05:41:04 done

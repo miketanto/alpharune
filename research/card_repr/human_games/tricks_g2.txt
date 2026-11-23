@@ -1,0 +1,50 @@
+50
+100
+150
+200
+250
+300
+games 300 attack-offered decisions 10393 mean P(attack) 0.184
+runes_open_vs_tapped     d P(attack) -0.0284 [-0.0309,-0.0259]   d value(attacker, win units x2) +0.0251 [+0.0214,+0.0289]
+hand6_vs_hand1           d P(attack) +0.0265 [+0.0244,+0.0287]   d value(attacker, win units x2) -0.3292 [-0.3365,-0.3217]
+facedown_vs_none         d P(attack) +0.0246 [+0.0201,+0.0291]   d value -0.1966 [-0.2060,-0.1882]  n=5209
+facedown at the attacked battlefield: decisions 5576 tokens masked ok 1.0
+  all: n 5576 P(attack there) without the card 0.114; with it +0.0145 [+0.0106,+0.0178]; value -0.1821 [-0.1897,-0.1743]
+  ready Might > defenders: n 3629 P(attack there) without the card 0.147; with it +0.0166 [+0.0116,+0.0211]; value -0.1949 [-0.2054,-0.1844]
+attacks 2025 conquered 0.561
+  visibly winning atk>def: n 1246 (62%) conquered 0.813
+      def 0 ready, no facedown   n  469 conquered 0.989
+      def 1-2 ready, no fd       n  249 conquered 0.936
+      def 3+ ready, no fd        n  142 conquered 0.852
+      facedown there             n  386 conquered 0.505
+  even: n 197 (10%) conquered 0.183
+      def 0 ready, no facedown   n   73 conquered 0.288
+      def 1-2 ready, no fd       n   32 conquered 0.219
+      def 3+ ready, no fd        n   20 conquered 0.100
+      facedown there             n   72 conquered 0.083
+  visibly losing atk<def: n 582 (29%) conquered 0.151
+      def 0 ready, no facedown   n  208 conquered 0.159
+      def 1-2 ready, no fd       n  110 conquered 0.155
+      def 3+ ready, no fd        n   70 conquered 0.086
+      facedown there             n  194 conquered 0.165
+equipment choices with 2+ different cards: 4767; distance from a blind even split (0 blind, 1 decided) mean 0.359, share under 0.05: 0.11
+  cast ('Back Off', 'in combat/showdown') 369
+  cast ('Back Off', 'own main phase') 28
+  cast ('Back Off', 'priority') 48
+  cast ('Deathgrip', 'in combat/showdown') 110
+  cast ('Deathgrip', 'own main phase') 28
+  cast ('Deathgrip', 'priority') 20
+  cast ('Defy', 'in combat/showdown') 111
+  cast ('Defy', 'priority') 93
+  cast ('Discipline', 'in combat/showdown') 266
+  cast ('Discipline', 'own main phase') 324
+  cast ('Discipline', 'priority') 27
+  cast ('En Garde', 'in combat/showdown') 276
+  cast ('En Garde', 'own main phase') 25
+  cast ('En Garde', 'priority') 10
+  cast ('Guards!', 'in combat/showdown') 271
+  cast ('Guards!', 'own main phase') 92
+  cast ('Guards!', 'priority') 219
+  cast ('Hidden Blade', 'in combat/showdown') 325
+  cast ('Hidden Blade', 'own main phase') 28
+  cast ('Hidden Blade', 'priority') 66

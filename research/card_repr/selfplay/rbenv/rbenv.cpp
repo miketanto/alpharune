@@ -56,6 +56,42 @@ int vocabOf(const std::string& k, Counters& c) {
     }
     return g_vocab_other;
 }
+
+// Runes as actions (az/TAPS.md; GameEngine::setManualRunes, an engine with RB_MANUAL_RUNES). Masks: bit 0 seat 1,
+// bit 1 seat 2. A network seat that may tap is asked nothing it would not be asked without taps: a decision whose
+// options are one move plus rune abilities is answered with that move (soleOption).
+inline bool isRuneAbility(const GameState& s, const Intent& i) {
+    if (i.type != IntentType::ActivateAbility && i.type != IntentType::ActivateActionAbility &&
+        i.type != IntentType::ActivateReactionAbility) return false;
+    return i.ability_source.valid() && s.objectExists(i.ability_source) && s.getObject(i.ability_source).isRune();
+}
+// The index of the only option that is not a rune's own ability; -1 if there are none or several.
+inline int soleOption(const GameState& s, const std::vector<Intent>& legal) {
+    int k = -1;
+    for (size_t i = 0; i < legal.size(); ++i) {
+        if (isRuneAbility(s, legal[i])) continue;
+        if (k >= 0) return -1;
+        k = static_cast<int>(i);
+    }
+    return k;
+}
+inline void manualRunes(GameEngine& e, int mask, bool on) {
+#ifdef RB_MANUAL_RUNES
+    if (mask & 1) e.setManualRunes(PlayerId::Player1, on);
+    if (mask & 2) e.setManualRunes(PlayerId::Player2, on);
+#else
+    (void)e; (void)on;
+    if (mask && on) throw std::runtime_error("this engine has no manual runes");
+#endif
+}
+// The option of a decision no network is asked about, or -1. taps: the decider is a network seat that may tap.
+inline int autoOption(const GameState& s, const StepResult& sr, bool autopay, bool taps) {
+    if (sr.legal.size() <= 1) return 0;
+    if (autopay && (sr.prompt.kind == PromptKind::RuneForEnergy || sr.prompt.kind == PromptKind::RuneForPower)) return 0;
+    return taps ? soleOption(s, sr.legal) : -1;
+}
+inline bool seatIn(int mask, PlayerId p) { return (mask & (p == PlayerId::Player2 ? 2 : 1)) != 0; }
+int g_rune_mask = 0;   // rbenv_set_runes: seats that may tap in the environments created from now on
 }  // namespace rbe
 #include "research/card_repr/selfplay/rbenv/history.h"
 namespace rbe {
@@ -101,6 +137,7 @@ struct Handle {
     int64_t seed = 0, next_seed = 0;
     std::string deck_a, deck_b, opponent;
     bool autopay = true;
+    int runes = 0;   // seats that may tap (mask)
     DeckSubmission da, db;
     std::vector<Env> envs;
     std::vector<Result> results;
@@ -284,6 +321,7 @@ void startGame(Handle& h, Env& e) {
         IsMctsAgent* m = nullptr;
         e.opp = makeAgent(h.opponent, g, es, 1, &m);
     }
+    manualRunes(*e.engine, h.runes, true);
     e.engine->beginGame(h.da, h.db, es);
 }
 
@@ -309,12 +347,11 @@ void advance(Handle& h, Env& e) {
                 const StepResult& sr = e.engine->currentStep();
                 if (sr.kind == StepKind::Done) { finish(h, e, ""); break; }
                 if (e.length >= kDecisionCap) { finish(h, e, "decision cap"); break; }
-                const int n = static_cast<int>(sr.legal.size());
-                const bool rune = sr.prompt.kind == PromptKind::RuneForEnergy || sr.prompt.kind == PromptKind::RuneForPower;
                 const PlayerId dec = deciderOf(e.engine->state(), sr.legal, sr.prompt);
-                if (n <= 1 || (h.autopay && rune)) {
+                const int only = autoOption(e.engine->state(), sr, h.autopay, seatIn(h.runes, dec));
+                if (only >= 0) {
                     ++e.length; ++h.c.auto_;
-                    applyTracked(e, sr, dec, 0);
+                    applyTracked(e, sr, dec, only);
                     continue;
                 }
                 if (e.opp && dec == PlayerId::Player2) {
@@ -416,6 +453,7 @@ void* rbenv_create(int n_envs, const char* deck_a, const char* deck_b, int64_t s
         h->deck_a = deck_a; h->deck_b = deck_b;
         h->opponent = opponent ? opponent : "";
         h->autopay = autopay != 0;
+        h->runes = g_rune_mask;
         h->da = DeckValidator::loadFromDeckList(h->deck_a, *g_db);
         h->db = DeckValidator::loadFromDeckList(h->deck_b, *g_db);
         h->envs.resize(n_envs);
@@ -432,6 +470,17 @@ void* rbenv_create(int n_envs, const char* deck_a, const char* deck_b, int64_t s
         std::snprintf(err, errlen, "%s", ex.what());
         return nullptr;
     }
+}
+
+// Seats (mask: 1 seat 1, 2 seat 2) that may tap their runes in the environments created from now on. Returns 0, or
+// -1 if this library's engine cannot (nothing changes).
+int rbenv_set_runes(int mask) {
+#ifdef RB_MANUAL_RUNES
+    rbe::g_rune_mask = mask & 3;
+    return 0;
+#else
+    return mask ? -1 : 0;
+#endif
 }
 
 void rbenv_destroy(void* p) { delete static_cast<rbe::Handle*>(p); }

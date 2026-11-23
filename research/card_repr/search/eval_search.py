@@ -79,6 +79,7 @@ def main():
     ap.add_argument('--deck-b', default='', help="the greedy seat's deck; the search seat always plays --deck")
     ap.add_argument('--chunk', type=int, default=2048)
     ap.add_argument('--every', type=float, default=60.0, help='progress print interval (s)')
+    ap.add_argument('--runes', type=int, default=0, help='seats that may tap runes (az/TAPS.md): 0 none, 1 both, 2 the search seat, 3 the other')
     ap.add_argument('--out', default='')
     a = ap.parse_args()
     if a.games % 2:
@@ -93,7 +94,7 @@ def main():
     S = rbsearch.Search(a.games, da, a.seed, sims=a.sims, leaves=a.leaves, threads=a.threads, cpuct=a.cpuct,
                         fpu_red=a.fpu, vl=a.vl, perfect=a.perfect, seat_mode='balanced' if a.sims > 0 else 'none',
                         strict=not a.loose, deck_model=a.deck_model, deck_b=db,
-                        opponent=a.opponent or None)
+                        opponent=a.opponent or None, runes=a.runes)
     net = rbsearch.load_net(a.ckpt, S.dims, dev)
     ev = rbsearch.Evaluator(net, dev, S.dims['A'], a.chunk)
     ev_opp = rbsearch.Evaluator(rbsearch.load_net(a.opp_ckpt, S.dims, dev), dev, S.dims['A'], a.chunk) if a.opp_ckpt else None
@@ -137,7 +138,7 @@ def main():
                secs=round(secs, 1), games_per_hour=round(len(res) / secs * 3600, 1), rounds=rounds,
                mean_batch=round(rows_total / max(1, rounds), 1),
                time_split=dict(collect=round(t_c, 1), rows=round(t_r, 1), net=round(t_n, 1), feed=round(t_f, 1)),
-               stats=st)
+               stats=st, runes=a.runes, taps=S.taps() if a.runes else None)
     errs = [r['error'] for r in res if r['error']]
     if errs:
         out['first_errors'] = errs[:3]

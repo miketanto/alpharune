@@ -1,0 +1,1675 @@
+[D:000.01] SETUP: P1 brings battlefield #2 (Seat of Power), drawn at random (Duel, CR 487.5)
+[D:000.02] SETUP: P2 brings battlefield #2 (Seat of Power), drawn at random (Duel, CR 487.5)
+[D:000.03] ── Opening Hands ──
+[D:000.04] DRAW_HAND: P1 draws 4
+[D:000.05] EFFECT: P1 draws 4 (deck=39)
+[D:000.05]   DREW: Hand Hammer (id=39)
+[D:000.05]   DREW: Back Off (id=6)
+[D:000.05]   DREW: Soul Sword (id=9)
+[D:000.05]   DREW: Soul Sword (id=3)
+[D:000.06] DRAW_HAND: P2 draws 4
+[D:000.07] EFFECT: P2 draws 4 (deck=39)
+[D:000.08] ── Mulligan Phase ──
+[D:001.00] DECISION #1 (P2): Mulligan, 11 options
+[D:001.00] CHOSE: [P2] Mulligan 2
+[D:001.01] EFFECT: P2 draws 2 (deck=35)
+[D:002.00] DECISION #2 (P1): Mulligan, 11 options
+[D:002.01] CHOSE: [P1] Keep hand
+[D:002.02] ════ TURN 0 (P2) ════ Score: P1=0 P2=0
+[D:002.03] ── Awaken Phase ──
+[D:002.04] ── Beginning Step ──
+[D:002.05] ── Scoring Step ──
+[D:002.06] ── Channel Phase ──
+[D:002.07]   CHANNELED: Order Rune (id=105, ready)
+[D:002.08]   CHANNELED: Calm Rune (id=100, ready)
+[D:002.09] ── Draw Phase ──
+[D:002.10] EFFECT: P2 draws 1 (deck=35)
+[D:002.11] ── Main Phase ──
+[D:003.00] DECISION (P2)
+[D:003.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:003.01] INTENT: PlayCard by P2
+[D:003.02] PLAY: Doran's Shield (id=60, Gear, cost=1E)
+[D:003.03] PAY_COST: Doran's Shield E=1 P=0
+[D:004.00] DECISION #4 (P2): pick rune to exhaust for energy [2 options]
+[D:004.01]   EXHAUST_RUNE: Order Rune (id=105) for energy [agent choice]
+[D:005.00] DECISION (P2)
+[D:005.01] CHOSE: [P2] ActivateAbility (src=Emperor of the Sands)
+[D:005.02] INTENT: ActivateAbility by P2
+[D:005.03] PAY_ADD: P2 pays [1] + 0 power: exhausted 1, recycled 0
+[D:006.00] DECISION (P2 — chain priority)
+[D:006.01] CHOSE: [P2] PassPriority
+[D:007.00] DECISION #7 (P1 — chain priority): 1 legal actions
+[D:007.01] CHOSE: [P1] PassPriority
+[D:007.02] RESOLVE: Emperor of the Sands (chain_item=2, ability=1, spell=0)
+[D:007.03] TOKEN: created Sand Soldier (2M, id=109) for P2
+[D:007.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:007.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:007.06] FINALIZE-CHOICES: Sand Soldier (chain_item=3, ability=1, spell=0)
+[D:007.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:007.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:008.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:008.01] CHOSE: [P2] MakeChoice
+[D:008.02] FINALIZE-CHOICES: Sand Soldier (chain_item=3, ability=1, spell=0)
+[D:008.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:008.04] TGT_PROMPT: Weaponmaster: choose an Equipment [Doran's Shield] (agent decides among 1 targets)
+[D:008.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [1 options] (P2)
+[D:009.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:009.01] CHOSE: [P2] MakeChoice
+[D:009.02] FINALIZE-CHOICES: Sand Soldier (chain_item=3, ability=1, spell=0)
+[D:009.03] TGT_PICKED: Weaponmaster: choose an Equipment = Doran's Shield (id=60)
+[D:010.00] DECISION (P2 — chain priority)
+[D:010.01] CHOSE: [P2] PassPriority
+[D:011.00] DECISION #11 (P1 — chain priority): 1 legal actions
+[D:011.01] CHOSE: [P1] PassPriority
+[D:011.02] RESOLVE: Sand Soldier (chain_item=3, ability=1, spell=0)
+[D:011.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:011.04] ATTACH: Doran's Shield (id=60) -> Sand Soldier (id=109, might_bonus=1)
+[D:011.05] WEAPONMASTER: Sand Soldier equips Doran's Shield (Equip cost, [A] less)
+[D:012.00] DECISION (P2)
+[D:012.01] CHOSE: [P2] EndTurn
+[D:012.02] ── Ending Step ──
+[D:012.03] ── Expiration Step ──
+[D:012.04] ════ TURN 1 (P1) ════ Score: P1=0 P2=0
+[D:012.05] ── Awaken Phase ──
+[D:012.06] ── Beginning Step ──
+[D:012.07] ── Scoring Step ──
+[D:012.08] ── Channel Phase ──
+[D:012.09]   CHANNELED: Calm Rune (id=53, ready)
+[D:012.10]   CHANNELED: Order Rune (id=51, ready)
+[D:012.11]   CHANNELED: Order Rune (id=46, ready)
+[D:012.12] ── Draw Phase ──
+[D:012.13] EFFECT: P1 draws 1 (deck=35)
+[D:012.13]   DREW: B.F. Sword (id=34)
+[D:012.14] ── Main Phase ──
+[D:013.00] DECISION #13 (P1): 5 legal actions
+[D:013.00] CHOSE: [P1] PlayCard Hand Hammer
+[D:013.01] INTENT: PlayCard by P1
+[D:013.02] PLAY: Hand Hammer (id=39, Gear, cost=2E)
+[D:013.03] PAY_COST: Hand Hammer E=2 P=0
+[D:014.00] DECISION #14 (P1): pick rune to exhaust for energy [3 options]
+[D:014.01]   EXHAUST_RUNE: Order Rune (id=46) for energy [agent choice]
+[D:015.00] DECISION #15 (P1): pick rune to exhaust for energy [2 options]
+[D:015.01]   EXHAUST_RUNE: Order Rune (id=51) for energy [agent choice]
+[D:016.00] DECISION #16 (P1): 4 legal actions
+[D:016.01] CHOSE: [P1] ActivateAbility (src=Emperor of the Sands)
+[D:016.02] INTENT: ActivateAbility by P1
+[D:016.03] PAY_ADD: P1 pays [1] + 0 power: exhausted 1, recycled 0
+[D:017.00] DECISION #17 (P1 — chain priority): 1 legal actions
+[D:017.01] CHOSE: [P1] PassPriority
+[D:018.00] DECISION (P2 — chain priority)
+[D:018.01] CHOSE: [P2] PassPriority
+[D:018.02] RESOLVE: Emperor of the Sands (chain_item=5, ability=1, spell=0)
+[D:018.03] TOKEN: created Sand Soldier (2M, id=110) for P1
+[D:018.04] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:018.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:018.06] FINALIZE-CHOICES: Sand Soldier (chain_item=6, ability=1, spell=0)
+[D:018.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:018.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:019.00] DECISION #19 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:019.01] CHOSE: [P1] MakeChoice
+[D:019.02] FINALIZE-CHOICES: Sand Soldier (chain_item=6, ability=1, spell=0)
+[D:019.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:019.04] TGT_PROMPT: Weaponmaster: choose an Equipment [Hand Hammer] (agent decides among 1 targets)
+[D:019.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [1 options] (P1)
+[D:020.00] DECISION #20 (P1): target: Weaponmaster: choose an Equipment [1 options]
+[D:020.01] CHOSE: [P1] MakeChoice
+[D:020.02] FINALIZE-CHOICES: Sand Soldier (chain_item=6, ability=1, spell=0)
+[D:020.03] TGT_PICKED: Weaponmaster: choose an Equipment = Hand Hammer (id=39)
+[D:021.00] DECISION #21 (P1 — chain priority): 1 legal actions
+[D:021.01] CHOSE: [P1] PassPriority
+[D:022.00] DECISION (P2 — chain priority)
+[D:022.01] CHOSE: [P2] PassPriority
+[D:022.02] RESOLVE: Sand Soldier (chain_item=6, ability=1, spell=0)
+[D:022.03] PAY_ADD: P1 pays [0] + 0 power: exhausted 0, recycled 0
+[D:022.04] ATTACH: Hand Hammer (id=39) -> Sand Soldier (id=110, might_bonus=1)
+[D:022.05] WEAPONMASTER: Sand Soldier equips Hand Hammer (Equip cost, [A] less)
+[D:023.00] DECISION #23 (P1): 1 legal actions
+[D:023.01] CHOSE: [P1] EndTurn
+[D:023.02] ── Ending Step ──
+[D:023.03] ── Expiration Step ──
+[D:023.04] ════ TURN 2 (P2) ════ Score: P1=0 P2=0
+[D:023.05] ── Awaken Phase ──
+[D:023.06] ── Beginning Step ──
+[D:023.07] ── Scoring Step ──
+[D:023.08] ── Channel Phase ──
+[D:023.09]   CHANNELED: Order Rune (id=103, ready)
+[D:023.10]   CHANNELED: Order Rune (id=95, ready)
+[D:023.11] ── Draw Phase ──
+[D:023.12] EFFECT: P2 draws 1 (deck=34)
+[D:023.13] ── Main Phase ──
+[D:024.00] DECISION (P2)
+[D:024.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:024.01] INTENT: PlayCard by P2
+[D:024.02] PLAY: Soul Sword (id=57, Gear, cost=1E)
+[D:024.03] PAY_COST: Soul Sword E=1 P=0
+[D:025.00] DECISION #25 (P2): pick rune to exhaust for energy [4 options]
+[D:025.01]   EXHAUST_RUNE: Order Rune (id=105) for energy [agent choice]
+[D:026.00] DECISION (P2)
+[D:026.01] CHOSE: [P2] ActivateAbility (src=Emperor of the Sands)
+[D:026.02] INTENT: ActivateAbility by P2
+[D:026.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:027.00] DECISION (P2): pick rune to exhaust for energy
+[D:027.01] CHOSE: [P2] MakeChoice
+[D:027.02] PAY_ADD: P2 pays [1] + 0 power: exhausted 1, recycled 0
+[D:028.00] DECISION (P2 — chain priority)
+[D:028.01] CHOSE: [P2] PassPriority
+[D:029.00] DECISION #29 (P1 — chain priority): 1 legal actions
+[D:029.01] CHOSE: [P1] PassPriority
+[D:029.02] RESOLVE: Emperor of the Sands (chain_item=8, ability=1, spell=0)
+[D:029.03] TOKEN: created Sand Soldier (2M, id=111) for P2
+[D:029.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:029.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:029.06] FINALIZE-CHOICES: Sand Soldier (chain_item=9, ability=1, spell=0)
+[D:029.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:029.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:030.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:030.01] CHOSE: [P2] MakeChoice
+[D:030.02] FINALIZE-CHOICES: Sand Soldier (chain_item=9, ability=1, spell=0)
+[D:030.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:030.04] TGT_PROMPT: Weaponmaster: choose an Equipment [Doran's Shield/Soul Sword] (agent decides among 2 targets)
+[D:030.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [2 options] (P2)
+[D:031.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:031.01] CHOSE: [P2] MakeChoice
+[D:031.02] FINALIZE-CHOICES: Sand Soldier (chain_item=9, ability=1, spell=0)
+[D:031.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=57)
+[D:032.00] DECISION (P2 — chain priority)
+[D:032.01] CHOSE: [P2] PassPriority
+[D:033.00] DECISION #33 (P1 — chain priority): 1 legal actions
+[D:033.01] CHOSE: [P1] PassPriority
+[D:033.02] RESOLVE: Sand Soldier (chain_item=9, ability=1, spell=0)
+[D:033.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:033.04] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=111, might_bonus=1)
+[D:033.05] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:034.00] DECISION (P2)
+[D:034.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:034.02] INTENT: StandardMove by P2
+[D:034.03] MOVE: Sand Soldier (id=109) -> BF#0
+[D:034.04] SHOWDOWN: BF#0 (non-combat)
+[D:034.05] CONQUER: P2 conquers BF#0 (score was 0)
+[D:034.06] SCORE: P2 +1 via Conquer -> 1
+[D:034.07] TRIGGER: Seat of Power (P2) fires ability
+[D:035.00] DECISION (P2 — chain priority)
+[D:035.01] CHOSE: [P2] PassPriority
+[D:036.00] DECISION #38 (P1 — chain priority): 1 legal actions
+[D:036.01] CHOSE: [P1] PassPriority
+[D:036.02] RESOLVE: Seat of Power (chain_item=10, ability=1, spell=0)
+[D:036.03] SEAT OF POWER: conquer -> draw 0
+[D:037.00] DECISION (P2)
+[D:037.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:037.01] INTENT: PlayCard by P2
+[D:037.02] PLAY: Soul Sword (id=75, Gear, cost=1E)
+[D:037.03] PAY_COST: Soul Sword E=1 P=0
+[D:038.00] DECISION #40 (P2): pick rune to exhaust for energy [2 options]
+[D:038.01]   EXHAUST_RUNE: Order Rune (id=103) for energy [agent choice]
+[D:039.00] DECISION (P2)
+[D:039.01] CHOSE: [P2] EndTurn
+[D:039.02] ── Ending Step ──
+[D:039.03] ── Expiration Step ──
+[D:039.04] ════ TURN 3 (P1) ════ Score: P1=0 P2=1
+[D:039.05] ── Awaken Phase ──
+[D:039.06] ── Beginning Step ──
+[D:039.07] ── Scoring Step ──
+[D:039.08] ── Channel Phase ──
+[D:039.09]   CHANNELED: Calm Rune (id=50, ready)
+[D:039.10]   CHANNELED: Order Rune (id=52, ready)
+[D:039.11] ── Draw Phase ──
+[D:039.12] EFFECT: P1 draws 1 (deck=34)
+[D:039.12]   DREW: Arise! (id=4)
+[D:039.13] ── Main Phase ──
+[D:040.00] DECISION #42 (P1): 8 legal actions
+[D:040.00] CHOSE: [P1] PlayCard B.F. Sword
+[D:040.01] INTENT: PlayCard by P1
+[D:040.02] PLAY: B.F. Sword (id=34, Gear, cost=4E)
+[D:040.03] PAY_COST: B.F. Sword E=4 P=0
+[D:041.00] DECISION #43 (P1): pick rune to exhaust for energy [5 options]
+[D:041.01]   EXHAUST_RUNE: Order Rune (id=46) for energy [agent choice]
+[D:042.00] DECISION #44 (P1): pick rune to exhaust for energy [4 options]
+[D:042.01]   EXHAUST_RUNE: Calm Rune (id=50) for energy [agent choice]
+[D:043.00] DECISION #45 (P1): pick rune to exhaust for energy [3 options]
+[D:043.01]   EXHAUST_RUNE: Order Rune (id=51) for energy [agent choice]
+[D:044.00] DECISION #46 (P1): pick rune to exhaust for energy [2 options]
+[D:044.01]   EXHAUST_RUNE: Order Rune (id=52) for energy [agent choice]
+[D:045.00] DECISION #47 (P1): 7 legal actions
+[D:045.01] CHOSE: [P1] ActivateAbility (src=Emperor of the Sands)
+[D:045.02] INTENT: ActivateAbility by P1
+[D:045.03] PAY_ADD: P1 pays [1] + 0 power: exhausted 1, recycled 0
+[D:046.00] DECISION #48 (P1 — chain priority): 1 legal actions
+[D:046.01] CHOSE: [P1] PassPriority
+[D:047.00] DECISION (P2 — chain priority)
+[D:047.01] CHOSE: [P2] PassPriority
+[D:047.02] RESOLVE: Emperor of the Sands (chain_item=13, ability=1, spell=0)
+[D:047.03] TOKEN: created Sand Soldier (2M, id=112) for P1
+[D:047.04] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:047.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:047.06] FINALIZE-CHOICES: Sand Soldier (chain_item=14, ability=1, spell=0)
+[D:047.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:047.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:048.00] DECISION #50 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:048.01] CHOSE: [P1] MakeChoice
+[D:048.02] FINALIZE-CHOICES: Sand Soldier (chain_item=14, ability=1, spell=0)
+[D:048.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:048.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/Hand Hammer] (agent decides among 2 targets)
+[D:048.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [2 options] (P1)
+[D:049.00] DECISION #51 (P1): target: Weaponmaster: choose an Equipment [2 options]
+[D:049.01] CHOSE: [P1] MakeChoice
+[D:049.02] FINALIZE-CHOICES: Sand Soldier (chain_item=14, ability=1, spell=0)
+[D:049.03] TGT_PICKED: Weaponmaster: choose an Equipment = B.F. Sword (id=34)
+[D:050.00] DECISION #52 (P1 — chain priority): 1 legal actions
+[D:050.01] CHOSE: [P1] PassPriority
+[D:051.00] DECISION (P2 — chain priority)
+[D:051.01] CHOSE: [P2] PassPriority
+[D:051.02] RESOLVE: Sand Soldier (chain_item=14, ability=1, spell=0)
+[D:051.03] PAY_ADD: P1 pays [0] + 0 power: exhausted 0, recycled 0
+[D:051.04] ATTACH: B.F. Sword (id=34) -> Sand Soldier (id=112, might_bonus=3)
+[D:051.05] WEAPONMASTER: Sand Soldier equips B.F. Sword (Equip cost, [A] less)
+[D:052.00] DECISION #54 (P1): 3 legal actions
+[D:052.01] CHOSE: [P1] EndTurn
+[D:052.02] ── Ending Step ──
+[D:052.03] ── Expiration Step ──
+[D:052.04] ════ TURN 4 (P2) ════ Score: P1=0 P2=1
+[D:052.05] ── Awaken Phase ──
+[D:052.06] ── Beginning Step ──
+[D:052.07] ── Scoring Step ──
+[D:052.08] SCORE: P2 +1 via Hold BF#0 -> 2
+[D:052.09] ── Channel Phase ──
+[D:052.10]   CHANNELED: Calm Rune (id=104, ready)
+[D:052.11]   CHANNELED: Calm Rune (id=101, ready)
+[D:052.12] ── Draw Phase ──
+[D:052.13] EFFECT: P2 draws 1 (deck=33)
+[D:052.14] ── Main Phase ──
+[D:053.00] DECISION (P2)
+[D:053.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:053.01] INTENT: PlayCard by P2
+[D:053.02] PLAY: B.F. Sword (id=91, Gear, cost=4E)
+[D:053.03] PAY_COST: B.F. Sword E=4 P=0
+[D:054.00] DECISION #56 (P2): pick rune to exhaust for energy [6 options]
+[D:054.01]   EXHAUST_RUNE: Order Rune (id=105) for energy [agent choice]
+[D:055.00] DECISION #57 (P2): pick rune to exhaust for energy [5 options]
+[D:055.01]   EXHAUST_RUNE: Calm Rune (id=104) for energy [agent choice]
+[D:056.00] DECISION #58 (P2): pick rune to exhaust for energy [4 options]
+[D:056.01]   EXHAUST_RUNE: Order Rune (id=103) for energy [agent choice]
+[D:057.00] DECISION #59 (P2): pick rune to exhaust for energy [3 options]
+[D:057.01]   EXHAUST_RUNE: Calm Rune (id=101) for energy [agent choice]
+[D:058.00] DECISION (P2)
+[D:058.01] CHOSE: [P2] ActivateAbility (src=Emperor of the Sands)
+[D:058.02] INTENT: ActivateAbility by P2
+[D:058.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:059.00] DECISION (P2): pick rune to exhaust for energy
+[D:059.01] CHOSE: [P2] MakeChoice
+[D:059.02] PAY_ADD: P2 pays [1] + 0 power: exhausted 1, recycled 0
+[D:060.00] DECISION (P2 — chain priority)
+[D:060.01] CHOSE: [P2] PassPriority
+[D:061.00] DECISION #63 (P1 — chain priority): 1 legal actions
+[D:061.01] CHOSE: [P1] PassPriority
+[D:061.02] RESOLVE: Emperor of the Sands (chain_item=16, ability=1, spell=0)
+[D:061.03] TOKEN: created Sand Soldier (2M, id=113) for P2
+[D:061.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:061.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:061.06] FINALIZE-CHOICES: Sand Soldier (chain_item=17, ability=1, spell=0)
+[D:061.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:061.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:062.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:062.01] CHOSE: [P2] MakeChoice
+[D:062.02] FINALIZE-CHOICES: Sand Soldier (chain_item=17, ability=1, spell=0)
+[D:062.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:062.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 4 targets)
+[D:062.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [4 options] (P2)
+[D:063.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:063.01] CHOSE: [P2] MakeChoice
+[D:063.02] FINALIZE-CHOICES: Sand Soldier (chain_item=17, ability=1, spell=0)
+[D:063.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=75)
+[D:064.00] DECISION (P2 — chain priority)
+[D:064.01] CHOSE: [P2] PassPriority
+[D:065.00] DECISION #67 (P1 — chain priority): 1 legal actions
+[D:065.01] CHOSE: [P1] PassPriority
+[D:065.02] RESOLVE: Sand Soldier (chain_item=17, ability=1, spell=0)
+[D:065.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:065.04] ATTACH: Soul Sword (id=75) -> Sand Soldier (id=113, might_bonus=1)
+[D:065.05] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:066.00] DECISION (P2)
+[D:066.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:066.02] INTENT: StandardMove by P2
+[D:066.03] MOVE: Sand Soldier (id=111) -> BF#1
+[D:066.04] SHOWDOWN: BF#1 (non-combat)
+[D:066.05] CONQUER: P2 conquers BF#1 (score was 2)
+[D:066.06] SCORE: P2 +1 via Conquer -> 3
+[D:066.07] TRIGGER: Seat of Power (P2) fires ability
+[D:067.00] DECISION (P2 — chain priority)
+[D:067.01] CHOSE: [P2] PassPriority
+[D:068.00] DECISION #72 (P1 — chain priority): 1 legal actions
+[D:068.01] CHOSE: [P1] PassPriority
+[D:068.02] RESOLVE: Seat of Power (chain_item=18, ability=1, spell=0)
+[D:068.03] EFFECT: P2 draws 1 (deck=32)
+[D:068.04] SEAT OF POWER: conquer -> draw 1
+[D:069.00] DECISION (P2)
+[D:069.01] CHOSE: [P2] EndTurn
+[D:069.02] ── Ending Step ──
+[D:069.03] ── Expiration Step ──
+[D:069.04] ════ TURN 5 (P1) ════ Score: P1=0 P2=3
+[D:069.05] ── Awaken Phase ──
+[D:069.06] ── Beginning Step ──
+[D:069.07] ── Scoring Step ──
+[D:069.08] ── Channel Phase ──
+[D:069.09]   CHANNELED: Calm Rune (id=48, ready)
+[D:069.10]   CHANNELED: Calm Rune (id=43, ready)
+[D:069.11] ── Draw Phase ──
+[D:069.12] EFFECT: P1 draws 1 (deck=33)
+[D:069.12]   DREW: Discipline (id=33)
+[D:069.13] ── Main Phase ──
+[D:070.00] DECISION #74 (P1): 11 legal actions
+[D:070.00] CHOSE: [P1] PlayCard Soul Sword
+[D:070.01] INTENT: PlayCard by P1
+[D:070.02] PLAY: Soul Sword (id=9, Gear, cost=1E)
+[D:070.03] PAY_COST: Soul Sword E=1 P=0
+[D:071.00] DECISION #75 (P1): pick rune to exhaust for energy [7 options]
+[D:071.01]   EXHAUST_RUNE: Calm Rune (id=43) for energy [agent choice]
+[D:072.00] DECISION #76 (P1): 13 legal actions
+[D:072.01] CHOSE: [P1] ActivateAbility (src=Soul Sword) tgt=[Sand Soldier]
+[D:072.02] INTENT: ActivateAbility by P1
+[D:072.03] ASK_PROMPT: pick rune to recycle for power
+[D:073.00] DECISION #77 (P1): pick rune to recycle for power [2 options]
+[D:073.01] CHOSE: [P1] MakeChoice
+[D:073.02] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:074.00] DECISION #78 (P1 — chain priority): 2 legal actions
+[D:074.01] CHOSE: [P1] PassPriority
+[D:075.00] DECISION (P2 — chain priority)
+[D:075.01] CHOSE: [P2] PassPriority
+[D:075.02] RESOLVE: Soul Sword (chain_item=20, ability=1, spell=0)
+[D:075.03] ATTACH: Soul Sword (id=9) -> Sand Soldier (id=110, might_bonus=1)
+[D:075.04] EQUIP: Soul Sword -> Sand Soldier
+[D:076.00] DECISION #80 (P1): 11 legal actions
+[D:076.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:076.02] INTENT: StandardMove by P1
+[D:077.00] DECISION #81 (P1): move another unit with this move [2 options]
+[D:077.01] MOVE: Sand Soldier (id=110) -> BF#1
+[D:077.02] COMBAT: BF#1 attacker=P1 defender=P2
+[D:077.03] DAMAGE_STEP: BF#1 ATK=[Sand Soldier(4M)] DEF=[Sand Soldier(3M)]
+[D:077.04] ASSIGN_DAMAGE: P1 assigns 4 damage:
+[D:077.05]   -> Sand Soldier takes 4 (was 0/3M)
+[D:077.06] ASSIGN_DAMAGE: P2 assigns 3 damage:
+[D:077.07]   -> Sand Soldier takes 3 (was 0/4M)
+[D:077.08] KILL: Sand Soldier (id=111, 3M, dmg=4)
+[D:077.09]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=111)
+[D:077.10] EFFECT: unattach Soul Sword (id=57)
+[D:077.11] RECALL (CR 323.6): Soul Sword (id=57)
+[D:077.12] RECALL: Soul Sword (id=57) to base
+[D:077.13] CONQUER: P1 conquers BF#1 (score was 0)
+[D:077.14] SCORE: P1 +1 via Conquer -> 1
+[D:077.15] TRIGGER: Seat of Power (P1) fires ability
+[D:078.00] DECISION #86 (P1 — chain priority): 2 legal actions
+[D:078.01] CHOSE: [P1] PassPriority
+[D:079.00] DECISION (P2 — chain priority)
+[D:079.01] CHOSE: [P2] PassPriority
+[D:079.02] RESOLVE: Seat of Power (chain_item=21, ability=1, spell=0)
+[D:079.03] SEAT OF POWER: conquer -> draw 0
+[D:080.00] DECISION #88 (P1): 11 legal actions
+[D:080.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:080.02] INTENT: StandardMove by P1
+[D:080.03] MOVE: Sand Soldier (id=112) -> BF#0
+[D:080.04] COMBAT: BF#0 attacker=P1 defender=P2
+[D:080.05] DAMAGE_STEP: BF#0 ATK=[Sand Soldier(5M)] DEF=[Sand Soldier(3M)]
+[D:080.06] ASSIGN_DAMAGE: P1 assigns 5 damage:
+[D:080.07]   -> Sand Soldier takes 5 (was 0/3M)
+[D:080.08] ASSIGN_DAMAGE: P2 assigns 3 damage:
+[D:080.09]   -> Sand Soldier takes 3 (was 0/5M)
+[D:080.10] KILL: Sand Soldier (id=109, 3M, dmg=5)
+[D:080.11]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=109)
+[D:080.12] EFFECT: unattach Doran's Shield (id=60)
+[D:080.13] RECALL (CR 323.6): Doran's Shield (id=60)
+[D:080.14] RECALL: Doran's Shield (id=60) to base
+[D:080.15] CONQUER: P1 conquers BF#0 (score was 1)
+[D:080.16] SCORE: P1 +1 via Conquer -> 2
+[D:080.17] TRIGGER: Seat of Power (P1) fires ability
+[D:081.00] DECISION #93 (P1 — chain priority): 2 legal actions
+[D:081.01] CHOSE: [P1] PassPriority
+[D:082.00] DECISION (P2 — chain priority)
+[D:082.01] CHOSE: [P2] PassPriority
+[D:082.02] RESOLVE: Seat of Power (chain_item=22, ability=1, spell=0)
+[D:082.03] EFFECT: P1 draws 1 (deck=32)
+[D:082.03]   DREW: Discipline (id=21)
+[D:082.04] SEAT OF POWER: conquer -> draw 1
+[D:083.00] DECISION #95 (P1): 12 legal actions
+[D:083.01] CHOSE: [P1] ActivateAbility (src=Emperor of the Sands)
+[D:083.02] INTENT: ActivateAbility by P1
+[D:083.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:084.00] DECISION #96 (P1): pick rune to exhaust for energy [2 options]
+[D:084.01] CHOSE: [P1] MakeChoice
+[D:084.02] PAY_ADD: P1 pays [1] + 0 power: exhausted 1, recycled 0
+[D:085.00] DECISION #97 (P1 — chain priority): 3 legal actions
+[D:085.01] CHOSE: [P1] PassPriority
+[D:086.00] DECISION (P2 — chain priority)
+[D:086.01] CHOSE: [P2] PassPriority
+[D:086.02] RESOLVE: Emperor of the Sands (chain_item=23, ability=1, spell=0)
+[D:086.03] TOKEN: created Sand Soldier (2M, id=114) for P1
+[D:086.04] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:086.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:086.06] FINALIZE-CHOICES: Sand Soldier (chain_item=24, ability=1, spell=0)
+[D:086.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:086.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:087.00] DECISION #99 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:087.01] CHOSE: [P1] MakeChoice
+[D:087.02] FINALIZE-CHOICES: Sand Soldier (chain_item=24, ability=1, spell=0)
+[D:087.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:087.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/Hand Hammer/Soul Sword] (agent decides among 3 targets)
+[D:087.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [3 options] (P1)
+[D:088.00] DECISION #100 (P1): target: Weaponmaster: choose an Equipment [3 options]
+[D:088.01] CHOSE: [P1] MakeChoice
+[D:088.02] FINALIZE-CHOICES: Sand Soldier (chain_item=24, ability=1, spell=0)
+[D:088.03] TGT_PICKED: Weaponmaster: choose an Equipment = Hand Hammer (id=39)
+[D:089.00] DECISION #101 (P1 — chain priority): 3 legal actions
+[D:089.01] CHOSE: [P1] PassPriority
+[D:090.00] DECISION (P2 — chain priority)
+[D:090.01] CHOSE: [P2] PassPriority
+[D:090.02] RESOLVE: Sand Soldier (chain_item=24, ability=1, spell=0)
+[D:090.03] PAY_ADD: P1 pays [0] + 0 power: exhausted 0, recycled 0
+[D:090.04] EFFECT: unattach Hand Hammer (id=39)
+[D:090.05] ATTACH: Hand Hammer (id=39) -> Sand Soldier (id=114, might_bonus=1)
+[D:090.06] WEAPONMASTER: Sand Soldier equips Hand Hammer (Equip cost, [A] less)
+[D:091.00] DECISION #103 (P1): 10 legal actions
+[D:091.01] CHOSE: [P1] EndTurn
+[D:091.02] ── Ending Step ──
+[D:091.03] ── Expiration Step ──
+[D:091.04] ════ TURN 6 (P2) ════ Score: P1=2 P2=3
+[D:091.05] ── Awaken Phase ──
+[D:091.06] ── Beginning Step ──
+[D:091.07] ── Scoring Step ──
+[D:091.08] ── Channel Phase ──
+[D:091.09]   CHANNELED: Order Rune (id=98, ready)
+[D:091.10]   CHANNELED: Calm Rune (id=99, ready)
+[D:091.11] ── Draw Phase ──
+[D:091.12] EFFECT: P2 draws 1 (deck=31)
+[D:091.13] ── Main Phase ──
+[D:092.00] DECISION (P2)
+[D:092.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:092.01] INTENT: PlayCard by P2
+[D:092.02] PLAY: B.F. Sword (id=74, Gear, cost=4E)
+[D:092.03] PAY_COST: B.F. Sword E=4 P=0
+[D:093.00] DECISION #105 (P2): pick rune to exhaust for energy [8 options]
+[D:093.01]   EXHAUST_RUNE: Order Rune (id=105) for energy [agent choice]
+[D:094.00] DECISION #106 (P2): pick rune to exhaust for energy [7 options]
+[D:094.01]   EXHAUST_RUNE: Calm Rune (id=104) for energy [agent choice]
+[D:095.00] DECISION #107 (P2): pick rune to exhaust for energy [6 options]
+[D:095.01]   EXHAUST_RUNE: Order Rune (id=103) for energy [agent choice]
+[D:096.00] DECISION #108 (P2): pick rune to exhaust for energy [5 options]
+[D:096.01]   EXHAUST_RUNE: Calm Rune (id=101) for energy [agent choice]
+[D:097.00] DECISION (P2)
+[D:097.01] CHOSE: [P2] ActivateAbility (src=Emperor of the Sands)
+[D:097.02] INTENT: ActivateAbility by P2
+[D:097.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:098.00] DECISION (P2): pick rune to exhaust for energy
+[D:098.01] CHOSE: [P2] MakeChoice
+[D:098.02] PAY_ADD: P2 pays [1] + 0 power: exhausted 1, recycled 0
+[D:099.00] DECISION (P2 — chain priority)
+[D:099.01] CHOSE: [P2] PassPriority
+[D:100.00] DECISION #112 (P1 — chain priority): 3 legal actions
+[D:100.01] CHOSE: [P1] PassPriority
+[D:100.02] RESOLVE: Emperor of the Sands (chain_item=26, ability=1, spell=0)
+[D:100.03] TOKEN: created Sand Soldier (2M, id=115) for P2
+[D:100.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:100.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:100.06] FINALIZE-CHOICES: Sand Soldier (chain_item=27, ability=1, spell=0)
+[D:100.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:100.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:101.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:101.01] CHOSE: [P2] MakeChoice
+[D:101.02] FINALIZE-CHOICES: Sand Soldier (chain_item=27, ability=1, spell=0)
+[D:101.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:101.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 5 targets)
+[D:101.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [5 options] (P2)
+[D:102.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:102.01] CHOSE: [P2] MakeChoice
+[D:102.02] FINALIZE-CHOICES: Sand Soldier (chain_item=27, ability=1, spell=0)
+[D:102.03] TGT_PICKED: Weaponmaster: choose an Equipment = B.F. Sword (id=91)
+[D:103.00] DECISION (P2 — chain priority)
+[D:103.01] CHOSE: [P2] PassPriority
+[D:104.00] DECISION #116 (P1 — chain priority): 3 legal actions
+[D:104.01] CHOSE: [P1] PassPriority
+[D:104.02] RESOLVE: Sand Soldier (chain_item=27, ability=1, spell=0)
+[D:104.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:104.04] ATTACH: B.F. Sword (id=91) -> Sand Soldier (id=115, might_bonus=3)
+[D:104.05] WEAPONMASTER: Sand Soldier equips B.F. Sword (Equip cost, [A] less)
+[D:105.00] DECISION (P2)
+[D:105.01] CHOSE: [P2] ActivateAbility (src=B.F. Sword) tgt=[Sand Soldier]
+[D:105.02] INTENT: ActivateAbility by P2
+[D:105.03] ASK_PROMPT: pick rune to recycle for power
+[D:106.00] DECISION (P2): pick rune to recycle for power
+[D:106.01] CHOSE: [P2] MakeChoice
+[D:106.02] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:107.00] DECISION (P2 — chain priority)
+[D:107.01] CHOSE: [P2] PassPriority
+[D:108.00] DECISION #120 (P1 — chain priority): 3 legal actions
+[D:108.01] CHOSE: [P1] PassPriority
+[D:108.02] RESOLVE: B.F. Sword (chain_item=28, ability=1, spell=0)
+[D:108.03] ATTACH: B.F. Sword (id=74) -> Sand Soldier (id=113, might_bonus=3)
+[D:108.04] EQUIP: B.F. Sword -> Sand Soldier
+[D:109.00] DECISION (P2)
+[D:109.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:109.02] INTENT: StandardMove by P2
+[D:109.03] MOVE: Sand Soldier (id=113) -> BF#0
+[D:109.04] COMBAT: BF#0 attacker=P2 defender=P1
+[D:109.05] INTENT: PlayActionCard by P2
+[D:109.06] SPELL: Back Off (id=92) targets=[]
+[D:110.00] DECISION (P2): choose a target for Back Off
+[D:110.01] TARGET (play): Back Off -> Sand Soldier
+[D:110.02] PAY_COST: Back Off E=3 P=0
+[D:111.00] DECISION #124 (P2): pick rune to exhaust for energy [3 options]
+[D:111.01]   EXHAUST_RUNE: Calm Rune (id=100) for energy [agent choice]
+[D:112.00] DECISION #125 (P2): pick rune to exhaust for energy [2 options]
+[D:112.01]   EXHAUST_RUNE: Calm Rune (id=99) for energy [agent choice]
+[D:113.00] DECISION #126 (P2): pick rune to exhaust for energy [1 options]
+[D:113.01]   EXHAUST_RUNE: Order Rune (id=98) for energy [agent choice]
+[D:114.00] DECISION (P2 — chain priority)
+[D:114.01] CHOSE: [P2] PassPriority
+[D:115.00] DECISION #128 (P1 — chain priority): 3 legal actions
+[D:115.01] CHOSE: [P1] PassPriority
+[D:115.02] RESOLVE: Back Off (chain_item=29, ability=0, spell=1)
+[D:115.03] EFFECT: stun Sand Soldier (id=112)
+[D:115.04] EFFECT: P2 draws 1 (deck=30)
+[D:115.05] INTENT: PlayActionCard by P1
+[D:115.06] SPELL: Back Off (id=6) targets=[]
+[D:116.00] DECISION #130 (P1): choose a target for Back Off [5 options]
+[D:116.01] TARGET (play): Back Off -> Sand Soldier
+[D:116.02] PAY_COST: Back Off E=3 P=0
+[D:117.00] DECISION #131 (P1): pick rune to exhaust for energy [5 options]
+[D:117.01]   EXHAUST_RUNE: Calm Rune (id=48) for energy [agent choice]
+[D:118.00] DECISION #132 (P1): pick rune to exhaust for energy [4 options]
+[D:118.01]   EXHAUST_RUNE: Calm Rune (id=50) for energy [agent choice]
+[D:119.00] DECISION #133 (P1): pick rune to exhaust for energy [3 options]
+[D:119.01]   EXHAUST_RUNE: Order Rune (id=51) for energy [agent choice]
+[D:120.00] DECISION #134 (P1 — chain priority): 3 legal actions
+[D:120.01] CHOSE: [P1] PassPriority
+[D:121.00] DECISION (P2 — chain priority)
+[D:121.01] CHOSE: [P2] PassPriority
+[D:121.02] RESOLVE: Back Off (chain_item=30, ability=0, spell=1)
+[D:121.03] EFFECT: stun Sand Soldier (id=113)
+[D:121.04] EFFECT: P1 draws 1 (deck=31)
+[D:121.04]   DREW: Guards! (id=38)
+[D:121.05] DAMAGE_STEP: BF#0 ATK=[Sand Soldier(6M,STUNNED)] DEF=[Sand Soldier(5M,STUNNED)]
+[D:121.06] RECALL: Sand Soldier (id=113) to base
+[D:122.00] DECISION (P2)
+[D:122.01] CHOSE: [P2] EndTurn
+[D:122.02] ── Ending Step ──
+[D:122.03] ── Expiration Step ──
+[D:122.04] ════ TURN 7 (P1) ════ Score: P1=2 P2=3
+[D:122.05] ── Awaken Phase ──
+[D:122.06] ── Beginning Step ──
+[D:122.07] ── Scoring Step ──
+[D:122.08] SCORE: P1 +1 via Hold BF#0 -> 3
+[D:122.09] SCORE: P1 +1 via Hold BF#1 -> 4
+[D:122.10] ── Channel Phase ──
+[D:122.11]   CHANNELED: Calm Rune (id=45, ready)
+[D:122.12]   CHANNELED: Order Rune (id=42, ready)
+[D:122.13] ── Draw Phase ──
+[D:122.14] EFFECT: P1 draws 1 (deck=30)
+[D:122.14]   DREW: En Garde (id=5)
+[D:122.15] ── Main Phase ──
+[D:123.00] DECISION #139 (P1): 18 legal actions
+[D:123.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:123.02] INTENT: StandardMove by P1
+[D:124.00] DECISION #140 (P1): move another unit with this move [2 options]
+[D:124.01] MOVE: Sand Soldier (id=110) -> Base(P1)
+[D:125.00] DECISION #141 (P1): 15 legal actions
+[D:125.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:125.02] INTENT: StandardMove by P1
+[D:125.03] MOVE: Sand Soldier (id=112) -> Base(P1)
+[D:126.00] DECISION #142 (P1): 12 legal actions
+[D:126.00] CHOSE: [P1] PlayCard Soul Sword
+[D:126.01] INTENT: PlayCard by P1
+[D:126.02] PLAY: Soul Sword (id=3, Gear, cost=1E)
+[D:126.03] PAY_COST: Soul Sword E=1 P=0
+[D:127.00] DECISION #143 (P1): pick rune to exhaust for energy [8 options]
+[D:127.01]   EXHAUST_RUNE: Order Rune (id=42) for energy [agent choice]
+[D:128.00] DECISION #144 (P1): 15 legal actions
+[D:128.01] CHOSE: [P1] ActivateAbility (src=Emperor of the Sands)
+[D:128.02] INTENT: ActivateAbility by P1
+[D:128.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:129.00] DECISION #145 (P1): pick rune to exhaust for energy [2 options]
+[D:129.01] CHOSE: [P1] MakeChoice
+[D:129.02] PAY_ADD: P1 pays [1] + 0 power: exhausted 1, recycled 0
+[D:130.00] DECISION #146 (P1 — chain priority): 6 legal actions
+[D:130.01] CHOSE: [P1] PassPriority
+[D:131.00] DECISION (P2 — chain priority)
+[D:131.01] CHOSE: [P2] PassPriority
+[D:131.02] RESOLVE: Emperor of the Sands (chain_item=32, ability=1, spell=0)
+[D:131.03] TOKEN: created Sand Soldier (2M, id=116) for P1
+[D:131.04] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:131.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:131.06] FINALIZE-CHOICES: Sand Soldier (chain_item=33, ability=1, spell=0)
+[D:131.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:131.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:132.00] DECISION #148 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:132.01] CHOSE: [P1] MakeChoice
+[D:132.02] FINALIZE-CHOICES: Sand Soldier (chain_item=33, ability=1, spell=0)
+[D:132.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:132.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/Hand Hammer/Soul Sword/Soul Sword] (agent decides among 4 targets)
+[D:132.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [4 options] (P1)
+[D:133.00] DECISION #149 (P1): target: Weaponmaster: choose an Equipment [4 options]
+[D:133.01] CHOSE: [P1] MakeChoice
+[D:133.02] FINALIZE-CHOICES: Sand Soldier (chain_item=33, ability=1, spell=0)
+[D:133.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=3)
+[D:134.00] DECISION #150 (P1 — chain priority): 7 legal actions
+[D:134.01] CHOSE: [P1] PassPriority
+[D:135.00] DECISION (P2 — chain priority)
+[D:135.01] CHOSE: [P2] PassPriority
+[D:135.02] RESOLVE: Sand Soldier (chain_item=33, ability=1, spell=0)
+[D:135.03] PAY_ADD: P1 pays [0] + 0 power: exhausted 0, recycled 0
+[D:135.04] ATTACH: Soul Sword (id=3) -> Sand Soldier (id=116, might_bonus=1)
+[D:135.05] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:136.00] DECISION #152 (P1): 12 legal actions
+[D:136.00] CHOSE: [P1] PlayCard Arise!
+[D:136.01] INTENT: PlayCard by P1
+[D:136.02] SPELL: Arise! (id=4) targets=[]
+[D:136.03] PAY_COST: Arise! E=6 P=1
+[D:137.00] DECISION #153 (P1): pick rune to exhaust for energy [6 options]
+[D:137.01]   EXHAUST_RUNE: Order Rune (id=46) for energy [agent choice]
+[D:138.00] DECISION #154 (P1): pick rune to exhaust for energy [5 options]
+[D:138.01]   EXHAUST_RUNE: Calm Rune (id=48) for energy [agent choice]
+[D:139.00] DECISION #155 (P1): pick rune to exhaust for energy [4 options]
+[D:139.01]   EXHAUST_RUNE: Calm Rune (id=50) for energy [agent choice]
+[D:140.00] DECISION #156 (P1): pick rune to exhaust for energy [3 options]
+[D:140.01]   EXHAUST_RUNE: Order Rune (id=51) for energy [agent choice]
+[D:141.00] DECISION #157 (P1): pick rune to exhaust for energy [2 options]
+[D:141.01]   EXHAUST_RUNE: Order Rune (id=52) for energy [agent choice]
+[D:142.00] DECISION #158 (P1): pick rune to exhaust for energy [1 options]
+[D:142.01]   EXHAUST_RUNE: Calm Rune (id=53) for energy [agent choice]
+[D:143.00] DECISION #159 (P1): pick rune to recycle for power [8 options]
+[D:143.01]   RECYCLE_RUNE: Order Rune (id=42, exhausted) for power [agent choice]
+[D:144.00] DECISION #160 (P1 — chain priority): 1 legal actions
+[D:144.01] CHOSE: [P1] PassPriority
+[D:145.00] DECISION (P2 — chain priority)
+[D:145.01] CHOSE: [P2] PassPriority
+[D:145.02] RESOLVE: Arise! (chain_item=34, ability=0, spell=1)
+[D:145.03] TOKEN: created Sand Soldier (2M, id=117) for P1
+[D:145.04] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:145.05] TOKEN: created Sand Soldier (2M, id=118) for P1
+[D:145.06] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:145.07] TOKEN: created Sand Soldier (2M, id=119) for P1
+[D:145.08] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:145.09] TOKEN: created Sand Soldier (2M, id=120) for P1
+[D:145.10] TRIGGER: Sand Soldier [Weaponmaster] (P1)
+[D:145.11] ARISE!: played 4 Sand Soldier token(s)
+[D:145.12] TRIGGER: Arise! (P1) — reflexive trigger goes on the chain
+[D:145.13] FINALIZE-CHOICES: Sand Soldier (chain_item=35, ability=1, spell=0)
+[D:145.14] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:145.15] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:146.00] DECISION #162 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:146.01] CHOSE: [P1] MakeChoice
+[D:146.02] FINALIZE-CHOICES: Sand Soldier (chain_item=35, ability=1, spell=0)
+[D:146.03] MAY_DECLINED: Weaponmaster: equip an Equipment to me?
+[D:146.04] REMOVED: Sand Soldier (chain_item=35) leaves the chain unfinalized — not performed (CR 403)
+[D:146.05] FINALIZE-CHOICES: Sand Soldier (chain_item=36, ability=1, spell=0)
+[D:146.06] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:146.07] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:147.00] DECISION #163 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:147.01] CHOSE: [P1] MakeChoice
+[D:147.02] FINALIZE-CHOICES: Sand Soldier (chain_item=36, ability=1, spell=0)
+[D:147.03] MAY_DECLINED: Weaponmaster: equip an Equipment to me?
+[D:147.04] REMOVED: Sand Soldier (chain_item=36) leaves the chain unfinalized — not performed (CR 403)
+[D:147.05] FINALIZE-CHOICES: Sand Soldier (chain_item=37, ability=1, spell=0)
+[D:147.06] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:147.07] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:148.00] DECISION #164 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:148.01] CHOSE: [P1] MakeChoice
+[D:148.02] FINALIZE-CHOICES: Sand Soldier (chain_item=37, ability=1, spell=0)
+[D:148.03] MAY_DECLINED: Weaponmaster: equip an Equipment to me?
+[D:148.04] REMOVED: Sand Soldier (chain_item=37) leaves the chain unfinalized — not performed (CR 403)
+[D:148.05] FINALIZE-CHOICES: Sand Soldier (chain_item=38, ability=1, spell=0)
+[D:148.06] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P1, deferred to agent)
+[D:148.07] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P1)
+[D:149.00] DECISION #165 (P1): may: Weaponmaster: equip an Equipment to me? [2 options]
+[D:149.01] CHOSE: [P1] MakeChoice
+[D:149.02] FINALIZE-CHOICES: Sand Soldier (chain_item=38, ability=1, spell=0)
+[D:149.03] MAY_DECLINED: Weaponmaster: equip an Equipment to me?
+[D:149.04] REMOVED: Sand Soldier (chain_item=38) leaves the chain unfinalized — not performed (CR 403)
+[D:149.05] FINALIZE-CHOICES: Arise! (chain_item=39, ability=1, spell=0)
+[D:149.06] SELECT_PROMPT: Arise!: ready a Sand Soldier (up to two) [4 options]
+[D:149.07] CHOICE-REQUEST (finalize): Arise!: ready a Sand Soldier (up to two) [5 options] (P1)
+[D:150.00] DECISION #166 (P1): Arise!: ready a Sand Soldier (up to two) [5 options]
+[D:150.01] CHOSE: [P1] MakeChoice
+[D:150.02] FINALIZE-CHOICES: Arise! (chain_item=39, ability=1, spell=0)
+[D:150.03] SELECT_PROMPT: Arise!: ready a Sand Soldier (up to two) [3 options]
+[D:150.04] CHOICE-REQUEST (finalize): Arise!: ready a Sand Soldier (up to two) [4 options] (P1)
+[D:151.00] DECISION #167 (P1): Arise!: ready a Sand Soldier (up to two) [4 options]
+[D:151.01] CHOSE: [P1] MakeChoice
+[D:151.02] FINALIZE-CHOICES: Arise! (chain_item=39, ability=1, spell=0)
+[D:152.00] DECISION #168 (P1 — chain priority): 1 legal actions
+[D:152.01] CHOSE: [P1] PassPriority
+[D:153.00] DECISION (P2 — chain priority)
+[D:153.01] CHOSE: [P2] PassPriority
+[D:153.02] RESOLVE: Arise! (chain_item=39, ability=1, spell=0)
+[D:154.00] DECISION #170 (P1): 7 legal actions
+[D:154.01] CHOSE: [P1] EndTurn
+[D:154.02] ── Ending Step ──
+[D:154.03] ── Expiration Step ──
+[D:154.04] ════ TURN 8 (P2) ════ Score: P1=4 P2=3
+[D:154.05] ── Awaken Phase ──
+[D:154.06] ── Beginning Step ──
+[D:154.07] ── Scoring Step ──
+[D:154.08] ── Channel Phase ──
+[D:154.09]   CHANNELED: Order Rune (id=102, ready)
+[D:154.10]   CHANNELED: Calm Rune (id=96, ready)
+[D:154.11] ── Draw Phase ──
+[D:154.12] EFFECT: P2 draws 1 (deck=29)
+[D:154.13] ── Main Phase ──
+[D:155.00] DECISION (P2)
+[D:155.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:155.01] INTENT: PlayCard by P2
+[D:155.02] SPELL: Arise! (id=73) targets=[]
+[D:155.03] PAY_COST: Arise! E=6 P=1
+[D:156.00] DECISION #172 (P2): pick rune to exhaust for energy [9 options]
+[D:156.01]   EXHAUST_RUNE: Order Rune (id=105) for energy [agent choice]
+[D:157.00] DECISION #173 (P2): pick rune to exhaust for energy [8 options]
+[D:157.01]   EXHAUST_RUNE: Calm Rune (id=104) for energy [agent choice]
+[D:158.00] DECISION #174 (P2): pick rune to exhaust for energy [7 options]
+[D:158.01]   EXHAUST_RUNE: Order Rune (id=103) for energy [agent choice]
+[D:159.00] DECISION #175 (P2): pick rune to exhaust for energy [6 options]
+[D:159.01]   EXHAUST_RUNE: Order Rune (id=102) for energy [agent choice]
+[D:160.00] DECISION #176 (P2): pick rune to exhaust for energy [5 options]
+[D:160.01]   EXHAUST_RUNE: Calm Rune (id=101) for energy [agent choice]
+[D:161.00] DECISION #177 (P2): pick rune to exhaust for energy [4 options]
+[D:161.01]   EXHAUST_RUNE: Calm Rune (id=100) for energy [agent choice]
+[D:162.00] DECISION #178 (P2): pick rune to recycle for power [9 options]
+[D:162.01]   RECYCLE_RUNE: Order Rune (id=105, exhausted) for power [agent choice]
+[D:163.00] DECISION (P2 — chain priority)
+[D:163.01] CHOSE: [P2] PassPriority
+[D:164.00] DECISION #180 (P1 — chain priority): 1 legal actions
+[D:164.01] CHOSE: [P1] PassPriority
+[D:164.02] RESOLVE: Arise! (chain_item=40, ability=0, spell=1)
+[D:164.03] TOKEN: created Sand Soldier (2M, id=121) for P2
+[D:164.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:164.05] TOKEN: created Sand Soldier (2M, id=122) for P2
+[D:164.06] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:164.07] TOKEN: created Sand Soldier (2M, id=123) for P2
+[D:164.08] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:164.09] TOKEN: created Sand Soldier (2M, id=124) for P2
+[D:164.10] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:164.11] TOKEN: created Sand Soldier (2M, id=125) for P2
+[D:164.12] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:164.13] ARISE!: played 5 Sand Soldier token(s)
+[D:164.14] TRIGGER: Arise! (P2) — reflexive trigger goes on the chain
+[D:164.15] FINALIZE-CHOICES: Sand Soldier (chain_item=41, ability=1, spell=0)
+[D:164.16] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:164.17] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:165.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:165.01] CHOSE: [P2] MakeChoice
+[D:165.02] FINALIZE-CHOICES: Sand Soldier (chain_item=41, ability=1, spell=0)
+[D:165.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:165.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 5 targets)
+[D:165.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [5 options] (P2)
+[D:166.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:166.01] CHOSE: [P2] MakeChoice
+[D:166.02] FINALIZE-CHOICES: Sand Soldier (chain_item=41, ability=1, spell=0)
+[D:166.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=57)
+[D:166.04] FINALIZE-CHOICES: Sand Soldier (chain_item=42, ability=1, spell=0)
+[D:166.05] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:166.06] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:167.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:167.01] CHOSE: [P2] MakeChoice
+[D:167.02] FINALIZE-CHOICES: Sand Soldier (chain_item=42, ability=1, spell=0)
+[D:167.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:167.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 5 targets)
+[D:167.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [5 options] (P2)
+[D:168.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:168.01] CHOSE: [P2] MakeChoice
+[D:168.02] FINALIZE-CHOICES: Sand Soldier (chain_item=42, ability=1, spell=0)
+[D:168.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=57)
+[D:168.04] FINALIZE-CHOICES: Sand Soldier (chain_item=43, ability=1, spell=0)
+[D:168.05] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:168.06] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:169.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:169.01] CHOSE: [P2] MakeChoice
+[D:169.02] FINALIZE-CHOICES: Sand Soldier (chain_item=43, ability=1, spell=0)
+[D:169.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:169.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 5 targets)
+[D:169.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [5 options] (P2)
+[D:170.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:170.01] CHOSE: [P2] MakeChoice
+[D:170.02] FINALIZE-CHOICES: Sand Soldier (chain_item=43, ability=1, spell=0)
+[D:170.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=57)
+[D:170.04] FINALIZE-CHOICES: Sand Soldier (chain_item=44, ability=1, spell=0)
+[D:170.05] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:170.06] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:171.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:171.01] CHOSE: [P2] MakeChoice
+[D:171.02] FINALIZE-CHOICES: Sand Soldier (chain_item=44, ability=1, spell=0)
+[D:171.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:171.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 5 targets)
+[D:171.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [5 options] (P2)
+[D:172.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:172.01] CHOSE: [P2] MakeChoice
+[D:172.02] FINALIZE-CHOICES: Sand Soldier (chain_item=44, ability=1, spell=0)
+[D:172.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=57)
+[D:172.04] FINALIZE-CHOICES: Sand Soldier (chain_item=45, ability=1, spell=0)
+[D:172.05] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:172.06] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:173.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:173.01] CHOSE: [P2] MakeChoice
+[D:173.02] FINALIZE-CHOICES: Sand Soldier (chain_item=45, ability=1, spell=0)
+[D:173.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:173.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Soul Sword/Soul Sword] (agent decides among 5 targets)
+[D:173.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [5 options] (P2)
+[D:174.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:174.01] CHOSE: [P2] MakeChoice
+[D:174.02] FINALIZE-CHOICES: Sand Soldier (chain_item=45, ability=1, spell=0)
+[D:174.03] TGT_PICKED: Weaponmaster: choose an Equipment = Soul Sword (id=57)
+[D:174.04] FINALIZE-CHOICES: Arise! (chain_item=46, ability=1, spell=0)
+[D:174.05] SELECT_PROMPT: Arise!: ready a Sand Soldier (up to two) [5 options]
+[D:174.06] CHOICE-REQUEST (finalize): Arise!: ready a Sand Soldier (up to two) [6 options] (P2)
+[D:175.00] DECISION (P2): Arise!: ready a Sand Soldier (up to two)
+[D:175.01] CHOSE: [P2] MakeChoice
+[D:175.02] FINALIZE-CHOICES: Arise! (chain_item=46, ability=1, spell=0)
+[D:175.03] SELECT_PROMPT: Arise!: ready a Sand Soldier (up to two) [4 options]
+[D:175.04] CHOICE-REQUEST (finalize): Arise!: ready a Sand Soldier (up to two) [5 options] (P2)
+[D:176.00] DECISION (P2): Arise!: ready a Sand Soldier (up to two)
+[D:176.01] CHOSE: [P2] MakeChoice
+[D:176.02] FINALIZE-CHOICES: Arise! (chain_item=46, ability=1, spell=0)
+[D:177.00] DECISION (P2 — chain priority)
+[D:177.01] CHOSE: [P2] PassPriority
+[D:178.00] DECISION #194 (P1 — chain priority): 1 legal actions
+[D:178.01] CHOSE: [P1] PassPriority
+[D:178.02] RESOLVE: Arise! (chain_item=46, ability=1, spell=0)
+[D:179.00] DECISION (P2 — chain priority)
+[D:179.01] CHOSE: [P2] PassPriority
+[D:180.00] DECISION #196 (P1 — chain priority): 1 legal actions
+[D:180.01] CHOSE: [P1] PassPriority
+[D:180.02] RESOLVE: Sand Soldier (chain_item=45, ability=1, spell=0)
+[D:180.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:180.04] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=125, might_bonus=1)
+[D:180.05] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:181.00] DECISION (P2 — chain priority)
+[D:181.01] CHOSE: [P2] PassPriority
+[D:182.00] DECISION #198 (P1 — chain priority): 1 legal actions
+[D:182.01] CHOSE: [P1] PassPriority
+[D:182.02] RESOLVE: Sand Soldier (chain_item=44, ability=1, spell=0)
+[D:182.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:182.04] EFFECT: unattach Soul Sword (id=57)
+[D:182.05] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=124, might_bonus=1)
+[D:182.06] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:183.00] DECISION (P2 — chain priority)
+[D:183.01] CHOSE: [P2] PassPriority
+[D:184.00] DECISION #200 (P1 — chain priority): 1 legal actions
+[D:184.01] CHOSE: [P1] PassPriority
+[D:184.02] RESOLVE: Sand Soldier (chain_item=43, ability=1, spell=0)
+[D:184.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:184.04] EFFECT: unattach Soul Sword (id=57)
+[D:184.05] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=123, might_bonus=1)
+[D:184.06] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:185.00] DECISION (P2 — chain priority)
+[D:185.01] CHOSE: [P2] PassPriority
+[D:186.00] DECISION #202 (P1 — chain priority): 1 legal actions
+[D:186.01] CHOSE: [P1] PassPriority
+[D:186.02] RESOLVE: Sand Soldier (chain_item=42, ability=1, spell=0)
+[D:186.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:186.04] EFFECT: unattach Soul Sword (id=57)
+[D:186.05] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=122, might_bonus=1)
+[D:186.06] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:187.00] DECISION (P2 — chain priority)
+[D:187.01] CHOSE: [P2] PassPriority
+[D:188.00] DECISION #204 (P1 — chain priority): 1 legal actions
+[D:188.01] CHOSE: [P1] PassPriority
+[D:188.02] RESOLVE: Sand Soldier (chain_item=41, ability=1, spell=0)
+[D:188.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:188.04] EFFECT: unattach Soul Sword (id=57)
+[D:188.05] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=121, might_bonus=1)
+[D:188.06] WEAPONMASTER: Sand Soldier equips Soul Sword (Equip cost, [A] less)
+[D:189.00] DECISION (P2)
+[D:189.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:189.02] INTENT: StandardMove by P2
+[D:190.00] DECISION (P2): move another unit with this move
+[D:190.01] MOVE: Sand Soldier (id=115) -> BF#0
+[D:190.02] SHOWDOWN: BF#0 (non-combat)
+[D:190.03] CONQUER: P2 conquers BF#0 (score was 3)
+[D:190.04] SCORE: P2 +1 via Conquer -> 4
+[D:190.05] TRIGGER: Seat of Power (P2) fires ability
+[D:191.00] DECISION (P2 — chain priority)
+[D:191.01] CHOSE: [P2] PassPriority
+[D:192.00] DECISION #210 (P1 — chain priority): 1 legal actions
+[D:192.01] CHOSE: [P1] PassPriority
+[D:192.02] RESOLVE: Seat of Power (chain_item=47, ability=1, spell=0)
+[D:192.03] SEAT OF POWER: conquer -> draw 0
+[D:193.00] DECISION (P2)
+[D:193.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:193.02] INTENT: StandardMove by P2
+[D:194.00] DECISION (P2): move another unit with this move
+[D:194.01] MOVE: Sand Soldier (id=113) -> BF#1
+[D:194.02] SHOWDOWN: BF#1 (non-combat)
+[D:194.03] CONQUER: P2 conquers BF#1 (score was 4)
+[D:194.04] SCORE: P2 +1 via Conquer -> 5
+[D:194.05] TRIGGER: Seat of Power (P2) fires ability
+[D:195.00] DECISION (P2 — chain priority)
+[D:195.01] CHOSE: [P2] PassPriority
+[D:196.00] DECISION #216 (P1 — chain priority): 1 legal actions
+[D:196.01] CHOSE: [P1] PassPriority
+[D:196.02] RESOLVE: Seat of Power (chain_item=48, ability=1, spell=0)
+[D:196.03] EFFECT: P2 draws 1 (deck=28)
+[D:196.04] SEAT OF POWER: conquer -> draw 1
+[D:197.00] DECISION (P2)
+[D:197.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:197.01] INTENT: PlayCard by P2
+[D:197.02] PLAY: Eye of the Herald (id=59, Gear, cost=1E)
+[D:197.03] PAY_COST: Eye of the Herald E=1 P=0
+[D:198.00] DECISION #218 (P2): pick rune to exhaust for energy [3 options]
+[D:198.01]   EXHAUST_RUNE: Calm Rune (id=99) for energy [agent choice]
+[D:199.00] DECISION (P2)
+[D:199.01] CHOSE: [P2] ActivateAbility (src=Emperor of the Sands)
+[D:199.02] INTENT: ActivateAbility by P2
+[D:199.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:200.00] DECISION (P2): pick rune to exhaust for energy
+[D:200.01] CHOSE: [P2] MakeChoice
+[D:200.02] PAY_ADD: P2 pays [1] + 0 power: exhausted 1, recycled 0
+[D:201.00] DECISION (P2 — chain priority)
+[D:201.01] CHOSE: [P2] PassPriority
+[D:202.00] DECISION #222 (P1 — chain priority): 1 legal actions
+[D:202.01] CHOSE: [P1] PassPriority
+[D:202.02] RESOLVE: Emperor of the Sands (chain_item=50, ability=1, spell=0)
+[D:202.03] TOKEN: created Sand Soldier (2M, id=126) for P2
+[D:202.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:202.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:202.06] FINALIZE-CHOICES: Sand Soldier (chain_item=51, ability=1, spell=0)
+[D:202.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:202.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:203.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:203.01] CHOSE: [P2] MakeChoice
+[D:203.02] FINALIZE-CHOICES: Sand Soldier (chain_item=51, ability=1, spell=0)
+[D:203.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:203.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Eye of the Herald/Soul Sword/Soul Sword] (agent decides among 6 targets)
+[D:203.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [6 options] (P2)
+[D:204.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:204.01] CHOSE: [P2] MakeChoice
+[D:204.02] FINALIZE-CHOICES: Sand Soldier (chain_item=51, ability=1, spell=0)
+[D:204.03] TGT_PICKED: Weaponmaster: choose an Equipment = Doran's Shield (id=60)
+[D:205.00] DECISION (P2 — chain priority)
+[D:205.01] CHOSE: [P2] PassPriority
+[D:206.00] DECISION #226 (P1 — chain priority): 1 legal actions
+[D:206.01] CHOSE: [P1] PassPriority
+[D:206.02] RESOLVE: Sand Soldier (chain_item=51, ability=1, spell=0)
+[D:206.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:206.04] ATTACH: Doran's Shield (id=60) -> Sand Soldier (id=126, might_bonus=1)
+[D:206.05] WEAPONMASTER: Sand Soldier equips Doran's Shield (Equip cost, [A] less)
+[D:207.00] DECISION (P2)
+[D:207.00] CHOSE: [P2] HideCard (a hidden card) bf=1
+[D:207.01] INTENT: HideCard by P2
+[D:207.02] HIDE: P2 hides a card at BF#1
+[D:207.03] ASK_PROMPT: pick rune to recycle for power
+[D:208.00] DECISION (P2): pick rune to recycle for power
+[D:208.01] CHOSE: [P2] MakeChoice
+[D:208.02] PAY_ADD: P2 pays [0] + 1 power (any): exhausted 0, recycled 1
+[D:209.00] DECISION (P2)
+[D:209.00] CHOSE: [P2] HideCard (a hidden card) bf=0
+[D:209.01] INTENT: HideCard by P2
+[D:209.02] HIDE: P2 hides a card at BF#0
+[D:209.03] ASK_PROMPT: pick rune to recycle for power
+[D:210.00] DECISION (P2): pick rune to recycle for power
+[D:210.01] CHOSE: [P2] MakeChoice
+[D:210.02] PAY_ADD: P2 pays [0] + 1 power (any): exhausted 0, recycled 1
+[D:211.00] DECISION (P2)
+[D:211.01] CHOSE: [P2] ActivateAbility (src=Eye of the Herald) tgt=[Sand Soldier]
+[D:211.02] INTENT: ActivateAbility by P2
+[D:211.03] ASK_PROMPT: pick rune to recycle for power
+[D:212.00] DECISION (P2): pick rune to recycle for power
+[D:212.01] CHOSE: [P2] MakeChoice
+[D:212.02] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:213.00] DECISION (P2 — chain priority)
+[D:213.01] CHOSE: [P2] PassPriority
+[D:214.00] DECISION #234 (P1 — chain priority): 1 legal actions
+[D:214.01] CHOSE: [P1] PassPriority
+[D:214.02] RESOLVE: Eye of the Herald (chain_item=52, ability=1, spell=0)
+[D:214.03] ATTACH: Eye of the Herald (id=59) -> Sand Soldier (id=125, might_bonus=0)
+[D:214.04] EQUIP: Eye of the Herald -> Sand Soldier
+[D:215.00] DECISION (P2)
+[D:215.01] CHOSE: [P2] EndTurn
+[D:215.02] ── Ending Step ──
+[D:215.03] ── Expiration Step ──
+[D:215.04] ════ TURN 9 (P1) ════ Score: P1=4 P2=5
+[D:215.05] ── Awaken Phase ──
+[D:215.06] ── Beginning Step ──
+[D:215.07] ── Scoring Step ──
+[D:215.08] ── Channel Phase ──
+[D:215.09]   CHANNELED: Order Rune (id=49, ready)
+[D:215.10]   CHANNELED: Calm Rune (id=44, ready)
+[D:215.11] ── Draw Phase ──
+[D:215.12] EFFECT: P1 draws 1 (deck=29)
+[D:215.12]   DREW: Hidden Blade (id=16)
+[D:215.13] ── Main Phase ──
+[D:216.00] DECISION #236 (P1): 30 legal actions
+[D:216.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:216.02] INTENT: StandardMove by P1
+[D:217.00] DECISION #237 (P1): move another unit with this move [8 options]
+[D:218.00] DECISION #238 (P1): move another unit with this move [7 options]
+[D:218.01] MOVE: Sand Soldier (id=112) -> BF#1
+[D:218.02] MOVE: Sand Soldier (id=114) -> BF#1
+[D:218.03] COMBAT: BF#1 attacker=P1 defender=P2
+[D:218.04] INTENT: PlayActionCard by P2
+[D:218.05] SPELL: En Garde (id=71) targets=[Sand Soldier(id=113)]
+[D:218.06] PAY_COST: En Garde E=1 P=0
+[D:219.00] DECISION #241 (P2): pick rune to exhaust for energy [1 options]
+[D:219.01]   EXHAUST_RUNE: Order Rune (id=98) for energy [agent choice]
+[D:220.00] DECISION (P2 — chain priority)
+[D:220.01] CHOSE: [P2] PassPriority
+[D:221.00] DECISION #243 (P1 — chain priority): 11 legal actions
+[D:221.01] CHOSE: [P1] PassPriority
+[D:221.02] RESOLVE: En Garde (chain_item=53, ability=0, spell=1)
+[D:221.03] EFFECT: give Sand Soldier 1 [M] this turn
+[D:221.04] EFFECT: give Sand Soldier 1 [M] this turn
+[D:221.05] EN GARDE: only unit there -> additional +1 M
+[D:221.06] INTENT: PlayActionCard by P2
+[D:222.00] DECISION (P2 — chain priority)
+[D:222.01] CHOSE: [P2] PassPriority
+[D:223.00] DECISION #247 (P1 — chain priority): 11 legal actions
+[D:223.01] CHOSE: [P1] PassPriority
+[D:223.02] RESOLVE: Guards! (chain_item=54, ability=0, spell=1)
+[D:223.03] MODE_PROMPT: Guards!: where to play the Sand Soldier [Seat of Power] (agent decides among 1 modes)
+[D:223.04] CHOICE-REQUEST: mode: Guards!: where to play the Sand Soldier [1 options] (P2)
+[D:224.00] DECISION (P2): mode: Guards!: where to play the Sand Soldier
+[D:224.01] CHOSE: [P2] MakeChoice
+[D:224.02] RESOLVE: Guards! (chain_item=54, ability=0, spell=1)
+[D:224.03] MODE_PICKED: Guards!: where to play the Sand Soldier = mode#0 (Seat of Power)
+[D:224.04] TOKEN: created Sand Soldier (2M, id=127) for P2
+[D:224.05] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:224.06] GUARDS!: play 2[M] Sand Soldier token
+[D:224.07] TRIGGER: Guards! (P2) — reflexive trigger goes on the chain
+[D:224.08] FINALIZE-CHOICES: Sand Soldier (chain_item=55, ability=1, spell=0)
+[D:224.09] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:224.10] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:225.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:225.01] CHOSE: [P2] MakeChoice
+[D:225.02] FINALIZE-CHOICES: Sand Soldier (chain_item=55, ability=1, spell=0)
+[D:225.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:225.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Eye of the Herald/Soul Sword/Soul Sword] (agent decides among 6 targets)
+[D:225.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [6 options] (P2)
+[D:226.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:226.01] CHOSE: [P2] MakeChoice
+[D:226.02] FINALIZE-CHOICES: Sand Soldier (chain_item=55, ability=1, spell=0)
+[D:226.03] TGT_PICKED: Weaponmaster: choose an Equipment = Eye of the Herald (id=59)
+[D:226.04] FINALIZE-CHOICES: Guards! (chain_item=56, ability=1, spell=0)
+[D:226.05] MAY_PROMPT: Guards!: pay [Y] to ready the Sand Soldier? (P=P2, deferred to agent)
+[D:226.06] CHOICE-REQUEST (finalize): may: Guards!: pay [Y] to ready the Sand Soldier? [2 options] (P2)
+[D:227.00] DECISION (P2): may: Guards!: pay [Y] to ready the Sand Soldier?
+[D:227.01] CHOSE: [P2] MakeChoice
+[D:227.02] FINALIZE-CHOICES: Guards! (chain_item=56, ability=1, spell=0)
+[D:227.03] MAY_DECLINED: Guards!: pay [Y] to ready the Sand Soldier?
+[D:227.04] REMOVED: Guards! (chain_item=56) leaves the chain unfinalized — not performed (CR 403)
+[D:228.00] DECISION (P2 — chain priority)
+[D:228.01] CHOSE: [P2] PassPriority
+[D:229.00] DECISION #253 (P1 — chain priority): 11 legal actions
+[D:229.01] CHOSE: [P1] PassPriority
+[D:229.02] RESOLVE: Sand Soldier (chain_item=55, ability=1, spell=0)
+[D:229.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:229.04] EFFECT: unattach Eye of the Herald (id=59)
+[D:229.05] ATTACH: Eye of the Herald (id=59) -> Sand Soldier (id=127, might_bonus=0)
+[D:229.06] WEAPONMASTER: Sand Soldier equips Eye of the Herald (Equip cost, [A] less)
+[D:229.07] INTENT: PlayActionCard by P1
+[D:229.08] SPELL: Discipline (id=21) targets=[]
+[D:230.00] DECISION #255 (P1): choose a target for Discipline [17 options]
+[D:230.01] TARGET (play): Discipline -> Sand Soldier
+[D:230.02] PAY_COST: Discipline E=2 P=0
+[D:231.00] DECISION #256 (P1): pick rune to exhaust for energy [9 options]
+[D:231.01]   EXHAUST_RUNE: Calm Rune (id=44) for energy [agent choice]
+[D:232.00] DECISION #257 (P1): pick rune to exhaust for energy [8 options]
+[D:232.01]   EXHAUST_RUNE: Calm Rune (id=45) for energy [agent choice]
+[D:233.00] DECISION #258 (P1 — chain priority): 10 legal actions
+[D:233.01] CHOSE: [P1] PassPriority
+[D:234.00] DECISION (P2 — chain priority)
+[D:234.01] CHOSE: [P2] PassPriority
+[D:234.02] RESOLVE: Discipline (chain_item=57, ability=0, spell=1)
+[D:234.03] EFFECT: give Sand Soldier 2 [M] this turn
+[D:234.04] EFFECT: P1 draws 1 (deck=28)
+[D:234.04]   DREW: Doran's Shield (id=23)
+[D:234.05] DISCIPLINE: +2M to target + draw 1
+[D:234.06] DAMAGE_STEP: BF#1 ATK=[Sand Soldier(5M), Sand Soldier(7M)] DEF=[Sand Soldier(2M), Sand Soldier(8M)]
+[D:234.07] ASSIGN_DAMAGE: P1 assigns 12 damage:
+[D:234.08]   -> Sand Soldier takes 8 (was 0/8M)
+[D:234.09]   -> Sand Soldier takes 4 (was 0/2M)
+[D:234.10] ASSIGN_DAMAGE: P2 assigns 10 damage:
+[D:234.11]   -> Sand Soldier takes 7 (was 0/7M)
+[D:234.12]   -> Sand Soldier takes 3 (was 0/5M)
+[D:234.13] KILL: Sand Soldier (id=112, 7M, dmg=7)
+[D:234.14]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=112)
+[D:234.15] EFFECT: unattach B.F. Sword (id=34)
+[D:234.16] KILL: Sand Soldier (id=127, 2M, dmg=4)
+[D:234.17]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=127)
+[D:234.18] EFFECT: unattach Eye of the Herald (id=59)
+[D:234.19] KILL: Sand Soldier (id=113, 8M, dmg=8)
+[D:234.20]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=113)
+[D:234.21] EFFECT: unattach Soul Sword (id=75)
+[D:234.22] EFFECT: unattach B.F. Sword (id=74)
+[D:234.23] RECALL (CR 323.6): B.F. Sword (id=34)
+[D:234.24] RECALL: B.F. Sword (id=34) to base
+[D:234.25] RECALL (CR 323.6): Eye of the Herald (id=59)
+[D:234.26] RECALL: Eye of the Herald (id=59) to base
+[D:234.27] RECALL (CR 323.6): B.F. Sword (id=74)
+[D:234.28] RECALL: B.F. Sword (id=74) to base
+[D:234.29] RECALL (CR 323.6): Soul Sword (id=75)
+[D:234.30] RECALL: Soul Sword (id=75) to base
+[D:234.31] CONQUER: P1 conquers BF#1 (score was 4)
+[D:234.32] SCORE: P1 +1 via Conquer -> 5
+[D:234.33] TRIGGER: Seat of Power (P1) fires ability
+[D:235.00] DECISION #264 (P1 — chain priority): 9 legal actions
+[D:235.01] CHOSE: [P1] PassPriority
+[D:236.00] DECISION (P2 — chain priority)
+[D:236.01] CHOSE: [P2] PassPriority
+[D:236.02] RESOLVE: Seat of Power (chain_item=58, ability=1, spell=0)
+[D:236.03] SEAT OF POWER: conquer -> draw 0
+[D:237.00] DECISION #266 (P1): 35 legal actions
+[D:237.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:237.02] INTENT: StandardMove by P1
+[D:238.00] DECISION #267 (P1): move another unit with this move [6 options]
+[D:238.01] MOVE: Sand Soldier (id=110) -> BF#1
+[D:239.00] DECISION #268 (P1): 33 legal actions
+[D:239.01] CHOSE: [P1] ActivateAbility (src=B.F. Sword) tgt=[Sand Soldier]
+[D:239.02] INTENT: ActivateAbility by P1
+[D:239.03] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:240.00] DECISION #269 (P1 — chain priority): 9 legal actions
+[D:240.01] CHOSE: [P1] PassPriority
+[D:241.00] DECISION (P2 — chain priority)
+[D:241.01] CHOSE: [P2] PassPriority
+[D:241.02] RESOLVE: B.F. Sword (chain_item=59, ability=1, spell=0)
+[D:241.03] ATTACH: B.F. Sword (id=34) -> Sand Soldier (id=116, might_bonus=3)
+[D:241.04] EQUIP: B.F. Sword -> Sand Soldier
+[D:242.00] DECISION #271 (P1): 26 legal actions
+[D:242.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:242.02] INTENT: StandardMove by P1
+[D:243.00] DECISION #272 (P1): move another unit with this move [5 options]
+[D:243.01] MOVE: Sand Soldier (id=116) -> BF#0
+[D:243.02] COMBAT: BF#0 attacker=P1 defender=P2
+[D:243.03] INTENT: PlayActionCard by P2
+[D:244.00] DECISION (P2 — chain priority)
+[D:244.01] CHOSE: [P2] PassPriority
+[D:245.00] DECISION #276 (P1 — chain priority): 9 legal actions
+[D:245.01] CHOSE: [P1] PassPriority
+[D:245.02] RESOLVE: Back Off (chain_item=60, ability=0, spell=1)
+[D:245.03] EFFECT: stun Sand Soldier (id=116)
+[D:245.04] DAMAGE_STEP: BF#0 ATK=[Sand Soldier(6M,STUNNED)] DEF=[Sand Soldier(5M)]
+[D:245.05] ASSIGN_DAMAGE: P2 assigns 5 damage:
+[D:245.06]   -> Sand Soldier takes 5 (was 0/6M)
+[D:245.07] RECALL: Sand Soldier (id=116) to base
+[D:246.00] DECISION #280 (P1): 24 legal actions
+[D:246.01] CHOSE: [P1] PlayCard Azir, Sovereign
+[D:246.02] INTENT: PlayCard by P1
+[D:246.03] PLAY: Azir, Sovereign (id=2, Unit, cost=4E)
+[D:247.00] DECISION #281 (P1): pay [1][Order] for Accelerate on Azir, Sovereign? [decline|pay] [2 options]
+[D:247.01] ACCELERATE: Azir, Sovereign pays [1] + 1 power to enter ready
+[D:247.02] PAY_COST: Azir, Sovereign E=5 P=1
+[D:248.00] DECISION #282 (P1): pick rune to exhaust for energy [6 options]
+[D:248.01]   EXHAUST_RUNE: Calm Rune (id=48) for energy [agent choice]
+[D:249.00] DECISION #283 (P1): pick rune to exhaust for energy [5 options]
+[D:249.01]   EXHAUST_RUNE: Order Rune (id=49) for energy [agent choice]
+[D:250.00] DECISION #284 (P1): pick rune to exhaust for energy [4 options]
+[D:250.01]   EXHAUST_RUNE: Calm Rune (id=50) for energy [agent choice]
+[D:251.00] DECISION #285 (P1): pick rune to exhaust for energy [3 options]
+[D:251.01]   EXHAUST_RUNE: Order Rune (id=51) for energy [agent choice]
+[D:252.00] DECISION #286 (P1): pick rune to exhaust for energy [2 options]
+[D:252.01]   EXHAUST_RUNE: Order Rune (id=52) for energy [agent choice]
+[D:253.00] DECISION #287 (P1): pick rune to recycle for power [3 options]
+[D:253.01]   RECYCLE_RUNE: Order Rune (id=49, exhausted) for power [agent choice]
+[D:254.00] DECISION #288 (P1): 22 legal actions
+[D:254.00] CHOSE: [P1] PlayCard Doran's Shield
+[D:254.01] INTENT: PlayCard by P1
+[D:254.02] PLAY: Doran's Shield (id=23, Gear, cost=1E)
+[D:254.03] PAY_COST: Doran's Shield E=1 P=0
+[D:255.00] DECISION #289 (P1): pick rune to exhaust for energy [1 options]
+[D:255.01]   EXHAUST_RUNE: Calm Rune (id=53) for energy [agent choice]
+[D:256.00] DECISION #290 (P1): 21 legal actions
+[D:256.01] CHOSE: [P1] ActivateAbility (src=Doran's Shield) tgt=[Sand Soldier]
+[D:256.02] INTENT: ActivateAbility by P1
+[D:256.03] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:257.00] DECISION #291 (P1 — chain priority): 1 legal actions
+[D:257.01] CHOSE: [P1] PassPriority
+[D:258.00] DECISION (P2 — chain priority)
+[D:258.01] CHOSE: [P2] PassPriority
+[D:258.02] RESOLVE: Doran's Shield (chain_item=63, ability=1, spell=0)
+[D:258.03] ATTACH: Doran's Shield (id=23) -> Sand Soldier (id=116, might_bonus=1)
+[D:258.04] EQUIP: Doran's Shield -> Sand Soldier
+[D:259.00] DECISION #293 (P1): 13 legal actions
+[D:259.01] CHOSE: [P1] StandardMove units=[Azir, Sovereign]
+[D:259.02] INTENT: StandardMove by P1
+[D:260.00] DECISION #294 (P1): move another unit with this move [5 options]
+[D:260.01] MOVE: Azir, Sovereign (id=2) -> BF#0
+[D:260.02] COMBAT: BF#0 attacker=P1 defender=P2
+[D:260.03] TRIGGER: Azir, Sovereign (P1) fires ability
+[D:260.04] FINALIZE-CHOICES: Azir, Sovereign (chain_item=64, ability=1, spell=0)
+[D:260.05] MAY_PROMPT: Azir, Sovereign: move token units here? (P=P1, deferred to agent)
+[D:260.06] CHOICE-REQUEST (finalize): may: Azir, Sovereign: move token units here? [2 options] (P1)
+[D:261.00] DECISION #295 (P1): may: Azir, Sovereign: move token units here? [2 options]
+[D:261.01] CHOSE: [P1] MakeChoice
+[D:261.02] FINALIZE-CHOICES: Azir, Sovereign (chain_item=64, ability=1, spell=0)
+[D:261.03] MAY_ACCEPTED: Azir, Sovereign: move token units here?
+[D:261.04] SELECT_PROMPT: Azir, Sovereign: move a token unit here [7 options]
+[D:261.05] CHOICE-REQUEST (finalize): Azir, Sovereign: move a token unit here [8 options] (P1)
+[D:262.00] DECISION #296 (P1): Azir, Sovereign: move a token unit here [8 options]
+[D:262.01] CHOSE: [P1] MakeChoice
+[D:262.02] FINALIZE-CHOICES: Azir, Sovereign (chain_item=64, ability=1, spell=0)
+[D:262.03] SELECT_PROMPT: Azir, Sovereign: move a token unit here [6 options]
+[D:262.04] CHOICE-REQUEST (finalize): Azir, Sovereign: move a token unit here [7 options] (P1)
+[D:263.00] DECISION #297 (P1): Azir, Sovereign: move a token unit here [7 options]
+[D:263.01] CHOSE: [P1] MakeChoice
+[D:263.02] FINALIZE-CHOICES: Azir, Sovereign (chain_item=64, ability=1, spell=0)
+[D:263.03] SELECT_PROMPT: Azir, Sovereign: move a token unit here [5 options]
+[D:263.04] CHOICE-REQUEST (finalize): Azir, Sovereign: move a token unit here [6 options] (P1)
+[D:264.00] DECISION #298 (P1): Azir, Sovereign: move a token unit here [6 options]
+[D:264.01] CHOSE: [P1] MakeChoice
+[D:264.02] FINALIZE-CHOICES: Azir, Sovereign (chain_item=64, ability=1, spell=0)
+[D:265.00] DECISION #299 (P1 — chain priority): 1 legal actions
+[D:265.01] CHOSE: [P1] PassPriority
+[D:266.00] DECISION (P2 — chain priority)
+[D:266.01] CHOSE: [P2] PassPriority
+[D:266.02] RESOLVE: Azir, Sovereign (chain_item=64, ability=1, spell=0)
+[D:266.03] AZIR SOVEREIGN: attack -> moved 2 token unit(s) to this battlefield
+[D:266.04] DAMAGE_STEP: BF#0 ATK=[Azir, Sovereign(4M), Sand Soldier(2M), Sand Soldier(7M,STUNNED)] DEF=[Sand Soldier(5M)]
+[D:266.05] ASSIGN_DAMAGE: P1 assigns 6 damage:
+[D:266.06]   -> Sand Soldier takes 6 (was 0/5M)
+[D:266.07] ASSIGN_DAMAGE: P2 assigns 5 damage:
+[D:266.08]   -> Sand Soldier takes 5 (was 0/7M)
+[D:266.09] KILL: Sand Soldier (id=115, 5M, dmg=6)
+[D:266.10]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=115)
+[D:266.11] EFFECT: unattach B.F. Sword (id=91)
+[D:266.12] RECALL (CR 323.6): B.F. Sword (id=91)
+[D:266.13] RECALL: B.F. Sword (id=91) to base
+[D:266.14] CONQUER: P1 conquers BF#0 (score was 5)
+[D:266.15] SCORE: P1 +1 via Conquer -> 6
+[D:266.16] TRIGGER: Seat of Power (P1) fires ability
+[D:267.00] DECISION #305 (P1 — chain priority): 1 legal actions
+[D:267.01] CHOSE: [P1] PassPriority
+[D:268.00] DECISION (P2 — chain priority)
+[D:268.01] CHOSE: [P2] PassPriority
+[D:268.02] RESOLVE: Seat of Power (chain_item=65, ability=1, spell=0)
+[D:268.03] EFFECT: P1 draws 1 (deck=27)
+[D:268.03]   DREW: Eye of the Herald (id=22)
+[D:268.04] SEAT OF POWER: conquer -> draw 1
+[D:269.00] DECISION #307 (P1): 12 legal actions
+[D:269.00] CHOSE: [P1] HideCard Hidden Blade bf=1
+[D:269.01] INTENT: HideCard by P1
+[D:269.02] HIDE: P1 hides a card at BF#1
+[D:269.02] HIDE: Hidden Blade at BF#1 by P1
+[D:269.03] ASK_PROMPT: pick rune to recycle for power
+[D:270.00] DECISION #308 (P1): pick rune to recycle for power [2 options]
+[D:270.01] CHOSE: [P1] MakeChoice
+[D:270.02] PAY_ADD: P1 pays [0] + 1 power (any): exhausted 0, recycled 1
+[D:270.02] HIDDEN: Hidden Blade hidden at BF#1 by P1
+[D:271.00] DECISION #309 (P1): 9 legal actions
+[D:271.00] CHOSE: [P1] HideCard Guards! bf=0
+[D:271.01] INTENT: HideCard by P1
+[D:271.02] HIDE: P1 hides a card at BF#0
+[D:271.02] HIDE: Guards! at BF#0 by P1
+[D:271.03] ASK_PROMPT: pick rune to recycle for power
+[D:272.00] DECISION #310 (P1): pick rune to recycle for power [2 options]
+[D:272.01] CHOSE: [P1] MakeChoice
+[D:272.02] PAY_ADD: P1 pays [0] + 1 power (any): exhausted 0, recycled 1
+[D:272.02] HIDDEN: Guards! hidden at BF#0 by P1
+[D:273.00] DECISION #311 (P1): 8 legal actions
+[D:273.01] CHOSE: [P1] EndTurn
+[D:273.02] ── Ending Step ──
+[D:273.03] ── Expiration Step ──
+[D:273.04] ════ TURN 10 (P2) ════ Score: P1=6 P2=5
+[D:273.05] ── Awaken Phase ──
+[D:273.06] ── Beginning Step ──
+[D:273.07] ── Scoring Step ──
+[D:273.08] ── Channel Phase ──
+[D:273.09]   CHANNELED: Calm Rune (id=106, ready)
+[D:273.10]   CHANNELED: Calm Rune (id=97, ready)
+[D:273.11] ── Draw Phase ──
+[D:273.12] EFFECT: P2 draws 1 (deck=27)
+[D:273.13] ── Main Phase ──
+[D:274.00] DECISION (P2)
+[D:274.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:274.01] INTENT: PlayCard by P2
+[D:274.02] SPELL: Discipline (id=67) targets=[]
+[D:275.00] DECISION (P2): choose a target for Discipline
+[D:275.01] TARGET (play): Discipline -> Sand Soldier
+[D:275.02] PAY_COST: Discipline E=2 P=0
+[D:276.00] DECISION #314 (P2): pick rune to exhaust for energy [7 options]
+[D:276.01]   EXHAUST_RUNE: Calm Rune (id=106) for energy [agent choice]
+[D:277.00] DECISION #315 (P2): pick rune to exhaust for energy [6 options]
+[D:277.01]   EXHAUST_RUNE: Calm Rune (id=104) for energy [agent choice]
+[D:278.00] DECISION (P2 — chain priority)
+[D:278.01] CHOSE: [P2] PassPriority
+[D:279.00] DECISION #317 (P1 — chain priority): 4 legal actions
+[D:279.01] CHOSE: [P1] PassPriority
+[D:279.02] RESOLVE: Discipline (chain_item=66, ability=0, spell=1)
+[D:279.03] EFFECT: give Sand Soldier 2 [M] this turn
+[D:279.04] EFFECT: P2 draws 1 (deck=26)
+[D:279.05] DISCIPLINE: +2M to target + draw 1
+[D:280.00] DECISION (P2)
+[D:280.00] CHOSE: [P2] PlayCard (a hidden card)
+[D:280.01] INTENT: PlayCard by P2
+[D:280.02] PLAY: Eye of the Herald (id=64, Gear, cost=1E)
+[D:280.03] PAY_COST: Eye of the Herald E=1 P=0
+[D:281.00] DECISION #319 (P2): pick rune to exhaust for energy [5 options]
+[D:281.01]   EXHAUST_RUNE: Order Rune (id=103) for energy [agent choice]
+[D:282.00] DECISION (P2)
+[D:282.01] CHOSE: [P2] ActivateAbility (src=Emperor of the Sands)
+[D:282.02] INTENT: ActivateAbility by P2
+[D:282.03] ASK_PROMPT: pick rune to exhaust for energy
+[D:283.00] DECISION (P2): pick rune to exhaust for energy
+[D:283.01] CHOSE: [P2] MakeChoice
+[D:283.02] PAY_ADD: P2 pays [1] + 0 power: exhausted 1, recycled 0
+[D:284.00] DECISION (P2 — chain priority)
+[D:284.01] CHOSE: [P2] PassPriority
+[D:285.00] DECISION #323 (P1 — chain priority): 4 legal actions
+[D:285.01] CHOSE: [P1] PassPriority
+[D:285.02] RESOLVE: Emperor of the Sands (chain_item=68, ability=1, spell=0)
+[D:285.03] TOKEN: created Sand Soldier (2M, id=128) for P2
+[D:285.04] TRIGGER: Sand Soldier [Weaponmaster] (P2)
+[D:285.05] EMPEROR OF THE SANDS: created 2[M] Sand Soldier token
+[D:285.06] FINALIZE-CHOICES: Sand Soldier (chain_item=69, ability=1, spell=0)
+[D:285.07] MAY_PROMPT: Weaponmaster: equip an Equipment to me? (P=P2, deferred to agent)
+[D:285.08] CHOICE-REQUEST (finalize): may: Weaponmaster: equip an Equipment to me? [2 options] (P2)
+[D:286.00] DECISION (P2): may: Weaponmaster: equip an Equipment to me?
+[D:286.01] CHOSE: [P2] MakeChoice
+[D:286.02] FINALIZE-CHOICES: Sand Soldier (chain_item=69, ability=1, spell=0)
+[D:286.03] MAY_ACCEPTED: Weaponmaster: equip an Equipment to me?
+[D:286.04] TGT_PROMPT: Weaponmaster: choose an Equipment [B.F. Sword/B.F. Sword/Doran's Shield/Eye of the Herald/Eye of the Herald/Soul Sword/Soul Sword] (agent decides among 7 targets)
+[D:286.05] CHOICE-REQUEST (finalize): target: Weaponmaster: choose an Equipment [7 options] (P2)
+[D:287.00] DECISION (P2): target: Weaponmaster: choose an Equipment
+[D:287.01] CHOSE: [P2] MakeChoice
+[D:287.02] FINALIZE-CHOICES: Sand Soldier (chain_item=69, ability=1, spell=0)
+[D:287.03] TGT_PICKED: Weaponmaster: choose an Equipment = Eye of the Herald (id=64)
+[D:288.00] DECISION (P2 — chain priority)
+[D:288.01] CHOSE: [P2] PassPriority
+[D:289.00] DECISION #327 (P1 — chain priority): 4 legal actions
+[D:289.01] CHOSE: [P1] PassPriority
+[D:289.02] RESOLVE: Sand Soldier (chain_item=69, ability=1, spell=0)
+[D:289.03] PAY_ADD: P2 pays [0] + 0 power: exhausted 0, recycled 0
+[D:289.04] ATTACH: Eye of the Herald (id=64) -> Sand Soldier (id=128, might_bonus=0)
+[D:289.05] WEAPONMASTER: Sand Soldier equips Eye of the Herald (Equip cost, [A] less)
+[D:290.00] DECISION (P2)
+[D:290.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:290.02] INTENT: StandardMove by P2
+[D:291.00] DECISION (P2): move another unit with this move
+[D:292.00] DECISION (P2): move another unit with this move
+[D:292.01] MOVE: Sand Soldier (id=126) -> BF#1
+[D:292.02] MOVE: Sand Soldier (id=121) -> BF#1
+[D:292.03] COMBAT: BF#1 attacker=P2 defender=P1
+[D:292.04] INTENT: PlayActionCard by P1
+[D:293.00] DECISION #333 (P1 — chain priority): 2 legal actions
+[D:293.01] CHOSE: [P1] PassPriority
+[D:294.00] DECISION (P2 — chain priority)
+[D:294.01] CHOSE: [P2] PassPriority
+[D:294.02] RESOLVE: Hidden Blade (chain_item=70, ability=0, spell=1)
+[D:294.03] EFFECT: kill Sand Soldier (id=126)
+[D:294.04]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=126)
+[D:294.05] EFFECT: unattach Doran's Shield (id=60)
+[D:294.06] HIDDEN BLADE: its controller (P2) draws 2
+[D:294.07] EFFECT: P2 draws 2 (deck=25)
+[D:294.08] RECALL (CR 323.6): Doran's Shield (id=60)
+[D:294.09] RECALL: Doran's Shield (id=60) to base
+[D:294.10] INTENT: PlayActionCard by P2
+[D:294.11] SPELL: En Garde (id=76) targets=[Sand Soldier(id=121)]
+[D:294.12] PAY_COST: En Garde E=1 P=0
+[D:295.00] DECISION #336 (P2): pick rune to exhaust for energy [3 options]
+[D:295.01]   EXHAUST_RUNE: Order Rune (id=98) for energy [agent choice]
+[D:296.00] DECISION (P2 — chain priority)
+[D:296.01] CHOSE: [P2] PassPriority
+[D:297.00] DECISION #338 (P1 — chain priority): 2 legal actions
+[D:297.01] CHOSE: [P1] PassPriority
+[D:297.02] RESOLVE: En Garde (chain_item=71, ability=0, spell=1)
+[D:297.03] EFFECT: give Sand Soldier 1 [M] this turn
+[D:297.04] EFFECT: give Sand Soldier 1 [M] this turn
+[D:297.05] EN GARDE: only unit there -> additional +1 M
+[D:297.06] DAMAGE_STEP: BF#1 ATK=[Sand Soldier(5M)] DEF=[Sand Soldier(3M), Sand Soldier(5M)]
+[D:297.07] ASSIGN_DAMAGE: P2 assigns 5 damage:
+[D:297.08]   -> Sand Soldier takes 5 (was 0/5M)
+[D:297.09] ASSIGN_DAMAGE: P1 assigns 8 damage:
+[D:297.10]   -> Sand Soldier takes 8 (was 0/5M)
+[D:297.11] KILL: Sand Soldier (id=121, 5M, dmg=8)
+[D:297.12]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=121)
+[D:297.13] EFFECT: unattach Soul Sword (id=57)
+[D:297.14] KILL: Sand Soldier (id=114, 5M, dmg=5)
+[D:297.15]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=114)
+[D:297.16] EFFECT: unattach Hand Hammer (id=39)
+[D:297.17] RECALL (CR 323.6): Hand Hammer (id=39)
+[D:297.18] RECALL: Hand Hammer (id=39) to base
+[D:297.19] RECALL (CR 323.6): Soul Sword (id=57)
+[D:297.20] RECALL: Soul Sword (id=57) to base
+[D:298.00] DECISION (P2)
+[D:298.01] CHOSE: [P2] ActivateAbility (src=Eye of the Herald) tgt=[Sand Soldier]
+[D:298.02] INTENT: ActivateAbility by P2
+[D:298.03] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:299.00] DECISION (P2 — chain priority)
+[D:299.01] CHOSE: [P2] PassPriority
+[D:300.00] DECISION #345 (P1 — chain priority): 2 legal actions
+[D:300.01] CHOSE: [P1] PassPriority
+[D:300.02] RESOLVE: Eye of the Herald (chain_item=72, ability=1, spell=0)
+[D:300.03] ATTACH: Eye of the Herald (id=59) -> Sand Soldier (id=122, might_bonus=0)
+[D:300.04] EQUIP: Eye of the Herald -> Sand Soldier
+[D:301.00] DECISION (P2)
+[D:301.01] CHOSE: [P2] ActivateAbility (src=Soul Sword) tgt=[Sand Soldier]
+[D:301.02] INTENT: ActivateAbility by P2
+[D:301.03] ASK_PROMPT: pick rune to recycle for power
+[D:302.00] DECISION (P2): pick rune to recycle for power
+[D:302.01] CHOSE: [P2] MakeChoice
+[D:302.02] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:303.00] DECISION (P2 — chain priority)
+[D:303.01] CHOSE: [P2] PassPriority
+[D:304.00] DECISION #349 (P1 — chain priority): 2 legal actions
+[D:304.01] CHOSE: [P1] PassPriority
+[D:304.02] RESOLVE: Soul Sword (chain_item=73, ability=1, spell=0)
+[D:304.03] ATTACH: Soul Sword (id=57) -> Sand Soldier (id=122, might_bonus=1)
+[D:304.04] EQUIP: Soul Sword -> Sand Soldier
+[D:305.00] DECISION (P2)
+[D:305.01] CHOSE: [P2] ActivateAbility (src=Doran's Shield) tgt=[Sand Soldier]
+[D:305.02] INTENT: ActivateAbility by P2
+[D:305.03] ASK_PROMPT: pick rune to recycle for power
+[D:306.00] DECISION (P2): pick rune to recycle for power
+[D:306.01] CHOSE: [P2] MakeChoice
+[D:306.02] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:307.00] DECISION (P2 — chain priority)
+[D:307.01] CHOSE: [P2] PassPriority
+[D:308.00] DECISION #353 (P1 — chain priority): 2 legal actions
+[D:308.01] CHOSE: [P1] PassPriority
+[D:308.02] RESOLVE: Doran's Shield (chain_item=74, ability=1, spell=0)
+[D:308.03] ATTACH: Doran's Shield (id=60) -> Sand Soldier (id=122, might_bonus=1)
+[D:308.04] EQUIP: Doran's Shield -> Sand Soldier
+[D:309.00] DECISION (P2)
+[D:309.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:309.02] INTENT: StandardMove by P2
+[D:310.00] DECISION (P2): move another unit with this move
+[D:310.01] MOVE: Sand Soldier (id=122) -> BF#1
+[D:310.02] EQUIP_TRIGGER: Eye of the Herald fires on Sand Soldier (P2)
+[D:311.00] DECISION (P2 — chain priority)
+[D:311.01] CHOSE: [P2] PassPriority
+[D:312.00] DECISION #357 (P1 — chain priority): 2 legal actions
+[D:312.01] CHOSE: [P1] PassPriority
+[D:312.02] RESOLVE: Eye of the Herald (chain_item=75, ability=1, spell=0)
+[D:312.03] TOKEN: created Recruit (1M, id=129) for P2
+[D:312.04] COMBAT: BF#1 attacker=P2 defender=P1
+[D:312.05] DAMAGE_STEP: BF#1 ATK=[Recruit(1M), Sand Soldier(4M)] DEF=[Sand Soldier(3M)]
+[D:312.06] ASSIGN_DAMAGE: P2 assigns 5 damage:
+[D:312.07]   -> Sand Soldier takes 5 (was 0/3M)
+[D:312.08] ASSIGN_DAMAGE: P1 assigns 3 damage:
+[D:312.09]   -> Sand Soldier takes 3 (was 0/4M)
+[D:312.10] KILL: Sand Soldier (id=110, 3M, dmg=5)
+[D:312.11]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=110)
+[D:312.12] EFFECT: unattach Soul Sword (id=9)
+[D:312.13] RECALL (CR 323.6): Soul Sword (id=9)
+[D:312.14] RECALL: Soul Sword (id=9) to base
+[D:312.15] CONQUER: P2 conquers BF#1 (score was 5)
+[D:312.16] SCORE: P2 +1 via Conquer -> 6
+[D:312.17] TRIGGER: Seat of Power (P2) fires ability
+[D:313.00] DECISION (P2 — chain priority)
+[D:313.01] CHOSE: [P2] PassPriority
+[D:314.00] DECISION #363 (P1 — chain priority): 2 legal actions
+[D:314.01] CHOSE: [P1] PassPriority
+[D:314.02] RESOLVE: Seat of Power (chain_item=76, ability=1, spell=0)
+[D:314.03] SEAT OF POWER: conquer -> draw 0
+[D:315.00] DECISION (P2)
+[D:315.01] CHOSE: [P2] ActivateAbility (src=B.F. Sword) tgt=[Sand Soldier]
+[D:315.02] INTENT: ActivateAbility by P2
+[D:315.03] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:316.00] DECISION (P2 — chain priority)
+[D:316.01] CHOSE: [P2] PassPriority
+[D:317.00] DECISION #366 (P1 — chain priority): 2 legal actions
+[D:317.01] CHOSE: [P1] PassPriority
+[D:317.02] RESOLVE: B.F. Sword (chain_item=77, ability=1, spell=0)
+[D:317.03] ATTACH: B.F. Sword (id=74) -> Sand Soldier (id=123, might_bonus=3)
+[D:317.04] EQUIP: B.F. Sword -> Sand Soldier
+[D:318.00] DECISION (P2)
+[D:318.01] CHOSE: [P2] ActivateAbility (src=Soul Sword) tgt=[Sand Soldier]
+[D:318.02] INTENT: ActivateAbility by P2
+[D:318.03] ASK_PROMPT: pick rune to recycle for power
+[D:319.00] DECISION (P2): pick rune to recycle for power
+[D:319.01] CHOSE: [P2] MakeChoice
+[D:319.02] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:320.00] DECISION (P2 — chain priority)
+[D:320.01] CHOSE: [P2] PassPriority
+[D:321.00] DECISION #370 (P1 — chain priority): 2 legal actions
+[D:321.01] CHOSE: [P1] PassPriority
+[D:321.02] RESOLVE: Soul Sword (chain_item=78, ability=1, spell=0)
+[D:321.03] ATTACH: Soul Sword (id=75) -> Sand Soldier (id=124, might_bonus=1)
+[D:321.04] EQUIP: Soul Sword -> Sand Soldier
+[D:322.00] DECISION (P2)
+[D:322.01] CHOSE: [P2] StandardMove units=[Sand Soldier]
+[D:322.02] INTENT: StandardMove by P2
+[D:323.00] DECISION (P2): move another unit with this move
+[D:324.00] DECISION (P2): move another unit with this move
+[D:324.01] MOVE: Sand Soldier (id=123) -> BF#0
+[D:324.02] MOVE: Sand Soldier (id=124) -> BF#0
+[D:324.03] MOVE: Sand Soldier (id=125) -> BF#0
+[D:324.04] COMBAT: BF#0 attacker=P2 defender=P1
+[D:324.05] DAMAGE_STEP: BF#0 ATK=[Sand Soldier(2M), Sand Soldier(3M), Sand Soldier(5M)] DEF=[Azir, Sovereign(4M), Sand Soldier(2M), Sand Soldier(7M)]
+[D:324.06] ASSIGN_DAMAGE: P2 assigns 10 damage:
+[D:324.07]   -> Sand Soldier takes 7 (was 0/7M)
+[D:324.08]   -> Azir, Sovereign takes 3 (was 0/4M)
+[D:324.09] ASSIGN_DAMAGE: P1 assigns 13 damage:
+[D:324.10]   -> Sand Soldier takes 5 (was 0/5M)
+[D:324.11]   -> Sand Soldier takes 3 (was 0/3M)
+[D:324.12]   -> Sand Soldier takes 5 (was 0/2M)
+[D:324.13] KILL: Sand Soldier (id=125, 2M, dmg=5)
+[D:324.14]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=125)
+[D:324.15] KILL: Sand Soldier (id=124, 3M, dmg=3)
+[D:324.16]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=124)
+[D:324.17] EFFECT: unattach Soul Sword (id=75)
+[D:324.18] KILL: Sand Soldier (id=123, 5M, dmg=5)
+[D:324.19]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=123)
+[D:324.20] EFFECT: unattach B.F. Sword (id=74)
+[D:324.21] KILL: Sand Soldier (id=116, 7M, dmg=7)
+[D:324.22]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=116)
+[D:324.23] EFFECT: unattach Soul Sword (id=3)
+[D:324.24] EFFECT: unattach B.F. Sword (id=34)
+[D:324.25] EFFECT: unattach Doran's Shield (id=23)
+[D:324.26] RECALL (CR 323.6): Soul Sword (id=3)
+[D:324.27] RECALL: Soul Sword (id=3) to base
+[D:324.28] RECALL (CR 323.6): Doran's Shield (id=23)
+[D:324.29] RECALL: Doran's Shield (id=23) to base
+[D:324.30] RECALL (CR 323.6): B.F. Sword (id=34)
+[D:324.31] RECALL: B.F. Sword (id=34) to base
+[D:324.32] RECALL (CR 323.6): B.F. Sword (id=74)
+[D:324.33] RECALL: B.F. Sword (id=74) to base
+[D:324.34] RECALL (CR 323.6): Soul Sword (id=75)
+[D:324.35] RECALL: Soul Sword (id=75) to base
+[D:325.00] DECISION (P2)
+[D:325.01] CHOSE: [P2] ActivateAbility (src=Soul Sword) tgt=[Recruit]
+[D:325.02] INTENT: ActivateAbility by P2
+[D:325.03] PAY_ADD: P2 pays [0] + 1 power: exhausted 0, recycled 1
+[D:326.00] DECISION (P2 — chain priority)
+[D:326.01] CHOSE: [P2] PassPriority
+[D:327.00] DECISION #380 (P1 — chain priority): 2 legal actions
+[D:327.01] CHOSE: [P1] PassPriority
+[D:327.02] RESOLVE: Soul Sword (chain_item=79, ability=1, spell=0)
+[D:327.03] ATTACH: Soul Sword (id=75) -> Recruit (id=129, might_bonus=1)
+[D:327.04] EQUIP: Soul Sword -> Recruit
+[D:328.00] DECISION (P2)
+[D:328.01] CHOSE: [P2] EndTurn
+[D:328.02] ── Ending Step ──
+[D:328.03] ── Expiration Step ──
+[D:328.04] ════ TURN 11 (P1) ════ Score: P1=6 P2=6
+[D:328.05] ── Awaken Phase ──
+[D:328.06] ── Beginning Step ──
+[D:328.07] ── Scoring Step ──
+[D:328.08] SCORE: P1 +1 via Hold BF#0 -> 7
+[D:328.09] ── Channel Phase ──
+[D:328.10]   CHANNELED: Calm Rune (id=47, ready)
+[D:328.11]   CHANNELED: Calm Rune (id=43, ready)
+[D:328.12] ── Draw Phase ──
+[D:328.13] EFFECT: P1 draws 1 (deck=26)
+[D:328.13]   DREW: Guards! (id=8)
+[D:328.14] ── Main Phase ──
+[D:329.00] DECISION #382 (P1): 43 legal actions
+[D:329.01] CHOSE: [P1] ActivateAbility (src=B.F. Sword) tgt=[Sand Soldier]
+[D:329.02] INTENT: ActivateAbility by P1
+[D:329.03] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:330.00] DECISION #383 (P1 — chain priority): 8 legal actions
+[D:330.01] CHOSE: [P1] PassPriority
+[D:331.00] DECISION (P2 — chain priority)
+[D:331.01] CHOSE: [P2] PassPriority
+[D:331.02] RESOLVE: B.F. Sword (chain_item=80, ability=1, spell=0)
+[D:331.03] ATTACH: B.F. Sword (id=34) -> Sand Soldier (id=120, might_bonus=3)
+[D:331.04] EQUIP: B.F. Sword -> Sand Soldier
+[D:332.00] DECISION #385 (P1): 38 legal actions
+[D:332.01] CHOSE: [P1] ActivateAbility (src=Hand Hammer) tgt=[Sand Soldier]
+[D:332.02] INTENT: ActivateAbility by P1
+[D:332.03] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:333.00] DECISION #386 (P1 — chain priority): 8 legal actions
+[D:333.01] CHOSE: [P1] PassPriority
+[D:334.00] DECISION (P2 — chain priority)
+[D:334.01] CHOSE: [P2] PassPriority
+[D:334.02] RESOLVE: Hand Hammer (chain_item=81, ability=1, spell=0)
+[D:334.03] ATTACH: Hand Hammer (id=39) -> Sand Soldier (id=119, might_bonus=1)
+[D:334.04] EQUIP: Hand Hammer -> Sand Soldier
+[D:335.00] DECISION #388 (P1): 33 legal actions
+[D:335.01] CHOSE: [P1] ActivateAbility (src=Doran's Shield) tgt=[Sand Soldier]
+[D:335.02] INTENT: ActivateAbility by P1
+[D:335.03] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:336.00] DECISION #389 (P1 — chain priority): 8 legal actions
+[D:336.01] CHOSE: [P1] PassPriority
+[D:337.00] DECISION (P2 — chain priority)
+[D:337.01] CHOSE: [P2] PassPriority
+[D:337.02] RESOLVE: Doran's Shield (chain_item=82, ability=1, spell=0)
+[D:337.03] ATTACH: Doran's Shield (id=23) -> Sand Soldier (id=119, might_bonus=1)
+[D:337.04] EQUIP: Doran's Shield -> Sand Soldier
+[D:338.00] DECISION #391 (P1): 28 legal actions
+[D:338.01] CHOSE: [P1] ActivateAbility (src=Soul Sword) tgt=[Sand Soldier]
+[D:338.02] INTENT: ActivateAbility by P1
+[D:338.03] PAY_ADD: P1 pays [0] + 1 power: exhausted 0, recycled 1
+[D:339.00] DECISION #392 (P1 — chain priority): 8 legal actions
+[D:339.01] CHOSE: [P1] PassPriority
+[D:340.00] DECISION (P2 — chain priority)
+[D:340.01] CHOSE: [P2] PassPriority
+[D:340.02] RESOLVE: Soul Sword (chain_item=83, ability=1, spell=0)
+[D:340.03] ATTACH: Soul Sword (id=3) -> Sand Soldier (id=120, might_bonus=1)
+[D:340.04] EQUIP: Soul Sword -> Sand Soldier
+[D:341.00] DECISION #394 (P1): 22 legal actions
+[D:341.01] CHOSE: [P1] StandardMove units=[Sand Soldier]
+[D:341.02] INTENT: StandardMove by P1
+[D:342.00] DECISION #395 (P1): move another unit with this move [3 options]
+[D:343.00] DECISION #396 (P1): move another unit with this move [2 options]
+[D:343.01] MOVE: Sand Soldier (id=120) -> BF#1
+[D:343.02] MOVE: Sand Soldier (id=119) -> BF#1
+[D:343.03] MOVE: Sand Soldier (id=118) -> BF#1
+[D:343.04] COMBAT: BF#1 attacker=P1 defender=P2
+[D:343.05] DAMAGE_STEP: BF#1 ATK=[Sand Soldier(2M), Sand Soldier(4M), Sand Soldier(6M)] DEF=[Recruit(2M), Sand Soldier(4M)]
+[D:343.06] ASSIGN_DAMAGE: P1 assigns 12 damage:
+[D:343.07]   -> Sand Soldier takes 4 (was 0/4M)
+[D:343.08]   -> Recruit takes 8 (was 0/2M)
+[D:343.09] ASSIGN_DAMAGE: P2 assigns 6 damage:
+[D:343.10]   -> Sand Soldier takes 4 (was 0/4M)
+[D:343.11]   -> Sand Soldier takes 2 (was 0/2M)
+[D:343.12] KILL: Sand Soldier (id=118, 2M, dmg=2)
+[D:343.13]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=118)
+[D:343.14] KILL: Sand Soldier (id=119, 4M, dmg=4)
+[D:343.15]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=119)
+[D:343.16] EFFECT: unattach Hand Hammer (id=39)
+[D:343.17] EFFECT: unattach Doran's Shield (id=23)
+[D:343.18] KILL: Recruit (id=129, 2M, dmg=8)
+[D:343.19]   TOKEN CEASES TO EXIST (CR 183.1): Recruit (id=129)
+[D:343.20] EFFECT: unattach Soul Sword (id=75)
+[D:343.21] KILL: Sand Soldier (id=122, 4M, dmg=4)
+[D:343.22]   TOKEN CEASES TO EXIST (CR 183.1): Sand Soldier (id=122)
+[D:343.23] EFFECT: unattach Eye of the Herald (id=59)
+[D:343.24] EFFECT: unattach Soul Sword (id=57)
+[D:343.25] EFFECT: unattach Doran's Shield (id=60)
+[D:343.26] RECALL (CR 323.6): Doran's Shield (id=23)
+[D:343.27] RECALL: Doran's Shield (id=23) to base
+[D:343.28] RECALL (CR 323.6): Hand Hammer (id=39)
+[D:343.29] RECALL: Hand Hammer (id=39) to base
+[D:343.30] RECALL (CR 323.6): Soul Sword (id=57)
+[D:343.31] RECALL: Soul Sword (id=57) to base
+[D:343.32] RECALL (CR 323.6): Eye of the Herald (id=59)
+[D:343.33] RECALL: Eye of the Herald (id=59) to base
+[D:343.34] RECALL (CR 323.6): Doran's Shield (id=60)
+[D:343.35] RECALL: Doran's Shield (id=60) to base
+[D:343.36] RECALL (CR 323.6): Soul Sword (id=75)
+[D:343.37] RECALL: Soul Sword (id=75) to base
+[D:343.38] CONQUER: P1 conquers BF#1 (score was 7)
+[D:343.39] SCORE: P1 +1 via Conquer -> 8
+[D:343.40] TRIGGER: Seat of Power (P1) fires ability

@@ -4,7 +4,7 @@
 # Never touches src/. Cores 8-15, at most 6 jobs.
 set -euo pipefail
 SRC=/mnt/c/Users/sutanto4/Desktop/RiftboundAI/alpharune/research/card_repr
-DST=$HOME/riftbound/alpharune
+DST=${RB_WSL_COPY:-$HOME/riftbound/alpharune}   # RB_WSL_COPY: another build copy (rbenv.py reads the same variable)
 mkdir -p $DST/research/card_repr/search $DST/research/card_repr/C_engine/out $DST/research/card_repr/smoke/data/src $DST/research/card_repr/selfplay/rbenv
 cp $SRC/C_engine/card_probe.cpp $DST/research/card_repr/C_engine/
 cp $SRC/C_engine/out/subjects.txt $DST/research/card_repr/C_engine/out/

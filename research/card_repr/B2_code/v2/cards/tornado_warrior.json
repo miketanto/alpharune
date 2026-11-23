@@ -1,0 +1,122 @@
+{
+ "stats": {
+  "type": "unit",
+  "supertype": null,
+  "domains": [
+   "chaos"
+  ],
+  "energy": 3,
+  "power": 0,
+  "might": 3,
+  "_src": {
+   "type": "src/cards/units/0886_tornado_warrior.cpp:85",
+   "supertype": "default SuperType::None",
+   "domains": "src/cards/units/0886_tornado_warrior.cpp:86",
+   "energy": "src/cards/units/0886_tornado_warrior.cpp:88",
+   "power": "default 0",
+   "might": "src/cards/units/0886_tornado_warrior.cpp:89"
+  }
+ },
+ "keywords": [
+  {
+   "kw": "hidden",
+   "_src": "src/cards/units/0886_tornado_warrior.cpp:91"
+  }
+ ],
+ "abilities": [
+  {
+   "kind": "play_mode",
+   "mode": "from_facedown",
+   "timing": "reaction",
+   "setup_cost": {
+    "power": 1,
+    "power_domain": "any",
+    "_src": "src/engine/game_engine.cpp:5326-5332, 5775-5779"
+   },
+   "cost": {
+    "energy": 0,
+    "power": 0,
+    "_src": "src/engine/game_engine.cpp:5429-5436"
+   },
+   "where": {
+    "zone": "battlefield",
+    "filters": [
+     {
+      "f": "controlled_by_you",
+      "v": true
+     }
+    ],
+    "_src": "src/engine/game_engine.cpp:5781-5783"
+   },
+   "condition": [
+    {
+     "c": "hidden_this_turn",
+     "v": true,
+     "neg": true,
+     "_src": "src/engine/game_engine.cpp:5395, 6127; src/core/game_object.h:75"
+    }
+   ],
+   "_src": "src/engine/game_engine.cpp:5775-5779 (hide for [A], canPayHideCost GE:5326); src/engine/game_engine.cpp:5405-5436 (play from facedown ignoring base cost); src/engine/game_engine.cpp:9304 (hidden card has Reaction timing)"
+  },
+  {
+   "kind": "triggered",
+   "trigger": {
+    "event": "play",
+    "subject": "self",
+    "_src": "src/cards/units/0886_tornado_warrior.cpp:24-32",
+    "condition": [
+     {
+      "c": "played_from_facedown",
+      "v": true,
+      "_src": "src/cards/units/0886_tornado_warrior.cpp:29-31"
+     }
+    ]
+   },
+   "effects": [
+    {
+     "verb": "Empower",
+     "target": {
+      "type": "permanent",
+      "side": "any",
+      "zone": "here",
+      "count": 1,
+      "filters": [
+       {
+        "f": "empowered",
+        "v": true,
+        "neg": true,
+        "_src": "src/cards/units/0886_tornado_warrior.cpp:45"
+       }
+      ],
+      "bind": "A",
+      "_src": "src/cards/units/0886_tornado_warrior.cpp:33-50"
+     },
+     "optional": true,
+     "_src": "src/cards/units/0886_tornado_warrior.cpp:69; may src/cards/units/0886_tornado_warrior.cpp:63-65"
+    },
+    {
+     "verb": "Disempower",
+     "target": {
+      "type": "ref",
+      "ref": "A",
+      "_src": "src/cards/units/0886_tornado_warrior.cpp:58"
+     },
+     "after": "end_of_turn",
+     "_src": "src/cards/units/0886_tornado_warrior.cpp:52-61; src/cards/units/0886_tornado_warrior.cpp:70"
+    }
+   ],
+   "_src": "src/cards/units/0886_tornado_warrior.cpp:24-32"
+  }
+ ],
+ "_meta": {
+  "def_id": "ven-099-166",
+  "class_file": "src/cards/units/0886_tornado_warrior.cpp",
+  "source": "engine_code",
+  "flags": [
+   "new term: condition played_from_facedown",
+   "new term: verb Disempower",
+   "new term: selector type permanent (a unit or a gear)",
+   "after=end_of_turn (delayed)"
+  ]
+ }
+}

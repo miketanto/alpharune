@@ -7,6 +7,7 @@
   "azir_sovereign",
   "b_f_sword",
   "brutalizer",
+  "carrion_dredger",
   "chaos_rune",
   "deathgrip",
   "decree_of_insight",
@@ -16,6 +17,7 @@
   "eclipse",
   "emperor_of_the_sands",
   "eye_of_the_herald",
+  "ezreal_prodigy",
   "fizz_trickster",
   "flash",
   "guards",
@@ -23,16 +25,27 @@
   "hall_of_legends",
   "hand_hammer",
   "hard_bargain",
+  "heart_of_the_tempest",
   "hidden_blade",
   "hwei_brooding_painter",
+  "kennen_storm_of_shuriken",
+  "lacerate",
+  "last_rites",
+  "lightning_rush",
   "mind_rune",
+  "minefield",
   "moonfall",
   "order_rune",
+  "ravenbloom_prefect",
   "ravenbloom_student",
   "rebuke",
+  "rhasa_the_sunderer",
   "ride_the_wind",
   "salvage",
   "scorn_of_the_moon",
+  "seal_of_discord",
+  "shadow_order_disciple",
+  "shadow_temple",
   "singularity",
   "smoke_screen",
   "soul_sword",
@@ -43,11 +56,13 @@
   "tail_cloaked_matriarch",
   "targon_s_peak",
   "tideturner",
+  "tornado_warrior",
   "traveling_merchant",
   "trifarian_war_camp",
   "turn_to_dust",
   "up_from_the_deep",
-  "vex_apathetic"
+  "vex_apathetic",
+  "zaun_warrens"
  ],
  "missing": [],
  "problems": [],
@@ -1161,6 +1176,371 @@
     "new term: verb Empower, condition empowered, event become_empowered",
     "new term: zone trash",
     "[Empower] cost is class-declared (empowerSpec) and not expanded by extract; written here as an activated ability"
+   ]
+  },
+  "heart_of_the_tempest": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Disempower",
+    "Empower",
+    "GiveKeyword"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Disempower",
+     "Empower",
+     "GiveKeyword"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Disempower",
+     "Empower",
+     "GiveKeyword"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: event play_not_from_hand (subject you: a card you play from anywhere but your hand: trash, facedown, Champion Zone, by an effect)",
+    "new term: verb Disempower (as a cost: ActivationCost::disempower_self)",
+    "GiveKeyword assault value 2 for the turn (giveTemporaryKeyword)"
+   ]
+  },
+  "kennen_storm_of_shuriken": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Burn",
+    "GiveKeyword"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Burn",
+     "GiveKeyword"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Burn",
+     "GiveKeyword"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: verb Burn (top N of your Main Deck to your trash; EffectExecutor::burn, CR 441)",
+    "new term: zone trash",
+    "GiveKeyword flow value own_cost: the spell may be played from the trash this turn for its printed cost, then banished"
+   ]
+  },
+  "rhasa_the_sunderer": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "ReduceCost"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "ReduceCost"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "ReduceCost"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: amount per card_in_your_trash"
+   ]
+  },
+  "seal_of_discord": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "AddPower"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "AddPower"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": []
+  },
+  "shadow_order_disciple": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Burn",
+    "GiveMight"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "GiveMight"
+    ],
+    "in_graph": [
+     "Burn",
+     "GiveMight"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Burn"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event move",
+    "new term: verb Burn (top N of your Main Deck to your trash; EffectExecutor::burn, CR 441) (here as the trigger's optional cost)"
+   ]
+  },
+  "lightning_rush": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Banish",
+    "Draw",
+    "LookAt",
+    "Mill"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Banish",
+     "Draw",
+     "LookAt",
+     "Mill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Draw",
+     "LookAt",
+     "Mill"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "draws a chosen card among the 3 looked at (drawHeldCard: counts as a draw); the rest go from the deck to the trash (written as Mill: not a Burn, per the code comment)",
+    "new term: verb Mill, filter in (bound set)",
+    "Flow's Power is of ANY Domain (flow(2, 1, Fury, any_domain=true)); flow_mode writes power_domain card"
+   ]
+  },
+  "last_rites": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Attach",
+    "GiveMight",
+    "PlayPayingCost",
+    "Recycle"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Attach",
+     "GiveMight",
+     "PlayPayingCost",
+     "Recycle"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Attach",
+     "PlayPayingCost",
+     "Recycle"
+    ]
+   },
+   "n_abilities": 3,
+   "flags": [
+    "new term: Attach (verb), equipped_with_self (filter)",
+    "new term: zone trash",
+    "new term: verb PlayPayingCost (play a card from a zone, its cost paid)",
+    "Equip cost: [P] Chaos and recycle 2 cards from your trash (Recycle as cost.other)"
+   ]
+  },
+  "tornado_warrior": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Disempower",
+    "Empower"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Disempower",
+     "Empower"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Disempower",
+     "Empower"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: condition played_from_facedown",
+    "new term: verb Disempower",
+    "new term: selector type permanent (a unit or a gear)",
+    "after=end_of_turn (delayed)"
+   ]
+  },
+  "carrion_dredger": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "CreateToken"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "CreateToken"
+    ],
+    "in_graph": [
+     "CreateToken"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "token keyword deflect (token.keywords)"
+   ]
+  },
+  "ezreal_prodigy": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Discard",
+    "Draw",
+    "ReduceCost"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Draw"
+    ],
+    "in_graph": [
+     "Discard",
+     "Draw",
+     "ReduceCost"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Discard",
+     "ReduceCost"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: verb Discard",
+    "new term: ReduceCost resource optional_additional_cost (Accelerate, Repeat, 'you may pay as an additional cost': [1] or [A] less)",
+    "new term: condition self_on_board"
+   ]
+  },
+  "zaun_warrens": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Discard",
+    "Draw"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Discard",
+     "Draw"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Discard",
+     "Draw"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: verb Discard"
+   ]
+  },
+  "minefield": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Burn"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Burn"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Burn"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: verb Burn (top N of your Main Deck to your trash; EffectExecutor::burn, CR 441)"
+   ]
+  },
+  "shadow_temple": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Burn"
+   ],
+   "consistency": {
+    "implied_by_calls": [],
+    "in_graph": [
+     "Burn"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "Burn"
+    ]
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: verb Burn (top N of your Main Deck to your trash; EffectExecutor::burn, CR 441)",
+    "event hold (subject here)"
+   ]
+  },
+  "ravenbloom_prefect": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Banish"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Banish"
+    ],
+    "in_graph": [
+     "Banish"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": []
+   },
+   "n_abilities": 1,
+   "flags": [
+    "new term: event play_gear (subject opponent)",
+    "the played gear is banished even while still on the chain (its permanent item removed, src/cards/units/0889_ravenbloom_prefect.cpp:47-52)"
+   ]
+  },
+  "lacerate": {
+   "builder": "graphs_kennen_e.py",
+   "verbs": [
+    "Banish",
+    "ChooseTarget",
+    "Disempower",
+    "Kill"
+   ],
+   "consistency": {
+    "implied_by_calls": [
+     "Kill"
+    ],
+    "in_graph": [
+     "Banish",
+     "ChooseTarget",
+     "Disempower",
+     "Kill"
+    ],
+    "call_verbs_missing_from_graph": [],
+    "graph_verbs_without_a_call": [
+     "ChooseTarget",
+     "Disempower"
+    ]
+   },
+   "n_abilities": 2,
+   "flags": [
+    "new term: verb Disempower",
+    "the Might check reads Might after the disempower (continuous effects recomputed, src/cards/spells/0914_lacerate.cpp:36-40)"
    ]
   }
  }

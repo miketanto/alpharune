@@ -54,6 +54,9 @@ def _lib():
     L.rbs_gen_take.argtypes = [vp, ci, ci, _I32, _I32, _U8, _I32, _U8, _I32, _F32, _I32]; L.rbs_gen_take.restype = ci
     L.rbs_rows_hist.argtypes = [vp, _I32]; L.rbs_rows_hist.restype = None
     L.rbenv_hist_dims.argtypes = [_I32]; L.rbenv_hist_dims.restype = None
+    if hasattr(L, 'rbs_taps'):
+        L.rbs_taps.argtypes = [vp, _I64]; L.rbs_taps.restype = None
+        L.rbs_taps_game.argtypes = [vp, ci, _I64]; L.rbs_taps_game.restype = None
     L.rbs_restart.argtypes = [vp, ci, c64]; L.rbs_restart.restype = ci
     L.rbs_get_strict_vis.argtypes = []; L.rbs_get_strict_vis.restype = ci
     L._rbs = True
@@ -77,17 +80,21 @@ def init(variant=None):
 class Search:
     def __init__(self, n_games, deck, seed, sims=64, leaves=4, threads=14, cpuct=2.0, fpu_red=0.0, vl=1.0,
                  perfect=False, seat_mode='balanced', deck_b=None, strict=True, deck_model='pool', opponent=None,
-                 p_search=1.0, az=False, az_temp_moves=30, sims_fast=16, dir_alpha=0.3, dir_eps=0.25, p_full=1.0):
+                 p_search=1.0, az=False, az_temp_moves=30, sims_fast=16, dir_alpha=0.3, dir_eps=0.25, p_full=1.0,
+                 runes=0, dir_tap=1.0):
         """deck / deck_b: a deck name, or a list of names (matchups: slot i plays pair i % len).
-        az (seat_mode 'gen'): AlphaZero self-play, see rbsearch.cpp Cfg."""
+        az (seat_mode 'gen'): AlphaZero self-play, see rbsearch.cpp Cfg.
+        runes: network seats that may tap their runes (az/TAPS.md): 0 none, 1 both, 2 the search seat, 3 the other."""
         self.dims = init()
         self.L = _lib()
+        if runes and not hasattr(self.L, 'rbs_taps'):
+            raise RuntimeError('this librbenv has no rune taps')
         self.L.rbs_set_strict_vis(1 if strict else 0)   # encoder strict visibility (README), both seats
         self.n = n_games
         ci = np.array([sims, leaves, threads, 1 if perfect else 0, {'balanced': 0, 'none': 1, 'gen': 2}[seat_mode],
-                       {'pool': 0, 'decklist': 1}[deck_model], 1 if az else 0, az_temp_moves, sims_fast, 0, 0, 0],
+                       {'pool': 0, 'decklist': 1}[deck_model], 1 if az else 0, az_temp_moves, sims_fast, runes, 0, 0],
                       np.int32)
-        cf = np.array([cpuct, fpu_red, vl, p_search, dir_alpha, dir_eps, p_full, 0, 0, 0, 0, 0], np.float32)
+        cf = np.array([cpuct, fpu_red, vl, p_search, dir_alpha, dir_eps, p_full, dir_tap, 0, 0, 0, 0], np.float32)
         da = deck if isinstance(deck, (list, tuple)) else [deck]
         db = deck_b if isinstance(deck_b, (list, tuple)) else [deck_b or d for d in da] if deck_b is None else [deck_b]
         if deck_b is None:
@@ -146,6 +153,12 @@ class Search:
         out = np.zeros(22, np.int64)
         self.L.rbs_stats(self.h, out)
         return dict(zip(STAT_NAMES, (int(x) for x in out)))
+
+    def taps(self, i=None):
+        """Live rune taps: exhaust, recycle, external decisions offering one, external decisions (all games, or game i)."""
+        out = np.zeros(4, np.int64)
+        self.L.rbs_taps(self.h, out) if i is None else self.L.rbs_taps_game(self.h, int(i), out)
+        return [int(x) for x in out]
 
     def leaktest(self, worlds, acc=None):
         out = np.zeros(12, np.int64)

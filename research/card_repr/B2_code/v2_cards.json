@@ -574,5 +574,186 @@
   "all_ids": [
    891
   ]
+ },
+ {
+  "key": "heart_of_the_tempest",
+  "deck": "kennen",
+  "card_id": 942,
+  "def_id": "ven-155-166",
+  "file": "src/cards/legends/0942_heart_of_the_tempest.cpp",
+  "type": "legend",
+  "name": "Heart of the Tempest",
+  "all_ids": [
+   942
+  ]
+ },
+ {
+  "key": "kennen_storm_of_shuriken",
+  "deck": "kennen",
+  "card_id": 900,
+  "def_id": "ven-113-166",
+  "file": "src/cards/units/0900_kennen_storm_of_shuriken.cpp",
+  "type": "unit",
+  "name": "Kennen, Storm of Shuriken",
+  "all_ids": [
+   900
+  ]
+ },
+ {
+  "key": "rhasa_the_sunderer",
+  "deck": "kennen",
+  "card_id": 195,
+  "def_id": "ogn-195-298",
+  "file": "src/cards/units/0195_rhasa_the_sunderer.cpp",
+  "type": "unit",
+  "name": "Rhasa the Sunderer",
+  "all_ids": [
+   195
+  ]
+ },
+ {
+  "key": "seal_of_discord",
+  "deck": "kennen",
+  "card_id": 204,
+  "def_id": "ogn-204-298",
+  "file": "src/cards/gear/0204_seal_of_discord.cpp",
+  "type": "gear",
+  "name": "Seal of Discord",
+  "all_ids": [
+   204,
+   545
+  ]
+ },
+ {
+  "key": "shadow_order_disciple",
+  "deck": "kennen",
+  "card_id": 882,
+  "def_id": "ven-095-166",
+  "file": "src/cards/units/0882_shadow_order_disciple.cpp",
+  "type": "unit",
+  "name": "Shadow Order Disciple",
+  "all_ids": [
+   882
+  ]
+ },
+ {
+  "key": "lightning_rush",
+  "deck": "kennen",
+  "card_id": 943,
+  "def_id": "ven-156-166",
+  "file": "src/cards/spells/0943_lightning_rush.cpp",
+  "type": "spell",
+  "name": "Lightning Rush",
+  "all_ids": [
+   943
+  ]
+ },
+ {
+  "key": "last_rites",
+  "deck": "kennen",
+  "card_id": 471,
+  "def_id": "sfd-150-221",
+  "file": "src/cards/gear/0471_last_rites.cpp",
+  "type": "gear",
+  "name": "Last Rites",
+  "all_ids": [
+   471
+  ]
+ },
+ {
+  "key": "tornado_warrior",
+  "deck": "kennen",
+  "card_id": 886,
+  "def_id": "ven-099-166",
+  "file": "src/cards/units/0886_tornado_warrior.cpp",
+  "type": "unit",
+  "name": "Tornado Warrior",
+  "all_ids": [
+   886
+  ]
+ },
+ {
+  "key": "carrion_dredger",
+  "deck": "kennen",
+  "card_id": 715,
+  "def_id": "unl-153-219",
+  "file": "src/cards/units/0715_carrion_dredger.cpp",
+  "type": "unit",
+  "name": "Carrion Dredger",
+  "all_ids": [
+   715
+  ]
+ },
+ {
+  "key": "ezreal_prodigy",
+  "deck": "kennen",
+  "card_id": 470,
+  "def_id": "sfd-149-221",
+  "file": "src/cards/units/0470_ezreal_prodigy.cpp",
+  "type": "unit",
+  "name": "Ezreal, Prodigy",
+  "all_ids": [
+   470
+  ]
+ },
+ {
+  "key": "zaun_warrens",
+  "deck": "kennen",
+  "card_id": 293,
+  "def_id": "ogn-298-298",
+  "file": "src/cards/battlefields/0293_zaun_warrens.cpp",
+  "type": "battlefield",
+  "name": "Zaun Warrens",
+  "all_ids": [
+   293
+  ]
+ },
+ {
+  "key": "minefield",
+  "deck": "kennen",
+  "card_id": 526,
+  "def_id": "sfd-212-221",
+  "file": "src/cards/battlefields/0526_minefield.cpp",
+  "type": "battlefield",
+  "name": "Minefield",
+  "all_ids": [
+   526
+  ]
+ },
+ {
+  "key": "shadow_temple",
+  "deck": "kennen",
+  "card_id": 952,
+  "def_id": "ven-165-166",
+  "file": "src/cards/battlefields/0952_shadow_temple.cpp",
+  "type": "battlefield",
+  "name": "Shadow Temple",
+  "all_ids": [
+   952
+  ]
+ },
+ {
+  "key": "ravenbloom_prefect",
+  "deck": "kennen",
+  "card_id": 889,
+  "def_id": "ven-102-166",
+  "file": "src/cards/units/0889_ravenbloom_prefect.cpp",
+  "type": "unit",
+  "name": "Ravenbloom Prefect",
+  "all_ids": [
+   889
+  ]
+ },
+ {
+  "key": "lacerate",
+  "deck": "kennen",
+  "card_id": 914,
+  "def_id": "ven-127-166",
+  "file": "src/cards/spells/0914_lacerate.cpp",
+  "type": "spell",
+  "name": "Lacerate",
+  "all_ids": [
+   914
+  ]
  }
 ]
