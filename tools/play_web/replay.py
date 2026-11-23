@@ -29,6 +29,19 @@ def find_logs(root):
     return out
 
 
+def reveal(v, o):
+    """Adds to view v (one seat's) what the other seat's view o shows of its own hidden cards: its hand
+    (opp_hand_cards) and the identity of its face-down cards (marked peek). For watching, never for play."""
+    v['opp_hand_cards'] = o.get('hand', [])
+    v.setdefault('cards', {}).update(o.get('cards', {}))
+    theirs = {f['id']: f for b in o.get('battlefields', []) for f in b.get('facedown', []) if f.get('card') is not None}
+    for b in v.get('battlefields', []):
+        for i, f in enumerate(b.get('facedown', [])):
+            if f.get('card') is None and f['id'] in theirs:
+                b['facedown'][i] = dict(theirs[f['id']], owner=f.get('owner'), ctrl=f.get('ctrl'), peek=True)
+    return v
+
+
 def _replays_cleanly(deck_p1, deck_p2, seed, game, D):
     """Does the log replay to its recorded end (every decider matches, same winner, every choice used)?"""
     try:
@@ -199,9 +212,7 @@ class Replay:
         self.log_next = v.get('log_next', self.log_next)
         other = 3 - self.seat
         if self.both:
-            o = self.g.view(other, 1 << 40)
-            v['opp_hand_cards'] = o.get('hand', [])
-            v.setdefault('cards', {}).update(o.get('cards', {}))
+            reveal(v, self.g.view(other, 1 << 40))
         v['meta'] = self.meta
         v['replay'] = self.annotation()
         v['replay']['log_reset'] = log_reset

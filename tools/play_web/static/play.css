@@ -73,6 +73,9 @@ select, input { background: var(--bg2); border: 1px solid var(--line); border-ra
 
 .hand-backs { display: flex; gap: 0; height: 52px; align-items: flex-start; }
 .hand-backs .back { width: 36px; height: 50px; margin-right: -10px; border-radius: 4px; }
+.reveal-toggle { font-size: 11px; color: var(--gold); margin-left: 12px; white-space: nowrap; cursor: pointer; }
+.card.peek { outline: 2px dashed var(--gold); outline-offset: -2px; opacity: .92; }
+.chip.peek { background: #3d5c93; }
 .known-chip { font-size: 11px; color: var(--gold); margin-left: 18px; cursor: pointer; }
 
 .base { position: relative; border: 1px dashed #2a426a; border-radius: 10px; min-height: calc(var(--card-h) + 14px); padding: 6px 8px 6px; }
@@ -181,6 +184,16 @@ select, input { background: var(--bg2); border: 1px solid var(--line); border-ra
 .chain-item .thumb { width: 34px; height: 47px; border-radius: 4px; background: #233 center/cover; flex: 0 0 auto; }
 .chain-item .ci-t { font-weight: 600; font-size: 12px; } .chain-item .ci-s { font-size: 11px; color: var(--dim); }
 .chain-item.resolving { box-shadow: 0 0 0 1px var(--gold); }
+#net-box { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px; max-height: 38vh; overflow: auto; }
+.nm-move { border-top: 1px solid var(--line); padding: 5px 0 4px; }
+.nm-move:first-of-type { border-top: none; }
+.nm-q { font-size: 12px; margin-bottom: 3px; }
+.nm-opt { position: relative; display: flex; justify-content: space-between; gap: 8px; font-size: 11.5px; padding: 2px 4px; border-radius: 4px; overflow: hidden; }
+.nm-opt .nm-bar { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(124,243,255,.13); z-index: 0; }
+.nm-opt.chosen .nm-bar { background: rgba(242,193,78,.28); }
+.nm-opt.chosen .nm-t { color: var(--gold); font-weight: 600; }
+.nm-opt .nm-t, .nm-opt .nm-s { position: relative; z-index: 1; }
+.nm-opt .nm-s { color: var(--dim); white-space: nowrap; }
 #log-box { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 8px; display: flex; flex-direction: column; min-height: 0; }
 #log { overflow: auto; flex: 1; font-size: 12px; font-family: ui-monospace, "Cascadia Mono", Consolas, monospace; }
 #log .ln { padding: 1px 0; border-bottom: 1px solid rgba(36,57,92,.35); }

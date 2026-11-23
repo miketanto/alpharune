@@ -151,6 +151,7 @@ class NetAgent:
             a = int(np.argmax(obs['act_mask'][0]))   # never seen; keeps the game legal
         value = float(v.reshape(-1)[0]) if v is not None else None
         self.last_prob = float(logp.exp()[0, a])
+        self.last_probs = logp.exp()[0, :min(nlegal, A)].numpy().astype(float)   # every option's probability
         return a, value
 
 
@@ -184,12 +185,25 @@ class SearchAgent:
         L.rbs_declog.argtypes = [ctypes.c_void_p, ctypes.c_int, np.ctypeslib.ndpointer(np.float32, flags='C'), ctypes.c_int]
         L.rbs_declog.restype = ctypes.c_int
         self._dl = np.zeros((4000, 18), np.float32)
+        self._has_root = hasattr(L, 'rbs_root')
+        if self._has_root:
+            L.rbs_root.argtypes = [ctypes.c_void_p, ctypes.c_int, ctypes.c_int, np.ctypeslib.ndpointer(np.float32, flags='C'), ctypes.c_int]
+            L.rbs_root.restype = ctypes.c_int
+        self._rt = np.zeros((self.A, 4), np.float32)
         self.waiting = False      # a greedy row (the human's decision) is pending
         self._nl = 0
 
     def log(self):
         n = self.S.L.rbs_declog(self.S.h, 0, self._dl, len(self._dl))
         return self._dl[:n]
+
+    def root(self, d):
+        """Every option of decision d of the decision log: rows (live index, prior, visits, mean value for the decider,
+        -2 unvisited); None if this library does not keep them."""
+        if not self._has_root:
+            return None
+        n = self.S.L.rbs_root(self.S.h, 0, int(d), self._rt, len(self._rt))
+        return None if n < 0 else self._rt[:n].copy()
 
     def advance(self):
         """Search until the human is asked or the game ends."""

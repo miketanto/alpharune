@@ -47,12 +47,17 @@ $('#s-start').onclick = async () => {
   $('#s-start').disabled = true; $('#s-start').textContent = 'Starting…';
   try {
     const j = await api('/api/new', { deck: $('#s-deck').value, agent_deck: $('#s-agent-deck').value, checkpoint: $('#s-ckpt').value,
-      manual: $('#s-manual').checked, ask_runes: $('#s-askrunes').checked, sims: +$('#s-sims').value, seat: +$('#s-seat').value, seed: $('#s-seed').value.trim() || null });
+      manual: $('#s-manual').checked, ask_runes: $('#s-askrunes').checked, reveal: $('#s-reveal').checked, sims: +$('#s-sims').value, seat: +$('#s-seat').value, seed: $('#s-seed').value.trim() || null });
     resetGame();
     showGame();
     enqueue(j.frames);
   } catch (e) { $('#s-err').textContent = e.message; }
   $('#s-start').disabled = false; $('#s-start').textContent = 'Start game';
+};
+$('#g-reveal').onchange = async e => {
+  e.target.blur();
+  try { const j = await api('/api/reveal', { on: e.target.checked }); enqueue(j.frames); }
+  catch (err) { e.target.checked = !e.target.checked; toast(err.message); }
 };
 $('#s-resume').onclick = async () => {
   const j = await api('/api/state?full=1');
@@ -224,7 +229,7 @@ function render(prev, byAgent) {
   if (!F) return;
   $('#zoom').classList.add('hidden');
   renderTracks(); renderSides(); renderRows(); renderBases(); renderRunes(); renderBattlefields(); renderHand();
-  renderTurn(); renderPrompt(); renderChain();
+  renderTurn(); renderPrompt(); renderChain(); renderNet();
   if (prev) flashChanges(prev, byAgent);
 }
 
@@ -233,7 +238,8 @@ function cardEl(o, opts = {}) {
   const d = el('div', 'card');
   d.dataset.id = o.id;
   if (c) { d.style.backgroundImage = `url("${c.img}")`; d.classList.add('has-art'); d.dataset.card = o.card; }
-  if (o.facedown || (o.card == null && !o.name)) d.classList.add('facedown');
+  if (o.peek) d.classList.add('peek');   // a hidden card shown only because its hand is revealed
+  else if (o.facedown || (o.card == null && !o.name)) d.classList.add('facedown');
   else if (!c) d.classList.add('noart');   // a token with no card of its own
   if (o.exhausted) d.classList.add('exhausted');
   if (o.ctrl) d.classList.add(o.ctrl === 1 ? 'ctrl-me' : 'ctrl-opp');
@@ -251,6 +257,7 @@ function cardEl(o, opts = {}) {
   if (o.buffs) st.appendChild(el('span', 'chip', `Buff ${o.buffs}`));
   if (o.token) st.appendChild(el('span', 'chip tok', 'Token'));
   if (o.empowered) st.appendChild(el('span', 'chip', 'Empowered'));
+  if (o.peek) st.appendChild(el('span', 'chip peek', 'Face down'));
   if (st.childElementCount) d.appendChild(st);
   hookZoom(d, o);
   const acts = optsFor(o.id);
@@ -305,6 +312,9 @@ function pileHtml(p, who) {
 }
 function renderRows() {
   const oh = $('#opp-hand'); oh.innerHTML = '';
+  const rv = $('#g-reveal');
+  rv.parentElement.classList.toggle('hidden', !!RP);
+  rv.checked = !!F.reveal;
   const n = F.players.opp.hand_count;
   oh.classList.toggle('faceup', !!F.opp_hand_cards);
   if (F.opp_hand_cards) for (const o of F.opp_hand_cards) oh.appendChild(cardEl(o, { noStats: true }));
@@ -441,6 +451,39 @@ function renderMulligan(box, d) {
   b.onclick = () => match && choose(match);
   box.appendChild(b);
 }
+// The network's decisions since your last one (only while its hand is shown): every option it weighed, with its
+// policy (prior), the search's visits and the search's win estimate for it.
+function renderNet() {
+  const z = $('#net-box'); z.innerHTML = '';
+  const ms = F.net_moves || [];
+  z.classList.toggle('hidden', !F.reveal || RP != null);
+  if (!F.reveal || RP != null) return;
+  z.appendChild(el('div', 'box-head', `Network's thinking <span class="tiny">${ms.length ? 'since your last move' : ''}</span>`));
+  if (!ms.length) { z.appendChild(el('div', 'dim tiny', 'Its decisions since your last move appear here.')); return; }
+  const pct = x => `${Math.round(100 * x)}%`;
+  for (const m of [...ms].reverse()) {
+    const box = el('div', 'nm-move');
+    const win = m.value != null ? ` · thinks it wins ${pct((m.value + 1) / 2)}` : '';
+    box.appendChild(el('div', 'nm-q', `<b>Turn ${m.turn}</b> · ${esc(m.question || m.kind)}${win}`));
+    const tot = m.options.reduce((a, o) => a + o.n, 0);
+    const rows = m.options.slice(0, 6);
+    for (const o of rows) {
+      const share = m.searched ? (tot ? o.n / tot : 0) : o.p;
+      const r = el('div', 'nm-opt' + (o.index === m.chosen ? ' chosen' : ''));
+      r.appendChild(el('div', 'nm-bar', ''));
+      r.lastChild.style.width = `${Math.max(2, Math.round(100 * share))}%`;
+      const stats = m.searched ? `${o.n} visits · prior ${pct(o.p)}${o.q != null ? ` · win ${pct((o.q + 1) / 2)}` : ''}` : pct(o.p);
+      r.appendChild(el('div', 'nm-t', `${o.index === m.chosen ? '▶ ' : ''}${esc(optText(o))}`));
+      r.appendChild(el('div', 'nm-s', stats));
+      r.onmouseenter = () => o.objs.forEach(t => document.querySelectorAll(`[data-id="${t}"]`).forEach(e => e.classList.add('targeted')));
+      r.onmouseleave = () => document.querySelectorAll('.targeted').forEach(e => e.classList.remove('targeted'));
+      box.appendChild(r);
+    }
+    if (m.options.length > rows.length) box.appendChild(el('div', 'dim tiny', `+ ${m.options.length - rows.length} more options`));
+    z.appendChild(box);
+  }
+}
+
 function renderChain() {
   const z = $('#chain-box'); z.innerHTML = '';
   z.appendChild(el('div', 'box-head', `Chain${F.chain.length ? ` (${F.chain.length})` : ' — empty'}`));

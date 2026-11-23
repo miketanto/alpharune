@@ -24,6 +24,7 @@
           <option value="200">Search, 200 simulations (stronger, slower)</option></select></label>
         <label class="chk"><input type="checkbox" id="s-manual" checked> Tap runes myself (float Energy and Power)</label>
         <label class="chk"><input type="checkbox" id="s-askrunes"> Also stop me when I could only tap runes</label>
+        <label class="chk"><input type="checkbox" id="s-reveal"> Show the network's hand (to study its play)</label>
         <label>Seat<select id="s-seat">
           <option value="0">Random</option><option value="1">Player 1</option><option value="2">Player 2</option></select></label>
         <label>Seed <input id="s-seed" placeholder="random" inputmode="numeric"></label>
@@ -61,6 +62,7 @@
       <main id="center">
         <div class="player-row opp" id="opp-row">
           <div class="hand-backs" id="opp-hand"></div>
+          <label class="reveal-toggle" title="Show the network's hand and face-down cards"><input type="checkbox" id="g-reveal"> show its hand</label>
           <div class="piles" id="opp-piles"></div>
         </div>
         <div class="runes opp" id="opp-runes"></div>
@@ -78,6 +80,7 @@
         <div id="turn-box"></div>
         <div id="prompt-box"></div>
         <div id="chain-box"></div>
+        <div id="net-box" class="hidden"></div>
         <div id="log-box">
           <div class="box-head">Log <label class="tiny"><input type="checkbox" id="log-verbose"> all lines</label></div>
           <div id="log"></div>

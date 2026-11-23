@@ -60,6 +60,9 @@ def list_checkpoints():
     return rel
 
 
+NET_MOVES_SHOWN = 12   # the network's decisions since your last one, shown with its hand
+
+
 class Session:
     def __init__(self):
         self.lock = threading.Lock()
@@ -71,11 +74,14 @@ class Session:
         self.search = None      # SearchAgent of the current game, or None (greedy network)
         self.rows = []          # decision log of the current game (replay.py row layout)
         self.log_next = 0
+        self.reveal = False     # show the network's hand and face-down cards (set_reveal)
+        self.net_moves = []     # the network's decisions: every option with its prior / visits / value (note_move)
+        self.human_rows = 0     # decision-log length at the human's last decision
 
     def agent_seat(self):
         return 3 - self.human
 
-    def new(self, deck, agent_deck, ckpt, seat, seed, sims=0, manual=False, ask_runes=False):
+    def new(self, deck, agent_deck, ckpt, seat, seed, sims=0, manual=False, ask_runes=False, reveal=False):
         runs = os.path.join(playweb.SELFPLAY, 'runs')
         ck = ckpt if os.path.isabs(ckpt) else os.path.join(runs, ckpt)
         if not os.path.isfile(ck):
@@ -101,6 +107,8 @@ class Session:
             self.game = None
         manual = bool(manual) and playweb.engine_tag() != 'base'
         self.manual, self.ask_runes = manual, bool(ask_runes)
+        self.reveal = bool(reveal)
+        self.net_moves, self.human_rows = [], 0
         self.game = playweb.Game(p1, p2, seat, seed, manual)
         self.human = seat
         self.log_next = 0
@@ -110,14 +118,45 @@ class Session:
         self.rows = []
         self.started = time.strftime('%Y%m%d_%H%M%S')
         self.meta = dict(deck=deck, agent_deck=agent_deck, checkpoint=os.path.relpath(ck, runs), seat=seat, seed=seed, sims=sims,
-                         manual_runes=manual)
+                         manual_runes=manual, opp_hand_shown=self.reveal)
         return self.run_agent()
 
     def frame(self):
         v = self.game.view(self.human, self.log_next)
         self.log_next = v.get('log_next', self.log_next)
+        if self.reveal:
+            replay.reveal(v, self.game.view(self.agent_seat(), 1 << 40))
+        v['reveal'] = self.reveal
+        if self.reveal:   # its options name the cards in its hand: shown only with the hand
+            v['net_moves'] = [m for m in self.net_moves if m['row'] >= self.human_rows][-NET_MOVES_SHOWN:]
         v['meta'] = self.meta
         return v
+
+    def note_move(self, chosen, stats, value, searched):
+        """Before the network's decision is applied: every option as the network's seat sees it, with its prior,
+        visits and mean value (stats rows: index, prior, visits, value or -2)."""
+        d = self.game.view(self.agent_seat(), 1 << 40).get('decision') or {}
+        by = {o['index']: o for o in d.get('options', [])}
+        opts = []
+        for i, p, n, q in stats:
+            o = by.get(int(i))
+            if o is None:
+                continue
+            opts.append(dict(index=int(i), type=o['type'], text=o['text'], label=o.get('label', ''), objs=o['objs'],
+                             dest=o.get('dest', ''), p=round(float(p), 4), n=int(n), q=None if q <= -2 else round(float(q), 3)))
+        opts.sort(key=lambda o: (-o['n'], -o['p']))
+        t = self.game.view(self.agent_seat(), 1 << 40)['turn']
+        self.net_moves.append(dict(row=len(self.rows), turn=t['number'], phase=t['phase'], kind=d.get('kind', ''),
+                                   question=d.get('question', ''), chosen=int(chosen), searched=bool(searched),
+                                   value=None if value is None else round(float(value), 3), options=opts))
+
+    def set_reveal(self, on):
+        """Show (or hide again) the network's hand and face-down cards. A game in which they were ever shown is
+        saved with opp_hand_shown, so it is not taken for a game played blind."""
+        self.reveal = bool(on)
+        if self.reveal:
+            self.meta['opp_hand_shown'] = True
+        return self.frame()
 
     def run_agent(self):
         """The network's moves until the human has a real decision (see only_runes) or the game ends."""
@@ -164,6 +203,7 @@ class Session:
             obs = g.observe()
             a, value = self.agent.choose(obs, st['nlegal'])
             q = self.agent.last_prob
+            self.note_move(a, [(i, p, 0, -2) for i, p in enumerate(self.agent.last_probs)], value, False)
             self.rows.append([0, a, a, q, q, 0, 0, 0, 0, 0, value or 0, st['seat']] + [-1, 0] * 3)
             g.step(a)
             f = self.frame()
@@ -182,6 +222,9 @@ class Session:
             st = g.status()
             if st['done'] or not st['need'] or st['seat'] != int(d[11]) or st['seat'] == self.human:
                 raise RuntimeError(f'the search harness and the displayed game disagree at decision {len(self.rows)}')
+            rt = A.root(len(self.rows))
+            if rt is not None:
+                self.note_move(int(d[1]), rt, float(d[10]), bool(d[0]))
             self.rows.append([float(x) for x in d])
             g.step(int(d[1]))
             f = self.frame()
@@ -209,7 +252,8 @@ class Session:
                    name=f'you vs {os.path.basename(os.path.dirname(m["checkpoint"]))}/{net}',
                    labels={str(me): 'you', str(3 - me): f'{net} ' + (f'search N={m["sims"]}' if m['sims'] else 'greedy')},
                    games=[dict(search_seat=3 - me, human_seat=me, winner=st['winner'], done=st['done'],
-                               turns=self.game.view(me, 1 << 40)['turn']['number'], declog=self.rows)])
+                               turns=self.game.view(me, 1 << 40)['turn']['number'], declog=self.rows,
+                               analysis=self.net_moves)])
         with open(p + '.tmp', 'w') as f:
             json.dump(rec, f)
         os.replace(p + '.tmp', p)
@@ -218,6 +262,7 @@ class Session:
         if self.search:
             self.search.human(index)
         self.rows.append([0, index, index, 0, 0, 0, 0, 0, 0, 0, 0, self.human] + [-1, 0] * 3)
+        self.human_rows = len(self.rows)
         self.game.step(index)
 
     def act(self, index):
@@ -295,7 +340,7 @@ class Handler(BaseHTTPRequestHandler):
                     frames = S.new(body.get('deck', 'rengar'), body.get('agent_deck', 'rengar'),
                                    body.get('checkpoint') or DEFAULT_CKPT, int(body.get('seat') or 0), body.get('seed'),
                                    max(0, min(800, int(body.get('sims') or 0))),
-                                   body.get('manual', True), body.get('ask_runes', False))
+                                   body.get('manual', True), body.get('ask_runes', False), body.get('reveal', False))
                     return self._send(200, {'frames': frames})
                 if u.path == '/api/replay/open':
                     if R['replay']:
@@ -310,6 +355,10 @@ class Handler(BaseHTTPRequestHandler):
                         rp.set_view(body.get('seat'), body.get('both'))
                         return self._send(200, {'frames': [rp.frame(log_reset=True)]})
                     return self._send(200, {'frames': [rp.goto(int(body['i']))]})
+                if u.path == '/api/reveal':
+                    if not S.game:
+                        return self._send(400, {'error': 'no game'})
+                    return self._send(200, {'frames': [S.set_reveal(body.get('on'))]})
                 if u.path == '/api/act':
                     if not S.game:
                         return self._send(400, {'error': 'no game'})
